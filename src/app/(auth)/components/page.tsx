@@ -1,12 +1,17 @@
 'use client'
 
 import dynamic from 'next/dynamic'
+
 import React, { useState } from 'react'
+
 import { useTranslation } from 'react-i18next'
-import { Search, Grid, List } from 'lucide-react'
+import { Search, Grid, List, Filter } from 'lucide-react'
+
 import { Input } from '@/components/core/Input/Input'
 import { Button } from '@/components/core/Button/Button'
 import { Card, CardContent } from '@/components/core/Card/Card'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/core/Select/Select'
+
 import { cn } from '@/lib/utils'
 import { componentDemoData } from '@/data/componentDemoData'
 
@@ -34,7 +39,9 @@ const ComponentDemoSkeleton = () => (
 
 export default function ComponentsPage() {
   const { t } = useTranslation()
+
   const [searchQuery, setSearchQuery] = useState('')
+  const [isFilterOpen, setIsFilterOpen] = useState(false)
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
 
@@ -55,8 +62,9 @@ export default function ComponentsPage() {
       {/* Search and Filter Section */}
       <section className='max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8'>
         <Card className='bg-white dark:bg-neutral-800 backdrop-blur-sm border-neutral-200 dark:border-neutral-700 shadow-lg'>
-          <CardContent className='p-6'>
-            <div className='flex flex-col lg:flex-row gap-4 items-center'>
+          <CardContent className='p-4 sm:p-6'>
+            <div className='flex flex-col md:flex-row gap-4 items-center'>
+              {/* Search Input */}
               <div className='flex-1 w-full relative'>
                 <Search className='absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-neutral-500 dark:text-neutral-400' />
                 <Input
@@ -67,26 +75,35 @@ export default function ComponentsPage() {
                 />
               </div>
 
-              <div className='flex items-center gap-2'>
-                <select
-                  value={selectedCategory}
-                  onChange={(e) => setSelectedCategory(e.target.value)}
-                  className='appearance-none bg-white dark:bg-neutral-700 border border-neutral-200 dark:border-neutral-600 rounded-lg px-4 py-2.5 text-sm pr-10 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 text-neutral-900 dark:text-neutral-100 cursor-pointer'
-                  style={{
-                    backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E")`,
-                    backgroundPosition: 'right 0.5rem center',
-                    backgroundRepeat: 'no-repeat',
-                    backgroundSize: '1.5em 1.5em',
-                  }}
+              {/* Mobile Filter Toggle */}
+              <div className='md:hidden flex items-center gap-2'>
+                <Button
+                  variant='outline'
+                  size='sm'
+                  onClick={() => setIsFilterOpen(!isFilterOpen)}
+                  className='flex items-center gap-2'
                 >
-                  <option value='all'>{t('common.allCategories')}</option>
-                  {categories.slice(1).map((category) => (
-                    <option key={category} value={category}>
-                      {category}
-                    </option>
-                  ))}
-                </select>
+                  <Filter className='h-4 w-4' />
+                  {t('common.filter')}
+                </Button>
+              </div>
 
+              {/* Filters - Desktop */}
+              <div className='hidden md:flex items-center gap-2'>
+                <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+                  <SelectTrigger className='w-[180px]'>
+                    <SelectValue placeholder={t('common.allCategories')} />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {categories.map((category) => (
+                      <SelectItem key={category} value={category}>
+                        {category === 'all' ? t('common.allCategories') : category}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+
+                {/* View Mode Toggle */}
                 <div className='flex items-center gap-1 p-1 bg-neutral-100 dark:bg-neutral-700 rounded-lg'>
                   <Button
                     variant={viewMode === 'grid' ? 'default' : 'ghost'}
@@ -119,6 +136,30 @@ export default function ComponentsPage() {
                 </div>
               </div>
             </div>
+
+            {/* Mobile Filters */}
+            {isFilterOpen && (
+              <div className='md:hidden mt-4 space-y-4'>
+                <Select
+                  value={selectedCategory}
+                  onValueChange={(value) => {
+                    setSelectedCategory(value)
+                    setIsFilterOpen(false)
+                  }}
+                >
+                  <SelectTrigger className='w-full'>
+                    <SelectValue placeholder={t('common.allCategories')} />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {categories.map((category) => (
+                      <SelectItem key={category} value={category}>
+                        {category === 'all' ? t('common.allCategories') : category}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+            )}
           </CardContent>
         </Card>
       </section>
