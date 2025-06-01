@@ -45,6 +45,7 @@
     "type": "git",
     "url": "git+https://github.com/zzafergok/sea-ui-kit.git"
   },
+  "homepage": "https://www.starkon.website",
   "keywords": [
     "ui",
     "nextjs",
