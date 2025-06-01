@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react'
 
-import { Mail, Search, MoreHorizontal } from 'lucide-react'
+import { Mail, Search, MoreHorizontal, Info, Play, Volume2, Settings, User, Plus } from 'lucide-react'
 
 import {
   DropdownMenu,
@@ -12,15 +13,30 @@ import {
 } from '@/components/core/Dropdown/Dropdown'
 import { Label } from '@/components/core/Label/Label'
 import { Input } from '@/components/core/Input/Input'
+import { Badge } from '@/components/core/Badge/Badge'
+import { Toast } from '@/components/core/Toast/Toast'
+import {
+  RichTextEditor,
+  createFullRichTextEditor,
+  createBasicRichTextEditor,
+} from '@/components/core/RichTextEditor/RichTextEditor'
 import { Switch } from '@/components/core/Switch/Switch'
+import { Slider } from '@/components/core/Slider/Slider'
+import { Button } from '@/components/core/Button/Button'
 import { Checkbox } from '@/components/core/Checkbox/Checkbox'
 import { Textarea } from '@/components/core/Textarea/Textarea'
+import { Separator } from '@/components/core/Separator/Seperator'
 import { FileUploadExample } from '@/components/ui/FileUpload/FileUpload'
 import { PageHeaderExample } from '@/components/ui/PageHeader/PageHeader'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/core/Tabs/Tabs'
+import { DatePicker, DatePickerExample } from '@/components/core/DatePicker/DatePicker'
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/core/Popover/Popover'
 import { Skeleton, SkeletonText, SkeletonAvatar } from '@/components/core/Skeleton/Skeleton'
 import { LoadingSpinner, LoadingDots, LoadingPulse } from '@/components/core/Loading/LoadingSpinner'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/core/Card/Card'
+import { DataGrid, createSelectionColumn, createActionsColumn } from '@/components/core/DataGrid/DataGrid'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/core/Tooltip/Tooltip'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/core/Select/Select'
-import { Badge } from '@/components/core/Badge/Badge'
 
 // componentDemoData array'ine eklenecek yeni bileşenler:
 export const componentDemoData = [
@@ -2512,6 +2528,2175 @@ function Example() {
         type: 'ReactNode',
         description: 'Badge içeriği',
         required: true,
+      },
+    ],
+  },
+  // DatePicker bileşeni
+  {
+    id: 'date-picker',
+    title: 'Date Picker',
+    description: 'Gelişmiş tarih seçim bileşeni - tek tarih, tarih aralığı ve çoklu tarih seçimi destekli',
+    category: 'Form & Input',
+    status: 'stable',
+    demoComponent: React.createElement(DatePickerExample),
+    code: `import { DatePicker, DateRange } from '@/components/core/DatePicker/DatePicker'
+import { useState } from 'react'
+
+function Example() {
+  const [singleDate, setSingleDate] = useState<Date | null>(null)
+  const [dateRange, setDateRange] = useState<DateRange | null>(null)
+  const [multipleDates, setMultipleDates] = useState<Date[]>([])
+
+  return (
+    <div className="space-y-6">
+      <div>
+        <label className="block text-sm font-medium mb-2">Tek Tarih</label>
+        <DatePicker
+          mode="single"
+          value={singleDate}
+          onChange={(date) => setSingleDate(date as Date)}
+          placeholder="Tarih seçin"
+        />
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium mb-2">Tarih Aralığı</label>
+        <DatePicker
+          mode="range"
+          value={dateRange}
+          onChange={(range) => setDateRange(range as DateRange)}
+          placeholder="Tarih aralığı seçin"
+          enablePresets={true}
+        />
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium mb-2">Çoklu Tarih</label>
+        <DatePicker
+          mode="multiple"
+          value={multipleDates}
+          onChange={(dates) => setMultipleDates(dates as Date[])}
+          placeholder="Tarihleri seçin"
+        />
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium mb-2">Tarih ve Saat</label>
+        <DatePicker
+          mode="single"
+          enableTime={true}
+          value={singleDate}
+          onChange={(date) => setSingleDate(date as Date)}
+          placeholder="Tarih ve saat seçin"
+        />
+      </div>
+    </div>
+  )
+}`,
+    usageExamples: [
+      {
+        title: 'Kısıtlı Tarih Seçimi',
+        description: 'Minimum ve maksimum tarih kısıtlaması olan tarih seçici',
+        code: `import { DatePicker } from '@/components/core/DatePicker/DatePicker'
+import { addDays } from 'date-fns'
+
+<DatePicker
+  mode="single"
+  value={date}
+  onChange={setDate}
+  minDate={new Date()}
+  maxDate={addDays(new Date(), 30)}
+  disabledDaysOfWeek={[0, 6]} // Hafta sonu devre dışı
+  placeholder="İş günü seçin"
+/>`,
+        component: React.createElement(() => {
+          const [date, setDate] = React.useState<Date | null>(null)
+          return React.createElement(DatePicker, {
+            mode: 'single',
+            value: date,
+            onChange: (newDate) => setDate(newDate as Date),
+            placeholder: 'İş günü seçin (örnek)',
+            disabled: true,
+          })
+        }),
+      },
+      {
+        title: 'Hızlı Seçim Presetleri',
+        description: 'Önceden tanımlanmış tarih aralıkları ile hızlı seçim',
+        code: `<DatePicker
+  mode="range"
+  value={dateRange}
+  onChange={setDateRange}
+  enablePresets={true}
+  customPresets={[
+    { label: 'Bu Hafta', value: { from: startOfWeek(new Date()), to: endOfWeek(new Date()) } },
+    { label: 'Bu Ay', value: { from: startOfMonth(new Date()), to: endOfMonth(new Date()) } }
+  ]}
+/>`,
+        component: React.createElement(() => {
+          const [range, setRange] = React.useState(null)
+          return React.createElement(DatePicker, {
+            mode: 'range',
+            value: range,
+            onChange: setRange,
+            placeholder: 'Hızlı seçim ile (örnek)',
+            disabled: true,
+          })
+        }),
+      },
+    ],
+    props: [
+      {
+        name: 'mode',
+        type: "'single' | 'multiple' | 'range'",
+        description: 'Tarih seçim modu',
+        default: 'single',
+      },
+      {
+        name: 'value',
+        type: 'Date | Date[] | DateRange | null',
+        description: 'Seçili tarih değeri',
+      },
+      {
+        name: 'onChange',
+        type: '(value: Date | Date[] | DateRange | null) => void',
+        description: 'Tarih değişim callback fonksiyonu',
+      },
+      {
+        name: 'enableTime',
+        type: 'boolean',
+        description: 'Saat seçimini etkinleştir',
+        default: 'false',
+      },
+      {
+        name: 'enablePresets',
+        type: 'boolean',
+        description: 'Hızlı seçim presetlerini göster',
+        default: 'false',
+      },
+      {
+        name: 'minDate',
+        type: 'Date',
+        description: 'Minimum seçilebilir tarih',
+      },
+      {
+        name: 'maxDate',
+        type: 'Date',
+        description: 'Maksimum seçilebilir tarih',
+      },
+      {
+        name: 'locale',
+        type: "'tr' | 'en'",
+        description: 'Dil seçeneği',
+        default: 'tr',
+      },
+    ],
+  },
+  // DataGrid bileşeni
+  {
+    id: 'data-grid',
+    title: 'Data Grid',
+    description: 'Gelişmiş veri tablosu - sıralama, filtreleme, sayfalama, sütun yönetimi ve dışa aktarma özellikleri',
+    category: 'Veri Gösterimi',
+    status: 'beta',
+    demoComponent: React.createElement(() => {
+      const sampleData = [
+        {
+          id: 1,
+          name: 'Ahmet Yılmaz',
+          email: 'ahmet@example.com',
+          role: 'Admin',
+          status: 'Aktif',
+          createdAt: '2024-01-15',
+        },
+        {
+          id: 2,
+          name: 'Zeynep Kaya',
+          email: 'zeynep@example.com',
+          role: 'Kullanıcı',
+          status: 'Aktif',
+          createdAt: '2024-01-16',
+        },
+        {
+          id: 3,
+          name: 'Mehmet Özkan',
+          email: 'mehmet@example.com',
+          role: 'Editör',
+          status: 'Pasif',
+          createdAt: '2024-01-17',
+        },
+        {
+          id: 4,
+          name: 'Fatma Demir',
+          email: 'fatma@example.com',
+          role: 'Kullanıcı',
+          status: 'Aktif',
+          createdAt: '2024-01-18',
+        },
+      ]
+
+      type SampleDataRow = (typeof sampleData)[0]
+
+      const columns = [
+        createSelectionColumn<SampleDataRow>(),
+        {
+          accessorKey: 'name',
+          header: 'Ad Soyad',
+        },
+        {
+          accessorKey: 'email',
+          header: 'E-posta',
+        },
+        {
+          accessorKey: 'role',
+          header: 'Rol',
+        },
+        {
+          accessorKey: 'status',
+          header: 'Durum',
+          cell: ({ row }: { row: { original: SampleDataRow } }) =>
+            React.createElement(
+              Badge,
+              {
+                variant: row.original.status === 'Aktif' ? 'success' : 'error',
+              },
+              row.original.status,
+            ),
+        },
+        createActionsColumn<SampleDataRow>([
+          {
+            label: 'Düzenle',
+            onClick: (user) => console.log('Düzenle:', user),
+            variant: 'ghost',
+          },
+          {
+            label: 'Sil',
+            onClick: (user) => console.log('Sil:', user),
+            variant: 'destructive',
+          },
+        ]),
+      ]
+
+      return React.createElement(DataGrid, {
+        data: sampleData,
+        columns: columns,
+        enableGlobalFilter: true,
+        enableColumnFilters: true,
+        enableRowSelection: true,
+        enableExport: false, // Demo için kapalı
+        enableColumnVisibility: true,
+        globalFilterPlaceholder: 'Kullanıcı ara...',
+        pageSize: 5,
+        className: 'w-full',
+      })
+    }),
+    code: `import { DataGrid, createSelectionColumn, createActionsColumn } from '@/components/core/DataGrid/DataGrid'
+  import { Badge } from '@/components/core/Badge/Badge'
+  import { ColumnDef } from '@tanstack/react-table'
+  
+  type User = {
+    id: string
+    name: string
+    email: string
+    role: string
+    status: string
+    createdAt: string
+  }
+  
+  function Example() {
+    const data: User[] = [
+      {
+        id: "1",
+        name: "Ahmet Yılmaz",
+        email: "ahmet@example.com",
+        role: "Admin",
+        status: "Aktif",
+        createdAt: "2024-01-15"
+      },
+      // ... daha fazla veri
+    ]
+  
+    const columns: ColumnDef<User>[] = [
+      createSelectionColumn<User>(),
+      {
+        accessorKey: "name",
+        header: "Ad Soyad",
+      },
+      {
+        accessorKey: "email",
+        header: "E-posta",
+      },
+      {
+        accessorKey: "role", 
+        header: "Rol",
+      },
+      {
+        accessorKey: "status",
+        header: "Durum",
+        cell: ({ row }) => (
+          <Badge variant={row.original.status === 'Aktif' ? 'success' : 'error'}>
+            {row.original.status}
+          </Badge>
+        )
+      },
+      createActionsColumn<User>([
+        {
+          label: 'Düzenle',
+          onClick: (user) => console.log('Düzenle:', user),
+          variant: 'ghost'
+        },
+        {
+          label: 'Sil',
+          onClick: (user) => console.log('Sil:', user),
+          variant: 'destructive'
+        }
+      ])
+    ]
+  
+    return (
+      <DataGrid
+        data={data}
+        columns={columns}
+        enableGlobalFilter={true}
+        enableColumnFilters={true}
+        enableRowSelection={true}
+        enableExport={true}
+        exportFormats={['csv', 'excel']}
+        enableColumnVisibility={true}
+        globalFilterPlaceholder="Kullanıcı ara..."
+        onRowClick={(user) => console.log('Tıklanan kullanıcı:', user)}
+        onExport={(format, data) => {
+          console.log(\`\${format} formatında \${data.length} kayıt dışa aktarılıyor\`)
+        }}
+      />
+    )
+  }`,
+    usageExamples: [
+      {
+        title: 'Basit Tablo',
+        description: 'Minimal özelliklerle basit veri tablosu',
+        code: `<DataGrid
+    data={users}
+    columns={basicColumns}
+    enablePagination={false}
+    enableGlobalFilter={false}
+    enableRowSelection={false}
+    striped={true}
+    hover={true}
+  />`,
+        component: React.createElement(() => {
+          const basicData = [
+            { id: 1, name: 'John Doe', email: 'john@example.com' },
+            { id: 2, name: 'Jane Smith', email: 'jane@example.com' },
+          ]
+          const basicColumns = [
+            { accessorKey: 'name', header: 'Name' },
+            { accessorKey: 'email', header: 'Email' },
+          ]
+          return React.createElement(DataGrid, {
+            data: basicData,
+            columns: basicColumns,
+            enablePagination: false,
+            enableGlobalFilter: false,
+            enableRowSelection: false,
+            className: 'text-xs',
+          })
+        }),
+      },
+      {
+        title: 'Dışa Aktarma Özellikli',
+        description: 'CSV ve Excel formatlarında veri dışa aktarımı',
+        code: `<DataGrid
+    data={data}
+    columns={columns}
+    enableExport={true}
+    exportFormats={['csv', 'excel', 'pdf']}
+    onExport={(format, data) => {
+      // Dışa aktarma işlemi
+      downloadFile(format, data)
+    }}
+  />`,
+        component: React.createElement(
+          'div',
+          {
+            className: 'text-sm text-neutral-600 dark:text-neutral-400 p-4 border rounded',
+          },
+          'Seçili veya tüm verileri farklı formatlarda dışa aktarın',
+        ),
+      },
+    ],
+    props: [
+      {
+        name: 'data',
+        type: 'T[]',
+        description: 'Tabloda gösterilecek veri dizisi',
+        required: true,
+      },
+      {
+        name: 'columns',
+        type: 'DataGridColumn<T>[]',
+        description: 'Tablo sütun tanımları',
+        required: true,
+      },
+      {
+        name: 'enablePagination',
+        type: 'boolean',
+        description: 'Sayfalama özelliğini etkinleştir',
+        default: 'true',
+      },
+      {
+        name: 'enableGlobalFilter',
+        type: 'boolean',
+        description: 'Global arama özelliğini etkinleştir',
+        default: 'true',
+      },
+      {
+        name: 'enableRowSelection',
+        type: 'boolean',
+        description: 'Satır seçim özelliğini etkinleştir',
+        default: 'false',
+      },
+      {
+        name: 'enableExport',
+        type: 'boolean',
+        description: 'Dışa aktarma özelliğini etkinleştir',
+        default: 'false',
+      },
+      {
+        name: 'exportFormats',
+        type: "('csv' | 'excel' | 'pdf')[]",
+        description: 'Desteklenen dışa aktarma formatları',
+        default: "['csv', 'excel']",
+      },
+      {
+        name: 'onRowClick',
+        type: '(row: T, index: number) => void',
+        description: 'Satır tıklama callback fonksiyonu',
+      },
+    ],
+  },
+  // RichTextEditor bileşeni
+  {
+    id: 'rich-text-editor',
+    title: 'Rich Text Editor',
+    description: 'Gelişmiş metin düzenleyici - formatlanmış metin, tablo, resim ve link ekleme özellikleri',
+    category: 'Form & Input',
+    status: 'alpha',
+    demoComponent: React.createElement(() => {
+      const [content, setContent] = React.useState(
+        '<p>Bu bir <strong>zengin metin</strong> düzenleyici örneğidir. <em>İtalik</em>, <u>altı çizili</u> ve <del>üstü çizili</del> metinler yazabilirsiniz.</p><ul><li>Madde işaretli listeler</li><li>Numaralı listeler</li></ul><blockquote>Alıntı metinleri</blockquote>',
+      )
+
+      return React.createElement(RichTextEditor, {
+        value: content,
+        onChange: setContent,
+        placeholder: 'Yazmaya başlayın...',
+        enableToolbar: true,
+        enablePreview: true,
+        enableWordCount: true,
+        height: 300,
+        maxLength: 1000,
+        toolbarConfig: {
+          formatting: true,
+          alignment: true,
+          lists: true,
+          links: true,
+          media: false, // Demo için medya yükleme kapalı
+          tables: true,
+          advanced: true,
+        },
+      })
+    }),
+    code: `import { RichTextEditor } from '@/components/core/RichTextEditor/RichTextEditor'
+  import { useState } from 'react'
+  
+  function Example() {
+    const [content, setContent] = useState('')
+  
+    const handleImageUpload = async (file: File): Promise<string> => {
+      // Resim yükleme işlemi
+      const formData = new FormData()
+      formData.append('file', file)
+      
+      const response = await fetch('/api/upload', {
+        method: 'POST',
+        body: formData
+      })
+      
+      const { url } = await response.json()
+      return url
+    }
+  
+    return (
+      <RichTextEditor
+        value={content}
+        onChange={setContent}
+        placeholder="Yazmaya başlayın..."
+        enableToolbar={true}
+        enablePreview={true}
+        enableWordCount={true}
+        enableAutoSave={true}
+        height={400}
+        onImageUpload={handleImageUpload}
+        toolbarConfig={{
+          formatting: true,
+          alignment: true,
+          lists: true,
+          links: true,
+          media: true,
+          tables: true,
+          advanced: true
+        }}
+      />
+    )
+  }`,
+    usageExamples: [
+      {
+        title: 'Basit Düzenleyici',
+        description: 'Minimal özelliklerle basit metin düzenleyici',
+        code: `import { createBasicRichTextEditor } from '@/components/core/RichTextEditor/RichTextEditor'
+  
+  function BasicExample() {
+    const [content, setContent] = useState('')
+    
+    return createBasicRichTextEditor({
+      value: content,
+      onChange: setContent,
+      placeholder: "Mesajınızı yazın...",
+      height: 150,
+      maxLength: 500
+    })
+  }`,
+        component: React.createElement(() => {
+          const [content, setContent] = React.useState('')
+          return createBasicRichTextEditor({
+            value: content,
+            onChange: setContent,
+            placeholder: 'Basit metin düzenleyici...',
+            height: 120,
+          })
+        }),
+      },
+      {
+        title: 'Tam Özellikli Düzenleyici',
+        description: 'Tüm özellikleri etkin gelişmiş düzenleyici',
+        code: `import { createFullRichTextEditor } from '@/components/core/RichTextEditor/RichTextEditor'
+  
+  function FullExample() {
+    const [content, setContent] = useState('')
+    
+    return createFullRichTextEditor({
+      value: content,
+      onChange: setContent,
+      enableAutoSave: true,
+      autoSaveInterval: 30000,
+      onAutoSave: (content) => {
+        console.log('İçerik otomatik kaydedildi:', content)
+      }
+    })
+  }`,
+        component: React.createElement(
+          'div',
+          {
+            className: 'text-sm text-neutral-600 dark:text-neutral-400 p-4 border rounded',
+          },
+          'Otomatik kaydetme, önizleme, tam ekran ve tüm formatları destekler',
+        ),
+      },
+    ],
+    props: [
+      {
+        name: 'value',
+        type: 'string',
+        description: 'Düzenleyici içeriği',
+        default: '',
+      },
+      {
+        name: 'onChange',
+        type: '(value: string) => void',
+        description: 'İçerik değişim callback fonksiyonu',
+      },
+      {
+        name: 'placeholder',
+        type: 'string',
+        description: 'Placeholder metni',
+        default: 'Yazmaya başlayın...',
+      },
+      {
+        name: 'enableToolbar',
+        type: 'boolean',
+        description: 'Araç çubuğunu etkinleştir',
+        default: 'true',
+      },
+      {
+        name: 'enablePreview',
+        type: 'boolean',
+        description: 'Önizleme modunu etkinleştir',
+        default: 'true',
+      },
+      {
+        name: 'enableAutoSave',
+        type: 'boolean',
+        description: 'Otomatik kaydetmeyi etkinleştir',
+        default: 'false',
+      },
+      {
+        name: 'height',
+        type: 'number | string',
+        description: 'Düzenleyici yüksekliği',
+        default: '400',
+      },
+      {
+        name: 'maxLength',
+        type: 'number',
+        description: 'Maksimum karakter sayısı',
+      },
+      {
+        name: 'onImageUpload',
+        type: '(file: File) => Promise<string>',
+        description: 'Resim yükleme callback fonksiyonu',
+      },
+      {
+        name: 'toolbarConfig',
+        type: 'object',
+        description: 'Araç çubuğu yapılandırması',
+      },
+    ],
+  },
+  // Slider bileşeni
+  {
+    id: 'slider',
+    title: 'Slider',
+    description: 'Kullanıcıların bir değer aralığından seçim yapabilmesi için kullanılan kaydırıcı bileşeni',
+    category: 'Form & Input',
+    status: 'stable',
+    demoComponent: React.createElement('div', { className: 'space-y-6 w-full max-w-md' }, [
+      React.createElement('div', { key: 'basic', className: 'space-y-2' }, [
+        React.createElement('label', { key: 'label', className: 'text-sm font-medium' }, 'Temel Slider (0-100)'),
+        React.createElement(Slider, {
+          key: 'slider',
+          defaultValue: [50],
+          max: 100,
+          step: 1,
+          className: 'w-full',
+        }),
+      ]),
+      React.createElement('div', { key: 'range', className: 'space-y-2' }, [
+        React.createElement('label', { key: 'label', className: 'text-sm font-medium' }, 'Aralık Slider (20-80)'),
+        React.createElement(Slider, {
+          key: 'slider',
+          defaultValue: [20, 80],
+          max: 100,
+          step: 1,
+          className: 'w-full',
+        }),
+      ]),
+      React.createElement('div', { key: 'step', className: 'space-y-2' }, [
+        React.createElement(
+          'label',
+          { key: 'label', className: 'text-sm font-medium' },
+          'Adımlı Slider (0-10, step: 2)',
+        ),
+        React.createElement(Slider, {
+          key: 'slider',
+          defaultValue: [4],
+          max: 10,
+          step: 2,
+          className: 'w-full',
+        }),
+      ]),
+    ]),
+    code: `import { Slider } from '@/components/core/Slider/Slider'
+  import { useState } from 'react'
+  
+  function Example() {
+    const [value, setValue] = useState([50])
+    const [rangeValue, setRangeValue] = useState([20, 80])
+  
+    return (
+      <div className="space-y-6">
+        <div className="space-y-2">
+          <label className="text-sm font-medium">
+            Değer: {value[0]}
+          </label>
+          <Slider
+            value={value}
+            onValueChange={setValue}
+            max={100}
+            step={1}
+            className="w-full"
+          />
+        </div>
+  
+        <div className="space-y-2">
+          <label className="text-sm font-medium">
+            Aralık: {rangeValue[0]} - {rangeValue[1]}
+          </label>
+          <Slider
+            value={rangeValue}
+            onValueChange={setRangeValue}
+            max={100}
+            step={1}
+            className="w-full"
+          />
+        </div>
+  
+        <div className="space-y-2">
+          <label className="text-sm font-medium">Ses Seviyesi</label>
+          <Slider
+            defaultValue={[75]}
+            max={100}
+            step={5}
+            className="w-full"
+          />
+        </div>
+      </div>
+    )
+  }`,
+    usageExamples: [
+      {
+        title: 'Ses Kontrolü',
+        description: 'Medya oynatıcısında ses seviyesi kontrolü için slider kullanımı',
+        code: `const [volume, setVolume] = useState([75])
+  const [isPlaying, setIsPlaying] = useState(false)
+  
+  return (
+    <div className="flex items-center space-x-4 p-4 bg-neutral-100 dark:bg-neutral-800 rounded-lg">
+      <Button 
+        variant="ghost" 
+        size="sm" 
+        onClick={() => setIsPlaying(!isPlaying)}
+      >
+        {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
+      </Button>
+      
+      <Volume2 className="h-4 w-4" />
+      
+      <Slider
+        value={volume}
+        onValueChange={setVolume}
+        max={100}
+        step={1}
+        className="flex-1"
+      />
+      
+      <span className="text-sm font-medium w-8">{volume[0]}</span>
+    </div>
+  )`,
+        component: React.createElement(
+          'div',
+          { className: 'flex items-center space-x-4 p-4 bg-neutral-100 dark:bg-neutral-800 rounded-lg' },
+          [
+            React.createElement(Button, { key: 'play', variant: 'ghost', size: 'sm' }, [
+              React.createElement(Play, { key: 'icon', className: 'h-4 w-4' }),
+            ]),
+            React.createElement(Volume2, { key: 'volume', className: 'h-4 w-4' }),
+            React.createElement(Slider, { key: 'slider', defaultValue: [75], max: 100, step: 1, className: 'flex-1' }),
+            React.createElement('span', { key: 'value', className: 'text-sm font-medium w-8' }, '75'),
+          ],
+        ),
+      },
+      {
+        title: 'Fiyat Aralığı Filtresi',
+        description: 'E-ticaret sitelerinde fiyat aralığı filtreleme',
+        code: `const [priceRange, setPriceRange] = useState([100, 500])
+  
+  return (
+    <div className="space-y-3">
+      <div className="flex justify-between items-center">
+        <label className="text-sm font-medium">Fiyat Aralığı</label>
+        <span className="text-sm text-neutral-600">
+          ₺{priceRange[0]} - ₺{priceRange[1]}
+        </span>
+      </div>
+      <Slider
+        value={priceRange}
+        onValueChange={setPriceRange}
+        max={1000}
+        min={0}
+        step={10}
+        className="w-full"
+      />
+      <div className="flex justify-between text-xs text-neutral-500">
+        <span>₺0</span>
+        <span>₺1000</span>
+      </div>
+    </div>
+  )`,
+        component: React.createElement('div', { className: 'space-y-3' }, [
+          React.createElement('div', { key: 'header', className: 'flex justify-between items-center' }, [
+            React.createElement('label', { key: 'label', className: 'text-sm font-medium' }, 'Fiyat Aralığı'),
+            React.createElement('span', { key: 'range', className: 'text-sm text-neutral-600' }, '₺100 - ₺500'),
+          ]),
+          React.createElement(Slider, {
+            key: 'slider',
+            defaultValue: [100, 500],
+            max: 1000,
+            min: 0,
+            step: 10,
+            className: 'w-full',
+          }),
+          React.createElement('div', { key: 'footer', className: 'flex justify-between text-xs text-neutral-500' }, [
+            React.createElement('span', { key: 'min' }, '₺0'),
+            React.createElement('span', { key: 'max' }, '₺1000'),
+          ]),
+        ]),
+      },
+    ],
+    props: [
+      {
+        name: 'value',
+        type: 'number[]',
+        description: 'Slider değeri (controlled)',
+      },
+      {
+        name: 'defaultValue',
+        type: 'number[]',
+        description: 'Varsayılan slider değeri (uncontrolled)',
+      },
+      {
+        name: 'onValueChange',
+        type: '(value: number[]) => void',
+        description: 'Değer değiştiğinde çağırılan fonksiyon',
+      },
+      {
+        name: 'min',
+        type: 'number',
+        description: 'Minimum değer',
+        default: '0',
+      },
+      {
+        name: 'max',
+        type: 'number',
+        description: 'Maksimum değer',
+        default: '100',
+      },
+      {
+        name: 'step',
+        type: 'number',
+        description: 'Adım büyüklüğü',
+        default: '1',
+      },
+      {
+        name: 'disabled',
+        type: 'boolean',
+        description: 'Slider devre dışı mı',
+        default: 'false',
+      },
+    ],
+  },
+  // Separator bileşeni
+  {
+    id: 'separator',
+    title: 'Separator',
+    description: 'İçerik bölümlerini ayırmak için kullanılan çizgi bileşeni',
+    category: 'Layout',
+    status: 'stable',
+    demoComponent: React.createElement('div', { className: 'space-y-6 w-full max-w-md' }, [
+      React.createElement('div', { key: 'horizontal', className: 'space-y-3' }, [
+        React.createElement('h4', { key: 'title', className: 'text-sm font-medium' }, 'Yatay Separator'),
+        React.createElement('div', { key: 'content' }, [
+          React.createElement('p', { key: 'p1', className: 'text-sm' }, 'İlk paragraf'),
+          React.createElement(Separator, { key: 'sep', className: 'my-4' }),
+          React.createElement('p', { key: 'p2', className: 'text-sm' }, 'İkinci paragraf'),
+        ]),
+      ]),
+      React.createElement('div', { key: 'vertical', className: 'space-y-3' }, [
+        React.createElement('h4', { key: 'title', className: 'text-sm font-medium' }, 'Dikey Separator'),
+        React.createElement('div', { key: 'content', className: 'flex items-center space-x-4 h-12' }, [
+          React.createElement('span', { key: 's1', className: 'text-sm' }, 'Sol'),
+          React.createElement(Separator, { key: 'sep', orientation: 'vertical' }),
+          React.createElement('span', { key: 's2', className: 'text-sm' }, 'Orta'),
+          React.createElement(Separator, { key: 'sep2', orientation: 'vertical' }),
+          React.createElement('span', { key: 's3', className: 'text-sm' }, 'Sağ'),
+        ]),
+      ]),
+    ]),
+    code: `import { Separator } from '@/components/core/Separator/Separator'
+  
+  function Example() {
+    return (
+      <div className="space-y-6">
+        {/* Yatay Separator */}
+        <div>
+          <h3 className="text-lg font-semibold">Başlık</h3>
+          <p className="text-sm text-neutral-600">
+            Bu bir açıklama metnidir.
+          </p>
+          
+          <Separator className="my-4" />
+          
+          <p className="text-sm">
+            Separator ile ayrılmış içerik.
+          </p>
+        </div>
+  
+        {/* Dikey Separator */}
+        <div className="flex items-center space-x-4">
+          <span>Ana Sayfa</span>
+          <Separator orientation="vertical" className="h-4" />
+          <span>Ürünler</span>
+          <Separator orientation="vertical" className="h-4" />
+          <span>İletişim</span>
+        </div>
+      </div>
+    )
+  }`,
+    usageExamples: [
+      {
+        title: 'Breadcrumb Navigation',
+        description: 'Breadcrumb navigasyonunda sayfa hiyerarşisini ayırmak',
+        code: `<nav className="flex items-center space-x-2 text-sm">
+    <a href="/" className="text-primary-600 hover:text-primary-700">
+      Ana Sayfa
+    </a>
+    <Separator orientation="vertical" className="h-4" />
+    <a href="/products" className="text-primary-600 hover:text-primary-700">
+      Ürünler
+    </a>
+    <Separator orientation="vertical" className="h-4" />
+    <span className="text-neutral-600">Laptop</span>
+  </nav>`,
+        component: React.createElement('nav', { className: 'flex items-center space-x-2 text-sm' }, [
+          React.createElement(
+            'a',
+            { key: 'home', href: '/', className: 'text-primary-600 hover:text-primary-700' },
+            'Ana Sayfa',
+          ),
+          React.createElement(Separator, { key: 'sep1', orientation: 'vertical', className: 'h-4' }),
+          React.createElement(
+            'a',
+            { key: 'products', href: '/products', className: 'text-primary-600 hover:text-primary-700' },
+            'Ürünler',
+          ),
+          React.createElement(Separator, { key: 'sep2', orientation: 'vertical', className: 'h-4' }),
+          React.createElement('span', { key: 'current', className: 'text-neutral-600' }, 'Laptop'),
+        ]),
+      },
+      {
+        title: 'Card İçerik Ayrımı',
+        description: 'Card bileşeni içinde bölümleri ayırmak',
+        code: `<Card className="w-full max-w-md">
+    <CardHeader>
+      <CardTitle>Kullanıcı Profili</CardTitle>
+      <CardDescription>Hesap bilgilerinizi görüntüleyin</CardDescription>
+    </CardHeader>
+    
+    <Separator />
+    
+    <CardContent className="pt-6">
+      <div className="space-y-3">
+        <div className="flex justify-between">
+          <span className="font-medium">Ad Soyad:</span>
+          <span>Ahmet Yılmaz</span>
+        </div>
+        
+        <Separator />
+        
+        <div className="flex justify-between">
+          <span className="font-medium">Email:</span>
+          <span>ahmet@example.com</span>
+        </div>
+        
+        <Separator />
+        
+        <div className="flex justify-between">
+          <span className="font-medium">Üyelik:</span>
+          <span>Premium</span>
+        </div>
+      </div>
+    </CardContent>
+  </Card>`,
+        component: React.createElement(Card, { className: 'w-full max-w-md' }, [
+          React.createElement(CardHeader, { key: 'header' }, [
+            React.createElement(CardTitle, { key: 'title' }, 'Kullanıcı Profili'),
+            React.createElement(CardDescription, { key: 'desc' }, 'Hesap bilgilerinizi görüntüleyin'),
+          ]),
+          React.createElement(Separator, { key: 'sep1' }),
+          React.createElement(CardContent, { key: 'content', className: 'pt-6' }, [
+            React.createElement('div', { className: 'space-y-3' }, [
+              React.createElement('div', { key: 'name', className: 'flex justify-between' }, [
+                React.createElement('span', { key: 'label', className: 'font-medium' }, 'Ad Soyad:'),
+                React.createElement('span', { key: 'value' }, 'Ahmet Yılmaz'),
+              ]),
+              React.createElement(Separator, { key: 'sep2' }),
+              React.createElement('div', { key: 'email', className: 'flex justify-between' }, [
+                React.createElement('span', { key: 'label', className: 'font-medium' }, 'Email:'),
+                React.createElement('span', { key: 'value' }, 'ahmet@example.com'),
+              ]),
+            ]),
+          ]),
+        ]),
+      },
+    ],
+    props: [
+      {
+        name: 'orientation',
+        type: "'horizontal' | 'vertical'",
+        description: 'Separator yönü',
+        default: 'horizontal',
+      },
+      {
+        name: 'decorative',
+        type: 'boolean',
+        description: 'Sadece görsel amaçlı mı (accessibility için)',
+        default: 'true',
+      },
+      {
+        name: 'className',
+        type: 'string',
+        description: 'Ek CSS sınıfları',
+      },
+    ],
+  },
+  // Tabs bileşeni
+  {
+    id: 'tabs',
+    title: 'Tabs',
+    description: 'İçeriği kategorilere ayırarak sekmeli navigasyon sağlayan bileşen',
+    category: 'Navigasyon',
+    status: 'stable',
+    demoComponent: React.createElement('div', { className: 'w-full max-w-md' }, [
+      React.createElement(Tabs, { key: 'tabs', defaultValue: 'account', className: 'w-full' }, [
+        React.createElement(TabsList, { key: 'list', className: 'grid w-full grid-cols-3' }, [
+          React.createElement(TabsTrigger, { key: 'account', value: 'account' }, 'Hesap'),
+          React.createElement(TabsTrigger, { key: 'security', value: 'security' }, 'Güvenlik'),
+          React.createElement(TabsTrigger, { key: 'notifications', value: 'notifications' }, 'Bildirimler'),
+        ]),
+        React.createElement(TabsContent, { key: 'account-content', value: 'account', className: 'mt-4' }, [
+          React.createElement('div', { className: 'space-y-3' }, [
+            React.createElement('div', { key: 'name' }, [
+              React.createElement(Label, { key: 'label', htmlFor: 'name' }, 'Ad Soyad'),
+              React.createElement(Input, { key: 'input', id: 'name', defaultValue: 'Ahmet Yılmaz' }),
+            ]),
+            React.createElement('div', { key: 'email' }, [
+              React.createElement(Label, { key: 'label', htmlFor: 'email' }, 'Email'),
+              React.createElement(Input, { key: 'input', id: 'email', defaultValue: 'ahmet@example.com' }),
+            ]),
+          ]),
+        ]),
+        React.createElement(TabsContent, { key: 'security-content', value: 'security', className: 'mt-4' }, [
+          React.createElement('div', { className: 'space-y-3' }, [
+            React.createElement('div', { key: 'current' }, [
+              React.createElement(Label, { key: 'label', htmlFor: 'current' }, 'Mevcut Şifre'),
+              React.createElement(Input, { key: 'input', id: 'current', type: 'password' }),
+            ]),
+            React.createElement('div', { key: 'new' }, [
+              React.createElement(Label, { key: 'label', htmlFor: 'new' }, 'Yeni Şifre'),
+              React.createElement(Input, { key: 'input', id: 'new', type: 'password' }),
+            ]),
+          ]),
+        ]),
+        React.createElement(TabsContent, { key: 'notifications-content', value: 'notifications', className: 'mt-4' }, [
+          React.createElement('div', { className: 'space-y-3' }, [
+            React.createElement('div', { key: 'email-notif', className: 'flex items-center justify-between' }, [
+              React.createElement('span', { key: 'label', className: 'text-sm' }, 'Email Bildirimleri'),
+              React.createElement('input', { key: 'checkbox', type: 'checkbox', defaultChecked: true }),
+            ]),
+            React.createElement('div', { key: 'push-notif', className: 'flex items-center justify-between' }, [
+              React.createElement('span', { key: 'label', className: 'text-sm' }, 'Push Bildirimleri'),
+              React.createElement('input', { key: 'checkbox', type: 'checkbox' }),
+            ]),
+          ]),
+        ]),
+      ]),
+    ]),
+    code: `import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/core/Tabs/Tabs'
+  import { Input } from '@/components/core/Input/Input'
+  import { Label } from '@/components/core/Label/Label'
+  import { Button } from '@/components/core/Button/Button'
+  
+  function Example() {
+    return (
+      <Tabs defaultValue="account" className="w-full max-w-md">
+        <TabsList className="grid w-full grid-cols-2">
+          <TabsTrigger value="account">Hesap</TabsTrigger>
+          <TabsTrigger value="security">Güvenlik</TabsTrigger>
+        </TabsList>
+        
+        <TabsContent value="account" className="space-y-4">
+          <div className="space-y-2">
+            <Label htmlFor="name">Ad Soyad</Label>
+            <Input id="name" defaultValue="Ahmet Yılmaz" />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="email">Email</Label>
+            <Input id="email" defaultValue="ahmet@example.com" />
+          </div>
+          <Button>Güncelle</Button>
+        </TabsContent>
+        
+        <TabsContent value="security" className="space-y-4">
+          <div className="space-y-2">
+            <Label htmlFor="current">Mevcut Şifre</Label>
+            <Input id="current" type="password" />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="new">Yeni Şifre</Label>
+            <Input id="new" type="password" />
+          </div>
+          <Button>Şifreyi Değiştir</Button>
+        </TabsContent>
+      </Tabs>
+    )
+  }`,
+    usageExamples: [
+      {
+        title: 'Dashboard Sekmeleri',
+        description: 'Dashboard sayfasında farklı veri görünümlerini organize etmek',
+        code: `<Tabs defaultValue="overview" className="w-full">
+    <TabsList>
+      <TabsTrigger value="overview">Genel Bakış</TabsTrigger>
+      <TabsTrigger value="analytics">Analitik</TabsTrigger>
+      <TabsTrigger value="reports">Raporlar</TabsTrigger>
+      <TabsTrigger value="notifications">Bildirimler</TabsTrigger>
+    </TabsList>
+    
+    <TabsContent value="overview">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <Card>
+          <CardHeader>
+            <CardTitle>Toplam Satış</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-2xl font-bold">₺12,345</p>
+          </CardContent>
+        </Card>
+        {/* Diğer kartlar */}
+      </div>
+    </TabsContent>
+    
+    <TabsContent value="analytics">
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold">Analitik Veriler</h3>
+        {/* Grafik bileşenleri */}
+      </div>
+    </TabsContent>
+  </Tabs>`,
+        component: React.createElement(
+          'div',
+          { className: 'text-sm text-neutral-600 dark:text-neutral-400' },
+          'Dashboard sekmeli navigasyon örneği',
+        ),
+      },
+      {
+        title: 'Ürün Detay Sekmeleri',
+        description: 'E-ticaret ürün sayfasında bilgileri kategorize etmek',
+        code: `<Tabs defaultValue="description" className="w-full">
+    <TabsList>
+      <TabsTrigger value="description">Açıklama</TabsTrigger>
+      <TabsTrigger value="specifications">Özellikler</TabsTrigger>
+      <TabsTrigger value="reviews">Yorumlar</TabsTrigger>
+      <TabsTrigger value="shipping">Kargo</TabsTrigger>
+    </TabsList>
+    
+    <TabsContent value="description" className="mt-4">
+      <div className="prose prose-sm">
+        <p>Ürün açıklaması burada yer alır...</p>
+      </div>
+    </TabsContent>
+    
+    <TabsContent value="specifications">
+      <div className="space-y-2">
+        <div className="flex justify-between">
+          <span className="font-medium">Marka:</span>
+          <span>Apple</span>
+        </div>
+        <div className="flex justify-between">
+          <span className="font-medium">Model:</span>
+          <span>iPhone 15 Pro</span>
+        </div>
+      </div>
+    </TabsContent>
+  </Tabs>`,
+        component: React.createElement(
+          'div',
+          { className: 'text-sm text-neutral-600 dark:text-neutral-400' },
+          'Ürün detay sekmeli organizasyon',
+        ),
+      },
+    ],
+    props: [
+      {
+        name: 'value',
+        type: 'string',
+        description: 'Aktif sekme değeri (controlled)',
+      },
+      {
+        name: 'defaultValue',
+        type: 'string',
+        description: 'Varsayılan aktif sekme (uncontrolled)',
+      },
+      {
+        name: 'onValueChange',
+        type: '(value: string) => void',
+        description: 'Sekme değiştiğinde çağırılan fonksiyon',
+      },
+      {
+        name: 'orientation',
+        type: "'horizontal' | 'vertical'",
+        description: 'Sekme yönü',
+        default: 'horizontal',
+      },
+      {
+        name: 'activationMode',
+        type: "'automatic' | 'manual'",
+        description: 'Sekme aktivasyon modu',
+        default: 'automatic',
+      },
+    ],
+  },
+  // Toast bileşeni
+  {
+    id: 'toast',
+    title: 'Toast',
+    description: 'Kullanıcıya geçici bildirimler göstermek için kullanılan popup bileşeni',
+    category: 'Geri Bildirim',
+    status: 'stable',
+    demoComponent: React.createElement(() => {
+      const [toasts, setToasts] = React.useState([])
+      interface ToastData {
+        id: string
+        type: 'success' | 'error' | 'warning' | 'info'
+        message: string
+        title?: string
+      }
+
+      const removeToast = React.useCallback((id: string) => {
+        setToasts((prev: ToastData[]) => prev.filter((toast) => toast.id !== id))
+      }, [])
+
+      const showToast = React.useCallback(
+        (type, message, title) => {
+          const id = Date.now().toString()
+          const newToast = { id, type, message, title }
+          setToasts((prev) => [...prev, newToast])
+
+          setTimeout(() => removeToast(id), 5000)
+        },
+        [removeToast],
+      )
+
+      return React.createElement('div', { className: 'space-y-4' }, [
+        React.createElement('div', { key: 'buttons', className: 'flex flex-wrap gap-2' }, [
+          React.createElement(
+            Button,
+            {
+              key: 'success',
+              variant: 'default',
+              size: 'sm',
+              onClick: () => showToast('success', 'İşlem başarıyla tamamlandı!', 'Başarılı'),
+            },
+            'Başarı Toast',
+          ),
+          React.createElement(
+            Button,
+            {
+              key: 'error',
+              variant: 'destructive',
+              size: 'sm',
+              onClick: () => showToast('error', 'Bir hata oluştu, lütfen tekrar deneyin.', 'Hata'),
+            },
+            'Hata Toast',
+          ),
+          React.createElement(
+            Button,
+            {
+              key: 'warning',
+              variant: 'outline',
+              size: 'sm',
+              onClick: () => showToast('warning', 'Bu işlem geri alınamaz!', 'Uyarı'),
+            },
+            'Uyarı Toast',
+          ),
+          React.createElement(
+            Button,
+            {
+              key: 'info',
+              variant: 'secondary',
+              size: 'sm',
+              onClick: () => showToast('info', 'Yeni güncellemeler mevcut.', 'Bilgi'),
+            },
+            'Bilgi Toast',
+          ),
+        ]),
+
+        React.createElement(
+          'div',
+          {
+            key: 'toasts',
+            className: 'fixed top-4 right-4 z-50 space-y-2',
+          },
+          toasts.map((toast) =>
+            React.createElement(Toast, {
+              key: toast.id,
+              ...toast,
+              onRemove: removeToast,
+            }),
+          ),
+        ),
+      ])
+    }),
+    code: `import { Toast } from '@/components/core/Toast/Toast'
+  import { useToast } from '@/hooks/useToast'
+  import { Button } from '@/components/core/Button/Button'
+  
+  function Example() {
+    const { toast } = useToast()
+  
+    return (
+      <div className="space-y-4">
+        <Button
+          onClick={() => toast({
+            type: 'success',
+            title: 'Başarılı',
+            message: 'İşlem başarıyla tamamlandı!'
+          })}
+        >
+          Başarı Toast
+        </Button>
+        
+        <Button
+          variant="destructive"
+          onClick={() => toast({type: 'error',
+           title: 'Hata',
+           message: 'Bir hata oluştu, lütfen tekrar deneyin.'
+         })}
+       >
+         Hata Toast
+       </Button>
+       
+       <Button
+         variant="outline"
+         onClick={() => toast({
+           type: 'warning',
+           title: 'Uyarı',
+           message: 'Bu işlem geri alınamaz!'
+         })}
+       >
+         Uyarı Toast
+       </Button>
+       
+       <Button
+         variant="secondary"
+         onClick={() => toast({
+           type: 'info',
+           title: 'Bilgi',
+           message: 'Yeni güncellemeler mevcut.'
+         })}
+       >
+         Bilgi Toast
+       </Button>
+     </div>
+   )
+  }`,
+    usageExamples: [
+      {
+        title: 'Form Gönderme Bildirimleri',
+        description: 'Form işlemlerinde kullanıcıya geri bildirim sağlamak',
+        code: `const handleSubmit = async (data) => {
+   try {
+     await submitForm(data)
+     toast({
+       type: 'success',
+       title: 'Form Gönderildi',
+       message: 'Bilgileriniz başarıyla kaydedildi.'
+     })
+   } catch (error) {
+     toast({
+       type: 'error',
+       title: 'Gönderim Hatası',
+       message: 'Form gönderilemedi. Lütfen tekrar deneyin.'
+     })
+   }
+  }
+  
+  return (
+   <form onSubmit={handleSubmit}>
+     <Input placeholder="Email" />
+     <Button type="submit">Gönder</Button>
+   </form>
+  )`,
+        component: React.createElement(
+          'div',
+          { className: 'text-sm text-neutral-600 dark:text-neutral-400' },
+          'Form gönderme bildirimi sistemi',
+        ),
+      },
+      {
+        title: 'Otomatik Kaydetme',
+        description: 'Otomatik kaydetme işlemlerinde kullanıcıyı bilgilendirmek',
+        code: `const [content, setContent] = useState('')
+  
+  useEffect(() => {
+   const autoSave = setTimeout(() => {
+     if (content) {
+       saveContent(content)
+       toast({
+         type: 'info',
+         message: 'Değişiklikler otomatik kaydedildi.',
+         duration: 3000
+       })
+     }
+   }, 2000)
+  
+   return () => clearTimeout(autoSave)
+  }, [content])
+  
+  return (
+   <textarea
+     value={content}
+     onChange={(e) => setContent(e.target.value)}
+     placeholder="Yazmaya başlayın..."
+   />
+  )`,
+        component: React.createElement(
+          'div',
+          { className: 'text-sm text-neutral-600 dark:text-neutral-400' },
+          'Otomatik kaydetme bildirimi',
+        ),
+      },
+      {
+        title: 'Eylem Onayları',
+        description: "Kritik işlemler için onay toast'ları",
+        code: `const handleDelete = (itemId) => {
+   toast({
+     type: 'warning',
+     title: 'Silme Onayı',
+     message: 'Bu öğeyi silmek istediğinizden emin misiniz?',
+     action: {
+       label: 'Sil',
+       onClick: () => {
+         deleteItem(itemId)
+         toast({
+           type: 'success',
+           message: 'Öğe başarıyla silindi.'
+         })
+       }
+     },
+     persistent: true
+   })
+  }`,
+        component: React.createElement(
+          'div',
+          { className: 'text-sm text-neutral-600 dark:text-neutral-400' },
+          'Onay gerektiren işlem bildirimi',
+        ),
+      },
+    ],
+    props: [
+      {
+        name: 'type',
+        type: "'success' | 'error' | 'warning' | 'info'",
+        description: 'Toast türü ve rengi',
+        required: true,
+      },
+      {
+        name: 'title',
+        type: 'string',
+        description: 'Toast başlığı',
+      },
+      {
+        name: 'message',
+        type: 'string',
+        description: 'Toast mesajı',
+        required: true,
+      },
+      {
+        name: 'duration',
+        type: 'number',
+        description: 'Toast görünüm süresi (ms)',
+        default: '5000',
+      },
+      {
+        name: 'persistent',
+        type: 'boolean',
+        description: 'Toast otomatik kapanmasın mı',
+        default: 'false',
+      },
+      {
+        name: 'onRemove',
+        type: '(id: string) => void',
+        description: 'Toast kapatıldığında çağırılan fonksiyon',
+        required: true,
+      },
+      {
+        name: 'action',
+        type: '{ label: string; onClick: () => void }',
+        description: 'Toast içinde aksiyon butonu',
+      },
+    ],
+  },
+  // Tooltip bileşeni
+  {
+    id: 'tooltip',
+    title: 'Tooltip',
+    description: 'Elementlerin üzerine gelindiğinde açıklayıcı bilgi gösteren popup bileşeni',
+    category: 'Geri Bildirim',
+    status: 'stable',
+    demoComponent: React.createElement(TooltipProvider, { key: 'provider' }, [
+      React.createElement('div', { key: 'content', className: 'space-y-6 w-full max-w-md' }, [
+        React.createElement('div', { key: 'basic', className: 'space-y-3' }, [
+          React.createElement('h4', { key: 'title', className: 'text-sm font-medium' }, 'Temel Tooltip'),
+          React.createElement('div', { key: 'buttons', className: 'flex gap-4' }, [
+            React.createElement(Tooltip, { key: 'tooltip1' }, [
+              React.createElement(TooltipTrigger, { key: 'trigger', asChild: true }, [
+                React.createElement(Button, { key: 'button', variant: 'outline' }, 'Üzerime gel'),
+              ]),
+              React.createElement(TooltipContent, { key: 'content' }, [
+                React.createElement('p', { key: 'text' }, 'Bu bir tooltip mesajıdır'),
+              ]),
+            ]),
+            React.createElement(Tooltip, { key: 'tooltip2' }, [
+              React.createElement(TooltipTrigger, { key: 'trigger', asChild: true }, [
+                React.createElement(Button, { key: 'button', variant: 'outline', size: 'icon' }, [
+                  React.createElement(Info, { key: 'icon', className: 'h-4 w-4' }),
+                ]),
+              ]),
+              React.createElement(TooltipContent, { key: 'content', side: 'bottom' }, [
+                React.createElement('p', { key: 'text' }, 'Bilgi butonu'),
+              ]),
+            ]),
+          ]),
+        ]),
+        React.createElement('div', { key: 'positions', className: 'space-y-3' }, [
+          React.createElement('h4', { key: 'title', className: 'text-sm font-medium' }, 'Farklı Konumlar'),
+          React.createElement('div', { key: 'grid', className: 'grid grid-cols-2 gap-2' }, [
+            React.createElement(Tooltip, { key: 'top' }, [
+              React.createElement(TooltipTrigger, { key: 'trigger', asChild: true }, [
+                React.createElement(Button, { key: 'button', variant: 'outline', size: 'sm' }, 'Üst'),
+              ]),
+              React.createElement(TooltipContent, { key: 'content', side: 'top' }, 'Üstte gösterilen tooltip'),
+            ]),
+            React.createElement(Tooltip, { key: 'right' }, [
+              React.createElement(TooltipTrigger, { key: 'trigger', asChild: true }, [
+                React.createElement(Button, { key: 'button', variant: 'outline', size: 'sm' }, 'Sağ'),
+              ]),
+              React.createElement(TooltipContent, { key: 'content', side: 'right' }, 'Sağda gösterilen tooltip'),
+            ]),
+            React.createElement(Tooltip, { key: 'bottom' }, [
+              React.createElement(TooltipTrigger, { key: 'trigger', asChild: true }, [
+                React.createElement(Button, { key: 'button', variant: 'outline', size: 'sm' }, 'Alt'),
+              ]),
+              React.createElement(TooltipContent, { key: 'content', side: 'bottom' }, 'Altta gösterilen tooltip'),
+            ]),
+            React.createElement(Tooltip, { key: 'left' }, [
+              React.createElement(TooltipTrigger, { key: 'trigger', asChild: true }, [
+                React.createElement(Button, { key: 'button', variant: 'outline', size: 'sm' }, 'Sol'),
+              ]),
+              React.createElement(TooltipContent, { key: 'content', side: 'left' }, 'Solda gösterilen tooltip'),
+            ]),
+          ]),
+        ]),
+      ]),
+    ]),
+    code: `import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/core/Tooltip/Tooltip'
+import { Button } from '@/components/core/Button/Button'
+import { Info, Settings, User } from 'lucide-react'
+
+function Example() {
+return (
+  <TooltipProvider>
+    <div className="space-y-4">
+      {/* Temel Tooltip */}
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button variant="outline">
+            Üzerime gel
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Bu bir tooltip mesajıdır</p>
+        </TooltipContent>
+      </Tooltip>
+
+      {/* İkon ile Tooltip */}
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button variant="ghost" size="icon">
+            <Info className="h-4 w-4" />
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent side="bottom">
+          <p>Bilgi butonu</p>
+        </TooltipContent>
+      </Tooltip>
+
+      {/* Farklı pozisyonlar */}
+      <div className="flex gap-4">
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button size="sm">Üst</Button>
+          </TooltipTrigger>
+          <TooltipContent side="top">
+            Üstte gösterilen tooltip
+          </TooltipContent>
+        </Tooltip>
+        
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button size="sm">Sağ</Button>
+          </TooltipTrigger>
+          <TooltipContent side="right">
+            Sağda gösterilen tooltip
+          </TooltipContent>
+        </Tooltip>
+      </div>
+    </div>
+  </TooltipProvider>
+)
+}`,
+    usageExamples: [
+      {
+        title: 'Form Yardım İpuçları',
+        description: 'Form alanları için açıklayıcı tooltip kullanımı',
+        code: `<TooltipProvider>
+<form className="space-y-4">
+  <div className="space-y-2">
+    <div className="flex items-center gap-2">
+      <Label htmlFor="password">Şifre</Label>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Info className="h-4 w-4 text-neutral-500 cursor-help" />
+        </TooltipTrigger>
+        <TooltipContent className="max-w-xs">
+          <p>
+            Şifreniz en az 8 karakter olmalı ve büyük harf, 
+            küçük harf, rakam ve özel karakter içermelidir.
+          </p>
+        </TooltipContent>
+      </Tooltip>
+    </div>
+    <Input id="password" type="password" />
+  </div>
+  
+  <div className="space-y-2">
+    <div className="flex items-center gap-2">
+      <Label htmlFor="phone">Telefon</Label>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Info className="h-4 w-4 text-neutral-500 cursor-help" />
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Örnek: +90 555 123 45 67</p>
+        </TooltipContent>
+      </Tooltip>
+    </div>
+    <Input id="phone" placeholder="+90" />
+  </div>
+</form>
+</TooltipProvider>`,
+        component: React.createElement(
+          'div',
+          { className: 'text-sm text-neutral-600 dark:text-neutral-400' },
+          "Form alanları için yardım tooltip'ları",
+        ),
+      },
+      {
+        title: 'Araç Çubuğu İkonları',
+        description: "Toolbar'da ikon butonları için açıklamalar",
+        code: `<TooltipProvider>
+<div className="flex items-center gap-1 p-2 border rounded-lg">
+  <Tooltip>
+    <TooltipTrigger asChild>
+      <Button variant="ghost" size="icon">
+        <User className="h-4 w-4" />
+      </Button>
+    </TooltipTrigger>
+    <TooltipContent>
+      <p>Kullanıcı Profili</p>
+    </TooltipContent>
+  </Tooltip>
+  
+  <Tooltip>
+    <TooltipTrigger asChild>
+      <Button variant="ghost" size="icon">
+        <Settings className="h-4 w-4" />
+      </Button>
+    </TooltipTrigger>
+    <TooltipContent>
+      <p>Ayarlar</p>
+    </TooltipContent>
+  </Tooltip>
+  
+  <Tooltip>
+    <TooltipTrigger asChild>
+      <Button variant="ghost" size="icon">
+        <Mail className="h-4 w-4" />
+      </Button>
+    </TooltipTrigger>
+    <TooltipContent>
+      <p>Mesajlar (Ctrl+M)</p>
+    </TooltipContent>
+  </Tooltip>
+</div>
+</TooltipProvider>`,
+        component: React.createElement(TooltipProvider, {}, [
+          React.createElement('div', { key: 'toolbar', className: 'flex items-center gap-1 p-2 border rounded-lg' }, [
+            React.createElement(Tooltip, { key: 'user' }, [
+              React.createElement(TooltipTrigger, { key: 'trigger', asChild: true }, [
+                React.createElement(Button, { key: 'button', variant: 'ghost', size: 'icon' }, [
+                  React.createElement(User, { key: 'icon', className: 'h-4 w-4' }),
+                ]),
+              ]),
+              React.createElement(TooltipContent, { key: 'content' }, 'Kullanıcı Profili'),
+            ]),
+            React.createElement(Tooltip, { key: 'settings' }, [
+              React.createElement(TooltipTrigger, { key: 'trigger', asChild: true }, [
+                React.createElement(Button, { key: 'button', variant: 'ghost', size: 'icon' }, [
+                  React.createElement(Settings, { key: 'icon', className: 'h-4 w-4' }),
+                ]),
+              ]),
+              React.createElement(TooltipContent, { key: 'content' }, 'Ayarlar'),
+            ]),
+            React.createElement(Tooltip, { key: 'mail' }, [
+              React.createElement(TooltipTrigger, { key: 'trigger', asChild: true }, [
+                React.createElement(Button, { key: 'button', variant: 'ghost', size: 'icon' }, [
+                  React.createElement(Mail, { key: 'icon', className: 'h-4 w-4' }),
+                ]),
+              ]),
+              React.createElement(TooltipContent, { key: 'content' }, 'Mesajlar (Ctrl+M)'),
+            ]),
+          ]),
+        ]),
+      },
+      {
+        title: 'Kesilmiş Metin Tooltip',
+        description: 'Uzun metinleri tooltip ile tam gösterme',
+        code: `<TooltipProvider>
+<div className="space-y-2">
+  {items.map((item) => (
+    <Tooltip key={item.id}>
+      <TooltipTrigger asChild>
+        <div className="p-2 border rounded cursor-pointer">
+          <p className="truncate max-w-xs">
+            {item.title}
+          </p>
+        </div>
+      </TooltipTrigger>
+      <TooltipContent className="max-w-sm">
+        <p>{item.title}</p>
+        {item.description && (
+          <p className="text-xs text-neutral-400 mt-1">
+            {item.description}
+          </p>
+        )}
+      </TooltipContent>
+    </Tooltip>
+  ))}
+</div>
+</TooltipProvider>`,
+        component: React.createElement(
+          'div',
+          { className: 'text-sm text-neutral-600 dark:text-neutral-400' },
+          'Kesilmiş metinler için tooltip sistemi',
+        ),
+      },
+    ],
+    props: [
+      {
+        name: 'delayDuration',
+        type: 'number',
+        description: 'Tooltip gösterilme gecikmesi (ms)',
+        default: '700',
+      },
+      {
+        name: 'skipDelayDuration',
+        type: 'number',
+        description: 'Grup içinde gecikme atlama süresi (ms)',
+        default: '300',
+      },
+      {
+        name: 'side',
+        type: "'top' | 'right' | 'bottom' | 'left'",
+        description: 'Tooltip pozisyonu',
+        default: 'top',
+      },
+      {
+        name: 'align',
+        type: "'start' | 'center' | 'end'",
+        description: 'Tooltip hizalaması',
+        default: 'center',
+      },
+      {
+        name: 'sideOffset',
+        type: 'number',
+        description: "Trigger'dan uzaklık (px)",
+        default: '4',
+      },
+      {
+        name: 'disabled',
+        type: 'boolean',
+        description: 'Tooltip devre dışı mı',
+        default: 'false',
+      },
+    ],
+  },
+  // Popover bileşeni
+  {
+    id: 'popover',
+    title: 'Popover',
+    description: 'Tetikleme elementi yanında açılır içerik paneli bileşeni',
+    category: 'Geri Bildirim',
+    status: 'stable',
+    demoComponent: React.createElement('div', { className: 'flex items-center justify-center gap-4' }, [
+      React.createElement(Popover, { key: 'settings-popover' }, [
+        React.createElement(
+          PopoverTrigger,
+          { key: 'trigger', asChild: true },
+          React.createElement(
+            'button',
+            {
+              key: 'button',
+              className:
+                'inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-neutral-200 bg-white hover:bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-950 dark:hover:bg-neutral-800 h-10 px-4 py-2 gap-2',
+            },
+            [React.createElement(Settings, { key: 'icon', className: 'h-4 w-4' }), 'Ayarları Aç'],
+          ),
+        ),
+        React.createElement(
+          PopoverContent,
+          { key: 'content', className: 'w-80' },
+          React.createElement('div', { className: 'grid gap-4' }, [
+            React.createElement('div', { key: 'header', className: 'space-y-2' }, [
+              React.createElement('h4', { key: 'title', className: 'font-medium leading-none' }, 'Boyutlar'),
+              React.createElement(
+                'p',
+                { key: 'desc', className: 'text-sm text-neutral-500 dark:text-neutral-400' },
+                'Genişlik ve yükseklik değerlerini ayarlayın.',
+              ),
+            ]),
+            React.createElement('div', { key: 'form', className: 'grid gap-2' }, [
+              React.createElement('div', { key: 'width-row', className: 'grid grid-cols-3 items-center gap-4' }, [
+                React.createElement('label', { key: 'width-label', className: 'text-sm font-medium' }, 'Genişlik'),
+                React.createElement('input', {
+                  key: 'width-input',
+                  className:
+                    'col-span-2 h-8 flex rounded-md border border-neutral-200 bg-white px-3 py-2 text-sm placeholder:text-neutral-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 dark:border-neutral-800 dark:bg-neutral-950',
+                  defaultValue: '100%',
+                }),
+              ]),
+              React.createElement('div', { key: 'max-width-row', className: 'grid grid-cols-3 items-center gap-4' }, [
+                React.createElement(
+                  'label',
+                  { key: 'max-width-label', className: 'text-sm font-medium' },
+                  'Max. genişlik',
+                ),
+                React.createElement('input', {
+                  key: 'max-width-input',
+                  className:
+                    'col-span-2 h-8 flex rounded-md border border-neutral-200 bg-white px-3 py-2 text-sm placeholder:text-neutral-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 dark:border-neutral-800 dark:bg-neutral-950',
+                  defaultValue: '300px',
+                }),
+              ]),
+              React.createElement('div', { key: 'height-row', className: 'grid grid-cols-3 items-center gap-4' }, [
+                React.createElement('label', { key: 'height-label', className: 'text-sm font-medium' }, 'Yükseklik'),
+                React.createElement('input', {
+                  key: 'height-input',
+                  className:
+                    'col-span-2 h-8 flex rounded-md border border-neutral-200 bg-white px-3 py-2 text-sm placeholder:text-neutral-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 dark:border-neutral-800 dark:bg-neutral-950',
+                  defaultValue: '25px',
+                }),
+              ]),
+            ]),
+          ]),
+        ),
+      ]),
+    ]),
+    code: `import { Popover, PopoverContent, PopoverTrigger } from '@/components/core/Popover/Popover'
+  import { Button } from '@/components/core/Button/Button'
+  import { Input } from '@/components/core/Input/Input'
+  import { Label } from '@/components/core/Label/Label'
+  import { Settings } from 'lucide-react'
+  
+  function PopoverDemo() {
+    return (
+      <Popover>
+        <PopoverTrigger asChild>
+          <Button variant="outline" className="gap-2">
+            <Settings className="h-4 w-4" />
+            Ayarları Aç
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent className="w-80">
+          <div className="grid gap-4">
+            <div className="space-y-2">
+              <h4 className="font-medium leading-none">Boyutlar</h4>
+              <p className="text-sm text-neutral-500">
+                Genişlik ve yükseklik değerlerini ayarlayın.
+              </p>
+            </div>
+            <div className="grid gap-2">
+              <div className="grid grid-cols-3 items-center gap-4">
+                <Label htmlFor="width">Genişlik</Label>
+                <Input
+                  id="width"
+                  defaultValue="100%"
+                  className="col-span-2 h-8"
+                />
+              </div>
+              <div className="grid grid-cols-3 items-center gap-4">
+                <Label htmlFor="maxWidth">Max. genişlik</Label>
+                <Input
+                  id="maxWidth"
+                  defaultValue="300px"
+                  className="col-span-2 h-8"
+                />
+              </div>
+              <div className="grid grid-cols-3 items-center gap-4">
+                <Label htmlFor="height">Yükseklik</Label>
+                <Input
+                  id="height"
+                  defaultValue="25px"
+                  className="col-span-2 h-8"
+                />
+              </div>
+            </div>
+          </div>
+        </PopoverContent>
+      </Popover>
+    )
+  }`,
+    usageExamples: [
+      {
+        title: 'Basit Bilgi Paneli',
+        description: 'Temel bilgi gösterimi için kullanılan basit popover örneği',
+        code: `<Popover>
+    <PopoverTrigger asChild>
+      <Button variant="outline" size="sm">
+        <Info className="h-4 w-4 mr-2" />
+        Bilgi
+      </Button>
+    </PopoverTrigger>
+    <PopoverContent className="w-64">
+      <div className="space-y-2">
+        <div className="flex items-center gap-2">
+          <User className="h-4 w-4 text-primary-500" />
+          <h4 className="font-medium">Kullanıcı Bilgileri</h4>
+        </div>
+        <p className="text-sm text-neutral-600">
+          Bu kullanıcı son 30 gün içinde aktif olmuştur.
+        </p>
+      </div>
+    </PopoverContent>
+  </Popover>`,
+        component: React.createElement(Popover, { key: 'info-popover' }, [
+          React.createElement(
+            PopoverTrigger,
+            { key: 'trigger', asChild: true },
+            React.createElement(
+              'button',
+              {
+                key: 'button',
+                className:
+                  'inline-flex items-center justify-center rounded-md text-sm font-medium border border-neutral-200 bg-white hover:bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-950 dark:hover:bg-neutral-800 h-9 px-3 gap-2',
+              },
+              [React.createElement(Info, { key: 'icon', className: 'h-4 w-4' }), 'Bilgi'],
+            ),
+          ),
+          React.createElement(
+            PopoverContent,
+            { key: 'content', className: 'w-64' },
+            React.createElement('div', { className: 'space-y-2' }, [
+              React.createElement('div', { key: 'header', className: 'flex items-center gap-2' }, [
+                React.createElement(User, { key: 'user-icon', className: 'h-4 w-4 text-primary-500' }),
+                React.createElement('h4', { key: 'title', className: 'font-medium' }, 'Kullanıcı Bilgileri'),
+              ]),
+              React.createElement(
+                'p',
+                { key: 'desc', className: 'text-sm text-neutral-600 dark:text-neutral-400' },
+                'Bu kullanıcı son 30 gün içinde aktif olmuştur.',
+              ),
+            ]),
+          ),
+        ]),
+      },
+      {
+        title: 'Konum Kontrolü',
+        description: 'Farklı açılma konumları ile popover örnekleri',
+        code: `<div className="grid grid-cols-2 gap-4">
+    <Popover>
+      <PopoverTrigger asChild>
+        <Button variant="outline" size="sm">Üstte Aç</Button>
+      </PopoverTrigger>
+      <PopoverContent side="top">
+        <p className="text-sm">Üstte açılan popover</p>
+      </PopoverContent>
+    </Popover>
+    
+    <Popover>
+      <PopoverTrigger asChild>
+        <Button variant="outline" size="sm">Sağda Aç</Button>
+      </PopoverTrigger>
+      <PopoverContent side="right">
+        <p className="text-sm">Sağda açılan popover</p>
+      </PopoverContent>
+    </Popover>
+  </div>`,
+        component: React.createElement('div', { className: 'grid grid-cols-2 gap-4 max-w-md' }, [
+          React.createElement(Popover, { key: 'top-popover' }, [
+            React.createElement(
+              PopoverTrigger,
+              { key: 'trigger', asChild: true },
+              React.createElement(
+                'button',
+                {
+                  key: 'button',
+                  className:
+                    'inline-flex items-center justify-center rounded-md text-sm font-medium border border-neutral-200 bg-white hover:bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-950 dark:hover:bg-neutral-800 h-9 px-3',
+                },
+                'Üstte Aç',
+              ),
+            ),
+            React.createElement(
+              PopoverContent,
+              { key: 'content', side: 'top' },
+              React.createElement('p', { className: 'text-sm' }, 'Üstte açılan popover'),
+            ),
+          ]),
+          React.createElement(Popover, { key: 'right-popover' }, [
+            React.createElement(
+              PopoverTrigger,
+              { key: 'trigger', asChild: true },
+              React.createElement(
+                'button',
+                {
+                  key: 'button',
+                  className:
+                    'inline-flex items-center justify-center rounded-md text-sm font-medium border border-neutral-200 bg-white hover:bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-950 dark:hover:bg-neutral-800 h-9 px-3',
+                },
+                'Sağda Aç',
+              ),
+            ),
+            React.createElement(
+              PopoverContent,
+              { key: 'content', side: 'right' },
+              React.createElement('p', { className: 'text-sm' }, 'Sağda açılan popover'),
+            ),
+          ]),
+        ]),
+      },
+      {
+        title: 'Hızlı Eylem Formu',
+        description: 'Form elemanları içeren popover kullanımı',
+        code: `<Popover>
+    <PopoverTrigger asChild>
+      <Button>
+        <Plus className="h-4 w-4 mr-2" />
+        Hızlı Ekle
+      </Button>
+    </PopoverTrigger>
+    <PopoverContent className="w-80">
+      <div className="grid gap-4">
+        <div className="space-y-2">
+          <h4 className="font-medium">Yeni Görev</h4>
+          <p className="text-sm text-neutral-500">
+            Hızlı görev ekleme formu
+          </p>
+        </div>
+        <div className="grid gap-2">
+          <Label htmlFor="taskName">Görev Adı</Label>
+          <Input id="taskName" placeholder="Görev adını girin" />
+        </div>
+        <Button className="w-full">Görev Ekle</Button>
+      </div>
+    </PopoverContent>
+  </Popover>`,
+        component: React.createElement(Popover, { key: 'form-popover' }, [
+          React.createElement(
+            PopoverTrigger,
+            { key: 'trigger', asChild: true },
+            React.createElement(
+              'button',
+              {
+                key: 'button',
+                className:
+                  'inline-flex items-center justify-center rounded-md text-sm font-medium bg-primary-500 text-white hover:bg-primary-600 h-10 px-4 gap-2',
+              },
+              [React.createElement(Plus, { key: 'icon', className: 'h-4 w-4' }), 'Hızlı Ekle'],
+            ),
+          ),
+          React.createElement(
+            PopoverContent,
+            { key: 'content', className: 'w-80' },
+            React.createElement('div', { className: 'grid gap-4' }, [
+              React.createElement('div', { key: 'header', className: 'space-y-2' }, [
+                React.createElement('h4', { key: 'title', className: 'font-medium' }, 'Yeni Görev'),
+                React.createElement(
+                  'p',
+                  { key: 'desc', className: 'text-sm text-neutral-500 dark:text-neutral-400' },
+                  'Hızlı görev ekleme formu',
+                ),
+              ]),
+              React.createElement('div', { key: 'form-field', className: 'grid gap-2' }, [
+                React.createElement('label', { key: 'label', className: 'text-sm font-medium' }, 'Görev Adı'),
+                React.createElement('input', {
+                  key: 'input',
+                  className:
+                    'flex h-10 w-full rounded-md border border-neutral-200 bg-white px-3 py-2 text-sm placeholder:text-neutral-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 dark:border-neutral-800 dark:bg-neutral-950',
+                  placeholder: 'Görev adını girin',
+                }),
+              ]),
+              React.createElement(
+                'button',
+                {
+                  key: 'submit',
+                  className:
+                    'w-full inline-flex items-center justify-center rounded-md text-sm font-medium bg-primary-500 text-white hover:bg-primary-600 h-10 px-4',
+                },
+                'Görev Ekle',
+              ),
+            ]),
+          ),
+        ]),
+      },
+    ],
+    props: [
+      {
+        name: 'open',
+        type: 'boolean',
+        description: 'Popover açık durumu (controlled)',
+      },
+      {
+        name: 'onOpenChange',
+        type: '(open: boolean) => void',
+        description: 'Açık durumu değiştiğinde çağırılan fonksiyon',
+      },
+      {
+        name: 'defaultOpen',
+        type: 'boolean',
+        description: 'Varsayılan açık durumu (uncontrolled)',
+        default: 'false',
+      },
+      {
+        name: 'modal',
+        type: 'boolean',
+        description: 'Modal davranışı etkinleştir',
+        default: 'false',
+      },
+      {
+        name: 'side',
+        type: "'top' | 'right' | 'bottom' | 'left'",
+        description: 'PopoverContent açılma konumu',
+        default: 'bottom',
+      },
+      {
+        name: 'align',
+        type: "'start' | 'center' | 'end'",
+        description: 'PopoverContent hizalama pozisyonu',
+        default: 'center',
+      },
+      {
+        name: 'sideOffset',
+        type: 'number',
+        description: 'Tetikleme elementinden uzaklık (px)',
+        default: '4',
+      },
+      {
+        name: 'alignOffset',
+        type: 'number',
+        description: 'Hizalama ekseni boyunca ofset (px)',
+        default: '0',
       },
     ],
   },
