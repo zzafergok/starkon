@@ -1,5 +1,5 @@
 {
-  "name": "create-starkon-template",
+  "name": "starkon-template",
   "version": "0.0.3",
   "type": "module",
   "description": "Create a Next.js project with Starkon Template",
