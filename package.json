@@ -1,6 +1,6 @@
 {
   "name": "create-starkon-template",
-  "version": "0.1.62",
+  "version": "0.0.1",
   "type": "module",
   "description": "Create a Next.js project with Starkon Template",
   "main": "dist/index.cjs",
