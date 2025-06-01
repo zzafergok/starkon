@@ -1,6 +1,6 @@
 import { AxiosInstance } from 'axios'
 import { API_ENDPOINTS } from './constants'
-import { RefreshTokenResponse } from './api/types'
+import { RefreshTokenResponse } from './utils'
 
 import apiConfig from '@/config/api'
 
