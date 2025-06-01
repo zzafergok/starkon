@@ -9,7 +9,7 @@ Starkon Template, Radix UI primitifleri üzerine inşa edilmiş kapsamlı bir Re
 ### Yeni Proje Oluşturma
 
 ```bash
-npx sea-ui-kit-stark my-app
+npx create-starkon-template my-app
 cd my-app
 npm install
 npm run dev
@@ -20,7 +20,7 @@ Bu komut, Starkon Template ile tam olarak yapılandırılmış yeni bir Next.js 
 ### Mevcut Projeye Kurulum
 
 ```bash
-npm install sea-ui-kit-stark
+npm install create-starkon-template
 ```
 
 ## Ana Özellikler
@@ -72,7 +72,7 @@ npm install sea-ui-kit-stark
 ### Form & Input Bileşenleri
 
 ```tsx
-import { Button, Input, Checkbox, Switch, Select, Textarea } from 'sea-ui-kit-stark'
+import { Button, Input, Checkbox, Switch, Select, Textarea } from 'create-starkon-template'
 
 // Temel kullanım
 <Button variant="default" size="md">Kaydet</Button>
@@ -94,7 +94,7 @@ import { Button, Input, Checkbox, Switch, Select, Textarea } from 'sea-ui-kit-st
 ### Layout Bileşenleri
 
 ```tsx
-import { Dialog, Tabs, Card } from 'sea-ui-kit-stark'
+import { Dialog, Tabs, Card } from 'create-starkon-template'
 
 // Dialog kullanımı
 <Dialog>
@@ -126,8 +126,8 @@ import { Dialog, Tabs, Card } from 'sea-ui-kit-stark'
 ### Form Yönetimi
 
 ```tsx
-import { useForm, Form, FormField, FormItem, FormLabel, FormMessage } from 'sea-ui-kit-stark'
-import { loginSchema } from 'sea-ui-kit-stark'
+import { useForm, Form, FormField, FormItem, FormLabel, FormMessage } from 'create-starkon-template'
+import { loginSchema } from 'create-starkon-template'
 
 function LoginForm() {
   const form = useForm(loginSchema, {
@@ -174,7 +174,7 @@ function LoginForm() {
 ### Tema Yönetimi
 
 ```tsx
-import { useTheme, ThemeToggle } from 'sea-ui-kit-stark'
+import { useTheme, ThemeToggle } from 'create-starkon-template'
 
 function ThemeExample() {
   const { theme, setTheme } = useTheme()
@@ -192,7 +192,7 @@ function ThemeExample() {
 ### Dil Yönetimi
 
 ```tsx
-import { LanguageToggle } from 'sea-ui-kit-stark'
+import { LanguageToggle } from 'create-starkon-template'
 import { useTranslation } from 'react-i18next'
 
 function LanguageExample() {
@@ -281,7 +281,7 @@ CSS değişkenleri tabanlı güçlü tema sistemi:
 Axios tabanlı gelişmiş API katmanı:
 
 ```tsx
-import { apiService } from 'sea-ui-kit-stark'
+import { apiService } from 'create-starkon-template'
 
 // Otomatik token yönetimi ile API çağrısı
 const data = await apiService.get('/users')
@@ -292,7 +292,7 @@ const data = await apiService.get('/users')
 Zod tabanlı güçlü validation:
 
 ```tsx
-import { loginSchema, registerSchema } from 'sea-ui-kit-stark'
+import { loginSchema, registerSchema } from 'create-starkon-template'
 
 // Kullanıma hazır validation şemaları
 const form = useForm(loginSchema)
@@ -340,7 +340,7 @@ npm run prettier     # Kod formatlama
 ### Temel Kullanım
 
 ```tsx
-import { Button, Input, useTheme } from 'sea-ui-kit-stark'
+import { Button, Input, useTheme } from 'create-starkon-template'
 
 export default function App() {
   const { theme, setTheme } = useTheme()
@@ -360,7 +360,7 @@ export default function App() {
 ### Authentication Örneği
 
 ```tsx
-import { LoginForm } from 'sea-ui-kit-stark'
+import { LoginForm } from 'create-starkon-template'
 
 export default function LoginPage() {
   const handleLogin = async (data) => {
@@ -404,7 +404,7 @@ export default function LoginPage() {
 ```js
 // tailwind.config.mjs
 module.exports = {
-  content: ['./node_modules/sea-ui-kit-stark/**/*.{js,ts,jsx,tsx}'],
+  content: ['./node_modules/create-starkon-template/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
@@ -421,7 +421,7 @@ module.exports = {
 ```js
 // next.config.mjs
 const nextConfig = {
-  transpilePackages: ['sea-ui-kit-stark'],
+  transpilePackages: ['create-starkon-template'],
 }
 ```
 
