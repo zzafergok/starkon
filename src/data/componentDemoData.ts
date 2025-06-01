@@ -2393,14 +2393,14 @@ function Example() {
     category: 'Veri Gösterimi',
     status: 'stable',
     demoComponent: React.createElement('div', { className: 'flex flex-wrap gap-3 items-center' }, [
-      React.createElement(Badge, { key: 'default', variant: 'default', children: 'Varsayılan' }),
-      React.createElement(Badge, { key: 'secondary', variant: 'secondary', children: 'İkincil' }),
-      React.createElement(Badge, { key: 'success', variant: 'success', children: 'Başarılı' }),
-      React.createElement(Badge, { key: 'warning', variant: 'warning', children: 'Uyarı' }),
-      React.createElement(Badge, { key: 'error', variant: 'error', children: 'Hata' }),
-      React.createElement(Badge, { key: 'info', variant: 'info', children: 'Bilgi' }),
-      React.createElement(Badge, { key: 'outline', variant: 'outline', children: 'Çerçeveli' }),
-      React.createElement(Badge, { key: 'muted', variant: 'muted', children: 'Sessiz' }),
+      React.createElement(Badge, { key: 'default', variant: 'default' }, 'Varsayılan'),
+      React.createElement(Badge, { key: 'secondary', variant: 'secondary' }, 'İkincil'),
+      React.createElement(Badge, { key: 'success', variant: 'success' }, 'Başarılı'),
+      React.createElement(Badge, { key: 'warning', variant: 'warning' }, 'Uyarı'),
+      React.createElement(Badge, { key: 'error', variant: 'error' }, 'Hata'),
+      React.createElement(Badge, { key: 'info', variant: 'info' }, 'Bilgi'),
+      React.createElement(Badge, { key: 'outline', variant: 'outline' }, 'Çerçeveli'),
+      React.createElement(Badge, { key: 'muted', variant: 'muted' }, 'Sessiz'),
     ]),
     code: `import { Badge } from '@/components/Badge/Badge'
 
@@ -2428,9 +2428,9 @@ function Example() {
   <Badge size="lg" variant="warning">Büyük</Badge>
 </div>`,
         component: React.createElement('div', { className: 'flex items-center gap-3' }, [
-          React.createElement(Badge, { key: 'sm', size: 'sm', variant: 'success', children: 'Küçük' }),
-          React.createElement(Badge, { key: 'md', size: 'md', variant: 'info', children: 'Orta' }),
-          React.createElement(Badge, { key: 'lg', size: 'lg', variant: 'warning', children: 'Büyük' }),
+          React.createElement(Badge, { key: 'sm', size: 'sm', variant: 'success' }, 'Küçük'),
+          React.createElement(Badge, { key: 'md', size: 'md', variant: 'info' }, 'Orta'),
+          React.createElement(Badge, { key: 'lg', size: 'lg', variant: 'warning' }, 'Büyük'),
         ]),
       },
       {
@@ -2453,15 +2453,15 @@ function Example() {
         component: React.createElement('div', { className: 'flex items-center gap-4' }, [
           React.createElement('div', { key: 'messages', className: 'flex items-center gap-2' }, [
             React.createElement('span', { key: 'label', className: 'text-sm' }, 'Mesajlar'),
-            React.createElement(Badge, { key: 'badge', variant: 'error', size: 'sm', children: '12' }),
+            React.createElement(Badge, { key: 'badge', variant: 'error', size: 'sm' }, '12'),
           ]),
           React.createElement('div', { key: 'notifications', className: 'flex items-center gap-2' }, [
             React.createElement('span', { key: 'label', className: 'text-sm' }, 'Bildirimler'),
-            React.createElement(Badge, { key: 'badge', variant: 'info', size: 'sm', children: '3' }),
+            React.createElement(Badge, { key: 'badge', variant: 'info', size: 'sm' }, '3'),
           ]),
           React.createElement('div', { key: 'completed', className: 'flex items-center gap-2' }, [
             React.createElement('span', { key: 'label', className: 'text-sm' }, 'Tamamlanan'),
-            React.createElement(Badge, { key: 'badge', variant: 'success', size: 'sm', children: '25' }),
+            React.createElement(Badge, { key: 'badge', variant: 'success', size: 'sm' }, '25'),
           ]),
         ]),
       },
@@ -2475,10 +2475,10 @@ function Example() {
   <Badge rounded="full" variant="info">Yuvarlak</Badge>
 </div>`,
         component: React.createElement('div', { className: 'flex items-center gap-3' }, [
-          React.createElement(Badge, { key: 'sm', rounded: 'sm', variant: 'default', children: 'Keskin' }),
-          React.createElement(Badge, { key: 'md', rounded: 'md', variant: 'secondary', children: 'Orta' }),
-          React.createElement(Badge, { key: 'lg', rounded: 'lg', variant: 'success', children: 'Yumuşak' }),
-          React.createElement(Badge, { key: 'full', rounded: 'full', variant: 'info', children: 'Yuvarlak' }),
+          React.createElement(Badge, { key: 'sm', rounded: 'sm', variant: 'default' }, 'Keskin'),
+          React.createElement(Badge, { key: 'md', rounded: 'md', variant: 'secondary' }, 'Orta'),
+          React.createElement(Badge, { key: 'lg', rounded: 'lg', variant: 'success' }, 'Yumuşak'),
+          React.createElement(Badge, { key: 'full', rounded: 'full', variant: 'info' }, 'Yuvarlak'),
         ]),
       },
     ],
