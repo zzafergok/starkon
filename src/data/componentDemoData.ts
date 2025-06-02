@@ -29,7 +29,7 @@ import { Separator } from '@/components/core/Separator/Seperator'
 import { FileUploadExample } from '@/components/ui/FileUpload/FileUpload'
 import { PageHeaderExample } from '@/components/ui/PageHeader/PageHeader'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/core/Tabs/Tabs'
-import { DatePicker, DatePickerExample } from '@/components/core/DatePicker/DatePicker'
+import { DatePicker, DatePickerExample, DateRange } from '@/components/core/DatePicker/DatePicker'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/core/Popover/Popover'
 import { Skeleton, SkeletonText, SkeletonAvatar } from '@/components/core/Skeleton/Skeleton'
 import { LoadingSpinner, LoadingDots, LoadingPulse } from '@/components/core/Loading/LoadingSpinner'
@@ -1311,7 +1311,12 @@ return (
    showRemoveButton={true}
  />
 )
-},   usageExamples: [     {       title: 'Özelleştirilmiş Öğe',       description: 'Özel render fonksiyonu ile kişiselleştirilmiş öğeler',       code: <DragDropList
+}`,
+    usageExamples: [
+      {
+        title: 'Özelleştirilmiş Öğe',
+        description: 'Özel render fonksiyonu ile kişiselleştirilmiş öğeler',
+        code: `<DragDropList
 items={items}
 onReorder={handleReorder}
 renderItem={(item, index) => (
@@ -1326,27 +1331,29 @@ renderItem={(item, index) => (
 </div>
 )}
 />`,
-    component: React.createElement('div', { className: 'space-y-2' }, [
-      React.createElement(
-        'div',
-        {
-          key: 'custom1',
-          className:
-            'flex items-center p-3 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-lg space-x-3',
-        },
-        [
+        component: React.createElement('div', { className: 'space-y-2' }, [
           React.createElement(
-            'span',
-            { key: 'badge', className: 'bg-primary-100 text-primary-800 px-2 py-1 rounded text-xs' },
-            '1',
+            'div',
+            {
+              key: 'custom1',
+              className:
+                'flex items-center p-3 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-lg space-x-3',
+            },
+            [
+              React.createElement(
+                'span',
+                { key: 'badge', className: 'bg-primary-100 text-primary-800 px-2 py-1 rounded text-xs' },
+                '1',
+              ),
+              React.createElement('span', { key: 'content', className: 'flex-1' }, 'Özelleştirilmiş Öğe'),
+              React.createElement('span', { key: 'label', className: 'text-xs text-neutral-500' }, 'Özelleştirilmiş'),
+            ],
           ),
-          React.createElement('span', { key: 'content', className: 'flex-1' }, 'Özelleştirilmiş Öğe'),
-          React.createElement('span', { key: 'label', className: 'text-xs text-neutral-500' }, 'Özelleştirilmiş'),
-        ],
-      ),
-    ]),
+        ]),
+      },
+    ],
   },
-  // Form bileşeni (güncellenmiş)
+  // Form bileşeni (React Hook Form entegrasyonu)
   {
     id: 'form',
     title: 'Form',
@@ -2614,7 +2621,7 @@ import { addDays } from 'date-fns'
           return React.createElement(DatePicker, {
             mode: 'single',
             value: date,
-            onChange: (newDate) => setDate(newDate as Date),
+            onChange: (newDate: Date | Date[] | DateRange | null) => setDate(newDate as Date | null),
             placeholder: 'İş günü seçin (örnek)',
             disabled: true,
           })
@@ -2634,11 +2641,12 @@ import { addDays } from 'date-fns'
   ]}
 />`,
         component: React.createElement(() => {
-          const [range, setRange] = React.useState(null)
+          const [range, setRange] = React.useState<DateRange | null>(null)
+
           return React.createElement(DatePicker, {
             mode: 'range',
             value: range,
-            onChange: setRange,
+            onChange: (date: Date | Date[] | DateRange | null) => setRange(date as DateRange | null),
             placeholder: 'Hızlı seçim ile (örnek)',
             disabled: true,
           })
@@ -2737,7 +2745,7 @@ import { addDays } from 'date-fns'
 
       type SampleDataRow = (typeof sampleData)[0]
 
-      const columns = [
+      const columns: any = [
         createSelectionColumn<SampleDataRow>(),
         {
           accessorKey: 'name',
@@ -3754,7 +3762,7 @@ import { addDays } from 'date-fns'
     category: 'Geri Bildirim',
     status: 'stable',
     demoComponent: React.createElement(() => {
-      const [toasts, setToasts] = React.useState([])
+      const [toasts, setToasts] = React.useState<any>([])
       interface ToastData {
         id: string
         type: 'success' | 'error' | 'warning' | 'info'
@@ -3766,11 +3774,17 @@ import { addDays } from 'date-fns'
         setToasts((prev: ToastData[]) => prev.filter((toast) => toast.id !== id))
       }, [])
 
+      interface ToastShowData {
+        type: 'success' | 'error' | 'warning' | 'info'
+        message: string
+        title?: string
+      }
+
       const showToast = React.useCallback(
-        (type, message, title) => {
+        (type: ToastShowData['type'], message: string, title?: string) => {
           const id = Date.now().toString()
-          const newToast = { id, type, message, title }
-          setToasts((prev) => [...prev, newToast])
+          const newToast: ToastData = { id, type, message, title }
+          setToasts((prev: ToastData[]) => [...prev, newToast])
 
           setTimeout(() => removeToast(id), 5000)
         },
@@ -3827,12 +3841,21 @@ import { addDays } from 'date-fns'
             key: 'toasts',
             className: 'fixed top-4 right-4 z-50 space-y-2',
           },
-          toasts.map((toast) =>
-            React.createElement(Toast, {
-              key: toast.id,
-              ...toast,
-              onRemove: removeToast,
-            }),
+          toasts.map(
+            (toast: {
+              id: string
+              type: 'success' | 'error' | 'warning' | 'info'
+              title?: string
+              message: string
+              duration?: number
+              persistent?: boolean
+              action?: { label: string; onClick: () => void }
+            }) =>
+              React.createElement(Toast, {
+                key: toast.id,
+                ...toast,
+                onRemove: removeToast,
+              }),
           ),
         ),
       ])
@@ -4034,7 +4057,9 @@ import { addDays } from 'date-fns'
     description: 'Elementlerin üzerine gelindiğinde açıklayıcı bilgi gösteren popup bileşeni',
     category: 'Geri Bildirim',
     status: 'stable',
-    demoComponent: React.createElement(TooltipProvider, { key: 'provider' }, [
+    demoComponent: React.createElement(
+      TooltipProvider,
+      null,
       React.createElement('div', { key: 'content', className: 'space-y-6 w-full max-w-md' }, [
         React.createElement('div', { key: 'basic', className: 'space-y-3' }, [
           React.createElement('h4', { key: 'title', className: 'text-sm font-medium' }, 'Temel Tooltip'),
@@ -4089,7 +4114,7 @@ import { addDays } from 'date-fns'
           ]),
         ]),
       ]),
-    ]),
+    ),
     code: `import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/core/Tooltip/Tooltip'
 import { Button } from '@/components/core/Button/Button'
 import { Info, Settings, User } from 'lucide-react'
@@ -4231,7 +4256,9 @@ return (
   </Tooltip>
 </div>
 </TooltipProvider>`,
-        component: React.createElement(TooltipProvider, {}, [
+        component: React.createElement(
+          TooltipProvider,
+          null,
           React.createElement('div', { key: 'toolbar', className: 'flex items-center gap-1 p-2 border rounded-lg' }, [
             React.createElement(Tooltip, { key: 'user' }, [
               React.createElement(TooltipTrigger, { key: 'trigger', asChild: true }, [
@@ -4258,7 +4285,7 @@ return (
               React.createElement(TooltipContent, { key: 'content' }, 'Mesajlar (Ctrl+M)'),
             ]),
           ]),
-        ]),
+        ),
       },
       {
         title: 'Kesilmiş Metin Tooltip',
