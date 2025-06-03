@@ -4,6 +4,15 @@ import React from 'react'
 import { Mail, Search, MoreHorizontal, Info, Play, Volume2, Settings, User, Plus } from 'lucide-react'
 
 import {
+  Dialog,
+  DialogTitle,
+  DialogFooter,
+  DialogHeader,
+  DialogContent,
+  DialogTrigger,
+  DialogDescription,
+} from '@/components/core/Dialog/Dialog'
+import {
   DropdownMenu,
   DropdownMenuItem,
   DropdownMenuLabel,
@@ -11,6 +20,17 @@ import {
   DropdownMenuTrigger,
   DropdownMenuSeparator,
 } from '@/components/core/Dropdown/Dropdown'
+import {
+  AlertDialog,
+  AlertDialogTitle,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogContent,
+  AlertDialogTrigger,
+  AlertDialogDescription,
+} from '@/components/core/AlertDialog/AlertDialog'
 import { Label } from '@/components/core/Label/Label'
 import { Input } from '@/components/core/Input/Input'
 import { Badge } from '@/components/core/Badge/Badge'
@@ -575,74 +595,737 @@ function Example() {
     description: 'Kullanıcıdan onay almak veya önemli bilgileri iletmek için kullanılan uyarı dialog bileşeni',
     category: 'Geri Bildirim',
     status: 'stable',
-    demoComponent: React.createElement('div', { className: 'flex items-center space-x-4' }, [
-      React.createElement(
-        'button',
-        {
-          key: 'trigger',
-          className:
-            'px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors text-sm font-medium',
-          onClick: () => {
-            if (typeof window !== 'undefined') {
-              const confirmed = window.confirm('Bu işlemi gerçekleştirmek istediğinizden emin misiniz?')
-              if (confirmed) {
-                alert('İşlem onaylandı!')
-              }
-            }
-          },
-        },
-        'Hesabı Sil',
-      ),
-      React.createElement(
-        'span',
-        { key: 'info', className: 'text-sm text-neutral-500' },
-        "Tıklayarak örnek dialog'u görün",
-      ),
-    ]),
-    code: `import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from '@/components/AlertDialog/AlertDialog'
+    demoComponent: React.createElement(
+      'div',
+      { className: 'flex flex-wrap gap-4 items-center justify-center min-h-[120px]' },
+      [
+        // Temel Bilgi Dialog Butonu
+        React.createElement(
+          'div',
+          { key: 'info-dialog-wrapper' },
+          React.createElement(() => {
+            const [isInfoOpen, setIsInfoOpen] = React.useState(false)
 
-function Example() {
-  return (
-    <AlertDialog>
-      <AlertDialogTrigger asChild>
-        <Button variant="destructive">Hesabı Sil</Button>
-      </AlertDialogTrigger>
-      <AlertDialogContent>
-        <AlertDialogHeader>
-          <AlertDialogTitle>Emin misiniz?</AlertDialogTitle>
-          <AlertDialogDescription>
-            Bu işlem geri alınamaz. Hesabınız kalıcı olarak silinecek
-            ve tüm verileriniz sunucularımızdan kaldırılacaktır.
-          </AlertDialogDescription>
-        </AlertDialogHeader>
-        <AlertDialogFooter>
-          <AlertDialogCancel>İptal</AlertDialogCancel>
-          <AlertDialogAction>Evet, sil</AlertDialogAction>
-        </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
-  )
-}`,
+            return React.createElement(React.Fragment, null, [
+              React.createElement(
+                'button',
+                {
+                  key: 'info-trigger',
+                  onClick: () => setIsInfoOpen(true),
+                  className:
+                    'inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-blue-500 text-white hover:bg-blue-600 h-10 px-4 py-2',
+                },
+                'Bilgi Dialog',
+              ),
+              isInfoOpen &&
+                React.createElement(
+                  'div',
+                  {
+                    key: 'info-overlay',
+                    className: 'fixed inset-0 z-50 bg-black/50 backdrop-blur-sm',
+                    onClick: () => setIsInfoOpen(false),
+                  },
+                  React.createElement(
+                    'div',
+                    {
+                      className:
+                        'fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-white p-6 shadow-lg duration-200 rounded-lg',
+                      onClick: (e: any) => e.stopPropagation(),
+                    },
+                    [
+                      React.createElement(
+                        'div',
+                        { key: 'header', className: 'flex flex-col space-y-2 text-center sm:text-left' },
+                        [
+                          React.createElement(
+                            'h2',
+                            { key: 'title', className: 'text-lg font-semibold' },
+                            'İşlem Onayı',
+                          ),
+                          React.createElement(
+                            'p',
+                            { key: 'desc', className: 'text-sm text-neutral-500' },
+                            'Bu işlemi gerçekleştirmek istediğinizden emin misiniz?',
+                          ),
+                        ],
+                      ),
+                      React.createElement(
+                        'div',
+                        { key: 'footer', className: 'flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2' },
+                        [
+                          React.createElement(
+                            'button',
+                            {
+                              key: 'cancel',
+                              onClick: () => setIsInfoOpen(false),
+                              className:
+                                'inline-flex items-center justify-center rounded-md text-sm font-medium border border-neutral-200 bg-white hover:bg-neutral-50 h-10 px-4 py-2 mt-2 sm:mt-0',
+                            },
+                            'İptal',
+                          ),
+                          React.createElement(
+                            'button',
+                            {
+                              key: 'confirm',
+                              onClick: () => setIsInfoOpen(false),
+                              className:
+                                'inline-flex items-center justify-center rounded-md text-sm font-medium bg-neutral-900 text-white hover:bg-neutral-800 h-10 px-4 py-2',
+                            },
+                            'Onayla',
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+            ])
+          }),
+        ),
+
+        // Tehlikeli İşlem Dialog Butonu
+        React.createElement(
+          'div',
+          { key: 'destructive-dialog-wrapper' },
+          React.createElement(() => {
+            const [isDestructiveOpen, setIsDestructiveOpen] = React.useState(false)
+
+            return React.createElement(React.Fragment, null, [
+              React.createElement(
+                'button',
+                {
+                  key: 'destructive-trigger',
+                  onClick: () => setIsDestructiveOpen(true),
+                  className:
+                    'inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-red-500 text-white hover:bg-red-600 h-10 px-4 py-2',
+                },
+                'Hesabı Sil',
+              ),
+              isDestructiveOpen &&
+                React.createElement(
+                  'div',
+                  {
+                    key: 'destructive-overlay',
+                    className: 'fixed inset-0 z-50 bg-black/50 backdrop-blur-sm',
+                    onClick: () => setIsDestructiveOpen(false),
+                  },
+                  React.createElement(
+                    'div',
+                    {
+                      className:
+                        'fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-white p-6 shadow-lg duration-200 rounded-lg',
+                      onClick: (e: any) => e.stopPropagation(),
+                    },
+                    [
+                      React.createElement(
+                        'div',
+                        { key: 'header', className: 'flex flex-col space-y-2 text-center sm:text-left' },
+                        [
+                          React.createElement(
+                            'h2',
+                            { key: 'title', className: 'text-lg font-semibold text-red-600' },
+                            'Emin misiniz?',
+                          ),
+                          React.createElement(
+                            'p',
+                            { key: 'desc', className: 'text-sm text-neutral-500' },
+                            'Bu işlem geri alınamaz. Hesabınız kalıcı olarak silinecek ve tüm verileriniz sunucularımızdan kaldırılacaktır.',
+                          ),
+                        ],
+                      ),
+                      React.createElement(
+                        'div',
+                        { key: 'footer', className: 'flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2' },
+                        [
+                          React.createElement(
+                            'button',
+                            {
+                              key: 'cancel',
+                              onClick: () => setIsDestructiveOpen(false),
+                              className:
+                                'inline-flex items-center justify-center rounded-md text-sm font-medium border border-neutral-200 bg-white hover:bg-neutral-50 h-10 px-4 py-2 mt-2 sm:mt-0',
+                            },
+                            'İptal',
+                          ),
+                          React.createElement(
+                            'button',
+                            {
+                              key: 'confirm',
+                              onClick: () => setIsDestructiveOpen(false),
+                              className:
+                                'inline-flex items-center justify-center rounded-md text-sm font-medium bg-red-600 text-white hover:bg-red-700 h-10 px-4 py-2',
+                            },
+                            'Evet, sil',
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+            ])
+          }),
+        ),
+
+        // Uyarı Dialog Butonu
+        React.createElement(
+          'div',
+          { key: 'warning-dialog-wrapper' },
+          React.createElement(() => {
+            const [isWarningOpen, setIsWarningOpen] = React.useState(false)
+
+            return React.createElement(React.Fragment, null, [
+              React.createElement(
+                'button',
+                {
+                  key: 'warning-trigger',
+                  onClick: () => setIsWarningOpen(true),
+                  className:
+                    'inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-amber-500 text-white hover:bg-amber-600 h-10 px-4 py-2',
+                },
+                'Uyarı Dialog',
+              ),
+              isWarningOpen &&
+                React.createElement(
+                  'div',
+                  {
+                    key: 'warning-overlay',
+                    className: 'fixed inset-0 z-50 bg-black/50 backdrop-blur-sm',
+                    onClick: () => setIsWarningOpen(false),
+                  },
+                  React.createElement(
+                    'div',
+                    {
+                      className:
+                        'fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-white p-6 shadow-lg duration-200 rounded-lg',
+                      onClick: (e: any) => e.stopPropagation(),
+                    },
+                    [
+                      React.createElement(
+                        'div',
+                        { key: 'header', className: 'flex flex-col space-y-2 text-center sm:text-left' },
+                        [
+                          React.createElement(
+                            'h2',
+                            { key: 'title', className: 'text-lg font-semibold text-amber-600 flex items-center gap-2' },
+                            [React.createElement('span', { key: 'icon' }, '⚠️'), 'Önemli Uyarı'],
+                          ),
+                          React.createElement(
+                            'p',
+                            { key: 'desc', className: 'text-sm text-neutral-500' },
+                            'Sistem bakımı nedeniyle 5 dakika içinde oturumunuz sonlandırılacaktır. Çalışmanızı kaydetmeyi unutmayın.',
+                          ),
+                        ],
+                      ),
+                      React.createElement(
+                        'div',
+                        { key: 'footer', className: 'flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2' },
+                        [
+                          React.createElement(
+                            'button',
+                            {
+                              key: 'cancel',
+                              onClick: () => setIsWarningOpen(false),
+                              className:
+                                'inline-flex items-center justify-center rounded-md text-sm font-medium border border-neutral-200 bg-white hover:bg-neutral-50 h-10 px-4 py-2 mt-2 sm:mt-0',
+                            },
+                            'Anladım',
+                          ),
+                          React.createElement(
+                            'button',
+                            {
+                              key: 'confirm',
+                              onClick: () => setIsWarningOpen(false),
+                              className:
+                                'inline-flex items-center justify-center rounded-md text-sm font-medium bg-amber-600 text-white hover:bg-amber-700 h-10 px-4 py-2',
+                            },
+                            'Hemen Kaydet',
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+            ])
+          }),
+        ),
+      ],
+    ),
+    code: `import {
+      AlertDialog,
+      AlertDialogAction,
+      AlertDialogCancel,
+      AlertDialogContent,
+      AlertDialogDescription,
+      AlertDialogFooter,
+      AlertDialogHeader,
+      AlertDialogTitle,
+      AlertDialogTrigger,
+    } from '@/components/core/AlertDialog/AlertDialog'
+    import { Button } from '@/components/core/Button/Button'
+    import { useState } from 'react'
+    
+    function AlertDialogExample() {
+      const [isOpen, setIsOpen] = useState(false)
+    
+      const handleConfirm = () => {
+        console.log('İşlem onaylandı')
+        setIsOpen(false)
+        // İşlem mantığınız buraya gelir
+      }
+    
+      const handleCancel = () => {
+        console.log('İşlem iptal edildi')
+        setIsOpen(false)
+      }
+    
+      return (
+        <div className="space-y-4">
+          {/* Temel Alert Dialog */}
+          <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
+            <AlertDialogTrigger asChild>
+              <Button variant="default">
+                İşlem Yap
+              </Button>
+            </AlertDialogTrigger>
+            
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>İşlem Onayı</AlertDialogTitle>
+                <AlertDialogDescription>
+                  Bu işlemi gerçekleştirmek istediğinizden emin misiniz?
+                  Bu eylem güvenli ve geri alınabilir.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              
+              <AlertDialogFooter>
+                <AlertDialogCancel onClick={handleCancel}>
+                  İptal
+                </AlertDialogCancel>
+                <AlertDialogAction onClick={handleConfirm}>
+                  Onayla
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
+    
+          {/* Tehlikeli İşlem Alert Dialog */}
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <Button variant="destructive">
+                Hesabı Sil
+              </Button>
+            </AlertDialogTrigger>
+            
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle className="text-red-600">
+                  Emin misiniz?
+                </AlertDialogTitle>
+                <AlertDialogDescription>
+                  Bu işlem geri alınamaz. Hesabınız kalıcı olarak silinecek
+                  ve tüm verileriniz sunucularımızdan kaldırılacaktır.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              
+              <AlertDialogFooter>
+                <AlertDialogCancel>İptal</AlertDialogCancel>
+                <AlertDialogAction className="bg-red-600 hover:bg-red-700">
+                  Evet, sil
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
+        </div>
+      )
+    }`,
+    usageExamples: [
+      {
+        title: 'Form Gönderme Onayı',
+        description: 'Form işlemlerinde kullanıcıdan son onay alarak veri kaybını önleyen alert dialog implementasyonu',
+        code: `import { AlertDialog } from '@/components/core/AlertDialog/AlertDialog'
+    import { Button } from '@/components/core/Button/Button'
+    import { useForm } from 'react-hook-form'
+    import { useState } from 'react'
+    
+    function FormSubmissionExample() {
+      const [showConfirm, setShowConfirm] = useState(false)
+      const [formData, setFormData] = useState(null)
+      const { handleSubmit, register } = useForm()
+    
+      const onSubmit = (data) => {
+        setFormData(data)
+        setShowConfirm(true)
+      }
+    
+      const confirmSubmit = async () => {
+        try {
+          await submitFormData(formData)
+          toast.success('Form başarıyla gönderildi!')
+          setShowConfirm(false)
+        } catch (error) {
+          toast.error('Bir hata oluştu: ' + error.message)
+        }
+      }
+    
+      return (
+        <>
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+            <input 
+              {...register('email')} 
+              type="email" 
+              placeholder="E-posta adresiniz"
+              className="w-full p-2 border rounded"
+            />
+            <textarea 
+              {...register('message')} 
+              placeholder="Mesajınız"
+              className="w-full p-2 border rounded"
+              rows={4}
+            />
+            <Button type="submit">
+              Formu Gönder
+            </Button>
+          </form>
+    
+          <AlertDialog open={showConfirm} onOpenChange={setShowConfirm}>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>Form Gönderilsin mi?</AlertDialogTitle>
+                <AlertDialogDescription>
+                  Formunuz gönderilmeye hazır. Bu işlemi onaylıyor musunuz?
+                  Gönderildikten sonra form verileriniz işlenmeye başlayacaktır.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Gözden Geçir</AlertDialogCancel>
+                <AlertDialogAction onClick={confirmSubmit}>
+                  Evet, Gönder
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
+        </>
+      )
+    }`,
+        component: React.createElement(
+          'div',
+          {
+            className: 'p-4 bg-green-50 dark:bg-green-950/20 rounded-lg border border-green-200 dark:border-green-800',
+          },
+          [
+            React.createElement(
+              'div',
+              {
+                key: 'icon',
+                className: 'text-green-600 dark:text-green-400 text-lg mb-2',
+              },
+              '📝',
+            ),
+            React.createElement(
+              'p',
+              {
+                key: 'text',
+                className: 'text-sm text-green-700 dark:text-green-300',
+              },
+              'Form gönderme işlemlerinde kullanıcı onayı sistemi - veri güvenliği için kritik',
+            ),
+          ],
+        ),
+      },
+      {
+        title: 'Sistem Uyarı Mesajları',
+        description: 'Sistem durumu hakkında kullanıcıları bilgilendiren ve eylem gerektiren uyarı dialog sistemi',
+        code: `import { AlertDialog } from '@/components/core/AlertDialog/AlertDialog'
+    import { Button } from '@/components/core/Button/Button'
+    import { AlertTriangle, Clock, Wifi } from 'lucide-react'
+    import { useState, useEffect } from 'react'
+    
+    function SystemWarningExample() {
+      const [warnings, setWarnings] = useState([])
+      
+      useEffect(() => {
+        const checkSystemStatus = () => {
+          // Sistem durumu kontrolü
+          if (isMaintenanceScheduled()) {
+            showMaintenanceWarning()
+          }
+          if (isConnectionUnstable()) {
+            showConnectionWarning()
+          }
+        }
+        
+        const interval = setInterval(checkSystemStatus, 30000) // Her 30 saniyede kontrol
+        return () => clearInterval(interval)
+      }, [])
+    
+      const showMaintenanceWarning = () => {
+        setWarnings(prev => [...prev, {
+          id: 'maintenance',
+          type: 'warning',
+          title: 'Sistem Bakımı Uyarısı',
+          message: 'Sistem bakımı nedeniyle 5 dakika içinde oturumunuz sonlandırılacaktır.',
+          icon: Clock,
+          actions: [
+            { label: 'Anladım', action: () => dismissWarning('maintenance') },
+            { label: 'Hemen Kaydet', action: () => saveAndContinue(), primary: true }
+          ]
+        }])
+      }
+    
+      const showConnectionWarning = () => {
+        setWarnings(prev => [...prev, {
+          id: 'connection',
+          type: 'error',
+          title: 'Bağlantı Sorunu',
+          message: 'İnternet bağlantınızda sorun tespit edildi. Değişiklikleriniz kaydedilmeyebilir.',
+          icon: Wifi,
+          actions: [
+            { label: 'Tekrar Dene', action: () => retryConnection() },
+            { label: 'Çevrimdışı Çalış', action: () => enableOfflineMode() }
+          ]
+        }])
+      }
+    
+      return (
+        <div className="space-y-4">
+          {warnings.map(warning => (
+            <AlertDialog key={warning.id} defaultOpen>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle className={
+                    warning.type === 'error' ? 'text-red-600 flex items-center gap-2' :
+                    warning.type === 'warning' ? 'text-amber-600 flex items-center gap-2' :
+                    'flex items-center gap-2'
+                  }>
+                    <warning.icon className="h-5 w-5" />
+                    {warning.title}
+                  </AlertDialogTitle>
+                  <AlertDialogDescription>
+                    {warning.message}
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  {warning.actions.map((action, index) => (
+                    action.primary ? (
+                      <AlertDialogAction 
+                        key={index}
+                        onClick={action.action}
+                        className={warning.type === 'error' ? 'bg-red-600 hover:bg-red-700' : 
+                                  warning.type === 'warning' ? 'bg-amber-600 hover:bg-amber-700' : ''}
+                      >
+                        {action.label}
+                      </AlertDialogAction>
+                    ) : (
+                      <AlertDialogCancel key={index} onClick={action.action}>
+                        {action.label}
+                      </AlertDialogCancel>
+                    )
+                  ))}
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
+          ))}
+        </div>
+      )
+    }`,
+        component: React.createElement(
+          'div',
+          {
+            className: 'p-4 bg-amber-50 dark:bg-amber-950/20 rounded-lg border border-amber-200 dark:border-amber-800',
+          },
+          [
+            React.createElement(
+              'div',
+              {
+                key: 'icon',
+                className: 'text-amber-600 dark:text-amber-400 text-lg mb-2',
+              },
+              '⚠️',
+            ),
+            React.createElement(
+              'p',
+              {
+                key: 'text',
+                className: 'text-sm text-amber-700 dark:text-amber-300',
+              },
+              'Sistem durumu uyarıları - proaktif kullanıcı bilgilendirme sistemi',
+            ),
+          ],
+        ),
+      },
+      {
+        title: 'Toplu İşlem Onayları',
+        description: 'Birden fazla öğe üzerinde yapılacak işlemler için gelişmiş onay dialog implementasyonu',
+        code: `import { AlertDialog } from '@/components/core/AlertDialog/AlertDialog'
+    import { Button } from '@/components/core/Button/Button'
+    import { Checkbox } from '@/components/core/Checkbox/Checkbox'
+    import { useState } from 'react'
+    
+    function BulkOperationExample() {
+      const [selectedItems, setSelectedItems] = useState([])
+      const [showBulkConfirm, setShowBulkConfirm] = useState(false)
+      const [operation, setOperation] = useState(null)
+    
+      const items = [
+        { id: 1, name: 'Dokument 1.pdf', size: '2.4 MB' },
+        { id: 2, name: 'Resim 2.jpg', size: '1.8 MB' },
+        { id: 3, name: 'Video 3.mp4', size: '45.2 MB' },
+      ]
+    
+      const handleBulkOperation = (operationType) => {
+        if (selectedItems.length === 0) {
+          toast.warning('Lütfen en az bir öğe seçin')
+          return
+        }
+        
+        setOperation({
+          type: operationType,
+          count: selectedItems.length,
+          items: selectedItems.map(id => 
+            items.find(item => item.id === id)
+          )
+        })
+        setShowBulkConfirm(true)
+      }
+    
+      const confirmBulkOperation = async () => {
+        try {
+          await performBulkOperation(operation.type, operation.items)
+          toast.success(\`\${operation.count} öğe başarıyla \${operation.type === 'delete' ? 'silindi' : 'işlendi'}\`)
+          setSelectedItems([])
+          setShowBulkConfirm(false)
+        } catch (error) {
+          toast.error('Toplu işlem sırasında hata oluştu')
+        }
+      }
+    
+      const getTotalSize = () => {
+        return operation?.items
+          .reduce((total, item) => total + parseFloat(item.size), 0)
+          .toFixed(1)
+      }
+    
+      return (
+        <div className="space-y-4">
+          <div className="space-y-2">
+            {items.map(item => (
+              <div key={item.id} className="flex items-center space-x-3 p-3 border rounded">
+                <Checkbox 
+                  checked={selectedItems.includes(item.id)}
+                  onCheckedChange={(checked) => {
+                    if (checked) {
+                      setSelectedItems(prev => [...prev, item.id])
+                    } else {
+                      setSelectedItems(prev => prev.filter(id => id !== item.id))
+                    }
+                  }}
+                />
+                <div className="flex-1">
+                  <p className="font-medium">{item.name}</p>
+                  <p className="text-sm text-gray-500">{item.size}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+    
+          <div className="flex gap-2">
+            <Button 
+              variant="destructive" 
+              onClick={() => handleBulkOperation('delete')}
+              disabled={selectedItems.length === 0}
+            >
+              Seçilenleri Sil ({selectedItems.length})
+            </Button>
+            <Button 
+              variant="outline" 
+              onClick={() => handleBulkOperation('archive')}
+              disabled={selectedItems.length === 0}
+            >
+              Arşivle ({selectedItems.length})
+            </Button>
+          </div>
+    
+          <AlertDialog open={showBulkConfirm} onOpenChange={setShowBulkConfirm}>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle className={
+                  operation?.type === 'delete' ? 'text-red-600' : 'text-blue-600'
+                }>
+                  {operation?.type === 'delete' ? 'Toplu Silme Onayı' : 'Toplu İşlem Onayı'}
+                </AlertDialogTitle>
+                <AlertDialogDescription>
+                  {operation?.count} öğe {operation?.type === 'delete' ? 'silinecek' : 'işlenecek'}.
+                  Toplam boyut: {getTotalSize()} MB
+                  <div className="mt-2 max-h-32 overflow-y-auto">
+                    <ul className="text-sm space-y-1">
+                      {operation?.items.map(item => (
+                        <li key={item.id} className="flex justify-between">
+                          <span>{item.name}</span>
+                          <span className="text-gray-500">{item.size}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  {operation?.type === 'delete' && 
+                    'Bu işlem geri alınamaz!'
+                  }
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>İptal</AlertDialogCancel>
+                <AlertDialogAction 
+                  onClick={confirmBulkOperation}
+                  className={operation?.type === 'delete' ? 'bg-red-600 hover:bg-red-700' : ''}
+                >
+                  {operation?.type === 'delete' ? 'Evet, Sil' : 'İşlemi Başlat'}
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
+        </div>
+      )
+    }`,
+        component: React.createElement(
+          'div',
+          {
+            className: 'p-4 bg-blue-50 dark:bg-blue-950/20 rounded-lg border border-blue-200 dark:border-blue-800',
+          },
+          [
+            React.createElement(
+              'div',
+              {
+                key: 'icon',
+                className: 'text-blue-600 dark:text-blue-400 text-lg mb-2',
+              },
+              '📦',
+            ),
+            React.createElement(
+              'p',
+              {
+                key: 'text',
+                className: 'text-sm text-blue-700 dark:text-blue-300',
+              },
+              'Toplu işlemler için detaylı onay sistemi - seçim listesi ve özet bilgiler ile',
+            ),
+          ],
+        ),
+      },
+    ],
     props: [
       {
         name: 'open',
         type: 'boolean',
-        description: 'Dialog açık mı (controlled)',
+        description: 'Dialog açık durumu (controlled)',
       },
       {
         name: 'onOpenChange',
         type: '(open: boolean) => void',
         description: 'Dialog durumu değiştiğinde çağırılan fonksiyon',
+      },
+      {
+        name: 'defaultOpen',
+        type: 'boolean',
+        description: 'Varsayılan açık durumu (uncontrolled)',
+        default: 'false',
       },
     ],
   },
@@ -729,7 +1412,7 @@ function Example() {
       },
     ],
   },
-  // Button bileşeni (güncellenmiş)
+  // Button bileşeni
   {
     id: 'button',
     title: 'Button',
@@ -1155,89 +1838,172 @@ function Example() {
       },
     ],
   },
-  // Dialog bileşeni (güncellenmiş)
+  // Dialog bileşeni
   {
     id: 'dialog',
     title: 'Dialog',
-    description: 'Modal pencere açmak için kullanılan dialog bileşeni',
+    description: 'Modal pencere açmak için kullanılan gelişmiş dialog bileşeni',
     category: 'Navigasyon',
     status: 'stable',
-    demoComponent: React.createElement('div', { className: 'flex items-center space-x-4' }, [
+    demoComponent: React.createElement('div', { className: 'flex flex-wrap gap-4 items-center justify-center' }, [
+      // Basit Bilgi Dialog
       React.createElement(
-        'button',
-        {
-          key: 'trigger',
-          className:
-            'px-4 py-2 bg-primary-500 text-white rounded-md hover:bg-primary-600 transition-colors font-medium text-sm',
-          onClick: () => {
-            if (typeof window !== 'undefined') {
-              alert('Dialog açılacak!')
-            }
-          },
+        () => {
+          const [isBasicOpen, setIsBasicOpen] = React.useState(false)
+
+          return React.createElement(Dialog, { open: isBasicOpen, onOpenChange: setIsBasicOpen }, [
+            React.createElement(DialogTrigger, { key: 'trigger', asChild: true }, [
+              React.createElement(Button, { key: 'button', variant: 'outline' }, 'Basit Dialog'),
+            ]),
+            React.createElement(DialogContent, { key: 'content', className: 'sm:max-w-md' }, [
+              React.createElement(DialogHeader, { key: 'header' }, [
+                React.createElement(DialogTitle, { key: 'title' }, 'Bilgi Penceresi'),
+                React.createElement(
+                  DialogDescription,
+                  { key: 'description' },
+                  'Bu basit bir dialog penceresidir. İçerisinde herhangi bir bilgi veya işlem yapabilirsiniz.',
+                ),
+              ]),
+              React.createElement('div', { key: 'content-body', className: 'py-4' }, [
+                React.createElement(
+                  'p',
+                  { className: 'text-sm text-neutral-600 dark:text-neutral-400' },
+                  'Dialog içeriği buraya gelir. Burada kullanıcıya bilgi verebilir veya basit işlemler yapabilirsiniz.',
+                ),
+              ]),
+              React.createElement(DialogFooter, { key: 'footer' }, [
+                React.createElement(Button, { onClick: () => setIsBasicOpen(false) }, 'Tamam'),
+              ]),
+            ]),
+          ])
         },
-        'Dialog Aç',
+        { key: 'basic-dialog' },
       ),
+
+      // Form Dialog
       React.createElement(
-        'span',
-        { key: 'info', className: 'text-sm text-neutral-500' },
-        'Tıklayarak modal dialog görebilirsiniz',
+        () => {
+          const [isFormOpen, setIsFormOpen] = React.useState(false)
+          const [formData, setFormData] = React.useState({
+            name: 'Ahmet Yılmaz',
+            email: 'ahmet@example.com',
+          })
+
+          const handleSave = () => {
+            console.log('Profil kaydedildi:', formData)
+            setIsFormOpen(false)
+          }
+
+          return React.createElement(Dialog, { open: isFormOpen, onOpenChange: setIsFormOpen }, [
+            React.createElement(DialogTrigger, { key: 'trigger', asChild: true }, [
+              React.createElement(Button, { key: 'button' }, 'Profil Düzenle'),
+            ]),
+            React.createElement(DialogContent, { key: 'content', className: 'sm:max-w-lg' }, [
+              React.createElement(DialogHeader, { key: 'header' }, [
+                React.createElement(DialogTitle, { key: 'title' }, 'Profili Düzenle'),
+                React.createElement(
+                  DialogDescription,
+                  { key: 'description' },
+                  'Profil bilgilerinizi buradan güncelleyebilirsiniz. Değişiklikleri kaydetmek için kaydet butonuna tıklayın.',
+                ),
+              ]),
+              React.createElement('div', { key: 'form', className: 'grid gap-4 py-4' }, [
+                React.createElement('div', { className: 'grid grid-cols-4 items-center gap-4' }, [
+                  React.createElement(Label, { htmlFor: 'dialog-name', className: 'text-right' }, 'İsim'),
+                  React.createElement(Input, {
+                    id: 'dialog-name',
+                    value: formData.name,
+                    onChange: (e) => setFormData((prev) => ({ ...prev, name: e.target.value })),
+                    className: 'col-span-3',
+                  }),
+                ]),
+                React.createElement('div', { className: 'grid grid-cols-4 items-center gap-4' }, [
+                  React.createElement(Label, { htmlFor: 'dialog-email', className: 'text-right' }, 'Email'),
+                  React.createElement(Input, {
+                    id: 'dialog-email',
+                    type: 'email',
+                    value: formData.email,
+                    onChange: (e) => setFormData((prev) => ({ ...prev, email: e.target.value })),
+                    className: 'col-span-3',
+                  }),
+                ]),
+              ]),
+              React.createElement(DialogFooter, { key: 'footer' }, [
+                React.createElement(
+                  Button,
+                  {
+                    variant: 'outline',
+                    onClick: () => setIsFormOpen(false),
+                  },
+                  'İptal',
+                ),
+                React.createElement(Button, { onClick: handleSave }, 'Kaydet'),
+              ]),
+            ]),
+          ])
+        },
+        { key: 'form-dialog' },
+      ),
+
+      // Büyük İçerikli Dialog
+      React.createElement(
+        () => {
+          const [isLargeOpen, setIsLargeOpen] = React.useState(false)
+
+          return React.createElement(Dialog, { open: isLargeOpen, onOpenChange: setIsLargeOpen }, [
+            React.createElement(DialogTrigger, { key: 'trigger', asChild: true }, [
+              React.createElement(
+                Button,
+                {
+                  key: 'button',
+                  variant: 'secondary',
+                },
+                'Büyük Dialog',
+              ),
+            ]),
+            React.createElement(
+              DialogContent,
+              { key: 'content', className: 'sm:max-w-2xl max-h-[80vh] overflow-y-auto' },
+              [
+                React.createElement(DialogHeader, { key: 'header' }, [
+                  React.createElement(DialogTitle, { key: 'title' }, 'Kapsamlı Bilgi Formu'),
+                  React.createElement(
+                    DialogDescription,
+                    { key: 'description' },
+                    'Tüm gerekli bilgileri doldurun. Form otomatik olarak kaydedilir.',
+                  ),
+                ]),
+                React.createElement('div', { key: 'content-body', className: 'grid gap-6 py-4' }, [
+                  React.createElement('div', { className: 'grid grid-cols-2 gap-4' }, [
+                    React.createElement('div', { className: 'space-y-2' }, [
+                      React.createElement(Label, { htmlFor: 'firstName' }, 'Ad'),
+                      React.createElement(Input, { id: 'firstName', placeholder: 'Adınız' }),
+                    ]),
+                    React.createElement('div', { className: 'space-y-2' }, [
+                      React.createElement(Label, { htmlFor: 'lastName' }, 'Soyad'),
+                      React.createElement(Input, { id: 'lastName', placeholder: 'Soyadınız' }),
+                    ]),
+                  ]),
+                  React.createElement('div', { className: 'space-y-2' }, [
+                    React.createElement(Label, { htmlFor: 'address' }, 'Adres'),
+                    React.createElement(Textarea, {
+                      id: 'address',
+                      placeholder: 'Tam adresinizi yazın',
+                      rows: 3,
+                    }),
+                  ]),
+                ]),
+                React.createElement(DialogFooter, { key: 'footer', className: 'gap-2' }, [
+                  React.createElement(Button, { variant: 'outline' }, 'Taslak Kaydet'),
+                  React.createElement(Button, { onClick: () => setIsLargeOpen(false) }, 'Bilgileri Kaydet'),
+                ]),
+              ],
+            ),
+          ])
+        },
+        { key: 'large-dialog' },
       ),
     ]),
-    code: `import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/components/Dialog/Dialog'
-
-function Example() {
-  return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Button>Dialog Aç</Button>
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader>
-          <DialogTitle>Profili Düzenle</DialogTitle>
-          <DialogDescription>
-            Profil bilgilerinizi buradan güncelleyebilirsiniz.
-            Değişiklikleri kaydetmek için kaydet butonuna tıklayın.
-          </DialogDescription>
-        </DialogHeader>
-        <div className="grid gap-4 py-4">
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="name" className="text-right">İsim</Label>
-            <Input id="name" defaultValue="Ahmet Yılmaz" className="col-span-3" />
-          </div>
-        </div>
-        <DialogFooter>
-          <Button type="submit">Kaydet</Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
-  )
-}`,
-    props: [
-      {
-        name: 'open',
-        type: 'boolean',
-        description: 'Dialog açık mı (controlled)',
-      },
-      {
-        name: 'onOpenChange',
-        type: '(open: boolean) => void',
-        description: 'Dialog durumu değiştiğinde çağırılan fonksiyon',
-      },
-      {
-        name: 'modal',
-        type: 'boolean',
-        description: 'Modal davranışı (backdrop tıklanınca kapanır)',
-        default: 'true',
-      },
-    ],
   },
   // Drag Drop List bileşeni
   {
@@ -1756,7 +2522,7 @@ renderItem={(item, index) => (
       },
     ],
   },
-  // Dropdown bileşeni (güncellenmiş)
+  // Dropdown bileşeni
   {
     id: 'dropdown',
     title: 'Dropdown Menu',
