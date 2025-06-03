@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 
-import { Copy, Check, ExternalLink, X, Code, Settings, ChevronDown, ChevronRight } from 'lucide-react'
+import { Copy, Check, ExternalLink, Code, Settings, ChevronDown, ChevronRight } from 'lucide-react'
 
 import { Badge } from '@/components/core/Badge/Badge'
 import { Button } from '@/components/core/Button/Button'
@@ -135,6 +135,16 @@ export function ComponentDemo({
                 </Badge>
               </div>
             </div>
+
+            {/* Genişlet Butonu */}
+            <Button
+              variant='ghost'
+              size='sm'
+              onClick={() => setIsFullscreen(true)}
+              className='shrink-0 hover:bg-neutral-100 dark:hover:bg-neutral-800/70 transition-colors group-hover:opacity-100 opacity-70'
+            >
+              <ExternalLink className='h-4 w-4' />
+            </Button>
           </div>
 
           {/* Açıklama */}
@@ -427,16 +437,6 @@ export function ComponentDemo({
                 </div>
                 <p className='text-neutral-600 dark:text-neutral-400 leading-relaxed'>{description}</p>
               </div>
-
-              {/* Kapatma Butonu */}
-              <Button
-                variant='ghost'
-                size='sm'
-                onClick={() => setIsFullscreen(false)}
-                className='shrink-0 hover:bg-neutral-100 dark:hover:bg-neutral-800/70 transition-colors'
-              >
-                <X className='h-5 w-5' />
-              </Button>
             </div>
           </DialogHeader>
 
@@ -446,12 +446,6 @@ export function ComponentDemo({
             <div className='relative'>
               <div className='relative rounded-2xl border border-neutral-200/80 dark:border-neutral-700/50 bg-gradient-to-br from-white to-neutral-50/50 dark:from-neutral-800/50 dark:to-neutral-900/50 p-12 min-h-[280px] flex items-center justify-center overflow-hidden'>
                 <div className='relative z-10 scale-110'>{demoComponent}</div>
-
-                {/* Gelişmiş Arka Plan Efektleri */}
-                <div className='absolute inset-0 bg-gradient-to-br from-primary-500/5 via-transparent to-accent-500/5' />
-                <div className='absolute top-8 right-8 w-3 h-3 rounded-full bg-primary-500/20' />
-                <div className='absolute bottom-8 left-8 w-2 h-2 rounded-full bg-accent-500/30' />
-                <div className='absolute top-1/2 left-8 w-1 h-1 rounded-full bg-primary-500/40' />
               </div>
             </div>
 
