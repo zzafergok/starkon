@@ -108,9 +108,9 @@ export default function ComponentsPage() {
             <CardContent className='p-6'>
               <div className='space-y-6'>
                 {/* Ana Arama ve Görünüm Kontrolleri */}
-                <div className='flex flex-col lg:flex-row gap-4 items-start lg:items-center'>
-                  {/* Arama Alanı */}
-                  <div className='flex-1 w-full relative group'>
+                <div className='flex flex-col xl:flex-row gap-6 items-start xl:items-center'>
+                  {/* Arama Alanı - Desktop'ta daha geniş */}
+                  <div className='flex-1 w-full max-w-none xl:max-w-lg relative group'>
                     <Search className='absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-neutral-400 group-focus-within:text-primary-500 transition-colors' />
                     <Input
                       placeholder={t('pages.components.searchPlaceholder')}
@@ -130,43 +130,49 @@ export default function ComponentsPage() {
                     )}
                   </div>
 
-                  {/* Desktop Filtreler */}
-                  <div className='hidden lg:flex items-center gap-3'>
-                    <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-                      <SelectTrigger className='w-[200px] bg-white/70 dark:bg-neutral-700/70 border-neutral-200/80 dark:border-neutral-600/80'>
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {categories.map((category) => (
-                          <SelectItem key={category.value} value={category.value}>
-                            <div className='flex items-center justify-between w-full'>
-                              <span>{category.label}</span>
-                              <Badge variant='secondary' className='ml-2 text-xs'>
-                                {category.count}
-                              </Badge>
-                            </div>
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
+                  {/* Desktop Filtreler - Daha geniş alanlar */}
+                  <div className='hidden xl:flex items-center gap-4 shrink-0'>
+                    {/* Kategori Filtresi */}
+                    <div className='min-w-[220px]'>
+                      <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+                        <SelectTrigger className='w-full bg-white/70 dark:bg-neutral-700/70 border-neutral-200/80 dark:border-neutral-600/80'>
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {categories.map((category) => (
+                            <SelectItem key={category.value} value={category.value}>
+                              <div className='flex items-center justify-between w-full'>
+                                <span>{category.label}</span>
+                                <Badge variant='secondary' className='ml-2 text-xs'>
+                                  {category.count}
+                                </Badge>
+                              </div>
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
 
-                    <Select value={selectedStatus} onValueChange={setSelectedStatus}>
-                      <SelectTrigger className='w-[160px] bg-white/70 dark:bg-neutral-700/70 border-neutral-200/80 dark:border-neutral-600/80'>
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {statuses.map((status) => (
-                          <SelectItem key={status.value} value={status.value}>
-                            <div className='flex items-center justify-between w-full'>
-                              <span>{status.label}</span>
-                              <Badge variant='secondary' className='ml-2 text-xs'>
-                                {status.count}
-                              </Badge>
-                            </div>
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
+                    {/* Durum Filtresi */}
+                    <div className='min-w-[180px]'>
+                      <Select value={selectedStatus} onValueChange={setSelectedStatus}>
+                        <SelectTrigger className='w-full bg-white/70 dark:bg-neutral-700/70 border-neutral-200/80 dark:border-neutral-600/80'>
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {statuses.map((status) => (
+                            <SelectItem key={status.value} value={status.value}>
+                              <div className='flex items-center justify-between w-full'>
+                                <span>{status.label}</span>
+                                <Badge variant='secondary' className='ml-2 text-xs'>
+                                  {status.count}
+                                </Badge>
+                              </div>
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
 
                     {/* View Mode Toggle */}
                     <div className='flex items-center gap-1 p-1 bg-neutral-100/70 dark:bg-neutral-700/70 rounded-xl border border-neutral-200/50 dark:border-neutral-600/50'>
@@ -199,6 +205,46 @@ export default function ComponentsPage() {
                     </div>
                   </div>
 
+                  {/* Tablet Filtreler (lg breakpoint) */}
+                  <div className='hidden lg:flex xl:hidden items-center gap-3 w-full justify-between'>
+                    <div className='flex items-center gap-3 flex-1'>
+                      <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+                        <SelectTrigger className='w-[200px] bg-white/70 dark:bg-neutral-700/70 border-neutral-200/80 dark:border-neutral-600/80'>
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {categories.map((category) => (
+                            <SelectItem key={category.value} value={category.value}>
+                              <div className='flex items-center justify-between w-full'>
+                                <span>{category.label}</span>
+                                <Badge variant='secondary' className='ml-2 text-xs'>
+                                  {category.count}
+                                </Badge>
+                              </div>
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                      <Select value={selectedStatus} onValueChange={setSelectedStatus}>
+                        <SelectTrigger className='w-auto gap-4 bg-white/70 dark:bg-neutral-700/70 border-neutral-200/80 dark:border-neutral-600/80'>
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {statuses.map((status) => (
+                            <SelectItem key={status.value} value={status.value}>
+                              <div className='flex items-center justify-between w-full'>
+                                <span>{status.label}</span>
+                                <Badge variant='secondary' className='ml-2 text-xs'>
+                                  {status.count}
+                                </Badge>
+                              </div>
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  </div>
+
                   {/* Mobile Filter Toggle */}
                   <div className='lg:hidden flex items-center gap-2 w-full'>
                     <Button
@@ -214,26 +260,6 @@ export default function ComponentsPage() {
                         </Badge>
                       )}
                     </Button>
-
-                    {/* Mobile View Mode Toggle */}
-                    <div className='flex items-center gap-1 p-1 bg-neutral-100/70 dark:bg-neutral-700/70 rounded-lg border border-neutral-200/50 dark:border-neutral-600/50'>
-                      <Button
-                        variant={viewMode === 'grid' ? 'default' : 'ghost'}
-                        size='sm'
-                        onClick={() => setViewMode('grid')}
-                        className='p-2'
-                      >
-                        <Grid className='h-4 w-4' />
-                      </Button>
-                      <Button
-                        variant={viewMode === 'list' ? 'default' : 'ghost'}
-                        size='sm'
-                        onClick={() => setViewMode('list')}
-                        className='p-2'
-                      >
-                        <List className='h-4 w-4' />
-                      </Button>
-                    </div>
                   </div>
                 </div>
 

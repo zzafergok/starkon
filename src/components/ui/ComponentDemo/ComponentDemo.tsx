@@ -135,16 +135,6 @@ export function ComponentDemo({
                 </Badge>
               </div>
             </div>
-
-            {/* Genişlet Butonu */}
-            <Button
-              variant='ghost'
-              size='sm'
-              onClick={() => setIsFullscreen(true)}
-              className='shrink-0 hover:bg-neutral-100 dark:hover:bg-neutral-800/70 transition-colors group-hover:opacity-100 opacity-70'
-            >
-              <ExternalLink className='h-4 w-4' />
-            </Button>
           </div>
 
           {/* Açıklama */}
@@ -159,11 +149,6 @@ export function ComponentDemo({
             <div className='relative rounded-xl border border-neutral-200/80 dark:border-neutral-700/50 bg-gradient-to-br from-white to-neutral-50/50 dark:from-neutral-800/50 dark:to-neutral-900/50 p-8 min-h-[140px] flex items-center justify-center overflow-hidden'>
               {/* Demo İçeriği */}
               <div className='relative z-10'>{demoComponent}</div>
-
-              {/* Gelişmiş Arka Plan Efektleri */}
-              <div className='absolute inset-0 bg-gradient-to-br from-primary-500/5 to-transparent opacity-0 group-hover/demo:opacity-100 transition-opacity duration-500' />
-              <div className='absolute top-4 right-4 w-2 h-2 rounded-full bg-primary-500/20 opacity-0 group-hover/demo:opacity-100 transition-opacity duration-500 delay-100' />
-              <div className='absolute bottom-6 left-6 w-1 h-1 rounded-full bg-accent-500/30 opacity-0 group-hover/demo:opacity-100 transition-opacity duration-500 delay-200' />
             </div>
           </div>
 
