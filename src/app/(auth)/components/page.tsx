@@ -355,12 +355,7 @@ export default function ComponentsPage() {
       {/* Components Showcase */}
       <section className='max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8'>
         {filteredComponents.length > 0 ? (
-          <div
-            className={cn(
-              'grid gap-8 auto-rows-fr',
-              viewMode === 'grid' ? 'grid-cols-1 xl:grid-cols-2' : 'grid-cols-1',
-            )}
-          >
+          <div className={cn('grid gap-8', viewMode === 'grid' ? 'grid-cols-1 xl:grid-cols-2' : 'grid-cols-1')}>
             {filteredComponents.map((component) => (
               <div key={component.id} className='h-fit'>
                 <ComponentDemo

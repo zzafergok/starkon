@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 
-import { Copy, Check, ExternalLink } from 'lucide-react'
+import { Copy, Check, ExternalLink, X, Code, Settings, ChevronDown, ChevronRight } from 'lucide-react'
 
 import { Badge } from '@/components/core/Badge/Badge'
 import { Button } from '@/components/core/Button/Button'
@@ -47,6 +47,12 @@ export function ComponentDemo({
   const [copiedCode, setCopiedCode] = useState<string | null>(null)
   const [isFullscreen, setIsFullscreen] = useState(false)
 
+  // Kod blokları için açık/kapalı state'leri
+  const [isMainCodeOpen, setIsMainCodeOpen] = useState(false)
+  const [isFullscreenMainCodeOpen, setIsFullscreenMainCodeOpen] = useState(false)
+  const [openExampleCodes, setOpenExampleCodes] = useState<{ [key: number]: boolean }>({})
+  const [openFullscreenExampleCodes, setOpenFullscreenExampleCodes] = useState<{ [key: number]: boolean }>({})
+
   const copyToClipboard = async (text: string, id: string) => {
     try {
       await navigator.clipboard.writeText(text)
@@ -54,6 +60,20 @@ export function ComponentDemo({
       setTimeout(() => setCopiedCode(null), 2000)
     } catch (err) {
       console.error('Failed to copy:', err)
+    }
+  }
+
+  const toggleExampleCode = (index: number, isFullscreen: boolean = false) => {
+    if (isFullscreen) {
+      setOpenFullscreenExampleCodes((prev) => ({
+        ...prev,
+        [index]: !prev[index],
+      }))
+    } else {
+      setOpenExampleCodes((prev) => ({
+        ...prev,
+        [index]: !prev[index],
+      }))
     }
   }
 
@@ -140,57 +160,90 @@ export function ComponentDemo({
               {/* Demo İçeriği */}
               <div className='relative z-10'>{demoComponent}</div>
 
-              {/* Arka Plan Dekoratif Elementler */}
+              {/* Gelişmiş Arka Plan Efektleri */}
               <div className='absolute inset-0 bg-gradient-to-br from-primary-500/5 to-transparent opacity-0 group-hover/demo:opacity-100 transition-opacity duration-500' />
               <div className='absolute top-4 right-4 w-2 h-2 rounded-full bg-primary-500/20 opacity-0 group-hover/demo:opacity-100 transition-opacity duration-500 delay-100' />
               <div className='absolute bottom-6 left-6 w-1 h-1 rounded-full bg-accent-500/30 opacity-0 group-hover/demo:opacity-100 transition-opacity duration-500 delay-200' />
             </div>
           </div>
 
-          {/* Tab İçerikleri */}
+          {/* Modern Tab İçerikleri */}
           <Tabs defaultValue='code' className='w-full'>
-            <TabsList className='w-full justify-start bg-neutral-100/70 dark:bg-neutral-800/70 backdrop-blur-sm border border-neutral-200/50 dark:border-neutral-700/50'>
+            <TabsList className='w-full justify-start bg-neutral-100/70 dark:bg-neutral-800/70 backdrop-blur-sm border border-neutral-200/50 dark:border-neutral-700/50 p-1 rounded-xl'>
               <TabsTrigger
                 value='code'
-                className='data-[state=active]:bg-white dark:data-[state=active]:bg-neutral-700 data-[state=active]:text-neutral-900 dark:data-[state=active]:text-neutral-50 data-[state=active]:shadow-sm font-medium'
+                className='data-[state=active]:bg-white dark:data-[state=active]:bg-neutral-700 data-[state=active]:text-neutral-900 dark:data-[state=active]:text-neutral-50 data-[state=active]:shadow-sm font-medium px-4 py-2.5 rounded-lg flex items-center gap-2'
               >
+                <Code className='h-4 w-4' />
                 Kod
               </TabsTrigger>
               {usageExamples.length > 0 && (
                 <TabsTrigger
                   value='examples'
-                  className='data-[state=active]:bg-white dark:data-[state=active]:bg-neutral-700 data-[state=active]:text-neutral-900 dark:data-[state=active]:text-neutral-50 data-[state=active]:shadow-sm font-medium'
+                  className='data-[state=active]:bg-white dark:data-[state=active]:bg-neutral-700 data-[state=active]:text-neutral-900 dark:data-[state=active]:text-neutral-50 data-[state=active]:shadow-sm font-medium px-4 py-2.5 rounded-lg flex items-center gap-2'
                 >
+                  <ExternalLink className='h-4 w-4' />
                   Örnekler ({usageExamples.length})
                 </TabsTrigger>
               )}
               {props.length > 0 && (
                 <TabsTrigger
                   value='props'
-                  className='data-[state=active]:bg-white dark:data-[state=active]:bg-neutral-700 data-[state=active]:text-neutral-900 dark:data-[state=active]:text-neutral-50 data-[state=active]:shadow-sm font-medium'
+                  className='data-[state=active]:bg-white dark:data-[state=active]:bg-neutral-700 data-[state=active]:text-neutral-900 dark:data-[state=active]:text-neutral-50 data-[state=active]:shadow-sm font-medium px-4 py-2.5 rounded-lg flex items-center gap-2'
                 >
+                  <Settings className='h-4 w-4' />
                   Props ({props.length})
                 </TabsTrigger>
               )}
             </TabsList>
 
             <TabsContent value='code' className='mt-6'>
-              <div className='relative group'>
-                <pre className='bg-neutral-900 dark:bg-neutral-950 text-neutral-100 rounded-xl p-6 overflow-x-auto text-sm leading-relaxed border border-neutral-700/50'>
-                  <code>{code}</code>
-                </pre>
-                <Button
-                  variant='ghost'
-                  size='sm'
-                  onClick={() => copyToClipboard(code, 'main')}
-                  className='absolute top-3 right-3 hover:bg-neutral-800 dark:hover:bg-neutral-700 opacity-0 group-hover:opacity-100 transition-opacity'
+              <div className='overflow-hidden rounded-xl border border-neutral-200/80 dark:border-neutral-700/50 bg-white/50 dark:bg-neutral-900/50 backdrop-blur-sm'>
+                {/* Collapsible Kod Header */}
+                <button
+                  onClick={() => setIsMainCodeOpen(!isMainCodeOpen)}
+                  className='w-full flex items-center justify-between p-4 hover:bg-neutral-50/50 dark:hover:bg-neutral-800/50 transition-colors group'
                 >
-                  {copiedCode === 'main' ? (
-                    <Check className='h-4 w-4 text-emerald-400' />
-                  ) : (
-                    <Copy className='h-4 w-4 text-neutral-400' />
-                  )}
-                </Button>
+                  <div className='flex items-center gap-3'>
+                    <div className='p-2 rounded-lg bg-primary-50 dark:bg-primary-950/30 group-hover:bg-primary-100 dark:group-hover:bg-primary-900/40 transition-colors'>
+                      <Code className='h-4 w-4 text-primary-600 dark:text-primary-400' />
+                    </div>
+                    <div className='text-left'>
+                      <h3 className='font-semibold text-neutral-900 dark:text-neutral-50'>Kod Örneği</h3>
+                      <p className='text-sm text-neutral-600 dark:text-neutral-400'>Bileşenin kullanım kodu</p>
+                    </div>
+                  </div>
+                  <div className='flex items-center gap-2'>
+                    {isMainCodeOpen ? (
+                      <ChevronDown className='h-4 w-4 text-neutral-400 transition-transform' />
+                    ) : (
+                      <ChevronRight className='h-4 w-4 text-neutral-400 transition-transform' />
+                    )}
+                  </div>
+                </button>
+
+                {/* Collapsible Kod İçeriği */}
+                {isMainCodeOpen && (
+                  <div className='border-t border-neutral-200/50 dark:border-neutral-700/30'>
+                    <div className='relative group'>
+                      <pre className='bg-neutral-900 dark:bg-neutral-950 text-neutral-100 p-6 pt-14 overflow-x-auto text-sm leading-relaxed border-0 font-mono'>
+                        <code>{code}</code>
+                      </pre>
+                      <Button
+                        variant='ghost'
+                        size='sm'
+                        onClick={() => copyToClipboard(code, 'main')}
+                        className='absolute top-3 right-3 hover:bg-neutral-800 dark:hover:bg-neutral-700 opacity-0 group-hover:opacity-100 transition-opacity'
+                      >
+                        {copiedCode === 'main' ? (
+                          <Check className='h-4 w-4 text-emerald-400' />
+                        ) : (
+                          <Copy className='h-4 w-4 text-neutral-400' />
+                        )}
+                      </Button>
+                    </div>
+                  </div>
+                )}
               </div>
             </TabsContent>
 
@@ -198,36 +251,82 @@ export function ComponentDemo({
             {usageExamples.length > 0 && (
               <TabsContent value='examples' className='mt-6 space-y-8'>
                 {usageExamples.map((example, index) => (
-                  <div key={index} className='space-y-4'>
-                    <div className='space-y-2'>
-                      <h4 className='text-base font-semibold text-neutral-900 dark:text-neutral-50'>{example.title}</h4>
-                      <p className='text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed'>
-                        {example.description}
-                      </p>
+                  <div
+                    key={index}
+                    className='overflow-hidden rounded-xl border border-neutral-200/80 dark:border-neutral-700/50 bg-white/50 dark:bg-neutral-900/50 backdrop-blur-sm'
+                  >
+                    {/* Örnek Header */}
+                    <div className='p-6 border-b border-neutral-200/50 dark:border-neutral-700/30 bg-neutral-50/50 dark:bg-neutral-800/50'>
+                      <div className='flex items-start gap-4'>
+                        <div className='p-2 rounded-lg bg-amber-50 dark:bg-amber-950/30 shrink-0'>
+                          <ExternalLink className='h-4 w-4 text-amber-600 dark:text-amber-400' />
+                        </div>
+                        <div className='space-y-2 flex-1'>
+                          <h4 className='text-base font-semibold text-neutral-900 dark:text-neutral-50'>
+                            {example.title}
+                          </h4>
+                          <p className='text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed'>
+                            {example.description}
+                          </p>
+                        </div>
+                      </div>
                     </div>
 
+                    {/* Örnek Demo Alanı */}
                     {example.component && (
-                      <div className='rounded-xl border border-neutral-200/80 dark:border-neutral-700/50 bg-gradient-to-br from-white to-neutral-50/50 dark:from-neutral-800/50 dark:to-neutral-900/50 p-6'>
-                        {example.component}
+                      <div className='p-6 border-b border-neutral-200/50 dark:border-neutral-700/30'>
+                        <div className='rounded-xl border border-neutral-200/80 dark:border-neutral-700/50 bg-gradient-to-br from-white to-neutral-50/50 dark:from-neutral-800/50 dark:to-neutral-900/50 p-6'>
+                          {example.component}
+                        </div>
                       </div>
                     )}
 
-                    <div className='relative group'>
-                      <pre className='bg-neutral-900 dark:bg-neutral-950 text-neutral-100 rounded-xl p-6 overflow-x-auto text-sm leading-relaxed border border-neutral-700/50'>
-                        <code>{example.code}</code>
-                      </pre>
-                      <Button
-                        variant='ghost'
-                        size='sm'
-                        onClick={() => copyToClipboard(example.code, `example-${index}`)}
-                        className='absolute top-3 right-3 hover:bg-neutral-800 dark:hover:bg-neutral-700 opacity-0 group-hover:opacity-100 transition-opacity'
+                    {/* Collapsible Örnek Kod */}
+                    <div className='border-b border-neutral-200/50 dark:border-neutral-700/30'>
+                      <button
+                        onClick={() => toggleExampleCode(index)}
+                        className='w-full flex items-center justify-between p-4 hover:bg-neutral-50/30 dark:hover:bg-neutral-800/30 transition-colors group'
                       >
-                        {copiedCode === `example-${index}` ? (
-                          <Check className='h-4 w-4 text-emerald-400' />
-                        ) : (
-                          <Copy className='h-4 w-4 text-neutral-400' />
-                        )}
-                      </Button>
+                        <div className='flex items-center gap-3'>
+                          <div className='p-2 rounded-lg bg-neutral-100 dark:bg-neutral-800 group-hover:bg-neutral-200 dark:group-hover:bg-neutral-700 transition-colors'>
+                            <Code className='h-4 w-4 text-neutral-600 dark:text-neutral-400' />
+                          </div>
+                          <div className='text-left'>
+                            <h4 className='font-medium text-neutral-900 dark:text-neutral-50'>Kod Örneği</h4>
+                            <p className='text-sm text-neutral-600 dark:text-neutral-400'>Bu örneğin kaynak kodu</p>
+                          </div>
+                        </div>
+                        <div className='flex items-center gap-2'>
+                          <Badge variant='outline' className='text-xs'>
+                            {openExampleCodes[index] ? 'Kapat' : 'Göster'}
+                          </Badge>
+                          {openExampleCodes[index] ? (
+                            <ChevronDown className='h-4 w-4 text-neutral-400 transition-transform' />
+                          ) : (
+                            <ChevronRight className='h-4 w-4 text-neutral-400 transition-transform' />
+                          )}
+                        </div>
+                      </button>
+
+                      {openExampleCodes[index] && (
+                        <div className='relative group'>
+                          <pre className='bg-neutral-900 dark:bg-neutral-950 text-neutral-100 p-6 overflow-x-auto text-sm leading-relaxed border-0 font-mono'>
+                            <code>{example.code}</code>
+                          </pre>
+                          <Button
+                            variant='ghost'
+                            size='sm'
+                            onClick={() => copyToClipboard(example.code, `example-${index}`)}
+                            className='absolute top-3 right-3 hover:bg-neutral-800 dark:hover:bg-neutral-700 opacity-0 group-hover:opacity-100 transition-opacity'
+                          >
+                            {copiedCode === `example-${index}` ? (
+                              <Check className='h-4 w-4 text-emerald-400' />
+                            ) : (
+                              <Copy className='h-4 w-4 text-neutral-400' />
+                            )}
+                          </Button>
+                        </div>
+                      )}
                     </div>
                   </div>
                 ))}
@@ -238,10 +337,29 @@ export function ComponentDemo({
             {props.length > 0 && (
               <TabsContent value='props' className='mt-6'>
                 <div className='overflow-hidden rounded-xl border border-neutral-200/80 dark:border-neutral-700/50 bg-white/50 dark:bg-neutral-900/50 backdrop-blur-sm'>
+                  {/* Props Header */}
+                  <div className='flex items-center justify-between p-6 border-b border-neutral-200/50 dark:border-neutral-700/30 bg-neutral-50/50 dark:bg-neutral-800/50'>
+                    <div className='flex items-center gap-3'>
+                      <div className='p-2 rounded-lg bg-indigo-50 dark:bg-indigo-950/30'>
+                        <Settings className='h-4 w-4 text-indigo-600 dark:text-indigo-400' />
+                      </div>
+                      <div>
+                        <h3 className='font-semibold text-neutral-900 dark:text-neutral-50'>API Referansı</h3>
+                        <p className='text-sm text-neutral-600 dark:text-neutral-400'>
+                          {props.length} mevcut prop parametresi
+                        </p>
+                      </div>
+                    </div>
+                    <Badge variant='outline' className='text-xs px-2.5 py-1'>
+                      {props.length} Props
+                    </Badge>
+                  </div>
+
+                  {/* Props Tablosu */}
                   <div className='overflow-x-auto'>
                     <table className='w-full text-sm'>
                       <thead>
-                        <tr className='border-b border-neutral-200/80 dark:border-neutral-700/50 bg-neutral-50/50 dark:bg-neutral-800/50'>
+                        <tr className='border-b border-neutral-200/50 dark:border-neutral-700/30 bg-neutral-50/30 dark:bg-neutral-800/30'>
                           <th className='text-left p-4 font-semibold text-neutral-900 dark:text-neutral-50'>Prop</th>
                           <th className='text-left p-4 font-semibold text-neutral-900 dark:text-neutral-50'>Tip</th>
                           <th className='text-left p-4 font-semibold text-neutral-900 dark:text-neutral-50'>
@@ -324,6 +442,16 @@ export function ComponentDemo({
                 </div>
                 <p className='text-neutral-600 dark:text-neutral-400 leading-relaxed'>{description}</p>
               </div>
+
+              {/* Kapatma Butonu */}
+              <Button
+                variant='ghost'
+                size='sm'
+                onClick={() => setIsFullscreen(false)}
+                className='shrink-0 hover:bg-neutral-100 dark:hover:bg-neutral-800/70 transition-colors'
+              >
+                <X className='h-5 w-5' />
+              </Button>
             </div>
           </DialogHeader>
 
@@ -333,86 +461,177 @@ export function ComponentDemo({
             <div className='relative'>
               <div className='relative rounded-2xl border border-neutral-200/80 dark:border-neutral-700/50 bg-gradient-to-br from-white to-neutral-50/50 dark:from-neutral-800/50 dark:to-neutral-900/50 p-12 min-h-[280px] flex items-center justify-center overflow-hidden'>
                 <div className='relative z-10 scale-110'>{demoComponent}</div>
+
+                {/* Gelişmiş Arka Plan Efektleri */}
+                <div className='absolute inset-0 bg-gradient-to-br from-primary-500/5 via-transparent to-accent-500/5' />
+                <div className='absolute top-8 right-8 w-3 h-3 rounded-full bg-primary-500/20' />
+                <div className='absolute bottom-8 left-8 w-2 h-2 rounded-full bg-accent-500/30' />
+                <div className='absolute top-1/2 left-8 w-1 h-1 rounded-full bg-primary-500/40' />
               </div>
             </div>
+
             {/* Gelişmiş Tab Sistemi */}
             <Tabs defaultValue='code' className='w-full'>
-              <TabsList className='w-full justify-start bg-neutral-100/70 dark:bg-neutral-800/70 backdrop-blur-sm border border-neutral-200/50 dark:border-neutral-700/50 p-1'>
+              <TabsList className='w-full justify-start bg-neutral-100/70 dark:bg-neutral-800/70 backdrop-blur-sm border border-neutral-200/50 dark:border-neutral-700/50 p-1 rounded-xl'>
                 <TabsTrigger
                   value='code'
-                  className='data-[state=active]:bg-white dark:data-[state=active]:bg-neutral-700 data-[state=active]:text-neutral-900 dark:data-[state=active]:text-neutral-50 data-[state=active]:shadow-sm font-medium px-6 py-2'
+                  className='data-[state=active]:bg-white dark:data-[state=active]:bg-neutral-700 data-[state=active]:text-neutral-900 dark:data-[state=active]:text-neutral-50 data-[state=active]:shadow-sm font-medium px-6 py-3 rounded-lg flex items-center gap-2'
                 >
+                  <Code className='h-4 w-4' />
                   Kod Örneği
                 </TabsTrigger>
                 {usageExamples.length > 0 && (
                   <TabsTrigger
                     value='examples'
-                    className='data-[state=active]:bg-white dark:data-[state=active]:bg-neutral-700 data-[state=active]:text-neutral-900 dark:data-[state=active]:text-neutral-50 data-[state=active]:shadow-sm font-medium px-6 py-2'
+                    className='data-[state=active]:bg-white dark:data-[state=active]:bg-neutral-700 data-[state=active]:text-neutral-900 dark:data-[state=active]:text-neutral-50 data-[state=active]:shadow-sm font-medium px-6 py-3 rounded-lg flex items-center gap-2'
                   >
+                    <ExternalLink className='h-4 w-4' />
                     Kullanım Örnekleri ({usageExamples.length})
                   </TabsTrigger>
                 )}
                 {props.length > 0 && (
                   <TabsTrigger
                     value='props'
-                    className='data-[state=active]:bg-white dark:data-[state=active]:bg-neutral-700 data-[state=active]:text-neutral-900 dark:data-[state=active]:text-neutral-50 data-[state=active]:shadow-sm font-medium px-6 py-2'
+                    className='data-[state=active]:bg-white dark:data-[state=active]:bg-neutral-700 data-[state=active]:text-neutral-900 dark:data-[state=active]:text-neutral-50 data-[state=active]:shadow-sm font-medium px-6 py-3 rounded-lg flex items-center gap-2'
                   >
+                    <Settings className='h-4 w-4' />
                     API Referansı ({props.length})
                   </TabsTrigger>
                 )}
               </TabsList>
 
               <TabsContent value='code' className='mt-8'>
-                <div className='relative group'>
-                  <pre className='bg-neutral-900 dark:bg-neutral-950 text-neutral-100 rounded-2xl p-8 overflow-x-auto text-sm leading-relaxed border border-neutral-700/50 font-mono'>
-                    <code>{code}</code>
-                  </pre>
-                  <Button
-                    variant='ghost'
-                    size='sm'
-                    onClick={() => copyToClipboard(code, 'fullscreen-main')}
-                    className='absolute top-4 right-4 hover:bg-neutral-800 dark:hover:bg-neutral-700 opacity-0 group-hover:opacity-100 transition-opacity'
+                <div className='overflow-hidden rounded-2xl border border-neutral-200/80 dark:border-neutral-700/50 bg-white/50 dark:bg-neutral-900/50 backdrop-blur-sm'>
+                  {/* Fullscreen Collapsible Kod Header */}
+                  <button
+                    onClick={() => setIsFullscreenMainCodeOpen(!isFullscreenMainCodeOpen)}
+                    className='w-full flex items-center justify-between p-6 hover:bg-neutral-50/50 dark:hover:bg-neutral-800/50 transition-colors group'
                   >
-                    {copiedCode === 'fullscreen-main' ? (
-                      <Check className='h-4 w-4 text-emerald-400' />
-                    ) : (
-                      <Copy className='h-4 w-4 text-neutral-400' />
-                    )}
-                  </Button>
+                    <div className='flex items-center gap-4'>
+                      <div className='p-3 rounded-xl bg-primary-50 dark:bg-primary-950/30 group-hover:bg-primary-100 dark:group-hover:bg-primary-900/40 transition-colors'>
+                        <Code className='h-5 w-5 text-primary-600 dark:text-primary-400' />
+                      </div>
+                      <div className='text-left'>
+                        <h3 className='text-lg font-semibold text-neutral-900 dark:text-neutral-50'>Kod Örneği</h3>
+                        <p className='text-neutral-600 dark:text-neutral-400'>Bileşenin tam kullanım kodu</p>
+                      </div>
+                    </div>
+                    <div className='flex items-center gap-3'>
+                      <Badge variant='outline' className='text-sm px-3 py-1'>
+                        TypeScript
+                      </Badge>
+                      {isFullscreenMainCodeOpen ? (
+                        <ChevronDown className='h-5 w-5 text-neutral-400 transition-transform' />
+                      ) : (
+                        <ChevronRight className='h-5 w-5 text-neutral-400 transition-transform' />
+                      )}
+                    </div>
+                  </button>
+
+                  {/* Fullscreen Collapsible Kod İçeriği */}
+                  {isFullscreenMainCodeOpen && (
+                    <div className='border-t border-neutral-200/50 dark:border-neutral-700/30'>
+                      <div className='relative group'>
+                        <pre className='bg-neutral-900 dark:bg-neutral-950 text-neutral-100 p-8 overflow-x-auto text-sm leading-relaxed border-0 font-mono'>
+                          <code>{code}</code>
+                        </pre>
+                        <Button
+                          variant='ghost'
+                          size='sm'
+                          onClick={() => copyToClipboard(code, 'fullscreen-main')}
+                          className='absolute top-4 right-4 hover:bg-neutral-800 dark:hover:bg-neutral-700 opacity-0 group-hover:opacity-100 transition-opacity'
+                        >
+                          {copiedCode === 'fullscreen-main' ? (
+                            <Check className='h-4 w-4 text-emerald-400' />
+                          ) : (
+                            <Copy className='h-4 w-4 text-neutral-400' />
+                          )}
+                        </Button>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </TabsContent>
 
               {usageExamples.length > 0 && (
                 <TabsContent value='examples' className='mt-8 space-y-10'>
                   {usageExamples.map((example, index) => (
-                    <div key={index} className='space-y-6'>
-                      <div className='space-y-2'>
-                        <h4 className='text-lg font-semibold text-neutral-900 dark:text-neutral-50'>{example.title}</h4>
-                        <p className='text-neutral-600 dark:text-neutral-400 leading-relaxed'>{example.description}</p>
+                    <div
+                      key={index}
+                      className='overflow-hidden rounded-2xl border border-neutral-200/80 dark:border-neutral-700/50 bg-white/50 dark:bg-neutral-900/50 backdrop-blur-sm'
+                    >
+                      {/* Örnek Header */}
+                      <div className='p-6 border-b border-neutral-200/50 dark:border-neutral-700/30 bg-neutral-50/50 dark:bg-neutral-800/50'>
+                        <div className='flex items-start gap-4'>
+                          <div className='p-3 rounded-xl bg-amber-50 dark:bg-amber-950/30 shrink-0'>
+                            <ExternalLink className='h-5 w-5 text-amber-600 dark:text-amber-400' />
+                          </div>
+                          <div className='space-y-2 flex-1'>
+                            <h4 className='text-lg font-semibold text-neutral-900 dark:text-neutral-50'>
+                              {example.title}
+                            </h4>
+                            <p className='text-neutral-600 dark:text-neutral-400 leading-relaxed'>
+                              {example.description}
+                            </p>
+                          </div>
+                        </div>
                       </div>
 
+                      {/* Örnek Demo Alanı */}
                       {example.component && (
-                        <div className='rounded-2xl border border-neutral-200/80 dark:border-neutral-700/50 bg-gradient-to-br from-white to-neutral-50/50 dark:from-neutral-800/50 dark:to-neutral-900/50 p-8'>
-                          {example.component}
+                        <div className='p-6 border-b border-neutral-200/50 dark:border-neutral-700/30'>
+                          <div className='rounded-2xl border border-neutral-200/80 dark:border-neutral-700/50 bg-gradient-to-br from-white to-neutral-50/50 dark:from-neutral-800/50 dark:to-neutral-900/50 p-8'>
+                            {example.component}
+                          </div>
                         </div>
                       )}
 
-                      <div className='relative group'>
-                        <pre className='bg-neutral-900 dark:bg-neutral-950 text-neutral-100 rounded-2xl p-8 overflow-x-auto text-sm leading-relaxed border border-neutral-700/50 font-mono'>
-                          <code>{example.code}</code>
-                        </pre>
-                        <Button
-                          variant='ghost'
-                          size='sm'
-                          onClick={() => copyToClipboard(example.code, `fullscreen-example-${index}`)}
-                          className='absolute top-4 right-4 hover:bg-neutral-800 dark:hover:bg-neutral-700 opacity-0 group-hover:opacity-100 transition-opacity'
+                      {/* Fullscreen Collapsible Örnek Kod */}
+                      <div className='border-b border-neutral-200/50 dark:border-neutral-700/30 last:border-b-0'>
+                        <button
+                          onClick={() => toggleExampleCode(index, true)}
+                          className='w-full flex items-center justify-between p-6 hover:bg-neutral-50/30 dark:hover:bg-neutral-800/30 transition-colors group'
                         >
-                          {copiedCode === `fullscreen-example-${index}` ? (
-                            <Check className='h-4 w-4 text-emerald-400' />
-                          ) : (
-                            <Copy className='h-4 w-4 text-neutral-400' />
-                          )}
-                        </Button>
+                          <div className='flex items-center gap-4'>
+                            <div className='p-3 rounded-xl bg-neutral-100 dark:bg-neutral-800 group-hover:bg-neutral-200 dark:group-hover:bg-neutral-700 transition-colors'>
+                              <Code className='h-5 w-5 text-neutral-600 dark:text-neutral-400' />
+                            </div>
+                            <div className='text-left'>
+                              <h4 className='text-lg font-medium text-neutral-900 dark:text-neutral-50'>Kod Örneği</h4>
+                              <p className='text-neutral-600 dark:text-neutral-400'>Bu örneğin kaynak kodu</p>
+                            </div>
+                          </div>
+                          <div className='flex items-center gap-3'>
+                            <Badge variant='outline' className='text-sm px-3 py-1'>
+                              {openFullscreenExampleCodes[index] ? 'Kapat' : 'Göster'}
+                            </Badge>
+                            {openFullscreenExampleCodes[index] ? (
+                              <ChevronDown className='h-5 w-5 text-neutral-400 transition-transform' />
+                            ) : (
+                              <ChevronRight className='h-5 w-5 text-neutral-400 transition-transform' />
+                            )}
+                          </div>
+                        </button>
+
+                        {openFullscreenExampleCodes[index] && (
+                          <div className='relative group'>
+                            <pre className='bg-neutral-900 dark:bg-neutral-950 text-neutral-100 p-8 overflow-x-auto text-sm leading-relaxed border-0 font-mono'>
+                              <code>{example.code}</code>
+                            </pre>
+                            <Button
+                              variant='ghost'
+                              size='sm'
+                              onClick={() => copyToClipboard(example.code, `fullscreen-example-${index}`)}
+                              className='absolute top-4 right-4 hover:bg-neutral-800 dark:hover:bg-neutral-700 opacity-0 group-hover:opacity-100 transition-opacity'
+                            >
+                              {copiedCode === `fullscreen-example-${index}` ? (
+                                <Check className='h-4 w-4 text-emerald-400' />
+                              ) : (
+                                <Copy className='h-4 w-4 text-neutral-400' />
+                              )}
+                            </Button>
+                          </div>
+                        )}
                       </div>
                     </div>
                   ))}
@@ -422,10 +641,29 @@ export function ComponentDemo({
               {props.length > 0 && (
                 <TabsContent value='props' className='mt-8'>
                   <div className='overflow-hidden rounded-2xl border border-neutral-200/80 dark:border-neutral-700/50 bg-white/50 dark:bg-neutral-900/50 backdrop-blur-sm'>
+                    {/* Props Header */}
+                    <div className='flex items-center justify-between p-6 border-b border-neutral-200/50 dark:border-neutral-700/30 bg-neutral-50/50 dark:bg-neutral-800/50'>
+                      <div className='flex items-center gap-4'>
+                        <div className='p-3 rounded-xl bg-indigo-50 dark:bg-indigo-950/30'>
+                          <Settings className='h-5 w-5 text-indigo-600 dark:text-indigo-400' />
+                        </div>
+                        <div>
+                          <h3 className='text-lg font-semibold text-neutral-900 dark:text-neutral-50'>API Referansı</h3>
+                          <p className='text-neutral-600 dark:text-neutral-400'>
+                            {props.length} mevcut prop parametresi
+                          </p>
+                        </div>
+                      </div>
+                      <Badge variant='outline' className='text-sm px-3 py-1'>
+                        {props.length} Props
+                      </Badge>
+                    </div>
+
+                    {/* Props Tablosu */}
                     <div className='overflow-x-auto'>
                       <table className='w-full'>
                         <thead>
-                          <tr className='border-b border-neutral-200/80 dark:border-neutral-700/50 bg-neutral-50/50 dark:bg-neutral-800/50'>
+                          <tr className='border-b border-neutral-200/50 dark:border-neutral-700/30 bg-neutral-50/30 dark:bg-neutral-800/30'>
                             <th className='text-left p-6 font-semibold text-neutral-900 dark:text-neutral-50'>
                               Property
                             </th>
