@@ -138,8 +138,6 @@ export { useAuth } from './hooks/useAuth'
 
 export { useForm } from './hooks/useForm'
 
-export { useFormValidation, customValidations, commonSchemas } from './hooks/useFormValidation'
-
 export { useTheme } from './hooks/useTheme'
 
 export { useLocale } from './hooks/useLocale'
@@ -147,10 +145,6 @@ export { useLocale } from './hooks/useLocale'
 export { useLocalStorage } from './hooks/useLocalStorage'
 
 export { useTokenManager, type UseTokenManagerReturn } from './hooks/useTokenManager'
-
-export { useErrorHandler } from './hooks/useErrorHandler'
-
-export { useComponentSearch, type ComponentItem } from './hooks/useComponentSearch'
 
 // Utilities
 export { cn, debounce, isDarkMode, get, storage, formatDate, sanitizeHtml } from './lib/utils'
@@ -342,9 +336,6 @@ export { default as i18n } from './locales'
 
 // Security Utils
 export { secureStorage } from './utils/security'
-
-// Mock Data
-export { mockComponents, categoryColors, statusColors } from './data/mockComponents'
 
 export { componentDemoData } from './data/componentDemoData'
 

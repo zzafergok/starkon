@@ -42,7 +42,7 @@ npm install create-starkon-template
 
 - **React Hook Form Entegrasyonu**: Performanslı form yönetimi
 - **Zod Validation**: TypeScript-first şema doğrulama
-- **Özelleştirilmiş Hook'lar**: `useForm`, `useFormValidation`
+- **Özelleştirilmiş Hook'lar**: `useForm`
 - **Otomatik Hata Çevirileri**: Çoklu dil hata mesajları
 
 ### 🔄 State Management
@@ -228,7 +228,6 @@ sea-ui-kit/
 │   │   ├── useAuth.ts
 │   │   ├── useForm.ts
 │   │   ├── useTheme.ts
-│   │   └── useFormValidation.ts
 │   │
 │   ├── lib/                   # Utility kütüphaneleri
 │   │   ├── utils.ts
@@ -382,7 +381,6 @@ export default function LoginPage() {
 - `useForm(schema, options)`: Form yönetimi
 - `useTheme()`: Tema yönetimi
 - `useAuth()`: Authentication yönetimi
-- `useFormValidation(schema)`: Gelişmiş form validation
 
 ### Utility Fonksiyonları
 
