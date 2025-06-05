@@ -67,7 +67,7 @@ export const componentDemoData = [
     description: 'Seçim yapma işlemleri için kullanılan onay kutusu bileşeni',
     category: 'Form & Input',
     status: 'stable',
-    demoComponent: React.createElement('div', { className: 'space-y-3' }, [
+    demoComponent: React.createElement('div', { key: 'checkbox-component-1', className: 'space-y-3' }, [
       React.createElement('div', { key: 'checkbox-item-1', className: 'flex items-center space-x-2' }, [
         React.createElement(Checkbox, { key: 'cb1', id: 'terms1', defaultChecked: true }),
         React.createElement(
@@ -130,7 +130,7 @@ function Example() {
     </div>
   </div>
 </div>`,
-        component: React.createElement('div', { className: 'space-y-2' }, [
+        component: React.createElement('div', { key: 'checkbox-item-2', className: 'space-y-2' }, [
           React.createElement('p', { key: 'title', className: 'font-medium' }, 'İlgi Alanlarınız:'),
           React.createElement('div', { key: 'group', className: 'space-y-2' }, [
             React.createElement('div', { key: 'frontend', className: 'flex items-center space-x-2' }, [
@@ -138,8 +138,8 @@ function Example() {
               React.createElement('label', { key: 'label', htmlFor: 'frontend-demo' }, 'Frontend Development'),
             ]),
             React.createElement('div', { key: 'backend', className: 'flex items-center space-x-2' }, [
-              React.createElement(Checkbox, { key: 'cb', id: 'backend-demo' }),
-              React.createElement('label', { key: 'label', htmlFor: 'backend-demo' }, 'Backend Development'),
+              React.createElement(Checkbox, { key: 'cb2', id: 'backend-demo' }),
+              React.createElement('label', { key: 'label1', htmlFor: 'backend-demo' }, 'Backend Development'),
             ]),
           ]),
         ]),
@@ -177,16 +177,16 @@ function Example() {
     description: 'Açma/kapama işlemleri için kullanılan toggle switch bileşeni',
     category: 'Form & Input',
     status: 'stable',
-    demoComponent: React.createElement('div', { className: 'space-y-4' }, [
-      React.createElement('div', { key: 'switch-item1', className: 'flex items-center justify-between gap-4' }, [
+    demoComponent: React.createElement('div', { key: 'switch-item-1', className: 'space-y-4' }, [
+      React.createElement('div', { key: 'switch-item-2', className: 'flex items-center justify-between gap-4' }, [
         React.createElement('span', { key: 'switch-label1', className: 'text-sm font-medium' }, 'Bildirimler'),
         React.createElement(Switch, { key: 'switch1', defaultChecked: true }),
       ]),
-      React.createElement('div', { key: 'switch-item2', className: 'flex items-center justify-between gap-4' }, [
+      React.createElement('div', { key: 'switch-item-3', className: 'flex items-center justify-between gap-4' }, [
         React.createElement('span', { key: 'switch-label2', className: 'text-sm font-medium' }, 'Email Güncellemeleri'),
         React.createElement(Switch, { key: 'switch2' }),
       ]),
-      React.createElement('div', { key: 'switch-item3', className: 'flex items-center justify-between gap-4' }, [
+      React.createElement('div', { key: 'switch-item-4', className: 'flex items-center justify-between gap-4' }, [
         React.createElement(
           'span',
           { key: 'switch-label3', className: 'text-sm font-medium text-neutral-400' },
@@ -247,7 +247,7 @@ function Example() {
     description: 'Seçenekler arasından seçim yapmak için kullanılan dropdown bileşeni',
     category: 'Form & Input',
     status: 'stable',
-    demoComponent: React.createElement('div', { className: 'space-y-3 w-full max-w-sm' }, [
+    demoComponent: React.createElement('div', { key: 'select-item-1', className: 'space-y-3 w-full max-w-sm' }, [
       React.createElement(Select, { key: 'basic' }, [
         React.createElement(SelectTrigger, { key: 'trigger' }, [
           React.createElement(SelectValue, { key: 'value', placeholder: 'Ülke seçin' }),
@@ -307,18 +307,18 @@ function Example() {
     description: 'Çeşitli stillerde yükleme animasyonları',
     category: 'Geri Bildirim',
     status: 'stable',
-    demoComponent: React.createElement('div', { className: 'flex items-center space-x-6' }, [
+    demoComponent: React.createElement('div', { key: 'loading-item-1', className: 'flex items-center space-x-6' }, [
       React.createElement('div', { key: 'spinner', className: 'text-center space-y-2' }, [
         React.createElement(LoadingSpinner, { key: 'component', size: 'lg' }),
-        React.createElement('p', { key: 'label', className: 'text-xs text-neutral-500' }, 'Spinner'),
+        React.createElement('p', { key: 'label2', className: 'text-xs text-neutral-500' }, 'Spinner'),
       ]),
       React.createElement('div', { key: 'dots', className: 'text-center space-y-2' }, [
-        React.createElement(LoadingDots, { key: 'component', size: 'lg' }),
-        React.createElement('p', { key: 'label', className: 'text-xs text-neutral-500' }, 'Dots'),
+        React.createElement(LoadingDots, { key: 'component2', size: 'lg' }),
+        React.createElement('p', { key: 'label3', className: 'text-xs text-neutral-500' }, 'Dots'),
       ]),
       React.createElement('div', { key: 'pulse', className: 'text-center space-y-2' }, [
-        React.createElement(LoadingPulse, { key: 'component', size: 'lg' }),
-        React.createElement('p', { key: 'label', className: 'text-xs text-neutral-500' }, 'Pulse'),
+        React.createElement(LoadingPulse, { key: 'component3', size: 'lg' }),
+        React.createElement('p', { key: 'label4', className: 'text-xs text-neutral-500' }, 'Pulse'),
       ]),
     ]),
     code: `import { LoadingSpinner, LoadingDots, LoadingPulse } from '@/components/Loading/LoadingSpinner'
@@ -368,7 +368,7 @@ function Example() {
     description: 'İçerik yükleme durumu için placeholder bileşenleri',
     category: 'Geri Bildirim',
     status: 'stable',
-    demoComponent: React.createElement('div', { className: 'space-y-4 w-full max-w-sm' }, [
+    demoComponent: React.createElement('div', { key: 'skeleton-item-1', className: 'space-y-4 w-full max-w-sm' }, [
       React.createElement('div', { key: 'header', className: 'flex items-center space-x-4' }, [
         React.createElement(SkeletonAvatar, { key: 'avatar', size: 48 }),
         React.createElement('div', { key: 'info', className: 'space-y-2 flex-1' }, [
@@ -427,9 +427,9 @@ function Example() {
     description: 'Çok satırlı metin girişi bileşeni',
     category: 'Form & Input',
     status: 'stable',
-    demoComponent: React.createElement('div', { className: 'space-y-4 w-full max-w-sm' }, [
+    demoComponent: React.createElement('div', { key: 'textarea-item-1', className: 'space-y-4 w-full max-w-sm' }, [
       React.createElement(Textarea, {
-        key: 'basic',
+        key: 'basic2',
         placeholder: 'Temel textarea...',
         rows: 3,
       }),
@@ -646,7 +646,7 @@ function Example() {
     status: 'stable',
     demoComponent: React.createElement(
       'div',
-      { className: 'flex flex-wrap gap-4 items-center justify-center min-h-[120px]' },
+      { key: 'alert-dialog-item-1', className: 'flex flex-wrap gap-4 items-center justify-center min-h-[120px]' },
       [
         // Temel Bilgi Dialog Butonu
         React.createElement(
@@ -677,6 +677,7 @@ function Example() {
                   React.createElement(
                     'div',
                     {
+                      key: 'alert-dialog-item-2',
                       className:
                         'fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-white p-6 shadow-lg duration-200 rounded-lg',
                       onClick: (e: any) => e.stopPropagation(),
@@ -684,7 +685,7 @@ function Example() {
                     [
                       React.createElement(
                         'div',
-                        { key: 'header', className: 'flex flex-col space-y-2 text-center sm:text-left' },
+                        { key: 'header-2', className: 'flex flex-col space-y-2 text-center sm:text-left' },
                         [
                           React.createElement(
                             'h2',
@@ -760,6 +761,7 @@ function Example() {
                   React.createElement(
                     'div',
                     {
+                      key: 'alert-dialog-item-3',
                       className:
                         'fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-white p-6 shadow-lg duration-200 rounded-lg',
                       onClick: (e: any) => e.stopPropagation(),
@@ -767,7 +769,7 @@ function Example() {
                     [
                       React.createElement(
                         'div',
-                        { key: 'header', className: 'flex flex-col space-y-2 text-center sm:text-left' },
+                        { key: 'header-3', className: 'flex flex-col space-y-2 text-center sm:text-left' },
                         [
                           React.createElement(
                             'h2',
@@ -843,6 +845,7 @@ function Example() {
                   React.createElement(
                     'div',
                     {
+                      key: 'alert-dialog-item-4',
                       className:
                         'fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-white p-6 shadow-lg duration-200 rounded-lg',
                       onClick: (e: any) => e.stopPropagation(),
@@ -850,7 +853,7 @@ function Example() {
                     [
                       React.createElement(
                         'div',
-                        { key: 'header', className: 'flex flex-col space-y-2 text-center sm:text-left' },
+                        { key: 'header-4', className: 'flex flex-col space-y-2 text-center sm:text-left' },
                         [
                           React.createElement(
                             'h2',
@@ -1058,6 +1061,7 @@ function Example() {
         component: React.createElement(
           'div',
           {
+            key: 'alert-dialog-item-5',
             className: 'p-4 bg-green-50 dark:bg-green-950/20 rounded-lg border border-green-200 dark:border-green-800',
           },
           [
@@ -1072,7 +1076,7 @@ function Example() {
             React.createElement(
               'p',
               {
-                key: 'text',
+                key: 'text2',
                 className: 'text-sm text-green-700 dark:text-green-300',
               },
               'Form gönderme işlemlerinde kullanıcı onayı sistemi - veri güvenliği için kritik',
@@ -1179,6 +1183,7 @@ function Example() {
         component: React.createElement(
           'div',
           {
+            key: 'alert-dialog-item-6',
             className: 'p-4 bg-amber-50 dark:bg-amber-950/20 rounded-lg border border-amber-200 dark:border-amber-800',
           },
           [
@@ -1193,7 +1198,7 @@ function Example() {
             React.createElement(
               'p',
               {
-                key: 'text',
+                key: 'text3',
                 className: 'text-sm text-amber-700 dark:text-amber-300',
               },
               'Sistem durumu uyarıları - proaktif kullanıcı bilgilendirme sistemi',
@@ -1336,6 +1341,7 @@ function Example() {
         component: React.createElement(
           'div',
           {
+            key: 'alert-dialog-item-7',
             className: 'p-4 bg-blue-50 dark:bg-blue-950/20 rounded-lg border border-blue-200 dark:border-blue-800',
           },
           [
@@ -1350,7 +1356,7 @@ function Example() {
             React.createElement(
               'p',
               {
-                key: 'text',
+                key: 'text4',
                 className: 'text-sm text-blue-700 dark:text-blue-300',
               },
               'Toplu işlemler için detaylı onay sistemi - seçim listesi ve özet bilgiler ile',
@@ -1385,14 +1391,14 @@ function Example() {
     description: 'Kullanıcı profil resmi gösterimi için kullanılan bileşen, fallback desteği ile',
     category: 'Veri Gösterimi',
     status: 'stable',
-    demoComponent: React.createElement('div', { className: 'flex items-center space-x-4' }, [
+    demoComponent: React.createElement('div', { key: 'avatar-item-1', className: 'flex items-center space-x-4' }, [
       React.createElement('div', { key: 'avatar1', className: 'flex flex-col items-center space-y-2' }, [
         React.createElement(
           'div',
           { key: 'container', className: 'w-12 h-12 bg-primary-500 rounded-full flex items-center justify-center' },
-          React.createElement('span', { className: 'text-white font-medium' }, 'JD'),
+          React.createElement('span', { key: 'avatar-item-2', className: 'text-white font-medium' }, 'JD'),
         ),
-        React.createElement('span', { key: 'label', className: 'text-xs text-neutral-500' }, 'Varsayılan'),
+        React.createElement('span', { key: 'label5', className: 'text-xs text-neutral-500' }, 'Varsayılan'),
       ]),
       React.createElement('div', { key: 'avatar2', className: 'flex flex-col items-center space-y-2' }, [
         React.createElement(
@@ -1402,9 +1408,9 @@ function Example() {
             className:
               'w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center',
           },
-          React.createElement('span', { className: 'text-white font-medium' }, 'AB'),
+          React.createElement('span', { key: 'avatar-item-3', className: 'text-white font-medium' }, 'AB'),
         ),
-        React.createElement('span', { key: 'label', className: 'text-xs text-neutral-500' }, 'Renkli'),
+        React.createElement('span', { key: 'label6', className: 'text-xs text-neutral-500' }, 'Renkli'),
       ]),
       React.createElement('div', { key: 'avatar3', className: 'flex flex-col items-center space-y-2' }, [
         React.createElement(
@@ -1413,9 +1419,13 @@ function Example() {
             key: 'container',
             className: 'w-12 h-12 bg-neutral-200 dark:bg-neutral-700 rounded-full flex items-center justify-center',
           },
-          React.createElement('span', { className: 'text-neutral-600 dark:text-neutral-300 text-lg' }, '👤'),
+          React.createElement(
+            'span',
+            { key: 'avatar-item-4', className: 'text-neutral-600 dark:text-neutral-300 text-lg' },
+            '👤',
+          ),
         ),
-        React.createElement('span', { key: 'label', className: 'text-xs text-neutral-500' }, 'Icon'),
+        React.createElement('span', { key: 'label7', className: 'text-xs text-neutral-500' }, 'Icon'),
       ]),
     ]),
     code: `import { Avatar, AvatarFallback, AvatarImage } from '@/components/Avatar/Avatar'
@@ -1468,7 +1478,7 @@ function Example() {
     description: 'Farklı varyant ve boyutlarda etkileşimli buton bileşeni',
     category: 'Form & Input',
     status: 'stable',
-    demoComponent: React.createElement('div', { className: 'grid grid-cols-2 gap-4' }, [
+    demoComponent: React.createElement('div', { key: 'button-item-1', className: 'grid grid-cols-2 gap-4' }, [
       React.createElement(
         'button',
         {
@@ -1555,11 +1565,12 @@ function Example() {
     demoComponent: React.createElement(
       'div',
       {
+        key: 'card-item-1',
         className:
           'w-full max-w-sm border border-neutral-200 dark:border-neutral-700 rounded-lg bg-white dark:bg-neutral-800 p-6 space-y-4',
       },
       [
-        React.createElement('div', { key: 'header', className: 'space-y-2' }, [
+        React.createElement('div', { key: 'header-5', className: 'space-y-2' }, [
           React.createElement('h3', { key: 'title', className: 'text-lg font-semibold' }, 'Kart Başlığı'),
           React.createElement(
             'p',
@@ -1569,7 +1580,7 @@ function Example() {
         ]),
         React.createElement(
           'div',
-          { key: 'content', className: 'text-sm' },
+          { key: 'content2', className: 'text-sm' },
           'Kart içeriği burada yer alır. Metin, resim, buton ve diğer bileşenler eklenebilir.',
         ),
         React.createElement(
@@ -1656,6 +1667,7 @@ function Example() {
     demoComponent: React.createElement(
       'div',
       {
+        key: 'checcommand-menukbox-item-1',
         className:
           'w-full max-w-md border border-neutral-200 dark:border-neutral-700 rounded-lg bg-white dark:bg-neutral-800',
       },
@@ -1682,7 +1694,7 @@ function Example() {
                 'flex items-center justify-between px-2 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-700 rounded text-sm cursor-pointer',
             },
             [
-              React.createElement('span', { key: 'text' }, 'Yeni Dosya Oluştur'),
+              React.createElement('span', { key: 'text5' }, 'Yeni Dosya Oluştur'),
               React.createElement('span', { key: 'shortcut', className: 'text-xs text-neutral-500' }, '⌘N'),
             ],
           ),
@@ -1694,7 +1706,7 @@ function Example() {
                 'flex items-center justify-between px-2 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-700 rounded text-sm cursor-pointer',
             },
             [
-              React.createElement('span', { key: 'text' }, 'Ayarları Aç'),
+              React.createElement('span', { key: 'text6' }, 'Ayarları Aç'),
               React.createElement('span', { key: 'shortcut', className: 'text-xs text-neutral-500' }, '⌘,'),
             ],
           ),
@@ -1765,12 +1777,15 @@ function Example() {
     status: 'stable',
     demoComponent: React.createElement(
       'div',
-      { className: 'w-full border border-neutral-200 dark:border-neutral-700 rounded-lg overflow-hidden' },
+      {
+        key: 'data-table-item-1',
+        className: 'w-full border border-neutral-200 dark:border-neutral-700 rounded-lg overflow-hidden',
+      },
       [
         React.createElement(
           'div',
           {
-            key: 'header',
+            key: 'header-6',
             className:
               'bg-neutral-50 dark:bg-neutral-800 px-4 py-3 border-b border-neutral-200 dark:border-neutral-700',
           },
@@ -1788,11 +1803,11 @@ function Example() {
           React.createElement(
             'thead',
             { key: 'thead', className: 'bg-neutral-50 dark:bg-neutral-800' },
-            React.createElement('tr', { key: 'tr' }, [
-              React.createElement('th', { key: 'name', className: 'px-4 py-3 text-left text-sm font-medium' }, 'İsim'),
+            React.createElement('tr', { key: 'tr2' }, [
+              React.createElement('th', { key: 'name2', className: 'px-4 py-3 text-left text-sm font-medium' }, 'İsim'),
               React.createElement(
                 'th',
-                { key: 'email', className: 'px-4 py-3 text-left text-sm font-medium' },
+                { key: 'email2', className: 'px-4 py-3 text-left text-sm font-medium' },
                 'Email',
               ),
               React.createElement('th', { key: 'role', className: 'px-4 py-3 text-left text-sm font-medium' }, 'Rol'),
@@ -1803,13 +1818,13 @@ function Example() {
             { key: 'tbody', className: 'divide-y divide-neutral-200 dark:divide-neutral-700' },
             [
               React.createElement('tr', { key: 'row1', className: 'hover:bg-neutral-50 dark:hover:bg-neutral-800' }, [
-                React.createElement('td', { key: 'name', className: 'px-4 py-3 text-sm' }, 'Ahmet Yılmaz'),
-                React.createElement('td', { key: 'email', className: 'px-4 py-3 text-sm' }, 'ahmet@example.com'),
+                React.createElement('td', { key: 'name3', className: 'px-4 py-3 text-sm' }, 'Ahmet Yılmaz'),
+                React.createElement('td', { key: 'email3', className: 'px-4 py-3 text-sm' }, 'ahmet@example.com'),
                 React.createElement('td', { key: 'role', className: 'px-4 py-3 text-sm' }, 'Admin'),
               ]),
               React.createElement('tr', { key: 'row2', className: 'hover:bg-neutral-50 dark:hover:bg-neutral-800' }, [
-                React.createElement('td', { key: 'name', className: 'px-4 py-3 text-sm' }, 'Zeynep Kaya'),
-                React.createElement('td', { key: 'email', className: 'px-4 py-3 text-sm' }, 'zeynep@example.com'),
+                React.createElement('td', { key: 'name4', className: 'px-4 py-3 text-sm' }, 'Zeynep Kaya'),
+                React.createElement('td', { key: 'email4', className: 'px-4 py-3 text-sm' }, 'zeynep@example.com'),
                 React.createElement('td', { key: 'role', className: 'px-4 py-3 text-sm' }, 'Kullanıcı'),
               ]),
             ],
@@ -2654,6 +2669,7 @@ function ConfirmationDialog() {
         component: React.createElement(
           'div',
           {
+            key: 'button-item-5',
             className: 'p-4 bg-red-50 dark:bg-red-950/20 rounded-lg border border-red-200 dark:border-red-800',
           },
           [
@@ -2668,7 +2684,7 @@ function ConfirmationDialog() {
             React.createElement(
               'p',
               {
-                key: 'text',
+                key: 'text7',
                 className: 'text-sm text-red-700 dark:text-red-300',
               },
               'Kritik işlemler için onay dialog sistemi',
@@ -2706,6 +2722,7 @@ function ConfirmationDialog() {
         component: React.createElement(
           'div',
           {
+            key: 'checkbox-item-6',
             className: 'p-4 bg-blue-50 dark:bg-blue-950/20 rounded-lg border border-blue-200 dark:border-blue-800',
           },
           [
@@ -2720,7 +2737,7 @@ function ConfirmationDialog() {
             React.createElement(
               'p',
               {
-                key: 'text',
+                key: 'text8',
                 className: 'text-sm text-blue-700 dark:text-blue-300',
               },
               'Bilgi verme amaçlı dialog sistemi',
@@ -2771,6 +2788,7 @@ function ConfirmationDialog() {
         component: React.createElement(
           'div',
           {
+            key: 'button-item-7',
             className: 'p-4 bg-green-50 dark:bg-green-950/20 rounded-lg border border-green-200 dark:border-green-800',
           },
           [
@@ -2785,7 +2803,7 @@ function ConfirmationDialog() {
             React.createElement(
               'p',
               {
-                key: 'text',
+                key: 'text9',
                 className: 'text-sm text-green-700 dark:text-green-300',
               },
               'Büyük içerik ve form alanları için dialog',
@@ -2832,7 +2850,7 @@ function ConfirmationDialog() {
     description: 'Sürükle-bırak özelliği ile öğeleri yeniden sıralayabileceğiniz liste bileşeni',
     category: 'Navigasyon',
     status: 'beta',
-    demoComponent: React.createElement('div', { className: 'w-full max-w-md space-y-2' }, [
+    demoComponent: React.createElement('div', { key: 'drag-item-1', className: 'w-full max-w-md space-y-2' }, [
       React.createElement(
         'div',
         {
@@ -2842,7 +2860,7 @@ function ConfirmationDialog() {
         },
         [
           React.createElement('span', { key: 'handle', className: 'text-neutral-400 mr-3 cursor-grab' }, '⋮⋮'),
-          React.createElement('span', { key: 'content', className: 'flex-1' }, 'Öğe 1'),
+          React.createElement('span', { key: 'content3', className: 'flex-1' }, 'Öğe 1'),
           React.createElement('button', { key: 'remove', className: 'text-red-500 hover:text-red-700 ml-2' }, '✕'),
         ],
       ),
@@ -2855,7 +2873,7 @@ function ConfirmationDialog() {
         },
         [
           React.createElement('span', { key: 'handle', className: 'text-neutral-400 mr-3 cursor-grab' }, '⋮⋮'),
-          React.createElement('span', { key: 'content', className: 'flex-1' }, 'Öğe 2'),
+          React.createElement('span', { key: 'content4', className: 'flex-1' }, 'Öğe 2'),
           React.createElement('button', { key: 'remove', className: 'text-red-500 hover:text-red-700 ml-2' }, '✕'),
         ],
       ),
@@ -2868,7 +2886,7 @@ function ConfirmationDialog() {
         },
         [
           React.createElement('span', { key: 'handle', className: 'text-neutral-400 mr-3 cursor-grab' }, '⋮⋮'),
-          React.createElement('span', { key: 'content', className: 'flex-1' }, 'Öğe 3'),
+          React.createElement('span', { key: 'content5', className: 'flex-1' }, 'Öğe 3'),
           React.createElement('button', { key: 'remove', className: 'text-red-500 hover:text-red-700 ml-2' }, '✕'),
         ],
       ),
@@ -2917,7 +2935,7 @@ renderItem={(item, index) => (
 </div>
 )}
 />`,
-        component: React.createElement('div', { className: 'space-y-2' }, [
+        component: React.createElement('div', { key: 'drag-item-2', className: 'space-y-2' }, [
           React.createElement(
             'div',
             {
@@ -2931,8 +2949,8 @@ renderItem={(item, index) => (
                 { key: 'badge', className: 'bg-primary-100 text-primary-800 px-2 py-1 rounded text-xs' },
                 '1',
               ),
-              React.createElement('span', { key: 'content', className: 'flex-1' }, 'Özelleştirilmiş Öğe'),
-              React.createElement('span', { key: 'label', className: 'text-xs text-neutral-500' }, 'Özelleştirilmiş'),
+              React.createElement('span', { key: 'content6', className: 'flex-1' }, 'Özelleştirilmiş Öğe'),
+              React.createElement('span', { key: 'label8', className: 'text-xs text-neutral-500' }, 'Özelleştirilmiş'),
             ],
           ),
         ]),
@@ -2947,20 +2965,6 @@ renderItem={(item, index) => (
     category: 'Form & Input',
     status: 'stable',
     demoComponent: React.createElement(() => {
-      const { useState, useCallback } = React
-
-      interface MyFormState {
-        values: { email: string; name: string; message: string }
-        errors: { email?: string; name?: string; message?: string }
-        touched: { email?: boolean; name?: boolean; message?: boolean }
-      }
-
-      const [formState, setFormState] = useState({
-        values: { email: '', name: '', message: '' },
-        errors: {},
-        touched: {},
-      })
-
       return React.createElement(
         'div',
         {
@@ -3160,7 +3164,7 @@ renderItem={(item, index) => (
   })`,
         component: React.createElement(
           'div',
-          { className: 'text-sm text-neutral-600 dark:text-neutral-400' },
+          { key: 'form-item-1', className: 'text-sm text-neutral-600 dark:text-neutral-400' },
           'Gelişmiş validation kuralları ile form yönetimi',
         ),
       },
@@ -3192,87 +3196,91 @@ renderItem={(item, index) => (
     description: 'Radix UI tabanlı erişilebilir dropdown menü bileşeni',
     category: 'Navigasyon',
     status: 'stable',
-    demoComponent: React.createElement('div', { className: 'flex items-center justify-center p-4' }, [
-      React.createElement(DropdownMenu, { key: 'dropdown' }, [
-        React.createElement(
-          DropdownMenuTrigger,
-          {
-            key: 'trigger',
-            asChild: true,
-          },
+    demoComponent: React.createElement(
+      'div',
+      { key: 'dropdown-item-1', className: 'flex items-center justify-center p-4' },
+      [
+        React.createElement(DropdownMenu, { key: 'dropdown' }, [
           React.createElement(
-            'button',
+            DropdownMenuTrigger,
             {
-              key: 'button',
-              className:
-                'inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-neutral-200 bg-white hover:bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-950 dark:hover:bg-neutral-800 h-10 px-4 py-2 min-w-[120px]',
+              key: 'trigger1',
+              asChild: true,
+            },
+            React.createElement(
+              'button',
+              {
+                key: 'button',
+                className:
+                  'inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-neutral-200 bg-white hover:bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-950 dark:hover:bg-neutral-800 h-10 px-4 py-2 min-w-[120px]',
+              },
+              [
+                React.createElement('span', { key: 'text10', className: 'mr-2' }, 'Seçenekler'),
+                React.createElement(MoreHorizontal, { key: 'icon', className: 'h-4 w-4' }),
+              ],
+            ),
+          ),
+          React.createElement(
+            DropdownMenuContent,
+            {
+              key: 'content7',
+              className: 'w-56',
+              align: 'start',
+              sideOffset: 4,
             },
             [
-              React.createElement('span', { key: 'text', className: 'mr-2' }, 'Seçenekler'),
-              React.createElement(MoreHorizontal, { key: 'icon', className: 'h-4 w-4' }),
+              React.createElement(DropdownMenuLabel, { key: 'label9' }, 'Hesap İşlemleri'),
+              React.createElement(DropdownMenuSeparator, { key: 'sep1' }),
+              React.createElement(
+                DropdownMenuItem,
+                {
+                  key: 'item1',
+                  className: 'cursor-pointer',
+                },
+                [
+                  React.createElement('span', { key: 'icon', className: 'mr-2' }, '👤'),
+                  React.createElement('span', { key: 'text11' }, 'Profil'),
+                ],
+              ),
+              React.createElement(
+                DropdownMenuItem,
+                {
+                  key: 'item2',
+                  className: 'cursor-pointer',
+                },
+                [
+                  React.createElement('span', { key: 'icon', className: 'mr-2' }, '⚙️'),
+                  React.createElement('span', { key: 'text12' }, 'Ayarlar'),
+                ],
+              ),
+              React.createElement(
+                DropdownMenuItem,
+                {
+                  key: 'item3',
+                  className: 'cursor-pointer',
+                },
+                [
+                  React.createElement('span', { key: 'icon', className: 'mr-2' }, '💳'),
+                  React.createElement('span', { key: 'text13' }, 'Faturalandırma'),
+                ],
+              ),
+              React.createElement(DropdownMenuSeparator, { key: 'sep2' }),
+              React.createElement(
+                DropdownMenuItem,
+                {
+                  key: 'item4',
+                  className: 'text-red-600 dark:text-red-400 cursor-pointer',
+                },
+                [
+                  React.createElement('span', { key: 'icon', className: 'mr-2' }, '🚪'),
+                  React.createElement('span', { key: 'text14' }, 'Çıkış Yap'),
+                ],
+              ),
             ],
           ),
-        ),
-        React.createElement(
-          DropdownMenuContent,
-          {
-            key: 'content',
-            className: 'w-56',
-            align: 'start',
-            sideOffset: 4,
-          },
-          [
-            React.createElement(DropdownMenuLabel, { key: 'label' }, 'Hesap İşlemleri'),
-            React.createElement(DropdownMenuSeparator, { key: 'sep1' }),
-            React.createElement(
-              DropdownMenuItem,
-              {
-                key: 'item1',
-                className: 'cursor-pointer',
-              },
-              [
-                React.createElement('span', { key: 'icon', className: 'mr-2' }, '👤'),
-                React.createElement('span', { key: 'text' }, 'Profil'),
-              ],
-            ),
-            React.createElement(
-              DropdownMenuItem,
-              {
-                key: 'item2',
-                className: 'cursor-pointer',
-              },
-              [
-                React.createElement('span', { key: 'icon', className: 'mr-2' }, '⚙️'),
-                React.createElement('span', { key: 'text' }, 'Ayarlar'),
-              ],
-            ),
-            React.createElement(
-              DropdownMenuItem,
-              {
-                key: 'item3',
-                className: 'cursor-pointer',
-              },
-              [
-                React.createElement('span', { key: 'icon', className: 'mr-2' }, '💳'),
-                React.createElement('span', { key: 'text' }, 'Faturalandırma'),
-              ],
-            ),
-            React.createElement(DropdownMenuSeparator, { key: 'sep2' }),
-            React.createElement(
-              DropdownMenuItem,
-              {
-                key: 'item4',
-                className: 'text-red-600 dark:text-red-400 cursor-pointer',
-              },
-              [
-                React.createElement('span', { key: 'icon', className: 'mr-2' }, '🚪'),
-                React.createElement('span', { key: 'text' }, 'Çıkış Yap'),
-              ],
-            ),
-          ],
-        ),
-      ]),
-    ]),
+        ]),
+      ],
+    ),
     code: `import {
     DropdownMenu,
     DropdownMenuContent,
@@ -3350,9 +3358,7 @@ renderItem={(item, index) => (
   </DropdownMenu>`,
         component: React.createElement(
           'div',
-          {
-            className: 'text-sm text-neutral-600 dark:text-neutral-400',
-          },
+          { key: 'droopdown-item-2', className: 'text-sm text-neutral-600 dark:text-neutral-400' },
           'Seçilebilir öğeler ile filtreleme menüsü',
         ),
       },
@@ -3431,7 +3437,7 @@ renderItem={(item, index) => (
 />`,
         component: React.createElement(
           'div',
-          { className: 'text-sm text-neutral-600 dark:text-neutral-400' },
+          { key: 'file-upload-item-1', className: 'text-sm text-neutral-600 dark:text-neutral-400' },
           'Resim dosyaları için özelleştirilmiş upload alanı',
         ),
       },
@@ -3480,9 +3486,9 @@ renderItem={(item, index) => (
     description: 'Çeşitli varyant ve ikon desteği ile gelişmiş input bileşeni',
     category: 'Form & Input',
     status: 'stable',
-    demoComponent: React.createElement('div', { className: 'w-full max-w-md space-y-4' }, [
+    demoComponent: React.createElement('div', { key: 'input-item-1', className: 'w-full max-w-md space-y-4' }, [
       React.createElement(Input, {
-        key: 'basic',
+        key: 'basic3',
         placeholder: 'Temel input',
       }),
       React.createElement(Input, {
@@ -3491,7 +3497,7 @@ renderItem={(item, index) => (
         startIcon: React.createElement(Search, { className: 'h-4 w-4' }),
       }),
       React.createElement(Input, {
-        key: 'email',
+        key: 'email5',
         type: 'email',
         placeholder: 'E-posta adresiniz',
         startIcon: React.createElement(Mail, { className: 'h-4 w-4' }),
@@ -3557,7 +3563,7 @@ function Example() {
 />`,
         component: React.createElement(
           'div',
-          { className: 'text-sm text-neutral-600 dark:text-neutral-400' },
+          { key: 'input-item-2', className: 'text-sm text-neutral-600 dark:text-neutral-400' },
           'Form validation ile entegre input kullanımı',
         ),
       },
@@ -3599,19 +3605,19 @@ function Example() {
     description: 'Form alanları için erişilebilir etiket bileşeni',
     category: 'Form & Input',
     status: 'stable',
-    demoComponent: React.createElement('div', { className: 'w-full max-w-md space-y-4' }, [
-      React.createElement('div', { key: 'basic', className: 'space-y-2' }, [
-        React.createElement(Label, { key: 'label', htmlFor: 'basic-input' }, 'Temel Label'),
+    demoComponent: React.createElement('div', { key: 'label-item-1', className: 'w-full max-w-md space-y-4' }, [
+      React.createElement('div', { key: 'basic4', className: 'space-y-2' }, [
+        React.createElement(Label, { key: 'label10', htmlFor: 'basic-input' }, 'Temel Label'),
         React.createElement(Input, { key: 'input', id: 'basic-input', placeholder: 'İlgili input' }),
       ]),
       React.createElement('div', { key: 'required', className: 'space-y-2' }, [
-        React.createElement(Label, { key: 'label', htmlFor: 'required-input', required: true }, 'Zorunlu Alan'),
+        React.createElement(Label, { key: 'label11', htmlFor: 'required-input', required: true }, 'Zorunlu Alan'),
         React.createElement(Input, { key: 'input', id: 'required-input', placeholder: 'Bu alan zorunludur' }),
       ]),
       React.createElement('div', { key: 'disabled', className: 'space-y-2' }, [
         React.createElement(
           Label,
-          { key: 'label', htmlFor: 'disabled-input', className: 'text-neutral-400' },
+          { key: 'label12', htmlFor: 'disabled-input', className: 'text-neutral-400' },
           'Devre Dışı',
         ),
         React.createElement(Input, {
@@ -3675,7 +3681,7 @@ function Example() {
 </div>`,
         component: React.createElement(
           'div',
-          { className: 'text-sm text-neutral-600 dark:text-neutral-400' },
+          { key: 'label-item-2', className: 'text-sm text-neutral-600 dark:text-neutral-400' },
           'Seçim bileşenleri ile label kullanımı',
         ),
       },
@@ -3758,7 +3764,7 @@ function Example() {
  />`,
         component: React.createElement(
           'div',
-          { className: 'text-sm text-neutral-600 dark:text-neutral-400' },
+          { key: 'page-header-item-1', className: 'text-sm text-neutral-600 dark:text-neutral-400' },
           'Geri buton ile minimal sayfa başlığı',
         ),
       },
@@ -3781,7 +3787,7 @@ function Example() {
  />`,
         component: React.createElement(
           'div',
-          { className: 'text-sm text-neutral-600 dark:text-neutral-400' },
+          { key: 'page-header-item-2', className: 'text-sm text-neutral-600 dark:text-neutral-400' },
           'E-ticaret ürün sayfası için sayfa başlığı',
         ),
       },
@@ -3844,13 +3850,13 @@ function Example() {
     description: 'Durum ve bilgi göstergesi için kullanılan esnek badge bileşeni',
     category: 'Veri Gösterimi',
     status: 'stable',
-    demoComponent: React.createElement('div', { className: 'flex flex-wrap gap-3 items-center' }, [
+    demoComponent: React.createElement('div', { key: 'badge-item-1', className: 'flex flex-wrap gap-3 items-center' }, [
       React.createElement(Badge, { key: 'default', variant: 'default' }, 'Varsayılan'),
       React.createElement(Badge, { key: 'secondary', variant: 'secondary' }, 'İkincil'),
       React.createElement(Badge, { key: 'success', variant: 'success' }, 'Başarılı'),
       React.createElement(Badge, { key: 'warning', variant: 'warning' }, 'Uyarı'),
       React.createElement(Badge, { key: 'error', variant: 'error' }, 'Hata'),
-      React.createElement(Badge, { key: 'info', variant: 'info' }, 'Bilgi'),
+      React.createElement(Badge, { key: 'info2', variant: 'info' }, 'Bilgi'),
       React.createElement(Badge, { key: 'outline', variant: 'outline' }, 'Çerçeveli'),
       React.createElement(Badge, { key: 'muted', variant: 'muted' }, 'Sessiz'),
     ]),
@@ -3879,7 +3885,7 @@ function Example() {
   <Badge size="md" variant="info">Orta</Badge>
   <Badge size="lg" variant="warning">Büyük</Badge>
 </div>`,
-        component: React.createElement('div', { className: 'flex items-center gap-3' }, [
+        component: React.createElement('div', { key: 'badge-item-2', className: 'flex items-center gap-3' }, [
           React.createElement(Badge, { key: 'sm', size: 'sm', variant: 'success' }, 'Küçük'),
           React.createElement(Badge, { key: 'md', size: 'md', variant: 'info' }, 'Orta'),
           React.createElement(Badge, { key: 'lg', size: 'lg', variant: 'warning' }, 'Büyük'),
@@ -3902,17 +3908,17 @@ function Example() {
     <Badge variant="success" size="sm">25</Badge>
   </div>
 </div>`,
-        component: React.createElement('div', { className: 'flex items-center gap-4' }, [
+        component: React.createElement('div', { key: 'badge-item-3', className: 'flex items-center gap-4' }, [
           React.createElement('div', { key: 'messages', className: 'flex items-center gap-2' }, [
-            React.createElement('span', { key: 'label', className: 'text-sm' }, 'Mesajlar'),
+            React.createElement('span', { key: 'label13', className: 'text-sm' }, 'Mesajlar'),
             React.createElement(Badge, { key: 'badge', variant: 'error', size: 'sm' }, '12'),
           ]),
           React.createElement('div', { key: 'notifications', className: 'flex items-center gap-2' }, [
-            React.createElement('span', { key: 'label', className: 'text-sm' }, 'Bildirimler'),
+            React.createElement('span', { key: 'label14', className: 'text-sm' }, 'Bildirimler'),
             React.createElement(Badge, { key: 'badge', variant: 'info', size: 'sm' }, '3'),
           ]),
           React.createElement('div', { key: 'completed', className: 'flex items-center gap-2' }, [
-            React.createElement('span', { key: 'label', className: 'text-sm' }, 'Tamamlanan'),
+            React.createElement('span', { key: 'label15', className: 'text-sm' }, 'Tamamlanan'),
             React.createElement(Badge, { key: 'badge', variant: 'success', size: 'sm' }, '25'),
           ]),
         ]),
@@ -3926,7 +3932,7 @@ function Example() {
   <Badge rounded="lg" variant="success">Yumuşak</Badge>
   <Badge rounded="full" variant="info">Yuvarlak</Badge>
 </div>`,
-        component: React.createElement('div', { className: 'flex items-center gap-3' }, [
+        component: React.createElement('div', { key: 'badge-item-4', className: 'flex items-center gap-3' }, [
           React.createElement(Badge, { key: 'sm', rounded: 'sm', variant: 'default' }, 'Keskin'),
           React.createElement(Badge, { key: 'md', rounded: 'md', variant: 'secondary' }, 'Orta'),
           React.createElement(Badge, { key: 'lg', rounded: 'lg', variant: 'success' }, 'Yumuşak'),
@@ -4355,9 +4361,7 @@ import { addDays } from 'date-fns'
   />`,
         component: React.createElement(
           'div',
-          {
-            className: 'text-sm text-neutral-600 dark:text-neutral-400 p-4 border rounded',
-          },
+          { key: 'data-grid-item-1', className: 'text-sm text-neutral-600 dark:text-neutral-400 p-4 border rounded' },
           'Seçili veya tüm verileri farklı formatlarda dışa aktarın',
         ),
       },
@@ -4535,6 +4539,7 @@ import { addDays } from 'date-fns'
         component: React.createElement(
           'div',
           {
+            key: 'rich-text-editor-item-1',
             className: 'text-sm text-neutral-600 dark:text-neutral-400 p-4 border rounded',
           },
           'Otomatik kaydetme, önizleme, tam ekran ve tüm formatları destekler',
@@ -4607,9 +4612,9 @@ import { addDays } from 'date-fns'
     description: 'Kullanıcıların bir değer aralığından seçim yapabilmesi için kullanılan kaydırıcı bileşeni',
     category: 'Form & Input',
     status: 'stable',
-    demoComponent: React.createElement('div', { className: 'space-y-6 w-full max-w-md' }, [
-      React.createElement('div', { key: 'basic', className: 'space-y-2' }, [
-        React.createElement('label', { key: 'label', className: 'text-sm font-medium' }, 'Temel Slider (0-100)'),
+    demoComponent: React.createElement('div', { key: 'slider-item-1', className: 'space-y-6 w-full max-w-md' }, [
+      React.createElement('div', { key: 'basic5', className: 'space-y-2' }, [
+        React.createElement('label', { key: 'label16', className: 'text-sm font-medium' }, 'Temel Slider (0-100)'),
         React.createElement(Slider, {
           key: 'slider',
           defaultValue: [50],
@@ -4619,7 +4624,7 @@ import { addDays } from 'date-fns'
         }),
       ]),
       React.createElement('div', { key: 'range', className: 'space-y-2' }, [
-        React.createElement('label', { key: 'label', className: 'text-sm font-medium' }, 'Aralık Slider (20-80)'),
+        React.createElement('label', { key: 'label17', className: 'text-sm font-medium' }, 'Aralık Slider (20-80)'),
         React.createElement(Slider, {
           key: 'slider',
           defaultValue: [20, 80],
@@ -4631,7 +4636,7 @@ import { addDays } from 'date-fns'
       React.createElement('div', { key: 'step', className: 'space-y-2' }, [
         React.createElement(
           'label',
-          { key: 'label', className: 'text-sm font-medium' },
+          { key: 'label18', className: 'text-sm font-medium' },
           'Adımlı Slider (0-10, step: 2)',
         ),
         React.createElement(Slider, {
@@ -4722,14 +4727,17 @@ import { addDays } from 'date-fns'
   )`,
         component: React.createElement(
           'div',
-          { className: 'flex items-center space-x-4 p-4 bg-neutral-100 dark:bg-neutral-800 rounded-lg' },
+          {
+            key: 'slider-item-2',
+            className: 'flex items-center space-x-4 p-4 bg-neutral-100 dark:bg-neutral-800 rounded-lg',
+          },
           [
             React.createElement(Button, { key: 'play', variant: 'ghost', size: 'sm' }, [
               React.createElement(Play, { key: 'icon', className: 'h-4 w-4' }),
             ]),
             React.createElement(Volume2, { key: 'volume', className: 'h-4 w-4' }),
             React.createElement(Slider, { key: 'slider', defaultValue: [75], max: 100, step: 1, className: 'flex-1' }),
-            React.createElement('span', { key: 'value', className: 'text-sm font-medium w-8' }, '75'),
+            React.createElement('span', { key: 'value2', className: 'text-sm font-medium w-8' }, '75'),
           ],
         ),
       },
@@ -4760,9 +4768,9 @@ import { addDays } from 'date-fns'
       </div>
     </div>
   )`,
-        component: React.createElement('div', { className: 'space-y-3' }, [
-          React.createElement('div', { key: 'header', className: 'flex justify-between items-center' }, [
-            React.createElement('label', { key: 'label', className: 'text-sm font-medium' }, 'Fiyat Aralığı'),
+        component: React.createElement('div', { key: 'slider-item-3', className: 'space-y-3' }, [
+          React.createElement('div', { key: 'header-7', className: 'flex justify-between items-center' }, [
+            React.createElement('label', { key: 'label19', className: 'text-sm font-medium' }, 'Fiyat Aralığı'),
             React.createElement('span', { key: 'range', className: 'text-sm text-neutral-600' }, '₺100 - ₺500'),
           ]),
           React.createElement(Slider, {
@@ -4829,10 +4837,10 @@ import { addDays } from 'date-fns'
     description: 'İçerik bölümlerini ayırmak için kullanılan çizgi bileşeni',
     category: 'Layout',
     status: 'stable',
-    demoComponent: React.createElement('div', { className: 'space-y-6 w-full max-w-md' }, [
+    demoComponent: React.createElement('div', { key: 'seperator-item-1', className: 'space-y-6 w-full max-w-md' }, [
       React.createElement('div', { key: 'horizontal', className: 'space-y-3' }, [
         React.createElement('h4', { key: 'title', className: 'text-sm font-medium' }, 'Yatay Separator'),
-        React.createElement('div', { key: 'content' }, [
+        React.createElement('div', { key: 'content8' }, [
           React.createElement('p', { key: 'p1', className: 'text-sm' }, 'İlk paragraf'),
           React.createElement(Separator, { key: 'sep', className: 'my-4' }),
           React.createElement('p', { key: 'p2', className: 'text-sm' }, 'İkinci paragraf'),
@@ -4840,7 +4848,7 @@ import { addDays } from 'date-fns'
       ]),
       React.createElement('div', { key: 'vertical', className: 'space-y-3' }, [
         React.createElement('h4', { key: 'title', className: 'text-sm font-medium' }, 'Dikey Separator'),
-        React.createElement('div', { key: 'content', className: 'flex items-center space-x-4 h-12' }, [
+        React.createElement('div', { key: 'content9', className: 'flex items-center space-x-4 h-12' }, [
           React.createElement('span', { key: 's1', className: 'text-sm' }, 'Sol'),
           React.createElement(Separator, { key: 'sep', orientation: 'vertical' }),
           React.createElement('span', { key: 's2', className: 'text-sm' }, 'Orta'),
@@ -4894,21 +4902,25 @@ import { addDays } from 'date-fns'
     <Separator orientation="vertical" className="h-4" />
     <span className="text-neutral-600">Laptop</span>
   </nav>`,
-        component: React.createElement('nav', { className: 'flex items-center space-x-2 text-sm' }, [
-          React.createElement(
-            'a',
-            { key: 'home', href: '/', className: 'text-primary-600 hover:text-primary-700' },
-            'Ana Sayfa',
-          ),
-          React.createElement(Separator, { key: 'sep1', orientation: 'vertical', className: 'h-4' }),
-          React.createElement(
-            'a',
-            { key: 'products', href: '/products', className: 'text-primary-600 hover:text-primary-700' },
-            'Ürünler',
-          ),
-          React.createElement(Separator, { key: 'sep2', orientation: 'vertical', className: 'h-4' }),
-          React.createElement('span', { key: 'current', className: 'text-neutral-600' }, 'Laptop'),
-        ]),
+        component: React.createElement(
+          'nav',
+          { key: 'seperator-item-2', className: 'flex items-center space-x-2 text-sm' },
+          [
+            React.createElement(
+              'a',
+              { key: 'home', href: '/', className: 'text-primary-600 hover:text-primary-700' },
+              'Ana Sayfa',
+            ),
+            React.createElement(Separator, { key: 'sep1', orientation: 'vertical', className: 'h-4' }),
+            React.createElement(
+              'a',
+              { key: 'products', href: '/products', className: 'text-primary-600 hover:text-primary-700' },
+              'Ürünler',
+            ),
+            React.createElement(Separator, { key: 'sep2', orientation: 'vertical', className: 'h-4' }),
+            React.createElement('span', { key: 'current', className: 'text-neutral-600' }, 'Laptop'),
+          ],
+        ),
       },
       {
         title: 'Card İçerik Ayrımı',
@@ -4944,22 +4956,22 @@ import { addDays } from 'date-fns'
       </div>
     </CardContent>
   </Card>`,
-        component: React.createElement(Card, { className: 'w-full max-w-md' }, [
-          React.createElement(CardHeader, { key: 'header' }, [
+        component: React.createElement(Card, { key: 'seperator-item-3', className: 'w-full max-w-md' }, [
+          React.createElement(CardHeader, { key: 'header-8' }, [
             React.createElement(CardTitle, { key: 'title' }, 'Kullanıcı Profili'),
             React.createElement(CardDescription, { key: 'desc' }, 'Hesap bilgilerinizi görüntüleyin'),
           ]),
           React.createElement(Separator, { key: 'sep1' }),
-          React.createElement(CardContent, { key: 'content', className: 'pt-6' }, [
-            React.createElement('div', { className: 'space-y-3' }, [
-              React.createElement('div', { key: 'name', className: 'flex justify-between' }, [
-                React.createElement('span', { key: 'label', className: 'font-medium' }, 'Ad Soyad:'),
-                React.createElement('span', { key: 'value' }, 'Ahmet Yılmaz'),
+          React.createElement(CardContent, { key: 'content10', className: 'pt-6' }, [
+            React.createElement('div', { key: 'seperator-item-9', className: 'space-y-3' }, [
+              React.createElement('div', { key: 'name5', className: 'flex justify-between' }, [
+                React.createElement('span', { key: 'label20', className: 'font-medium' }, 'Ad Soyad:'),
+                React.createElement('span', { key: 'value3' }, 'Ahmet Yılmaz'),
               ]),
               React.createElement(Separator, { key: 'sep2' }),
-              React.createElement('div', { key: 'email', className: 'flex justify-between' }, [
-                React.createElement('span', { key: 'label', className: 'font-medium' }, 'Email:'),
-                React.createElement('span', { key: 'value' }, 'ahmet@example.com'),
+              React.createElement('div', { key: 'email6', className: 'flex justify-between' }, [
+                React.createElement('span', { key: 'label21', className: 'font-medium' }, 'Email:'),
+                React.createElement('span', { key: 'value4' }, 'ahmet@example.com'),
               ]),
             ]),
           ]),
@@ -4993,7 +5005,7 @@ import { addDays } from 'date-fns'
     description: 'İçeriği kategorilere ayırarak sekmeli navigasyon sağlayan bileşen',
     category: 'Navigasyon',
     status: 'stable',
-    demoComponent: React.createElement('div', { className: 'w-full max-w-md' }, [
+    demoComponent: React.createElement('div', { key: 'tabs-item-1', className: 'w-full max-w-md' }, [
       React.createElement(Tabs, { key: 'tabs', defaultValue: 'account', className: 'w-full' }, [
         React.createElement(TabsList, { key: 'list', className: 'grid w-full grid-cols-3' }, [
           React.createElement(TabsTrigger, { key: 'account', value: 'account' }, 'Hesap'),
@@ -5001,37 +5013,37 @@ import { addDays } from 'date-fns'
           React.createElement(TabsTrigger, { key: 'notifications', value: 'notifications' }, 'Bildirimler'),
         ]),
         React.createElement(TabsContent, { key: 'account-content', value: 'account', className: 'mt-4' }, [
-          React.createElement('div', { className: 'space-y-3' }, [
-            React.createElement('div', { key: 'name' }, [
-              React.createElement(Label, { key: 'label', htmlFor: 'name' }, 'Ad Soyad'),
+          React.createElement('div', { key: 'tabs-item-2', className: 'space-y-3' }, [
+            React.createElement('div', { key: 'name6' }, [
+              React.createElement(Label, { key: 'label22', htmlFor: 'name' }, 'Ad Soyad'),
               React.createElement(Input, { key: 'input', id: 'name', defaultValue: 'Ahmet Yılmaz' }),
             ]),
-            React.createElement('div', { key: 'email' }, [
-              React.createElement(Label, { key: 'label', htmlFor: 'email' }, 'Email'),
+            React.createElement('div', { key: 'email7' }, [
+              React.createElement(Label, { key: 'label23', htmlFor: 'email' }, 'Email'),
               React.createElement(Input, { key: 'input', id: 'email', defaultValue: 'ahmet@example.com' }),
             ]),
           ]),
         ]),
         React.createElement(TabsContent, { key: 'security-content', value: 'security', className: 'mt-4' }, [
-          React.createElement('div', { className: 'space-y-3' }, [
+          React.createElement('div', { key: 'tabs-item-3', className: 'space-y-3' }, [
             React.createElement('div', { key: 'current' }, [
-              React.createElement(Label, { key: 'label', htmlFor: 'current' }, 'Mevcut Şifre'),
+              React.createElement(Label, { key: 'label24', htmlFor: 'current' }, 'Mevcut Şifre'),
               React.createElement(Input, { key: 'input', id: 'current', type: 'password' }),
             ]),
             React.createElement('div', { key: 'new' }, [
-              React.createElement(Label, { key: 'label', htmlFor: 'new' }, 'Yeni Şifre'),
+              React.createElement(Label, { key: 'label25', htmlFor: 'new' }, 'Yeni Şifre'),
               React.createElement(Input, { key: 'input', id: 'new', type: 'password' }),
             ]),
           ]),
         ]),
         React.createElement(TabsContent, { key: 'notifications-content', value: 'notifications', className: 'mt-4' }, [
-          React.createElement('div', { className: 'space-y-3' }, [
+          React.createElement('div', { key: 'tabs-item-4', className: 'space-y-3' }, [
             React.createElement('div', { key: 'email-notif', className: 'flex items-center justify-between' }, [
-              React.createElement('span', { key: 'label', className: 'text-sm' }, 'Email Bildirimleri'),
+              React.createElement('span', { key: 'label26', className: 'text-sm' }, 'Email Bildirimleri'),
               React.createElement('input', { key: 'checkbox', type: 'checkbox', defaultChecked: true }),
             ]),
             React.createElement('div', { key: 'push-notif', className: 'flex items-center justify-between' }, [
-              React.createElement('span', { key: 'label', className: 'text-sm' }, 'Push Bildirimleri'),
+              React.createElement('span', { key: 'label27', className: 'text-sm' }, 'Push Bildirimleri'),
               React.createElement('input', { key: 'checkbox', type: 'checkbox' }),
             ]),
           ]),
@@ -5112,7 +5124,7 @@ import { addDays } from 'date-fns'
   </Tabs>`,
         component: React.createElement(
           'div',
-          { className: 'text-sm text-neutral-600 dark:text-neutral-400' },
+          { key: 'tabs-item-5', className: 'text-sm text-neutral-600 dark:text-neutral-400' },
           'Dashboard sekmeli navigasyon örneği',
         ),
       },
@@ -5148,7 +5160,7 @@ import { addDays } from 'date-fns'
   </Tabs>`,
         component: React.createElement(
           'div',
-          { className: 'text-sm text-neutral-600 dark:text-neutral-400' },
+          { key: 'tabs-item-6', className: 'text-sm text-neutral-600 dark:text-neutral-400' },
           'Ürün detay sekmeli organizasyon',
         ),
       },
@@ -5220,7 +5232,7 @@ import { addDays } from 'date-fns'
         [removeToast],
       )
 
-      return React.createElement('div', { className: 'space-y-4' }, [
+      return React.createElement('div', { key: 'toast-item-1', className: 'space-y-4' }, [
         React.createElement('div', { key: 'buttons', className: 'flex flex-wrap gap-2' }, [
           React.createElement(
             Button,
@@ -5255,7 +5267,7 @@ import { addDays } from 'date-fns'
           React.createElement(
             Button,
             {
-              key: 'info',
+              key: 'info3',
               variant: 'secondary',
               size: 'sm',
               onClick: () => showToast('info', 'Yeni güncellemeler mevcut.', 'Bilgi'),
@@ -5371,7 +5383,7 @@ import { addDays } from 'date-fns'
   )`,
         component: React.createElement(
           'div',
-          { className: 'text-sm text-neutral-600 dark:text-neutral-400' },
+          { key: 'toast-item-2', className: 'text-sm text-neutral-600 dark:text-neutral-400' },
           'Form gönderme bildirimi sistemi',
         ),
       },
@@ -5404,7 +5416,7 @@ import { addDays } from 'date-fns'
   )`,
         component: React.createElement(
           'div',
-          { className: 'text-sm text-neutral-600 dark:text-neutral-400' },
+          { key: 'toast-item-3', className: 'text-sm text-neutral-600 dark:text-neutral-400' },
           'Otomatik kaydetme bildirimi',
         ),
       },
@@ -5431,7 +5443,7 @@ import { addDays } from 'date-fns'
   }`,
         component: React.createElement(
           'div',
-          { className: 'text-sm text-neutral-600 dark:text-neutral-400' },
+          { key: 'toast-item-4', className: 'text-sm text-neutral-600 dark:text-neutral-400' },
           'Onay gerektiren işlem bildirimi',
         ),
       },
@@ -5489,26 +5501,26 @@ import { addDays } from 'date-fns'
     demoComponent: React.createElement(
       TooltipProvider,
       null,
-      React.createElement('div', { key: 'content', className: 'space-y-6 w-full max-w-md' }, [
-        React.createElement('div', { key: 'basic', className: 'space-y-3' }, [
+      React.createElement('div', { key: 'content11', className: 'space-y-6 w-full max-w-md' }, [
+        React.createElement('div', { key: 'basic6', className: 'space-y-3' }, [
           React.createElement('h4', { key: 'title', className: 'text-sm font-medium' }, 'Temel Tooltip'),
           React.createElement('div', { key: 'buttons', className: 'flex gap-4' }, [
             React.createElement(Tooltip, { key: 'tooltip1' }, [
-              React.createElement(TooltipTrigger, { key: 'trigger', asChild: true }, [
+              React.createElement(TooltipTrigger, { key: 'trigger2', asChild: true }, [
                 React.createElement(Button, { key: 'button', variant: 'outline' }, 'Üzerime gel'),
               ]),
-              React.createElement(TooltipContent, { key: 'content' }, [
-                React.createElement('p', { key: 'text' }, 'Bu bir tooltip mesajıdır'),
+              React.createElement(TooltipContent, { key: 'content12' }, [
+                React.createElement('p', { key: 'text15' }, 'Bu bir tooltip mesajıdır'),
               ]),
             ]),
             React.createElement(Tooltip, { key: 'tooltip2' }, [
-              React.createElement(TooltipTrigger, { key: 'trigger', asChild: true }, [
+              React.createElement(TooltipTrigger, { key: 'trigger3', asChild: true }, [
                 React.createElement(Button, { key: 'button', variant: 'outline', size: 'icon' }, [
                   React.createElement(Info, { key: 'icon', className: 'h-4 w-4' }),
                 ]),
               ]),
-              React.createElement(TooltipContent, { key: 'content', side: 'bottom' }, [
-                React.createElement('p', { key: 'text' }, 'Bilgi butonu'),
+              React.createElement(TooltipContent, { key: 'content13', side: 'bottom' }, [
+                React.createElement('p', { key: 'text16' }, 'Bilgi butonu'),
               ]),
             ]),
           ]),
@@ -5517,28 +5529,28 @@ import { addDays } from 'date-fns'
           React.createElement('h4', { key: 'title', className: 'text-sm font-medium' }, 'Farklı Konumlar'),
           React.createElement('div', { key: 'grid', className: 'grid grid-cols-2 gap-2' }, [
             React.createElement(Tooltip, { key: 'top' }, [
-              React.createElement(TooltipTrigger, { key: 'trigger', asChild: true }, [
+              React.createElement(TooltipTrigger, { key: 'trigger4', asChild: true }, [
                 React.createElement(Button, { key: 'button', variant: 'outline', size: 'sm' }, 'Üst'),
               ]),
-              React.createElement(TooltipContent, { key: 'content', side: 'top' }, 'Üstte gösterilen tooltip'),
+              React.createElement(TooltipContent, { key: 'content14', side: 'top' }, 'Üstte gösterilen tooltip'),
             ]),
             React.createElement(Tooltip, { key: 'right' }, [
-              React.createElement(TooltipTrigger, { key: 'trigger', asChild: true }, [
+              React.createElement(TooltipTrigger, { key: 'trigger5', asChild: true }, [
                 React.createElement(Button, { key: 'button', variant: 'outline', size: 'sm' }, 'Sağ'),
               ]),
-              React.createElement(TooltipContent, { key: 'content', side: 'right' }, 'Sağda gösterilen tooltip'),
+              React.createElement(TooltipContent, { key: 'content15', side: 'right' }, 'Sağda gösterilen tooltip'),
             ]),
             React.createElement(Tooltip, { key: 'bottom' }, [
-              React.createElement(TooltipTrigger, { key: 'trigger', asChild: true }, [
+              React.createElement(TooltipTrigger, { key: 'trigger6', asChild: true }, [
                 React.createElement(Button, { key: 'button', variant: 'outline', size: 'sm' }, 'Alt'),
               ]),
-              React.createElement(TooltipContent, { key: 'content', side: 'bottom' }, 'Altta gösterilen tooltip'),
+              React.createElement(TooltipContent, { key: 'content16', side: 'bottom' }, 'Altta gösterilen tooltip'),
             ]),
             React.createElement(Tooltip, { key: 'left' }, [
-              React.createElement(TooltipTrigger, { key: 'trigger', asChild: true }, [
+              React.createElement(TooltipTrigger, { key: 'trigger7', asChild: true }, [
                 React.createElement(Button, { key: 'button', variant: 'outline', size: 'sm' }, 'Sol'),
               ]),
-              React.createElement(TooltipContent, { key: 'content', side: 'left' }, 'Solda gösterilen tooltip'),
+              React.createElement(TooltipContent, { key: 'content17', side: 'left' }, 'Solda gösterilen tooltip'),
             ]),
           ]),
         ]),
@@ -5642,7 +5654,7 @@ return (
 </TooltipProvider>`,
         component: React.createElement(
           'div',
-          { className: 'text-sm text-neutral-600 dark:text-neutral-400' },
+          { key: 'tooltip-item-2', className: 'text-sm text-neutral-600 dark:text-neutral-400' },
           "Form alanları için yardım tooltip'ları",
         ),
       },
@@ -5690,28 +5702,28 @@ return (
           null,
           React.createElement('div', { key: 'toolbar', className: 'flex items-center gap-1 p-2 border rounded-lg' }, [
             React.createElement(Tooltip, { key: 'user' }, [
-              React.createElement(TooltipTrigger, { key: 'trigger', asChild: true }, [
+              React.createElement(TooltipTrigger, { key: 'trigger8', asChild: true }, [
                 React.createElement(Button, { key: 'button', variant: 'ghost', size: 'icon' }, [
                   React.createElement(User, { key: 'icon', className: 'h-4 w-4' }),
                 ]),
               ]),
-              React.createElement(TooltipContent, { key: 'content' }, 'Kullanıcı Profili'),
+              React.createElement(TooltipContent, { key: 'content18' }, 'Kullanıcı Profili'),
             ]),
             React.createElement(Tooltip, { key: 'settings' }, [
-              React.createElement(TooltipTrigger, { key: 'trigger', asChild: true }, [
+              React.createElement(TooltipTrigger, { key: 'trigger9', asChild: true }, [
                 React.createElement(Button, { key: 'button', variant: 'ghost', size: 'icon' }, [
                   React.createElement(Settings, { key: 'icon', className: 'h-4 w-4' }),
                 ]),
               ]),
-              React.createElement(TooltipContent, { key: 'content' }, 'Ayarlar'),
+              React.createElement(TooltipContent, { key: 'content19' }, 'Ayarlar'),
             ]),
             React.createElement(Tooltip, { key: 'mail' }, [
-              React.createElement(TooltipTrigger, { key: 'trigger', asChild: true }, [
+              React.createElement(TooltipTrigger, { key: 'trigger10', asChild: true }, [
                 React.createElement(Button, { key: 'button', variant: 'ghost', size: 'icon' }, [
                   React.createElement(Mail, { key: 'icon', className: 'h-4 w-4' }),
                 ]),
               ]),
-              React.createElement(TooltipContent, { key: 'content' }, 'Mesajlar (Ctrl+M)'),
+              React.createElement(TooltipContent, { key: 'content20' }, 'Mesajlar (Ctrl+M)'),
             ]),
           ]),
         ),
@@ -5744,7 +5756,7 @@ return (
 </TooltipProvider>`,
         component: React.createElement(
           'div',
-          { className: 'text-sm text-neutral-600 dark:text-neutral-400' },
+          { key: 'tooltip-item-3', className: 'text-sm text-neutral-600 dark:text-neutral-400' },
           'Kesilmiş metinler için tooltip sistemi',
         ),
       },
@@ -5795,70 +5807,74 @@ return (
     description: 'Tetikleme elementi yanında açılır içerik paneli bileşeni',
     category: 'Geri Bildirim',
     status: 'stable',
-    demoComponent: React.createElement('div', { className: 'flex items-center justify-center gap-4' }, [
-      React.createElement(Popover, { key: 'settings-popover' }, [
-        React.createElement(
-          PopoverTrigger,
-          { key: 'trigger', asChild: true },
+    demoComponent: React.createElement(
+      'div',
+      { key: 'popover-item-1', className: 'flex items-center justify-center gap-4' },
+      [
+        React.createElement(Popover, { key: 'settings-popover' }, [
           React.createElement(
-            'button',
-            {
-              key: 'button',
-              className:
-                'inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-neutral-200 bg-white hover:bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-950 dark:hover:bg-neutral-800 h-10 px-4 py-2 gap-2',
-            },
-            [React.createElement(Settings, { key: 'icon', className: 'h-4 w-4' }), 'Ayarları Aç'],
+            PopoverTrigger,
+            { key: 'trigger11', asChild: true },
+            React.createElement(
+              'button',
+              {
+                key: 'button',
+                className:
+                  'inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-neutral-200 bg-white hover:bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-950 dark:hover:bg-neutral-800 h-10 px-4 py-2 gap-2',
+              },
+              [React.createElement(Settings, { key: 'icon', className: 'h-4 w-4' }), 'Ayarları Aç'],
+            ),
           ),
-        ),
-        React.createElement(
-          PopoverContent,
-          { key: 'content', className: 'w-80' },
-          React.createElement('div', { className: 'grid gap-4' }, [
-            React.createElement('div', { key: 'header', className: 'space-y-2' }, [
-              React.createElement('h4', { key: 'title', className: 'font-medium leading-none' }, 'Boyutlar'),
-              React.createElement(
-                'p',
-                { key: 'desc', className: 'text-sm text-neutral-500 dark:text-neutral-400' },
-                'Genişlik ve yükseklik değerlerini ayarlayın.',
-              ),
-            ]),
-            React.createElement('div', { key: 'form', className: 'grid gap-2' }, [
-              React.createElement('div', { key: 'width-row', className: 'grid grid-cols-3 items-center gap-4' }, [
-                React.createElement('label', { key: 'width-label', className: 'text-sm font-medium' }, 'Genişlik'),
-                React.createElement('input', {
-                  key: 'width-input',
-                  className:
-                    'col-span-2 h-8 flex rounded-md border border-neutral-200 bg-white px-3 py-2 text-sm placeholder:text-neutral-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 dark:border-neutral-800 dark:bg-neutral-950',
-                  defaultValue: '100%',
-                }),
-              ]),
-              React.createElement('div', { key: 'max-width-row', className: 'grid grid-cols-3 items-center gap-4' }, [
+          React.createElement(
+            PopoverContent,
+            { key: 'content21', className: 'w-80' },
+            React.createElement('div', { key: 'popover-item-2', className: 'grid gap-4' }, [
+              React.createElement('div', { key: 'header-9', className: 'space-y-2' }, [
+                React.createElement('h4', { key: 'title', className: 'font-medium leading-none' }, 'Boyutlar'),
                 React.createElement(
-                  'label',
-                  { key: 'max-width-label', className: 'text-sm font-medium' },
-                  'Max. genişlik',
+                  'p',
+                  { key: 'desc', className: 'text-sm text-neutral-500 dark:text-neutral-400' },
+                  'Genişlik ve yükseklik değerlerini ayarlayın.',
                 ),
-                React.createElement('input', {
-                  key: 'max-width-input',
-                  className:
-                    'col-span-2 h-8 flex rounded-md border border-neutral-200 bg-white px-3 py-2 text-sm placeholder:text-neutral-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 dark:border-neutral-800 dark:bg-neutral-950',
-                  defaultValue: '300px',
-                }),
               ]),
-              React.createElement('div', { key: 'height-row', className: 'grid grid-cols-3 items-center gap-4' }, [
-                React.createElement('label', { key: 'height-label', className: 'text-sm font-medium' }, 'Yükseklik'),
-                React.createElement('input', {
-                  key: 'height-input',
-                  className:
-                    'col-span-2 h-8 flex rounded-md border border-neutral-200 bg-white px-3 py-2 text-sm placeholder:text-neutral-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 dark:border-neutral-800 dark:bg-neutral-950',
-                  defaultValue: '25px',
-                }),
+              React.createElement('div', { key: 'form', className: 'grid gap-2' }, [
+                React.createElement('div', { key: 'width-row', className: 'grid grid-cols-3 items-center gap-4' }, [
+                  React.createElement('label', { key: 'width-label', className: 'text-sm font-medium' }, 'Genişlik'),
+                  React.createElement('input', {
+                    key: 'width-input',
+                    className:
+                      'col-span-2 h-8 flex rounded-md border border-neutral-200 bg-white px-3 py-2 text-sm placeholder:text-neutral-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 dark:border-neutral-800 dark:bg-neutral-950',
+                    defaultValue: '100%',
+                  }),
+                ]),
+                React.createElement('div', { key: 'max-width-row', className: 'grid grid-cols-3 items-center gap-4' }, [
+                  React.createElement(
+                    'label',
+                    { key: 'max-width-label', className: 'text-sm font-medium' },
+                    'Max. genişlik',
+                  ),
+                  React.createElement('input', {
+                    key: 'max-width-input',
+                    className:
+                      'col-span-2 h-8 flex rounded-md border border-neutral-200 bg-white px-3 py-2 text-sm placeholder:text-neutral-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 dark:border-neutral-800 dark:bg-neutral-950',
+                    defaultValue: '300px',
+                  }),
+                ]),
+                React.createElement('div', { key: 'height-row', className: 'grid grid-cols-3 items-center gap-4' }, [
+                  React.createElement('label', { key: 'height-label', className: 'text-sm font-medium' }, 'Yükseklik'),
+                  React.createElement('input', {
+                    key: 'height-input',
+                    className:
+                      'col-span-2 h-8 flex rounded-md border border-neutral-200 bg-white px-3 py-2 text-sm placeholder:text-neutral-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 dark:border-neutral-800 dark:bg-neutral-950',
+                    defaultValue: '25px',
+                  }),
+                ]),
               ]),
             ]),
-          ]),
-        ),
-      ]),
-    ]),
+          ),
+        ]),
+      ],
+    ),
     code: `import { Popover, PopoverContent, PopoverTrigger } from '@/components/core/Popover/Popover'
   import { Button } from '@/components/core/Button/Button'
   import { Input } from '@/components/core/Input/Input'
@@ -5939,7 +5955,7 @@ return (
         component: React.createElement(Popover, { key: 'info-popover' }, [
           React.createElement(
             PopoverTrigger,
-            { key: 'trigger', asChild: true },
+            { key: 'trigger12', asChild: true },
             React.createElement(
               'button',
               {
@@ -5952,9 +5968,9 @@ return (
           ),
           React.createElement(
             PopoverContent,
-            { key: 'content', className: 'w-64' },
-            React.createElement('div', { className: 'space-y-2' }, [
-              React.createElement('div', { key: 'header', className: 'flex items-center gap-2' }, [
+            { key: 'content22', className: 'w-64' },
+            React.createElement('div', { key: 'popover-item-5', className: 'space-y-2' }, [
+              React.createElement('div', { key: 'header-10', className: 'flex items-center gap-2' }, [
                 React.createElement(User, { key: 'user-icon', className: 'h-4 w-4 text-primary-500' }),
                 React.createElement('h4', { key: 'title', className: 'font-medium' }, 'Kullanıcı Bilgileri'),
               ]),
@@ -5989,11 +6005,11 @@ return (
       </PopoverContent>
     </Popover>
   </div>`,
-        component: React.createElement('div', { className: 'grid grid-cols-2 gap-4 max-w-md' }, [
+        component: React.createElement('div', { key: 'popover-item-6', className: 'grid grid-cols-2 gap-4 max-w-md' }, [
           React.createElement(Popover, { key: 'top-popover' }, [
             React.createElement(
               PopoverTrigger,
-              { key: 'trigger', asChild: true },
+              { key: 'trigger13', asChild: true },
               React.createElement(
                 'button',
                 {
@@ -6006,14 +6022,14 @@ return (
             ),
             React.createElement(
               PopoverContent,
-              { key: 'content', side: 'top' },
-              React.createElement('p', { className: 'text-sm' }, 'Üstte açılan popover'),
+              { key: 'content23', side: 'top' },
+              React.createElement('p', { key: 'popover-item-7', className: 'text-sm' }, 'Üstte açılan popover'),
             ),
           ]),
           React.createElement(Popover, { key: 'right-popover' }, [
             React.createElement(
               PopoverTrigger,
-              { key: 'trigger', asChild: true },
+              { key: 'trigger14', asChild: true },
               React.createElement(
                 'button',
                 {
@@ -6026,8 +6042,8 @@ return (
             ),
             React.createElement(
               PopoverContent,
-              { key: 'content', side: 'right' },
-              React.createElement('p', { className: 'text-sm' }, 'Sağda açılan popover'),
+              { key: 'content24', side: 'right' },
+              React.createElement('p', { key: 'popover-item-8', className: 'text-sm' }, 'Sağda açılan popover'),
             ),
           ]),
         ]),
@@ -6061,7 +6077,7 @@ return (
         component: React.createElement(Popover, { key: 'form-popover' }, [
           React.createElement(
             PopoverTrigger,
-            { key: 'trigger', asChild: true },
+            { key: 'trigger15', asChild: true },
             React.createElement(
               'button',
               {
@@ -6074,9 +6090,9 @@ return (
           ),
           React.createElement(
             PopoverContent,
-            { key: 'content', className: 'w-80' },
-            React.createElement('div', { className: 'grid gap-4' }, [
-              React.createElement('div', { key: 'header', className: 'space-y-2' }, [
+            { key: 'content25', className: 'w-80' },
+            React.createElement('div', { key: 'popover-item-9', className: 'grid gap-4' }, [
+              React.createElement('div', { key: 'header-11', className: 'space-y-2' }, [
                 React.createElement('h4', { key: 'title', className: 'font-medium' }, 'Yeni Görev'),
                 React.createElement(
                   'p',
@@ -6085,7 +6101,7 @@ return (
                 ),
               ]),
               React.createElement('div', { key: 'form-field', className: 'grid gap-2' }, [
-                React.createElement('label', { key: 'label', className: 'text-sm font-medium' }, 'Görev Adı'),
+                React.createElement('label', { key: 'label28', className: 'text-sm font-medium' }, 'Görev Adı'),
                 React.createElement('input', {
                   key: 'input',
                   className:
