@@ -156,7 +156,7 @@ export default function ContactPage() {
               Sorularınız, önerileriniz veya iş birliği teklifleriniz için bizimle iletişime geçin. Size yardımcı
               olmaktan mutluluk duyarız.
             </p>
-            <Badge variant='info' size='lg' className='px-6 py-2'>
+            <Badge variant='default' size='lg' className='px-6 py-2'>
               <MessageCircle className='h-4 w-4 mr-2' />
               Genellikle 24 saat içinde yanıtlıyoruz
             </Badge>

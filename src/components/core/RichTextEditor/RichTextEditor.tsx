@@ -665,11 +665,7 @@ export function RichTextEditor({
             <>
               <span>{wordCount} kelime</span>
               <span>{characterCount} karakter</span>
-              {maxLength && (
-                <Badge variant={characterCount > maxLength * 0.9 ? 'error' : 'secondary'}>
-                  {maxLength - characterCount} kalan
-                </Badge>
-              )}
+              {maxLength && <Badge variant={'secondary'}>{maxLength - characterCount} kalan</Badge>}
             </>
           )}
         </div>

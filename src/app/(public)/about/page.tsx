@@ -95,7 +95,7 @@ export default function AboutPage() {
               developer deneyimini yeniden tanımlıyoruz.
             </p>
             <div className='flex justify-center'>
-              <Badge variant='info' size='lg' className='px-6 py-2'>
+              <Badge variant='default' size='lg' className='px-6 py-2'>
                 <Rocket className='h-4 w-4 mr-2' />
                 2024&apos;ten beri güvenilen partner
               </Badge>

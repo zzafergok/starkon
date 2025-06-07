@@ -176,7 +176,11 @@ export default function PricingPage() {
                 Yıllık
               </span>
               {isAnnual && (
-                <Badge variant='success' size='sm'>
+                <Badge
+                  variant='default'
+                  size='sm'
+                  className='bg-green-100 text-green-700 dark:bg-green-700 dark:text-green-100'
+                >
                   %17 tasarruf
                 </Badge>
               )}
@@ -231,7 +235,11 @@ export default function PricingPage() {
                       {isAnnual && price > 0 && (
                         <div className='text-sm text-neutral-600 dark:text-neutral-300'>
                           <span className='line-through'>${plan.price}/ay</span>
-                          <Badge variant='success' size='sm' className='ml-2'>
+                          <Badge
+                            variant='default'
+                            size='sm'
+                            className='ml-2 bg-green-100 text-green-700 dark:bg-green-700 dark:text-green-100'
+                          >
                             %{savings} tasarruf
                           </Badge>
                         </div>
