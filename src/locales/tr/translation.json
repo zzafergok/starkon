@@ -311,7 +311,8 @@
     "cookies": "Çerez Politikası",
     "quickLinks": "Hızlı Linkler",
     "legal": "Yasal",
-    "madeWith": "Türkiye'de ❤️ ile yapıldı"
+    "madeWith": "Türkiye'de ❤️ ile yapıldı",
+    "language": "Dil Seçimi"
   },
   "pages": {
     "home": {
@@ -424,7 +425,8 @@
   "theme": {
     "light": "Açık",
     "dark": "Koyu",
-    "system": "Sistem"
+    "system": "Sistem",
+    "toggle": "Tema Değiştir"
   },
   "components": {
     "button": {

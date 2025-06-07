@@ -311,7 +311,8 @@
     "cookies": "Cookie Policy",
     "quickLinks": "Quick Links",
     "legal": "Legal",
-    "madeWith": "Made with ❤️ in Turkey"
+    "madeWith": "Made with ❤️ in Turkey",
+    "language": "Language Selection"
   },
   "pages": {
     "home": {
@@ -424,7 +425,8 @@
   "theme": {
     "light": "Light",
     "dark": "Dark",
-    "system": "System"
+    "system": "System",
+    "toggle": "Toggle Theme"
   },
   "components": {
     "button": {

@@ -168,10 +168,8 @@ export default function SettingsPage() {
   }
 
   const handleSaveChanges = () => {
-    // Simulate save operation
     console.log('Saving changes...')
     setHasUnsavedChanges(false)
-    // Show success toast in real implementation
   }
 
   const handlePasswordChange = () => {
@@ -179,7 +177,6 @@ export default function SettingsPage() {
       alert('Yeni şifreler eşleşmiyor!')
       return
     }
-    // Simulate password change
     console.log('Changing password...')
     setPasswordData({
       currentPassword: '',
@@ -190,13 +187,11 @@ export default function SettingsPage() {
   }
 
   const handleDeleteAccount = () => {
-    // Simulate account deletion
     console.log('Deleting account...')
     logout()
   }
 
   const handleExportData = () => {
-    // Simulate data export
     console.log('Exporting user data...')
   }
 
@@ -422,8 +417,10 @@ export default function SettingsPage() {
                       ].map((item) => (
                         <div key={item.key} className='flex items-center justify-between py-2'>
                           <div className='space-y-1'>
-                            <p className='text-sm font-medium text-neutral-900 dark:text-neutral-50'>{item.label}</p>
-                            <p className='text-xs text-neutral-600 dark:text-neutral-400'>{item.description}</p>
+                            <div className='text-sm font-medium text-neutral-900 dark:text-neutral-50'>
+                              {item.label}
+                            </div>
+                            <div className='text-xs text-neutral-600 dark:text-neutral-400'>{item.description}</div>
                           </div>
                           <Switch
                             checked={notificationSettings[item.key]}
@@ -454,8 +451,10 @@ export default function SettingsPage() {
                       ].map((item) => (
                         <div key={item.key} className='flex items-center justify-between py-2'>
                           <div className='space-y-1'>
-                            <p className='text-sm font-medium text-neutral-900 dark:text-neutral-50'>{item.label}</p>
-                            <p className='text-xs text-neutral-600 dark:text-neutral-400'>{item.description}</p>
+                            <div className='text-sm font-medium text-neutral-900 dark:text-neutral-50'>
+                              {item.label}
+                            </div>
+                            <div className='text-xs text-neutral-600 dark:text-neutral-400'>{item.description}</div>
                           </div>
                           <Switch
                             checked={notificationSettings[item.key]}
@@ -512,12 +511,12 @@ export default function SettingsPage() {
                     <div className='space-y-3'>
                       <div className='flex items-center justify-between py-2'>
                         <div className='space-y-1'>
-                          <p className='text-sm font-medium text-neutral-900 dark:text-neutral-50'>
+                          <div className='text-sm font-medium text-neutral-900 dark:text-neutral-50'>
                             E-posta adresini göster
-                          </p>
-                          <p className='text-xs text-neutral-600 dark:text-neutral-400'>
+                          </div>
+                          <div className='text-xs text-neutral-600 dark:text-neutral-400'>
                             E-posta adresinizin profilinizde görünmesine izin verin
-                          </p>
+                          </div>
                         </div>
                         <Switch
                           checked={privacySettings.showEmail}
@@ -527,12 +526,12 @@ export default function SettingsPage() {
 
                       <div className='flex items-center justify-between py-2'>
                         <div className='space-y-1'>
-                          <p className='text-sm font-medium text-neutral-900 dark:text-neutral-50'>
+                          <div className='text-sm font-medium text-neutral-900 dark:text-neutral-50'>
                             Telefon numarasını göster
-                          </p>
-                          <p className='text-xs text-neutral-600 dark:text-neutral-400'>
+                          </div>
+                          <div className='text-xs text-neutral-600 dark:text-neutral-400'>
                             Telefon numaranızın profilinizde görünmesine izin verin
-                          </p>
+                          </div>
                         </div>
                         <Switch
                           checked={privacySettings.showPhone}
@@ -550,12 +549,12 @@ export default function SettingsPage() {
                     <div className='space-y-3'>
                       <div className='flex items-center justify-between py-2'>
                         <div className='space-y-1'>
-                          <p className='text-sm font-medium text-neutral-900 dark:text-neutral-50'>
+                          <div className='text-sm font-medium text-neutral-900 dark:text-neutral-50'>
                             Arama motorlarında indeksleme
-                          </p>
-                          <p className='text-xs text-neutral-600 dark:text-neutral-400'>
+                          </div>
+                          <div className='text-xs text-neutral-600 dark:text-neutral-400'>
                             Profilinizin arama motorlarında görünmesine izin verin
-                          </p>
+                          </div>
                         </div>
                         <Switch
                           checked={privacySettings.allowIndexing}
@@ -565,12 +564,12 @@ export default function SettingsPage() {
 
                       <div className='flex items-center justify-between py-2'>
                         <div className='space-y-1'>
-                          <p className='text-sm font-medium text-neutral-900 dark:text-neutral-50'>
+                          <div className='text-sm font-medium text-neutral-900 dark:text-neutral-50'>
                             Veri işleme ve analitik
-                          </p>
-                          <p className='text-xs text-neutral-600 dark:text-neutral-400'>
+                          </div>
+                          <div className='text-xs text-neutral-600 dark:text-neutral-400'>
                             Hizmet iyileştirme için verilerinizin analiz edilmesine izin verin
-                          </p>
+                          </div>
                         </div>
                         <Switch
                           checked={privacySettings.dataProcessing}
@@ -600,154 +599,6 @@ export default function SettingsPage() {
                     <p className='text-xs text-neutral-600 dark:text-neutral-400'>
                       Tüm kişisel verilerinizi JSON formatında indirebilir veya hesabınızı kalıcı olarak silebilirsiniz.
                     </p>
-                  </div>
-                </CardContent>
-              </Card>
-            </TabsContent>
-
-            {/* Appearance Settings */}
-            <TabsContent value='appearance' className='space-y-6'>
-              <Card className='bg-white/70 dark:bg-neutral-800/70 backdrop-blur-sm border-neutral-200/80 dark:border-neutral-700/50'>
-                <CardHeader>
-                  <CardTitle className='flex items-center gap-2'>
-                    <Palette className='h-5 w-5' />
-                    Görünüm ve Tema
-                  </CardTitle>
-                  <CardDescription>Arayüz temasını ve dil tercihlerinizi özelleştirin</CardDescription>
-                </CardHeader>
-                <CardContent className='space-y-6'>
-                  {/* Theme Selection */}
-                  <div className='space-y-4'>
-                    <h3 className='font-medium text-neutral-900 dark:text-neutral-50'>Tema Seçimi</h3>
-                    <div className='grid grid-cols-1 sm:grid-cols-3 gap-4'>
-                      {[
-                        {
-                          value: 'light',
-                          label: 'Açık Tema',
-                          description: 'Klasik açık renk teması',
-                          preview: 'bg-white border-2',
-                        },
-                        {
-                          value: 'dark',
-                          label: 'Koyu Tema',
-                          description: 'Göz yormayan koyu tema',
-                          preview: 'bg-neutral-900 border-2',
-                        },
-                        {
-                          value: 'system',
-                          label: 'Sistem',
-                          description: 'Sistem temasını takip et',
-                          preview: 'bg-gradient-to-r from-white to-neutral-900 border-2',
-                        },
-                      ].map((themeOption) => (
-                        <button
-                          key={themeOption.value}
-                          onClick={() => setTheme(themeOption.value as 'light' | 'dark' | 'system')}
-                          className={cn(
-                            'p-4 rounded-lg border-2 text-left transition-all hover:shadow-md',
-                            theme === themeOption.value
-                              ? 'border-primary-500 bg-primary-50/50 dark:bg-primary-950/20'
-                              : 'border-neutral-200 dark:border-neutral-700 hover:border-neutral-300 dark:hover:border-neutral-600',
-                          )}
-                        >
-                          <div className='space-y-3'>
-                            <div className={cn('h-16 rounded-md', themeOption.preview)} />
-                            <div>
-                              <p className='font-medium text-neutral-900 dark:text-neutral-50'>{themeOption.label}</p>
-                              <p className='text-xs text-neutral-600 dark:text-neutral-400'>
-                                {themeOption.description}
-                              </p>
-                            </div>
-                            {theme === themeOption.value && (
-                              <div className='flex items-center gap-1 text-primary-600 dark:text-primary-400'>
-                                <Check className='h-4 w-4' />
-                                <span className='text-xs font-medium'>Seçili</span>
-                              </div>
-                            )}
-                          </div>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  <Separator />
-
-                  {/* Language Selection */}
-                  <div className='space-y-4'>
-                    <h3 className='font-medium text-neutral-900 dark:text-neutral-50'>Dil Tercihi</h3>
-                    <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
-                      <button
-                        onClick={() => changeLocale('tr')}
-                        className={cn(
-                          'p-4 rounded-lg border-2 text-left transition-all hover:shadow-md',
-                          currentLocale === 'tr'
-                            ? 'border-primary-500 bg-primary-50/50 dark:bg-primary-950/20'
-                            : 'border-neutral-200 dark:border-neutral-700 hover:border-neutral-300 dark:hover:border-neutral-600',
-                        )}
-                      >
-                        <div className='flex items-center gap-3'>
-                          <div className='text-2xl'>🇹🇷</div>
-                          <div>
-                            <p className='font-medium text-neutral-900 dark:text-neutral-50'>Türkçe</p>
-                            <p className='text-xs text-neutral-600 dark:text-neutral-400'>Varsayılan dil</p>
-                          </div>
-                          {currentLocale === 'tr' && (
-                            <Check className='h-4 w-4 text-primary-600 dark:text-primary-400 ml-auto' />
-                          )}
-                        </div>
-                      </button>
-
-                      <button
-                        onClick={() => changeLocale('en')}
-                        className={cn(
-                          'p-4 rounded-lg border-2 text-left transition-all hover:shadow-md',
-                          currentLocale === 'en'
-                            ? 'border-primary-500 bg-primary-50/50 dark:bg-primary-950/20'
-                            : 'border-neutral-200 dark:border-neutral-700 hover:border-neutral-300 dark:hover:border-neutral-600',
-                        )}
-                      >
-                        <div className='flex items-center gap-3'>
-                          <div className='text-2xl'>🇺🇸</div>
-                          <div>
-                            <p className='font-medium text-neutral-900 dark:text-neutral-50'>English</p>
-                            <p className='text-xs text-neutral-600 dark:text-neutral-400'>International language</p>
-                          </div>
-                          {currentLocale === 'en' && (
-                            <Check className='h-4 w-4 text-primary-600 dark:text-primary-400 ml-auto' />
-                          )}
-                        </div>
-                      </button>
-                    </div>
-                  </div>
-
-                  <Separator />
-
-                  {/* Display Settings */}
-                  <div className='space-y-4'>
-                    <h3 className='font-medium text-neutral-900 dark:text-neutral-50'>Görüntüleme Ayarları</h3>
-                    <div className='space-y-3'>
-                      <div className='flex items-center justify-between py-2'>
-                        <div className='space-y-1'>
-                          <p className='text-sm font-medium text-neutral-900 dark:text-neutral-50'>Kompakt mod</p>
-                          <p className='text-xs text-neutral-600 dark:text-neutral-400'>
-                            Daha fazla içerik görmek için sıkıştırılmış görünüm
-                          </p>
-                        </div>
-                        <Switch defaultChecked={false} />
-                      </div>
-
-                      <div className='flex items-center justify-between py-2'>
-                        <div className='space-y-1'>
-                          <p className='text-sm font-medium text-neutral-900 dark:text-neutral-50'>
-                            Animasyonları azalt
-                          </p>
-                          <p className='text-xs text-neutral-600 dark:text-neutral-400'>
-                            Performans için animasyonları sınırla
-                          </p>
-                        </div>
-                        <Switch defaultChecked={false} />
-                      </div>
-                    </div>
                   </div>
                 </CardContent>
               </Card>
@@ -794,10 +645,10 @@ export default function SettingsPage() {
                     <h3 className='font-medium text-neutral-900 dark:text-neutral-50'>İki Faktörlü Doğrulama (2FA)</h3>
                     <div className='flex items-center justify-between py-2'>
                       <div className='space-y-1'>
-                        <p className='text-sm font-medium text-neutral-900 dark:text-neutral-50'>2FA Etkinleştir</p>
-                        <p className='text-xs text-neutral-600 dark:text-neutral-400'>
+                        <div className='text-sm font-medium text-neutral-900 dark:text-neutral-50'>2FA Etkinleştir</div>
+                        <div className='text-xs text-neutral-600 dark:text-neutral-400'>
                           Hesabınız için ek güvenlik katmanı ekleyin
-                        </p>
+                        </div>
                       </div>
                       <Switch
                         checked={securitySettings.twoFactorAuth}
@@ -809,10 +660,10 @@ export default function SettingsPage() {
                         <div className='flex items-center gap-2 text-green-800 dark:text-green-300'>
                           <Check className='h-4 w-4' />
                           <span className='text-sm font-medium'>2FA aktif</span>
+                          <Badge variant='outline' className='text-xs'>
+                            Google Authenticator ile yapılandırılmış
+                          </Badge>
                         </div>
-                        <p className='text-xs text-green-700 dark:text-green-400 mt-1'>
-                          Google Authenticator ile yapılandırılmış
-                        </p>
                       </div>
                     )}
                   </div>
@@ -846,10 +697,12 @@ export default function SettingsPage() {
 
                       <div className='flex items-center justify-between py-2'>
                         <div className='space-y-1'>
-                          <p className='text-sm font-medium text-neutral-900 dark:text-neutral-50'>Giriş uyarıları</p>
-                          <p className='text-xs text-neutral-600 dark:text-neutral-400'>
+                          <div className='text-sm font-medium text-neutral-900 dark:text-neutral-50'>
+                            Giriş uyarıları
+                          </div>
+                          <div className='text-xs text-neutral-600 dark:text-neutral-400'>
                             Yeni cihazdan giriş yapıldığında e-posta ile bildirim alın
-                          </p>
+                          </div>
                         </div>
                         <Switch
                           checked={securitySettings.loginAlerts}
@@ -859,10 +712,10 @@ export default function SettingsPage() {
 
                       <div className='flex items-center justify-between py-2'>
                         <div className='space-y-1'>
-                          <p className='text-sm font-medium text-neutral-900 dark:text-neutral-50'>Cihaz takibi</p>
-                          <p className='text-xs text-neutral-600 dark:text-neutral-400'>
+                          <div className='text-sm font-medium text-neutral-900 dark:text-neutral-50'>Cihaz takibi</div>
+                          <div className='text-xs text-neutral-600 dark:text-neutral-400'>
                             Giriş yapılan cihazları kaydet ve izle
-                          </p>
+                          </div>
                         </div>
                         <Switch
                           checked={securitySettings.deviceTracking}
@@ -907,17 +760,17 @@ export default function SettingsPage() {
                               <Smartphone className='h-4 w-4 text-neutral-600 dark:text-neutral-400' />
                             </div>
                             <div>
-                              <p className='text-sm font-medium text-neutral-900 dark:text-neutral-50'>
+                              <div className='text-sm font-medium text-neutral-900 dark:text-neutral-50 flex items-center gap-2'>
                                 {session.device}
                                 {session.current && (
-                                  <Badge variant='outline' className='ml-2 text-xs'>
+                                  <Badge variant='outline' className='text-xs'>
                                     Bu cihaz
                                   </Badge>
                                 )}
-                              </p>
-                              <p className='text-xs text-neutral-600 dark:text-neutral-400'>
+                              </div>
+                              <div className='text-xs text-neutral-600 dark:text-neutral-400'>
                                 {session.location} • {session.lastActive}
-                              </p>
+                              </div>
                             </div>
                           </div>
                           {!session.current && (
@@ -927,6 +780,150 @@ export default function SettingsPage() {
                           )}
                         </div>
                       ))}
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            {/* Appearance Settings */}
+            <TabsContent value='appearance' className='space-y-6'>
+              <Card className='bg-white/70 dark:bg-neutral-800/70 backdrop-blur-sm border-neutral-200/80 dark:border-neutral-700/50'>
+                <CardHeader>
+                  <CardTitle className='flex items-center gap-2'>
+                    <Palette className='h-5 w-5' />
+                    Görünüm ve Tema
+                  </CardTitle>
+                  <CardDescription>Arayüz temasını ve dil tercihlerinizi özelleştirin</CardDescription>
+                </CardHeader>
+                <CardContent className='space-y-6'>
+                  {/* Theme Selection */}
+                  <div className='space-y-4'>
+                    <h3 className='font-medium text-neutral-900 dark:text-neutral-50'>Tema Seçimi</h3>
+                    <div className='grid grid-cols-1 sm:grid-cols-3 gap-4'>
+                      {[
+                        {
+                          value: 'light',
+                          label: 'Açık Tema',
+                          description: 'Klasik açık renk teması',
+                          preview: 'bg-white border-2',
+                        },
+                        {
+                          value: 'dark',
+                          label: 'Koyu Tema',
+                          description: 'Göz yormayan koyu tema',
+                          preview: 'bg-neutral-900 border-2',
+                        },
+                      ].map((themeOption) => (
+                        <button
+                          key={themeOption.value}
+                          onClick={() => setTheme(themeOption.value as 'light' | 'dark' | 'system')}
+                          className={cn(
+                            'p-4 rounded-lg border-2 text-left transition-all hover:shadow-md',
+                            theme === themeOption.value
+                              ? 'border-primary-500 bg-primary-50/50 dark:bg-primary-950/20'
+                              : 'border-neutral-200 dark:border-neutral-700 hover:border-neutral-300 dark:hover:border-neutral-600',
+                          )}
+                        >
+                          <div className='space-y-3'>
+                            <div className={cn('h-16 rounded-md', themeOption.preview)} />
+                            <div>
+                              <div className='font-medium text-neutral-900 dark:text-neutral-50'>
+                                {themeOption.label}
+                              </div>
+                              <div className='text-xs text-neutral-600 dark:text-neutral-400'>
+                                {themeOption.description}
+                              </div>
+                            </div>
+                            {theme === themeOption.value && (
+                              <div className='flex items-center gap-1 text-primary-600 dark:text-primary-400'>
+                                <Check className='h-4 w-4' />
+                                <span className='text-xs font-medium'>Seçili</span>
+                              </div>
+                            )}
+                          </div>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <Separator />
+
+                  {/* Language Selection */}
+                  <div className='space-y-4'>
+                    <h3 className='font-medium text-neutral-900 dark:text-neutral-50'>Dil Tercihi</h3>
+                    <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
+                      <button
+                        onClick={() => changeLocale('tr')}
+                        className={cn(
+                          'p-4 rounded-lg border-2 text-left transition-all hover:shadow-md',
+                          currentLocale === 'tr'
+                            ? 'border-primary-500 bg-primary-50/50 dark:bg-primary-950/20'
+                            : 'border-neutral-200 dark:border-neutral-700 hover:border-neutral-300 dark:hover:border-neutral-600',
+                        )}
+                      >
+                        <div className='flex items-center gap-3'>
+                          <div className='text-2xl'>🇹🇷</div>
+                          <div>
+                            <div className='font-medium text-neutral-900 dark:text-neutral-50'>Türkçe</div>
+                            <div className='text-xs text-neutral-600 dark:text-neutral-400'>Varsayılan dil</div>
+                          </div>
+                          {currentLocale === 'tr' && (
+                            <Check className='h-4 w-4 text-primary-600 dark:text-primary-400 ml-auto' />
+                          )}
+                        </div>
+                      </button>
+
+                      <button
+                        onClick={() => changeLocale('en')}
+                        className={cn(
+                          'p-4 rounded-lg border-2 text-left transition-all hover:shadow-md',
+                          currentLocale === 'en'
+                            ? 'border-primary-500 bg-primary-50/50 dark:bg-primary-950/20'
+                            : 'border-neutral-200 dark:border-neutral-700 hover:border-neutral-300 dark:hover:border-neutral-600',
+                        )}
+                      >
+                        <div className='flex items-center gap-3'>
+                          <div className='text-2xl'>🇺🇸</div>
+                          <div>
+                            <div className='font-medium text-neutral-900 dark:text-neutral-50'>English</div>
+                            <div className='text-xs text-neutral-600 dark:text-neutral-400'>International language</div>
+                          </div>
+                          {currentLocale === 'en' && (
+                            <Check className='h-4 w-4 text-primary-600 dark:text-primary-400 ml-auto' />
+                          )}
+                        </div>
+                      </button>
+                    </div>
+                  </div>
+
+                  <Separator />
+
+                  {/* Display Settings */}
+                  <div className='space-y-4'>
+                    <h3 className='font-medium text-neutral-900 dark:text-neutral-50'>Görüntüleme Ayarları</h3>
+                    <div className='space-y-3'>
+                      <div className='flex items-center justify-between py-2'>
+                        <div className='space-y-1'>
+                          <div className='text-sm font-medium text-neutral-900 dark:text-neutral-50'>Kompakt mod</div>
+                          <div className='text-xs text-neutral-600 dark:text-neutral-400'>
+                            Daha fazla içerik görmek için sıkıştırılmış görünüm
+                          </div>
+                        </div>
+                        <Switch defaultChecked={false} />
+                      </div>
+
+                      <div className='flex items-center justify-between py-2'>
+                        <div className='space-y-1'>
+                          <div className='text-sm font-medium text-neutral-900 dark:text-neutral-50'>
+                            Animasyonları azalt
+                          </div>
+                          <div className='text-xs text-neutral-600 dark:text-neutral-400'>
+                            Performans için animasyonları sınırla
+                          </div>
+                        </div>
+                        <Switch defaultChecked={false} />
+                      </div>
                     </div>
                   </div>
                 </CardContent>
