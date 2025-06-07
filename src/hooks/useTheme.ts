@@ -13,8 +13,6 @@ export function useTheme() {
   const applyThemeToDocument = useCallback((theme: 'light' | 'dark') => {
     if (typeof window === 'undefined' || typeof document === 'undefined') return
 
-    console.log('[useTheme] Applying theme:', theme)
-
     const root = document.documentElement
     const isDark = theme === 'dark'
 
@@ -44,19 +42,15 @@ export function useTheme() {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      console.log('[useTheme] Initializing theme system')
-
       setIsDisabled(true)
       setIsInitialized(false)
 
       const initializeTheme = async () => {
         try {
           const storedTheme = localStorage.getItem('theme') || 'system'
-          console.log('[useTheme] Stored theme:', storedTheme)
 
           const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
           const initialSystemPreference = mediaQuery.matches ? 'dark' : 'light'
-          console.log('[useTheme] System preference:', initialSystemPreference)
 
           dispatch(setTheme(storedTheme as 'light' | 'dark' | 'system'))
           dispatch(updateSystemPreference(initialSystemPreference))
@@ -66,7 +60,6 @@ export function useTheme() {
 
           const handleChange = (e: MediaQueryListEvent) => {
             const newSystemPreference = e.matches ? 'dark' : 'light'
-            console.log('[useTheme] System preference changed:', newSystemPreference)
             dispatch(updateSystemPreference(newSystemPreference))
           }
 
@@ -75,7 +68,6 @@ export function useTheme() {
           setTimeout(() => {
             setIsInitialized(true)
             setIsDisabled(false)
-            console.log('[useTheme] Theme system initialized successfully')
           }, 100)
 
           return () => {
@@ -102,7 +94,6 @@ export function useTheme() {
 
   useEffect(() => {
     if (isInitialized) {
-      console.log('[useTheme] Effective theme changed:', effectiveTheme)
       applyThemeToDocument(effectiveTheme)
     }
   }, [effectiveTheme, applyThemeToDocument, isInitialized])
@@ -113,8 +104,6 @@ export function useTheme() {
         console.warn('[useTheme] Cannot change theme - disabled or not initialized')
         return
       }
-
-      console.log('[useTheme] Changing theme to:', theme)
 
       setIsDisabled(true)
 

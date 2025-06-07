@@ -14,14 +14,12 @@ export function useLocale() {
   useEffect(() => {
     const langParam = searchParams.get('lang')
     if (langParam && isSupportedLocale(langParam) && langParam !== currentLocale) {
-      console.log('[useLocale] URL language parameter detected:', langParam)
       changeLocale(langParam)
     }
   }, [searchParams, currentLocale])
 
   useEffect(() => {
     if (i18n.language !== currentLocale) {
-      console.log('[useLocale] Syncing i18n language:', currentLocale)
       i18n.changeLanguage(currentLocale)
     }
   }, [currentLocale, i18n])
@@ -29,11 +27,8 @@ export function useLocale() {
   const changeLocale = useCallback(
     (newLocale: SupportedLocale) => {
       if (newLocale === currentLocale || isChangingLanguage) {
-        console.log('[useLocale] Language change ignored - same locale or already changing')
         return
       }
-
-      console.log('[useLocale] Changing language from', currentLocale, 'to', newLocale)
 
       setIsChangingLanguage(true)
       setCurrentLocale(newLocale)
@@ -68,7 +63,6 @@ export function useLocale() {
 
       setTimeout(() => {
         setIsChangingLanguage(false)
-        console.log('[useLocale] Language change completed:', newLocale)
       }, 300)
     },
     [currentLocale, i18n, isChangingLanguage],

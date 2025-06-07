@@ -117,7 +117,22 @@ export function useAuth(): AuthState & AuthActions {
     }
   }, [])
 
-  // Kullanıcı bilgilerini yenileme
+  // Token'dan kullanıcı ID'sini çıkarma
+  const extractUserIdFromToken = useCallback((token: string): string | null => {
+    try {
+      // Mock token format: "mock-access-token-{userId}-{timestamp}"
+      const tokenParts = token.split('-')
+      if (tokenParts.length >= 4 && tokenParts[0] === 'mock' && tokenParts[1] === 'access') {
+        return tokenParts[3] // userId kısmı
+      }
+      return null
+    } catch (error) {
+      console.error('Token parsing error:', error)
+      return null
+    }
+  }, [])
+
+  // Kullanıcı bilgilerini yenileme - İyileştirilmiş hata yönetimi
   const refreshUser = useCallback(async (): Promise<void> => {
     try {
       const token = tokenManager.getAccessToken()
@@ -125,32 +140,40 @@ export function useAuth(): AuthState & AuthActions {
         throw new Error('No access token available')
       }
 
-      // Mock user fetch
+      // Mock user fetch simülasyonu
       await new Promise((resolve) => setTimeout(resolve, 300))
 
-      // Token'dan user ID'yi parse et (gerçek projede JWT decode edilecek)
-      const tokenParts = token.split('-')
-      const userId = tokenParts[3] || '1' // fallback to admin user
+      // Token'dan user ID'yi parse et
+      const userId = extractUserIdFromToken(token)
+      if (!userId) {
+        throw new Error('Invalid token format')
+      }
+
       const mockUser = MOCK_USERS_DB.find((u) => u.id === userId)
 
-      if (mockUser) {
-        const { password: _password, ...userWithoutPassword } = mockUser
-        dispatch(
-          setUser({
-            ...userWithoutPassword,
-            avatar: userWithoutPassword.avatar || undefined,
-          }),
-        )
-      } else {
-        throw new Error('User not found')
+      if (!mockUser) {
+        // Kullanıcı bulunamadığında token'ları temizle ve logout yap
+        console.warn(`[useAuth] User with ID ${userId} not found in database`)
+        throw new Error('User not found in database')
       }
+
+      const { password: _password, ...userWithoutPassword } = mockUser
+      dispatch(
+        setUser({
+          ...userWithoutPassword,
+          avatar: userWithoutPassword.avatar || undefined,
+          // lastLoginAt: new Date().toISOString(), // Son giriş zamanını güncelle
+        }),
+      )
     } catch (error) {
-      console.error('User refresh failed:', error)
+      console.error('[useAuth] User refresh failed:', error)
+      // Kullanıcı yenilenemediğinde session'ı temizle
+      await logout()
       throw error
     }
-  }, [dispatch, tokenManager])
+  }, [dispatch, tokenManager, extractUserIdFromToken])
 
-  // Auth durumu kontrolü - Server-side ile uyumlu
+  // Auth durumu kontrolü - Geliştirilmiş hata yönetimi
   const checkAuth = useCallback(async (): Promise<void> => {
     // Zaten initialize edilmişse veya initialization devam ediyorsa çık
     if (initializationRef.current.hasInitialized || initializationRef.current.isInitializing) {
@@ -166,27 +189,29 @@ export function useAuth(): AuthState & AuthActions {
       const refreshToken = tokenManager.getRefreshToken()
 
       if (!token || !refreshToken) {
-        console.log('[useAuth] No tokens found, user not authenticated')
         await logout()
         return
       }
 
       // Token geçerliliği kontrolü
       if (tokenManager.isTokenExpired()) {
-        console.log('[useAuth] Token expired, attempting refresh')
         try {
           // Mock token refresh
           await new Promise((resolve) => setTimeout(resolve, 500))
 
-          const newAccessToken = `mock-access-token-refreshed-${Date.now()}`
-          const newRefreshToken = `mock-refresh-token-refreshed-${Date.now()}`
+          const userId = extractUserIdFromToken(token)
+          if (!userId) {
+            throw new Error('Cannot extract user ID from expired token')
+          }
+
+          const newAccessToken = `mock-access-token-${userId}-${Date.now()}`
+          const newRefreshToken = `mock-refresh-token-${userId}-${Date.now()}`
           const expiresIn = 3600 // 1 saat
 
           tokenManager.setTokens(newAccessToken, newRefreshToken, expiresIn)
           setTokensInCookies(newAccessToken, newRefreshToken, expiresIn)
 
           await refreshUser()
-          console.log('[useAuth] Token refresh successful')
         } catch (refreshError) {
           console.error('[useAuth] Token refresh failed:', refreshError)
           await logout()
@@ -202,17 +227,15 @@ export function useAuth(): AuthState & AuthActions {
       initializationRef.current.hasInitialized = true
       initializationRef.current.isInitializing = false
     }
-  }, [dispatch, tokenManager, setTokensInCookies, refreshUser, t]) // Stable dependencies
+  }, [dispatch, tokenManager, setTokensInCookies, refreshUser, extractUserIdFromToken, t])
 
-  // Giriş işlemi - Geliştirilmiş
+  // Giriş işlemi - Token format'ını düzelt
   const login = useCallback(
     async (credentials: LoginFormValues): Promise<User> => {
       dispatch(setLoading(true))
       dispatch(setError(null))
 
       try {
-        console.log('[useAuth] Attempting login with:', credentials.email)
-
         // Mock authentication
         await new Promise((resolve) => setTimeout(resolve, 1000))
 
@@ -224,15 +247,13 @@ export function useAuth(): AuthState & AuthActions {
           throw new Error(t('auth.invalidCredentials'))
         }
 
-        // Mock token generation
+        // Mock token generation - userId'yi token'a gömüyoruz
         const expiresIn = credentials.rememberMe ? 7 * 24 * 3600 : 3600 // 7 gün veya 1 saat
         const mockTokens = {
           accessToken: `mock-access-token-${foundUser.id}-${Date.now()}`,
           refreshToken: `mock-refresh-token-${foundUser.id}-${Date.now()}`,
           expiresIn,
         }
-
-        console.log('[useAuth] Login successful, setting tokens')
 
         // Token'ları kaydet
         tokenManager.setTokens(mockTokens.accessToken, mockTokens.refreshToken, mockTokens.expiresIn)
@@ -243,6 +264,7 @@ export function useAuth(): AuthState & AuthActions {
         const loginUser: User = {
           ...userWithoutPassword,
           avatar: userWithoutPassword.avatar || undefined,
+          // lastLoginAt: new Date().toISOString(),
         }
 
         dispatch(setUser(loginUser))
@@ -261,7 +283,6 @@ export function useAuth(): AuthState & AuthActions {
         initializationRef.current.hasInitialized = true
         initializationRef.current.isInitializing = false
 
-        console.log('[useAuth] Login process completed')
         return loginUser
       } catch (error: unknown) {
         const errorMessage = error instanceof Error ? error.message : t('auth.loginFailed')
@@ -285,9 +306,8 @@ export function useAuth(): AuthState & AuthActions {
     [dispatch, tokenManager, setTokensInCookies, t],
   )
 
-  // Çıkış işlemi - Güvenli
+  // Çıkış işlemi - Değişiklik yok
   const logout = useCallback(async (): Promise<void> => {
-    console.log('[useAuth] Logout initiated')
     dispatch(setLoading(true))
 
     try {
@@ -298,8 +318,6 @@ export function useAuth(): AuthState & AuthActions {
       // Store'u temizle
       dispatch(logoutUser())
       dispatch(setError(null))
-
-      console.log('[useAuth] Logout completed')
 
       // Başarı mesajı (sadece manuel logout'ta)
       if (user) {
@@ -331,15 +349,13 @@ export function useAuth(): AuthState & AuthActions {
     dispatch(setError(null))
   }, [dispatch])
 
-  // Component mount olduğunda auth durumunu kontrol et - Server-side safe
+  // Component mount olduğunda auth durumunu kontrol et
   useEffect(() => {
-    // Sadece client-side'da çalışacak
     if (
       typeof window !== 'undefined' &&
       !initializationRef.current.hasInitialized &&
       !initializationRef.current.isInitializing
     ) {
-      console.log('[useAuth] Initializing auth check')
       checkAuth()
     }
   }, []) // BOŞ dependency array - sadece mount'ta çalışır

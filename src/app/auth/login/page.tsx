@@ -21,16 +21,16 @@ function LoginPageContent() {
 
   const handleLogin = async (data: LoginFormValues) => {
     try {
-      console.log(t('auth.loginFormSubmitted'))
+      // console.log(t('auth.loginFormSubmitted'))
       await login(data)
-    } catch (error) {
-      console.error('Login failed:', error)
+    } catch {
+      // console.error('Login failed:', error)
     }
   }
 
   useEffect(() => {
     if (isAuthenticated && !isLoading) {
-      console.log(t('auth.alreadyAuthenticated'), redirectTo)
+      // console.log(t('auth.alreadyAuthenticated'), redirectTo)
       router.replace(redirectTo)
     }
   }, [isAuthenticated, isLoading, redirectTo, router, t])

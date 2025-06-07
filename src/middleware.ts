@@ -91,11 +91,11 @@ function isStaticFile(pathname: string): boolean {
 }
 
 /**
- * Authentication token'ını kontrol eder - Geliştirilmiş
+ * Authentication token'ını kontrol eder - İyileştirilmiş validasyon
  */
 function hasValidAuthToken(request: NextRequest): boolean {
   try {
-    // Önce localStorage simülasyonu için cookie'leri kontrol et
+    // Cookie'lerden token'ları kontrol et
     const accessToken = request.cookies.get('accessToken')?.value
     const refreshToken = request.cookies.get('refreshToken')?.value
 
@@ -104,10 +104,20 @@ function hasValidAuthToken(request: NextRequest): boolean {
       return false
     }
 
-    // Mock token format kontrolü - gerçek projede JWT doğrulama yapılacak
-    const isValidFormat = accessToken.startsWith('mock-access-token-') && refreshToken.startsWith('mock-refresh-token-')
+    // Mock token format kontrolü - İyileştirilmiş
+    const isValidAccessTokenFormat = accessToken.startsWith('mock-access-token-') && accessToken.split('-').length >= 4
+    const isValidRefreshTokenFormat =
+      refreshToken.startsWith('mock-refresh-token-') && refreshToken.split('-').length >= 4
 
-    if (!isValidFormat) {
+    if (!isValidAccessTokenFormat || !isValidRefreshTokenFormat) {
+      return false
+    }
+
+    // User ID kontrolü - token'larda aynı user ID olmalı
+    const accessTokenParts = accessToken.split('-')
+    const refreshTokenParts = refreshToken.split('-')
+
+    if (accessTokenParts[3] !== refreshTokenParts[3]) {
       return false
     }
 
@@ -115,17 +125,18 @@ function hasValidAuthToken(request: NextRequest): boolean {
     const tokenExpiry = request.cookies.get('tokenExpiry')?.value
     if (tokenExpiry) {
       const expiryTime = parseInt(tokenExpiry)
-      const currentTime = Date.now()
-      const bufferTime = 60000 // 1 dakika buffer
+      if (!isNaN(expiryTime)) {
+        const currentTime = Date.now()
+        const bufferTime = 5 * 60 * 1000 // 5 dakika buffer
 
-      if (currentTime > expiryTime - bufferTime) {
-        return false // Token süresi dolmuş
+        if (currentTime > expiryTime - bufferTime) {
+          return false // Token süresi dolmuş
+        }
       }
     }
 
     return true
-  } catch (error) {
-    console.error('Token validation error:', error)
+  } catch {
     return false
   }
 }
@@ -141,7 +152,7 @@ function setSecureHeaders(response: NextResponse): NextResponse {
 
   // Development ortamında ek debug headers
   if (process.env.NODE_ENV === 'development') {
-    response.headers.set('X-Middleware-Version', '1.0.0')
+    response.headers.set('X-Middleware-Version', '1.0.1')
   }
 
   return response
@@ -151,9 +162,9 @@ export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
   // Development logging
-  if (process.env.NODE_ENV === 'development') {
-    console.log(`[Middleware] ${request.method} ${pathname}`)
-  }
+  // if (process.env.NODE_ENV === 'development') {
+  //   console.log(`[Middleware] ${request.method} ${pathname}`)
+  // }
 
   // Statik dosyalar için middleware'i atla
   if (isStaticFile(pathname)) {
@@ -186,9 +197,9 @@ export function middleware(request: NextRequest) {
   if (isAuthRoute(pathname)) {
     // Auth sayfalarında zaten giriş yapmış kullanıcıyı dashboard'a yönlendir
     if (hasAuth) {
-      if (process.env.NODE_ENV === 'development') {
-        console.log('[Middleware] Already authenticated, redirecting to dashboard')
-      }
+      // if (process.env.NODE_ENV === 'development') {
+      //   console.log('[Middleware] Already authenticated, redirecting to dashboard')
+      // }
       const dashboardUrl = new URL('/dashboard', request.url)
       dashboardUrl.searchParams.set('lang', detectedLocale)
       return NextResponse.redirect(dashboardUrl)
@@ -200,9 +211,9 @@ export function middleware(request: NextRequest) {
   if (isProtectedRoute(pathname)) {
     // Korumalı rotada authentication kontrolü
     if (!hasAuth) {
-      if (process.env.NODE_ENV === 'development') {
-        console.log('[Middleware] Not authenticated, redirecting to login')
-      }
+      // if (process.env.NODE_ENV === 'development') {
+      //   console.log('[Middleware] Not authenticated, redirecting to login')
+      // }
       const loginUrl = new URL('/auth/login', request.url)
       loginUrl.searchParams.set('lang', detectedLocale)
 
