@@ -125,27 +125,6 @@ export default function DashboardPage() {
               {isLoading ? 'Çıkış yapılıyor...' : t('pages.dashboard.logout')}
             </Button>
           </div>
-
-          {/* Debug Panel - Development Only */}
-          {process.env.NODE_ENV === 'development' && (
-            <Card className='bg-yellow-50/50 dark:bg-yellow-950/20 border-yellow-200 dark:border-yellow-800/50'>
-              <CardHeader>
-                <CardTitle className='text-yellow-800 dark:text-yellow-200 text-sm'>
-                  🔧 Development Debug Panel
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className='flex gap-2'>
-                  <Button onClick={handleDebugAuth} variant='ghost' size='sm'>
-                    Debug Auth State
-                  </Button>
-                  <Button onClick={() => console.log('User Object:', user)} variant='ghost' size='sm'>
-                    Log User Object
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          )}
         </div>
       </div>
     </div>

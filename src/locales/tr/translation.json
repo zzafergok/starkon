@@ -29,8 +29,8 @@
     "noComponentsFound": "Hiç bileşen bulunamadı",
     "deleteWarning": "Bu işlem geri alınamaz.",
     "confirmDelete": "Evet, sil",
-    "appName": "Starkon Template",
-    "appTitle": "Starkon Template",
+    "appName": "Starkon",
+    "appTitle": "Starkon",
     "loading": "Yükleniyor...",
     "error": "Bir hata oluştu",
     "success": "Başarılı",
@@ -342,7 +342,7 @@
     "loginFormSubmitted": "Giriş formu gönderildi",
     "alreadyAuthenticated": "Zaten kimlik doğrulandı, yönlendiriliyor",
     "safelyLoggedOut": "Güvenli bir şekilde çıkış yaptınız",
-    "loading": "Starkon Template...",
+    "loading": "Starkon...",
     "unauthorized": {
       "title": "Yetkisiz Erişim",
       "message": "Bu sayfaya erişim yetkiniz bulunmamaktadır.",
@@ -590,14 +590,14 @@
   },
   "pages": {
     "home": {
-      "title": "Starkon Template'e Hoş Geldiniz",
+      "title": "Starkon'e Hoş Geldiniz",
       "subtitle": "Modern React uygulamaları için tasarlanmış kapsamlı component kütüphanesi. Radix UI tabanlı, erişilebilir ve özelleştirilebilir komponentler.",
       "getStarted": "Başlayın",
       "learnMore": "Daha Fazla Bilgi",
       "goToDashboard": "Dashboard'a Git",
       "features": {
         "title": "Özellikler",
-        "subtitle": "Starkon Template ile modern uygulamalar geliştirin",
+        "subtitle": "Starkon ile modern uygulamalar geliştirin",
         "modern": {
           "title": "Modern Tasarım",
           "description": "Sea blue teması ile modern ve şık arayüzler oluşturun"
@@ -612,7 +612,7 @@
         }
       },
       "footer": {
-        "copyright": "© 2024 Starkon Template. Tüm hakları saklıdır."
+        "copyright": "© 2024 Starkon. Tüm hakları saklıdır."
       }
     },
     "dashboard": {
@@ -637,7 +637,7 @@
     },
     "about": {
       "title": "Hakkımızda",
-      "content": "Starkon Template ve misyonumuz hakkında daha fazla bilgi edinin."
+      "content": "Starkon ve misyonumuz hakkında daha fazla bilgi edinin."
     },
     "contact": {
       "title": "İletişim",

@@ -547,8 +547,8 @@ async function loadLocale(locale = 'tr') {
 async function getLocaleMessages(locale) {
   const messages = {
     tr: {
-      PROJECT_CREATING: '🌊 Create Starkon Template ile yeni proje oluşturuluyor...',
-      PROJECT_CREATED_SUCCESS: '🎉 Starkon Template projesi hazır!',
+      PROJECT_CREATING: '🌊 Create Starkon ile yeni proje oluşturuluyor...',
+      PROJECT_CREATED_SUCCESS: '🎉 Starkon projesi hazır!',
       PROJECT_NAME_PROMPT: 'Proje adını girin:',
       PROJECT_NAME_EMPTY: 'Proje adı boş olamaz',
       PROJECT_NAME_TOO_LONG: 'Proje adı 50 karakterden uzun olamaz',
@@ -574,8 +574,8 @@ async function getLocaleMessages(locale) {
       UPDATE_COMMAND: 'Güncellemek için: npm install -g starkon@latest',
     },
     en: {
-      PROJECT_CREATING: '🌊 Creating new project with Create Starkon Template...',
-      PROJECT_CREATED_SUCCESS: '🎉 Starkon Template project ready!',
+      PROJECT_CREATING: '🌊 Creating new project with Create Starkon...',
+      PROJECT_CREATED_SUCCESS: '🎉 Starkon project ready!',
       PROJECT_NAME_PROMPT: 'Enter project name:',
       PROJECT_NAME_EMPTY: 'Project name cannot be empty',
       PROJECT_NAME_TOO_LONG: 'Project name cannot be longer than 50 characters',
@@ -1236,7 +1236,7 @@ async function customizePackageJson(targetDir, projectName) {
     // Proje bilgilerini güncelle
     packageJson.name = projectName
     packageJson.version = '0.1.0'
-    packageJson.description = `${projectName} - Starkon Template ile oluşturulmuş Next.js projesi`
+    packageJson.description = `${projectName} - Starkon ile oluşturulmuş Next.js projesi`
     packageJson.private = true
 
     // CLI specific alanları kaldır
@@ -1448,7 +1448,7 @@ async function initializeGit(targetDir) {
       timeout: 10000,
     })
 
-    childProcess.execSync('git commit -m "feat: initial commit with Starkon Template"', {
+    childProcess.execSync('git commit -m "feat: initial commit with Starkon"', {
       cwd: targetDir,
       stdio: 'ignore',
       timeout: 10000,
@@ -1794,7 +1794,7 @@ async function createProject(projectDir, options = {}) {
  */
 program
   .name('starkon')
-  .description('🌊 Starkon Template ile modern Next.js projesi oluşturun')
+  .description('🌊 Starkon ile modern Next.js projesi oluşturun')
   .version('0.1.44')
   .argument('[project-directory]', 'Projenin oluşturulacağı dizin adı')
   .option('--skip-git', 'Git repository initialize etme')
@@ -1886,7 +1886,7 @@ program.on('--help', () => {
   console.log("  STARKON_TELEMETRY=false    - Telemetry'yi devre dışı bırak")
   console.log("  NO_TELEMETRY=1             - Telemetry'yi devre dışı bırak (alternatif)")
   console.log('')
-  console.log(chalk.blue('🌊 Starkon Template ile modern React uygulamaları oluşturun!'))
+  console.log(chalk.blue('🌊 Starkon ile modern React uygulamaları oluşturun!'))
 })
 
 // Program'ı çalıştır

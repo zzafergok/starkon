@@ -180,7 +180,7 @@ export function RichTextEditor({
   ]
 
   const colors = [
-    '#000000',
+    '#FFFAFA',
     '#ffffff',
     '#ff0000',
     '#00ff00',

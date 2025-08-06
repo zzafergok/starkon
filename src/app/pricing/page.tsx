@@ -99,7 +99,7 @@ export default function PricingPage() {
       role: 'Frontend Lead, TechCorp',
       avatar: '👨‍💻',
       quote:
-        'Starkon Template sayesinde geliştirme süremizi %60 kısalttık. Bileşenler gerçekten kaliteli ve kullanımı çok kolay.',
+        'Starkon sayesinde geliştirme süremizi %60 kısalttık. Bileşenler gerçekten kaliteli ve kullanımı çok kolay.',
     },
     {
       name: 'Elif Kaya',
@@ -158,8 +158,8 @@ export default function PricingPage() {
               </span>
             </h1>
             <p className='text-xl text-neutral-600 dark:text-neutral-300 mb-8 max-w-3xl mx-auto leading-relaxed'>
-              İhtiyacınıza uygun planı seçin ve Starkon Template&apos;in tüm gücünden yararlanın. Her bütçeye uygun
-              çözümlerimiz var.
+              İhtiyacınıza uygun planı seçin ve Starkon&apos;in tüm gücünden yararlanın. Her bütçeye uygun çözümlerimiz
+              var.
             </p>
 
             {/* Billing Toggle */}
@@ -370,7 +370,7 @@ export default function PricingPage() {
           <div className='text-center mb-16'>
             <h2 className='text-3xl font-bold text-neutral-900 dark:text-neutral-100 mb-4'>Müşterilerimiz Ne Diyor?</h2>
             <p className='text-lg text-neutral-600 dark:text-neutral-300'>
-              Binlerce geliştirici Starkon Template ile projelerini hayata geçiriyor
+              Binlerce geliştirici Starkon ile projelerini hayata geçiriyor
             </p>
           </div>
 
@@ -433,7 +433,7 @@ export default function PricingPage() {
               Hemen Başlamaya Hazır mısınız?
             </h2>
             <p className='text-lg text-white/95 mb-8 max-w-2xl mx-auto drop-shadow leading-relaxed'>
-              Starkon Template ile projelerinizi bir sonraki seviyeye taşıyın. Bugün başlayın ve farkı hemen görün.
+              Starkon ile projelerinizi bir sonraki seviyeye taşıyın. Bugün başlayın ve farkı hemen görün.
             </p>
             <div className='flex flex-col sm:flex-row gap-4 justify-center items-center'>
               <Button className='bg-white hover:bg-neutral-100 text-primary-600 dark:bg-neutral-100 dark:text-primary-700 dark:hover:bg-white shadow-lg hover:shadow-xl font-semibold'>

@@ -82,8 +82,8 @@
     "noComponentsFound": "No components found",
     "deleteWarning": "This action cannot be undone.",
     "confirmDelete": "Yes, delete",
-    "appName": "Starkon Template",
-    "appTitle": "Starkon Template",
+    "appName": "Starkon",
+    "appTitle": "Starkon",
     "loading": "Loading...",
     "error": "An error occurred",
     "success": "Success",
@@ -395,7 +395,7 @@
     "loginFormSubmitted": "Login form submitted",
     "alreadyAuthenticated": "Already authenticated, redirecting",
     "safelyLoggedOut": "You have been safely logged out",
-    "loading": "Starkon Template...",
+    "loading": "Starkon...",
     "unauthorized": {
       "title": "Unauthorized Access",
       "message": "You do not have permission to access this page.",
@@ -683,14 +683,14 @@
   },
   "pages": {
     "home": {
-      "title": "Welcome to Starkon Template",
+      "title": "Welcome to Starkon",
       "subtitle": "Comprehensive component library designed for modern React applications. Radix UI based, accessible and customizable components.",
       "getStarted": "Get Started",
       "learnMore": "Learn More",
       "goToDashboard": "Go to Dashboard",
       "features": {
         "title": "Features",
-        "subtitle": "Build modern applications with Starkon Template",
+        "subtitle": "Build modern applications with Starkon",
         "modern": {
           "title": "Modern Design",
           "description": "Create modern and elegant interfaces with sea blue theme"
@@ -705,7 +705,7 @@
         }
       },
       "footer": {
-        "copyright": "© 2024 Starkon Template. All rights reserved."
+        "copyright": "© 2024 Starkon. All rights reserved."
       }
     },
     "dashboard": {
@@ -730,7 +730,7 @@
     },
     "about": {
       "title": "About Us",
-      "content": "Learn more about Starkon Template and our mission."
+      "content": "Learn more about Starkon and our mission."
     },
     "contact": {
       "title": "Contact",

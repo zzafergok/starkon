@@ -221,8 +221,8 @@ export default function HomePage() {
           <div className='text-center'>
             <h2 className='text-3xl sm:text-4xl font-bold text-white mb-6 drop-shadow-md'>Hemen Başlayın</h2>
             <p className='text-lg text-white/95 mb-8 max-w-2xl mx-auto drop-shadow leading-relaxed'>
-              Modern React uygulamanızı oluşturmaya bugün başlayın. Starkon Template ile hızlı ve güvenilir geliştirme
-              deneyimi yaşayın.
+              Modern React uygulamanızı oluşturmaya bugün başlayın. Starkon ile hızlı ve güvenilir geliştirme deneyimi
+              yaşayın.
             </p>
 
             <div className='flex flex-col sm:flex-row gap-4 justify-center items-center'>

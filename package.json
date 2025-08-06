@@ -2,7 +2,7 @@
   "name": "starkon",
   "version": "0.0.8",
   "type": "module",
-  "description": "Create a Next.js project with Starkon Template",
+  "description": "Create a Next.js project with Starkon",
   "main": "dist/index.cjs",
   "module": "./dist/index.js",
   "sideEffects": false,

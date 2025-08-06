@@ -4,16 +4,27 @@
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 
-import { useState, useCallback, useMemo, useEffect } from 'react'
+import {
+  useState,
+  useCallback,
+  // useMemo,
+  useEffect,
+} from 'react'
 
-import { z } from 'zod'
-import { useForm } from 'react-hook-form'
+// import { z } from 'zod'
+// import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { Lock, Eye, EyeOff, CheckCircle, AlertCircle, ArrowLeft } from 'lucide-react'
+// import { zodResolver } from '@hookform/resolvers/zod'
+import {
+  Lock,
+  // Eye, EyeOff,
+  CheckCircle,
+  AlertCircle,
+  ArrowLeft,
+} from 'lucide-react'
 
-import { Label } from '@/components/core/label'
-import { Input } from '@/components/core/input'
+// import { Label } from '@/components/core/label'
+// import { Input } from '@/components/core/input'
 import { Button } from '@/components/core/button'
 import { ThemeSwitcher } from '@/components/ui/theme/theme-switcher'
 import { LanguageSwitcher } from '@/components/ui/language/language-switcher'
@@ -76,8 +87,8 @@ export default function ResetPasswordPage() {
 
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
-  const [isSuccess, setIsSuccess] = useState(false)
-  const [showPasswords, setShowPasswords] = useState({ new: false, confirm: false })
+  const [isSuccess, _setIsSuccess] = useState(false)
+  const [_showPasswords, setShowPasswords] = useState({ new: false, confirm: false })
 
   const token = searchParams.get('token')
 
@@ -99,11 +110,11 @@ export default function ResetPasswordPage() {
     }
   }, [token, t])
 
-  const togglePasswordVisibility = useCallback((field: 'new' | 'confirm') => {
+  const _togglePasswordVisibility = useCallback((field: 'new' | 'confirm') => {
     setShowPasswords((prev) => ({ ...prev, [field]: !prev[field] }))
   }, [])
 
-  const onSubmit = useCallback(
+  const _onSubmit = useCallback(
     async (data: any) => {
       if (isLoading || !token) return
 

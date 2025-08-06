@@ -55,7 +55,7 @@ export function PublicFooter() {
             <div className='lg:col-span-1'>
               <div className='flex items-center space-x-2 mb-4'>
                 <div className='text-2xl font-bold bg-gradient-to-r from-primary-600 to-accent-600 dark:from-primary-400 dark:to-accent-400 bg-clip-text text-transparent'>
-                  Starkon Template
+                  Starkon
                 </div>
               </div>
               <p className='text-sm text-neutral-600 dark:text-neutral-400 mb-6 max-w-sm'>
@@ -144,7 +144,7 @@ export function PublicFooter() {
         <div className='border-t border-neutral-200 dark:border-neutral-800 py-6'>
           <div className='flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0'>
             <div className='flex items-center space-x-2 text-sm text-neutral-600 dark:text-neutral-400'>
-              <span>© {currentYear} Starkon Template.</span>
+              <span>© {currentYear} Starkon.</span>
               <span>{t('pages.home.footer.copyright')}</span>
             </div>
 

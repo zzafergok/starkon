@@ -160,11 +160,11 @@ const config = {
       },
 
       boxShadow: {
-        primary: '0 4px 6px -1px rgba(216, 64, 64, 0.1), 0 2px 4px -1px rgba(216, 64, 64, 0.06)',
-        'primary-lg': '0 10px 15px -3px rgba(216, 64, 64, 0.1), 0 4px 6px -2px rgba(216, 64, 64, 0.05)',
-        'primary-xl': '0 20px 25px -5px rgba(216, 64, 64, 0.1), 0 10px 10px -5px rgba(216, 64, 64, 0.04)',
-        glow: '0 0 20px rgba(216, 64, 64, 0.3)',
-        'glow-lg': '0 0 40px rgba(216, 64, 64, 0.2)',
+        primary: '0 4px 6px -1px hsla(21, 100%, 50%, 0.1), 0 2px 4px -1px hsla(21, 100%, 50%, 0.06)',
+        'primary-lg': '0 10px 15px -3px hsla(21, 100%, 50%, 0.1), 0 4px 6px -2px hsla(21, 100%, 50%, 0.05)',
+        'primary-xl': '0 20px 25px -5px hsla(21, 100%, 50%, 0.1), 0 10px 10px -5px hsla(21, 100%, 50%, 0.04)',
+        glow: '0 0 20px hsla(21, 100%, 50%, 0.3)',
+        'glow-lg': '0 0 40px hsla(21, 100%, 50%, 0.2)',
       },
 
       backdropBlur: {
@@ -207,9 +207,9 @@ const config = {
           'background-clip': 'text',
         },
         '.glass-effect': {
-          background: 'rgba(255, 255, 255, 0.1)',
+          background: 'hsla(39, 67%, 95%, 0.1)',
           'backdrop-filter': 'blur(10px)',
-          border: '1px solid rgba(255, 255, 255, 0.2)',
+          border: '1px solid hsla(39, 67%, 95%, 0.2)',
         },
       }
 

@@ -39,7 +39,7 @@ export default defineConfig({
     }
 
     options.banner = {
-      js: '/**\n * Starkon Template - Custom Radix UI Components\n * @license MIT\n */',
+      js: '/**\n * Starkon - Custom Radix UI Components\n * @license MIT\n */',
     }
   },
 })

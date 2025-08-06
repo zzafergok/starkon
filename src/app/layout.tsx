@@ -9,15 +9,15 @@ import { ToastProvider } from '@/providers/toast-provider'
 
 export const metadata: Metadata = {
   title: {
-    default: 'Starkon Template - Modern React Component Library',
-    template: '%s | Starkon Template',
+    default: 'Starkon - Modern React Component Library',
+    template: '%s | Starkon',
   },
   description:
     'Enterprise seviyede React component kütüphanesi. Radix UI tabanlı, erişilebilir ve özelleştirilebilir komponentler.',
   keywords: ['React', 'Next.js', 'UI Kit', 'Components', 'TypeScript', 'Tailwind CSS'],
   authors: [{ name: 'Zafer Gök', url: 'https://github.com/zzafergok' }],
   creator: 'Zafer Gök',
-  publisher: 'Starkon Template',
+  publisher: 'Starkon',
   formatDetection: {
     email: false,
     address: false,
@@ -35,13 +35,13 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'tr_TR',
     url: '/',
-    title: 'Starkon Template - Modern React Component Library',
+    title: 'Starkon - Modern React Component Library',
     description: 'Enterprise seviyede React component kütüphanesi.',
-    siteName: 'Starkon Template',
+    siteName: 'Starkon',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Starkon Template - Modern React Component Library',
+    title: 'Starkon - Modern React Component Library',
     description: 'Enterprise seviyede React component kütüphanesi.',
   },
   robots: {

@@ -1,6 +1,6 @@
 {
-  "name": "Starkon Template",
-  "short_name": "Starkon Template",
+  "name": "Starkon",
+  "short_name": "Starkon",
   "description": "Enterprise seviyede React component kütüphanesi",
   "start_url": "/",
   "display": "standalone",

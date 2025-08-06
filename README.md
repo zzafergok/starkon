@@ -1,6 +1,6 @@
-# Starkon Template
+# Starkon
 
-Starkon Template, modern React uygulamaları için tasarlanmış kapsamlı bir component kütüphanesidir. Radix UI tabanlı, erişilebilir ve özelleştirilebilir komponentler sunar.
+Starkon, modern React uygulamaları için tasarlanmış kapsamlı bir component kütüphanesidir. Radix UI tabanlı, erişilebilir ve özelleştirilebilir komponentler sunar.
 
 ## Kurulum
 
