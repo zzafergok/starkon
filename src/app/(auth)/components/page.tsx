@@ -391,7 +391,26 @@ export default function ComponentsPage() {
                   status={component.status as 'stable' | 'beta' | 'alpha' | 'deprecated'}
                   demoComponent={component.demoComponent}
                   code={component.code}
-                  usageExamples={component.usageExamples}
+                  usageExamples={(() => {
+                    if (!component.usageExamples || !Array.isArray(component.usageExamples)) return undefined
+
+                    // Check if it's a string array and convert to proper format
+                    if (component.usageExamples.length > 0 && typeof component.usageExamples[0] === 'string') {
+                      return (component.usageExamples as string[]).map((example, index) => ({
+                        title: `Example ${index + 1}`,
+                        description: 'Usage example',
+                        code: example,
+                      }))
+                    }
+
+                    // Otherwise assume it's already in correct format
+                    return component.usageExamples as Array<{
+                      title: string
+                      description: string
+                      code: string
+                      component?: React.ReactNode
+                    }>
+                  })()}
                   props={component.props?.map((prop, index) => ({
                     ...prop,
                     key: prop.name || `prop-${index}`,

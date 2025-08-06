@@ -85,7 +85,7 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang='tr'>
-      <body className=''>
+      <body className='bg-background text-foreground antialiased'>
         <ReactQueryProvider>
           <AuthProvider>
             <ThemeProvider>

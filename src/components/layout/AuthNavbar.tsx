@@ -21,6 +21,8 @@ import { Button } from '@/components/core/button'
 // import { Logo } from '@/components/ui/brand/logo'
 
 import { useAuth } from '@/providers/AuthProvider'
+import { ThemeSwitcher } from '@/components/ui/theme/theme-switcher'
+import { LanguageSwitcher } from '@/components/ui/language/language-switcher'
 
 import { cn } from '@/lib/utils'
 
@@ -202,7 +204,13 @@ export function AuthHeader() {
               </nav>
             </div>
 
-            <div className='flex items-center space-x-4'>
+            <div className='flex items-center space-x-2'>
+              {/* Theme and Language Switchers - Desktop */}
+              <div className='hidden sm:flex items-center space-x-1'>
+                <ThemeSwitcher variant='button' size='sm' />
+                <LanguageSwitcher variant='button' size='sm' />
+              </div>
+
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant='ghost' className='flex items-center space-x-2 h-10 px-2'>
@@ -360,6 +368,15 @@ export function AuthHeader() {
               </nav>
 
               <div className='mt-8 pt-6 border-t border-border'>
+                {/* Theme and Language Switchers - Mobile */}
+                <div className='flex items-center justify-center gap-3 mb-6'>
+                  <div className='flex items-center gap-2 p-2 bg-neutral-50/50 dark:bg-neutral-800/50 rounded-lg'>
+                    <ThemeSwitcher variant='button' size='sm' />
+                    <div className='h-4 w-px bg-neutral-200 dark:bg-neutral-700' />
+                    <LanguageSwitcher variant='button' size='sm' />
+                  </div>
+                </div>
+
                 <div className='flex items-center space-x-3 mb-4'>
                   <Avatar className='h-10 w-10'>
                     {/* <div

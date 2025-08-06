@@ -186,14 +186,14 @@ body {
   background: rgb(115 115 115);
 }
 
-/* Theme transition styles */
-.theme-transitioning *,
-.theme-transitioning *::before,
-.theme-transitioning *::after {
-  transition:
-    background-color 150ms ease-in-out,
-    color 150ms ease-in-out,
-    border-color 150ms ease-in-out !important;
+/* Disable theme-related transitions for instant switching */
+html.light *,
+html.dark *,
+html.light *::before,
+html.light *::after,
+html.dark *::before,
+html.dark *::after {
+  transition: none !important;
 }
 
 /* Enhanced focus styles for dark theme */
@@ -216,7 +216,7 @@ body {
 /* Tema başlangıç durumu - FOUC önleme */
 html:not(.light):not(.dark) {
   background-color: hsl(39, 67%, 95%);
-  color: #FFFAFA;
+  color: hsl(0, 0%, 15%);
 }
 
 html:not(.light):not(.dark).theme-loading {
@@ -245,6 +245,10 @@ body {
   margin: 0;
 }
 
+html {
+  background: var(--background);
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
@@ -253,14 +257,15 @@ body {
     'calt' 1;
 }
 
+/* No theme switching transitions needed for instant switching */
+
 /* Prevent flash of unstyled content */
 html {
-  visibility: hidden;
+  visibility: visible;
 }
 
-html.light,
-html.dark {
-  visibility: visible;
+html.theme-loading {
+  visibility: hidden;
 }
 
 /* Global Element Styles */

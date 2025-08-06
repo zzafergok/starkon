@@ -49,10 +49,23 @@ export function ThemeSwitcher({
         size={size}
         onClick={() => setTheme(isDark ? 'light' : 'dark')}
         disabled={isTransitioning}
-        className={cn('transition-all duration-200', isTransitioning && 'pointer-events-none opacity-75', className)}
+        className={cn('relative transition-colors duration-150', isTransitioning && 'pointer-events-none', className)}
         aria-label={t('theme.switchTo', { theme: isDark ? t('theme.light.title') : t('theme.dark.title') })}
       >
-        {isDark ? <Sun className='h-4 w-4' /> : <Moon className='h-4 w-4' />}
+        <div className='relative w-4 h-4'>
+          <Sun
+            className={cn(
+              'absolute inset-0 h-4 w-4 transition-all duration-300 cubic-bezier(0.4, 0, 0.2, 1)',
+              isDark ? 'scale-0 rotate-90 opacity-0' : 'scale-100 rotate-0 opacity-100',
+            )}
+          />
+          <Moon
+            className={cn(
+              'absolute inset-0 h-4 w-4 transition-all duration-300 cubic-bezier(0.4, 0, 0.2, 1)',
+              isDark ? 'scale-100 rotate-0 opacity-100' : 'scale-0 -rotate-90 opacity-0',
+            )}
+          />
+        </div>
         {showLabel && <span className='ml-2'>{isDark ? t('theme.light.title') : t('theme.dark.title')}</span>}
       </Button>
     )
@@ -64,19 +77,19 @@ export function ThemeSwitcher({
       size={size}
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
       disabled={isTransitioning}
-      className={cn('relative transition-all duration-200', isTransitioning && 'pointer-events-none', className)}
+      className={cn('relative transition-colors duration-150', isTransitioning && 'pointer-events-none', className)}
       aria-label={t('theme.switchTo', { theme: isDark ? t('theme.light.title') : t('theme.dark.title') })}
     >
-      <div className='relative'>
+      <div className='relative w-4 h-4'>
         <Sun
           className={cn(
-            'h-4 w-4 transition-all duration-300',
+            'absolute inset-0 h-4 w-4 transition-all duration-300 cubic-bezier(0.4, 0, 0.2, 1)',
             isDark ? 'scale-0 rotate-90 opacity-0' : 'scale-100 rotate-0 opacity-100',
           )}
         />
         <Moon
           className={cn(
-            'absolute inset-0 h-4 w-4 transition-all duration-300',
+            'absolute inset-0 h-4 w-4 transition-all duration-300 cubic-bezier(0.4, 0, 0.2, 1)',
             isDark ? 'scale-100 rotate-0 opacity-100' : 'scale-0 -rotate-90 opacity-0',
           )}
         />

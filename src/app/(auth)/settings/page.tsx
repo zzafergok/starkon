@@ -53,6 +53,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 
 import { useAuth } from '@/hooks/useAuth'
 
+import { SettingsThemeSection } from '@/components/ui/theme/settings-theme-section'
+import { SettingsLanguageSection } from '@/components/ui/language/settings-language-section'
+
 interface NotificationSettings {
   emailNotifications: boolean
   pushNotifications: boolean
@@ -190,7 +193,7 @@ export default function SettingsPage() {
   }
 
   return (
-    <div className='min-h-screen bg-gradient-to-br from-neutral-50 via-white to-neutral-100/50 dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-950/80'>
+    <div className='min-h-screen'>
       <div className='container mx-auto px-4 py-8'>
         <div className='max-w-4xl mx-auto space-y-8'>
           {/* Page Header */}
@@ -792,12 +795,13 @@ export default function SettingsPage() {
                 </CardHeader>
                 <CardContent className='space-y-6'>
                   {/* Theme Selection */}
-                  {/* TODO <ThemeSelector /> */}
+                  <SettingsThemeSection />
 
                   <Separator />
 
                   {/* Language Selection */}
-                  {/* TODO <LanguageSelector /> */}
+                  <SettingsLanguageSection />
+
                   <Separator />
 
                   {/* Display Settings */}
