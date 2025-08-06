@@ -11,6 +11,7 @@ coverage
 
 # Claude files
 CLAUDE.md
+.claude
 
 # Don't ignore config files
 !postcss.config.mjs

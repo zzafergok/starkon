@@ -395,7 +395,7 @@
     "loginFormSubmitted": "Login form submitted",
     "alreadyAuthenticated": "Already authenticated, redirecting",
     "safelyLoggedOut": "You have been safely logged out",
-    "loading": "Talent Architect...",
+    "loading": "Starkon Template...",
     "unauthorized": {
       "title": "Unauthorized Access",
       "message": "You do not have permission to access this page.",

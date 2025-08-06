@@ -23,7 +23,7 @@ export function Logo({ size = 'md', className, showText = true }: LogoProps) {
       <div className={cn('rounded-lg flex items-center justify-center overflow-hidden', currentSize.class)}>
         <Image
           src='/assets/logo/logo-cat.png'
-          alt='Talent Architect'
+          alt='Starkon Template'
           width={currentSize.dimensions}
           height={currentSize.dimensions}
           className='w-full h-full object-contain'
@@ -33,7 +33,7 @@ export function Logo({ size = 'md', className, showText = true }: LogoProps) {
       </div>
       {showText && (
         <span className='text-xl font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent'>
-          Talent Architect
+          Starkon Template Architect
         </span>
       )}
     </div>

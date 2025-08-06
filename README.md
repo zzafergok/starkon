@@ -5,14 +5,14 @@ Starkon Template, modern React uygulamaları için tasarlanmış kapsamlı bir c
 ## Kurulum
 
 ```bash
-npx create-starkon-template my-project
+npx starkon my-project
 cd my-project
 npm install
 npm run dev
 ```
 
 ```bash
-starkon-template/
+starkon/
 ├── src/
 │   ├── app/                    # Next.js App Router
 │   │   ├── (auth)/            # Korumalı rotalar grubu
@@ -229,7 +229,7 @@ starkon-template/
 ## Projeyi oluştur
 
 ```bash
-npx create-starkon-template my-app
+npx starkon my-app
 cd my-app
 
 # Bağımlılıkları yükle
@@ -375,5 +375,5 @@ MIT License - detaylar için [LICENSE](LICENSE) dosyasına bakın.
 
 ## İletişim
 
-- GitHub: [zzafergok/starkon-template](https://github.com/zzafergok/starkon-template)
+- GitHub: [zzafergok/starkon](https://github.com/zzafergok/starkon)
 - Website: [starkon.website](https://starkon.website)

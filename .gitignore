@@ -36,6 +36,7 @@ yarn-error.log*
 
 # Claude files
 CLAUDE.md
+.claude
 
 # Local env files
 .env
