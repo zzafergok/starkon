@@ -5,9 +5,9 @@ import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Sparkles, Zap, Palette, Code, ArrowRight, Github } from 'lucide-react'
 import { useAuth } from '@/hooks/useAuth'
-import { Button } from '@/components/core/Button/Button'
-import { Card, CardContent } from '@/components/core/Card/Card'
-import { LoadingSpinner } from '@/components/core/Loading/LoadingSpinner'
+import { Button } from '@/components/core/button'
+import { Card, CardContent } from '@/components/core/card'
+import { LoadingSpinner } from '@/components/core/loading-spinner'
 
 export default function HomePage() {
   const router = useRouter()
