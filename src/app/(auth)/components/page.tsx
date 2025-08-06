@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic'
 import React, { useState, useMemo, useEffect } from 'react'
 
 import { useTranslation } from 'react-i18next'
-import { Search, Grid, List, Filter, X, ChevronUp } from 'lucide-react'
+import { Search, Filter, X, ChevronUp } from 'lucide-react'
 
 import { Input } from '@/components/core/input'
 import { Badge } from '@/components/core/badge'
@@ -14,7 +14,7 @@ import { Card, CardContent } from '@/components/core/card'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/core/select'
 
 import { cn } from '@/lib/utils'
-import { componentDemoData } from '@/data/componentDemoData'
+import { useComponentDemoData } from '@/data/componentDemoData'
 
 const ComponentDemo = dynamic(
   () => import('@/components/ui/ComponentDemo/ComponentDemo').then((mod) => mod.ComponentDemo),
@@ -49,10 +49,11 @@ const ComponentDemoSkeleton = () => (
 
 export default function ComponentsPage() {
   const { t } = useTranslation()
+  const componentDemoData = useComponentDemoData()
 
   const [searchQuery, setSearchQuery] = useState('')
   const [isFilterOpen, setIsFilterOpen] = useState(false)
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
+  const [viewMode] = useState<'grid' | 'list'>('grid')
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
   const [selectedStatus, setSelectedStatus] = useState<string>('all')
   const [showScrollTop, setShowScrollTop] = useState(false)
@@ -71,7 +72,7 @@ export default function ComponentsPage() {
 
       return matchesSearch && matchesCategory && matchesStatus
     })
-  }, [searchQuery, selectedCategory, selectedStatus])
+  }, [searchQuery, selectedCategory, selectedStatus, componentDemoData])
 
   // Kategoriler ve durumlar
   const categories = useMemo(() => {
@@ -81,7 +82,7 @@ export default function ComponentsPage() {
       label: cat === 'all' ? t('common.allCategories') : cat,
       count: cat === 'all' ? componentDemoData.length : componentDemoData.filter((c) => c.category === cat).length,
     }))
-  }, [t])
+  }, [t, componentDemoData])
 
   const statuses = useMemo(() => {
     const stats = ['all', ...Array.from(new Set(componentDemoData.map((c) => c.status)))]
@@ -90,7 +91,7 @@ export default function ComponentsPage() {
       label: status === 'all' ? 'Tüm Durumlar' : status,
       count: status === 'all' ? componentDemoData.length : componentDemoData.filter((c) => c.status === status).length,
     }))
-  }, [])
+  }, [componentDemoData])
 
   const clearFilters = () => {
     setSearchQuery('')

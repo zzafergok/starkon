@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 // Import all core components
 import { Accordion } from '@/components/core/accordion'
@@ -84,235 +85,244 @@ import {
   X,
 } from 'lucide-react'
 
-// Sample data for tables
-const sampleUsers = [
-  { id: '1', name: 'Ahmet Yılmaz', email: 'ahmet@example.com', role: 'Admin', status: 'active' },
-  { id: '2', name: 'Ayşe Kaya', email: 'ayse@example.com', role: 'User', status: 'active' },
-  { id: '3', name: 'Mehmet Demir', email: 'mehmet@example.com', role: 'User', status: 'inactive' },
-  { id: '4', name: 'Fatma Özkan', email: 'fatma@example.com', role: 'Editor', status: 'active' },
-  { id: '5', name: 'Ali Şen', email: 'ali@example.com', role: 'User', status: 'pending' },
-]
+// Component demo data generator function
+export const useComponentDemoData = () => {
+  const { t } = useTranslation()
 
-const tableColumns: Array<import('@/components/core/data-grid').DataGridColumn<Record<string, any>>> = [
-  createSelectionColumn(),
-  {
-    accessorKey: 'name',
-    header: 'Ad Soyad',
-    cell: ({ row }: { row: any }) => (
-      <div className='flex items-center space-x-2'>
-        <Avatar className='h-8 w-8'>
-          <AvatarFallback>
-            {row.original.name
-              .split(' ')
-              .map((n: string) => n[0])
-              .join('')}
-          </AvatarFallback>
-        </Avatar>
-        <span className='font-medium'>{row.original.name}</span>
-      </div>
-    ),
-  },
-  {
-    accessorKey: 'email',
-    header: 'E-posta',
-  },
-  {
-    accessorKey: 'role',
-    header: 'Rol',
-    cell: ({ row }: { row: any }) => (
-      <Badge variant={row.original.role === 'Admin' ? 'destructive' : 'secondary'}>{row.original.role}</Badge>
-    ),
-  },
-  {
-    accessorKey: 'status',
-    header: 'Durum',
-    cell: ({ row }: { row: any }) => (
-      <Badge
-        variant={
-          row.original.status === 'active' ? 'default' : row.original.status === 'inactive' ? 'destructive' : 'outline'
-        }
-      >
-        {row.original.status === 'active' ? 'Aktif' : row.original.status === 'inactive' ? 'Pasif' : 'Beklemede'}
-      </Badge>
-    ),
-  },
-  createActionsColumn([
+  // Sample data for tables
+  const sampleUsers = [
+    { id: '1', name: t('demo.sampleData.users.ahmet'), email: 'ahmet@example.com', role: 'Admin', status: 'active' },
+    { id: '2', name: t('demo.sampleData.users.ayse'), email: 'ayse@example.com', role: 'User', status: 'active' },
+    { id: '3', name: t('demo.sampleData.users.mehmet'), email: 'mehmet@example.com', role: 'User', status: 'inactive' },
+    { id: '4', name: t('demo.sampleData.users.fatma'), email: 'fatma@example.com', role: 'Editor', status: 'active' },
+    { id: '5', name: t('demo.sampleData.users.ali'), email: 'ali@example.com', role: 'User', status: 'pending' },
+  ]
+
+  const tableColumns: Array<import('@/components/core/data-grid').DataGridColumn<Record<string, any>>> = [
+    createSelectionColumn(),
     {
-      label: 'Düzenle',
-      icon: <Edit className='w-4 h-4 mr-2' />,
-      onClick: (row) => console.log('Düzenle:', row.name),
-      variant: 'outline',
+      accessorKey: 'name',
+      header: t('demo.tableHeaders.fullName'),
+      cell: ({ row }: { row: any }) => (
+        <div className='flex items-center space-x-2'>
+          <Avatar className='h-8 w-8'>
+            <AvatarFallback>
+              {row.original.name
+                .split(' ')
+                .map((n: string) => n[0])
+                .join('')}
+            </AvatarFallback>
+          </Avatar>
+          <span className='font-medium'>{row.original.name}</span>
+        </div>
+      ),
     },
     {
-      label: 'Sil',
-      icon: <Trash2 className='w-4 h-4 mr-2' />,
-      onClick: (row) => console.log('Sil:', row.name),
-      variant: 'destructive',
+      accessorKey: 'email',
+      header: t('demo.tableHeaders.email'),
     },
-  ]),
-]
-
-// Component demo data
-export const componentDemoData = [
-  // Accordion Component
-  {
-    id: 'accordion',
-    title: 'Accordion',
-    description:
-      'Genişletilebilir içerik bölümleri için kullanılan accordion bileşeni. Framer Motion animasyonları ile gelişmiş kullanıcı deneyimi sunar.',
-    category: 'Layout',
-    status: 'stable',
-    demoComponent: (
-      <div className='w-full'>
-        <Accordion.Root
-          defaultValue={['item-1']}
-          className='border rounded-lg border-neutral-200 dark:border-neutral-700'
+    {
+      accessorKey: 'role',
+      header: t('demo.tableHeaders.role'),
+      cell: ({ row }: { row: any }) => (
+        <Badge variant={row.original.role === 'Admin' ? 'destructive' : 'secondary'}>{row.original.role}</Badge>
+      ),
+    },
+    {
+      accessorKey: 'status',
+      header: t('demo.tableHeaders.status'),
+      cell: ({ row }: { row: any }) => (
+        <Badge
+          variant={
+            row.original.status === 'active'
+              ? 'default'
+              : row.original.status === 'inactive'
+                ? 'destructive'
+                : 'outline'
+          }
         >
-          <Accordion.Item value='item-1'>
-            <Accordion.Trigger>Kişisel Bilgiler</Accordion.Trigger>
-            <Accordion.Content>
-              <p className='text-neutral-600 dark:text-neutral-400 text-sm'>
-                Ad, soyad, e-posta ve telefon bilgilerinizi bu bölümde güncelleyebilirsiniz. Değişiklikler anında
-                kaydedilir.
-              </p>
-            </Accordion.Content>
-          </Accordion.Item>
-          <Accordion.Item value='item-2'>
-            <Accordion.Trigger>Güvenlik Ayarları</Accordion.Trigger>
-            <Accordion.Content>
-              <p className='text-neutral-600 dark:text-neutral-400 text-sm'>
-                Şifre değiştirme, iki faktörlü kimlik doğrulama ve güvenlik soruları ayarlarınız.
-              </p>
-            </Accordion.Content>
-          </Accordion.Item>
-          <Accordion.Item value='item-3'>
-            <Accordion.Trigger>Bildirim Tercihleri</Accordion.Trigger>
-            <Accordion.Content>
-              <p className='text-neutral-600 dark:text-neutral-400 text-sm'>
-                E-posta, SMS ve uygulama bildirimleri için tercihlerinizi belirleyin.
-              </p>
-            </Accordion.Content>
-          </Accordion.Item>
-        </Accordion.Root>
-      </div>
-    ),
-    code: `import { Accordion } from '@/components/core/accordion'
+          {row.original.status === 'active'
+            ? t('demo.sampleData.status.active')
+            : row.original.status === 'inactive'
+              ? t('demo.sampleData.status.inactive')
+              : t('demo.sampleData.status.pending')}
+        </Badge>
+      ),
+    },
+    createActionsColumn([
+      {
+        label: t('demo.tableHeaders.edit'),
+        icon: <Edit className='w-4 h-4 mr-2' />,
+        onClick: (row) => console.log(t('demo.tableHeaders.edit'), row.name),
+        variant: 'outline',
+      },
+      {
+        label: t('demo.tableHeaders.delete'),
+        icon: <Trash2 className='w-4 h-4 mr-2' />,
+        onClick: (row) => console.log(t('demo.tableHeaders.delete'), row.name),
+        variant: 'destructive',
+      },
+    ]),
+  ]
+
+  // Component demo data
+  return [
+    // Accordion Component
+    {
+      id: 'accordion',
+      title: 'Accordion',
+      description: t('demo.descriptions.accordion'),
+      category: t('demo.content.categories.layout'),
+      status: 'stable',
+      demoComponent: (
+        <div className='w-full'>
+          <Accordion.Root
+            defaultValue={['item-1']}
+            className='border rounded-lg border-neutral-200 dark:border-neutral-700'
+          >
+            <Accordion.Item value='item-1'>
+              <Accordion.Trigger>{t('demo.content.accordion.personalInfo')}</Accordion.Trigger>
+              <Accordion.Content>
+                <p className='text-neutral-600 dark:text-neutral-400 text-sm'>
+                  {t('demo.content.accordion.personalInfoDesc')}
+                </p>
+              </Accordion.Content>
+            </Accordion.Item>
+            <Accordion.Item value='item-2'>
+              <Accordion.Trigger>{t('demo.content.accordion.securitySettings')}</Accordion.Trigger>
+              <Accordion.Content>
+                <p className='text-neutral-600 dark:text-neutral-400 text-sm'>
+                  {t('demo.content.accordion.securitySettingsDesc')}
+                </p>
+              </Accordion.Content>
+            </Accordion.Item>
+            <Accordion.Item value='item-3'>
+              <Accordion.Trigger>{t('demo.remaining.missing.accordion.notificationPreferences')}</Accordion.Trigger>
+              <Accordion.Content>
+                <p className='text-neutral-600 dark:text-neutral-400 text-sm'>
+                  {t('demo.remaining.labels.notificationPreferences')}
+                </p>
+              </Accordion.Content>
+            </Accordion.Item>
+          </Accordion.Root>
+        </div>
+      ),
+      code: `import { Accordion } from '@/components/core/accordion'
 
 function Example() {
   return (
     <Accordion.Root defaultValue={['item-1']}>
       <Accordion.Item value="item-1">
-        <Accordion.Trigger>Kişisel Bilgiler</Accordion.Trigger>
+        <Accordion.Trigger>{t('demo.remaining.labels.personalInfo')}</Accordion.Trigger>
         <Accordion.Content>
-          <p>Ad, soyad, e-posta ve telefon bilgilerinizi buradan güncelleyebilirsiniz.</p>
+          <p>{t('demo.remaining.labels.personalInfoDesc')}</p>
         </Accordion.Content>
       </Accordion.Item>
       <Accordion.Item value="item-2">
-        <Accordion.Trigger>Güvenlik Ayarları</Accordion.Trigger>
+        <Accordion.Trigger>{t('demo.remaining.labels.securitySettings')}</Accordion.Trigger>
         <Accordion.Content>
-          <p>Şifre değiştirme ve iki faktörlü kimlik doğrulama ayarları.</p>
+          <p>{t('demo.remaining.labels.securitySettingsDesc')}</p>
         </Accordion.Content>
       </Accordion.Item>
     </Accordion.Root>
   )
 }`,
-    usageExamples: [
-      {
-        title: 'Multiple Accordion',
-        description: 'Aynı anda birden fazla bölümün açılabildiği accordion',
-        code: `<Accordion.Root type="multiple" defaultValue={['item-1', 'item-2']}>
+      usageExamples: [
+        {
+          title: 'Multiple Accordion',
+          description: t('demo.remaining.descriptions.multipleAccordion'),
+          code: `<Accordion.Root type="multiple" defaultValue={['item-1', 'item-2']}>
   <Accordion.Item value="item-1">
-    <Accordion.Trigger>Bölüm 1</Accordion.Trigger>
-    <Accordion.Content>İçerik 1</Accordion.Content>
+    <Accordion.Trigger>{t('demo.remaining.labels.section1')}</Accordion.Trigger>
+    <Accordion.Content>{t('demo.remaining.labels.content1')}</Accordion.Content>
   </Accordion.Item>
   <Accordion.Item value="item-2">
-    <Accordion.Trigger>Bölüm 2</Accordion.Trigger>
-    <Accordion.Content>İçerik 2</Accordion.Content>
+    <Accordion.Trigger>{t('demo.remaining.labels.section2')}</Accordion.Trigger>
+    <Accordion.Content>{t('demo.remaining.labels.content2')}</Accordion.Content>
   </Accordion.Item>
 </Accordion.Root>`,
-        component: (
-          <Accordion.Root
-            type='multiple'
-            defaultValue={['item-1']}
-            className='border rounded-lg border-neutral-200 dark:border-neutral-700 w-full'
-          >
-            <Accordion.Item value='item-1'>
-              <Accordion.Trigger>Açık Bölüm</Accordion.Trigger>
-              <Accordion.Content>
-                <p className='text-sm text-neutral-600 dark:text-neutral-400'>Bu bölüm varsayılan olarak açık.</p>
-              </Accordion.Content>
-            </Accordion.Item>
-            <Accordion.Item value='item-2'>
-              <Accordion.Trigger>Diğer Bölüm</Accordion.Trigger>
-              <Accordion.Content>
-                <p className='text-sm text-neutral-600 dark:text-neutral-400'>Bu bölümü de açabilirsiniz.</p>
-              </Accordion.Content>
-            </Accordion.Item>
-          </Accordion.Root>
-        ),
-      },
-    ],
-    props: [
-      {
-        name: 'type',
-        type: "'single' | 'multiple'",
-        description: 'Tek veya çoklu açılabilir mod',
-        default: 'single',
-      },
-      {
-        name: 'defaultValue',
-        type: 'string[]',
-        description: 'Varsayılan açık olan item değerleri',
-      },
-      {
-        name: 'value',
-        type: 'string[]',
-        description: 'Controlled mod için açık olan item değerleri',
-      },
-      {
-        name: 'onValueChange',
-        type: '(value: string[]) => void',
-        description: 'Değer değişikliği callback fonksiyonu',
-      },
-      {
-        name: 'collapsible',
-        type: 'boolean',
-        description: "Son kalan item'ın da kapatılabilir olup olmadığı",
-        default: 'true',
-      },
-    ],
-  },
+          component: (
+            <Accordion.Root
+              type='multiple'
+              defaultValue={['item-1']}
+              className='border rounded-lg border-neutral-200 dark:border-neutral-700 w-full'
+            >
+              <Accordion.Item value='item-1'>
+                <Accordion.Trigger>{t('demo.remaining.labels.openSection')}</Accordion.Trigger>
+                <Accordion.Content>
+                  <p className='text-sm text-neutral-600 dark:text-neutral-400'>{t('demo.remaining.labels.defaultOpenSection')}</p>
+                </Accordion.Content>
+              </Accordion.Item>
+              <Accordion.Item value='item-2'>
+                <Accordion.Trigger>{t('demo.remaining.labels.otherSection')}</Accordion.Trigger>
+                <Accordion.Content>
+                  <p className='text-sm text-neutral-600 dark:text-neutral-400'>{t('demo.remaining.labels.canAlsoOpenThisSection')}</p>
+                </Accordion.Content>
+              </Accordion.Item>
+            </Accordion.Root>
+          ),
+        },
+      ],
+      props: [
+        {
+          name: 'type',
+          type: "'single' | 'multiple'",
+          description: t('demo.properties.singleMultipleMode'),
+          default: 'single',
+        },
+        {
+          name: 'defaultValue',
+          type: 'string[]',
+          description: t('demo.properties.defaultOpenValues'),
+        },
+        {
+          name: 'value',
+          type: 'string[]',
+          description: t('demo.properties.controlledOpenValues'),
+        },
+        {
+          name: 'onValueChange',
+          type: '(value: string[]) => void',
+          description: t('demo.properties.valueChangeCallback'),
+        },
+        {
+          name: 'collapsible',
+          type: 'boolean',
+          description: t('demo.remaining.descriptions.lastItemClosable'),
+          default: 'true',
+        },
+      ],
+    },
 
-  // Alert Component
-  {
-    id: 'alert',
-    title: 'Alert',
-    description:
-      'Kullanıcılara önemli mesajları iletmek için kullanılan alert bileşeni. Farklı türlerde uyarılar gösterebilir.',
-    category: 'Geri Bildirim',
-    status: 'stable',
-    demoComponent: (
-      <div className='space-y-4 w-full'>
-        <Alert>
-          <Info className='h-4 w-4' />
-          <AlertTitle>Bilgilendirme</AlertTitle>
-          <AlertDescription>Bu bir bilgilendirme mesajıdır. Önemli detayları içerir.</AlertDescription>
-        </Alert>
+    // Alert Component
+    {
+      id: 'alert',
+      title: 'Alert',
+      description: t('demo.descriptions.alert'),
+      category: t('demo.content.categories.feedback'),
+      status: 'stable',
+      demoComponent: (
+        <div className='space-y-4 w-full'>
+          <Alert>
+            <Info className='h-4 w-4' />
+            <AlertTitle>{t('demo.content.alerts.information')}</AlertTitle>
+            <AlertDescription>{t('demo.content.alerts.informationMsg')}</AlertDescription>
+          </Alert>
 
-        <Alert variant='warning'>
-          <AlertTriangle className='h-4 w-4' />
-          <AlertTitle>Uyarı</AlertTitle>
-          <AlertDescription>Dikkat edilmesi gereken bir durum var.</AlertDescription>
-        </Alert>
+          <Alert variant='warning'>
+            <AlertTriangle className='h-4 w-4' />
+            <AlertTitle>{t('demo.content.alerts.warning')}</AlertTitle>
+            <AlertDescription>{t('demo.content.alerts.warningMsg')}</AlertDescription>
+          </Alert>
 
-        <Alert variant='destructive'>
-          <AlertCircle className='h-4 w-4' />
-          <AlertTitle>Hata</AlertTitle>
-          <AlertDescription>İşlem gerçekleştirilemedi. Lütfen tekrar deneyin.</AlertDescription>
-        </Alert>
-      </div>
-    ),
-    code: `import { Alert, AlertTitle, AlertDescription } from '@/components/core/alert'
+          <Alert variant='destructive'>
+            <AlertCircle className='h-4 w-4' />
+            <AlertTitle>{t('demo.content.alerts.error')}</AlertTitle>
+            <AlertDescription>{t('demo.content.alerts.errorMsg')}</AlertDescription>
+          </Alert>
+        </div>
+      ),
+      code: `import { Alert, AlertTitle, AlertDescription } from '@/components/core/alert'
 import { Info, AlertTriangle, AlertCircle } from 'lucide-react'
 
 function Example() {
@@ -321,60 +331,60 @@ function Example() {
       <Alert>
         <Info className="h-4 w-4" />
         <AlertTitle>Bilgilendirme</AlertTitle>
-        <AlertDescription>Bu bir bilgilendirme mesajıdır.</AlertDescription>
+        <AlertDescription>{t('demo.remaining.labels.informationMessage')}</AlertDescription>
       </Alert>
       
       <Alert variant="warning">
         <AlertTriangle className="h-4 w-4" />
-        <AlertTitle>Uyarı</AlertTitle>
+        <AlertTitle>{t('demo.remaining.labels.warning')}</AlertTitle>
         <AlertDescription>Dikkat edilmesi gereken bir durum var.</AlertDescription>
       </Alert>
       
       <Alert variant="destructive">
         <AlertCircle className="h-4 w-4" />
-        <AlertTitle>Hata</AlertTitle>
-        <AlertDescription>İşlem gerçekleştirilemedi.</AlertDescription>
+        <AlertTitle>{t('demo.remaining.missing.badge.error')}</AlertTitle>
+        <AlertDescription>{t('demo.remaining.labels.operationFailed')}</AlertDescription>
       </Alert>
     </div>
   )
 }`,
-    props: [
-      {
-        name: 'variant',
-        type: "'default' | 'destructive' | 'warning' | 'info'",
-        description: 'Alert görünüm varyantı',
-        default: 'default',
-      },
-    ],
-  },
+      props: [
+        {
+          name: 'variant',
+          type: "'default' | 'destructive' | 'warning' | 'info'",
+          description: t('demo.properties.alertVariant'),
+          default: 'default',
+        },
+      ],
+    },
 
-  // Alert Dialog Component
-  {
-    id: 'alert-dialog',
-    title: 'Alert Dialog',
-    description: 'Kritik işlemler için onay alınan modal dialog bileşeni. Kullanıcı etkileşimi gerektirir.',
-    category: 'Overlay',
-    status: 'stable',
-    demoComponent: (
-      <AlertDialog>
-        <AlertDialogTrigger asChild>
-          <Button variant='destructive'>Hesabı Sil</Button>
-        </AlertDialogTrigger>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>Hesabınızı silmek istediğinizden emin misiniz?</AlertDialogTitle>
-            <AlertDialogDescription>
-              Bu işlem geri alınamaz. Hesabınız ve tüm verileriniz kalıcı olarak silinecektir.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel>İptal</AlertDialogCancel>
-            <AlertDialogAction>Evet, Sil</AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
-    ),
-    code: `import {
+    // Alert Dialog Component
+    {
+      id: 'alert-dialog',
+      title: 'Alert Dialog',
+      description: t('demo.remaining.descriptions.criticalOperations'),
+      category: t('demo.content.categories.overlay'),
+      status: 'stable',
+      demoComponent: (
+        <AlertDialog>
+          <AlertDialogTrigger asChild>
+            <Button variant='destructive'>{t('demo.remaining.labels.deleteAccount')}</Button>
+          </AlertDialogTrigger>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>{t('demo.remaining.labels.confirmDeleteAccount')}</AlertDialogTitle>
+              <AlertDialogDescription>
+                {t('demo.remaining.labels.deleteWarningMessage')}
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel>{t('demo.remaining.labels.cancel')}</AlertDialogCancel>
+              <AlertDialogAction>Evet, Sil</AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
+      ),
+      code: `import {
   AlertDialog,
   AlertDialogAction,
   AlertDialogCancel,
@@ -390,11 +400,11 @@ function Example() {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button variant="destructive">Hesabı Sil</Button>
+        <Button variant="destructive">{t('demo.remaining.labels.deleteAccount')}</Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Hesabınızı silmek istediğinizden emin misiniz?</AlertDialogTitle>
+          <AlertDialogTitle>{t('demo.remaining.missing.alertDialog.confirmDelete')}</AlertDialogTitle>
           <AlertDialogDescription>
             Bu işlem geri alınamaz. Hesabınız ve tüm verileriniz kalıcı olarak silinecektir.
           </AlertDialogDescription>
@@ -407,46 +417,46 @@ function Example() {
     </AlertDialog>
   )
 }`,
-    props: [
-      {
-        name: 'open',
-        type: 'boolean',
-        description: 'Dialog açık mı (controlled)',
-      },
-      {
-        name: 'onOpenChange',
-        type: '(open: boolean) => void',
-        description: 'Dialog açık durumu değiştiğinde çağırılan fonksiyon',
-      },
-    ],
-  },
+      props: [
+        {
+          name: 'open',
+          type: 'boolean',
+          description: t('demo.properties.dialogOpen'),
+        },
+        {
+          name: 'onOpenChange',
+          type: '(open: boolean) => void',
+          description: t('demo.properties.dialogOpenChangeCallback'),
+        },
+      ],
+    },
 
-  // Avatar Component
-  {
-    id: 'avatar',
-    title: 'Avatar',
-    description:
-      'Kullanıcı profil resimleri ve avatarları için kullanılan bileşen. Fallback ve farklı boyut seçenekleri sunar.',
-    category: 'Veri Gösterimi',
-    status: 'stable',
-    demoComponent: (
-      <div className='flex items-center space-x-4'>
-        <Avatar className='h-16 w-16'>
-          <AvatarImage src='https://github.com/shadcn.png' alt='@shadcn' />
-          <AvatarFallback>CN</AvatarFallback>
-        </Avatar>
-        <Avatar className='h-12 w-12'>
-          <AvatarFallback>AY</AvatarFallback>
-        </Avatar>
-        <Avatar className='h-10 w-10'>
-          <AvatarFallback className='bg-primary text-primary-foreground'>MD</AvatarFallback>
-        </Avatar>
-        <Avatar className='h-8 w-8'>
-          <AvatarFallback className='bg-secondary'>FÖ</AvatarFallback>
-        </Avatar>
-      </div>
-    ),
-    code: `import { Avatar, AvatarImage, AvatarFallback } from '@/components/core/avatar'
+    // Avatar Component
+    {
+      id: 'avatar',
+      title: 'Avatar',
+      description:
+        t('demo.remaining.descriptions.avatarComponent'),
+      category: t('demo.content.categories.dataDisplay'),
+      status: 'stable',
+      demoComponent: (
+        <div className='flex items-center space-x-4'>
+          <Avatar className='h-16 w-16'>
+            <AvatarImage src='https://github.com/shadcn.png' alt='@shadcn' />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
+          <Avatar className='h-12 w-12'>
+            <AvatarFallback>AY</AvatarFallback>
+          </Avatar>
+          <Avatar className='h-10 w-10'>
+            <AvatarFallback className='bg-primary text-primary-foreground'>MD</AvatarFallback>
+          </Avatar>
+          <Avatar className='h-8 w-8'>
+            <AvatarFallback className='bg-secondary'>{t('demo.remaining.labels.avatarFallback')}</AvatarFallback>
+          </Avatar>
+        </div>
+      ),
+      code: `import { Avatar, AvatarImage, AvatarFallback } from '@/components/core/avatar'
 
 function Example() {
   return (
@@ -464,11 +474,11 @@ function Example() {
     </div>
   )
 }`,
-    usageExamples: [
-      {
-        title: 'Avatar Grubu',
-        description: 'Birden fazla kullanıcıyı temsil eden avatar grubu',
-        code: `<div className="flex -space-x-2">
+      usageExamples: [
+        {
+          title: 'Avatar Grubu',
+          description: t('demo.remaining.descriptions.avatarGroup'),
+          code: `<div className="flex -space-x-2">
   <Avatar className="h-10 w-10 border-2 border-white">
     <AvatarFallback>AY</AvatarFallback>
   </Avatar>
@@ -479,53 +489,53 @@ function Example() {
     <AvatarFallback>+3</AvatarFallback>
   </Avatar>
 </div>`,
-        component: (
-          <div className='flex -space-x-2'>
-            <Avatar className='h-10 w-10 border-2 border-white dark:border-neutral-800'>
-              <AvatarFallback>AY</AvatarFallback>
-            </Avatar>
-            <Avatar className='h-10 w-10 border-2 border-white dark:border-neutral-800'>
-              <AvatarFallback>MD</AvatarFallback>
-            </Avatar>
-            <Avatar className='h-10 w-10 border-2 border-white dark:border-neutral-800'>
-              <AvatarFallback className='bg-neutral-200 dark:bg-neutral-700'>+3</AvatarFallback>
-            </Avatar>
-          </div>
-        ),
-      },
-    ],
-    props: [
-      {
-        name: 'src',
-        type: 'string',
-        description: "Avatar resmi URL'i (AvatarImage için)",
-      },
-      {
-        name: 'alt',
-        type: 'string',
-        description: 'Avatar resmi alternatif metni',
-      },
-    ],
-  },
+          component: (
+            <div className='flex -space-x-2'>
+              <Avatar className='h-10 w-10 border-2 border-white dark:border-neutral-800'>
+                <AvatarFallback>AY</AvatarFallback>
+              </Avatar>
+              <Avatar className='h-10 w-10 border-2 border-white dark:border-neutral-800'>
+                <AvatarFallback>MD</AvatarFallback>
+              </Avatar>
+              <Avatar className='h-10 w-10 border-2 border-white dark:border-neutral-800'>
+                <AvatarFallback className='bg-neutral-200 dark:bg-neutral-700'>+3</AvatarFallback>
+              </Avatar>
+            </div>
+          ),
+        },
+      ],
+      props: [
+        {
+          name: 'src',
+          type: 'string',
+          description: t('demo.remaining.descriptions.avatarImageUrl'),
+        },
+        {
+          name: 'alt',
+          type: 'string',
+          description: 'Avatar resmi alternatif metni',
+        },
+      ],
+    },
 
-  // Badge Component
-  {
-    id: 'badge',
-    title: 'Badge',
-    description: 'Durum ve etiketleme için kullanılan badge bileşeni. Farklı varyant ve boyut seçenekleri sunar.',
-    category: 'Veri Gösterimi',
-    status: 'stable',
-    demoComponent: (
-      <div className='flex items-center gap-2 flex-wrap'>
-        <Badge variant='default'>Default</Badge>
-        <Badge variant='secondary'>Secondary</Badge>
-        <Badge variant='destructive'>Destructive</Badge>
-        <Badge variant='outline'>Outline</Badge>
-        <Badge size='sm'>Küçük</Badge>
-        <Badge size='lg'>Büyük</Badge>
-      </div>
-    ),
-    code: `import { Badge } from '@/components/core/badge'
+    // Badge Component
+    {
+      id: 'badge',
+      title: 'Badge',
+      description: t('demo.remaining.descriptions.badgeComponent'),
+      category: t('demo.content.categories.dataDisplay'),
+      status: 'stable',
+      demoComponent: (
+        <div className='flex items-center gap-2 flex-wrap'>
+          <Badge variant='default'>Default</Badge>
+          <Badge variant='secondary'>Secondary</Badge>
+          <Badge variant='destructive'>Destructive</Badge>
+          <Badge variant='outline'>Outline</Badge>
+          <Badge size='sm'>{t('demo.remaining.labels.small')}</Badge>
+          <Badge size='lg'>{t('demo.remaining.labels.large')}</Badge>
+        </div>
+      ),
+      code: `import { Badge } from '@/components/core/badge'
 
 function Example() {
   return (
@@ -534,87 +544,87 @@ function Example() {
       <Badge variant="secondary">Secondary</Badge>
       <Badge variant="destructive">Destructive</Badge>
       <Badge variant="outline">Outline</Badge>
-      <Badge size="sm">Küçük</Badge>
-      <Badge size="lg">Büyük</Badge>
+      <Badge size="sm">{t('demo.remaining.labels.small')}</Badge>
+      <Badge size="lg">{t('demo.remaining.labels.large')}</Badge>
     </div>
   )
 }`,
-    usageExamples: [
-      {
-        title: "Durum Badge'leri",
-        description: 'Farklı durumları temsil eden badge örnekleri',
-        code: `<div className="space-y-2">
+      usageExamples: [
+        {
+          title: "Durum Badge'leri",
+          description: t('demo.remaining.descriptions.badgeExamples'),
+          code: `<div className="space-y-2">
   <div className="flex items-center gap-2">
-    <Badge variant="default">Aktif</Badge>
-    <span>Kullanıcı çevrimiçi</span>
+    <Badge variant="default">{t('demo.remaining.missing.badge.active')}</Badge>
+    <span>{t('demo.remaining.labels.userOnline')}</span>
   </div>
   <div className="flex items-center gap-2">
-    <Badge variant="destructive">Hata</Badge>
-    <span>Bağlantı hatası</span>
+    <Badge variant="destructive">{t('demo.remaining.missing.badge.error')}</Badge>
+    <span>{t('demo.remaining.missing.badge.connectionError')}</span>
   </div>
   <div className="flex items-center gap-2">
-    <Badge variant="secondary">Beklemede</Badge>
-    <span>Onay bekleniyor</span>
+    <Badge variant="secondary">{t('demo.remaining.missing.badge.pending')}</Badge>
+    <span>{t('demo.remaining.missing.badge.awaitingApproval')}</span>
   </div>
 </div>`,
-        component: (
-          <div className='space-y-2'>
-            <div className='flex items-center gap-2'>
-              <Badge variant='default'>Aktif</Badge>
-              <span className='text-sm'>Kullanıcı çevrimiçi</span>
+          component: (
+            <div className='space-y-2'>
+              <div className='flex items-center gap-2'>
+                <Badge variant='default'>{t('demo.remaining.missing.badge.active')}</Badge>
+                <span className='text-sm'>{t('demo.remaining.missing.badge.userOnline')}</span>
+              </div>
+              <div className='flex items-center gap-2'>
+                <Badge variant='destructive'>{t('demo.remaining.missing.badge.error')}</Badge>
+                <span className='text-sm'>{t('demo.remaining.missing.badge.connectionError')}</span>
+              </div>
+              <div className='flex items-center gap-2'>
+                <Badge variant='secondary'>{t('demo.remaining.missing.badge.pending')}</Badge>
+                <span className='text-sm'>{t('demo.remaining.missing.badge.awaitingApproval')}</span>
+              </div>
             </div>
-            <div className='flex items-center gap-2'>
-              <Badge variant='destructive'>Hata</Badge>
-              <span className='text-sm'>Bağlantı hatası</span>
-            </div>
-            <div className='flex items-center gap-2'>
-              <Badge variant='secondary'>Beklemede</Badge>
-              <span className='text-sm'>Onay bekleniyor</span>
-            </div>
-          </div>
-        ),
-      },
-    ],
-    props: [
-      {
-        name: 'variant',
-        type: "'default' | 'secondary' | 'destructive' | 'outline'",
-        description: 'Badge görünüm varyantı',
-        default: 'default',
-      },
-      {
-        name: 'size',
-        type: "'sm' | 'default' | 'lg'",
-        description: 'Badge boyutu',
-        default: 'default',
-      },
-    ],
-  },
+          ),
+        },
+      ],
+      props: [
+        {
+          name: 'variant',
+          type: "'default' | 'secondary' | 'destructive' | 'outline'",
+          description: t('demo.remaining.descriptions.badgeVariant'),
+          default: 'default',
+        },
+        {
+          name: 'size',
+          type: "'sm' | 'default' | 'lg'",
+          description: 'Badge boyutu',
+          default: 'default',
+        },
+      ],
+    },
 
-  // Button Component
-  {
-    id: 'button',
-    title: 'Button',
-    description: 'Farklı varyant ve boyutlarda etkileşimli buton bileşeni. Loading durumu ve icon desteği sunar.',
-    category: 'Form & Input',
-    status: 'stable',
-    demoComponent: (
-      <div className='grid grid-cols-2 gap-4 max-w-lg'>
-        <Button variant='default'>Primary</Button>
-        <Button variant='secondary'>Secondary</Button>
-        <Button variant='outline'>Outline</Button>
-        <Button variant='ghost'>Ghost</Button>
-        <Button variant='destructive'>Delete</Button>
-        <Button disabled>Disabled</Button>
-        <Button size='sm'>Küçük</Button>
-        <Button size='lg'>Büyük</Button>
-        <Button size='icon'>
-          <Heart className='h-4 w-4' />
-        </Button>
-        <Button className='w-full'>Tam Genişlik</Button>
-      </div>
-    ),
-    code: `import { Button } from '@/components/core/button'
+    // Button Component
+    {
+      id: 'button',
+      title: 'Button',
+      description: t('demo.remaining.descriptions.buttonComponent'),
+      category: t('demo.content.categories.formInput'),
+      status: 'stable',
+      demoComponent: (
+        <div className='grid grid-cols-2 gap-4 max-w-lg'>
+          <Button variant='default'>Primary</Button>
+          <Button variant='secondary'>Secondary</Button>
+          <Button variant='outline'>Outline</Button>
+          <Button variant='ghost'>Ghost</Button>
+          <Button variant='destructive'>Delete</Button>
+          <Button disabled>Disabled</Button>
+          <Button size='sm'>{t('demo.remaining.missing.buttons.small')}</Button>
+          <Button size='lg'>{t('demo.remaining.missing.buttons.large')}</Button>
+          <Button size='icon'>
+            <Heart className='h-4 w-4' />
+          </Button>
+          <Button className='w-full'>{t('demo.remaining.missing.buttons.fullWidth')}</Button>
+        </div>
+      ),
+      code: `import { Button } from '@/components/core/button'
 import { Heart } from 'lucide-react'
 
 function Example() {
@@ -626,20 +636,20 @@ function Example() {
       <Button variant="ghost">Ghost</Button>
       <Button variant="destructive">Delete</Button>
       <Button disabled>Disabled</Button>
-      <Button size="sm">Küçük</Button>
-      <Button size="lg">Büyük</Button>
+      <Button size="sm">{t('demo.remaining.missing.buttons.small')}</Button>
+      <Button size="lg">{t('demo.remaining.missing.buttons.large')}</Button>
       <Button size="icon">
         <Heart className="h-4 w-4" />
       </Button>
-      <Button className='w-full'>Tam Genişlik</Button>
+      <Button className='w-full'>{t('demo.remaining.missing.buttons.fullWidth')}</Button>
     </div>
   )
 }`,
-    usageExamples: [
-      {
-        title: "Icon'lu Butonlar",
-        description: 'Icon ile birlikte kullanılan buton örnekleri',
-        code: `<div className="flex items-center gap-2">
+      usageExamples: [
+        {
+          title: t('demo.remaining.labels.iconButtons'),
+          description: t('demo.remaining.descriptions.iconButtonExamples'),
+          code: `<div className="flex items-center gap-2">
   <Button>
     <Plus className="w-4 h-4 mr-2" />
     Yeni Ekle
@@ -653,110 +663,110 @@ function Example() {
     Ayarlar
   </Button>
 </div>`,
-        component: (
-          <div className='flex items-center gap-2'>
-            <Button>
-              <Plus className='w-4 h-4 mr-2' />
-              Yeni Ekle
-            </Button>
-            <Button variant='outline'>
-              <Search className='w-4 h-4 mr-2' />
-              Ara
-            </Button>
-            <Button variant='ghost'>
-              <Settings className='w-4 h-4 mr-2' />
-              Ayarlar
-            </Button>
-          </div>
-        ),
-      },
-    ],
-    props: [
-      {
-        name: 'variant',
-        type: "'default' | 'secondary' | 'outline' | 'ghost' | 'destructive'",
-        description: 'Buton görünüm varyantı',
-        default: 'default',
-      },
-      {
-        name: 'size',
-        type: "'sm' | 'md' | 'lg' | 'icon'",
-        description: 'Buton boyutu',
-        default: 'md',
-      },
-      {
-        name: 'className',
-        type: 'string',
-        description: 'Ek CSS sınıfları (w-full ile tam genişlik)',
-        default: 'undefined',
-      },
-      {
-        name: 'disabled',
-        type: 'boolean',
-        description: 'Butonu devre dışı bırakır',
-        default: 'false',
-      },
-    ],
-  },
+          component: (
+            <div className='flex items-center gap-2'>
+              <Button>
+                <Plus className='w-4 h-4 mr-2' />
+                Yeni Ekle
+              </Button>
+              <Button variant='outline'>
+                <Search className='w-4 h-4 mr-2' />
+                Ara
+              </Button>
+              <Button variant='ghost'>
+                <Settings className='w-4 h-4 mr-2' />
+                Ayarlar
+              </Button>
+            </div>
+          ),
+        },
+      ],
+      props: [
+        {
+          name: 'variant',
+          type: "'default' | 'secondary' | 'outline' | 'ghost' | 'destructive'",
+          description: t('demo.remaining.descriptions.buttonVariant'),
+          default: 'default',
+        },
+        {
+          name: 'size',
+          type: "'sm' | 'md' | 'lg' | 'icon'",
+          description: 'Buton boyutu',
+          default: 'md',
+        },
+        {
+          name: 'className',
+          type: 'string',
+          description: t('demo.remaining.descriptions.additionalCssClasses'),
+          default: 'undefined',
+        },
+        {
+          name: 'disabled',
+          type: 'boolean',
+          description: t('demo.remaining.descriptions.disableButton'),
+          default: 'false',
+        },
+      ],
+    },
 
-  // Card Component
-  {
-    id: 'card',
-    title: 'Card',
-    description:
-      'İçerik gruplamak ve organize etmek için kullanılan kart bileşeni. Header, content ve footer bölümleri destekler.',
-    category: 'Layout',
-    status: 'stable',
-    demoComponent: (
-      <Card className='w-full max-w-sm'>
-        <CardHeader>
-          <CardTitle>Proje Raporu</CardTitle>
-          <CardDescription>Son hafta performans özeti ve analytics verileri.</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className='space-y-3'>
-            <div className='flex justify-between'>
-              <span className='text-sm text-neutral-600'>Toplam Ziyaretçi</span>
-              <span className='font-medium'>12,547</span>
+    // Card Component
+    {
+      id: 'card',
+      title: 'Card',
+      description:
+        t('demo.remaining.descriptions.cardComponent'),
+      category: 'Layout',
+      status: 'stable',
+      demoComponent: (
+        <Card className='w-full max-w-sm'>
+          <CardHeader>
+            <CardTitle>{t('demo.remaining.missing.cards.projectReport')}</CardTitle>
+            <CardDescription>{t('demo.remaining.missing.cards.projectReportDesc')}</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className='space-y-3'>
+              <div className='flex justify-between'>
+                <span className='text-sm text-neutral-600'>{t('demo.remaining.missing.cards.totalVisitors')}</span>
+                <span className='font-medium'>12,547</span>
+              </div>
+              <div className='flex justify-between'>
+                <span className='text-sm text-neutral-600'>{t('demo.remaining.missing.cards.newUsers')}</span>
+                <span className='font-medium'>1,432</span>
+              </div>
+              <div className='flex justify-between'>
+                <span className='text-sm text-neutral-600'>{t('demo.remaining.missing.cards.conversionRate')}</span>
+                <span className='font-medium'>%3.2</span>
+              </div>
             </div>
-            <div className='flex justify-between'>
-              <span className='text-sm text-neutral-600'>Yeni Kullanıcı</span>
-              <span className='font-medium'>1,432</span>
-            </div>
-            <div className='flex justify-between'>
-              <span className='text-sm text-neutral-600'>Dönüşüm Oranı</span>
-              <span className='font-medium'>%3.2</span>
-            </div>
-          </div>
-        </CardContent>
-        <CardFooter className='flex justify-between'>
-          <Button variant='ghost' size='sm'>
-            Detaylar
-          </Button>
-          <Button size='sm'>Rapor Al</Button>
-        </CardFooter>
-      </Card>
-    ),
-    code: `import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/core/card'
+          </CardContent>
+          <CardFooter className='flex justify-between'>
+            <Button variant='ghost' size='sm'>
+              Detaylar
+            </Button>
+            <Button size='sm'>Rapor Al</Button>
+          </CardFooter>
+        </Card>
+      ),
+      code: `import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/core/card'
 import { Button } from '@/components/core/button'
 
 function Example() {
   return (
     <Card className="w-full max-w-sm">
       <CardHeader>
-        <CardTitle>Proje Raporu</CardTitle>
+        <CardTitle>{t('demo.remaining.missing.cards.projectReport')}</CardTitle>
         <CardDescription>
-          Son hafta performans özeti ve analytics verileri.
+          {t('demo.remaining.missing.cards.projectReportDesc')}
         </CardDescription>
       </CardHeader>
       <CardContent>
         <div className="space-y-3">
           <div className="flex justify-between">
-            <span className="text-sm text-neutral-600">Toplam Ziyaretçi</span>
+            <span className="text-sm text-neutral-600">{t('demo.remaining.missing.cards.totalVisitors')}</span>
             <span className="font-medium">12,547</span>
           </div>
           <div className="flex justify-between">
-            <span className="text-sm text-neutral-600">Yeni Kullanıcı</span>
+            <span className="text-sm text-neutral-600">{t('demo.remaining.missing.cards.newUsers')}</span>
             <span className="font-medium">1,432</span>
           </div>
         </div>
@@ -768,132 +778,132 @@ function Example() {
     </Card>
   )
 }`,
-    usageExamples: [
-      {
-        title: 'Feature Card',
-        description: 'Özellik tanıtımı için kullanılan kart örneği',
-        code: `<Card className="text-center">
+      usageExamples: [
+        {
+          title: 'Feature Card',
+          description: t('demo.remaining.descriptions.featureCard'),
+          code: `<Card className="text-center">
   <CardHeader>
     <div className="mx-auto w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mb-4">
       <Star className="w-6 h-6 text-primary-600" />
     </div>
-    <CardTitle>Premium Özellik</CardTitle>
+    <CardTitle>{t('demo.remaining.missing.cards.premiumFeature')}</CardTitle>
     <CardDescription>
-      Gelişmiş analytics ve raporlama araçları
+      {t('demo.remaining.missing.cards.premiumDesc')}
     </CardDescription>
   </CardHeader>
   <CardContent>
     <ul className="text-sm space-y-1">
-      <li>• Detaylı analytics</li>
-      <li>• Özel raporlar</li>
-      <li>• API erişimi</li>
+      <li>{t('demo.remaining.missing.cards.detailedAnalytics')}</li>
+      <li>{t('demo.remaining.missing.cards.customReports')}</li>
+      <li>{t('demo.remaining.missing.cards.apiAccess')}</li>
     </ul>
   </CardContent>
   <CardFooter>
-    <Button className="w-full">Şimdi Başla</Button>
+    <Button className="w-full">{t('demo.remaining.missing.buttons.startNow')}</Button>
   </CardFooter>
 </Card>`,
-        component: (
-          <Card className='text-center w-full max-w-sm'>
-            <CardHeader>
-              <div className='mx-auto w-12 h-12 bg-primary-100 dark:bg-primary-900/20 rounded-full flex items-center justify-center mb-4'>
-                <Star className='w-6 h-6 text-primary-600 dark:text-primary-400' />
-              </div>
-              <CardTitle>Premium Özellik</CardTitle>
-              <CardDescription>Gelişmiş analytics ve raporlama araçları</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ul className='text-sm space-y-1'>
-                <li>• Detaylı analytics</li>
-                <li>• Özel raporlar</li>
-                <li>• API erişimi</li>
-              </ul>
-            </CardContent>
-            <CardFooter>
-              <Button className='w-full'>Şimdi Başla</Button>
-            </CardFooter>
-          </Card>
-        ),
-      },
-    ],
-    props: [
-      {
-        name: 'variant',
-        type: "'default' | 'destructive' | 'success' | 'warning' | 'info'",
-        description: 'Kart görünüm varyantı',
-        default: 'default',
-      },
-      {
-        name: 'size',
-        type: "'sm' | 'md' | 'lg' | 'xl'",
-        description: 'Kart padding boyutu',
-        default: 'md',
-      },
-      {
-        name: 'hover',
-        type: "'none' | 'lift' | 'glow' | 'scale'",
-        description: 'Hover efekti türü',
-        default: 'none',
-      },
-    ],
-  },
+          component: (
+            <Card className='text-center w-full max-w-sm'>
+              <CardHeader>
+                <div className='mx-auto w-12 h-12 bg-primary-100 dark:bg-primary-900/20 rounded-full flex items-center justify-center mb-4'>
+                  <Star className='w-6 h-6 text-primary-600 dark:text-primary-400' />
+                </div>
+                <CardTitle>{t('demo.remaining.missing.cards.premiumFeature')}</CardTitle>
+                <CardDescription>{t('demo.remaining.missing.cards.premiumDesc')}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className='text-sm space-y-1'>
+                  <li>{t('demo.remaining.missing.cards.detailedAnalytics')}</li>
+                  <li>{t('demo.remaining.missing.cards.customReports')}</li>
+                  <li>{t('demo.remaining.missing.cards.apiAccess')}</li>
+                </ul>
+              </CardContent>
+              <CardFooter>
+                <Button className='w-full'>{t('demo.remaining.missing.buttons.startNow')}</Button>
+              </CardFooter>
+            </Card>
+          ),
+        },
+      ],
+      props: [
+        {
+          name: 'variant',
+          type: "'default' | 'destructive' | 'success' | 'warning' | 'info'",
+          description: t('demo.remaining.descriptions.cardVariant'),
+          default: 'default',
+        },
+        {
+          name: 'size',
+          type: "'sm' | 'md' | 'lg' | 'xl'",
+          description: 'Kart padding boyutu',
+          default: 'md',
+        },
+        {
+          name: 'hover',
+          type: "'none' | 'lift' | 'glow' | 'scale'",
+          description: t('demo.remaining.descriptions.hoverEffectType'),
+          default: 'none',
+        },
+      ],
+    },
 
-  // Checkbox Component
-  {
-    id: 'checkbox',
-    title: 'Checkbox',
-    description:
-      'Seçim yapma işlemleri için kullanılan onay kutusu bileşeni. Controlled ve uncontrolled modları destekler.',
-    category: 'Form & Input',
-    status: 'stable',
-    demoComponent: (
-      <div className='space-y-3'>
-        <div className='flex items-center space-x-2'>
-          <Checkbox id='terms1' defaultChecked />
-          <label htmlFor='terms1' className='text-sm font-medium'>
-            Seçili Checkbox
-          </label>
+    // Checkbox Component
+    {
+      id: 'checkbox',
+      title: 'Checkbox',
+      description:
+        t('demo.remaining.descriptions.checkboxComponent'),
+      category: t('demo.content.categories.formInput'),
+      status: 'stable',
+      demoComponent: (
+        <div className='space-y-3'>
+          <div className='flex items-center space-x-2'>
+            <Checkbox id='terms1' defaultChecked />
+            <label htmlFor='terms1' className='text-sm font-medium'>
+              {t('demo.remaining.missing.checkbox.selected')}
+            </label>
+          </div>
+          <div className='flex items-center space-x-2'>
+            <Checkbox id='terms2' />
+            <label htmlFor='terms2' className='text-sm font-medium'>
+              {t('demo.remaining.missing.checkbox.notSelected')}
+            </label>
+          </div>
+          <div className='flex items-center space-x-2'>
+            <Checkbox id='terms3' disabled />
+            <label htmlFor='terms3' className='text-sm font-medium text-neutral-400'>
+              {t('demo.remaining.missing.checkbox.disabled')}
+            </label>
+          </div>
         </div>
-        <div className='flex items-center space-x-2'>
-          <Checkbox id='terms2' />
-          <label htmlFor='terms2' className='text-sm font-medium'>
-            Seçili Değil
-          </label>
-        </div>
-        <div className='flex items-center space-x-2'>
-          <Checkbox id='terms3' disabled />
-          <label htmlFor='terms3' className='text-sm font-medium text-neutral-400'>
-            Devre Dışı
-          </label>
-        </div>
-      </div>
-    ),
-    code: `import { Checkbox } from '@/components/core/checkbox'
+      ),
+      code: `import { Checkbox } from '@/components/core/checkbox'
 
 function Example() {
   return (
     <div className="space-y-3">
       <div className="flex items-center space-x-2">
         <Checkbox id="terms1" defaultChecked />
-        <label htmlFor="terms1">Seçili Checkbox</label>
+        <label htmlFor="terms1">{t('demo.remaining.missing.checkbox.selected')}</label>
       </div>
       <div className="flex items-center space-x-2">
         <Checkbox id="terms2" />
-        <label htmlFor="terms2">Seçili Değil</label>
+        <label htmlFor="terms2">{t('demo.remaining.missing.checkbox.notSelected')}</label>
       </div>
       <div className="flex items-center space-x-2">
         <Checkbox id="terms3" disabled />
-        <label htmlFor="terms3">Devre Dışı</label>
+        <label htmlFor="terms3">{t('demo.remaining.missing.checkbox.disabled')}</label>
       </div>
     </div>
   )
 }`,
-    usageExamples: [
-      {
-        title: 'Form Group',
-        description: 'Form içinde checkbox grubu kullanımı',
-        code: `<div className="space-y-2">
-  <p className="font-medium">İlgi Alanlarınız:</p>
+      usageExamples: [
+        {
+          title: 'Form Group',
+          description: t('demo.remaining.descriptions.checkboxFormGroup'),
+          code: `<div className="space-y-2">
+  <p className="font-medium">{t('demo.remaining.missing.checkbox.yourInterests')}</p>
   <div className="space-y-2">
     <div className="flex items-center space-x-2">
       <Checkbox id="frontend" />
@@ -909,86 +919,86 @@ function Example() {
     </div>
   </div>
 </div>`,
-        component: (
-          <div className='space-y-2'>
-            <p className='font-medium'>İlgi Alanlarınız:</p>
+          component: (
             <div className='space-y-2'>
-              <div className='flex items-center space-x-2'>
-                <Checkbox id='frontend-demo' />
-                <label htmlFor='frontend-demo' className='text-sm'>
-                  Frontend Development
-                </label>
-              </div>
-              <div className='flex items-center space-x-2'>
-                <Checkbox id='backend-demo' />
-                <label htmlFor='backend-demo' className='text-sm'>
-                  Backend Development
-                </label>
-              </div>
-              <div className='flex items-center space-x-2'>
-                <Checkbox id='mobile-demo' />
-                <label htmlFor='mobile-demo' className='text-sm'>
-                  Mobile Development
-                </label>
+              <p className='font-medium'>{t('demo.remaining.missing.checkbox.yourInterests')}</p>
+              <div className='space-y-2'>
+                <div className='flex items-center space-x-2'>
+                  <Checkbox id='frontend-demo' />
+                  <label htmlFor='frontend-demo' className='text-sm'>
+                    Frontend Development
+                  </label>
+                </div>
+                <div className='flex items-center space-x-2'>
+                  <Checkbox id='backend-demo' />
+                  <label htmlFor='backend-demo' className='text-sm'>
+                    Backend Development
+                  </label>
+                </div>
+                <div className='flex items-center space-x-2'>
+                  <Checkbox id='mobile-demo' />
+                  <label htmlFor='mobile-demo' className='text-sm'>
+                    Mobile Development
+                  </label>
+                </div>
               </div>
             </div>
-          </div>
-        ),
-      },
-    ],
-    props: [
-      {
-        name: 'checked',
-        type: 'boolean',
-        description: 'Checkbox seçili mi (controlled)',
-      },
-      {
-        name: 'defaultChecked',
-        type: 'boolean',
-        description: 'Varsayılan seçili durumu (uncontrolled)',
-        default: 'false',
-      },
-      {
-        name: 'disabled',
-        type: 'boolean',
-        description: 'Checkbox devre dışı mı',
-        default: 'false',
-      },
-      {
-        name: 'onCheckedChange',
-        type: '(checked: boolean) => void',
-        description: 'Seçim durumu değiştiğinde çağırılan fonksiyon',
-      },
-    ],
-  },
+          ),
+        },
+      ],
+      props: [
+        {
+          name: 'checked',
+          type: 'boolean',
+          description: t('demo.remaining.descriptions.checkboxChecked'),
+        },
+        {
+          name: 'defaultChecked',
+          type: 'boolean',
+          description: t('demo.remaining.descriptions.defaultCheckedState'),
+          default: 'false',
+        },
+        {
+          name: 'disabled',
+          type: 'boolean',
+          description: t('demo.remaining.descriptions.checkboxDisabled'),
+          default: 'false',
+        },
+        {
+          name: 'onCheckedChange',
+          type: '(checked: boolean) => void',
+          description: t('demo.remaining.descriptions.selectionChangeCallback'),
+        },
+      ],
+    },
 
-  // Data Grid Component
-  {
-    id: 'data-grid',
-    title: 'Data Grid',
-    description:
-      'Gelişmiş tablo bileşeni. Sıralama, filtreleme, sayfalama, satır seçimi ve dışa aktarma özelliklerine sahiptir.',
-    category: 'Veri Gösterimi',
-    status: 'stable',
-    demoComponent: (
-      <div className='w-full'>
-        <DataGrid
-          data={sampleUsers}
-          columns={tableColumns}
-          enableRowSelection={true}
-          enablePagination={true}
-          enableGlobalFilter={true}
-          enableColumnFilters={true}
-          enableExport={true}
-          pageSize={3}
-          striped={true}
-          hover={true}
-          onRowClick={(row) => console.log('Row clicked:', row)}
-          onExport={(format, data) => console.log(`Export ${format}:`, data)}
-        />
-      </div>
-    ),
-    code: `import { DataGrid, createSelectionColumn, createActionsColumn } from '@/components/core/data-grid'
+    // Data Grid Component
+    {
+      id: 'data-grid',
+      title: 'Data Grid',
+      description:
+        t('demo.remaining.descriptions.dataGridComponent'),
+      category: t('demo.content.categories.dataDisplay'),
+      status: 'stable',
+      demoComponent: (
+        <div className='w-full'>
+          <DataGrid
+            data={sampleUsers}
+            columns={tableColumns}
+            enableRowSelection={true}
+            enablePagination={true}
+            enableGlobalFilter={true}
+            enableColumnFilters={true}
+            enableExport={true}
+            pageSize={3}
+            striped={true}
+            hover={true}
+            onRowClick={(row) => console.log('Row clicked:', row)}
+            onExport={(format, data) => console.log(`Export ${format}:`, data)}
+          />
+        </div>
+      ),
+      code: `import { DataGrid, createSelectionColumn, createActionsColumn } from '@/components/core/data-grid'
 
 const columns: Array<import('@/components/core/data-grid').DataGridColumn<Record<string, any>>> = [
   createSelectionColumn(),
@@ -1011,7 +1021,7 @@ const columns: Array<import('@/components/core/data-grid').DataGridColumn<Record
   },
   createActionsColumn([
     {
-      label: 'Düzenle',
+      label: t('demo.remaining.labels.edit'),
       icon: <Edit className="w-4 h-4" />,
       onClick: (row) => console.log('Edit:', row.name),
     },
@@ -1030,87 +1040,87 @@ function Example() {
     />
   )
 }`,
-    props: [
-      {
-        name: 'data',
-        type: 'T[]',
-        description: 'Tablo verisi',
-      },
-      {
-        name: 'columns',
-        type: 'DataGridColumn<T>[]',
-        description: 'Tablo sütun tanımları',
-      },
-      {
-        name: 'enablePagination',
-        type: 'boolean',
-        description: 'Sayfalama özelliğini etkinleştir',
-        default: 'true',
-      },
-      {
-        name: 'enableRowSelection',
-        type: 'boolean',
-        description: 'Satır seçimi özelliğini etkinleştir',
-        default: 'false',
-      },
-      {
-        name: 'enableGlobalFilter',
-        type: 'boolean',
-        description: 'Global arama özelliğini etkinleştir',
-        default: 'true',
-      },
-      {
-        name: 'enableExport',
-        type: 'boolean',
-        description: 'Dışa aktarma özelliğini etkinleştir',
-        default: 'false',
-      },
-      {
-        name: 'onRowClick',
-        type: '(row: T, index: number) => void',
-        description: 'Satır tıklama olayı',
-      },
-    ],
-  },
+      props: [
+        {
+          name: 'data',
+          type: 'T[]',
+          description: 'Tablo verisi',
+        },
+        {
+          name: 'columns',
+          type: 'DataGridColumn<T>[]',
+          description: t('demo.remaining.descriptions.tableColumnDefinitions'),
+        },
+        {
+          name: 'enablePagination',
+          type: 'boolean',
+          description: t('demo.remaining.descriptions.enablePagination'),
+          default: 'true',
+        },
+        {
+          name: 'enableRowSelection',
+          type: 'boolean',
+          description: t('demo.remaining.descriptions.enableRowSelection'),
+          default: 'false',
+        },
+        {
+          name: 'enableGlobalFilter',
+          type: 'boolean',
+          description: t('demo.remaining.descriptions.enableGlobalSearch'),
+          default: 'true',
+        },
+        {
+          name: 'enableExport',
+          type: 'boolean',
+          description: t('demo.remaining.descriptions.enableExport'),
+          default: 'false',
+        },
+        {
+          name: 'onRowClick',
+          type: '(row: T, index: number) => void',
+          description: t('demo.remaining.descriptions.rowClickEvent'),
+        },
+      ],
+    },
 
-  // Data Table Component (Simpler version)
-  {
-    id: 'data-table',
-    title: 'Data Table',
-    description: 'Basit ve hızlı tablo bileşeni. Temel sıralama ve filtreleme özelliklerine sahiptir.',
-    category: 'Veri Gösterimi',
-    status: 'stable',
-    demoComponent: (
-      <div className='w-full'>
-        <DataTable
-          columns={[
-            {
-              accessorKey: 'name',
-              header: 'İsim',
-            },
-            {
-              accessorKey: 'email',
-              header: 'E-posta',
-            },
-            {
-              accessorKey: 'role',
-              header: 'Rol',
-              cell: ({ row }: { row: any }) => <Badge variant='outline'>{row.getValue('role')}</Badge>,
-            },
-          ]}
-          data={sampleUsers.slice(0, 3)}
-          searchKey='name'
-          searchPlaceholder='İsme göre ara...'
-        />
-      </div>
-    ),
-    code: `import { DataTable } from '@/components/core/data-table'
+    // Data Table Component (Simpler version)
+    {
+      id: 'data-table',
+      title: 'Data Table',
+      description: t('demo.remaining.descriptions.dataTableComponent'),
+      category: t('demo.content.categories.dataDisplay'),
+      status: 'stable',
+      demoComponent: (
+        <div className='w-full'>
+          <DataTable
+            columns={[
+              {
+                accessorKey: 'name',
+                header: t('demo.remaining.labels.name'),
+              },
+              {
+                accessorKey: 'email',
+                header: 'E-posta',
+              },
+              {
+                accessorKey: 'role',
+                header: 'Rol',
+                cell: ({ row }: { row: any }) => <Badge variant='outline'>{row.getValue('role')}</Badge>,
+              },
+            ]}
+            data={sampleUsers.slice(0, 3)}
+            searchKey='name'
+            searchPlaceholder={t('demo.remaining.labels.searchByName')}
+          />
+        </div>
+      ),
+      code: `import { DataTable } from '@/components/core/data-table'
 
 function Example() {
   const columns: Array<import('@/components/core/data-grid').DataGridColumn<Record<string, any>>> = [
     {
       accessorKey: 'name',
-      header: 'İsim',
+      header: t('demo.remaining.labels.name'),
     },
     {
       accessorKey: 'email',
@@ -1132,59 +1142,59 @@ function Example() {
       columns={columns}
       data={data}
       searchKey="name"
-      searchPlaceholder="İsme göre ara..."
+      searchPlaceholder={t('demo.remaining.labels.searchByName')}
     />
   )
 }`,
-    props: [
-      {
-        name: 'columns',
-        type: 'ColumnDef<TData, TValue>[]',
-        description: 'Tablo sütun tanımları',
-      },
-      {
-        name: 'data',
-        type: 'TData[]',
-        description: 'Tablo verisi',
-      },
-      {
-        name: 'searchKey',
-        type: 'string',
-        description: 'Arama yapılacak sütun anahtarı',
-      },
-      {
-        name: 'searchPlaceholder',
-        type: 'string',
-        description: 'Arama input placeholder metni',
-        default: 'Ara...',
-      },
-    ],
-  },
+      props: [
+        {
+          name: 'columns',
+          type: 'ColumnDef<TData, TValue>[]',
+          description: t('demo.remaining.descriptions.tableColumnDefinitions'),
+        },
+        {
+          name: 'data',
+          type: 'TData[]',
+          description: 'Tablo verisi',
+        },
+        {
+          name: 'searchKey',
+          type: 'string',
+          description: t('demo.remaining.descriptions.searchColumnKey'),
+        },
+        {
+          name: 'searchPlaceholder',
+          type: 'string',
+          description: 'Arama input placeholder metni',
+          default: 'Ara...',
+        },
+      ],
+    },
 
-  // Switch Component (existing from original file)
-  {
-    id: 'switch',
-    title: 'Switch',
-    description: 'Açma/kapama işlemleri için kullanılan toggle switch bileşeni',
-    category: 'Form & Input',
-    status: 'stable',
-    demoComponent: (
-      <div className='space-y-4'>
-        <div className='flex items-center justify-between gap-4'>
-          <span className='text-sm font-medium'>Bildirimler</span>
-          <Switch defaultChecked />
+    // Switch Component (existing from original file)
+    {
+      id: 'switch',
+      title: 'Switch',
+      description: t('demo.remaining.descriptions.switchComponent'),
+      category: t('demo.content.categories.formInput'),
+      status: 'stable',
+      demoComponent: (
+        <div className='space-y-4'>
+          <div className='flex items-center justify-between gap-4'>
+            <span className='text-sm font-medium'>Bildirimler</span>
+            <Switch defaultChecked />
+          </div>
+          <div className='flex items-center justify-between gap-4'>
+            <span className='text-sm font-medium'>{t('demo.remaining.missing.switch.emailUpdates')}</span>
+            <Switch />
+          </div>
+          <div className='flex items-center justify-between gap-4'>
+            <span className='text-sm font-medium text-neutral-400'>{t('demo.remaining.missing.switch.disabled')}</span>
+            <Switch disabled />
+          </div>
         </div>
-        <div className='flex items-center justify-between gap-4'>
-          <span className='text-sm font-medium'>Email Güncellemeleri</span>
-          <Switch />
-        </div>
-        <div className='flex items-center justify-between gap-4'>
-          <span className='text-sm font-medium text-neutral-400'>Devre Dışı</span>
-          <Switch disabled />
-        </div>
-      </div>
-    ),
-    code: `import { Switch } from '@/components/core/switch'
+      ),
+      code: `import { Switch } from '@/components/core/switch'
 
 function Example() {
   return (
@@ -1194,74 +1204,74 @@ function Example() {
         <Switch defaultChecked />
       </div>
       <div className="flex items-center justify-between gap-4">
-        <span>Email Güncellemeleri</span>
+        <span>{t('demo.remaining.missing.switch.emailUpdates')}</span>
         <Switch />
       </div>
       <div className="flex items-center justify-between gap-4">
-        <span>Devre Dışı</span>
+        <span>{t('demo.remaining.missing.switch.disabled')}</span>
         <Switch disabled />
       </div>
     </div>
   )
 }`,
-    props: [
-      {
-        name: 'checked',
-        type: 'boolean',
-        description: 'Switch açık mı (controlled)',
-      },
-      {
-        name: 'defaultChecked',
-        type: 'boolean',
-        description: 'Varsayılan açık durumu (uncontrolled)',
-        default: 'false',
-      },
-      {
-        name: 'disabled',
-        type: 'boolean',
-        description: 'Switch devre dışı mı',
-        default: 'false',
-      },
-      {
-        name: 'onCheckedChange',
-        type: '(checked: boolean) => void',
-        description: 'Durum değiştiğinde çağırılan fonksiyon',
-      },
-    ],
-  },
+      props: [
+        {
+          name: 'checked',
+          type: 'boolean',
+          description: t('demo.remaining.descriptions.switchChecked'),
+        },
+        {
+          name: 'defaultChecked',
+          type: 'boolean',
+          description: t('demo.remaining.descriptions.defaultOpenState'),
+          default: 'false',
+        },
+        {
+          name: 'disabled',
+          type: 'boolean',
+          description: t('demo.remaining.descriptions.switchDisabled'),
+          default: 'false',
+        },
+        {
+          name: 'onCheckedChange',
+          type: '(checked: boolean) => void',
+          description: t('demo.remaining.descriptions.statusChangeCallback'),
+        },
+      ],
+    },
 
-  // Select Component (existing from original file)
-  {
-    id: 'select',
-    title: 'Select',
-    description: 'Seçenekler arasından seçim yapmak için kullanılan dropdown bileşeni',
-    category: 'Form & Input',
-    status: 'stable',
-    demoComponent: (
-      <div className='space-y-3 w-full max-w-sm'>
-        <Select>
-          <SelectTrigger>
-            <SelectValue placeholder='Ülke seçin' />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value='tr'>Türkiye</SelectItem>
-            <SelectItem value='us'>Amerika</SelectItem>
-            <SelectItem value='de'>Almanya</SelectItem>
-            <SelectItem value='fr'>Fransa</SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
-    ),
-    code: `import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/core/select'
+    // Select Component (existing from original file)
+    {
+      id: 'select',
+      title: 'Select',
+      description: t('demo.remaining.descriptions.selectComponent'),
+      category: t('demo.content.categories.formInput'),
+      status: 'stable',
+      demoComponent: (
+        <div className='space-y-3 w-full max-w-sm'>
+          <Select>
+            <SelectTrigger>
+              <SelectValue placeholder={t('demo.remaining.labels.selectCountry')} />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value='tr'>{t('demo.remaining.missing.select.turkey')}</SelectItem>
+              <SelectItem value='us'>Amerika</SelectItem>
+              <SelectItem value='de'>Almanya</SelectItem>
+              <SelectItem value='fr'>Fransa</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+      ),
+      code: `import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/core/select'
 
 function Example() {
   return (
     <Select>
       <SelectTrigger>
-        <SelectValue placeholder="Ülke seçin" />
+        <SelectValue placeholder={t('demo.remaining.labels.selectCountry')} />
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value="tr">Türkiye</SelectItem>
+        <SelectItem value="tr">{t('demo.remaining.missing.select.turkey')}</SelectItem>
         <SelectItem value="us">Amerika</SelectItem>
         <SelectItem value="de">Almanya</SelectItem>
         <SelectItem value="fr">Fransa</SelectItem>
@@ -1269,44 +1279,44 @@ function Example() {
     </Select>
   )
 }`,
-    props: [
-      {
-        name: 'value',
-        type: 'string',
-        description: 'Seçili değer (controlled)',
-      },
-      {
-        name: 'defaultValue',
-        type: 'string',
-        description: 'Varsayılan seçili değer (uncontrolled)',
-      },
-      {
-        name: 'onValueChange',
-        type: '(value: string) => void',
-        description: 'Değer değiştiğinde çağırılan fonksiyon',
-      },
-      {
-        name: 'disabled',
-        type: 'boolean',
-        default: 'false',
-      },
-    ],
-  },
+      props: [
+        {
+          name: 'value',
+          type: 'string',
+          description: t('demo.remaining.descriptions.selectedValue'),
+        },
+        {
+          name: 'defaultValue',
+          type: 'string',
+          description: t('demo.remaining.descriptions.defaultSelectedValue'),
+        },
+        {
+          name: 'onValueChange',
+          type: '(value: string) => void',
+          description: t('demo.remaining.descriptions.valueChangeCallback'),
+        },
+        {
+          name: 'disabled',
+          type: 'boolean',
+          default: 'false',
+        },
+      ],
+    },
 
-  // Textarea Component (existing from original file)
-  {
-    id: 'textarea',
-    title: 'Textarea',
-    description: 'Çok satırlı metin girişi bileşeni',
-    category: 'Form & Input',
-    status: 'stable',
-    demoComponent: (
-      <div className='space-y-4 w-full max-w-sm'>
-        <Textarea placeholder='Temel textarea...' rows={3} />
-        <Textarea placeholder='Karakter sayacı ile...' maxLength={100} rows={3} />
-      </div>
-    ),
-    code: `import { Textarea } from '@/components/core/textarea'
+    // Textarea Component (existing from original file)
+    {
+      id: 'textarea',
+      title: 'Textarea',
+      description: t('demo.remaining.descriptions.textareaComponent'),
+      category: t('demo.content.categories.formInput'),
+      status: 'stable',
+      demoComponent: (
+        <div className='space-y-4 w-full max-w-sm'>
+          <Textarea placeholder='Temel textarea...' rows={3} />
+          <Textarea placeholder={t('demo.remaining.labels.characterCounter')} maxLength={100} rows={3} />
+        </div>
+      ),
+      code: `import { Textarea } from '@/components/core/textarea'
 
 function Example() {
   return (
@@ -1316,7 +1326,7 @@ function Example() {
         rows={3}
       />
       <Textarea 
-        placeholder="Karakter sayacı ile..."
+        placeholder={t('demo.remaining.labels.characterCounter')}
         maxLength={100}
         showCount={true}
         rows={3}
@@ -1324,70 +1334,70 @@ function Example() {
     </div>
   )
 }`,
-    props: [
-      {
-        name: 'maxLength',
-        type: 'number',
-        description: 'Maksimum karakter sayısı',
-      },
-      {
-        name: 'showCount',
-        type: 'boolean',
-        description: 'Karakter sayacını göster',
-        default: 'false',
-      },
-      {
-        name: 'autoResize',
-        type: 'boolean',
-        description: 'İçerik boyutuna göre otomatik yeniden boyutlandır',
-        default: 'false',
-      },
-      {
-        name: 'error',
-        type: 'string',
-        description: 'Hata durumu',
-      },
-    ],
-  },
+      props: [
+        {
+          name: 'maxLength',
+          type: 'number',
+          description: t('demo.remaining.descriptions.maxCharacterCount'),
+        },
+        {
+          name: 'showCount',
+          type: 'boolean',
+          description: t('demo.remaining.descriptions.showCharacterCounter'),
+          default: 'false',
+        },
+        {
+          name: 'autoResize',
+          type: 'boolean',
+          description: t('demo.remaining.descriptions.autoResize'),
+          default: 'false',
+        },
+        {
+          name: 'error',
+          type: 'string',
+          description: t('demo.remaining.missing.badge.error'),
+        },
+      ],
+    },
 
-  // Dialog Component
-  {
-    id: 'dialog',
-    title: 'Dialog',
-    description: 'Modal diyalog penceresi bileşeni',
-    category: 'Overlay',
-    status: 'stable',
-    demoComponent: (
-      <Dialog>
-        <DialogTrigger asChild>
-          <Button variant='outline'>Dialog Aç</Button>
-        </DialogTrigger>
-        <DialogContent className='sm:max-w-[425px]'>
-          <DialogHeader>
-            <DialogTitle>Profil Düzenle</DialogTitle>
-            <DialogDescription>Profil bilgilerinizi buradan güncelleyebilirsiniz.</DialogDescription>
-          </DialogHeader>
-          <div className='grid gap-4 py-4'>
-            <div className='grid grid-cols-4 items-center gap-4'>
-              <Label htmlFor='name' className='text-right'>
-                İsim
-              </Label>
-              <Input id='name' defaultValue='Ahmet Yılmaz' className='col-span-3' />
+    // Dialog Component
+    {
+      id: 'dialog',
+      title: 'Dialog',
+      description: t('demo.remaining.descriptions.dialogComponent'),
+      category: t('demo.content.categories.overlay'),
+      status: 'stable',
+      demoComponent: (
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button variant='outline'>{t('demo.remaining.missing.buttons.openDialog')}</Button>
+          </DialogTrigger>
+          <DialogContent className='sm:max-w-[425px]'>
+            <DialogHeader>
+              <DialogTitle>{t('demo.remaining.missing.dialog.editProfile')}</DialogTitle>
+              <DialogDescription>{t('demo.remaining.missing.dialog.editProfileDesc')}</DialogDescription>
+            </DialogHeader>
+            <div className='grid gap-4 py-4'>
+              <div className='grid grid-cols-4 items-center gap-4'>
+                <Label htmlFor='name' className='text-right'>
+                  İsim
+                </Label>
+                <Input id='name' defaultValue={t('demo.remaining.labels.sampleName')} className='col-span-3' />
+              </div>
+              <div className='grid grid-cols-4 items-center gap-4'>
+                <Label htmlFor='username' className='text-right'>
+                  E-posta
+                </Label>
+                <Input id='username' defaultValue='ahmet@example.com' className='col-span-3' />
+              </div>
             </div>
-            <div className='grid grid-cols-4 items-center gap-4'>
-              <Label htmlFor='username' className='text-right'>
-                E-posta
-              </Label>
-              <Input id='username' defaultValue='ahmet@example.com' className='col-span-3' />
-            </div>
-          </div>
-          <DialogFooter>
-            <Button type='submit'>Kaydet</Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-    ),
-    code: `import {
+            <DialogFooter>
+              <Button type='submit'>Kaydet</Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+      ),
+      code: `import {
   Dialog,
   DialogContent,
   DialogDescription,
@@ -1404,13 +1414,13 @@ function Example() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">Dialog Aç</Button>
+        <Button variant="outline">{t('demo.remaining.missing.buttons.openDialog')}</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Profil Düzenle</DialogTitle>
+          <DialogTitle>{t('demo.remaining.missing.dialog.editProfile')}</DialogTitle>
           <DialogDescription>
-            Profil bilgilerinizi buradan güncelleyebilirsiniz.
+            {t('demo.remaining.missing.dialog.editProfileDesc')}
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
@@ -1418,7 +1428,7 @@ function Example() {
             <Label htmlFor="name" className="text-right">
               İsim
             </Label>
-            <Input id="name" defaultValue="Ahmet Yılmaz" className="col-span-3" />
+            <Input id="name" defaultValue={t('demo.remaining.labels.sampleName')} className="col-span-3" />
           </div>
         </div>
         <DialogFooter>
@@ -1428,51 +1438,51 @@ function Example() {
     </Dialog>
   )
 }`,
-    usageExamples: [
-      'Kullanıcı profilini düzenlemek için',
-      'Onay diyalogları oluşturmak için',
-      'Form içeriklerini modal içinde göstermek için',
-      'Detay bilgileri popup olarak göstermek için',
-    ],
-    props: [
-      {
-        name: 'open',
-        type: 'boolean',
-        description: 'Dialog açık/kapalı durumu',
-        default: 'false',
-      },
-      {
-        name: 'onOpenChange',
-        type: 'function',
-        description: 'Dialog durumu değiştiğinde çalışacak fonksiyon',
-      },
-    ],
-  },
+      usageExamples: [
+        t('demo.remaining.descriptions.editUserProfile'),
+        t('demo.remaining.descriptions.confirmationDialogs'),
+        t('demo.remaining.descriptions.modalForms'),
+        t('demo.remaining.descriptions.detailPopups'),
+      ],
+      props: [
+        {
+          name: 'open',
+          type: 'boolean',
+          description: t('demo.remaining.descriptions.dialogOpenState'),
+          default: 'false',
+        },
+        {
+          name: 'onOpenChange',
+          type: 'function',
+          description: t('demo.remaining.descriptions.dialogStateChangeCallback'),
+        },
+      ],
+    },
 
-  // Dropdown Component
-  {
-    id: 'dropdown',
-    title: 'Dropdown Menu',
-    description: 'Açılır menü bileşeni',
-    category: 'Navigation',
-    status: 'stable',
-    demoComponent: (
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button variant='outline'>Menü</Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent className='w-56'>
-          <DropdownMenuLabel>Hesabım</DropdownMenuLabel>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem>Profil</DropdownMenuItem>
-          <DropdownMenuItem>Ayarlar</DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuCheckboxItem checked>Bildirimler</DropdownMenuCheckboxItem>
-          <DropdownMenuCheckboxItem>E-posta güncellemeleri</DropdownMenuCheckboxItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
-    ),
-    code: `import {
+    // Dropdown Component
+    {
+      id: 'dropdown',
+      title: 'Dropdown Menu',
+      description: t('demo.remaining.descriptions.dropdownComponent'),
+      category: 'Navigation',
+      status: 'stable',
+      demoComponent: (
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant='outline'>{t('demo.remaining.missing.buttons.menu')}</Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className='w-56'>
+            <DropdownMenuLabel>{t('demo.remaining.missing.dropdown.myAccount')}</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>Profil</DropdownMenuItem>
+            <DropdownMenuItem>Ayarlar</DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuCheckboxItem checked>Bildirimler</DropdownMenuCheckboxItem>
+            <DropdownMenuCheckboxItem>{t('demo.remaining.missing.dropdown.emailUpdates')}</DropdownMenuCheckboxItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      ),
+      code: `import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
@@ -1487,10 +1497,10 @@ function Example() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline">Menü</Button>
+        <Button variant="outline">{t('demo.remaining.missing.buttons.menu')}</Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
-        <DropdownMenuLabel>Hesabım</DropdownMenuLabel>
+        <DropdownMenuLabel>{t('demo.remaining.missing.dropdown.myAccount')}</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem>Profil</DropdownMenuItem>
         <DropdownMenuItem>Ayarlar</DropdownMenuItem>
@@ -1502,109 +1512,109 @@ function Example() {
     </DropdownMenu>
   )
 }`,
-    usageExamples: [
-      'Kullanıcı menüsü oluşturmak için',
-      'Eylem menüleri için',
-      "Navigasyon dropdown'ları için",
-      'Seçenek listesi göstermek için',
-    ],
-    props: [
-      {
-        name: 'open',
-        type: 'boolean',
-        description: 'Menü açık/kapalı durumu',
-      },
-      {
-        name: 'onOpenChange',
-        type: 'function',
-        description: 'Menü durumu değiştiğinde çalışacak fonksiyon',
-      },
-    ],
-  },
+      usageExamples: [
+        t('demo.remaining.descriptions.userMenus'),
+        t('demo.remaining.descriptions.actionMenus'),
+        t('demo.remaining.descriptions.navigationDropdowns'),
+        t('demo.remaining.descriptions.optionLists'),
+      ],
+      props: [
+        {
+          name: 'open',
+          type: 'boolean',
+          description: t('demo.remaining.descriptions.menuOpenState'),
+        },
+        {
+          name: 'onOpenChange',
+          type: 'function',
+          description: t('demo.remaining.descriptions.menuStateChangeCallback'),
+        },
+      ],
+    },
 
-  // Input Component
-  {
-    id: 'input',
-    title: 'Input',
-    description: 'Metin girişi bileşeni',
-    category: 'Form & Input',
-    status: 'stable',
-    demoComponent: (
-      <div className='space-y-4 w-full max-w-sm'>
-        <Input placeholder='Temel input...' />
-        <Input type='email' placeholder='E-posta adresi...' />
-        <Input type='password' placeholder='Şifre...' />
-        <Input disabled placeholder='Devre dışı input' />
-      </div>
-    ),
-    code: `import { Input } from '@/components/core/input'
+    // Input Component
+    {
+      id: 'input',
+      title: 'Input',
+      description: t('demo.remaining.descriptions.inputComponent'),
+      category: t('demo.content.categories.formInput'),
+      status: 'stable',
+      demoComponent: (
+        <div className='space-y-4 w-full max-w-sm'>
+          <Input placeholder='Temel input...' />
+          <Input type='email' placeholder='E-posta adresi...' />
+          <Input type='password' placeholder={t('demo.remaining.labels.password')} />
+          <Input disabled placeholder={t('demo.remaining.labels.disabledInput')} />
+        </div>
+      ),
+      code: `import { Input } from '@/components/core/input'
 
 function Example() {
   return (
     <div className="space-y-4">
       <Input placeholder="Temel input..." />
       <Input type="email" placeholder="E-posta adresi..." />
-      <Input type="password" placeholder="Şifre..." />
-      <Input disabled placeholder="Devre dışı input" />
+      <Input type="password" placeholder={t('demo.remaining.labels.password')} />
+      <Input disabled placeholder={t('demo.remaining.labels.disabledInput')} />
     </div>
   )
 }`,
-    usageExamples: [
-      'Form alanları oluşturmak için',
-      'Kullanıcı verisi almak için',
-      'Arama kutularında',
-      'Login/register formlarında',
-    ],
-    props: [
-      {
-        name: 'type',
-        type: 'string',
-        description: 'Input tipi (text, email, password, vb.)',
-        default: 'text',
-      },
-      {
-        name: 'placeholder',
-        type: 'string',
-        description: 'Placeholder metni',
-      },
-      {
-        name: 'disabled',
-        type: 'boolean',
-        description: 'Input devre dışı durumu',
-        default: 'false',
-      },
-      {
-        name: 'value',
-        type: 'string',
-        description: 'Input değeri',
-      },
-    ],
-  },
+      usageExamples: [
+        t('demo.remaining.descriptions.formFields'),
+        t('demo.remaining.descriptions.getUserData'),
+        t('demo.remaining.descriptions.searchBoxes'),
+        t('demo.remaining.descriptions.loginRegisterForms'),
+      ],
+      props: [
+        {
+          name: 'type',
+          type: 'string',
+          description: t('demo.remaining.extraDescriptions.inputType'),
+          default: 'text',
+        },
+        {
+          name: 'placeholder',
+          type: 'string',
+          description: 'Placeholder metni',
+        },
+        {
+          name: 'disabled',
+          type: 'boolean',
+          description: t('demo.remaining.descriptions.inputDisabledState'),
+          default: 'false',
+        },
+        {
+          name: 'value',
+          type: 'string',
+          description: t('demo.remaining.descriptions.inputValue'),
+        },
+      ],
+    },
 
-  // Loading Components
-  {
-    id: 'loading',
-    title: 'Loading',
-    description: 'Yükleme animasyon bileşenleri',
-    category: 'Feedback',
-    status: 'stable',
-    demoComponent: (
-      <div className='grid grid-cols-3 gap-8 items-center justify-items-center'>
-        <div className='text-center space-y-2'>
-          <LoadingSpinner size='md' />
-          <p className='text-sm text-neutral-500'>Spinner</p>
+    // Loading Components
+    {
+      id: 'loading',
+      title: 'Loading',
+      description: t('demo.remaining.descriptions.loadingComponent'),
+      category: 'Feedback',
+      status: 'stable',
+      demoComponent: (
+        <div className='grid grid-cols-3 gap-8 items-center justify-items-center'>
+          <div className='text-center space-y-2'>
+            <LoadingSpinner size='md' />
+            <p className='text-sm text-neutral-500'>Spinner</p>
+          </div>
+          <div className='text-center space-y-2'>
+            <LoadingDots />
+            <p className='text-sm text-neutral-500'>Dots</p>
+          </div>
+          <div className='text-center space-y-2'>
+            <LoadingPulse />
+            <p className='text-sm text-neutral-500'>Pulse</p>
+          </div>
         </div>
-        <div className='text-center space-y-2'>
-          <LoadingDots />
-          <p className='text-sm text-neutral-500'>Dots</p>
-        </div>
-        <div className='text-center space-y-2'>
-          <LoadingPulse />
-          <p className='text-sm text-neutral-500'>Pulse</p>
-        </div>
-      </div>
-    ),
-    code: `import { 
+      ),
+      code: `import { 
   LoadingSpinner, 
   LoadingDots, 
   LoadingPulse 
@@ -1619,60 +1629,60 @@ function Example() {
     </div>
   )
 }`,
-    usageExamples: [
-      'Veri yüklenirken göstermek için',
-      'API çağrıları sırasında',
-      'Buton loading durumları için',
-      'Sayfa geçişlerinde',
-    ],
-    props: [
-      {
-        name: 'size',
-        type: 'sm | md | lg',
-        description: 'Loading boyutu',
-        default: 'md',
-      },
-      {
-        name: 'className',
-        type: 'string',
-        description: 'Ek CSS sınıfları',
-      },
-    ],
-  },
+      usageExamples: [
+        t('demo.remaining.descriptions.showWhileDataLoading'),
+        t('demo.remaining.descriptions.duringApiCalls'),
+        t('demo.remaining.descriptions.buttonLoadingStates'),
+        t('demo.remaining.descriptions.pageTransitions'),
+      ],
+      props: [
+        {
+          name: 'size',
+          type: 'sm | md | lg',
+          description: 'Loading boyutu',
+          default: 'md',
+        },
+        {
+          name: 'className',
+          type: 'string',
+          description: t('demo.remaining.descriptions.additionalCssClasses'),
+        },
+      ],
+    },
 
-  // Progress Component
-  {
-    id: 'progress',
-    title: 'Progress',
-    description: 'İlerleme çubuğu bileşeni',
-    category: 'Feedback',
-    status: 'stable',
-    demoComponent: (
-      <div className='space-y-4 w-full max-w-sm'>
-        <div>
-          <div className='flex justify-between text-sm mb-1'>
-            <span>İlerleme</span>
-            <span>33%</span>
+    // Progress Component
+    {
+      id: 'progress',
+      title: 'Progress',
+      description: t('demo.remaining.descriptions.progressComponent'),
+      category: 'Feedback',
+      status: 'stable',
+      demoComponent: (
+        <div className='space-y-4 w-full max-w-sm'>
+          <div>
+            <div className='flex justify-between text-sm mb-1'>
+              <span>İlerleme</span>
+              <span>33%</span>
+            </div>
+            <Progress value={33} />
           </div>
-          <Progress value={33} />
-        </div>
-        <div>
-          <div className='flex justify-between text-sm mb-1'>
-            <span>Yükleme</span>
-            <span>67%</span>
+          <div>
+            <div className='flex justify-between text-sm mb-1'>
+              <span>{t('demo.remaining.missing.loading.loading')}</span>
+              <span>67%</span>
+            </div>
+            <Progress value={67} className='h-2' />
           </div>
-          <Progress value={67} className='h-2' />
-        </div>
-        <div>
-          <div className='flex justify-between text-sm mb-1'>
-            <span>Tamamlandı</span>
-            <span>100%</span>
+          <div>
+            <div className='flex justify-between text-sm mb-1'>
+              <span>{t('demo.remaining.missing.loading.completed')}</span>
+              <span>100%</span>
+            </div>
+            <Progress value={100} />
           </div>
-          <Progress value={100} />
         </div>
-      </div>
-    ),
-    code: `import { Progress } from '@/components/core/progress'
+      ),
+      code: `import { Progress } from '@/components/core/progress'
 
 function Example() {
   return (
@@ -1686,7 +1696,7 @@ function Example() {
       </div>
       <div>
         <div className="flex justify-between text-sm mb-1">
-          <span>Yükleme</span>
+          <span>{t('demo.remaining.missing.loading.loading')}</span>
           <span>67%</span>
         </div>
         <Progress value={67} className="h-2" />
@@ -1694,62 +1704,62 @@ function Example() {
     </div>
   )
 }`,
-    usageExamples: [
-      'Dosya yükleme ilerlemesi için',
-      'Form tamamlama durumu için',
-      'Görev ilerlemesi göstermek için',
-      'Sayfa yükleme durumu için',
-    ],
-    props: [
-      {
-        name: 'value',
-        type: 'number',
-        description: 'İlerleme değeri (0-100)',
-        default: '0',
-      },
-      {
-        name: 'max',
-        type: 'number',
-        description: 'Maksimum değer',
-        default: '100',
-      },
-      {
-        name: 'className',
-        type: 'string',
-        description: 'Ek CSS sınıfları',
-      },
-    ],
-  },
+      usageExamples: [
+        t('demo.remaining.descriptions.fileUploadProgress'),
+        t('demo.remaining.descriptions.formCompletionStatus'),
+        t('demo.remaining.descriptions.taskProgress'),
+        t('demo.remaining.descriptions.pageLoadingStatus'),
+      ],
+      props: [
+        {
+          name: 'value',
+          type: 'number',
+          description: t('demo.remaining.descriptions.progressValue'),
+          default: '0',
+        },
+        {
+          name: 'max',
+          type: 'number',
+          description: t('demo.remaining.descriptions.maximumValue'),
+          default: '100',
+        },
+        {
+          name: 'className',
+          type: 'string',
+          description: t('demo.remaining.descriptions.additionalCssClasses'),
+        },
+      ],
+    },
 
-  // Skeleton Components
-  {
-    id: 'skeleton',
-    title: 'Skeleton',
-    description: 'Yükleme iskelet bileşenleri',
-    category: 'Feedback',
-    status: 'stable',
-    demoComponent: (
-      <div className='space-y-4'>
-        <div className='flex items-center space-x-4'>
-          <SkeletonAvatar />
+    // Skeleton Components
+    {
+      id: 'skeleton',
+      title: 'Skeleton',
+      description: t('demo.remaining.descriptions.skeletonComponent'),
+      category: 'Feedback',
+      status: 'stable',
+      demoComponent: (
+        <div className='space-y-4'>
+          <div className='flex items-center space-x-4'>
+            <SkeletonAvatar />
+            <div className='space-y-2'>
+              <SkeletonText width='200px' />
+              <SkeletonText width='150px' />
+            </div>
+          </div>
+          <SkeletonCard />
+          <div className='flex gap-2'>
+            <SkeletonButton />
+            <SkeletonButton />
+          </div>
           <div className='space-y-2'>
-            <SkeletonText width='200px' />
-            <SkeletonText width='150px' />
+            <Skeleton className='h-4 w-full' />
+            <Skeleton className='h-4 w-4/5' />
+            <Skeleton className='h-4 w-3/5' />
           </div>
         </div>
-        <SkeletonCard />
-        <div className='flex gap-2'>
-          <SkeletonButton />
-          <SkeletonButton />
-        </div>
-        <div className='space-y-2'>
-          <Skeleton className='h-4 w-full' />
-          <Skeleton className='h-4 w-4/5' />
-          <Skeleton className='h-4 w-3/5' />
-        </div>
-      </div>
-    ),
-    code: `import { 
+      ),
+      code: `import { 
   Skeleton, 
   SkeletonText, 
   SkeletonAvatar, 
@@ -1775,67 +1785,67 @@ function Example() {
     </div>
   )
 }`,
-    usageExamples: [
-      'Veri yüklenirken placeholder göstermek için',
-      'Kullanıcı deneyimini iyileştirmek için',
-      'Sayfa geçişlerinde',
-      'API beklerken görsel tutarlılık için',
-    ],
-    props: [
-      {
-        name: 'width',
-        type: 'string | number',
-        description: 'Skeleton genişliği',
-      },
-      {
-        name: 'height',
-        type: 'string | number',
-        description: 'Skeleton yüksekliği',
-      },
-      {
-        name: 'className',
-        type: 'string',
-        description: 'Ek CSS sınıfları',
-      },
-    ],
-  },
+      usageExamples: [
+        t('demo.remaining.descriptions.showPlaceholderWhileDataLoads'),
+        t('demo.remaining.descriptions.improveUserExperience'),
+        t('demo.remaining.descriptions.pageTransitions'),
+        t('demo.remaining.descriptions.visualConsistencyWhileWaitingApi'),
+      ],
+      props: [
+        {
+          name: 'width',
+          type: 'string | number',
+          description: t('demo.remaining.descriptions.skeletonWidth'),
+        },
+        {
+          name: 'height',
+          type: 'string | number',
+          description: t('demo.remaining.descriptions.skeletonHeight'),
+        },
+        {
+          name: 'className',
+          type: 'string',
+          description: t('demo.remaining.descriptions.additionalCssClasses'),
+        },
+      ],
+    },
 
-  // Tabs Component
-  {
-    id: 'tabs',
-    title: 'Tabs',
-    description: 'Sekme navigasyon bileşeni',
-    category: 'Navigation',
-    status: 'stable',
-    demoComponent: (
-      <Tabs defaultValue='account' className='w-full'>
-        <TabsList className='grid w-full grid-cols-2'>
-          <TabsTrigger value='account'>Hesap</TabsTrigger>
-          <TabsTrigger value='password'>Şifre</TabsTrigger>
-        </TabsList>
-        <TabsContent value='account' className='space-y-4'>
-          <div className='space-y-2'>
-            <Label htmlFor='name'>İsim</Label>
-            <Input id='name' defaultValue='Ahmet Yılmaz' />
-          </div>
-          <div className='space-y-2'>
-            <Label htmlFor='username'>Kullanıcı Adı</Label>
-            <Input id='username' defaultValue='@ahmetyilmaz' />
-          </div>
-        </TabsContent>
-        <TabsContent value='password' className='space-y-4'>
-          <div className='space-y-2'>
-            <Label htmlFor='current'>Mevcut Şifre</Label>
-            <Input id='current' type='password' />
-          </div>
-          <div className='space-y-2'>
-            <Label htmlFor='new'>Yeni Şifre</Label>
-            <Input id='new' type='password' />
-          </div>
-        </TabsContent>
-      </Tabs>
-    ),
-    code: `import { 
+    // Tabs Component
+    {
+      id: 'tabs',
+      title: 'Tabs',
+      description: t('demo.remaining.descriptions.tabsComponent'),
+      category: 'Navigation',
+      status: 'stable',
+      demoComponent: (
+        <Tabs defaultValue='account' className='w-full'>
+          <TabsList className='grid w-full grid-cols-2'>
+            <TabsTrigger value='account'>Hesap</TabsTrigger>
+            <TabsTrigger value='password'>{t('demo.remaining.missing.tabs.password')}</TabsTrigger>
+          </TabsList>
+          <TabsContent value='account' className='space-y-4'>
+            <div className='space-y-2'>
+              <Label htmlFor='name'>İsim</Label>
+              <Input id='name' defaultValue={t('demo.remaining.labels.sampleName')} />
+            </div>
+            <div className='space-y-2'>
+              <Label htmlFor='username'>{t('demo.remaining.missing.tabs.username')}</Label>
+              <Input id='username' defaultValue='@ahmetyilmaz' />
+            </div>
+          </TabsContent>
+          <TabsContent value='password' className='space-y-4'>
+            <div className='space-y-2'>
+              <Label htmlFor='current'>{t('demo.remaining.missing.tabs.currentPassword')}</Label>
+              <Input id='current' type='password' />
+            </div>
+            <div className='space-y-2'>
+              <Label htmlFor='new'>{t('demo.remaining.missing.tabs.newPassword')}</Label>
+              <Input id='new' type='password' />
+            </div>
+          </TabsContent>
+        </Tabs>
+      ),
+      code: `import { 
   Tabs, 
   TabsContent, 
   TabsList, 
@@ -1849,72 +1859,72 @@ function Example() {
     <Tabs defaultValue="account" className="w-full">
       <TabsList className="grid w-full grid-cols-2">
         <TabsTrigger value="account">Hesap</TabsTrigger>
-        <TabsTrigger value="password">Şifre</TabsTrigger>
+        <TabsTrigger value="password">{t('demo.remaining.missing.tabs.password')}</TabsTrigger>
       </TabsList>
       <TabsContent value="account">
         <div className="space-y-2">
           <Label htmlFor="name">İsim</Label>
-          <Input id="name" defaultValue="Ahmet Yılmaz" />
+          <Input id="name" defaultValue={t('demo.remaining.labels.sampleName')} />
         </div>
       </TabsContent>
       <TabsContent value="password">
         <div className="space-y-2">
-          <Label htmlFor="current">Mevcut Şifre</Label>
+          <Label htmlFor="current">{t('demo.remaining.missing.tabs.currentPassword')}</Label>
           <Input id="current" type="password" />
         </div>
       </TabsContent>
     </Tabs>
   )
 }`,
-    usageExamples: [
-      'Ayar sayfaları için',
-      'Profil düzenleme formları için',
-      'Dashboard bölümlerini ayırmak için',
-      'Kategorilere ayrılmış içerik için',
-    ],
-    props: [
-      {
-        name: 'defaultValue',
-        type: 'string',
-        description: 'Varsayılan aktif sekme',
-      },
-      {
-        name: 'value',
-        type: 'string',
-        description: 'Kontrollü aktif sekme',
-      },
-      {
-        name: 'onValueChange',
-        type: 'function',
-        description: 'Sekme değiştiğinde çalışacak fonksiyon',
-      },
-    ],
-  },
+      usageExamples: [
+        t('demo.remaining.descriptions.settingsPages'),
+        t('demo.remaining.descriptions.profileEditingForms'),
+        t('demo.remaining.descriptions.separateDashboardSections'),
+        t('demo.remaining.descriptions.categorizedContent'),
+      ],
+      props: [
+        {
+          name: 'defaultValue',
+          type: 'string',
+          description: t('demo.remaining.descriptions.defaultActiveTab'),
+        },
+        {
+          name: 'value',
+          type: 'string',
+          description: t('demo.remaining.descriptions.controlledActiveTab'),
+        },
+        {
+          name: 'onValueChange',
+          type: 'function',
+          description: t('demo.remaining.descriptions.tabChangeCallback'),
+        },
+      ],
+    },
 
-  // Slider Component
-  {
-    id: 'slider',
-    title: 'Slider',
-    description: 'Değer seçici kaydırıcı bileşeni',
-    category: 'Form & Input',
-    status: 'stable',
-    demoComponent: (
-      <div className='space-y-6 w-full max-w-sm'>
-        <div>
-          <Label className='text-sm font-medium'>Ses Seviyesi: 50</Label>
-          <Slider defaultValue={[50]} max={100} step={1} className='mt-2' />
+    // Slider Component
+    {
+      id: 'slider',
+      title: 'Slider',
+      description: t('demo.remaining.descriptions.sliderComponent'),
+      category: t('demo.content.categories.formInput'),
+      status: 'stable',
+      demoComponent: (
+        <div className='space-y-6 w-full max-w-sm'>
+          <div>
+            <Label className='text-sm font-medium'>Ses Seviyesi: 50</Label>
+            <Slider defaultValue={[50]} max={100} step={1} className='mt-2' />
+          </div>
+          <div>
+            <Label className='text-sm font-medium'>{t('demo.remaining.missing.slider.priceRange')}</Label>
+            <Slider defaultValue={[200, 800]} max={1000} step={10} className='mt-2' />
+          </div>
+          <div>
+            <Label className='text-sm font-medium'>Kalite: 8/10</Label>
+            <Slider defaultValue={[8]} max={10} step={1} className='mt-2' />
+          </div>
         </div>
-        <div>
-          <Label className='text-sm font-medium'>Fiyat Aralığı: 200₺ - 800₺</Label>
-          <Slider defaultValue={[200, 800]} max={1000} step={10} className='mt-2' />
-        </div>
-        <div>
-          <Label className='text-sm font-medium'>Kalite: 8/10</Label>
-          <Slider defaultValue={[8]} max={10} step={1} className='mt-2' />
-        </div>
-      </div>
-    ),
-    code: `import { Slider } from '@/components/core/slider'
+      ),
+      code: `import { Slider } from '@/components/core/slider'
 import { Label } from '@/components/core/label'
 
 function Example() {
@@ -1930,7 +1940,7 @@ function Example() {
         />
       </div>
       <div>
-        <Label className="text-sm font-medium">Fiyat Aralığı</Label>
+        <Label className="text-sm font-medium">{t('demo.remaining.missing.slider.priceRangeLabel')}</Label>
         <Slider 
           defaultValue={[200, 800]} 
           max={1000} 
@@ -1941,148 +1951,148 @@ function Example() {
     </div>
   )
 }`,
-    usageExamples: [
-      'Ses/parlaklık kontrolleri için',
-      'Fiyat aralığı seçimi için',
-      'Filtreleme seçenekleri için',
-      'Değer aralığı belirlemek için',
-    ],
-    props: [
-      {
-        name: 'defaultValue',
-        type: 'number[]',
-        description: 'Varsayılan değer(ler)',
-      },
-      {
-        name: 'value',
-        type: 'number[]',
-        description: 'Kontrollü değer(ler)',
-      },
-      {
-        name: 'max',
-        type: 'number',
-        description: 'Maksimum değer',
-        default: '100',
-      },
-      {
-        name: 'min',
-        type: 'number',
-        description: 'Minimum değer',
-        default: '0',
-      },
-      {
-        name: 'step',
-        type: 'number',
-        description: 'Artış miktarı',
-        default: '1',
-      },
-    ],
-  },
+      usageExamples: [
+        t('demo.remaining.descriptions.volumeBrightnessControls'),
+        t('demo.remaining.descriptions.priceRangeSelection'),
+        t('demo.remaining.descriptions.filteringOptions'),
+        t('demo.remaining.descriptions.valueRangeDetermination'),
+      ],
+      props: [
+        {
+          name: 'defaultValue',
+          type: 'number[]',
+          description: t('demo.remaining.descriptions.defaultValues'),
+        },
+        {
+          name: 'value',
+          type: 'number[]',
+          description: t('demo.remaining.descriptions.controlledValues'),
+        },
+        {
+          name: 'max',
+          type: 'number',
+          description: t('demo.remaining.descriptions.maximumValue'),
+          default: '100',
+        },
+        {
+          name: 'min',
+          type: 'number',
+          description: t('demo.remaining.descriptions.minimumValue'),
+          default: '0',
+        },
+        {
+          name: 'step',
+          type: 'number',
+          description: t('demo.remaining.descriptions.incrementAmount'),
+          default: '1',
+        },
+      ],
+    },
 
-  // Separator Component
-  {
-    id: 'separator',
-    title: 'Separator',
-    description: 'Ayırıcı çizgi bileşeni',
-    category: 'Layout',
-    status: 'stable',
-    demoComponent: (
-      <div className='space-y-4'>
-        <div>
-          <h4 className='text-sm font-medium'>Bölüm 1</h4>
-          <p className='text-sm text-neutral-500 mt-1'>Bu bir örnek içeriktir.</p>
+    // Separator Component
+    {
+      id: 'separator',
+      title: 'Separator',
+      description: t('demo.remaining.descriptions.separatorComponent'),
+      category: 'Layout',
+      status: 'stable',
+      demoComponent: (
+        <div className='space-y-4'>
+          <div>
+            <h4 className='text-sm font-medium'>{t('demo.remaining.missing.separator.section1')}</h4>
+            <p className='text-sm text-neutral-500 mt-1'>{t('demo.remaining.missing.separator.exampleContent1')}</p>
+          </div>
+          <Separator />
+          <div>
+            <h4 className='text-sm font-medium'>{t('demo.remaining.missing.separator.section2')}</h4>
+            <p className='text-sm text-neutral-500 mt-1'>{t('demo.remaining.missing.separator.exampleContent2')}</p>
+          </div>
+          <Separator orientation='vertical' className='h-20' />
+          <div className='flex items-center gap-4'>
+            <span>Sol</span>
+            <Separator orientation='vertical' className='h-6' />
+            <span>{t('demo.remaining.missing.separator.right')}</span>
+          </div>
         </div>
-        <Separator />
-        <div>
-          <h4 className='text-sm font-medium'>Bölüm 2</h4>
-          <p className='text-sm text-neutral-500 mt-1'>Bu başka bir örnek içeriktir.</p>
-        </div>
-        <Separator orientation='vertical' className='h-20' />
-        <div className='flex items-center gap-4'>
-          <span>Sol</span>
-          <Separator orientation='vertical' className='h-6' />
-          <span>Sağ</span>
-        </div>
-      </div>
-    ),
-    code: `import { Separator } from '@/components/core/separator'
+      ),
+      code: `import { Separator } from '@/components/core/separator'
 
 function Example() {
   return (
     <div className="space-y-4">
       <div>
-        <h4 className="text-sm font-medium">Bölüm 1</h4>
-        <p className="text-sm text-neutral-500">Bu bir örnek içeriktir.</p>
+        <h4 className="text-sm font-medium">{t('demo.remaining.missing.separator.section1')}</h4>
+        <p className="text-sm text-neutral-500">{t('demo.remaining.missing.separator.exampleContent1')}</p>
       </div>
       <Separator />
       <div>
-        <h4 className="text-sm font-medium">Bölüm 2</h4>
-        <p className="text-sm text-neutral-500">Bu başka bir örnek içeriktir.</p>
+        <h4 className="text-sm font-medium">{t('demo.remaining.missing.separator.section2')}</h4>
+        <p className="text-sm text-neutral-500">{t('demo.remaining.missing.separator.exampleContent2')}</p>
       </div>
       <div className="flex items-center gap-4">
         <span>Sol</span>
         <Separator orientation="vertical" className="h-6" />
-        <span>Sağ</span>
+        <span>{t('demo.remaining.missing.separator.right')}</span>
       </div>
     </div>
   )
 }`,
-    usageExamples: [
-      'İçerik bölümlerini ayırmak için',
-      'Menü öğelerini gruplamak için',
-      'Card içinde bölüm ayrımları için',
-      'Form alanlarını organize etmek için',
-    ],
-    props: [
-      {
-        name: 'orientation',
-        type: 'horizontal | vertical',
-        description: 'Ayırıcı yönü',
-        default: 'horizontal',
-      },
-      {
-        name: 'className',
-        type: 'string',
-        description: 'Ek CSS sınıfları',
-      },
-    ],
-  },
+      usageExamples: [
+        t('demo.remaining.descriptions.separateContentSections'),
+        t('demo.remaining.descriptions.groupMenuItems'),
+        t('demo.remaining.descriptions.cardSectionSeparations'),
+        t('demo.remaining.descriptions.organizeFormFields'),
+      ],
+      props: [
+        {
+          name: 'orientation',
+          type: 'horizontal | vertical',
+          description: t('demo.remaining.descriptions.separatorDirection'),
+          default: 'horizontal',
+        },
+        {
+          name: 'className',
+          type: 'string',
+          description: t('demo.remaining.descriptions.additionalCssClasses'),
+        },
+      ],
+    },
 
-  // Popover Component
-  {
-    id: 'popover',
-    title: 'Popover',
-    description: 'Açılır içerik kutusu bileşeni',
-    category: 'Overlay',
-    status: 'stable',
-    demoComponent: (
-      <div className='flex gap-4'>
-        <Popover>
-          <PopoverTrigger asChild>
-            <Button variant='outline'>Popover Aç</Button>
-          </PopoverTrigger>
-          <PopoverContent className='w-80'>
-            <div className='grid gap-4'>
-              <div className='space-y-2'>
-                <h4 className='font-medium leading-none'>Boyutlar</h4>
-                <p className='text-sm text-neutral-500'>Bileşen boyutlarını ayarlayın.</p>
-              </div>
-              <div className='grid gap-2'>
-                <div className='grid grid-cols-3 items-center gap-4'>
-                  <Label htmlFor='width'>Genişlik</Label>
-                  <Input id='width' defaultValue='100%' className='col-span-2 h-8' />
+    // Popover Component
+    {
+      id: 'popover',
+      title: 'Popover',
+      description: t('demo.remaining.descriptions.popoverComponent'),
+      category: t('demo.content.categories.overlay'),
+      status: 'stable',
+      demoComponent: (
+        <div className='flex gap-4'>
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button variant='outline'>{t('demo.remaining.missing.popover.openPopover')}</Button>
+            </PopoverTrigger>
+            <PopoverContent className='w-80'>
+              <div className='grid gap-4'>
+                <div className='space-y-2'>
+                  <h4 className='font-medium leading-none'>Boyutlar</h4>
+                  <p className='text-sm text-neutral-500'>{t('demo.remaining.missing.popover.adjustDimensions')}</p>
                 </div>
-                <div className='grid grid-cols-3 items-center gap-4'>
-                  <Label htmlFor='height'>Yükseklik</Label>
-                  <Input id='height' defaultValue='25px' className='col-span-2 h-8' />
+                <div className='grid gap-2'>
+                  <div className='grid grid-cols-3 items-center gap-4'>
+                    <Label htmlFor='width'>{t('demo.remaining.missing.popover.width')}</Label>
+                    <Input id='width' defaultValue='100%' className='col-span-2 h-8' />
+                  </div>
+                  <div className='grid grid-cols-3 items-center gap-4'>
+                    <Label htmlFor='height'>{t('demo.remaining.missing.popover.height')}</Label>
+                    <Input id='height' defaultValue='25px' className='col-span-2 h-8' />
+                  </div>
                 </div>
               </div>
-            </div>
-          </PopoverContent>
-        </Popover>
-      </div>
-    ),
-    code: `import { 
+            </PopoverContent>
+          </Popover>
+        </div>
+      ),
+      code: `import { 
   Popover, 
   PopoverContent, 
   PopoverTrigger 
@@ -2095,19 +2105,19 @@ function Example() {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button variant="outline">Popover Aç</Button>
+        <Button variant="outline">{t('demo.remaining.missing.popover.openPopover')}</Button>
       </PopoverTrigger>
       <PopoverContent className="w-80">
         <div className="grid gap-4">
           <div className="space-y-2">
             <h4 className="font-medium leading-none">Boyutlar</h4>
             <p className="text-sm text-neutral-500">
-              Bileşen boyutlarını ayarlayın.
+              {t('demo.remaining.missing.popover.adjustDimensions')}
             </p>
           </div>
           <div className="grid gap-2">
             <div className="grid grid-cols-3 items-center gap-4">
-              <Label htmlFor="width">Genişlik</Label>
+              <Label htmlFor="width">{t('demo.remaining.missing.popover.width')}</Label>
               <Input id="width" defaultValue="100%" className="col-span-2 h-8" />
             </div>
           </div>
@@ -2116,137 +2126,137 @@ function Example() {
     </Popover>
   )
 }`,
-    usageExamples: [
-      'Hızlı ayar menüleri için',
-      'Ek bilgi göstermek için',
-      'Form yardımcı içerikler için',
-      'Kontekst menüleri oluşturmak için',
-    ],
-    props: [
-      {
-        name: 'open',
-        type: 'boolean',
-        description: 'Popover açık/kapalı durumu',
-      },
-      {
-        name: 'onOpenChange',
-        type: 'function',
-        description: 'Popover durumu değiştiğinde çalışacak fonksiyon',
-      },
-    ],
-  },
+      usageExamples: [
+        t('demo.remaining.descriptions.quickSettingsMenus'),
+        t('demo.remaining.descriptions.showAdditionalInfo'),
+        t('demo.remaining.descriptions.formHelperContent'),
+        t('demo.remaining.descriptions.contextMenus'),
+      ],
+      props: [
+        {
+          name: 'open',
+          type: 'boolean',
+          description: t('demo.remaining.descriptions.popoverOpenState'),
+        },
+        {
+          name: 'onOpenChange',
+          type: 'function',
+          description: t('demo.remaining.descriptions.popoverStateChangeCallback'),
+        },
+      ],
+    },
 
-  // Tooltip Component
-  {
-    id: 'tooltip',
-    title: 'Tooltip',
-    description: 'Bilgi ipucu bileşeni',
-    category: 'Overlay',
-    status: 'stable',
-    demoComponent: (
-      <TooltipProvider>
-        <div className='flex gap-4 items-center'>
-          <TooltipComponent content='Bu bir tooltip örneğidir'>
-            <Button variant='outline'>Hover Me</Button>
-          </TooltipComponent>
-          <TooltipComponent content='Bu tooltip sağda görünür' side='right'>
-            <Button variant='outline'>Right Tooltip</Button>
-          </TooltipComponent>
-          <TooltipComponent content='Bu tooltip altta görünür' side='bottom'>
-            <Button variant='outline'>Bottom Tooltip</Button>
-          </TooltipComponent>
-          <TooltipComponent content='Devre dışı tooltip' disabled>
-            <Button variant='outline'>Disabled</Button>
-          </TooltipComponent>
-        </div>
-      </TooltipProvider>
-    ),
-    code: `import { TooltipComponent, TooltipProvider } from '@/components/core/tooltip'
+    // Tooltip Component
+    {
+      id: 'tooltip',
+      title: 'Tooltip',
+      description: t('demo.remaining.descriptions.tooltipComponent'),
+      category: t('demo.content.categories.overlay'),
+      status: 'stable',
+      demoComponent: (
+        <TooltipProvider>
+          <div className='flex gap-4 items-center'>
+            <TooltipComponent content={t('demo.remaining.tooltips.example')}>
+              <Button variant='outline'>Hover Me</Button>
+            </TooltipComponent>
+            <TooltipComponent content={t('demo.remaining.tooltips.rightSide')} side='right'>
+              <Button variant='outline'>Right Tooltip</Button>
+            </TooltipComponent>
+            <TooltipComponent content={t('demo.remaining.tooltips.bottomSide')} side='bottom'>
+              <Button variant='outline'>Bottom Tooltip</Button>
+            </TooltipComponent>
+            <TooltipComponent content={t('demo.remaining.tooltips.disabled')} disabled>
+              <Button variant='outline'>Disabled</Button>
+            </TooltipComponent>
+          </div>
+        </TooltipProvider>
+      ),
+      code: `import { TooltipComponent, TooltipProvider } from '@/components/core/tooltip'
 import { Button } from '@/components/core/button'
 
 function Example() {
   return (
     <TooltipProvider>
       <div className="flex gap-4 items-center">
-        <TooltipComponent content="Bu bir tooltip örneğidir">
+        <TooltipComponent content={t('demo.remaining.tooltips.example')}>
           <Button variant="outline">Hover Me</Button>
         </TooltipComponent>
         
-        <TooltipComponent content="Bu tooltip sağda görünür" side="right">
+        <TooltipComponent content={t('demo.remaining.tooltips.rightSide')} side="right">
           <Button variant="outline">Right Tooltip</Button>
         </TooltipComponent>
         
-        <TooltipComponent content="Bu tooltip altta görünür" side="bottom">
+        <TooltipComponent content={t('demo.remaining.tooltips.bottomSide')} side="bottom">
           <Button variant="outline">Bottom Tooltip</Button>
         </TooltipComponent>
         
-        <TooltipComponent content="Devre dışı tooltip" disabled>
+        <TooltipComponent content={t('demo.remaining.tooltips.disabled')} disabled>
           <Button variant="outline">Disabled</Button>
         </TooltipComponent>
       </div>
     </TooltipProvider>
   )
 }`,
-    usageExamples: [
-      'Buton açıklamaları için',
-      'Form alanı yardım metinleri için',
-      'Kısaltılmış metin açıklamaları için',
-      'İkon anlamlarını açıklamak için',
-    ],
-    props: [
-      {
-        name: 'content',
-        type: 'ReactNode',
-        description: 'Tooltip içeriği',
-      },
-      {
-        name: 'side',
-        type: 'top | right | bottom | left',
-        description: 'Tooltip konumu',
-        default: 'top',
-      },
-      {
-        name: 'align',
-        type: 'start | center | end',
-        description: 'Tooltip hizalaması',
-        default: 'center',
-      },
-      {
-        name: 'delayDuration',
-        type: 'number',
-        description: 'Tooltip gösterim gecikmesi (ms)',
-        default: '300',
-      },
-      {
-        name: 'disabled',
-        type: 'boolean',
-        description: 'Tooltip devre dışı durumu',
-        default: 'false',
-      },
-    ],
-  },
+      usageExamples: [
+        t('demo.remaining.descriptions.buttonExplanations'),
+        t('demo.remaining.descriptions.formFieldHelpTexts'),
+        t('demo.remaining.descriptions.abbreviatedTextExplanations'),
+        t('demo.remaining.descriptions.explainIconMeanings'),
+      ],
+      props: [
+        {
+          name: 'content',
+          type: 'ReactNode',
+          description: t('demo.remaining.descriptions.tooltipContent'),
+        },
+        {
+          name: 'side',
+          type: 'top | right | bottom | left',
+          description: 'Tooltip konumu',
+          default: 'top',
+        },
+        {
+          name: 'align',
+          type: 'start | center | end',
+          description: t('demo.remaining.descriptions.tooltipAlignment'),
+          default: 'center',
+        },
+        {
+          name: 'delayDuration',
+          type: 'number',
+          description: t('demo.remaining.descriptions.tooltipDisplayDelay'),
+          default: '300',
+        },
+        {
+          name: 'disabled',
+          type: 'boolean',
+          description: t('demo.remaining.descriptions.tooltipDisabledState'),
+          default: 'false',
+        },
+      ],
+    },
 
-  // Scroll Area Component
-  {
-    id: 'scroll-area',
-    title: 'Scroll Area',
-    description: 'Özel kaydırma çubuğu bileşeni',
-    category: 'Layout',
-    status: 'stable',
-    demoComponent: (
-      <div className='space-y-4'>
-        <ScrollArea className='h-32 w-48 rounded-md border p-4'>
-          <div className='space-y-2'>
-            {Array.from({ length: 20 }, (_, i) => (
-              <div key={i} className='text-sm'>
-                Liste öğesi {i + 1}
-              </div>
-            ))}
-          </div>
-        </ScrollArea>
-      </div>
-    ),
-    code: `import { ScrollArea } from '@/components/core/scroll-area'
+    // Scroll Area Component
+    {
+      id: 'scroll-area',
+      title: 'Scroll Area',
+      description: t('demo.remaining.descriptions.scrollAreaComponent'),
+      category: 'Layout',
+      status: 'stable',
+      demoComponent: (
+        <div className='space-y-4'>
+          <ScrollArea className='h-32 w-48 rounded-md border p-4'>
+            <div className='space-y-2'>
+              {Array.from({ length: 20 }, (_, i) => (
+                <div key={i} className='text-sm'>
+                  Liste öğesi {i + 1}
+                </div>
+              ))}
+            </div>
+          </ScrollArea>
+        </div>
+      ),
+      code: `import { ScrollArea } from '@/components/core/scroll-area'
 
 function Example() {
   return (
@@ -2261,149 +2271,149 @@ function Example() {
     </ScrollArea>
   )
 }`,
-    usageExamples: [
-      'Uzun liste gösterimleri için',
-      'Sınırlı yükseklikte içerik için',
-      'Chat mesaj geçmişi için',
-      'Navigasyon menüleri için',
-    ],
-    props: [
-      {
-        name: 'className',
-        type: 'string',
-        description: 'Ek CSS sınıfları',
-      },
-    ],
-  },
+      usageExamples: [
+        t('demo.remaining.descriptions.longListDisplays'),
+        t('demo.remaining.descriptions.limitedHeightContent'),
+        t('demo.remaining.descriptions.chatMessageHistory'),
+        t('demo.remaining.descriptions.navigationMenus'),
+      ],
+      props: [
+        {
+          name: 'className',
+          type: 'string',
+          description: t('demo.remaining.descriptions.additionalCssClasses'),
+        },
+      ],
+    },
 
-  // Rich Text Editor Component
-  {
-    id: 'rich-text-editor',
-    title: 'Rich Text Editor',
-    description: 'Zengin metin düzenleyici bileşeni',
-    category: 'Form & Input',
-    status: 'stable',
-    demoComponent: (
-      <div className='w-full max-w-2xl'>
-        <RichTextEditor
-          placeholder='Zengin metin içeriği yazın...'
-          value='<p>Bu bir <strong>zengin metin</strong> örneğidir. <em>Italik</em> ve <u>altı çizili</u> metinler yazabilirsiniz.</p>'
-          onChange={(content) => console.log(content)}
-        />
-      </div>
-    ),
-    code: `import { RichTextEditor } from '@/components/core/rich-text-editor'
+    // Rich Text Editor Component
+    {
+      id: 'rich-text-editor',
+      title: 'Rich Text Editor',
+      description: t('demo.remaining.descriptions.richTextComponent'),
+      category: t('demo.content.categories.formInput'),
+      status: 'stable',
+      demoComponent: (
+        <div className='w-full max-w-2xl'>
+          <RichTextEditor
+            placeholder={t('demo.remaining.labels.richTextPlaceholder')}
+            value={t('demo.remaining.labels.richTextExample')}
+            onChange={(content) => console.log(content)}
+          />
+        </div>
+      ),
+      code: `import { RichTextEditor } from '@/components/core/rich-text-editor'
 
 function Example() {
   return (
     <RichTextEditor
-      placeholder="Zengin metin içeriği yazın..."
-      value="<p>Bu bir <strong>zengin metin</strong> örneğidir.</p>"
+      placeholder={t('demo.remaining.labels.richTextPlaceholder')}
+      value={t('demo.remaining.labels.richTextExample')}
       onChange={(content) => console.log(content)}
     />
   )
 }`,
-    usageExamples: [
-      'Blog yazıları için',
-      'Ürün açıklamaları için',
-      'Email editörleri için',
-      'Yorumlarda zengin içerik için',
-    ],
-    props: [
-      {
-        name: 'value',
-        type: 'string',
-        description: 'Kontrollü içerik değeri',
-      },
-      {
-        name: 'onChange',
-        type: 'function',
-        description: 'İçerik değiştiğinde çalışacak fonksiyon',
-      },
-      {
-        name: 'placeholder',
-        type: 'string',
-        description: 'Placeholder metni',
-      },
-    ],
-  },
+      usageExamples: [
+        t('demo.remaining.descriptions.blogPosts'),
+        t('demo.remaining.descriptions.productDescriptions'),
+        t('demo.remaining.descriptions.emailEditors'),
+        t('demo.remaining.descriptions.richContentInComments'),
+      ],
+      props: [
+        {
+          name: 'value',
+          type: 'string',
+          description: t('demo.remaining.descriptions.controlledContentValue'),
+        },
+        {
+          name: 'onChange',
+          type: 'function',
+          description: t('demo.remaining.descriptions.contentChangeCallback'),
+        },
+        {
+          name: 'placeholder',
+          type: 'string',
+          description: 'Placeholder metni',
+        },
+      ],
+    },
 
-  // Modern Date Picker Component
-  {
-    id: 'modern-date-picker',
-    title: 'Modern Date Picker',
-    description: 'Modern tarih seçici bileşeni',
-    category: 'Form & Input',
-    status: 'stable',
-    demoComponent: (
-      <div className='space-y-4 w-full max-w-sm'>
-        <div>
-          <Label>Doğum Tarihi</Label>
-          <ModernDatePicker placeholder='Tarih seçin...' onChange={(date) => console.log(date)} />
+    // Modern Date Picker Component
+    {
+      id: 'modern-date-picker',
+      title: 'Modern Date Picker',
+      description: t('demo.remaining.descriptions.modernDatePickerComponent'),
+      category: t('demo.content.categories.formInput'),
+      status: 'stable',
+      demoComponent: (
+        <div className='space-y-4 w-full max-w-sm'>
+          <div>
+            <Label>{t('demo.remaining.missing.datePicker.birthDate')}</Label>
+            <ModernDatePicker placeholder={t('demo.remaining.labels.selectDate')} onChange={(date) => console.log(date)} />
+          </div>
         </div>
-      </div>
-    ),
-    code: `import { ModernDatePicker } from '@/components/core/modern-date-picker'
+      ),
+      code: `import { ModernDatePicker } from '@/components/core/modern-date-picker'
 import { Label } from '@/components/core/label'
 
 function Example() {
   return (
     <div className="space-y-2">
-      <Label>Doğum Tarihi</Label>
+      <Label>{t('demo.remaining.missing.datePicker.birthDate')}</Label>
       <ModernDatePicker 
-        placeholder="Tarih seçin..." 
+        placeholder={t('demo.remaining.labels.selectDate')}
         onChange={(date) => console.log(date)}
       />
     </div>
   )
 }`,
-    usageExamples: [
-      'Doğum tarihi seçimi için',
-      'Etkinlik tarihi belirleme için',
-      'Rapor tarih aralığı için',
-      'Rezervasyon tarih seçimi için',
-    ],
-    props: [
-      {
-        name: 'value',
-        type: 'Date',
-        description: 'Seçili tarih',
-      },
-      {
-        name: 'onChange',
-        type: 'function',
-        description: 'Tarih değiştiğinde çalışacak fonksiyon',
-      },
-      {
-        name: 'placeholder',
-        type: 'string',
-        description: 'Placeholder metni',
-      },
-      {
-        name: 'disabled',
-        type: 'boolean',
-        description: 'Devre dışı durumu',
-        default: 'false',
-      },
-    ],
-  },
+      usageExamples: [
+        t('demo.remaining.descriptions.birthdateSelection'),
+        t('demo.remaining.descriptions.eventDateDetermination'),
+        t('demo.remaining.descriptions.reportDateRange'),
+        t('demo.remaining.descriptions.reservationDateSelection'),
+      ],
+      props: [
+        {
+          name: 'value',
+          type: 'Date',
+          description: t('demo.remaining.descriptions.selectedDate'),
+        },
+        {
+          name: 'onChange',
+          type: 'function',
+          description: t('demo.remaining.descriptions.dateChangeCallback'),
+        },
+        {
+          name: 'placeholder',
+          type: 'string',
+          description: 'Placeholder metni',
+        },
+        {
+          name: 'disabled',
+          type: 'boolean',
+          description: t('demo.remaining.descriptions.disabledState'),
+          default: 'false',
+        },
+      ],
+    },
 
-  // Month Year Picker Component
-  {
-    id: 'month-year-picker',
-    title: 'Month Year Picker',
-    description: 'Ay-yıl seçici bileşeni',
-    category: 'Form & Input',
-    status: 'stable',
-    demoComponent: (
-      <div className='space-y-4 w-full max-w-sm'>
-        <div>
-          <Label>Mezuniyet Tarihi</Label>
-          <MonthYearPicker placeholder='Ay/Yıl seçin...' onChange={(date) => console.log(date)} />
+    // Month Year Picker Component
+    {
+      id: 'month-year-picker',
+      title: 'Month Year Picker',
+      description: t('demo.remaining.descriptions.monthYearPickerComponent'),
+      category: t('demo.content.categories.formInput'),
+      status: 'stable',
+      demoComponent: (
+        <div className='space-y-4 w-full max-w-sm'>
+          <div>
+            <Label>Mezuniyet Tarihi</Label>
+            <MonthYearPicker placeholder={t('demo.remaining.labels.selectMonthYear')} onChange={(date) => console.log(date)} />
+          </div>
         </div>
-      </div>
-    ),
-    code: `import { MonthYearPicker } from '@/components/core/month-year-picker'
+      ),
+      code: `import { MonthYearPicker } from '@/components/core/month-year-picker'
 import { Label } from '@/components/core/label'
 
 function Example() {
@@ -2411,64 +2421,64 @@ function Example() {
     <div className="space-y-2">
       <Label>Mezuniyet Tarihi</Label>
       <MonthYearPicker 
-        placeholder="Ay/Yıl seçin..." 
+        placeholder={t('demo.remaining.labels.selectMonthYear')} 
         onChange={(date) => console.log(date)}
       />
     </div>
   )
 }`,
-    usageExamples: [
-      'Mezuniyet tarihi için',
-      'İş deneyimi tarihleri için',
-      'Kredi kartı son kullanma tarihi için',
-      'Rapor periyodu seçimi için',
-    ],
-    props: [
-      {
-        name: 'value',
-        type: 'Date',
-        description: 'Seçili ay/yıl',
-      },
-      {
-        name: 'onChange',
-        type: 'function',
-        description: 'Tarih değiştiğinde çalışacak fonksiyon',
-      },
-      {
-        name: 'placeholder',
-        type: 'string',
-        description: 'Placeholder metni',
-      },
-      {
-        name: 'disabled',
-        type: 'boolean',
-        description: 'Devre dışı durumu',
-        default: 'false',
-      },
-    ],
-  },
+      usageExamples: [
+        t('demo.remaining.descriptions.graduationDate'),
+        t('demo.remaining.descriptions.workExperienceDates'),
+        t('demo.remaining.descriptions.creditCardExpirationDate'),
+        t('demo.remaining.descriptions.reportPeriodSelection'),
+      ],
+      props: [
+        {
+          name: 'value',
+          type: 'Date',
+          description: t('demo.remaining.descriptions.selectedMonthYear'),
+        },
+        {
+          name: 'onChange',
+          type: 'function',
+          description: t('demo.remaining.descriptions.dateChangeCallback'),
+        },
+        {
+          name: 'placeholder',
+          type: 'string',
+          description: 'Placeholder metni',
+        },
+        {
+          name: 'disabled',
+          type: 'boolean',
+          description: t('demo.remaining.descriptions.disabledState'),
+          default: 'false',
+        },
+      ],
+    },
 
-  // Date Range Picker Component
-  {
-    id: 'date-range-picker',
-    title: 'Date Range Picker',
-    description: 'Tarih aralığı seçici bileşeni',
-    category: 'Form & Input',
-    status: 'stable',
-    demoComponent: (
-      <div className='space-y-4 w-full max-w-sm'>
-        <div className='flex flex-col space-y-2'>
-          <Label>Tatil Tarihleri</Label>
-          <DatePicker
-            mode='range'
-            enablePresets={true}
-            placeholder='Tarih aralığı seçin...'
-            onChange={(range: any) => console.log(range)}
-          />
+    // Date Range Picker Component
+    {
+      id: 'date-range-picker',
+      title: 'Date Range Picker',
+      description: t('demo.remaining.descriptions.dateRangePickerComponent'),
+      category: t('demo.content.categories.formInput'),
+      status: 'stable',
+      demoComponent: (
+        <div className='space-y-4 w-full max-w-sm'>
+          <div className='flex flex-col space-y-2'>
+            <Label>Tatil Tarihleri</Label>
+            <DatePicker
+              mode='range'
+              enablePresets={true}
+              placeholder={t('demo.remaining.labels.selectDateRange')}
+              onChange={(range: any) => console.log(range)}
+            />
+          </div>
         </div>
-      </div>
-    ),
-    code: `import { createDateRangePicker } from '@/components/core/date-picker'
+      ),
+      code: `import { createDateRangePicker } from '@/components/core/date-picker'
 import { Label } from '@/components/core/label'
 
 function Example() {
@@ -2478,59 +2488,59 @@ function Example() {
     <div className="space-y-2">
       <Label>Tatil Tarihleri</Label>
       <RangePicker 
-        placeholder={{ from: 'Başlangıç', to: 'Bitiş' }}
+        placeholder={{ from: t('demo.remaining.labels.start'), to: t('demo.remaining.labels.end') }}
         onChange={(range) => console.log(range)}
       />
     </div>
   )
 }`,
-    usageExamples: [
-      'Tatil tarih aralığı seçimi için',
-      'Rapor periyodu belirleme için',
-      'Rezervasyon tarih aralığı için',
-      'Proje süre planlaması için',
-    ],
-    props: [
-      {
-        name: 'value',
-        type: 'DateRange',
-        description: 'Seçili tarih aralığı',
-      },
-      {
-        name: 'onChange',
-        type: 'function',
-        description: 'Tarih aralığı değiştiğinde çalışacak fonksiyon',
-      },
-      {
-        name: 'placeholder',
-        type: 'object',
-        description: 'Placeholder metinleri ({ from: string, to: string })',
-      },
-      {
-        name: 'disabled',
-        type: 'boolean',
-        description: 'Devre dışı durumu',
-        default: 'false',
-      },
-    ],
-  },
+      usageExamples: [
+        t('demo.remaining.descriptions.vacationDateRangeSelection'),
+        t('demo.remaining.descriptions.reportPeriodDetermination'),
+        t('demo.remaining.descriptions.reservationDateRange'),
+        t('demo.remaining.descriptions.projectTimelinePlanning'),
+      ],
+      props: [
+        {
+          name: 'value',
+          type: 'DateRange',
+          description: t('demo.remaining.descriptions.selectedDateRange'),
+        },
+        {
+          name: 'onChange',
+          type: 'function',
+          description: t('demo.remaining.descriptions.dateRangeChangeCallback'),
+        },
+        {
+          name: 'placeholder',
+          type: 'object',
+          description: 'Placeholder metinleri ({ from: string, to: string })',
+        },
+        {
+          name: 'disabled',
+          type: 'boolean',
+          description: t('demo.remaining.descriptions.disabledState'),
+          default: 'false',
+        },
+      ],
+    },
 
-  // Single Date Picker Component
-  {
-    id: 'single-date-picker',
-    title: 'Single Date Picker',
-    description: 'Tekil tarih seçici bileşeni',
-    category: 'Form & Input',
-    status: 'stable',
-    demoComponent: (
-      <div className='space-y-4 w-full max-w-sm'>
-        <div className='flex flex-col space-y-2'>
-          <Label>Randevu Tarihi</Label>
-          <DatePicker mode='single' placeholder='Tarih seçin...' onChange={(date: any) => console.log(date)} />
+    // Single Date Picker Component
+    {
+      id: 'single-date-picker',
+      title: 'Single Date Picker',
+      description: t('demo.remaining.descriptions.datePickerComponent'),
+      category: t('demo.content.categories.formInput'),
+      status: 'stable',
+      demoComponent: (
+        <div className='space-y-4 w-full max-w-sm'>
+          <div className='flex flex-col space-y-2'>
+            <Label>Randevu Tarihi</Label>
+            <DatePicker mode='single' placeholder={t('demo.remaining.labels.selectDate')} onChange={(date: any) => console.log(date)} />
+          </div>
         </div>
-      </div>
-    ),
-    code: `import { createSingleDatePicker } from '@/components/core/date-picker'
+      ),
+      code: `import { createSingleDatePicker } from '@/components/core/date-picker'
 import { Label } from '@/components/core/label'
 
 function Example() {
@@ -2540,40 +2550,41 @@ function Example() {
     <div className="space-y-2">
       <Label>Randevu Tarihi</Label>
       <SinglePicker 
-        placeholder="Tarih seçin..."
+        placeholder={t('demo.remaining.labels.selectDate')}
         onChange={(date) => console.log(date)}
       />
     </div>
   )
 }`,
-    usageExamples: [
-      'Randevu tarihi seçimi için',
-      'Son teslim tarihi belirleme için',
-      'Etkinlik tarihi seçimi için',
-      'Doğum tarihi girişi için',
-    ],
-    props: [
-      {
-        name: 'value',
-        type: 'Date',
-        description: 'Seçili tarih',
-      },
-      {
-        name: 'onChange',
-        type: 'function',
-        description: 'Tarih değiştiğinde çalışacak fonksiyon',
-      },
-      {
-        name: 'placeholder',
-        type: 'string',
-        description: 'Placeholder metni',
-      },
-      {
-        name: 'disabled',
-        type: 'boolean',
-        description: 'Devre dışı durumu',
-        default: 'false',
-      },
-    ],
-  },
-]
+      usageExamples: [
+        t('demo.remaining.descriptions.appointmentDateSelection'),
+        t('demo.remaining.descriptions.deadlineDetermination'),
+        t('demo.remaining.descriptions.eventDateSelection'),
+        t('demo.remaining.descriptions.birthdateInput'),
+      ],
+      props: [
+        {
+          name: 'value',
+          type: 'Date',
+          description: t('demo.remaining.descriptions.selectedDate'),
+        },
+        {
+          name: 'onChange',
+          type: 'function',
+          description: t('demo.remaining.descriptions.dateChangeCallback'),
+        },
+        {
+          name: 'placeholder',
+          type: 'string',
+          description: 'Placeholder metni',
+        },
+        {
+          name: 'disabled',
+          type: 'boolean',
+          description: t('demo.remaining.descriptions.disabledState'),
+          default: 'false',
+        },
+      ],
+    },
+  ]
+}

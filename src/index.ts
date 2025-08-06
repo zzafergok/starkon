@@ -212,7 +212,7 @@ export { default as i18n } from './locales'
 // Security Utils
 export { secureStorage } from './utils/security'
 
-export { componentDemoData } from './data/componentDemoData'
+export { useComponentDemoData } from './data/componentDemoData'
 
 // Configuration
 export { default as apiConfig } from './config/api'
