@@ -2,10 +2,10 @@
 
 import dynamic from 'next/dynamic'
 
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useEffect } from 'react'
 
 import { useTranslation } from 'react-i18next'
-import { Search, Grid, List, Filter, X } from 'lucide-react'
+import { Search, Grid, List, Filter, X, ChevronUp } from 'lucide-react'
 
 import { Input } from '@/components/core/input'
 import { Badge } from '@/components/core/badge'
@@ -55,6 +55,7 @@ export default function ComponentsPage() {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
   const [selectedStatus, setSelectedStatus] = useState<string>('all')
+  const [showScrollTop, setShowScrollTop] = useState(false)
 
   // Filtreleme mantığı
   const filteredComponents = useMemo(() => {
@@ -98,6 +99,24 @@ export default function ComponentsPage() {
   }
 
   const hasActiveFilters = searchQuery || selectedCategory !== 'all' || selectedStatus !== 'all'
+
+  // Scroll to top functionality
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY
+      setShowScrollTop(scrollTop > 400) // 400px sonra görünür
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    })
+  }
 
   return (
     <div className='min-h-screen bg-gradient-to-br from-neutral-50 via-white to-neutral-100/50 dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-950/80'>
@@ -380,74 +399,167 @@ export default function ComponentsPage() {
 
       {/* Components Showcase */}
       <section className='max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8'>
-        {filteredComponents.length > 0 ? (
-          <div className={cn('grid gap-8', viewMode === 'grid' ? 'grid-cols-1 xl:grid-cols-2' : 'grid-cols-1')}>
-            {filteredComponents.map((component) => (
-              <div key={component.id} className='h-fit'>
-                <ComponentDemo
-                  title={component.title}
-                  description={component.description}
-                  category={component.category}
-                  status={component.status as 'stable' | 'beta' | 'alpha' | 'deprecated'}
-                  demoComponent={component.demoComponent}
-                  code={component.code}
-                  usageExamples={(() => {
-                    if (!component.usageExamples || !Array.isArray(component.usageExamples)) return undefined
+        <div className='flex gap-8'>
+          {/* Ana İçerik Alanı */}
+          <div className='flex-1 min-w-0'>
+            {filteredComponents.length > 0 ? (
+              <div className={cn(viewMode === 'grid' ? 'columns-1 gap-8 space-y-8' : 'grid grid-cols-1 gap-8')}>
+                {filteredComponents.map((component) => (
+                  <div
+                    key={component.id}
+                    id={`component-${component.id}`}
+                    className={cn('w-full scroll-mt-24', viewMode === 'grid' ? 'break-inside-avoid mb-8' : '')}
+                  >
+                    <ComponentDemo
+                      title={component.title}
+                      description={component.description}
+                      category={component.category}
+                      status={component.status as 'stable' | 'beta' | 'alpha' | 'deprecated'}
+                      demoComponent={component.demoComponent}
+                      code={component.code}
+                      usageExamples={(() => {
+                        if (!component.usageExamples || !Array.isArray(component.usageExamples)) return undefined
 
-                    // Check if it's a string array and convert to proper format
-                    if (component.usageExamples.length > 0 && typeof component.usageExamples[0] === 'string') {
-                      return (component.usageExamples as string[]).map((example, index) => ({
-                        title: `Example ${index + 1}`,
-                        description: 'Usage example',
-                        code: example,
-                      }))
-                    }
+                        // Check if it's a string array and convert to proper format
+                        if (component.usageExamples.length > 0 && typeof component.usageExamples[0] === 'string') {
+                          return (component.usageExamples as string[]).map((example, index) => ({
+                            title: `Example ${index + 1}`,
+                            description: 'Usage example',
+                            code: example,
+                          }))
+                        }
 
-                    // Otherwise assume it's already in correct format
-                    return component.usageExamples as Array<{
-                      title: string
-                      description: string
-                      code: string
-                      component?: React.ReactNode
-                    }>
-                  })()}
-                  props={component.props?.map((prop, index) => ({
-                    ...prop,
-                    key: prop.name || `prop-${index}`,
-                    description: prop.description || '',
-                    required: false,
-                  }))}
-                />
+                        // Otherwise assume it's already in correct format
+                        return component.usageExamples as Array<{
+                          title: string
+                          description: string
+                          code: string
+                          component?: React.ReactNode
+                        }>
+                      })()}
+                      props={component.props?.map((prop, index) => ({
+                        ...prop,
+                        key: prop.name || `prop-${index}`,
+                        description: prop.description || '',
+                        required: false,
+                      }))}
+                    />
+                  </div>
+                ))}
               </div>
-            ))}
+            ) : (
+              /* No Results State */
+              <div className='text-center py-20'>
+                <div className='text-neutral-400 dark:text-neutral-500 mb-6'>
+                  <Search className='h-20 w-20 mx-auto opacity-50' />
+                </div>
+                <h3 className='text-2xl font-semibold text-neutral-900 dark:text-neutral-100 mb-3'>
+                  {t('common.noComponentsFound')}
+                </h3>
+                <p className='text-neutral-600 dark:text-neutral-400 mb-8 max-w-md mx-auto leading-relaxed'>
+                  {t('common.changeSearchCriteria')}
+                </p>
+                <div className='space-y-4'>
+                  <Button
+                    variant='outline'
+                    onClick={clearFilters}
+                    className='bg-white/70 dark:bg-neutral-800/70 border-neutral-200/80 dark:border-neutral-600/80'
+                  >
+                    {t('common.clearFilters')}
+                  </Button>
+                  <div className='text-sm text-neutral-500 dark:text-neutral-400'>
+                    Popüler aramalar: Button, Input, Modal, Form
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
-        ) : (
-          /* No Results State */
-          <div className='text-center py-20'>
-            <div className='text-neutral-400 dark:text-neutral-500 mb-6'>
-              <Search className='h-20 w-20 mx-auto opacity-50' />
-            </div>
-            <h3 className='text-2xl font-semibold text-neutral-900 dark:text-neutral-100 mb-3'>
-              {t('common.noComponentsFound')}
-            </h3>
-            <p className='text-neutral-600 dark:text-neutral-400 mb-8 max-w-md mx-auto leading-relaxed'>
-              {t('common.changeSearchCriteria')}
-            </p>
-            <div className='space-y-4'>
-              <Button
-                variant='outline'
-                onClick={clearFilters}
-                className='bg-white/70 dark:bg-neutral-800/70 border-neutral-200/80 dark:border-neutral-600/80'
-              >
-                {t('common.clearFilters')}
-              </Button>
-              <div className='text-sm text-neutral-500 dark:text-neutral-400'>
-                Popüler aramalar: Button, Input, Modal, Form
+
+          {/* Component Map - Sağ Panel */}
+          {filteredComponents.length > 0 && (
+            <div className='hidden lg:block w-56 xl:w-64 shrink-0'>
+              <div className='sticky space-y-4'>
+                <Card className='bg-white/70 dark:bg-neutral-800/70 backdrop-blur-sm border-neutral-200/80 dark:border-neutral-700/50'>
+                  <CardContent className='p-3 lg:p-4'>
+                    <h3 className='text-xs lg:text-sm font-semibold text-neutral-900 dark:text-neutral-50 mb-3 lg:mb-4 flex items-center gap-2'>
+                      <div className='w-2 h-2 rounded-full bg-primary-500'></div>
+                      <span className='hidden lg:inline'>Components </span>({filteredComponents.length})
+                    </h3>
+                    <div className='space-y-0.5 lg:space-y-1 max-h-[70vh] overflow-y-auto'>
+                      {categories
+                        .filter(
+                          (cat) =>
+                            cat.value !== 'all' && filteredComponents.some((comp) => comp.category === cat.value),
+                        )
+                        .map((category) => {
+                          const categoryComponents = filteredComponents.filter(
+                            (comp) => comp.category === category.value,
+                          )
+                          return (
+                            <div key={category.value} className='space-y-1'>
+                              <div className='text-xs font-medium text-neutral-600 dark:text-neutral-400 px-1.5 lg:px-2 py-0.5 lg:py-1 uppercase tracking-wider'>
+                                <span className='hidden lg:inline'>{category.label} </span>
+                                <span className='lg:hidden'>{category.label.charAt(0)}</span>(
+                                {categoryComponents.length})
+                              </div>
+                              {categoryComponents.map((component) => (
+                                <button
+                                  key={component.id}
+                                  onClick={() => {
+                                    const element = document.getElementById(`component-${component.id}`)
+                                    element?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                                  }}
+                                  className='w-full text-left px-1.5 lg:px-2 py-1 lg:py-1.5 text-xs lg:text-sm rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-700/50 transition-colors group flex items-center justify-between'
+                                >
+                                  <span className='text-neutral-700 dark:text-neutral-300 group-hover:text-primary-600 dark:group-hover:text-primary-400 truncate'>
+                                    {component.title}
+                                  </span>
+                                  <Badge
+                                    variant='secondary'
+                                    className={cn(
+                                      'text-xs px-1 lg:px-1.5 py-0.5 opacity-70 shrink-0',
+                                      component.status === 'stable' &&
+                                        'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300',
+                                      component.status === 'beta' &&
+                                        'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300',
+                                      component.status === 'alpha' &&
+                                        'bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300',
+                                    )}
+                                  >
+                                    {component.status}
+                                  </Badge>
+                                </button>
+                              ))}
+                            </div>
+                          )
+                        })}
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </section>
+
+      {/* Scroll to Top Button */}
+      <div
+        className={cn(
+          'fixed bottom-8 right-8 z-50 transition-all duration-300',
+          showScrollTop
+            ? 'opacity-100 translate-y-0 pointer-events-auto'
+            : 'opacity-0 translate-y-8 pointer-events-none',
+        )}
+      >
+        <Button
+          onClick={scrollToTop}
+          size='lg'
+          className='h-12 w-12 rounded-full p-0 bg-primary-600 hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 backdrop-blur-sm'
+          aria-label='Sayfa başına dön'
+        >
+          <ChevronUp className='h-6 w-6' />
+        </Button>
+      </div>
 
       {/* Footer İstatistikleri */}
       {filteredComponents.length > 0 && (

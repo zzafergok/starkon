@@ -113,7 +113,7 @@ export function ComponentDemo({
   return (
     <>
       {/* Ana Kart */}
-      <Card className='group overflow-hidden border-neutral-200/80 dark:border-neutral-700/50 bg-white/70 dark:bg-neutral-900/70 backdrop-blur-sm hover:shadow-xl hover:shadow-neutral-200/20 dark:hover:shadow-neutral-900/30 transition-all duration-500 hover:border-primary-200 dark:hover:border-primary-800/50'>
+      <Card className='group w-full flex flex-col overflow-hidden border-neutral-200/80 dark:border-neutral-700/50 bg-white/70 dark:bg-neutral-900/70 backdrop-blur-sm hover:shadow-xl hover:shadow-neutral-200/20 dark:hover:shadow-neutral-900/30 transition-all duration-500 hover:border-primary-200 dark:hover:border-primary-800/50'>
         <CardHeader className='pb-4 space-y-4'>
           {/* Üst Kısım - Başlık ve Aksiyon */}
           <div className='flex items-start justify-between gap-4'>
