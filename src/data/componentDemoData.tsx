@@ -20,16 +20,7 @@ import { Badge } from '@/components/core/badge'
 import { Button } from '@/components/core/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/core/card'
 import { Checkbox } from '@/components/core/checkbox'
-import {
-  Command,
-  CommandDialog,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-  CommandShortcut,
-} from '@/components/core/command-menu'
+
 import { DataGrid, createSelectionColumn, createActionsColumn } from '@/components/core/data-grid'
 import { DataTable } from '@/components/core/data-table'
 import { DatePicker } from '@/components/core/date-picker'
@@ -51,7 +42,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/core/dropdown'
-import { FormError } from '@/components/core/form-error'
 import { Input } from '@/components/core/input'
 import { Label } from '@/components/core/label'
 import { LoadingSpinner, LoadingDots, LoadingPulse } from '@/components/core/loading-spinner'
@@ -149,13 +139,13 @@ const tableColumns: Array<import('@/components/core/data-grid').DataGridColumn<R
   createActionsColumn([
     {
       label: 'Düzenle',
-      icon: <Edit className='w-4 h-4' />,
+      icon: <Edit className='w-4 h-4 mr-2' />,
       onClick: (row) => console.log('Düzenle:', row.name),
       variant: 'outline',
     },
     {
       label: 'Sil',
-      icon: <Trash2 className='w-4 h-4' />,
+      icon: <Trash2 className='w-4 h-4 mr-2' />,
       onClick: (row) => console.log('Sil:', row.name),
       variant: 'destructive',
     },
@@ -173,7 +163,7 @@ export const componentDemoData = [
     category: 'Layout',
     status: 'stable',
     demoComponent: (
-      <div className='w-full max-w-md'>
+      <div className='w-full'>
         <Accordion.Root
           defaultValue={['item-1']}
           className='border rounded-lg border-neutral-200 dark:border-neutral-700'
@@ -244,7 +234,7 @@ function Example() {
           <Accordion.Root
             type='multiple'
             defaultValue={['item-1']}
-            className='border rounded-lg border-neutral-200 dark:border-neutral-700 w-full max-w-md'
+            className='border rounded-lg border-neutral-200 dark:border-neutral-700 w-full'
           >
             <Accordion.Item value='item-1'>
               <Accordion.Trigger>Açık Bölüm</Accordion.Trigger>
@@ -302,7 +292,7 @@ function Example() {
     category: 'Geri Bildirim',
     status: 'stable',
     demoComponent: (
-      <div className='space-y-4 w-full max-w-md'>
+      <div className='space-y-4 w-full'>
         <Alert>
           <Info className='h-4 w-4' />
           <AlertTitle>Bilgilendirme</AlertTitle>
@@ -972,108 +962,6 @@ function Example() {
     ],
   },
 
-  // Command Menu Component
-  {
-    id: 'command-menu',
-    title: 'Command Menu',
-    description: 'Hızlı arama ve komut çalıştırma için kullanılan menü bileşeni. Klavye navigasyonu destekler.',
-    category: 'Navigation',
-    status: 'stable',
-    demoComponent: (
-      <div className='w-full max-w-sm'>
-        <CommandDialog>
-          <Command className='rounded-lg border shadow-md'>
-            <CommandInput placeholder='Komut veya sayfalar arayın...' />
-            <CommandList>
-              <CommandEmpty>Sonuç bulunamadı.</CommandEmpty>
-              <CommandGroup heading='Öneriler'>
-                <CommandItem>
-                  <Calendar className='mr-2 h-4 w-4' />
-                  <span>Takvim</span>
-                </CommandItem>
-                <CommandItem>
-                  <Search className='mr-2 h-4 w-4' />
-                  <span>Ara</span>
-                </CommandItem>
-                <CommandItem>
-                  <Settings className='mr-2 h-4 w-4' />
-                  <span>Ayarlar</span>
-                </CommandItem>
-              </CommandGroup>
-              <CommandGroup heading='Ayarlar'>
-                <CommandItem>
-                  <User className='mr-2 h-4 w-4' />
-                  <span>Profil</span>
-                  <CommandShortcut>⌘P</CommandShortcut>
-                </CommandItem>
-                <CommandItem>
-                  <Mail className='mr-2 h-4 w-4' />
-                  <span>Mail</span>
-                  <CommandShortcut>⌘B</CommandShortcut>
-                </CommandItem>
-              </CommandGroup>
-            </CommandList>
-          </Command>
-        </CommandDialog>
-      </div>
-    ),
-    code: `import {
-  Command,
-  CommandDialog,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-  CommandShortcut,
-} from '@/components/core/command-menu'
-
-function Example() {
-  return (
-    <Command className="rounded-lg border shadow-md">
-      <CommandInput placeholder="Komut veya sayfalar arayın..." />
-      <CommandList>
-        <CommandEmpty>Sonuç bulunamadı.</CommandEmpty>
-        <CommandGroup heading="Öneriler">
-          <CommandItem>
-            <Calendar className="mr-2 h-4 w-4" />
-            <span>Takvim</span>
-          </CommandItem>
-          <CommandItem>
-            <Search className="mr-2 h-4 w-4" />
-            <span>Ara</span>
-          </CommandItem>
-        </CommandGroup>
-        <CommandGroup heading="Ayarlar">
-          <CommandItem>
-            <User className="mr-2 h-4 w-4" />
-            <span>Profil</span>
-            <CommandShortcut>⌘P</CommandShortcut>
-          </CommandItem>
-        </CommandGroup>
-      </CommandList>
-    </Command>
-  )
-}`,
-    props: [
-      {
-        name: 'value',
-        type: 'string',
-        description: 'Seçili item değeri',
-      },
-      {
-        name: 'onValueChange',
-        type: '(value: string) => void',
-        description: 'Değer değiştiğinde çağırılan fonksiyon',
-      },
-      {
-        name: 'filter',
-        type: '(value: string, search: string) => number',
-        description: 'Özel filtreleme fonksiyonu',
-      },
-    ],
-  },
-
   // Data Grid Component
   {
     id: 'data-grid',
@@ -1269,121 +1157,6 @@ function Example() {
         type: 'string',
         description: 'Arama input placeholder metni',
         default: 'Ara...',
-      },
-    ],
-  },
-
-  // Date Picker Component
-  {
-    id: 'date-picker',
-    title: 'Date Picker',
-    description: 'Gelişmiş tarih seçici bileşeni. Tek tarih, tarih aralığı, çoklu tarih ve zaman seçimi destekler.',
-    category: 'Form & Input',
-    status: 'stable',
-    demoComponent: (
-      <div className='space-y-4 w-full max-w-sm'>
-        <div>
-          <Label>Tek Tarih</Label>
-          <DatePicker
-            mode='single'
-            placeholder='Tarih seçin'
-            onChange={(date) => console.log('Selected date:', date)}
-          />
-        </div>
-        <div>
-          <Label>Tarih Aralığı</Label>
-          <DatePicker
-            mode='range'
-            placeholder='Tarih aralığı seçin'
-            enablePresets={true}
-            onChange={(range) => console.log('Selected range:', range)}
-          />
-        </div>
-        <div>
-          <Label>Tarih ve Saat</Label>
-          <DatePicker
-            mode='single'
-            enableTime={true}
-            placeholder='Tarih ve saat seçin'
-            onChange={(datetime) => console.log('Selected datetime:', datetime)}
-          />
-        </div>
-      </div>
-    ),
-    code: `import { DatePicker } from '@/components/core/date-picker'
-
-function Example() {
-  return (
-    <div className="space-y-4">
-      <div>
-        <Label>Tek Tarih</Label>
-        <DatePicker
-          mode="single"
-          placeholder="Tarih seçin"
-          onChange={(date) => console.log('Selected date:', date)}
-        />
-      </div>
-      
-      <div>
-        <Label>Tarih Aralığı</Label>
-        <DatePicker
-          mode="range"
-          placeholder="Tarih aralığı seçin"
-          enablePresets={true}
-          onChange={(range) => console.log('Selected range:', range)}
-        />
-      </div>
-      
-      <div>
-        <Label>Tarih ve Saat</Label>
-        <DatePicker
-          mode="single"
-          enableTime={true}
-          placeholder="Tarih ve saat seçin"
-          onChange={(datetime) => console.log('Selected datetime:', datetime)}
-        />
-      </div>
-    </div>
-  )
-}`,
-    props: [
-      {
-        name: 'mode',
-        type: "'single' | 'multiple' | 'range'",
-        description: 'Tarih seçim modu',
-        default: 'single',
-      },
-      {
-        name: 'value',
-        type: 'Date | Date[] | DateRange | null',
-        description: 'Seçili tarih değeri',
-      },
-      {
-        name: 'onChange',
-        type: '(value: Date | Date[] | DateRange | null) => void',
-        description: 'Tarih değişikliği callback fonksiyonu',
-      },
-      {
-        name: 'enableTime',
-        type: 'boolean',
-        description: 'Saat seçimi özelliğini etkinleştir',
-        default: 'false',
-      },
-      {
-        name: 'enablePresets',
-        type: 'boolean',
-        description: 'Hızlı tarih seçim presetleri',
-        default: 'false',
-      },
-      {
-        name: 'minDate',
-        type: 'Date',
-        description: 'Minimum seçilebilir tarih',
-      },
-      {
-        name: 'maxDate',
-        type: 'Date',
-        description: 'Maksimum seçilebilir tarih',
       },
     ],
   },
@@ -1599,13 +1372,13 @@ function Example() {
               <Label htmlFor='name' className='text-right'>
                 İsim
               </Label>
-              <Input id='name' value='Ahmet Yılmaz' className='col-span-3' />
+              <Input id='name' defaultValue='Ahmet Yılmaz' className='col-span-3' />
             </div>
             <div className='grid grid-cols-4 items-center gap-4'>
               <Label htmlFor='username' className='text-right'>
                 E-posta
               </Label>
-              <Input id='username' value='ahmet@example.com' className='col-span-3' />
+              <Input id='username' defaultValue='ahmet@example.com' className='col-span-3' />
             </div>
           </div>
           <DialogFooter>
@@ -1645,7 +1418,7 @@ function Example() {
             <Label htmlFor="name" className="text-right">
               İsim
             </Label>
-            <Input id="name" value="Ahmet Yılmaz" className="col-span-3" />
+            <Input id="name" defaultValue="Ahmet Yılmaz" className="col-span-3" />
           </div>
         </div>
         <DialogFooter>
@@ -1804,62 +1577,6 @@ function Example() {
         name: 'value',
         type: 'string',
         description: 'Input değeri',
-      },
-    ],
-  },
-
-  // Form Error Component
-  {
-    id: 'form-error',
-    title: 'Form Error',
-    description: 'Form hata mesajı bileşeni',
-    category: 'Form & Input',
-    status: 'stable',
-    demoComponent: (
-      <div className='space-y-4 w-full max-w-sm'>
-        <div>
-          <Input placeholder='E-posta adresi' />
-          <FormError message='Bu alan gereklidir' />
-        </div>
-        <div>
-          <Input type='password' placeholder='Şifre' />
-          <FormError message='Şifre en az 8 karakter olmalıdır' />
-        </div>
-      </div>
-    ),
-    code: `import { Input } from '@/components/core/input'
-import { FormError } from '@/components/core/form-error'
-
-function Example() {
-  return (
-    <div className="space-y-4">
-      <div>
-        <Input placeholder="E-posta adresi" />
-        <FormError message="Bu alan gereklidir" />
-      </div>
-      <div>
-        <Input type="password" placeholder="Şifre" />
-        <FormError message="Şifre en az 8 karakter olmalıdır" />
-      </div>
-    </div>
-  )
-}`,
-    usageExamples: [
-      'Form validasyon hatalarını göstermek için',
-      'Kullanıcı girdilerini doğrulamak için',
-      'API hatalarını göstermek için',
-      'Gerçek zamanlı doğrulama mesajları için',
-    ],
-    props: [
-      {
-        name: 'message',
-        type: 'string',
-        description: 'Hata mesajı içeriği',
-      },
-      {
-        name: 'className',
-        type: 'string',
-        description: 'Ek CSS sınıfları',
       },
     ],
   },
@@ -2091,7 +1808,7 @@ function Example() {
     category: 'Navigation',
     status: 'stable',
     demoComponent: (
-      <Tabs defaultValue='account' className='w-full max-w-md'>
+      <Tabs defaultValue='account' className='w-full'>
         <TabsList className='grid w-full grid-cols-2'>
           <TabsTrigger value='account'>Hesap</TabsTrigger>
           <TabsTrigger value='password'>Şifre</TabsTrigger>
@@ -2129,7 +1846,7 @@ import { Input } from '@/components/core/input'
 
 function Example() {
   return (
-    <Tabs defaultValue="account" className="w-full max-w-md">
+    <Tabs defaultValue="account" className="w-full">
       <TabsList className="grid w-full grid-cols-2">
         <TabsTrigger value="account">Hesap</TabsTrigger>
         <TabsTrigger value="password">Şifre</TabsTrigger>
@@ -2740,7 +2457,7 @@ function Example() {
     status: 'stable',
     demoComponent: (
       <div className='space-y-4 w-full max-w-sm'>
-        <div>
+        <div className='flex flex-col space-y-2'>
           <Label>Tatil Tarihleri</Label>
           <DatePicker
             mode='range'
@@ -2807,7 +2524,7 @@ function Example() {
     status: 'stable',
     demoComponent: (
       <div className='space-y-4 w-full max-w-sm'>
-        <div>
+        <div className='flex flex-col space-y-2'>
           <Label>Randevu Tarihi</Label>
           <DatePicker mode='single' placeholder='Tarih seçin...' onChange={(date: any) => console.log(date)} />
         </div>

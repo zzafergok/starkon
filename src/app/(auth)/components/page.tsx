@@ -192,36 +192,6 @@ export default function ComponentsPage() {
                         </SelectContent>
                       </Select>
                     </div>
-
-                    {/* View Mode Toggle */}
-                    <div className='flex items-center gap-1 p-1 bg-neutral-100/70 dark:bg-neutral-700/70 rounded-xl border border-neutral-200/50 dark:border-neutral-600/50'>
-                      <Button
-                        variant={viewMode === 'grid' ? 'default' : 'ghost'}
-                        size='sm'
-                        onClick={() => setViewMode('grid')}
-                        className={cn(
-                          'p-2.5 transition-all duration-200',
-                          viewMode === 'grid'
-                            ? 'bg-white dark:bg-neutral-600 text-primary-600 dark:text-primary-400 shadow-sm'
-                            : 'hover:bg-neutral-200/50 dark:hover:bg-neutral-600/50 text-neutral-600 dark:text-neutral-300',
-                        )}
-                      >
-                        <Grid className='h-4 w-4' />
-                      </Button>
-                      <Button
-                        variant={viewMode === 'list' ? 'default' : 'ghost'}
-                        size='sm'
-                        onClick={() => setViewMode('list')}
-                        className={cn(
-                          'p-2.5 transition-all duration-200',
-                          viewMode === 'list'
-                            ? 'bg-white dark:bg-neutral-600 text-primary-600 dark:text-primary-400 shadow-sm'
-                            : 'hover:bg-neutral-200/50 dark:hover:bg-neutral-600/50 text-neutral-600 dark:text-neutral-300',
-                        )}
-                      >
-                        <List className='h-4 w-4' />
-                      </Button>
-                    </div>
                   </div>
 
                   {/* Tablet Filtreler (lg breakpoint) */}

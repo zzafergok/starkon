@@ -85,19 +85,6 @@ export { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './comp
 // Popover Components
 export { Popover, PopoverContent, PopoverTrigger } from './components/core/popover'
 
-// Command Components
-export {
-  Command,
-  CommandDialog,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-  CommandSeparator,
-  CommandShortcut,
-} from './components/core/command-menu'
-
 // Accordion Components
 export { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './components/core/accordion'
 

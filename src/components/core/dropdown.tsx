@@ -123,6 +123,10 @@ const DropdownMenuContent = React.forwardRef<
           className,
         )}
         style={{ zIndex }}
+        onCloseAutoFocus={(event) => {
+          // Auto focus'u kapat ki scrollbar compensation çalışsın
+          event.preventDefault()
+        }}
         {...props}
       />
     </DropdownMenuPrimitive.Portal>

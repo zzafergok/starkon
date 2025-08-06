@@ -130,7 +130,7 @@ export function AccordionItem({ children, value, disabled = false, className }: 
     <div
       data-state={expanded ? 'open' : 'closed'}
       data-disabled={disabled ? 'true' : undefined}
-      className={cn('overflow-hidden transition-all', disabled && 'opacity-50 cursor-not-allowed', className)}
+      className={cn('overflow-hidden transition-all w-full', disabled && 'opacity-50 cursor-not-allowed', className)}
     >
       {children}
     </div>
@@ -218,7 +218,7 @@ export function AccordionContent({ children, className, forceMount = false }: Ac
           transition={{ duration: 0.2, ease: 'easeInOut' }}
           className='overflow-hidden'
         >
-          <div className={cn('px-4 pb-4 pt-0', className)}>{children}</div>
+          <div className={cn('px-4 pb-4 pt-4', className)}>{children}</div>
         </motion.div>
       )}
     </AnimatePresence>

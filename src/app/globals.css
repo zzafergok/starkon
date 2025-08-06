@@ -699,6 +699,14 @@ nav {
   @apply bg-neutral-800 -mx-4 px-4;
 }
 
+/* Fix Radix UI Dropdown Scroll Lock Issue */
+/* Prevent body from being locked when dropdown opens */
+body[style*="overflow: hidden"] {
+  overflow: visible !important;
+  padding-right: 0 !important;
+  pointer-events: auto !important;
+}
+
 .code-preview {
   font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
   line-height: 1.5;
