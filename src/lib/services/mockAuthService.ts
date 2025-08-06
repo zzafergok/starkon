@@ -9,46 +9,48 @@ const MOCK_USERS = [
     email: 'admin@example.com',
     password: 'admin123',
     name: 'Admin User',
-    role: 'admin'
+    role: 'admin',
   },
   {
-    id: '2', 
+    id: '2',
     email: 'user@example.com',
     password: 'user123',
     name: 'Regular User',
-    role: 'user'
+    role: 'user',
   },
   {
     id: '3',
-    email: 'demo@example.com', 
+    email: 'demo@example.com',
     password: 'demo123',
     name: 'Demo User',
-    role: 'user'
-  }
+    role: 'user',
+  },
 ] as const
 
 // Mock JWT token generator - basit string formatında
 const generateMockToken = (userId: string, expiresIn: number = 3600): string => {
   const header = btoa(JSON.stringify({ alg: 'HS256', typ: 'JWT' }))
-  const payload = btoa(JSON.stringify({ 
-    sub: userId,
-    exp: Math.floor(Date.now() / 1000) + expiresIn,
-    iat: Math.floor(Date.now() / 1000)
-  }))
+  const payload = btoa(
+    JSON.stringify({
+      sub: userId,
+      exp: Math.floor(Date.now() / 1000) + expiresIn,
+      iat: Math.floor(Date.now() / 1000),
+    }),
+  )
   const signature = btoa(`mock_signature_${userId}_${Date.now()}`)
   return `${header}.${payload}.${signature}`
 }
 
 // Mock auth delay - gerçek API deneyimini simüle eder
-const mockDelay = (ms: number = 800) => new Promise(resolve => setTimeout(resolve, ms))
+const mockDelay = (ms: number = 800) => new Promise((resolve) => setTimeout(resolve, ms))
 
 export class MockAuthService {
   // Mock login - gerçek auth sistemini simüle eder
   static async login(email: string, password: string): Promise<any> {
     await mockDelay()
-    
-    const user = MOCK_USERS.find(u => u.email === email && u.password === password)
-    
+
+    const user = MOCK_USERS.find((u) => u.email === email && u.password === password)
+
     if (!user) {
       throw new Error('Invalid email or password')
     }
@@ -63,29 +65,29 @@ export class MockAuthService {
           id: user.id,
           email: user.email,
           name: user.name,
-          role: user.role
+          role: user.role,
         },
         tokens: {
           accessToken,
           refreshToken,
-          expiresIn: 3600
-        }
+          expiresIn: 3600,
+        },
       },
-      message: 'Login successful'
+      message: 'Login successful',
     }
   }
 
   // Mock kullanıcı bilgisi getir
   static async getCurrentUser(token: string): Promise<any> {
     await mockDelay(300)
-    
+
     try {
       // Token'dan user ID'yi çıkar (mock format)
       const payload = token.split('.')[1]
       const decoded = JSON.parse(atob(payload))
       const userId = decoded.sub
-      
-      const user = MOCK_USERS.find(u => u.id === userId)
+
+      const user = MOCK_USERS.find((u) => u.id === userId)
       if (!user) {
         throw new Error('User not found')
       }
@@ -96,10 +98,10 @@ export class MockAuthService {
           id: user.id,
           email: user.email,
           name: user.name,
-          role: user.role
-        }
+          role: user.role,
+        },
       }
-    } catch (error) {
+    } catch {
       throw new Error('Invalid token')
     }
   }
@@ -107,13 +109,13 @@ export class MockAuthService {
   // Mock token refresh
   static async refreshToken(refreshToken: string): Promise<any> {
     await mockDelay(500)
-    
+
     try {
       const payload = refreshToken.split('.')[1]
       const decoded = JSON.parse(atob(payload))
       const userId = decoded.sub
-      
-      const user = MOCK_USERS.find(u => u.id === userId)
+
+      const user = MOCK_USERS.find((u) => u.id === userId)
       if (!user) {
         throw new Error('User not found')
       }
@@ -126,10 +128,10 @@ export class MockAuthService {
         data: {
           accessToken: newAccessToken,
           refreshToken: newRefreshToken,
-          expiresIn: 3600
-        }
+          expiresIn: 3600,
+        },
       }
-    } catch (error) {
+    } catch {
       throw new Error('Invalid refresh token')
     }
   }
@@ -139,17 +141,17 @@ export class MockAuthService {
     await mockDelay(200)
     return {
       success: true,
-      message: 'Logout successful'
+      message: 'Logout successful',
     }
   }
 
   // Mock kullanıcıları listele - development için
   static getMockUsers() {
-    return MOCK_USERS.map(user => ({
+    return MOCK_USERS.map((user) => ({
       email: user.email,
       password: user.password,
       name: user.name,
-      role: user.role
+      role: user.role,
     }))
   }
 }
