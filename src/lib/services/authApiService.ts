@@ -16,28 +16,28 @@ import { apiClient } from '../api/axios'
 import { MockAuthService } from './mockAuthService'
 
 // Basit mock kullanıcı bilgileri - kolayca değiştirilebilir
-const MOCK_USERS = [
+const _MOCK_USERS = [
   {
     id: '1',
     email: 'admin@example.com',
     name: 'Admin User',
     role: 'admin',
-    password: 'admin123' // Basit şifre
+    password: 'admin123', // Basit şifre
   },
   {
-    id: '2', 
+    id: '2',
     email: 'user@example.com',
     name: 'Regular User',
     role: 'user',
-    password: 'user123'
+    password: 'user123',
   },
   {
     id: '3',
-    email: 'demo@example.com', 
+    email: 'demo@example.com',
     name: 'Demo User',
     role: 'demo',
-    password: 'demo123'
-  }
+    password: 'demo123',
+  },
 ]
 
 const USE_MOCK_DATA = process.env.NODE_ENV === 'development' || !process.env.NEXT_PUBLIC_API_URL
@@ -182,24 +182,24 @@ export const loginUser = async (credentials: LoginCredentials): Promise<LoginRes
     // TODO: Mock authentication - production'da silinebilir
     if (USE_MOCK_DATA) {
       const mockResponse = await MockAuthService.login(credentials.email, credentials.password)
-      
+
       // Mock service'den gelen tokenlari session'a kaydet
       setTokens(
-        mockResponse.data.tokens.accessToken, 
-        mockResponse.data.tokens.refreshToken, 
-        mockResponse.data.tokens.expiresIn
+        mockResponse.data.tokens.accessToken,
+        mockResponse.data.tokens.refreshToken,
+        mockResponse.data.tokens.expiresIn,
       )
-      
+
       console.log('✅ Mock login successful for:', mockResponse.data.user.email)
-      
+
       return {
         success: true,
         data: {
           accessToken: mockResponse.data.tokens.accessToken,
           refreshToken: mockResponse.data.tokens.refreshToken,
           expiresIn: mockResponse.data.tokens.expiresIn,
-          user: mockResponse.data.user
-        }
+          user: mockResponse.data.user,
+        },
       }
     }
 
@@ -386,7 +386,7 @@ export const getCurrentUser = async (accessToken?: string): Promise<CurrentUserR
     // TODO: Mock user data - production'da silinebilir
     if (USE_MOCK_DATA) {
       const mockUserResponse = await MockAuthService.getCurrentUser(token)
-      
+
       console.log('✅ Mock current user fetched successfully')
       return mockUserResponse
     }
