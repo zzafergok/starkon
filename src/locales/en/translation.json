@@ -1,4 +1,57 @@
 {
+  "pages": {
+    "contact": {
+      "title": "Contact",
+      "subtitle": "Get in touch with us",
+      "name": "Full Name",
+      "namePlaceholder": "Your full name",
+      "email": "Email",
+      "emailPlaceholder": "email@example.com",
+      "subject": "Subject",
+      "subjectPlaceholder": "Subject of your message",
+      "message": "Message",
+      "messagePlaceholder": "Write your message here...",
+      "sendButton": "Send Message",
+      "contactInfo": "Contact Information",
+      "successMessage": "Your message has been sent! We will get back to you soon.",
+      "privacy": "All messages are kept confidential and shared only with necessary personnel.",
+      "directContact": "Direct contact:",
+      "loading": "Sending...",
+      "error": "Message could not be sent. Please try again."
+    },
+    "support": {
+      "title": "Support",
+      "subtitle": "How can we help you?",
+      "name": "Full Name",
+      "namePlaceholder": "Your full name",
+      "email": "Email",
+      "emailPlaceholder": "email@example.com",
+      "subject": "Subject",
+      "subjectPlaceholder": "Brief description of the issue",
+      "message": "Message",
+      "messagePlaceholder": "Describe your issue in detail...",
+      "sendButton": "Send Support Request",
+      "contactInfo": "Alternative Contact",
+      "successMessage": "Your support request has been received! We will get back to you soon.",
+      "privacy": "Your support request is kept confidential and shared only with our technical team.",
+      "directContact": "For urgent matters, contact directly:",
+      "tip": "If you provide detailed information about your issue in the support request, we can help you faster.",
+      "responseTime": "We usually respond via email within 24 hours.",
+      "loading": "Sending...",
+      "error": "Support request could not be sent. Please try again."
+    },
+    "notFound": {
+      "title": "404",
+      "heading": "Page Not Found",
+      "description": "The page you're looking for doesn't exist or may have been moved.",
+      "goHome": "Go Home",
+      "goBack": "Go Back",
+      "searchHelp": "Can't find what you're looking for?",
+      "about": "About",
+      "contact": "Contact",
+      "components": "Components"
+    }
+  },
   "common": {
     "loading": "Loading...",
     "error": "An error occurred",
@@ -27,7 +80,55 @@
     "viewMode": "View Mode",
     "components": "Components",
     "noComponentsFound": "No components found",
-    "changeSearchCriteria": "Try changing your search criteria"
+    "deleteWarning": "This action cannot be undone.",
+    "confirmDelete": "Yes, delete",
+    "appName": "Starkon Template",
+    "appTitle": "Starkon Template",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "create": "Create",
+    "update": "Update",
+    "edit": "Edit",
+    "delete": "Delete",
+    "search": "Search",
+    "filter": "Filter",
+    "noResults": "No results found",
+    "close": "Close",
+    "continue": "Continue",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "retry": "Retry",
+    "refresh": "Refresh",
+    "pleaseWait": "Please wait...",
+    "authenticating": "Authenticating...",
+    "pageLoading": "Loading page...",
+    "appLoading": "Loading application...",
+    "backToHome": "Back to Home",
+    "clearFilters": "Clear Filters",
+    "allCategories": "All Categories",
+    "viewMode": "View Mode",
+    "components": "Components",
+    "noComponentsFound": "No components found",
+    "changeSearchCriteria": "Change your search criteria and try again",
+    "sort": "Sort",
+    "open": "Open",
+    "submit": "Submit",
+    "reset": "Reset",
+    "confirm": "Confirm",
+    "actions": "Actions",
+    "options": "Options",
+    "view": "View",
+    "add": "Add",
+    "new": "New",
+    "preview": "Preview",
+    "tryAgain": "Try Again",
+    "ok": "OK",
+    "warning": "Warning",
+    "info": "Info"
   },
   "demo": {
     "button": {
@@ -267,6 +368,8 @@
     "dataProcessedSuccessfully": "Your data has been processed successfully."
   },
   "auth": {
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
     "login": "Login",
     "logout": "Logout",
     "register": "Register",
@@ -291,7 +394,231 @@
     "tooManyAttempts": "Too many failed attempts",
     "loginFormSubmitted": "Login form submitted",
     "alreadyAuthenticated": "Already authenticated, redirecting",
-    "safelyLoggedOut": "You have been safely logged out"
+    "safelyLoggedOut": "You have been safely logged out",
+    "loading": "Talent Architect...",
+    "unauthorized": {
+      "title": "Unauthorized Access",
+      "message": "You do not have permission to access this page.",
+      "backToDashboard": "Back to Dashboard"
+    },
+    "login": {
+      "title": "Sign In",
+      "subtitle": "Sign in to your account",
+      "email": {
+        "label": "Email Address",
+        "placeholder": "Enter your email address"
+      },
+      "password": {
+        "label": "Password",
+        "placeholder": "Enter your password"
+      },
+      "rememberMe": "Remember me",
+      "forgotPassword": "Forgot your password?",
+      "loginButton": "Sign In",
+      "loggingIn": "Signing in...",
+      "validation": {
+        "emailRequired": "Email address and password are required",
+        "loginError": "An error occurred while signing in"
+      },
+      "demoAccounts": {
+        "title": "Demo Accounts",
+        "ortak": "Ahmet",
+        "zafer": "Admin",
+        "akin": "Mehmet"
+      }
+    },
+    "register": {
+      "haveAccount": "Already have an account?",
+      "title": "Create Account",
+      "subtitle": "Create your new account and get started",
+      "fullName": "Full Name",
+      "fullNamePlaceholder": "Your full name",
+      "email": "Email Address",
+      "emailPlaceholder": "email@example.com",
+      "password": "Password",
+      "passwordPlaceholder": "Create a strong password",
+      "confirmPassword": "Confirm Password",
+      "confirmPasswordPlaceholder": "Re-enter your password",
+      "alreadyHaveAccount": "Already have an account?",
+      "loginLink": "Sign in",
+      "loading": "Creating account...",
+      "successs": "Your account has been created successfully!",
+      "error": "An error occurred while creating your account.",
+      "agreements": {
+        "terms": {
+          "prefix": "By registering, you agree to our",
+          "linkText": "Terms of Service",
+          "suffix": ""
+        },
+        "privacy": {
+          "prefix": "You also agree to our",
+          "linkText": "Privacy Policy",
+          "suffix": ""
+        },
+        "note": "You must accept both agreements. These documents contain important information about your account security and legal rights."
+      },
+      "submitButton": "Create Account",
+      "form": {
+        "name": "Full Name",
+        "namePlaceholder": "Enter your full name",
+        "email": "Email Address",
+        "emailPlaceholder": "Enter your email address",
+        "role": "Role",
+        "rolePlaceholder": "Select your role",
+        "password": "Password",
+        "passwordPlaceholder": "Enter your password",
+        "confirmPassword": "Confirm Password",
+        "confirmPasswordPlaceholder": "Confirm your password",
+        "passwordStrength": "Password Strength",
+        "passwordStrengthLevels": {
+          "weak": "Weak",
+          "medium": "Medium",
+          "strong": "Strong"
+        },
+        "passwordRules": {
+          "title": "Password Requirements",
+          "minLength": "At least 8 characters",
+          "hasLetter": "At least one letter",
+          "hasNumber": "At least one number",
+          "hasSpecialChar": "At least one special character (@$!%*#?&)",
+          "validChars": "Only valid characters"
+        },
+        "termsPrefix": "I agree to the",
+        "termsLink": "Terms of Service",
+        "termsAnd": "and",
+        "privacyLink": "Privacy Policy",
+        "register": "Create Account",
+        "registering": "Creating account...",
+        "alreadyHaveAccount": "Already have an account?",
+        "loginHere": "Sign in here"
+      },
+      "roles": {
+        "admin": "Admin",
+        "developer": "Developer",
+        "project_analyst": "Project Analyst",
+        "product_owner": "Product Owner"
+      },
+      "validation": {
+        "nameRequired": "Full name is required",
+        "nameMinLength": "Full name must be at least 2 characters",
+        "emailRequired": "Email address is required",
+        "emailInvalid": "Please enter a valid email address",
+        "roleRequired": "Role selection is required",
+        "passwordMinLength": "Password must be at least 8 characters",
+        "passwordMaxLength": "Password cannot exceed 100 characters",
+        "passwordComplexity": "Password must contain at least 8 characters, one letter, one number, and one special character",
+        "confirmPasswordRequired": "Password confirmation is required",
+        "passwordsNotMatch": "Passwords do not match",
+        "termsRequired": "You must accept the terms of service"
+      },
+      "success": {
+        "title": "Registration Successful!",
+        "message": "Your account has been successfully created.",
+        "emailSent": "A verification email has been sent to {{email}}.",
+        "redirecting": "You will be redirected to the login page in {{seconds}} seconds",
+        "goToLogin": "Go to Login Page"
+      },
+      "errors": {
+        "registrationFailed": "Registration failed"
+      }
+    },
+    "emailVerification": {
+      "verifying": {
+        "title": "Verifying Email...",
+        "description": "Please wait while we verify your email address."
+      },
+      "success": {
+        "title": "Email Verified!",
+        "description": "Your account has been successfully activated. Redirecting to dashboard..."
+      },
+      "error": {
+        "invalidLink": {
+          "title": "Invalid Link",
+          "description": "Email verification link is invalid or missing."
+        },
+        "verificationFailed": {
+          "title": "Verification Failed",
+          "description": "An error occurred, please try again."
+        },
+        "defaultError": "Email verification failed"
+      },
+      "returnToLogin": "Return to Login"
+    },
+    "resetPassword": {
+      "title": "Reset Password",
+      "description": "Enter your new password",
+      "newPasswordLabel": "New Password",
+      "newPasswordPlaceholder": "Enter your new password",
+      "confirmPasswordLabel": "Confirm Password",
+      "confirmPasswordPlaceholder": "Re-enter your new password",
+      "resetButton": "Reset Password",
+      "resetting": "Resetting...",
+      "backToLogin": "Back to login",
+      "success": {
+        "title": "Password Reset!",
+        "description": "Your password has been successfully reset. You can now sign in with your new password.",
+        "loginButton": "Sign In"
+      },
+      "error": {
+        "invalidToken": "Invalid or expired link",
+        "tokenRequired": "Reset token not found",
+        "rateLimitExceeded": "Daily reset limit reached",
+        "default": "An error occurred while resetting password"
+      },
+      "validation": {
+        "newPasswordRequired": "New password is required",
+        "confirmPasswordRequired": "Password confirmation is required",
+        "passwordsDoNotMatch": "Passwords do not match",
+        "passwordTooShort": "Password must be at least 8 characters",
+        "passwordRequirements": "Password must contain at least one letter and one number"
+      },
+      "requirements": {
+        "title": "Password Requirements",
+        "minLength": "At least 8 characters",
+        "hasLetter": "At least one letter",
+        "hasNumber": "At least one number"
+      }
+    },
+    "forgotPassword": {
+      "title": "Password Reset",
+      "description": "Enter your email address and we'll send you a password reset link",
+      "emailLabel": "Email Address",
+      "emailPlaceholder": "example@email.com",
+      "emailRequired": "Email address is required",
+      "emailInvalid": "Please enter a valid email address",
+      "sendResetLink": "Send Reset Link",
+      "sending": "Sending...",
+      "backToLogin": "Back to login",
+      "success": {
+        "title": "Email Sent",
+        "description": "A password reset link has been sent to {{email}}.",
+        "checkEmail": "Check your email",
+        "emailInstructions": "Check your inbox and click on the password reset link.",
+        "linkExpiry": "The link will expire in 1 hour.",
+        "rateLimitInfo": "You can only request a password reset once every 24 hours.",
+        "backToLoginButton": "Back to Login",
+        "didntReceive": "Didn't receive the email?",
+        "contactSupport": "Contact support"
+      },
+      "error": {
+        "rateLimitTitle": "Too Many Requests",
+        "rateLimitExceeded": "Daily limit exceeded. You can try again in {{hours}} hours.",
+        "emailNotFoundTitle": "Email Not Found",
+        "emailNotFound": "This email address is not registered in our system.",
+        "emailNotVerifiedTitle": "Email Not Verified",
+        "emailNotVerified": "You need to verify your email address first.",
+        "emailServiceUnavailable": "Email service is temporarily unavailable. Please try again later.",
+        "defaultTitle": "Error Occurred",
+        "default": "An error occurred. Please try again.",
+        "resendVerification": "Resend Verification Email"
+      },
+      "help": {
+        "title": "Need help?",
+        "description": "If you don't receive the email or have other questions, please contact us.",
+        "contact": "Contact",
+        "support": "Support"
+      }
+    }
   },
   "navigation": {
     "home": "Home",
@@ -313,6 +640,46 @@
     "legal": "Legal",
     "madeWith": "Made with ❤️ in Turkey",
     "language": "Language Selection"
+  },
+  "language": {
+    "title": "Language",
+    "preference": "Language Preference",
+    "description": "Select the application language",
+    "turkish": {
+      "title": "Turkish",
+      "description": "Turkish interface",
+      "native": "Türkçe"
+    },
+    "english": {
+      "title": "English",
+      "description": "English interface",
+      "native": "English"
+    },
+    "active": "Active",
+    "switchTo": "Switch to {{language}}",
+    "current": "Current language: {{language}}",
+    "loading": "Loading language...",
+    "applying": "Applying language...",
+    "note": "Language changes are applied instantly and saved in your browser"
+  },
+  "theme": {
+    "title": "Theme",
+    "preference": "Theme Preference",
+    "description": "Select the application appearance",
+    "light": {
+      "title": "Light Theme",
+      "description": "Light colored interface"
+    },
+    "dark": {
+      "title": "Dark Theme",
+      "description": "Dark colored interface"
+    },
+    "active": "Active",
+    "switchTo": "Switch to {{theme}} theme",
+    "current": "Current theme: {{theme}}",
+    "loading": "Loading theme...",
+    "applying": "Applying theme...",
+    "note": "Theme changes are applied instantly and saved in your browser"
   },
   "pages": {
     "home": {
@@ -422,12 +789,6 @@
     "custom": "Invalid value",
     "invalid": "Invalid value"
   },
-  "theme": {
-    "light": "Light",
-    "dark": "Dark",
-    "system": "System",
-    "toggle": "Toggle Theme"
-  },
   "components": {
     "button": {
       "loadingText": "Please wait..."
@@ -450,5 +811,143 @@
     "unauthorized": "You must log in to access this page",
     "sessionExpired": "Your session has expired, please log in again",
     "invalidToken": "Invalid token, please log in again"
+  },
+  "legal": {
+    "terms": {
+      "title": "Terms of Service",
+      "lastUpdated": "Last Updated",
+      "lastUpdatedDate": "January 1, 2024",
+      "footer": {
+        "effectiveDate": "Effective Date"
+      },
+      "sections": {
+        "introduction": {
+          "title": "Introduction",
+          "content": "These terms of service set out the rules and conditions you must follow when using our website and services. By using our service, you agree to these terms."
+        },
+        "serviceDescription": {
+          "title": "Service Description",
+          "content": "The platform provides a digital workspace environment where users can manage projects, organize tasks, and enable team collaboration.",
+          "note": "Our service is continuously being developed, and new features may be added or existing features may be modified."
+        },
+        "userResponsibilities": {
+          "title": "User Responsibilities",
+          "intro": "When using our service, you undertake the following responsibilities:",
+          "item1": "Providing accurate and up-to-date information",
+          "item2": "Protecting your account security and keeping your passwords confidential",
+          "item3": "Using our service only for legal purposes",
+          "item4": "Respecting the rights of other users"
+        },
+        "prohibitedActivities": {
+          "title": "Prohibited Activities",
+          "intro": "The following activities are strictly prohibited:",
+          "item1": "Sharing content that violates copyright",
+          "item2": "Spreading malware or viruses",
+          "item3": "Harassing or disturbing other users",
+          "item4": "Attempting to compromise system security"
+        },
+        "intellectualProperty": {
+          "title": "Intellectual Property",
+          "content": "All content, designs, logos and other materials on the platform are protected by copyright. You may not copy, modify or distribute these materials without permission."
+        },
+        "limitationOfLiability": {
+          "title": "Limitation of Liability",
+          "content": "While we strive to provide our service in the best possible way, our liability for any interruptions, data loss or service quality issues is limited. You accept the service as is."
+        },
+        "serviceModifications": {
+          "title": "Service Modifications",
+          "content": "We reserve the right to make changes to our service, add or remove features at any time. We try to inform our users in advance of significant changes."
+        },
+        "termination": {
+          "title": "Account Termination",
+          "content": "We reserve the right to terminate your account without warning if you violate these terms. You may also terminate your account yourself at any time."
+        },
+        "governingLaw": {
+          "title": "Governing Law",
+          "content": "These terms are governed by the laws of the Republic of Turkey. Turkish courts have jurisdiction in case of any disputes."
+        },
+        "contact": {
+          "title": "Contact",
+          "content": "If you have any questions about these terms of service, you can contact us:"
+        }
+      }
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "lastUpdated": "Last Updated",
+      "lastUpdatedDate": "January 1, 2024",
+      "footer": {
+        "effectiveDate": "Effective Date"
+      },
+      "sections": {
+        "introduction": {
+          "title": "Introduction",
+          "content": "This privacy policy explains how we collect, use and protect your personal data. Your privacy is important to us and we manage your data responsibly."
+        },
+        "informationCollection": {
+          "title": "Information We Collect",
+          "intro": "We collect the following types of information to better serve you:",
+          "personalInfo": {
+            "title": "Personal Information",
+            "item1": "Name, surname and email address",
+            "item2": "Profile information and preferences",
+            "item3": "Contact information"
+          },
+          "technicalInfo": {
+            "title": "Technical Information",
+            "item1": "IP address and browser information",
+            "item2": "Device type and operating system",
+            "item3": "Usage statistics and site interactions"
+          }
+        },
+        "informationUse": {
+          "title": "How We Use Information",
+          "intro": "We use the information we collect for the following purposes:",
+          "item1": "To provide and improve our services",
+          "item2": "To personalize user experience",
+          "item3": "Security and fraud prevention",
+          "item4": "To fulfill our legal obligations",
+          "item5": "To inform you about important updates"
+        },
+        "informationSharing": {
+          "title": "Information Sharing",
+          "intro": "We are very careful about sharing your personal information with third parties.",
+          "commitment": "We do not sell, rent or share your data with unauthorized third parties."
+        },
+        "dataSecurity": {
+          "title": "Data Security",
+          "content": "We take industry-standard security measures to protect your data:",
+          "measure1": "Data transmission with SSL encryption",
+          "measure2": "Secure server infrastructure",
+          "measure3": "Regular security audits",
+          "measure4": "Limited access controls"
+        },
+        "dataRetention": {
+          "title": "Data Retention",
+          "content": "We retain your personal data only for as long as necessary. When you delete your account, your data is securely removed from the system."
+        },
+        "userRights": {
+          "title": "User Rights",
+          "intro": "You have the following rights regarding your personal data:",
+          "right1": "Access to your data and obtaining a copy",
+          "right2": "Requesting correction of incorrect information",
+          "right3": "Requesting deletion of your data",
+          "right4": "Objecting to data processing activities"
+        },
+        "cookies": {
+          "title": "Cookies and Tracking",
+          "content": "We use cookies on our website to improve your experience. These cookies are used to analyze site performance and remember your preferences.",
+          "note": "You can disable cookies from your browser settings, but some features may not work in this case."
+        },
+        "policyChanges": {
+          "title": "Policy Changes",
+          "content": "We may update this privacy policy from time to time. We will notify you of significant changes by email or through the site."
+        },
+        "contact": {
+          "title": "Contact",
+          "content": "If you have questions about our privacy policy or data processing practices, you can contact us:"
+        }
+      }
+    }
   }
 }

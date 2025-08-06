@@ -61,15 +61,6 @@ export function LanguageSwitcher({
     }
   }
 
-  if (!mounted) {
-    return (
-      <Button variant='ghost' size={size} className={cn('pointer-events-none opacity-50', className)} disabled>
-        <Languages className='h-4 w-4' />
-        {showLabel && <span className='ml-2'>{t('language.title')}</span>}
-      </Button>
-    )
-  }
-
   const languageDataMap = {
     tr: {
       label: t('language.turkish.title'),
@@ -86,9 +77,17 @@ export function LanguageSwitcher({
   }
 
   const currentLanguageData = languageDataMap[currentLanguage as keyof typeof languageDataMap] || languageDataMap.en
-
   const nextLanguage = currentLanguage === 'tr' ? 'en' : 'tr'
   const nextLanguageData = languageDataMap[nextLanguage as keyof typeof languageDataMap] || languageDataMap.en
+
+  if (!mounted) {
+    return (
+      <Button variant='ghost' size={size} className={cn('pointer-events-none opacity-50', className)} disabled>
+        <span className='text-base mr-2'>{currentLanguageData.flag}</span>
+        {showLabel && <span className='ml-1'>{currentLanguageData.native}</span>}
+      </Button>
+    )
+  }
 
   if (variant === 'button') {
     return (

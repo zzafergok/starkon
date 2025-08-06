@@ -27,7 +27,55 @@
     "viewMode": "Görünüm Modu",
     "components": "Bileşenler",
     "noComponentsFound": "Hiç bileşen bulunamadı",
-    "changeSearchCriteria": "Arama kriterlerinizi değiştirip tekrar deneyin"
+    "deleteWarning": "Bu işlem geri alınamaz.",
+    "confirmDelete": "Evet, sil",
+    "appName": "Talent Architect",
+    "appTitle": "Talent Architect",
+    "loading": "Yükleniyor...",
+    "error": "Bir hata oluştu",
+    "success": "Başarılı",
+    "cancel": "İptal",
+    "save": "Kaydet",
+    "create": "Oluştur",
+    "update": "Güncelle",
+    "edit": "Düzenle",
+    "delete": "Sil",
+    "search": "Ara",
+    "filter": "Filtrele",
+    "noResults": "Sonuç bulunamadı",
+    "close": "Kapat",
+    "continue": "Devam Et",
+    "back": "Geri",
+    "next": "İleri",
+    "previous": "Önceki",
+    "retry": "Tekrar Dene",
+    "refresh": "Yenile",
+    "pleaseWait": "Lütfen bekleyin...",
+    "authenticating": "Kimlik doğrulanıyor...",
+    "pageLoading": "Sayfa yükleniyor...",
+    "appLoading": "Uygulama yükleniyor...",
+    "backToHome": "Ana Sayfaya Dön",
+    "clearFilters": "Filtreleri Temizle",
+    "allCategories": "Tüm Kategoriler",
+    "viewMode": "Görünüm Modu",
+    "components": "Bileşenler",
+    "noComponentsFound": "Hiç bileşen bulunamadı",
+    "changeSearchCriteria": "Arama kriterlerinizi değiştirip tekrar deneyin",
+    "sort": "Sırala",
+    "open": "Aç",
+    "submit": "Gönder",
+    "reset": "Sıfırla",
+    "confirm": "Onayla",
+    "actions": "İşlemler",
+    "options": "Seçenekler",
+    "view": "Görüntüle",
+    "add": "Ekle",
+    "new": "Yeni",
+    "preview": "Önizleme",
+    "tryAgain": "Tekrar Dene",
+    "ok": "Tamam",
+    "warning": "Uyarı",
+    "info": "Bilgi"
   },
   "demo": {
     "button": {
@@ -267,6 +315,8 @@
     "dataProcessedSuccessfully": "Verileriniz başarıyla işleme alınmıştır."
   },
   "auth": {
+    "signIn": "Giriş Yap",
+    "signUp": "Kayıt Ol",
     "login": "Giriş Yap",
     "logout": "Çıkış Yap",
     "register": "Kayıt Ol",
@@ -291,7 +341,231 @@
     "tooManyAttempts": "Çok fazla başarısız deneme",
     "loginFormSubmitted": "Giriş formu gönderildi",
     "alreadyAuthenticated": "Zaten kimlik doğrulandı, yönlendiriliyor",
-    "safelyLoggedOut": "Güvenli bir şekilde çıkış yaptınız"
+    "safelyLoggedOut": "Güvenli bir şekilde çıkış yaptınız",
+    "loading": "Talent Architect...",
+    "unauthorized": {
+      "title": "Yetkisiz Erişim",
+      "message": "Bu sayfaya erişim yetkiniz bulunmamaktadır.",
+      "backToDashboard": "Dashboard'a Dön"
+    },
+    "login": {
+      "title": "Giriş Yap",
+      "subtitle": "Hesabınıza giriş yapın",
+      "email": {
+        "label": "E-posta Adresi",
+        "placeholder": "E-posta adresinizi girin"
+      },
+      "password": {
+        "label": "Şifre",
+        "placeholder": "Şifrenizi girin"
+      },
+      "rememberMe": "Beni hatırla",
+      "forgotPassword": "Şifrenizi mi unuttunuz?",
+      "loginButton": "Giriş Yap",
+      "loggingIn": "Giriş yapılıyor...",
+      "validation": {
+        "emailRequired": "E-posta adresi ve şifre gereklidir",
+        "loginError": "Giriş yapılırken bir hata oluştu"
+      },
+      "demoAccounts": {
+        "title": "Demo Hesaplar",
+        "ortak": "Ahmet",
+        "zafer": "Admin",
+        "akin": "Mehmet"
+      }
+    },
+    "register": {
+      "haveAccount": "Zaten hesabınız var mı?",
+      "title": "Hesap Oluştur",
+      "subtitle": "Yeni hesabınızı oluşturun ve başlayın",
+      "fullName": "Ad Soyad",
+      "fullNamePlaceholder": "Adınız ve soyadınız",
+      "email": "E-posta Adresi",
+      "emailPlaceholder": "email@example.com",
+      "password": "Şifre",
+      "passwordPlaceholder": "Güçlü bir şifre oluşturun",
+      "confirmPassword": "Şifre Tekrarı",
+      "confirmPasswordPlaceholder": "Şifrenizi tekrar girin",
+      "alreadyHaveAccount": "Zaten hesabınız var mı?",
+      "loginLink": "Giriş yapın",
+      "loading": "Hesap oluşturuluyor...",
+      "successs": "Hesabınız başarıyla oluşturuldu!",
+      "error": "Hesap oluşturulurken bir hata oluştu.",
+      "agreements": {
+        "terms": {
+          "prefix": "Kayıt olarak",
+          "linkText": "Kullanım Şartları",
+          "suffix": "kabul etmiş olursunuz."
+        },
+        "privacy": {
+          "prefix": "Ayrıca",
+          "linkText": "Gizlilik Politikası",
+          "suffix": "hükümlerini de onaylıyorsunuz."
+        },
+        "note": "Her iki anlaşmayı da kabul etmeniz gerekir. Bu belgeler hesabınızın güvenliği ve yasal haklarınız ile ilgili önemli bilgiler içerir."
+      },
+      "submitButton": "Hesap Oluştur",
+      "form": {
+        "name": "Ad Soyad",
+        "namePlaceholder": "Adınızı ve soyadınızı girin",
+        "email": "E-posta Adresi",
+        "emailPlaceholder": "E-posta adresinizi girin",
+        "role": "Rol",
+        "rolePlaceholder": "Rolünüzü seçin",
+        "password": "Şifre",
+        "passwordPlaceholder": "Şifrenizi girin",
+        "confirmPassword": "Şifre Tekrarı",
+        "confirmPasswordPlaceholder": "Şifrenizi tekrar girin",
+        "passwordStrength": "Şifre Gücü",
+        "passwordStrengthLevels": {
+          "weak": "Zayıf",
+          "medium": "Orta",
+          "strong": "Güçlü"
+        },
+        "passwordRules": {
+          "title": "Şifre Kuralları",
+          "minLength": "En az 8 karakter",
+          "hasLetter": "En az bir harf",
+          "hasNumber": "En az bir rakam",
+          "hasSpecialChar": "En az bir özel karakter (@$!%*#?&)",
+          "validChars": "Sadece geçerli karakterler"
+        },
+        "termsPrefix": "Kabul ediyorum",
+        "termsLink": "Kullanım Şartları",
+        "termsAnd": "ve",
+        "privacyLink": "Gizlilik Politikası",
+        "register": "Hesap Oluştur",
+        "registering": "Kayıt yapılıyor...",
+        "alreadyHaveAccount": "Zaten hesabınız var mı?",
+        "loginHere": "Giriş yapın"
+      },
+      "roles": {
+        "admin": "Yönetici",
+        "developer": "Geliştirici",
+        "project_analyst": "Proje Analisti",
+        "product_owner": "Ürün Sahibi"
+      },
+      "validation": {
+        "nameRequired": "Ad soyad gereklidir",
+        "nameMinLength": "Ad soyad en az 2 karakter olmalıdır",
+        "emailRequired": "E-posta adresi gereklidir",
+        "emailInvalid": "Geçerli bir e-posta adresi girin",
+        "roleRequired": "Rol seçimi gereklidir",
+        "passwordMinLength": "Şifre en az 8 karakter olmalıdır",
+        "passwordMaxLength": "Şifre en fazla 100 karakter olabilir",
+        "passwordComplexity": "Şifre en az 8 karakter, bir harf, bir rakam ve bir özel karakter içermelidir",
+        "confirmPasswordRequired": "Şifre tekrarı gereklidir",
+        "passwordsNotMatch": "Şifreler eşleşmiyor",
+        "termsRequired": "Kullanım şartlarını kabul etmelisiniz"
+      },
+      "success": {
+        "title": "Kayıt Başarılı!",
+        "message": "Hesabınız başarıyla oluşturuldu.",
+        "emailSent": "Doğrulama e-postası {{email}} adresine gönderildi.",
+        "redirecting": "{{seconds}} saniye sonra giriş sayfasına yönlendirileceksiniz",
+        "goToLogin": "Giriş Sayfasına Git"
+      },
+      "errors": {
+        "registrationFailed": "Kayıt işlemi başarısız oldu"
+      }
+    },
+    "emailVerification": {
+      "verifying": {
+        "title": "Email Doğrulanıyor...",
+        "description": "Lütfen bekleyin, email adresiniz doğrulanıyor."
+      },
+      "success": {
+        "title": "Email Doğrulandı!",
+        "description": "Hesabınız başarıyla aktifleştirildi. Dashboard'a yönlendiriliyorsunuz..."
+      },
+      "error": {
+        "invalidLink": {
+          "title": "Geçersiz Bağlantı",
+          "description": "Email doğrulama bağlantısı geçersiz veya eksik."
+        },
+        "verificationFailed": {
+          "title": "Doğrulama Başarısız",
+          "description": "Bir hata oluştu, lütfen tekrar deneyin."
+        },
+        "defaultError": "Email doğrulama başarısız"
+      },
+      "returnToLogin": "Giriş Sayfasına Dön"
+    },
+    "resetPassword": {
+      "title": "Şifre Sıfırlama",
+      "description": "Yeni şifrenizi belirleyin",
+      "newPasswordLabel": "Yeni Şifre",
+      "newPasswordPlaceholder": "Yeni şifrenizi girin",
+      "confirmPasswordLabel": "Şifre Tekrarı",
+      "confirmPasswordPlaceholder": "Yeni şifrenizi tekrar girin",
+      "resetButton": "Şifreyi Sıfırla",
+      "resetting": "Sıfırlanıyor...",
+      "backToLogin": "Giriş sayfasına dön",
+      "success": {
+        "title": "Şifre Sıfırlandı!",
+        "description": "Şifreniz başarıyla sıfırlandı. Artık yeni şifrenizle giriş yapabilirsiniz.",
+        "loginButton": "Giriş Yap"
+      },
+      "error": {
+        "invalidToken": "Geçersiz veya süresi dolmuş bağlantı",
+        "tokenRequired": "Reset token bulunamadı",
+        "rateLimitExceeded": "Günlük sıfırlama limitine ulaşıldı",
+        "default": "Şifre sıfırlanırken bir hata oluştu"
+      },
+      "validation": {
+        "newPasswordRequired": "Yeni şifre gereklidir",
+        "confirmPasswordRequired": "Şifre tekrarı gereklidir",
+        "passwordsDoNotMatch": "Şifreler eşleşmiyor",
+        "passwordTooShort": "Şifre en az 8 karakter olmalıdır",
+        "passwordRequirements": "Şifre en az bir harf ve bir rakam içermelidir"
+      },
+      "requirements": {
+        "title": "Şifre Gereksinimleri",
+        "minLength": "En az 8 karakter",
+        "hasLetter": "En az bir harf",
+        "hasNumber": "En az bir rakam"
+      }
+    },
+    "forgotPassword": {
+      "title": "Şifre Sıfırlama",
+      "description": "Email adresinizi girin, şifre sıfırlama bağlantısı gönderelim",
+      "emailLabel": "Email Adresi",
+      "emailPlaceholder": "ornek@email.com",
+      "emailRequired": "Email adresi gereklidir",
+      "emailInvalid": "Geçerli bir email adresi girin",
+      "sendResetLink": "Sıfırlama Bağlantısı Gönder",
+      "sending": "Gönderiliyor...",
+      "backToLogin": "Giriş sayfasına dön",
+      "success": {
+        "title": "E-posta Gönderildi",
+        "description": "{{email}} adresine şifre sıfırlama bağlantısı gönderildi.",
+        "checkEmail": "E-postanızı kontrol edin",
+        "emailInstructions": "Gelen kutunuzu kontrol edin ve şifre sıfırlama bağlantısına tıklayın.",
+        "linkExpiry": "Bağlantı 1 saat içinde geçerliliğini yitirecektir.",
+        "rateLimitInfo": "24 saat içinde yalnızca bir kez şifre sıfırlama talebinde bulunabilirsiniz.",
+        "backToLoginButton": "Giriş Sayfasına Dön",
+        "didntReceive": "E-posta almadınız mı?",
+        "contactSupport": "Destek ile iletişime geçin"
+      },
+      "error": {
+        "rateLimitTitle": "Çok Fazla Talep",
+        "rateLimitExceeded": "Günlük limit aşıldı. {{hours}} saat sonra tekrar deneyebilirsiniz.",
+        "emailNotFoundTitle": "E-posta Bulunamadı",
+        "emailNotFound": "Bu e-posta adresi sistemde kayıtlı değil.",
+        "emailNotVerifiedTitle": "E-posta Doğrulanmamış",
+        "emailNotVerified": "Önce e-posta adresinizi doğrulamanız gerekiyor.",
+        "emailServiceUnavailable": "E-posta servisi geçici olarak kullanılamıyor.",
+        "defaultTitle": "Hata Oluştu",
+        "default": "Bir hata oluştu. Lütfen tekrar deneyin.",
+        "resendVerification": "Doğrulama E-postası Gönder"
+      },
+      "help": {
+        "title": "Yardıma mı ihtiyacınız var?",
+        "description": "Email alamıyorsanız veya başka bir sorunuz varsa bizimle iletişime geçin.",
+        "contact": "İletişim",
+        "support": "Destek"
+      }
+    }
   },
   "navigation": {
     "home": "Ana Sayfa",
@@ -392,7 +666,98 @@
     "forgotPassword": {
       "title": "Şifremi Unuttum",
       "content": "Şifrenizi sıfırlayın."
+    },
+    "contact": {
+      "title": "İletişim",
+      "subtitle": "Bizimle iletişime geçin",
+      "name": "Ad Soyad",
+      "namePlaceholder": "Adınız ve soyadınız",
+      "email": "E-posta",
+      "emailPlaceholder": "email@example.com",
+      "subject": "Konu",
+      "subjectPlaceholder": "Mesajınızın konusu",
+      "message": "Mesaj",
+      "messagePlaceholder": "Mesajınızı buraya yazın...",
+      "sendButton": "Mesaj Gönder",
+      "contactInfo": "İletişim Bilgileri",
+      "successMessage": "Mesajınız gönderildi! En kısa sürede size dönüş yapacağız.",
+      "privacy": "Tüm mesajlar gizli tutulur ve sadece gerekli kişilerle paylaşılır.",
+      "directContact": "Doğrudan iletişim:",
+      "loading": "Gönderiliyor...",
+      "error": "Mesaj gönderilemedi. Lütfen tekrar deneyin."
+    },
+    "support": {
+      "title": "Destek",
+      "subtitle": "Size nasıl yardımcı olabiliriz?",
+      "name": "Ad Soyad",
+      "namePlaceholder": "Adınız ve soyadınız",
+      "email": "E-posta",
+      "emailPlaceholder": "email@example.com",
+      "subject": "Konu",
+      "subjectPlaceholder": "Sorunun kısa açıklaması",
+      "message": "Mesaj",
+      "messagePlaceholder": "Sorununuzu detaylı açıklayın...",
+      "sendButton": "Destek Talebi Gönder",
+      "contactInfo": "Alternatif İletişim",
+      "successMessage": "Destek talebiniz alındı! En kısa sürede size dönüş yapacağız.",
+      "privacy": "Destek talebiniz gizli tutulur ve sadece teknik ekibimizle paylaşılır.",
+      "directContact": "Acil durumlar için doğrudan iletişim:",
+      "tip": "Destek talebinizde sorununuzu detaylı açıklarsanız, size daha hızlı yardımcı olabiliriz.",
+      "responseTime": "Genellikle 24 saat içerisinde e-posta ile yanıt veriyoruz.",
+      "loading": "Gönderiliyor...",
+      "error": "Destek talebi gönderilemedi. Lütfen tekrar deneyin."
+    },
+    "notFound": {
+      "title": "404",
+      "heading": "Sayfa Bulunamadı",
+      "description": "Aradığınız sayfa mevcut değil veya taşınmış olabilir.",
+      "goHome": "Ana Sayfaya Dön",
+      "goBack": "Geri Dön",
+      "searchHelp": "Aradığınızı bulamadınız mı?",
+      "about": "Hakkımızda",
+      "contact": "İletişim",
+      "components": "Bileşenler"
     }
+  },
+  "language": {
+    "title": "Dil",
+    "preference": "Dil Tercihi",
+    "description": "Uygulamanın dilini seçin",
+    "turkish": {
+      "title": "Türkçe",
+      "description": "Türkçe arayüz",
+      "native": "Türkçe"
+    },
+    "english": {
+      "title": "İngilizce",
+      "description": "İngilizce arayüz",
+      "native": "English"
+    },
+    "active": "Aktif",
+    "switchTo": "{{language}} diline geç",
+    "current": "Mevcut dil: {{language}}",
+    "loading": "Dil yükleniyor...",
+    "applying": "Dil uygulanıyor...",
+    "note": "Dil değişiklikleri anında uygulanır ve tarayıcınızda saklanır"
+  },
+  "theme": {
+    "title": "Tema",
+    "preference": "Tema Tercihi",
+    "description": "Uygulamanın görünümünü seçin",
+    "light": {
+      "title": "Açık Tema",
+      "description": "Açık renkli arayüz"
+    },
+    "dark": {
+      "title": "Koyu Tema",
+      "description": "Koyu renkli arayüz"
+    },
+    "active": "Aktif",
+    "switchTo": "{{theme}} temaya geç",
+    "current": "Mevcut tema: {{theme}}",
+    "loading": "Tema yükleniyor...",
+    "applying": "Tema uygulanıyor...",
+    "note": "Tema değişiklikleri anında uygulanır ve tarayıcınızda saklanır"
   },
   "validation": {
     "required": "Bu alan zorunludur",
@@ -422,12 +787,6 @@
     "custom": "Geçersiz değer",
     "invalid": "Geçersiz değer"
   },
-  "theme": {
-    "light": "Açık",
-    "dark": "Koyu",
-    "system": "Sistem",
-    "toggle": "Tema Değiştir"
-  },
   "components": {
     "button": {
       "loadingText": "Lütfen bekleyin..."
@@ -450,5 +809,143 @@
     "unauthorized": "Bu sayfaya erişim için giriş yapmalısınız",
     "sessionExpired": "Oturumunuz sona erdi, lütfen tekrar giriş yapın",
     "invalidToken": "Geçersiz token, lütfen tekrar giriş yapın"
+  },
+  "legal": {
+    "terms": {
+      "title": "Kullanım Şartları",
+      "lastUpdated": "Son Güncelleme",
+      "lastUpdatedDate": "01 Ocak 2024",
+      "footer": {
+        "effectiveDate": "Yürürlük Tarihi"
+      },
+      "sections": {
+        "introduction": {
+          "title": "Giriş",
+          "content": "Bu kullanım şartları, web sitemizi ve hizmetlerimizi kullanırken uymanız gereken kuralları ve koşulları belirler. Hizmetimizi kullanarak, bu şartları kabul etmiş sayılırsınız."
+        },
+        "serviceDescription": {
+          "title": "Hizmet Açıklaması",
+          "content": "Platform, kullanıcıların proje yönetimi yapabilecekleri, görevleri organize edebilecekleri ve ekip işbirliği sağlayabilecekleri dijital bir workspace ortamı sunar.",
+          "note": "Hizmetimiz sürekli geliştirilmekte olup, yeni özellikler eklenebilir veya mevcut özellikler değiştirilebilir."
+        },
+        "userResponsibilities": {
+          "title": "Kullanıcı Sorumlulukları",
+          "intro": "Hizmetimizi kullanırken aşağıdaki sorumlulukları üstlenmiş olursunuz:",
+          "item1": "Doğru ve güncel bilgiler sağlamak",
+          "item2": "Hesap güvenliğinizi korumak ve şifrelerinizi gizli tutmak",
+          "item3": "Hizmetimizi yalnızca yasal amaçlar için kullanmak",
+          "item4": "Diğer kullanıcıların haklarına saygı göstermek"
+        },
+        "prohibitedActivities": {
+          "title": "Yasak Faaliyetler",
+          "intro": "Aşağıdaki faaliyetler kesinlikle yasaktır:",
+          "item1": "Telif hakkı ihlali yapan içerik paylaşmak",
+          "item2": "Zararlı yazılım veya virüs yaymak",
+          "item3": "Diğer kullanıcıları taciz etmek veya rahatsız etmek",
+          "item4": "Sistemin güvenliğini tehlikeye atmaya çalışmak"
+        },
+        "intellectualProperty": {
+          "title": "Fikri Mülkiyet",
+          "content": "Platform üzerindeki tüm içerik, tasarım, logo ve diğer materyaller telif hakkı koruması altındadır. Bu materyalleri izin almadan kopyalayamaz, değiştiremez veya dağıtamazsınız."
+        },
+        "limitationOfLiability": {
+          "title": "Sorumluluk Sınırlaması",
+          "content": "Hizmetimizi mümkün olan en iyi şekilde sunmaya çalışsak da, herhangi bir kesinti, veri kaybı veya hizmet kalitesi sorunu için sorumluluğumuz sınırlıdır. Hizmeti olduğu gibi kabul etmiş sayılırsınız."
+        },
+        "serviceModifications": {
+          "title": "Hizmet Değişiklikleri",
+          "content": "Hizmetimizde dilediğimiz zaman değişiklik yapma, özellik ekleme veya çıkarma hakkımız saklıdır. Önemli değişiklikler için kullanıcılarımızı önceden bilgilendirmeye çalışırız."
+        },
+        "termination": {
+          "title": "Hesap Sonlandırma",
+          "content": "Bu şartları ihlal etmeniz durumunda hesabınızı uyarı vermeksizin sonlandırma hakkımız saklıdır. Ayrıca, istediğiniz zaman hesabınızı kendiniz de sonlandırabilirsiniz."
+        },
+        "governingLaw": {
+          "title": "Geçerli Hukuk",
+          "content": "Bu şartlar Türkiye Cumhuriyeti yasaları kapsamında düzenlenmiştir. Herhangi bir anlaşmazlık durumunda Türk mahkemeleri yetkilidir."
+        },
+        "contact": {
+          "title": "İletişim",
+          "content": "Bu kullanım şartları hakkında sorularınız varsa bizimle iletişime geçebilirsiniz:"
+        }
+      }
+    },
+    "privacy": {
+      "title": "Gizlilik Politikası",
+      "lastUpdated": "Son Güncelleme",
+      "lastUpdatedDate": "01 Ocak 2024",
+      "footer": {
+        "effectiveDate": "Yürürlük Tarihi"
+      },
+      "sections": {
+        "introduction": {
+          "title": "Giriş",
+          "content": "Bu gizlilik politikası, kişisel verilerinizi nasıl topladığımızı, kullandığımızı ve koruduğumuzu açıklar. Gizliliğiniz bizim için önemlidir ve verilerinizi sorumlu bir şekilde yönetiriz."
+        },
+        "informationCollection": {
+          "title": "Topladığımız Bilgiler",
+          "intro": "Hizmetimizi size daha iyi sunabilmek için aşağıdaki bilgi türlerini toplarız:",
+          "personalInfo": {
+            "title": "Kişisel Bilgiler",
+            "item1": "Ad, soyad ve e-posta adresi",
+            "item2": "Profil bilgileri ve tercihleri",
+            "item3": "İletişim bilgileri"
+          },
+          "technicalInfo": {
+            "title": "Teknik Bilgiler",
+            "item1": "IP adresi ve tarayıcı bilgileri",
+            "item2": "Cihaz türü ve işletim sistemi",
+            "item3": "Kullanım istatistikleri ve site etkileşimleri"
+          }
+        },
+        "informationUse": {
+          "title": "Bilgileri Nasıl Kullanırız",
+          "intro": "Topladığımız bilgileri şu amaçlarla kullanırız:",
+          "item1": "Hizmetlerimizi sağlamak ve geliştirmek",
+          "item2": "Kullanıcı deneyimini kişiselleştirmek",
+          "item3": "Güvenlik ve dolandırıcılık önleme",
+          "item4": "Yasal yükümlülüklerimizi yerine getirmek",
+          "item5": "Size önemli güncellemeler hakkında bilgi vermek"
+        },
+        "informationSharing": {
+          "title": "Bilgi Paylaşımı",
+          "intro": "Kişisel bilgilerinizi üçüncü taraflarla paylaşma konusunda çok dikkatli davranırız.",
+          "commitment": "Verilerinizi satmayız, kiraya vermeyiz veya yetkisiz üçüncü taraflarla paylaşmayız."
+        },
+        "dataSecurity": {
+          "title": "Veri Güvenliği",
+          "content": "Verilerinizin güvenliği için industry-standard güvenlik önlemleri alırız:",
+          "measure1": "SSL şifreleme ile veri iletimi",
+          "measure2": "Güvenli sunucu altyapısı",
+          "measure3": "Düzenli güvenlik denetimleri",
+          "measure4": "Sınırlı erişim kontrolleri"
+        },
+        "dataRetention": {
+          "title": "Veri Saklama",
+          "content": "Kişisel verilerinizi yalnızca gerekli olduğu süre boyunca saklarız. Hesabınızı sildiğinizde, verileriniz güvenli bir şekilde sistemden kaldırılır."
+        },
+        "userRights": {
+          "title": "Kullanıcı Hakları",
+          "intro": "Kişisel verilerinizle ilgili aşağıdaki haklara sahipsiniz:",
+          "right1": "Verilerinize erişim ve kopyasını alma",
+          "right2": "Yanlış bilgilerin düzeltilmesini isteme",
+          "right3": "Verilerinizin silinmesini talep etme",
+          "right4": "Veri işleme faaliyetlerine itiraz etme"
+        },
+        "cookies": {
+          "title": "Çerezler ve İzleme",
+          "content": "Web sitemizde deneyiminizi iyileştirmek için çerezler kullanırız. Bu çerezler site performansını analiz etmek ve tercihlerinizi hatırlamak için kullanılır.",
+          "note": "Tarayıcı ayarlarınızdan çerezleri devre dışı bırakabilirsiniz, ancak bu durumda bazı özellikler çalışmayabilir."
+        },
+        "policyChanges": {
+          "title": "Politika Değişiklikleri",
+          "content": "Bu gizlilik politikasını zaman zaman güncelleyebiliriz. Önemli değişiklikleri size e-posta yoluyla veya site üzerinden bildiririz."
+        },
+        "contact": {
+          "title": "İletişim",
+          "content": "Gizlilik politikamız veya veri işleme uygulamalarımız hakkında sorularınız varsa bizimle iletişime geçebilirsiniz:"
+        }
+      }
+    }
   }
 }
