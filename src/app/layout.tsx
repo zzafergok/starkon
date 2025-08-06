@@ -1,7 +1,11 @@
 import type { Metadata, Viewport } from 'next'
 import React from 'react'
-import { ClientProviders } from '@/providers/ClientProviders'
 import './globals.css'
+import { ReactQueryProvider } from '@/providers/ReactQueryProvider'
+import { AuthProvider } from '@/providers/AuthProvider'
+import { ThemeProvider } from '@/providers/theme-provider'
+import I18nProvider from '@/providers/I18nProvider'
+import { ToastProvider } from '@/providers/toast-provider'
 
 export const metadata: Metadata = {
   title: {
@@ -80,44 +84,17 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang='tr' suppressHydrationWarning className='theme-loading' style={{ scrollbarGutter: 'stable' }}>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  // Scrollbar-gutter desteği kontrol et ve uygula
-                  if (CSS && CSS.supports && CSS.supports('scrollbar-gutter', 'stable')) {
-                    document.documentElement.style.scrollbarGutter = 'stable';
-                    document.body.style.scrollbarGutter = 'stable';
-                  }
-                  
-                  // Tema başlatma
-                  var html = document.documentElement;
-                  var theme = localStorage.getItem('theme') || 'system';
-                  var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                  var effectiveTheme = theme === 'system' ? (systemDark ? 'dark' : 'light') : theme;
-                  
-                  html.classList.remove('light', 'dark', 'theme-loading');
-                  html.classList.add(effectiveTheme);
-                  html.style.colorScheme = effectiveTheme;
-                  
-                  requestAnimationFrame(function() {
-                    html.style.visibility = 'visible';
-                  });
-                } catch (e) {
-                  console.warn('Initialization failed:', e);
-                  document.documentElement.classList.add('light');
-                  document.documentElement.style.visibility = 'visible';
-                }
-              })();
-            `,
-          }}
-        />
-      </head>
-      <body suppressHydrationWarning className='bg-background text-foreground antialiased'>
-        <ClientProviders>{children}</ClientProviders>
+    <html lang='tr'>
+      <body className=''>
+        <ReactQueryProvider>
+          <AuthProvider>
+            <ThemeProvider>
+              <I18nProvider>
+                <ToastProvider>{children}</ToastProvider>
+              </I18nProvider>
+            </ThemeProvider>
+          </AuthProvider>
+        </ReactQueryProvider>
       </body>
     </html>
   )

@@ -3,9 +3,9 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { Button } from '@/components/core/Button/Button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/core/Card/Card'
-import { Badge } from '@/components/core/Badge/Badge'
+import { Button } from '@/components/core/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/core/card'
+import { Badge } from '@/components/core/badge'
 
 import { useAuth } from '@/hooks/useAuth'
 import { logAuthDebug } from '@/utils/authDebug'
@@ -57,7 +57,7 @@ export default function DashboardPage() {
           {/* Welcome Header */}
           <div className='text-center space-y-4'>
             <h1 className='text-4xl font-bold text-neutral-900 dark:text-neutral-50'>
-              {t('pages.dashboard.welcome', { name: user.username })}
+              {t('pages.dashboard.welcome', { name: user.name || 'Kullanıcı' })}
             </h1>
             <p className='text-neutral-600 dark:text-neutral-400 text-lg'>{t('pages.dashboard.description')}</p>
           </div>
@@ -77,11 +77,11 @@ export default function DashboardPage() {
               <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
                 <div className='space-y-1'>
                   <label className='text-sm font-medium text-neutral-700 dark:text-neutral-300'>Ad Soyad</label>
-                  <p className='text-neutral-900 dark:text-neutral-100'>{user.username}</p>
+                  <p className='text-neutral-900 dark:text-neutral-100'>{user.name || 'Kullanıcı'}</p>
                 </div>
                 <div className='space-y-1'>
                   <label className='text-sm font-medium text-neutral-700 dark:text-neutral-300'>Kullanıcı Adı</label>
-                  <p className='text-neutral-900 dark:text-neutral-100'>{user.username}</p>
+                  <p className='text-neutral-900 dark:text-neutral-100'>{user.name || 'Kullanıcı'}</p>
                 </div>
                 <div className='space-y-1'>
                   <label className='text-sm font-medium text-neutral-700 dark:text-neutral-300'>E-posta</label>

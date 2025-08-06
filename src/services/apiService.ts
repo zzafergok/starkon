@@ -1,15 +1,12 @@
-import { BaseQueryFn } from '@reduxjs/toolkit/query'
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import axios, { AxiosInstance, AxiosError, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
 
 import { tokenManagerService } from './authService'
-
-import { store } from '@/store'
-import { showToast } from '@/store/slices/toastSlice'
-import { logoutUser } from '@/store/slices/userSlice'
+import { RequestQueue } from './enhanced-api-service'
 
 import apiConfig from '@/config/api'
 
-import { HTTP_STATUS, ERROR_CODES, ApiResponse, RequestConfig, ApiError, RequestQueue } from './utils'
+import { HTTP_STATUS, ApiResponse, RequestConfig, ApiError } from './utils'
 
 // Axios instance creation and configuration
 export const createApiInstance = (baseURL?: string): AxiosInstance => {
@@ -26,75 +23,6 @@ export const createApiInstance = (baseURL?: string): AxiosInstance => {
 
   setupAxiosInterceptors(instance)
   return instance
-}
-
-// Error handling consolidated
-class ErrorHandler {
-  static handleError(error: AxiosError): ApiError {
-    const status = error.response?.status || 0
-    const responseData = error.response?.data as any
-    let message = 'Beklenmeyen bir hata oluştu'
-    let code: string = ERROR_CODES.SERVER_ERROR
-
-    switch (status) {
-      case HTTP_STATUS.BAD_REQUEST:
-        message = responseData?.message || 'Geçersiz istek parametreleri'
-        code = ERROR_CODES.VALIDATION_ERROR
-        break
-      case HTTP_STATUS.UNAUTHORIZED:
-        message = 'Oturum süreniz dolmuş, lütfen tekrar giriş yapın'
-        code = ERROR_CODES.TOKEN_EXPIRED
-        break
-      case HTTP_STATUS.FORBIDDEN:
-        message = 'Bu işlemi yapmaya yetkiniz bulunmuyor'
-        code = ERROR_CODES.PERMISSION_DENIED
-        break
-      case HTTP_STATUS.NOT_FOUND:
-        message = 'İstenen kaynak bulunamadı'
-        code = ERROR_CODES.RESOURCE_NOT_FOUND
-        break
-      default:
-        if (!error.response) {
-          message = 'İnternet bağlantınızı kontrol ediniz'
-          code = ERROR_CODES.NETWORK_ERROR
-        }
-    }
-
-    return { message, status, code, details: responseData }
-  }
-
-  static showErrorToast(error: ApiError): void {
-    try {
-      store.dispatch(
-        showToast({
-          type: 'error',
-          title: 'Hata',
-          message: error.message,
-          duration: 5000,
-        }),
-      )
-    } catch (toastError) {
-      console.error('Toast error:', toastError)
-    }
-  }
-
-  static handleAuthError(): void {
-    tokenManagerService.removeTokens()
-    store.dispatch(logoutUser())
-
-    this.showErrorToast({
-      message: 'Oturumunuz sonlandırıldı, lütfen tekrar giriş yapın',
-      status: 401,
-      code: ERROR_CODES.TOKEN_EXPIRED,
-    })
-
-    if (typeof window !== 'undefined') {
-      const currentPath = window.location.pathname
-      if (currentPath !== '/login' && currentPath !== '/register') {
-        window.location.href = '/login'
-      }
-    }
-  }
 }
 
 // Interceptors setup
@@ -125,11 +53,9 @@ const setupAxiosInterceptors = (axiosInstance: AxiosInstance): void => {
               if (refreshResult) {
                 config.headers.Authorization = `Bearer ${refreshResult.token}`
               } else {
-                ErrorHandler.handleAuthError()
                 return Promise.reject(new Error('Token yenileme başarısız'))
               }
             } catch (error) {
-              ErrorHandler.handleAuthError()
               return Promise.reject(error)
             }
           } else {
@@ -182,21 +108,20 @@ const setupAxiosInterceptors = (axiosInstance: AxiosInstance): void => {
           } else {
             const refreshError = new Error('Token yenileme başarısız')
             requestQueue.processQueue(refreshError, null)
-            ErrorHandler.handleAuthError()
             return Promise.reject(refreshError)
           }
         } catch (refreshError) {
           requestQueue.processQueue(refreshError, null)
-          ErrorHandler.handleAuthError()
           return Promise.reject(refreshError)
         } finally {
           requestQueue.setRefreshing(false)
         }
       }
 
-      const apiError = ErrorHandler.handleError(error)
-      if (originalRequest?.showErrorToast !== false) {
-        ErrorHandler.showErrorToast(apiError)
+      const apiError: ApiError = {
+        status: error.response?.status || HTTP_STATUS.INTERNAL_SERVER_ERROR,
+        message: error.message,
+        code: error.code || 'UNKNOWN_ERROR',
       }
       return Promise.reject(apiError)
     },
@@ -238,43 +163,6 @@ class ApiService {
 
   getAxiosInstance(): AxiosInstance {
     return this.axiosInstance
-  }
-}
-
-// RTK Query base query
-export const axiosBaseQuery = ({ baseUrl }: { baseUrl?: string } = {}): BaseQueryFn<
-  {
-    url: string
-    method?: any
-    data?: any
-    params?: any
-    headers?: any
-  } & RequestConfig,
-  unknown,
-  ApiError
-> => {
-  return async ({ url, method = 'GET', data, params, headers, ...config }) => {
-    try {
-      const result = await apiInstance({
-        url: baseUrl ? `${baseUrl}${url}` : url,
-        method,
-        data,
-        params,
-        headers,
-        ...config,
-      })
-      return { data: result.data }
-    } catch (axiosError) {
-      const error = axiosError as ApiError
-      return {
-        error: {
-          status: error.status,
-          data: error.message,
-          message: error.message,
-          code: error.code,
-        },
-      }
-    }
   }
 }
 

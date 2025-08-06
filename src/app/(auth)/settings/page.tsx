@@ -29,7 +29,7 @@ import {
   DialogHeader,
   DialogContent,
   DialogDescription,
-} from '@/components/core/Dialog/Dialog'
+} from '@/components/core/dialog'
 import {
   AlertDialog,
   AlertDialogTitle,
@@ -39,23 +39,19 @@ import {
   AlertDialogHeader,
   AlertDialogContent,
   AlertDialogDescription,
-} from '@/components/core/AlertDialog/AlertDialog'
-import { Input } from '@/components/core/Input/Input'
-import { Badge } from '@/components/core/Badge/Badge'
-import { Button } from '@/components/core/Button/Button'
-import { Switch } from '@/components/core/Switch/Switch'
-import { Textarea } from '@/components/core/Textarea/Textarea'
-import { Separator } from '@/components/core/Separator/Seperator'
-import { Avatar, AvatarFallback } from '@/components/core/Avatar/Avatar'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/core/Tabs/Tabs'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/core/Select/Select'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/core/Card/Card'
+} from '@/components/core/alert-dialog'
+import { Input } from '@/components/core/input'
+import { Badge } from '@/components/core/badge'
+import { Button } from '@/components/core/button'
+import { Switch } from '@/components/core/switch'
+import { Textarea } from '@/components/core/textarea'
+import { Separator } from '@/components/core/separator'
+import { Avatar, AvatarFallback } from '@/components/core/avatar'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/core/tabs'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/core/select'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/core/card'
 
 import { useAuth } from '@/hooks/useAuth'
-import { useTheme } from '@/hooks/useTheme'
-import { useLocale } from '@/hooks/useLocale'
-
-import { cn } from '@/lib/utils'
 
 interface NotificationSettings {
   emailNotifications: boolean
@@ -85,8 +81,6 @@ interface SecuritySettings {
 export default function SettingsPage() {
   const { t } = useTranslation()
   const { user, logout } = useAuth()
-  const { theme, setTheme } = useTheme()
-  const { currentLocale, changeLocale } = useLocale()
 
   // State management
   const [activeTab, setActiveTab] = useState('profile')
@@ -97,8 +91,8 @@ export default function SettingsPage() {
 
   // Form states
   const [profileData, setProfileData] = useState({
-    name: user?.username || '',
-    username: user?.username || '',
+    name: user?.name || '',
+    username: user?.name || '',
     email: user?.email || '',
     phone: '',
     bio: '',
@@ -798,105 +792,12 @@ export default function SettingsPage() {
                 </CardHeader>
                 <CardContent className='space-y-6'>
                   {/* Theme Selection */}
-                  <div className='space-y-4'>
-                    <h3 className='font-medium text-neutral-900 dark:text-neutral-50'>Tema Seçimi</h3>
-                    <div className='grid grid-cols-1 sm:grid-cols-3 gap-4'>
-                      {[
-                        {
-                          value: 'light',
-                          label: 'Açık Tema',
-                          description: 'Klasik açık renk teması',
-                          preview: 'bg-white border-2',
-                        },
-                        {
-                          value: 'dark',
-                          label: 'Koyu Tema',
-                          description: 'Göz yormayan koyu tema',
-                          preview: 'bg-neutral-900 border-2',
-                        },
-                      ].map((themeOption) => (
-                        <button
-                          key={themeOption.value}
-                          onClick={() => setTheme(themeOption.value as 'light' | 'dark' | 'system')}
-                          className={cn(
-                            'p-4 rounded-lg border-2 text-left transition-all hover:shadow-md',
-                            theme === themeOption.value
-                              ? 'border-primary-500 bg-primary-50/50 dark:bg-primary-950/20'
-                              : 'border-neutral-200 dark:border-neutral-700 hover:border-neutral-300 dark:hover:border-neutral-600',
-                          )}
-                        >
-                          <div className='space-y-3'>
-                            <div className={cn('h-16 rounded-md', themeOption.preview)} />
-                            <div>
-                              <div className='font-medium text-neutral-900 dark:text-neutral-50'>
-                                {themeOption.label}
-                              </div>
-                              <div className='text-xs text-neutral-600 dark:text-neutral-400'>
-                                {themeOption.description}
-                              </div>
-                            </div>
-                            {theme === themeOption.value && (
-                              <div className='flex items-center gap-1 text-primary-600 dark:text-primary-400'>
-                                <Check className='h-4 w-4' />
-                                <span className='text-xs font-medium'>Seçili</span>
-                              </div>
-                            )}
-                          </div>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
+                  {/* TODO <ThemeSelector /> */}
 
                   <Separator />
 
                   {/* Language Selection */}
-                  <div className='space-y-4'>
-                    <h3 className='font-medium text-neutral-900 dark:text-neutral-50'>Dil Tercihi</h3>
-                    <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
-                      <button
-                        onClick={() => changeLocale('tr')}
-                        className={cn(
-                          'p-4 rounded-lg border-2 text-left transition-all hover:shadow-md',
-                          currentLocale === 'tr'
-                            ? 'border-primary-500 bg-primary-50/50 dark:bg-primary-950/20'
-                            : 'border-neutral-200 dark:border-neutral-700 hover:border-neutral-300 dark:hover:border-neutral-600',
-                        )}
-                      >
-                        <div className='flex items-center gap-3'>
-                          <div className='text-2xl'>🇹🇷</div>
-                          <div>
-                            <div className='font-medium text-neutral-900 dark:text-neutral-50'>Türkçe</div>
-                            <div className='text-xs text-neutral-600 dark:text-neutral-400'>Varsayılan dil</div>
-                          </div>
-                          {currentLocale === 'tr' && (
-                            <Check className='h-4 w-4 text-primary-600 dark:text-primary-400 ml-auto' />
-                          )}
-                        </div>
-                      </button>
-
-                      <button
-                        onClick={() => changeLocale('en')}
-                        className={cn(
-                          'p-4 rounded-lg border-2 text-left transition-all hover:shadow-md',
-                          currentLocale === 'en'
-                            ? 'border-primary-500 bg-primary-50/50 dark:bg-primary-950/20'
-                            : 'border-neutral-200 dark:border-neutral-700 hover:border-neutral-300 dark:hover:border-neutral-600',
-                        )}
-                      >
-                        <div className='flex items-center gap-3'>
-                          <div className='text-2xl'>🇺🇸</div>
-                          <div>
-                            <div className='font-medium text-neutral-900 dark:text-neutral-50'>English</div>
-                            <div className='text-xs text-neutral-600 dark:text-neutral-400'>International language</div>
-                          </div>
-                          {currentLocale === 'en' && (
-                            <Check className='h-4 w-4 text-primary-600 dark:text-primary-400 ml-auto' />
-                          )}
-                        </div>
-                      </button>
-                    </div>
-                  </div>
-
+                  {/* TODO <LanguageSelector /> */}
                   <Separator />
 
                   {/* Display Settings */}

@@ -9,6 +9,11 @@ export const API_ENDPOINTS = {
     REGISTER: '/auth/register',
     FORGOT_PASSWORD: '/auth/forgot-password',
     RESET_PASSWORD: '/auth/reset-password',
+    VERIFY_EMAIL: '/auth/verify-email',
+    RESEND_VERIFICATION: '/auth/resend-verification',
+    ME: '/auth/me',
+    PROFILE: '/auth/profile',
+    CHANGE_PASSWORD: '/auth/change-password',
   },
   USER: {
     PROFILE: '/user/profile',
@@ -88,6 +93,8 @@ export interface RequestConfig extends AxiosRequestConfig {
   skipErrorHandling?: boolean
   retryAttempts?: number
   showErrorToast?: boolean
+  skipSuccessToast?: boolean
+  skipErrorToast?: boolean
   skipCache?: boolean
   skipRetry?: boolean
   cacheTime?: number

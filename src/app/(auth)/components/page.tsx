@@ -7,11 +7,11 @@ import React, { useState, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Search, Grid, List, Filter, X } from 'lucide-react'
 
-import { Input } from '@/components/core/Input/Input'
-import { Badge } from '@/components/core/Badge/Badge'
-import { Button } from '@/components/core/Button/Button'
-import { Card, CardContent } from '@/components/core/Card/Card'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/core/Select/Select'
+import { Input } from '@/components/core/input'
+import { Badge } from '@/components/core/badge'
+import { Button } from '@/components/core/button'
+import { Card, CardContent } from '@/components/core/card'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/core/select'
 
 import { cn } from '@/lib/utils'
 import { componentDemoData } from '@/data/componentDemoData'
@@ -392,8 +392,9 @@ export default function ComponentsPage() {
                   demoComponent={component.demoComponent}
                   code={component.code}
                   usageExamples={component.usageExamples}
-                  props={component.props?.map((prop) => ({
+                  props={component.props?.map((prop, index) => ({
                     ...prop,
+                    key: prop.name || `prop-${index}`,
                     description: prop.description || '',
                     required: false,
                   }))}
