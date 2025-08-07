@@ -1,19 +1,25 @@
 import type { Metadata, Viewport } from 'next'
 import React from 'react'
-import { ClientProviders } from '@/providers/ClientProviders'
 import './globals.css'
+import { ReactQueryProvider } from '@/providers/ReactQueryProvider'
+import { AuthProvider } from '@/providers/AuthProvider'
+import { ThemeProvider } from '@/providers/theme-provider'
+import I18nProvider from '@/providers/I18nProvider'
+import { ToastProvider } from '@/providers/toast-provider'
+import { PublicNavbar } from '@/components/layout/PublicNavbar'
+import { PublicFooter } from '@/components/layout/PublicFooter'
 
 export const metadata: Metadata = {
   title: {
-    default: 'Starkon Template - Modern React Component Library',
-    template: '%s | Starkon Template',
+    default: 'Starkon - Modern React Component Library',
+    template: '%s | Starkon',
   },
   description:
     'Enterprise seviyede React component kütüphanesi. Radix UI tabanlı, erişilebilir ve özelleştirilebilir komponentler.',
   keywords: ['React', 'Next.js', 'UI Kit', 'Components', 'TypeScript', 'Tailwind CSS'],
   authors: [{ name: 'Zafer Gök', url: 'https://github.com/zzafergok' }],
   creator: 'Zafer Gök',
-  publisher: 'Starkon Template',
+  publisher: 'Starkon',
   formatDetection: {
     email: false,
     address: false,
@@ -31,13 +37,13 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'tr_TR',
     url: '/',
-    title: 'Starkon Template - Modern React Component Library',
+    title: 'Starkon - Modern React Component Library',
     description: 'Enterprise seviyede React component kütüphanesi.',
-    siteName: 'Starkon Template',
+    siteName: 'Starkon',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Starkon Template - Modern React Component Library',
+    title: 'Starkon - Modern React Component Library',
     description: 'Enterprise seviyede React component kütüphanesi.',
   },
   robots: {
@@ -80,44 +86,23 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang='tr' suppressHydrationWarning className='theme-loading' style={{ scrollbarGutter: 'stable' }}>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  // Scrollbar-gutter desteği kontrol et ve uygula
-                  if (CSS && CSS.supports && CSS.supports('scrollbar-gutter', 'stable')) {
-                    document.documentElement.style.scrollbarGutter = 'stable';
-                    document.body.style.scrollbarGutter = 'stable';
-                  }
-                  
-                  // Tema başlatma
-                  var html = document.documentElement;
-                  var theme = localStorage.getItem('theme') || 'system';
-                  var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                  var effectiveTheme = theme === 'system' ? (systemDark ? 'dark' : 'light') : theme;
-                  
-                  html.classList.remove('light', 'dark', 'theme-loading');
-                  html.classList.add(effectiveTheme);
-                  html.style.colorScheme = effectiveTheme;
-                  
-                  requestAnimationFrame(function() {
-                    html.style.visibility = 'visible';
-                  });
-                } catch (e) {
-                  console.warn('Initialization failed:', e);
-                  document.documentElement.classList.add('light');
-                  document.documentElement.style.visibility = 'visible';
-                }
-              })();
-            `,
-          }}
-        />
-      </head>
-      <body suppressHydrationWarning className='bg-background text-foreground antialiased'>
-        <ClientProviders>{children}</ClientProviders>
+    <html lang='tr'>
+      <body className='bg-background text-foreground antialiased'>
+        <ReactQueryProvider>
+          <AuthProvider>
+            <ThemeProvider>
+              <I18nProvider>
+                <ToastProvider>
+                  <div className='min-h-screen flex flex-col'>
+                    <PublicNavbar />
+                    <main className='flex-1'>{children}</main>
+                    <PublicFooter />
+                  </div>
+                </ToastProvider>
+              </I18nProvider>
+            </ThemeProvider>
+          </AuthProvider>
+        </ReactQueryProvider>
       </body>
     </html>
   )

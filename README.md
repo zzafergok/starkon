@@ -1,18 +1,18 @@
-# Starkon Template
+# Starkon
 
-Starkon Template, modern React uygulamaları için tasarlanmış kapsamlı bir component kütüphanesidir. Radix UI tabanlı, erişilebilir ve özelleştirilebilir komponentler sunar.
+Starkon, modern React uygulamaları için tasarlanmış kapsamlı bir component kütüphanesidir. Radix UI tabanlı, erişilebilir ve özelleştirilebilir komponentler sunar.
 
 ## Kurulum
 
 ```bash
-npx create-starkon-template my-project
+npx starkon my-project
 cd my-project
 npm install
 npm run dev
 ```
 
 ```bash
-starkon-template/
+starkon/
 ├── src/
 │   ├── app/                    # Next.js App Router
 │   │   ├── (auth)/            # Korumalı rotalar grubu
@@ -65,12 +65,9 @@ starkon-template/
 │   │   └── componentDemoData.tsx # Demo component verileri
 │   ├── hooks/                 # Özel React hook'ları
 │   │   ├── useAuth.ts         # Authentication yönetimi
-│   │   ├── useDropdownPortal.ts # Dropdown portal yönetimi
-│   │   ├── useDropdownState.ts  # Dropdown durumu
 │   │   ├── useForm.ts         # Form yönetimi (Zod entegrasyonu)
 │   │   ├── useLocalStorage.ts # LocalStorage hook'u
 │   │   ├── useLocale.ts       # Çoklu dil desteği
-│   │   ├── useScrollbarCompensation.ts # Scrollbar telafisi
 │   │   ├── useTheme.ts        # Tema yönetimi
 │   │   └── useTokenManager.ts # Token yönetimi
 │   ├── lib/                   # Yardımcı kütüphaneler
@@ -229,7 +226,7 @@ starkon-template/
 ## Projeyi oluştur
 
 ```bash
-npx create-starkon-template my-app
+npx starkon my-app
 cd my-app
 
 # Bağımlılıkları yükle
@@ -272,7 +269,7 @@ npm run prettier
 
 ### Authentication
 
--   `/auth/login` - Giriş sayfası
+-   `/login` - Giriş sayfası
 ```
 
 ## Demo Kullanıcıları
@@ -375,5 +372,5 @@ MIT License - detaylar için [LICENSE](LICENSE) dosyasına bakın.
 
 ## İletişim
 
-- GitHub: [zzafergok/starkon-template](https://github.com/zzafergok/starkon-template)
+- GitHub: [zzafergok/starkon](https://github.com/zzafergok/starkon)
 - Website: [starkon.website](https://starkon.website)

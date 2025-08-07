@@ -4,11 +4,11 @@ import React, { useState } from 'react'
 
 import { Copy, Check, ExternalLink, Code, Settings, ChevronDown, ChevronRight } from 'lucide-react'
 
-import { Badge } from '@/components/core/Badge/Badge'
-import { Button } from '@/components/core/Button/Button'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/core/Tabs/Tabs'
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/core/Dialog/Dialog'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/core/Card/Card'
+import { Badge } from '@/components/core/badge'
+import { Button } from '@/components/core/button'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/core/tabs'
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/core/dialog'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/core/card'
 
 import { cn } from '@/lib/utils'
 
@@ -113,7 +113,7 @@ export function ComponentDemo({
   return (
     <>
       {/* Ana Kart */}
-      <Card className='group overflow-hidden border-neutral-200/80 dark:border-neutral-700/50 bg-white/70 dark:bg-neutral-900/70 backdrop-blur-sm hover:shadow-xl hover:shadow-neutral-200/20 dark:hover:shadow-neutral-900/30 transition-all duration-500 hover:border-primary-200 dark:hover:border-primary-800/50'>
+      <Card className='group w-full flex flex-col overflow-hidden border-neutral-200/80 dark:border-neutral-700/50 bg-white/70 dark:bg-neutral-900/70 backdrop-blur-sm hover:shadow-xl hover:shadow-neutral-200/20 dark:hover:shadow-neutral-900/30 transition-all duration-500 hover:border-primary-200 dark:hover:border-primary-800/50'>
         <CardHeader className='pb-4 space-y-4'>
           {/* Üst Kısım - Başlık ve Aksiyon */}
           <div className='flex items-start justify-between gap-4'>
@@ -156,18 +156,20 @@ export function ComponentDemo({
         <CardContent className='space-y-6'>
           {/* Demo Alanı */}
           <div className='relative group/demo'>
-            <div className='relative rounded-xl border border-neutral-200/80 dark:border-neutral-700/50 bg-gradient-to-br from-white to-neutral-50/50 dark:from-neutral-800/50 dark:to-neutral-900/50 p-8 min-h-[140px] flex items-center justify-center overflow-hidden'>
+            <div className='relative rounded-xl border border-neutral-200/80 dark:border-neutral-700/50 bg-gradient-to-br from-white to-neutral-50/50 dark:from-neutral-800/50 dark:to-neutral-900/50 p-4 min-h-[140px] flex items-center justify-center overflow-hidden w-full'>
               {/* Demo İçeriği */}
-              <div className='relative z-10'>{demoComponent}</div>
+              <div className='relative z-10 w-full'>
+                <div className='w-full flex justify-center items-center'>{demoComponent}</div>
+              </div>
             </div>
           </div>
 
           {/* Modern Tab İçerikleri */}
           <Tabs defaultValue='code' className='w-full'>
-            <TabsList className='w-full justify-start bg-neutral-100/70 dark:bg-neutral-800/70 backdrop-blur-sm border border-neutral-200/50 dark:border-neutral-700/50 p-1 rounded-xl'>
+            <TabsList className='w-full justify-start bg-neutral-100/70 dark:bg-neutral-800/70 backdrop-blur-sm border border-neutral-200/50 dark:border-neutral-700/50 p-1.5 rounded-xl'>
               <TabsTrigger
                 value='code'
-                className='data-[state=active]:bg-white dark:data-[state=active]:bg-neutral-700 data-[state=active]:text-neutral-900 dark:data-[state=active]:text-neutral-50 data-[state=active]:shadow-sm font-medium px-4 py-2.5 rounded-lg flex items-center gap-2'
+                className='data-[state=active]:bg-white dark:data-[state=active]:bg-neutral-700 data-[state=active]:text-neutral-900 dark:data-[state=active]:text-neutral-50 data-[state=active]:shadow-sm font-medium px-4 py-2.5 rounded-md flex items-center gap-2'
               >
                 <Code className='h-4 w-4' />
                 Kod
@@ -175,7 +177,7 @@ export function ComponentDemo({
               {usageExamples.length > 0 && (
                 <TabsTrigger
                   value='examples'
-                  className='data-[state=active]:bg-white dark:data-[state=active]:bg-neutral-700 data-[state=active]:text-neutral-900 dark:data-[state=active]:text-neutral-50 data-[state=active]:shadow-sm font-medium px-4 py-2.5 rounded-lg flex items-center gap-2'
+                  className='data-[state=active]:bg-white dark:data-[state=active]:bg-neutral-700 data-[state=active]:text-neutral-900 dark:data-[state=active]:text-neutral-50 data-[state=active]:shadow-sm font-medium px-4 py-2.5 rounded-md flex items-center gap-2'
                 >
                   <ExternalLink className='h-4 w-4' />
                   Örnekler ({usageExamples.length})
@@ -184,7 +186,7 @@ export function ComponentDemo({
               {props.length > 0 && (
                 <TabsTrigger
                   value='props'
-                  className='data-[state=active]:bg-white dark:data-[state=active]:bg-neutral-700 data-[state=active]:text-neutral-900 dark:data-[state=active]:text-neutral-50 data-[state=active]:shadow-sm font-medium px-4 py-2.5 rounded-lg flex items-center gap-2'
+                  className='data-[state=active]:bg-white dark:data-[state=active]:bg-neutral-700 data-[state=active]:text-neutral-900 dark:data-[state=active]:text-neutral-50 data-[state=active]:shadow-sm font-medium px-4 py-2.5 rounded-md flex items-center gap-2'
                 >
                   <Settings className='h-4 w-4' />
                   Props ({props.length})
@@ -270,8 +272,10 @@ export function ComponentDemo({
                     {/* Örnek Demo Alanı */}
                     {example.component && (
                       <div className='p-6 border-b border-neutral-200/50 dark:border-neutral-700/30'>
-                        <div className='rounded-xl border border-neutral-200/80 dark:border-neutral-700/50 bg-gradient-to-br from-white to-neutral-50/50 dark:from-neutral-800/50 dark:to-neutral-900/50 p-6'>
-                          {example.component}
+                        <div className='rounded-xl border border-neutral-200/80 dark:border-neutral-700/50 bg-gradient-to-br from-white to-neutral-50/50 dark:from-neutral-800/50 dark:to-neutral-900/50 p-4 w-full'>
+                          <div className='w-full'>
+                            <div className='w-full'>{example.component}</div>
+                          </div>
                         </div>
                       </div>
                     )}
@@ -368,7 +372,7 @@ export function ComponentDemo({
                       <tbody>
                         {props.map((prop, index) => (
                           <tr
-                            key={index}
+                            key={prop.name || `prop-${index}`}
                             className='border-b border-neutral-200/50 dark:border-neutral-700/30 hover:bg-neutral-50/50 dark:hover:bg-neutral-800/30 transition-colors'
                           >
                             <td className='p-4'>
@@ -444,14 +448,16 @@ export function ComponentDemo({
           <div className='flex-1 overflow-y-auto p-6 space-y-8'>
             {/* Büyük Demo Alanı */}
             <div className='relative'>
-              <div className='relative rounded-2xl border border-neutral-200/80 dark:border-neutral-700/50 bg-gradient-to-br from-white to-neutral-50/50 dark:from-neutral-800/50 dark:to-neutral-900/50 p-12 min-h-[280px] flex items-center justify-center overflow-hidden'>
-                <div className='relative z-10 scale-110'>{demoComponent}</div>
+              <div className='relative rounded-2xl border border-neutral-200/80 dark:border-neutral-700/50 bg-gradient-to-br from-white to-neutral-50/50 dark:from-neutral-800/50 dark:to-neutral-900/50 p-6 min-h-[280px] flex items-center justify-center overflow-hidden w-full'>
+                <div className='relative z-10 w-full'>
+                  <div className='w-full'>{demoComponent}</div>
+                </div>
               </div>
             </div>
 
             {/* Gelişmiş Tab Sistemi */}
             <Tabs defaultValue='code' className='w-full'>
-              <TabsList className='w-full justify-start bg-neutral-100/70 dark:bg-neutral-800/70 backdrop-blur-sm border border-neutral-200/50 dark:border-neutral-700/50 p-1 rounded-xl'>
+              <TabsList className='w-full justify-start bg-neutral-100/70 dark:bg-neutral-800/70 backdrop-blur-sm border border-neutral-200/50 dark:border-neutral-700/50 p-1.5 rounded-xl'>
                 <TabsTrigger
                   value='code'
                   className='data-[state=active]:bg-white dark:data-[state=active]:bg-neutral-700 data-[state=active]:text-neutral-900 dark:data-[state=active]:text-neutral-50 data-[state=active]:shadow-sm font-medium px-6 py-3 rounded-lg flex items-center gap-2'
@@ -559,8 +565,10 @@ export function ComponentDemo({
                       {/* Örnek Demo Alanı */}
                       {example.component && (
                         <div className='p-6 border-b border-neutral-200/50 dark:border-neutral-700/30'>
-                          <div className='rounded-2xl border border-neutral-200/80 dark:border-neutral-700/50 bg-gradient-to-br from-white to-neutral-50/50 dark:from-neutral-800/50 dark:to-neutral-900/50 p-8'>
-                            {example.component}
+                          <div className='rounded-2xl border border-neutral-200/80 dark:border-neutral-700/50 bg-gradient-to-br from-white to-neutral-50/50 dark:from-neutral-800/50 dark:to-neutral-900/50 p-6 w-full'>
+                            <div className='w-full'>
+                              <div className='w-full'>{example.component}</div>
+                            </div>
                           </div>
                         </div>
                       )}
@@ -658,7 +666,7 @@ export function ComponentDemo({
                         <tbody>
                           {props.map((prop, index) => (
                             <tr
-                              key={index}
+                              key={prop.name || `prop-${index}`}
                               className='border-b border-neutral-200/50 dark:border-neutral-700/30 hover:bg-neutral-50/50 dark:hover:bg-neutral-800/30 transition-colors'
                             >
                               <td className='p-6'>
@@ -674,7 +682,7 @@ export function ComponentDemo({
                                   {prop.type}
                                 </code>
                               </td>
-                              <td className='p-6 text-neutral-700 dark:text-neutral-300 leading-relaxed max-w-md'>
+                              <td className='p-6 text-neutral-700 dark:text-neutral-300 leading-relaxed'>
                                 {prop.description}
                               </td>
                               <td className='p-6'>

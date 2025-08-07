@@ -108,41 +108,85 @@ const config = {
       },
 
       borderRadius: {
-        sm: 'var(--radius-sm)',
-        md: 'var(--radius-md)',
-        lg: 'var(--radius-lg)',
-        xl: 'var(--radius-xl)',
-        full: 'var(--radius-full)',
-      },
-
-      boxShadow: {
-        sm: 'var(--shadow-sm)',
-        md: 'var(--shadow-md)',
-        lg: 'var(--shadow-lg)',
-        xl: 'var(--shadow-xl)',
-        'primary-glow': '0 0 20px hsla(204, 85%, 58%, 0.3)',
-        'accent-glow': '0 0 20px hsla(212, 65%, 52%, 0.3)',
-      },
-
-      animation: {
-        'fade-in': 'fadeIn 0.3s ease-out',
-        'slide-in': 'slideInRight 0.3s ease-out',
-        'scale-in': 'scaleIn 0.2s ease-out',
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)',
       },
 
       keyframes: {
-        fadeIn: {
-          '0%': { opacity: '0', transform: 'scale(0.9)' },
-          '100%': { opacity: '1', transform: 'scale(1)' },
+        'accordion-down': {
+          from: { height: 0 },
+          to: { height: 'var(--radix-accordion-content-height)' },
         },
-        slideInRight: {
-          '0%': { opacity: '0', transform: 'translateX(100%)' },
-          '100%': { opacity: '1', transform: 'translateX(0)' },
+        'accordion-up': {
+          from: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: 0 },
         },
-        scaleIn: {
-          '0%': { opacity: '0', transform: 'scale(0.95)' },
-          '100%': { opacity: '1', transform: 'scale(1)' },
+        'fade-in': {
+          '0%': { opacity: 0 },
+          '100%': { opacity: 1 },
         },
+        'slide-in': {
+          '0%': { transform: 'translateY(10px)', opacity: 0 },
+          '100%': { transform: 'translateY(0)', opacity: 1 },
+        },
+        'slide-up': {
+          '0%': { transform: 'translateY(100%)', opacity: 0 },
+          '100%': { transform: 'translateY(0)', opacity: 1 },
+        },
+        'scale-in': {
+          '0%': { transform: 'scale(0.95)', opacity: 0 },
+          '100%': { transform: 'scale(1)', opacity: 1 },
+        },
+        shimmer: {
+          '0%': { backgroundPosition: '200% 0' },
+          '100%': { backgroundPosition: '-200% 0' },
+        },
+        'pulse-subtle': {
+          '0%, 100%': { opacity: 1 },
+          '50%': { opacity: 0.8 },
+        },
+      },
+
+      animation: {
+        'accordion-down': 'accordion-down 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out',
+        'fade-in': 'fade-in 0.3s ease-out',
+        'slide-in': 'slide-in 0.3s ease-out',
+        'slide-up': 'slide-up 0.3s ease-out',
+        'scale-in': 'scale-in 0.2s ease-out',
+        shimmer: 'shimmer 2s infinite',
+        'pulse-subtle': 'pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+      },
+
+      boxShadow: {
+        primary: '0 4px 6px -1px hsla(21, 100%, 50%, 0.1), 0 2px 4px -1px hsla(21, 100%, 50%, 0.06)',
+        'primary-lg': '0 10px 15px -3px hsla(21, 100%, 50%, 0.1), 0 4px 6px -2px hsla(21, 100%, 50%, 0.05)',
+        'primary-xl': '0 20px 25px -5px hsla(21, 100%, 50%, 0.1), 0 10px 10px -5px hsla(21, 100%, 50%, 0.04)',
+        glow: '0 0 20px hsla(21, 100%, 50%, 0.3)',
+        'glow-lg': '0 0 40px hsla(21, 100%, 50%, 0.2)',
+      },
+
+      backdropBlur: {
+        xs: '2px',
+      },
+
+      fontSize: {
+        '2xs': ['0.625rem', { lineHeight: '0.875rem' }],
+      },
+
+      spacing: {
+        18: '4.5rem',
+        88: '22rem',
+        128: '32rem',
+      },
+
+      zIndex: {
+        60: '60',
+        70: '70',
+        80: '80',
+        90: '90',
+        100: '100',
       },
     },
   },
@@ -163,9 +207,9 @@ const config = {
           'background-clip': 'text',
         },
         '.glass-effect': {
-          background: 'rgba(255, 255, 255, 0.1)',
+          background: 'hsla(39, 67%, 95%, 0.1)',
           'backdrop-filter': 'blur(10px)',
-          border: '1px solid rgba(255, 255, 255, 0.2)',
+          border: '1px solid hsla(39, 67%, 95%, 0.2)',
         },
       }
 

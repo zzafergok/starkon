@@ -5,7 +5,7 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { Heart, Github, HelpCircle } from 'lucide-react'
 
-import { Button } from '@/components/core/Button/Button'
+import { Button } from '@/components/core/button'
 
 export function AuthFooter() {
   const { t } = useTranslation()
@@ -19,7 +19,7 @@ export function AuthFooter() {
             {/* Left Side - Copyright */}
             <div className='flex items-center space-x-4'>
               <div className='flex items-center space-x-2 text-sm text-neutral-600 dark:text-neutral-400'>
-                <span>© {currentYear} Starkon Template.</span>
+                <span>© {currentYear} Starkon.</span>
                 <span>{t('pages.home.footer.copyright')}</span>
               </div>
             </div>

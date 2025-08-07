@@ -9,6 +9,10 @@ node_modules
 coverage
 *.log
 
+# Claude files
+CLAUDE.md
+.claude
+
 # Don't ignore config files
 !postcss.config.mjs
 !.eslintrc.cjs

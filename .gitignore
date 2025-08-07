@@ -34,6 +34,10 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
+# Claude files
+CLAUDE.md
+.claude
+
 # Local env files
 .env
 .env*.local
