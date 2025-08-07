@@ -142,7 +142,7 @@ const handleAuthFailure = (): void => {
 
       // Login sayfasına yönlendir
       console.log('🔄 Redirecting to login page')
-      window.location.href = '/auth/login'
+      window.location.href = '/login'
     }
   }
 }

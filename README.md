@@ -272,7 +272,7 @@ npm run prettier
 
 ### Authentication
 
--   `/auth/login` - Giriş sayfası
+-   `/login` - Giriş sayfası
 ```
 
 ## Demo Kullanıcıları

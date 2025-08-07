@@ -31,35 +31,8 @@
     "confirmDelete": "Evet, sil",
     "appName": "Starkon",
     "appTitle": "Starkon",
-    "loading": "Yükleniyor...",
-    "error": "Bir hata oluştu",
-    "success": "Başarılı",
-    "cancel": "İptal",
-    "save": "Kaydet",
     "create": "Oluştur",
     "update": "Güncelle",
-    "edit": "Düzenle",
-    "delete": "Sil",
-    "search": "Ara",
-    "filter": "Filtrele",
-    "noResults": "Sonuç bulunamadı",
-    "close": "Kapat",
-    "continue": "Devam Et",
-    "back": "Geri",
-    "next": "İleri",
-    "previous": "Önceki",
-    "retry": "Tekrar Dene",
-    "refresh": "Yenile",
-    "pleaseWait": "Lütfen bekleyin...",
-    "authenticating": "Kimlik doğrulanıyor...",
-    "pageLoading": "Sayfa yükleniyor...",
-    "appLoading": "Uygulama yükleniyor...",
-    "backToHome": "Ana Sayfaya Dön",
-    "clearFilters": "Filtreleri Temizle",
-    "allCategories": "Tüm Kategoriler",
-    "viewMode": "Görünüm Modu",
-    "components": "Bileşenler",
-    "noComponentsFound": "Hiç bileşen bulunamadı",
     "changeSearchCriteria": "Arama kriterlerinizi değiştirip tekrar deneyin",
     "sort": "Sırala",
     "open": "Aç",
@@ -316,7 +289,7 @@
     "sampleData": {
       "users": {
         "ahmet": "Ahmet Yılmaz",
-        "ayse": "Ayşe Kaya", 
+        "ayse": "Ayşe Kaya",
         "mehmet": "Mehmet Demir",
         "fatma": "Fatma Özkan",
         "ali": "Ali Şen"
@@ -328,7 +301,7 @@
       },
       "status": {
         "active": "Aktif",
-        "inactive": "Pasif", 
+        "inactive": "Pasif",
         "pending": "Beklemede",
         "error": "Hata",
         "online": "Kullanıcı çevrimiçi",
@@ -347,7 +320,7 @@
     },
     "buttons": {
       "small": "Küçük",
-      "large": "Büyük", 
+      "large": "Büyük",
       "addNew": "Yeni Ekle",
       "search": "Ara",
       "settings": "Ayarlar",
@@ -370,7 +343,7 @@
       "countries": {
         "turkey": "Türkiye",
         "usa": "Amerika",
-        "germany": "Almanya", 
+        "germany": "Almanya",
         "france": "Fransa"
       },
       "basicTextarea": "Temel textarea...",
@@ -381,12 +354,411 @@
       "selectDateRange": "Tarih aralığı seçin...",
       "start": "Başlangıç",
       "end": "Bitiş",
-      "richTextContent": "Zengin metin içeriği yazın..."
+      "richTextContent": "Zengin metin içeriği yazın...",
+      "allStatuses": "Tüm Durumlar",
+      "filters": "Filtreler",
+      "category": "Kategori",
+      "status": "Durum",
+      "clearFilters": "Filtreleri Temizle",
+      "clearAll": "Tümünü temizle",
+      "activeFilters": "Aktif filtreler:",
+      "componentsShowing": "bileşen gösteriliyor",
+      "totalComponents": "toplam",
+      "popularSearches": "Popüler aramalar: Button, Input, Modal, Form",
+      "backToTop": "Sayfa başına dön",
+      "categories": "Kategoriler",
+      "badgeVariants": {
+        "default": "Default",
+        "secondary": "Secondary",
+        "destructive": "Destructive",
+        "outline": "Outline"
+      },
+      "buttonVariants": {
+        "primary": "Primary",
+        "secondary": "Secondary",
+        "outline": "Outline",
+        "ghost": "Ghost",
+        "delete": "Delete",
+        "disabled": "Disabled"
+      },
+      "buttonActions": {
+        "addNew": "Yeni Ekle",
+        "search": "Ara",
+        "settings": "Ayarlar"
+      },
+      "development": {
+        "frontend": "Frontend Development",
+        "backend": "Backend Development",
+        "mobile": "Mobile Development"
+      },
+      "formGroup": "Form Group",
+      "buttonSize": "Buton boyutu",
+      "cardPaddingSize": "Kart padding boyutu",
+      "alertDialog": {
+        "deleteWarningMessage": "Bu işlem geri alınamaz. Hesabınız ve tüm verileriniz kalıcı olarak silinecektir.",
+        "cancel": "İptal",
+        "confirmDelete": "Evet, Sil"
+      },
+      "avatar": {
+        "altText": "Avatar resmi alternatif metni"
+      },
+      "badge": {
+        "sizeDescription": "Badge boyutu"
+      },
+      "cardActions": {
+        "details": "Detaylar",
+        "getReport": "Rapor Al"
+      },
+      "tableHeaders": {
+        "fullName": "Ad Soyad",
+        "email": "E-posta"
+      },
+      "dataTable": {
+        "dataDescription": "Tablo verisi",
+        "searchPlaceholder": "Arama input placeholder metni",
+        "searchDefault": "Ara..."
+      },
+      "notifications": "Bildirimler",
+      "textarea": {
+        "basicPlaceholder": "Temel textarea..."
+      },
+      "dialogLabels": {
+        "name": "İsim",
+        "save": "Kaydet"
+      },
+      "buttonClick": {
+        "alert": "Düğmeye tıklandı!",
+        "clickMe": "Tıkla"
+      },
+      "profile": "Profil",
+      "listItem": "Liste öğesi",
+      "placeholderText": "Placeholder metni",
+      "loadingTypes": {
+        "spinner": "Spinner",
+        "dots": "Dots",
+        "pulse": "Pulse"
+      },
+      "loadingSize": "Loading boyutu",
+      "progress": "İlerleme",
+      "account": "Hesap",
+      "volumeLevel": "Ses Seviyesi",
+      "quality": "Kalite",
+      "left": "Sol",
+      "tooltipPosition": "Tooltip konumu",
+      "dates": {
+        "graduationDate": "Mezuniyet Tarihi",
+        "holidayDates": "Tatil Tarihleri",
+        "appointmentDate": "Randevu Tarihi"
+      },
+      "missing": {
+        "accordion": {
+          "notificationPreferences": "Bildirim Tercihleri"
+        },
+        "alertDialog": {
+          "confirmDelete": "Silmeyi Onayla"
+        },
+        "badge": {
+          "active": "Aktif",
+          "error": "Hata",
+          "pending": "Beklemede",
+          "userOnline": "Çevrimiçi",
+          "connectionError": "Bağlantı Hatası",
+          "awaitingApproval": "Onay Bekliyor"
+        },
+        "buttons": {
+          "small": "Küçük",
+          "large": "Büyük",
+          "fullWidth": "Tam Genişlik",
+          "menu": "Menü",
+          "openDialog": "Dialog Aç",
+          "startNow": "Şimdi Başla"
+        },
+        "cards": {
+          "totalVisitors": "Toplam Ziyaretçi",
+          "newUsers": "Yeni Kullanıcılar",
+          "conversionRate": "Dönüşüm Oranı",
+          "premiumFeature": "Premium Özellik",
+          "premiumDesc": "Bu premium özellikler ile daha fazlasını yapın",
+          "detailedAnalytics": "Detaylı Analitik",
+          "customReports": "Özel Raporlar",
+          "apiAccess": "API Erişimi",
+          "projectReport": "Proje Raporu",
+          "projectReportDesc": "Son ay içerisindeki proje ilerlemesi ve detayları"
+        },
+        "checkbox": {
+          "selected": "Seçili",
+          "notSelected": "Seçili Değil",
+          "disabled": "Devre Dışı",
+          "yourInterests": "İlgi Alanlarınız"
+        },
+        "datePicker": {
+          "birthDate": "Doğum Tarihi"
+        },
+        "dialog": {
+          "editProfile": "Profil Düzenle",
+          "editProfileDesc": "Profil bilgilerinizi buradan güncelleyebilirsiniz"
+        },
+        "dropdown": {
+          "emailUpdates": "E-posta Güncellemeleri",
+          "myAccount": "Hesabım"
+        },
+        "loading": {
+          "loading": "Yükleniyor",
+          "completed": "Tamamlandı"
+        },
+        "popover": {
+          "openPopover": "Popover Aç",
+          "adjustDimensions": "Boyutları Ayarla",
+          "width": "Genişlik",
+          "height": "Yükseklik"
+        },
+        "select": {
+          "turkey": "Türkiye"
+        },
+        "separator": {
+          "section1": "Bölüm 1",
+          "section2": "Bölüm 2",
+          "exampleContent1": "İlk örnek içerik",
+          "exampleContent2": "İkinci örnek içerik",
+          "right": "Sağ"
+        },
+        "slider": {
+          "priceRange": "Fiyat Aralığı",
+          "priceRangeLabel": "Fiyat Aralığı: $200 - $800"
+        },
+        "switch": {
+          "emailUpdates": "E-posta Güncellemeleri",
+          "disabled": "Devre Dışı"
+        },
+        "tabs": {
+          "password": "Şifre",
+          "username": "Kullanıcı Adı",
+          "currentPassword": "Mevcut Şifre",
+          "newPassword": "Yeni Şifre"
+        }
+      },
+      "labels": {
+        "personalInfo": "Kişisel Bilgiler",
+        "personalInfoDesc": "Kişisel bilgilerinizi buradan güncelleyebilirsiniz",
+        "securitySettings": "Güvenlik Ayarları",
+        "securitySettingsDesc": "Güvenlik ayarlarınızı buradan yönetebilirsiniz",
+        "section1": "Bölüm 1",
+        "section2": "Bölüm 2",
+        "content1": "İlk bölüm içeriği",
+        "content2": "İkinci bölüm içeriği",
+        "openSection": "Açık Bölüm",
+        "otherSection": "Diğer Bölüm",
+        "defaultOpenSection": "Bu bölüm varsayılan olarak açıktır",
+        "canAlsoOpenThisSection": "Bu bölümü de açabilirsiniz",
+        "informationMessage": "Bu bir bilgi mesajıdır",
+        "warning": "Uyarı",
+        "operationFailed": "İşlem başarısız oldu",
+        "deleteAccount": "Hesabı Sil",
+        "confirmDeleteAccount": "Hesap Silmeyi Onayla",
+        "deleteWarningMessage": "Bu işlem geri alınamaz",
+        "cancel": "İptal",
+        "avatarFallback": "AV",
+        "basicInput": "Temel input...",
+        "emailAddress": "E-posta adresi...",
+        "password": "Şifre...",
+        "disabledInput": "Devre dışı input...",
+        "small": "Küçük",
+        "large": "Büyük",
+        "iconButtons": "Icon Butonları",
+        "name": "İsim",
+        "edit": "Düzenle",
+        "characterCounter": "Karakter sayacı ile...",
+        "sampleName": "Ahmet Yılmaz",
+        "searchByName": "İsme göre ara...",
+        "selectCountry": "Ülke seçin",
+        "selectDate": "Tarih seçin...",
+        "selectMonthYear": "Ay/Yıl seçin...",
+        "selectDateRange": "Tarih aralığı seçin...",
+        "start": "Başlangıç",
+        "end": "Bitiş",
+        "richTextExample": "<p>Bu bir <strong>zengin metin</strong> örneğidir.</p>",
+        "richTextPlaceholder": "Zengin metin içeriği yazın...",
+        "userOnline": "Kullanıcı çevrimiçi",
+        "notificationPreferences": "Bildirim tercihleri ayarlarınızı buradan yönetebilirsiniz"
+      },
+      "descriptions": {
+        "multipleAccordion": "Aynı anda birden fazla bölümün açılabildiği accordion",
+        "lastItemClosable": "Son kalan item'ın da kapatılabilir olup olmadığı",
+        "criticalOperations": "Kritik işlemler için onay alınan modal dialog bileşeni",
+        "avatarComponent": "Kullanıcı profil resimleri için avatar bileşeni",
+        "avatarGroup": "Birden fazla kullanıcıyı temsil eden avatar grubu",
+        "avatarImageUrl": "Avatar resmi URL'i (AvatarImage için)",
+        "badgeComponent": "Durum ve etiketleme için kullanılan badge bileşeni",
+        "badgeExamples": "Farklı durumları temsil eden badge örnekleri",
+        "badgeVariant": "Badge görünüm varyantı",
+        "buttonComponent": "Farklı varyant ve boyutlarda etkileşimli buton bileşeni",
+        "iconButtonExamples": "Icon ile birlikte kullanılan buton örnekleri",
+        "buttonVariant": "Buton görünüm varyantı",
+        "additionalCssClasses": "Ek CSS sınıfları (w-full ile tam genişlik)",
+        "disableButton": "Butonu devre dışı bırakır",
+        "featureCard": "Özellik tanıtımı için kullanılan kart örneği",
+        "cardComponent": "İçerik gruplandırma için kullanılan kart bileşeni",
+        "cardVariant": "Kart görünüm varyantı",
+        "hoverEffectType": "Hover efekti türü",
+        "checkboxComponent": "Seçim işlemleri için kullanılan checkbox bileşeni",
+        "checkboxFormGroup": "Form içinde checkbox grubu kullanımı",
+        "checkboxChecked": "Checkbox seçili mi (controlled)",
+        "defaultCheckedState": "Varsayılan seçili durumu (uncontrolled)",
+        "checkboxDisabled": "Checkbox devre dışı mı",
+        "statusChangeCallback": "Seçim durumu değiştiğinde çağırılan fonksiyon",
+        "dataTableComponent": "Gelişmiş tablo bileşeni. Sıralama, filtreleme ve sayfalama özellikleri",
+        "tableColumnDefinitions": "Tablo sütun tanımları",
+        "enablePagination": "Sayfalama özelliğini etkinleştir",
+        "enableRowSelection": "Satır seçimi özelliğini etkinleştir",
+        "enableGlobalSearch": "Global arama özelliğini etkinleştir",
+        "enableExport": "Dışa aktarma özelliğini etkinleştir",
+        "rowClickEvent": "Satır tıklama olayı",
+        "dataGridComponent": "Basit ve hızlı tablo bileşeni. Temel sıralama ve filtreleme",
+        "searchColumnKey": "Arama yapılacak sütun anahtarı",
+        "switchComponent": "Açma/kapama işlemleri için kullanılan toggle switch bileşeni",
+        "switchChecked": "Switch açık mı (controlled)",
+        "defaultOpenState": "Varsayılan açık durumu (uncontrolled)",
+        "switchDisabled": "Switch devre dışı mı",
+        "selectComponent": "Seçenekler arasından seçim yapmak için kullanılan dropdown bileşeni",
+        "selectedValue": "Seçili değer (controlled)",
+        "defaultSelectedValue": "Varsayılan seçili değer (uncontrolled)",
+        "selectionChangeCallback": "Seçim değiştiğinde çağırılan fonksiyon",
+        "disabledState": "Devre dışı durumu",
+        "textareaComponent": "Uzun metin girişi için kullanılan textarea bileşeni",
+        "autoResize": "Otomatik boyut ayarlama",
+        "maxCharacterCount": "Maksimum karakter sayısı",
+        "showCharacterCounter": "Karakter sayacını göster",
+        "dialogComponent": "Modal dialog bileşeni. Çeşitli içerikler için kullanılır",
+        "dialogOpenState": "Dialog açık/kapalı durumu",
+        "dialogStateChangeCallback": "Dialog durumu değiştiğinde çalışacak fonksiyon",
+        "editUserProfile": "Kullanıcı profil düzenleme",
+        "confirmationDialogs": "Onay dialog'ları",
+        "modalForms": "Modal formlar",
+        "dropdownComponent": "Açılır menü bileşeni. Çeşitli menü öğeleri içerir",
+        "menuOpenState": "Menü açık/kapalı durumu",
+        "menuStateChangeCallback": "Menü durumu değiştiğinde çalışacak fonksiyon",
+        "userMenus": "Kullanıcı menüleri",
+        "navigationDropdowns": "Navigasyon dropdown'ları",
+        "contextMenus": "Bağlam menüleri",
+        "actionMenus": "Aksiyon menüleri",
+        "inputComponent": "Metin girişi için kullanılan input bileşeni",
+        "inputValue": "Input değeri",
+        "inputDisabledState": "Input devre dışı durumu",
+        "loadingComponent": "Yüklenme durumları için kullanılan loading bileşenleri",
+        "pageLoadingStatus": "Sayfa yüklenme durumu",
+        "duringApiCalls": "API çağrıları sırasında",
+        "showWhileDataLoading": "Veri yüklenirken göster",
+        "progressComponent": "İlerleme çubuğu bileşeni. Görev ilerlemesini gösterir",
+        "progressValue": "İlerleme değeri (0-100)",
+        "fileUploadProgress": "Dosya yükleme ilerlemesi",
+        "taskProgress": "Görev ilerlemesi",
+        "formCompletionStatus": "Form tamamlanma durumu",
+        "skeletonComponent": "Yüklenme iskelet bileşenleri",
+        "skeletonWidth": "Skeleton genişliği",
+        "skeletonHeight": "Skeleton yüksekliği",
+        "showPlaceholderWhileDataLoads": "Veri yüklenirken placeholder göster",
+        "visualConsistencyWhileWaitingApi": "API beklerken görsel tutarlılık",
+        "pageTransitions": "Sayfa geçişleri",
+        "tabsComponent": "Sekme navigasyon bileşeni",
+        "defaultActiveTab": "Varsayılan aktif sekme",
+        "controlledActiveTab": "Kontrollü aktif sekme",
+        "tabChangeCallback": "Sekme değiştiğinde çalışacak fonksiyon",
+        "organizeFormFields": "Form alanlarını organize et",
+        "categorizedContent": "Kategorilendirilmiş içerik",
+        "navigationMenus": "Navigasyon menüleri",
+        "settingsPages": "Ayarlar sayfaları",
+        "sliderComponent": "Değer seçici kaydırıcı bileşeni",
+        "defaultValues": "Varsayılan değer(ler)",
+        "controlledValues": "Kontrollü değer(ler)",
+        "minimumValue": "Minimum değer",
+        "incrementAmount": "Artış miktarı",
+        "volumeBrightnessControls": "Ses/parlaklık kontrolleri",
+        "priceRangeSelection": "Fiyat aralığı seçimi",
+        "valueRangeDetermination": "Değer aralığı belirleme",
+        "separatorComponent": "Ayırıcı çizgi bileşeni",
+        "separatorDirection": "Ayırıcı yönü",
+        "separateContentSections": "İçerik bölümlerini ayır",
+        "separateDashboardSections": "Dashboard bölümlerini ayır",
+        "cardSectionSeparations": "Kart bölüm ayırımları",
+        "popoverComponent": "Açılır içerik kutusu bileşeni",
+        "popoverOpenState": "Popover açık/kapalı durumu",
+        "popoverStateChangeCallback": "Popover durumu değiştiğinde çalışacak fonksiyon",
+        "detailPopups": "Detay popup'ları",
+        "quickSettingsMenus": "Hızlı ayarlar menüleri",
+        "formHelperContent": "Form yardımcı içeriği",
+        "tooltipComponent": "Tooltip bileşeni. Ek bilgi gösterimi için kullanılır",
+        "tooltipContent": "Tooltip içeriği",
+        "tooltipAlignment": "Tooltip hizalaması",
+        "tooltipDisplayDelay": "Tooltip gösterim gecikmesi",
+        "tooltipDisabledState": "Tooltip devre dışı durumu",
+        "formFieldHelpTexts": "Form alanı yardım metinleri",
+        "buttonExplanations": "Buton açıklamaları",
+        "abbreviatedTextExplanations": "Kısaltılmış metin açıklamaları",
+        "explainIconMeanings": "İcon anlamlarını açıkla",
+        "improveUserExperience": "Kullanıcı deneyimini iyileştir",
+        "scrollAreaComponent": "Sınırlı yükseklikli içerik için kaydırma alanı bileşeni",
+        "limitedHeightContent": "Sınırlı yükseklikli içerik",
+        "longListDisplays": "Uzun liste gösterimleri",
+        "chatMessageHistory": "Sohbet mesaj geçmişi",
+        "productDescriptions": "Ürün açıklamaları",
+        "richTextComponent": "Zengin metin editörü bileşeni",
+        "contentChangeCallback": "İçerik değiştiğinde çağırılan fonksiyon",
+        "blogPosts": "Blog yazıları",
+        "emailEditors": "E-posta editörleri",
+        "richContentInComments": "Yorumlarda zengin içerik",
+        "datePickerComponent": "Tarih seçici bileşeni. Tek tarih seçimi için kullanılır",
+        "selectedDate": "Seçili tarih",
+        "dateChangeCallback": "Tarih değiştiğinde çağırılan fonksiyon",
+        "appointmentDateSelection": "Randevu tarihi seçimi",
+        "deadlineDetermination": "Son tarih belirleme",
+        "eventDateSelection": "Etkinlik tarihi seçimi",
+        "birthdateInput": "Doğum tarihi girişi",
+        "monthYearPickerComponent": "Ay/Yıl seçici bileşeni",
+        "selectedMonthYear": "Seçili ay/yıl",
+        "graduationDate": "Mezuniyet tarihi",
+        "workExperienceDates": "İş deneyimi tarihleri",
+        "creditCardExpirationDate": "Kredi kartı son kullanma tarihi",
+        "birthdateSelection": "Doğum tarihi seçimi",
+        "dateRangePickerComponent": "Tarih aralığı seçici bileşeni",
+        "selectedDateRange": "Seçili tarih aralığı",
+        "dateRangeChangeCallback": "Tarih aralığı değiştiğinde çağırılan fonksiyon",
+        "vacationDateRangeSelection": "Tatil tarihi aralığı seçimi",
+        "reservationDateSelection": "Rezervasyon tarihi seçimi",
+        "reportDateRange": "Rapor tarih aralığı",
+        "projectTimelinePlanning": "Proje zaman çizelgesi planlama",
+        "reportPeriodSelection": "Rapor dönemi seçimi",
+        "reservationDateRange": "Rezervasyon tarih aralığı",
+        "eventDateDetermination": "Etkinlik tarihi belirleme",
+        "reportPeriodDetermination": "Rapor dönemi belirleme",
+        "modernDatePickerComponent": "Modern tarih seçici bileşeni",
+        "formFields": "Form alanları",
+        "searchBoxes": "Arama kutuları",
+        "loginRegisterForms": "Giriş/kayıt formları",
+        "profileEditingForms": "Profil düzenleme formları",
+        "filteringOptions": "Filtreleme seçenekleri",
+        "optionLists": "Seçenek listeleri",
+        "getUserData": "Kullanıcı verisi al",
+        "valueChangeCallback": "Değer değişikliği callback fonksiyonu",
+        "maximumValue": "Maksimum değer",
+        "buttonLoadingStates": "Buton yüklenme durumları",
+        "groupMenuItems": "Grup menü öğeleri",
+        "showAdditionalInfo": "Ek bilgi göster",
+        "controlledContentValue": "Kontrollü içerik değeri"
+      },
+      "tooltips": {
+        "example": "Bu bir tooltip örneğidir",
+        "rightSide": "Bu tooltip sağ tarafta görünür",
+        "bottomSide": "Bu tooltip altta görünür",
+        "disabled": "Bu buton devre dışıdır"
+      },
+      "extraDescriptions": {
+        "inputType": "Input tipi (text, email, password, vb.)"
+      }
     },
     "content": {
       "accordion": {
         "personalInfo": "Kişisel Bilgiler",
-        "securitySettings": "Güvenlik Ayarları", 
+        "securitySettings": "Güvenlik Ayarları",
         "notificationPreferences": "Bildirim Tercihleri",
         "personalInfoDesc": "Ad, soyad, e-posta ve telefon bilgilerinizi bu bölümde güncelleyebilirsiniz. Değişiklikler anında kaydedilir.",
         "securitySettingsDesc": "Şifre değiştirme, iki faktörlü kimlik doğrulama ve güvenlik soruları ayarlarınız.",
@@ -418,7 +790,7 @@
         "projectReport": "Proje Raporu",
         "projectReportDesc": "Son hafta performans özeti ve analytics verileri.",
         "totalVisitors": "Toplam Ziyaretçi",
-        "newUsers": "Yeni Kullanıcı", 
+        "newUsers": "Yeni Kullanıcı",
         "conversionRate": "Dönüşüm Oranı",
         "premiumFeature": "Premium Özellik",
         "premiumFeatureDesc": "Gelişmiş analytics ve raporlama araçları",
@@ -431,13 +803,13 @@
         "formInput": "Form & Input",
         "feedback": "Geri Bildirim",
         "overlay": "Overlay",
-        "navigation": "Navigation", 
+        "navigation": "Navigation",
         "layout": "Layout"
       }
     },
     "descriptions": {
       "accordion": "Genişletilebilir içerik bölümleri için kullanılan accordion bileşeni. Framer Motion animasyonları ile gelişmiş kullanıcı deneyimi sunar.",
-      "alert": "Kullanıcılara önemli mesajları iletmek için kullanılan alert bileşeni. Farklı türlerde uyarılar gösterebilir.", 
+      "alert": "Kullanıcılara önemli mesajları iletmek için kullanılan alert bileşeni. Farklı türlerde uyarılar gösterebilir.",
       "alertDialog": "Kritik işlemler için onay alınan modal dialog bileşeni. Kullanıcı etkileşimi gerektirir.",
       "avatar": "Kullanıcı profil resimleri ve avatarları için kullanılan bileşen. Fallback ve farklı boyut seçenekleri sunar.",
       "badge": "Durum ve etiketleme için kullanılan badge bileşeni. Farklı varyant ve boyut seçenekleri sunar.",
@@ -448,13 +820,13 @@
     },
     "properties": {
       "singleMultipleMode": "Tek veya çoklu açılabilir mod",
-      "defaultOpenValues": "Varsayılan açık olan item değerleri", 
+      "defaultOpenValues": "Varsayılan açık olan item değerleri",
       "controlledOpenValues": "Controlled mod için açık olan item değerleri",
       "valueChangeCallback": "Değer değişikliği callback fonksiyonu",
       "alertVariant": "Alert görünüm varyantı",
       "dialogOpen": "Dialog açık mı (controlled)",
       "dialogOpenChangeCallback": "Dialog açık durumu değiştiğinde çağırılan fonksiyon",
-      "badgeVariant": "Badge görünüm varyantı", 
+      "badgeVariant": "Badge görünüm varyantı",
       "buttonVariant": "Buton görünüm varyantı",
       "additionalCssClasses": "Ek CSS sınıfları (w-full ile tam genişlik)",
       "disableButton": "Butonu devre dışı bırakır"
@@ -683,28 +1055,10 @@
         "eventDateSelection": "Etkinlik planlaması için tarih seçimi",
         "birthdateInput": "Doğum tarihi bilgisi için giriş alanı"
       },
-      "labels": {
-        "iconButtons": "Icon'lu Butonlar",
-        "edit": "Düzenle",
-        "searchByName": "İsme göre ara...",
-        "selectCountry": "Ülke seçin",
-        "characterCounter": "Karakter sayacı ile...",
-        "password": "Şifre...",
-        "disabledInput": "Devre dışı input",
-        "selectDate": "Tarih seçin...",
-        "selectMonthYear": "Ay/Yıl seçin...",
-        "richTextPlaceholder": "Zengin metin içeriği yazın...",
-        "richTextExample": "<p>Bu bir <strong>zengin metin</strong> örneğidir.</p>",
-        "selectDate": "Tarih seçin...",
-        "selectMonthYear": "Ay/Yıl seçin...",
-        "selectDateRange": "Tarih aralığı seçin...",
-        "start": "Başlangıç",
-        "end": "Bitiş"
-      },
       "tooltips": {
         "example": "Bu bir tooltip örneğidir",
         "rightSide": "Bu tooltip sağda görünür",
-        "bottomSide": "Bu tooltip altta görünür", 
+        "bottomSide": "Bu tooltip altta görünür",
         "disabled": "Devre dışı tooltip"
       },
       "missing": {
@@ -721,7 +1075,7 @@
         },
         "buttons": {
           "small": "Küçük",
-          "large": "Büyük", 
+          "large": "Büyük",
           "fullWidth": "Tam Genişlik",
           "openDialog": "Dialog Aç",
           "menu": "Menü",
@@ -736,7 +1090,7 @@
           "premiumFeature": "Premium Özellik",
           "premiumDesc": "Gelişmiş analytics ve raporlama araçları",
           "detailedAnalytics": "• Detaylı analytics",
-          "customReports": "• Özel raporlar", 
+          "customReports": "• Özel raporlar",
           "apiAccess": "• API erişimi"
         },
         "checkbox": {
@@ -784,7 +1138,7 @@
         "popover": {
           "openPopover": "Popover Aç",
           "adjustDimensions": "Bileşen boyutlarını ayarlayın.",
-          "width": "Genişlik", 
+          "width": "Genişlik",
           "height": "Yükseklik"
         },
         "datePicker": {
@@ -797,7 +1151,7 @@
       "labels": {
         "personalInfo": "Kişisel Bilgiler",
         "personalInfoDesc": "Ad, soyad, e-posta ve telefon bilgilerinizi bu bölümde güncelleyebilirsiniz.",
-        "securitySettings": "Güvenlik Ayarları", 
+        "securitySettings": "Güvenlik Ayarları",
         "securitySettingsDesc": "Şifre değiştirme, iki faktörlü kimlik doğrulama ayarları.",
         "notificationPreferences": "Bildirim Tercihleri",
         "section1": "Bölüm 1",
@@ -827,12 +1181,21 @@
         "characterCounter": "Karakter sayacı ile...",
         "password": "Şifre...",
         "disabledInput": "Devre dışı input",
-        "sampleName": "Ahmet Yılmaz"
+        "sampleName": "Ahmet Yılmaz",
+        "basicInput": "Temel input...",
+        "emailAddress": "E-posta adresi...",
+        "richTextPlaceholder": "Zengin metin içeriği yazın...",
+        "richTextExample": "<p>Bu bir <strong>zengin metin</strong> örneğidir.</p>",
+        "selectDate": "Tarih seçin...",
+        "selectMonthYear": "Ay/Yıl seçin...",
+        "selectDateRange": "Tarih aralığı seçin...",
+        "start": "Başlangıç",
+        "end": "Bitiş"
       },
       "extraDescriptions": {
         "inputType": "Input tipi (text, email, password, vb.)",
         "groupMenuItems": "Menü öğelerini grupla",
-        "showAdditionalInfo": "Ek bilgileri göster", 
+        "showAdditionalInfo": "Ek bilgileri göster",
         "explainIconMeanings": "İkon anlamlarını açıkla",
         "richContentInComments": "Yorumlarda zengin içerik",
         "birthdateInput": "Doğum tarihi girişi",
@@ -852,7 +1215,7 @@
         "dataGridComponent": "Gelişmiş veri tablosu",
         "tableColumnDefinitions": "Tablo sütun tanımları",
         "enablePagination": "Sayfalama etkinleştir",
-        "enableRowSelection": "Satır seçimi etkinleştir", 
+        "enableRowSelection": "Satır seçimi etkinleştir",
         "enableGlobalSearch": "Global arama etkinleştir",
         "enableExport": "Dışa aktarma etkinleştir",
         "rowClickEvent": "Satır tıklama olayı",
@@ -882,7 +1245,7 @@
         "optionLists": "Seçenek listeleri",
         "formFields": "Form alanları",
         "getUserData": "Kullanıcı verisi al",
-        "searchBoxes": "Arama kutuları", 
+        "searchBoxes": "Arama kutuları",
         "loginRegisterForms": "Giriş/kayıt formları",
         "inputDisabledState": "Input devre dışı durumu",
         "inputValue": "Input değeri",
@@ -892,7 +1255,7 @@
         "pageTransitions": "Sayfa geçişleri",
         "fileUploadProgress": "Dosya yükleme ilerlemesi",
         "formCompletionStatus": "Form tamamlama durumu",
-        "taskProgress": "Görev ilerlemesi", 
+        "taskProgress": "Görev ilerlemesi",
         "pageLoadingStatus": "Sayfa yükleme durumu",
         "progressValue": "İlerleme değeri",
         "maximumValue": "Maksimum değer",
@@ -922,10 +1285,7 @@
   "auth": {
     "signIn": "Giriş Yap",
     "signUp": "Kayıt Ol",
-    "login": "Giriş Yap",
     "logout": "Çıkış Yap",
-    "register": "Kayıt Ol",
-    "forgotPassword": "Şifremi Unuttum",
     "email": "E-posta",
     "password": "Şifre",
     "confirmPassword": "Şifre Tekrar",
@@ -1177,7 +1537,9 @@
     "profile": "Profil",
     "settings": "Ayarlar",
     "dashboard": "Kontrol Paneli",
+    "dashboardDescription": "Ana kontrol paneli ve genel bakış",
     "users": "Kullanıcılar",
+    "usersDescription": "Kullanıcı yönetimi ve listesi",
     "components": "Bileşenler",
     "about": "Hakkında",
     "contact": "İletişim",
@@ -1191,138 +1553,8 @@
     "quickLinks": "Hızlı Linkler",
     "legal": "Yasal",
     "madeWith": "Türkiye'de ❤️ ile yapıldı",
-    "language": "Dil Seçimi"
-  },
-  "pages": {
-    "home": {
-      "title": "Starkon'e Hoş Geldiniz",
-      "subtitle": "Modern React uygulamaları için tasarlanmış kapsamlı component kütüphanesi. Radix UI tabanlı, erişilebilir ve özelleştirilebilir komponentler.",
-      "getStarted": "Başlayın",
-      "learnMore": "Daha Fazla Bilgi",
-      "goToDashboard": "Dashboard'a Git",
-      "features": {
-        "title": "Özellikler",
-        "subtitle": "Starkon ile modern uygulamalar geliştirin",
-        "modern": {
-          "title": "Modern Tasarım",
-          "description": "Sea blue teması ile modern ve şık arayüzler oluşturun"
-        },
-        "performance": {
-          "title": "Performans",
-          "description": "Optimize edilmiş komponentler ile hızlı uygulamalar geliştirin"
-        },
-        "customizable": {
-          "title": "Özelleştirilebilir",
-          "description": "Tüm komponentler ihtiyaçlarınıza göre özelleştirilebilir"
-        }
-      },
-      "footer": {
-        "copyright": "© 2024 Starkon. Tüm hakları saklıdır."
-      }
-    },
-    "dashboard": {
-      "welcome": "Hoş Geldiniz, {{name}}!",
-      "description": "Bu sayfa sadece giriş yapmış kullanıcılar tarafından görülebilir.",
-      "viewProfile": "Profili Görüntüle",
-      "logout": "Çıkış Yap",
-      "userInfoNotLoaded": "Kullanıcı bilgileri yüklenemedi"
-    },
-    "components": {
-      "title": "Bileşenler",
-      "searchPlaceholder": "Bileşen ara... (Button, Input, Card...)",
-      "showcase": "Bileşen Vitrini",
-      "count": "Bileşenler ({{count}})"
-    },
-    "notFound": {
-      "title": "404",
-      "heading": "Sayfa Bulunamadı",
-      "description": "Aradığınız sayfa mevcut değil veya kaldırılmış olabilir.",
-      "goHome": "Ana Sayfaya Dön",
-      "goBack": "Geri Git"
-    },
-    "about": {
-      "title": "Hakkımızda",
-      "content": "Starkon ve misyonumuz hakkında daha fazla bilgi edinin."
-    },
-    "contact": {
-      "title": "İletişim",
-      "content": "Ekibimizle iletişime geçin."
-    },
-    "pricing": {
-      "title": "Fiyatlandırma",
-      "content": "Size uygun planı seçin."
-    },
-    "profile": {
-      "title": "Profil",
-      "content": "Profil bilgilerinizi yönetin."
-    },
-    "settings": {
-      "title": "Ayarlar",
-      "content": "Uygulama tercihlerinizi yapılandırın."
-    },
-    "users": {
-      "title": "Kullanıcılar",
-      "content": "Sistem kullanıcılarını yönetin."
-    },
-    "register": {
-      "title": "Kayıt Ol",
-      "content": "Yeni hesap oluşturun."
-    },
-    "forgotPassword": {
-      "title": "Şifremi Unuttum",
-      "content": "Şifrenizi sıfırlayın."
-    },
-    "contact": {
-      "title": "İletişim",
-      "subtitle": "Bizimle iletişime geçin",
-      "name": "Ad Soyad",
-      "namePlaceholder": "Adınız ve soyadınız",
-      "email": "E-posta",
-      "emailPlaceholder": "email@example.com",
-      "subject": "Konu",
-      "subjectPlaceholder": "Mesajınızın konusu",
-      "message": "Mesaj",
-      "messagePlaceholder": "Mesajınızı buraya yazın...",
-      "sendButton": "Mesaj Gönder",
-      "contactInfo": "İletişim Bilgileri",
-      "successMessage": "Mesajınız gönderildi! En kısa sürede size dönüş yapacağız.",
-      "privacy": "Tüm mesajlar gizli tutulur ve sadece gerekli kişilerle paylaşılır.",
-      "directContact": "Doğrudan iletişim:",
-      "loading": "Gönderiliyor...",
-      "error": "Mesaj gönderilemedi. Lütfen tekrar deneyin."
-    },
-    "support": {
-      "title": "Destek",
-      "subtitle": "Size nasıl yardımcı olabiliriz?",
-      "name": "Ad Soyad",
-      "namePlaceholder": "Adınız ve soyadınız",
-      "email": "E-posta",
-      "emailPlaceholder": "email@example.com",
-      "subject": "Konu",
-      "subjectPlaceholder": "Sorunun kısa açıklaması",
-      "message": "Mesaj",
-      "messagePlaceholder": "Sorununuzu detaylı açıklayın...",
-      "sendButton": "Destek Talebi Gönder",
-      "contactInfo": "Alternatif İletişim",
-      "successMessage": "Destek talebiniz alındı! En kısa sürede size dönüş yapacağız.",
-      "privacy": "Destek talebiniz gizli tutulur ve sadece teknik ekibimizle paylaşılır.",
-      "directContact": "Acil durumlar için doğrudan iletişim:",
-      "tip": "Destek talebinizde sorununuzu detaylı açıklarsanız, size daha hızlı yardımcı olabiliriz.",
-      "responseTime": "Genellikle 24 saat içerisinde e-posta ile yanıt veriyoruz.",
-      "loading": "Gönderiliyor...",
-      "error": "Destek talebi gönderilemedi. Lütfen tekrar deneyin."
-    },
-    "notFound": {
-      "title": "404",
-      "heading": "Sayfa Bulunamadı",
-      "description": "Aradığınız sayfa mevcut değil veya taşınmış olabilir.",
-      "goHome": "Ana Sayfaya Dön",
-      "goBack": "Geri Dön",
-      "searchHelp": "Aradığınızı bulamadınız mı?",
-      "about": "Hakkımızda",
-      "contact": "İletişim",
-      "components": "Bileşenler"
-    }
+    "language": "Dil Seçimi",
+    "menu": "Menü"
   },
   "language": {
     "title": "Dil",
@@ -1550,6 +1782,333 @@
           "title": "İletişim",
           "content": "Gizlilik politikamız veya veri işleme uygulamalarımız hakkında sorularınız varsa bizimle iletişime geçebilirsiniz:"
         }
+      }
+    }
+  },
+  "user": {
+    "defaultName": "Kullanıcı",
+    "profile": "Profil",
+    "settings": "Ayarlar",
+    "logout": "Çıkış Yap"
+  },
+  "pages": {
+    "home": {
+      "title": "Starkon'e Hoş Geldiniz",
+      "subtitle": "Modern React uygulamaları için tasarlanmış kapsamlı component kütüphanesi. Radix UI tabanlı, erişilebilir ve özelleştirilebilir komponentler.",
+      "getStarted": "Başlayın",
+      "learnMore": "Daha Fazla Bilgi",
+      "goToDashboard": "Dashboard'a Git",
+      "features": {
+        "title": "Özellikler",
+        "subtitle": "Starkon ile modern uygulamalar geliştirin",
+        "modern": {
+          "title": "Modern Tasarım",
+          "description": "Sea blue teması ile modern ve şık arayüzler oluşturun"
+        },
+        "performance": {
+          "title": "Performans",
+          "description": "Optimize edilmiş komponentler ile hızlı uygulamalar geliştirin"
+        },
+        "customizable": {
+          "title": "Özelleştirilebilir",
+          "description": "Tüm komponentler ihtiyaçlarınıza göre özelleştirilebilir"
+        }
+      },
+      "stats": {
+        "components": "Bileşen",
+        "accessible": "Erişilebilir",
+        "openSource": "Açık Kaynak"
+      },
+      "cta": {
+        "title": "Hemen Başlayın",
+        "description": "Modern React uygulamanızı oluşturmaya bugün başlayın. Starkon ile hızlı ve güvenilir geliştirme deneyimi yaşayın.",
+        "viewOnGithub": "GitHub'da İncele"
+      },
+      "footer": {
+        "copyright": "© 2024 Starkon. Tüm hakları saklıdır."
+      }
+    },
+    "components": {
+      "title": "Bileşenler",
+      "searchPlaceholder": "Bileşen ara... (Button, Input, Card...)",
+      "showcase": "Bileşen Vitrini",
+      "count": "Bileşenler ({{count}})"
+    },
+    "notFound": {
+      "title": "404",
+      "heading": "Sayfa Bulunamadı",
+      "description": "Aradığınız sayfa mevcut değil veya kaldırılmış olabilir.",
+      "goHome": "Ana Sayfaya Dön",
+      "goBack": "Geri Git"
+    },
+    "about": {
+      "title": "Hakkımızda",
+      "content": "Starkon ve misyonumuz hakkında daha fazla bilgi edinin."
+    },
+    "contact": {
+      "title": "İletişim",
+      "content": "Ekibimizle iletişime geçin.",
+      "subtitle": "Bizimle iletişime geçin",
+      "name": "Ad Soyad",
+      "namePlaceholder": "Adınız ve soyadınız",
+      "email": "E-posta",
+      "emailPlaceholder": "email@example.com",
+      "subject": "Konu",
+      "subjectPlaceholder": "Mesajınızın konusu",
+      "message": "Mesaj",
+      "messagePlaceholder": "Mesajınızı buraya yazın...",
+      "sendButton": "Mesaj Gönder",
+      "contactInfo": "İletişim Bilgileri",
+      "successMessage": "Mesajınız gönderildi! En kısa sürede size dönüş yapacağız.",
+      "privacy": "Tüm mesajlar gizli tutulur ve sadece gerekli kişilerle paylaşılır.",
+      "directContact": "Doğrudan iletişim:",
+      "loading": "Gönderiliyor...",
+      "error": "Mesaj gönderilemedi. Lütfen tekrar deneyin."
+    },
+    "pricing": {
+      "title": "Fiyatlandırma",
+      "content": "Size uygun planı seçin."
+    },
+    "users": {
+      "title": "Kullanıcılar",
+      "content": "Sistem kullanıcılarını yönetin."
+    },
+    "register": {
+      "title": "Kayıt Ol",
+      "content": "Yeni hesap oluşturun."
+    },
+    "forgotPassword": {
+      "title": "Şifremi Unuttum",
+      "content": "Şifrenizi sıfırlayın."
+    },
+    "support": {
+      "title": "Destek",
+      "subtitle": "Size nasıl yardımcı olabiliriz?",
+      "name": "Ad Soyad",
+      "namePlaceholder": "Adınız ve soyadınız",
+      "email": "E-posta",
+      "emailPlaceholder": "email@example.com",
+      "subject": "Konu",
+      "subjectPlaceholder": "Sorunun kısa açıklaması",
+      "message": "Mesaj",
+      "messagePlaceholder": "Sorununuzu detaylı açıklayın...",
+      "sendButton": "Destek Talebi Gönder",
+      "contactInfo": "Alternatif İletişim",
+      "successMessage": "Destek talebiniz alındı! En kısa sürede size dönüş yapacağız.",
+      "privacy": "Destek talebiniz gizli tutulur ve sadece teknik ekibimizle paylaşılır.",
+      "directContact": "Acil durumlar için doğrudan iletişim:",
+      "tip": "Destek talebinizde sorununuzu detaylı açıklarsanız, size daha hızlı yardımcı olabiliriz.",
+      "responseTime": "Genellikle 24 saat içerisinde e-posta ile yanıt veriyoruz.",
+      "loading": "Gönderiliyor...",
+      "error": "Destek talebi gönderilemedi. Lütfen tekrar deneyin."
+    },
+    "settings": {
+      "boilerplateDemo": "Boilerplate Demo",
+      "title": "Ayarlar",
+      "description": "Hesap ayarlarınızı yönetin ve deneyiminizi kişiselleştirin.",
+      "unsavedChanges": "Kaydedilmemiş Değişiklikler",
+      "tabs": {
+        "profile": "Profil",
+        "notifications": "Bildirimler",
+        "notificationsShort": "Bildirim",
+        "privacy": "Gizlilik",
+        "appearance": "Görünüm",
+        "security": "Güvenlik"
+      },
+      "profile": {
+        "title": "Profil Bilgileri",
+        "description": "Profil bilgilerinizi güncelleyin ve görünümünüzü düzenleyin.",
+        "uploadPhoto": "Fotoğraf Yükle",
+        "removePhoto": "Fotoğrafı Kaldır",
+        "photoRequirements": "JPG, GIF veya PNG. Maksimum 2MB.",
+        "fullNameLabel": "Ad Soyad *",
+        "fullNamePlaceholder": "Adınızı ve soyadınızı girin",
+        "usernameLabel": "Kullanıcı Adı *",
+        "usernamePlaceholder": "kullanici_adi",
+        "emailLabel": "E-posta *",
+        "emailPlaceholder": "email@example.com",
+        "phoneLabel": "Telefon",
+        "phonePlaceholder": "+90 555 123 45 67",
+        "websiteLabel": "Website",
+        "websitePlaceholder": "https://website.com",
+        "locationLabel": "Konum",
+        "locationPlaceholder": "İstanbul, Türkiye",
+        "bioLabel": "Biyografi",
+        "bioPlaceholder": "Kendinizden bahsedin...",
+        "bioNote": "Maksimum 160 karakter"
+      },
+      "notifications": {
+        "title": "Bildirim Tercihleri",
+        "description": "Hangi bildirimleri almak istediğinizi seçin.",
+        "emailNotifications": "E-posta Bildirimleri",
+        "emailNotificationsDesc": "Genel e-posta bildirimlerini alın",
+        "securityAlerts": "Güvenlik uyarıları",
+        "securityAlertsDesc": "Hesap güvenliği ile ilgili önemli bildirimleri alın",
+        "productUpdates": "Ürün güncellemeleri",
+        "productUpdatesDesc": "Yeni özellikler ve güncellemeler hakkında bilgi alın",
+        "marketingEmails": "Pazarlama e-postaları",
+        "marketingEmailsDesc": "Özel teklifler ve kampanyalar hakkında bilgi alın",
+        "weeklyDigest": "Haftalık özet",
+        "weeklyDigestDesc": "Haftalık aktivite özetini e-posta ile alın",
+        "instantNotifications": "Anlık Bildirimler",
+        "pushNotifications": "Push bildirimleri",
+        "pushNotificationsDesc": "Tarayıcı bildirimleri alın",
+        "smsNotifications": "SMS bildirimleri",
+        "smsNotificationsDesc": "Önemli güncellemeler için SMS alın"
+      },
+      "privacy": {
+        "title": "Gizlilik Ayarları",
+        "description": "Gizlilik tercihlerinizi yönetin ve verilerinizi kontrol edin.",
+        "profileVisibilityLabel": "Profil Görünürlüğü",
+        "profileVisibilityDesc": "Profilinizi kimlerin görebileceğini seçin",
+        "profileVisibilityPublic": "Herkese Açık",
+        "profileVisibilityFriends": "Sadece Arkadaşlar",
+        "profileVisibilityPrivate": "Özel",
+        "dataManagement": "Veri Yönetimi",
+        "downloadData": "Verilerimi İndir",
+        "deleteAccount": "Hesabı Sil",
+        "dataManagementDesc": "Tüm kişisel verilerinizi JSON formatında indirebilir veya hesabınızı kalıcı olarak silebilirsiniz."
+      },
+      "security": {
+        "title": "Güvenlik Ayarları",
+        "description": "Hesap güvenliğinizi yönetin ve koruma ayarlarını düzenleyin.",
+        "passwordAndSession": "Şifre ve Oturum",
+        "changePassword": "Şifre Değiştir",
+        "endAllSessions": "Tüm Oturumları Sonlandır",
+        "lastPasswordChange": "Son şifre değişikliği: 30 gün önce",
+        "activeSessions": "Aktif oturum sayısı: 3 cihaz",
+        "twoFactorAuth": "İki Faktörlü Doğrulama (2FA)",
+        "enable2FA": "2FA Etkinleştir",
+        "twoFactorDesc": "Hesabınız için ek güvenlik katmanı ekleyin",
+        "twoFactorActive": "2FA aktif",
+        "twoFactorConfigured": "Google Authenticator ile yapılandırılmış"
+      },
+      "appearance": {
+        "title": "Görünüm Ayarları",
+        "description": "Uygulamanın görünümünü ve davranışını kişiselleştirin.",
+        "displaySettings": "Görüntüleme Ayarları",
+        "compactMode": "Kompakt mod",
+        "compactModeDesc": "Daha fazla içerik görmek için sıkıştırılmış görünüm",
+        "reduceAnimations": "Animasyonları azalt",
+        "reduceAnimationsDesc": "Performans için animasyonları sınırla"
+      },
+      "passwordDialog": {
+        "title": "Şifre Değiştir",
+        "description": "Hesabınızın güvenliği için güçlü bir şifre seçin.",
+        "currentPasswordLabel": "Mevcut Şifre",
+        "currentPasswordPlaceholder": "Mevcut şifrenizi girin",
+        "newPasswordLabel": "Yeni Şifre",
+        "newPasswordPlaceholder": "Yeni şifrenizi girin",
+        "confirmPasswordLabel": "Yeni Şifre (Tekrar)",
+        "confirmPasswordPlaceholder": "Yeni şifrenizi tekrar girin",
+        "passwordRequirements": "Şifreniz en az:",
+        "requirement1": "8 karakter uzunluğunda olmalı",
+        "requirement2": "Büyük ve küçük harf içermeli",
+        "requirement3": "En az bir rakam içermeli",
+        "requirement4": "En az bir özel karakter içermeli",
+        "cancel": "İptal",
+        "change": "Şifreyi Değiştir",
+        "mismatchError": "Yeni şifreler eşleşmiyor!"
+      },
+      "deleteDialog": {
+        "title": "Hesabı Kalıcı Olarak Sil",
+        "warning": "Bu işlem geri alınamaz. Hesabınızı sildiğinizde:",
+        "consequence1": "Tüm kişisel verileriniz kalıcı olarak silinecek",
+        "consequence2": "Profil bilgileriniz ve içerikleriniz kaldırılacak",
+        "consequence3": "Bu hesapla ilişkili tüm abonelikler iptal edilecek",
+        "consequence4": "Bu işlem geri alınamayacak",
+        "confirmation": "Devam etmek istediğinizden emin misiniz?",
+        "cancel": "İptal",
+        "confirm": "Evet, Hesabı Sil"
+      }
+    },
+    "profile": {
+      "boilerplateDemo": "Boilerplate Demo",
+      "title": "Profil",
+      "description": "Profil bilgilerinizi görüntüleyin ve düzenleyin.",
+      "editProfile": "Profili Düzenle",
+      "bio": "Biyografi",
+      "bioPlaceholder": "Kendinizden bahsedin...",
+      "defaultBio": "Henüz biyografi eklenmemiş.",
+      "joinedDate": "Katılım: {{date}}",
+      "location": "Konum",
+      "locationPlaceholder": "Konum girin",
+      "phone": "Telefon",
+      "phonePlaceholder": "Telefon numarası girin",
+      "company": "Şirket",
+      "companyPlaceholder": "Şirket adı girin",
+      "website": "Website",
+      "websitePlaceholder": "Website URL'i girin",
+      "notSpecified": "Belirtilmemiş",
+      "socialLinks": "Sosyal Bağlantılar",
+      "quickActions": "Hızlı Eylemler",
+      "recentActivity": "Son Aktiviteler",
+      "stats": {
+        "title": "İstatistikler",
+        "projectsCompleted": "Tamamlanan Projeler",
+        "totalHours": "Toplam Saat",
+        "teamMembers": "Takım Üyeleri",
+        "achievements": "Başarımlar"
+      },
+      "details": {
+        "title": "Profil Detayları"
+      },
+      "actions": {
+        "editProfile": "Profili Düzenle",
+        "editProfileDesc": "Profil bilgilerinizi güncelleyin",
+        "security": "Güvenlik",
+        "securityDesc": "Şifre ve güvenlik ayarları",
+        "notifications": "Bildirimler",
+        "notificationsDesc": "Bildirim tercihlerinizi yönetin",
+        "preferences": "Tercihler",
+        "preferencesDesc": "Uygulama tercihlerinizi ayarlayın"
+      },
+      "activities": {
+        "profileUpdated": "Profil güncellendi",
+        "loginSuccess": "Başarıyla giriş yapıldı",
+        "passwordChanged": "Şifre değiştirildi"
+      }
+    },
+    "dashboard": {
+      "boilerplateProject": "Boilerplate Projesi",
+      "welcomeToStarkon": "Starkon Template'e Hoş Geldiniz",
+      "boilerplateDescription": "Modern ve özellik açısından zengin bir Next.js boilerplate'i. Hazır UI bileşenleri, güçlü authentication sistemi ve daha fazlasıyla projelerinizi hızla başlatın.",
+      "defaultUser": "Varsayılan Kullanıcı",
+      "userInfoNotLoaded": "Kullanıcı bilgileri yüklenmedi",
+      "debugAuthState": "Auth durumunu debug et",
+      "getStarted": "Başlayın",
+      "installationTitle": "Hemen Kurulum Yapın",
+      "installationDescription": "Bu boilerplate'i kullanarak yeni projenizi dakikalar içinde başlatabilirsiniz.",
+      "installationSteps": "Kurulum Adımları",
+      "step1Title": "Projeyi Oluşturun",
+      "step1Description": "CLI aracımız ile yeni bir proje oluşturun",
+      "step2Title": "Geliştirme Sunucusunu Başlatın",
+      "step2Description": "Projeye girin ve development server'ı çalıştırın",
+      "step3Title": "Geliştirmeye Başlayın",
+      "step3Description": "Artık kodlamaya başlayabilir ve özelleştirmeler yapabilirsiniz",
+      "whatYouGet": "Neler Elde Edeceksiniz",
+      "exploreComponents": "Bileşenleri Keşfedin",
+      "viewOnGithub": "GitHub'da Görüntüle",
+      "freeAndOpenSource": "Ücretsiz ve açık kaynak",
+      "features": {
+        "components": "UI Bileşenleri",
+        "componentsDesc": "Hazır ve özelleştirilebilir UI bileşenleri",
+        "readyToUse": "Kullanıma Hazır",
+        "readyToUseDesc": "Tüm bileşenler test edilmiş ve kullanıma hazır",
+        "typescript": "TypeScript",
+        "typescriptDesc": "Tam TypeScript desteği ile tip güvenliği",
+        "performance": "Yüksek Performans",
+        "performanceDesc": "Optimize edilmiş ve hızlı kullanıcı deneyimi"
+      },
+      "preview": {
+        "components": "30+ UI Bileşeni",
+        "componentsDesc": "Button, Card, Form gibi hazır bileşenler",
+        "typescript": "Full TypeScript",
+        "typescriptDesc": "Tip güvenliği ve IntelliSense desteği",
+        "performance": "Yüksek Performans",
+        "performanceDesc": "Next.js 15 ile optimize edilmiş performans",
+        "authentication": "Authentication Sistemi",
+        "authenticationDesc": "JWT tabanlı güvenli giriş sistemi"
       }
     }
   }

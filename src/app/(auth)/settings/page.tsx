@@ -6,8 +6,10 @@ import { useTranslation } from 'react-i18next'
 import {
   X,
   Eye,
+  Zap,
   Key,
   User,
+  Star,
   Bell,
   Save,
   Lock,
@@ -16,9 +18,9 @@ import {
   Trash2,
   EyeOff,
   Palette,
+  Package,
   Download,
   RefreshCw,
-  Smartphone,
   AlertTriangle,
 } from 'lucide-react'
 
@@ -171,7 +173,7 @@ export default function SettingsPage() {
 
   const handlePasswordChange = () => {
     if (passwordData.newPassword !== passwordData.confirmPassword) {
-      alert('Yeni şifreler eşleşmiyor!')
+      alert(t('pages.settings.passwordDialog.mismatchError'))
       return
     }
     console.log('Changing password...')
@@ -193,667 +195,579 @@ export default function SettingsPage() {
   }
 
   return (
-    <div className='min-h-screen'>
-      <div className='container mx-auto px-4 py-8'>
-        <div className='max-w-4xl mx-auto space-y-8'>
+    <div className='min-h-screen bg-gradient-to-br from-neutral-50 to-neutral-100 dark:from-neutral-900 dark:to-neutral-800'>
+      <div className='container mx-auto px-4 py-6 lg:py-8'>
+        <div className='max-w-5xl mx-auto space-y-6 lg:space-y-8'>
           {/* Page Header */}
-          <div className='space-y-4'>
-            <div className='flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4'>
-              <div className='space-y-2'>
-                <h1 className='text-3xl font-bold text-neutral-900 dark:text-neutral-50'>{t('navigation.settings')}</h1>
-                <p className='text-neutral-600 dark:text-neutral-400'>Hesap ayarlarınızı ve tercihlerinizi yönetin</p>
-              </div>
-              {hasUnsavedChanges && (
-                <div className='flex items-center gap-3'>
-                  <Badge variant='outline' className='text-amber-600 border-amber-200 bg-amber-50 dark:bg-amber-950/20'>
-                    Kaydedilmemiş değişiklikler
-                  </Badge>
-                  <Button onClick={handleSaveChanges} className='flex items-center gap-2'>
-                    <Save className='h-4 w-4' />
-                    Kaydet
-                  </Button>
-                </div>
-              )}
+          <div className='text-center space-y-4'>
+            <div className='inline-flex items-center gap-2 bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-950/30 dark:to-red-950/30 px-4 py-2 rounded-full border border-orange-200/50 dark:border-orange-800/50 mb-4'>
+              <Package className='h-4 w-4 text-orange-600 dark:text-orange-400' />
+              <span className='text-sm font-medium text-orange-700 dark:text-orange-300'>
+                {t('pages.settings.boilerplateDemo')}
+              </span>
             </div>
+            <h1 className='text-3xl lg:text-4xl font-bold bg-gradient-to-r from-neutral-900 to-neutral-600 dark:from-neutral-100 dark:to-neutral-400 bg-clip-text text-transparent'>
+              {t('pages.settings.title')}
+            </h1>
+            <p className='text-neutral-600 dark:text-neutral-400 text-lg max-w-2xl mx-auto'>
+              {t('pages.settings.description')}
+            </p>
+            {hasUnsavedChanges && (
+              <div className='inline-flex items-center gap-3 bg-gradient-to-r from-amber-50 to-yellow-50 dark:from-amber-950/30 dark:to-yellow-950/30 px-6 py-3 rounded-2xl border border-amber-200/50 dark:border-amber-800/50 shadow-lg'>
+                <div className='flex items-center gap-2'>
+                  <div className='w-2 h-2 bg-amber-500 rounded-full animate-pulse'></div>
+                  <Badge
+                    variant='outline'
+                    className='text-amber-600 border-amber-300 bg-amber-50 dark:bg-amber-950/20 font-medium'
+                  >
+                    {t('pages.settings.unsavedChanges')}
+                  </Badge>
+                </div>
+                <Button
+                  onClick={handleSaveChanges}
+                  className='bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white shadow-lg'
+                >
+                  <Save className='h-4 w-4 mr-2' />
+                  {t('common.save')}
+                </Button>
+              </div>
+            )}
           </div>
 
           {/* Settings Tabs */}
-          <Tabs value={activeTab} onValueChange={setActiveTab} className='space-y-6'>
-            <TabsList className='w-full h-auto p-1 bg-white/70 dark:bg-neutral-800/70 backdrop-blur-sm border border-neutral-200/50 dark:border-neutral-700/50 rounded-xl grid grid-cols-2 sm:grid-cols-5 gap-1'>
+          <Tabs value={activeTab} onValueChange={setActiveTab} className='space-y-8'>
+            <TabsList className='w-full h-auto p-2 bg-white/80 dark:bg-neutral-800/80 backdrop-blur-sm border-0 shadow-xl rounded-2xl grid grid-cols-2 sm:grid-cols-5 gap-2'>
               <TabsTrigger
                 value='profile'
-                className='flex flex-col sm:flex-row items-center gap-1 sm:gap-2 py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm font-medium data-[state=active]:bg-white dark:data-[state=active]:bg-neutral-700 data-[state=active]:shadow-sm rounded-lg h-auto whitespace-nowrap'
+                className='group flex flex-col sm:flex-row items-center gap-1 sm:gap-2 py-3 sm:py-4 px-3 sm:px-4 text-xs sm:text-sm font-medium data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white data-[state=active]:shadow-lg rounded-xl h-auto whitespace-nowrap transition-all hover:scale-105'
               >
-                <User className='h-4 w-4' />
-                <span>Profil</span>
+                <User className='h-4 w-4 group-data-[state=active]:text-white' />
+                <span>{t('pages.settings.tabs.profile')}</span>
               </TabsTrigger>
 
               <TabsTrigger
                 value='notifications'
-                className='flex flex-col sm:flex-row items-center gap-1 sm:gap-2 py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm font-medium data-[state=active]:bg-white dark:data-[state=active]:bg-neutral-700 data-[state=active]:shadow-sm rounded-lg h-auto whitespace-nowrap'
+                className='group flex flex-col sm:flex-row items-center gap-1 sm:gap-2 py-3 sm:py-4 px-3 sm:px-4 text-xs sm:text-sm font-medium data-[state=active]:bg-gradient-to-r data-[state=active]:from-green-500 data-[state=active]:to-emerald-500 data-[state=active]:text-white data-[state=active]:shadow-lg rounded-xl h-auto whitespace-nowrap transition-all hover:scale-105'
               >
-                <Bell className='h-4 w-4' />
-                <span className='hidden xs:block sm:hidden md:block'>Bildirimler</span>
-                <span className='xs:hidden sm:block md:hidden'>Bildirim</span>
+                <Bell className='h-4 w-4 group-data-[state=active]:text-white' />
+                <span className='hidden xs:block sm:hidden md:block'>{t('pages.settings.tabs.notifications')}</span>
+                <span className='xs:hidden sm:block md:hidden'>{t('pages.settings.tabs.notificationsShort')}</span>
               </TabsTrigger>
 
               <TabsTrigger
                 value='privacy'
-                className='flex flex-col sm:flex-row items-center gap-1 sm:gap-2 py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm font-medium data-[state=active]:bg-white dark:data-[state=active]:bg-neutral-700 data-[state=active]:shadow-sm rounded-lg h-auto whitespace-nowrap'
+                className='group flex flex-col sm:flex-row items-center gap-1 sm:gap-2 py-3 sm:py-4 px-3 sm:px-4 text-xs sm:text-sm font-medium data-[state=active]:bg-gradient-to-r data-[state=active]:from-indigo-500 data-[state=active]:to-blue-500 data-[state=active]:text-white data-[state=active]:shadow-lg rounded-xl h-auto whitespace-nowrap transition-all hover:scale-105'
               >
-                <Shield className='h-4 w-4' />
-                <span>Gizlilik</span>
+                <Shield className='h-4 w-4 group-data-[state=active]:text-white' />
+                <span>{t('pages.settings.tabs.privacy')}</span>
               </TabsTrigger>
 
               <TabsTrigger
                 value='appearance'
-                className='flex flex-col sm:flex-row items-center gap-1 sm:gap-2 py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm font-medium data-[state=active]:bg-white dark:data-[state=active]:bg-neutral-700 data-[state=active]:shadow-sm rounded-lg h-auto whitespace-nowrap'
+                className='group flex flex-col sm:flex-row items-center gap-1 sm:gap-2 py-3 sm:py-4 px-3 sm:px-4 text-xs sm:text-sm font-medium data-[state=active]:bg-gradient-to-r data-[state=active]:from-pink-500 data-[state=active]:to-rose-500 data-[state=active]:text-white data-[state=active]:shadow-lg rounded-xl h-auto whitespace-nowrap transition-all hover:scale-105'
               >
-                <Palette className='h-4 w-4' />
-                <span>Görünüm</span>
+                <Palette className='h-4 w-4 group-data-[state=active]:text-white' />
+                <span>{t('pages.settings.tabs.appearance')}</span>
               </TabsTrigger>
 
               <TabsTrigger
                 value='security'
-                className='flex flex-col sm:flex-row items-center gap-1 sm:gap-2 py-2 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm font-medium data-[state=active]:bg-white dark:data-[state=active]:bg-neutral-700 data-[state=active]:shadow-sm rounded-lg h-auto whitespace-nowrap col-span-2 sm:col-span-1'
+                className='group flex flex-col sm:flex-row items-center gap-1 sm:gap-2 py-3 sm:py-4 px-3 sm:px-4 text-xs sm:text-sm font-medium data-[state=active]:bg-gradient-to-r data-[state=active]:from-red-500 data-[state=active]:to-orange-500 data-[state=active]:text-white data-[state=active]:shadow-lg rounded-xl h-auto whitespace-nowrap col-span-2 sm:col-span-1 transition-all hover:scale-105'
               >
-                <Key className='h-4 w-4' />
-                <span>Güvenlik</span>
+                <Key className='h-4 w-4 group-data-[state=active]:text-white' />
+                <span>{t('pages.settings.tabs.security')}</span>
               </TabsTrigger>
             </TabsList>
 
             {/* Profile Settings */}
             <TabsContent value='profile' className='space-y-6'>
-              <Card className='bg-white/70 dark:bg-neutral-800/70 backdrop-blur-sm border-neutral-200/80 dark:border-neutral-700/50'>
-                <CardHeader>
-                  <CardTitle className='flex items-center gap-2'>
-                    <User className='h-5 w-5' />
-                    Profil Bilgileri
-                  </CardTitle>
-                  <CardDescription>Kişisel bilgilerinizi ve profil ayarlarınızı güncelleyin</CardDescription>
-                </CardHeader>
-                <CardContent className='space-y-6'>
-                  {/* Avatar Section */}
-                  <div className='flex flex-col sm:flex-row items-start sm:items-center gap-4'>
-                    <Avatar className='h-20 w-20'>
-                      <AvatarFallback className='bg-primary-50 dark:bg-primary-950/30 text-primary-600 dark:text-primary-400 text-2xl'>
-                        {getInitials(profileData.name || 'U U')}
-                      </AvatarFallback>
-                    </Avatar>
-                    <div className='space-y-2'>
-                      <div className='flex flex-col sm:flex-row gap-2'>
-                        <Button variant='outline' size='sm'>
-                          Fotoğraf Yükle
-                        </Button>
-                        <Button variant='ghost' size='sm' className='text-red-600'>
-                          Kaldır
-                        </Button>
+              <Card className='bg-white/80 dark:bg-neutral-800/80 backdrop-blur-sm border-0 shadow-xl overflow-hidden'>
+                <div className='absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-pink-500/5 pointer-events-none'></div>
+                <div className='relative'>
+                  <CardHeader>
+                    <CardTitle className='flex items-center gap-3'>
+                      <div className='p-2 bg-gradient-to-br from-blue-500 to-purple-500 rounded-lg'>
+                        <User className='h-5 w-5 text-white' />
                       </div>
-                      <p className='text-xs text-neutral-500 dark:text-neutral-400'>JPG, PNG veya GIF. Maksimum 2MB.</p>
+                      <span>{t('pages.settings.profile.title')}</span>
+                    </CardTitle>
+                    <CardDescription>{t('pages.settings.profile.description')}</CardDescription>
+                  </CardHeader>
+                  <CardContent className='space-y-6'>
+                    {/* Avatar Section */}
+                    <div className='flex flex-col sm:flex-row items-start sm:items-center gap-6'>
+                      <div className='relative group'>
+                        <Avatar className='h-24 w-24 border-4 border-white dark:border-neutral-700 shadow-xl bg-gradient-to-br from-blue-500 to-purple-500'>
+                          <AvatarFallback className='bg-transparent text-white text-3xl font-bold'>
+                            {getInitials(profileData.name || 'U U')}
+                          </AvatarFallback>
+                        </Avatar>
+                        <div className='absolute -bottom-2 -right-2 p-2 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full shadow-lg group-hover:scale-110 transition-transform'>
+                          <Star className='h-3 w-3 text-white' />
+                        </div>
+                      </div>
+                      <div className='space-y-3'>
+                        <div className='flex flex-col sm:flex-row gap-2'>
+                          <Button
+                            className='bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white shadow-lg'
+                            size='sm'
+                          >
+                            <Zap className='h-4 w-4 mr-2' />
+                            {t('pages.settings.profile.uploadPhoto')}
+                          </Button>
+                          <Button
+                            variant='outline'
+                            size='sm'
+                            className='text-red-600 border-red-200 hover:bg-red-50 dark:border-red-800 dark:hover:bg-red-950/20'
+                          >
+                            {t('pages.settings.profile.removePhoto')}
+                          </Button>
+                        </div>
+                        <p className='text-xs text-neutral-500 dark:text-neutral-400'>
+                          {t('pages.settings.profile.photoRequirements')}
+                        </p>
+                      </div>
                     </div>
-                  </div>
 
-                  <Separator />
+                    <Separator />
 
-                  {/* Profile Form */}
-                  <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
-                    <div className='space-y-2'>
-                      <label className='text-sm font-medium text-neutral-700 dark:text-neutral-300'>Ad Soyad *</label>
-                      <Input
-                        value={profileData.name}
-                        onChange={(e) => handleProfileChange('name', e.target.value)}
-                        placeholder='Adınızı ve soyadınızı girin'
-                      />
+                    {/* Profile Form */}
+                    <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+                      <div className='space-y-2'>
+                        <label className='text-sm font-medium text-neutral-700 dark:text-neutral-300'>
+                          {t('pages.settings.profile.fullNameLabel')}
+                        </label>
+                        <Input
+                          value={profileData.name}
+                          onChange={(e) => handleProfileChange('name', e.target.value)}
+                          placeholder={t('pages.settings.profile.fullNamePlaceholder')}
+                        />
+                      </div>
+
+                      <div className='space-y-2'>
+                        <label className='text-sm font-medium text-neutral-700 dark:text-neutral-300'>
+                          {t('pages.settings.profile.usernameLabel')}
+                        </label>
+                        <Input
+                          value={profileData.username}
+                          onChange={(e) => handleProfileChange('username', e.target.value)}
+                          placeholder={t('pages.settings.profile.usernamePlaceholder')}
+                        />
+                      </div>
+
+                      <div className='space-y-2'>
+                        <label className='text-sm font-medium text-neutral-700 dark:text-neutral-300'>
+                          {t('pages.settings.profile.emailLabel')}
+                        </label>
+                        <Input
+                          type='email'
+                          value={profileData.email}
+                          onChange={(e) => handleProfileChange('email', e.target.value)}
+                          placeholder={t('pages.settings.profile.emailPlaceholder')}
+                        />
+                      </div>
+
+                      <div className='space-y-2'>
+                        <label className='text-sm font-medium text-neutral-700 dark:text-neutral-300'>
+                          {t('pages.settings.profile.phoneLabel')}
+                        </label>
+                        <Input
+                          value={profileData.phone}
+                          onChange={(e) => handleProfileChange('phone', e.target.value)}
+                          placeholder={t('pages.settings.profile.phonePlaceholder')}
+                        />
+                      </div>
+
+                      <div className='space-y-2'>
+                        <label className='text-sm font-medium text-neutral-700 dark:text-neutral-300'>
+                          {t('pages.settings.profile.websiteLabel')}
+                        </label>
+                        <Input
+                          value={profileData.website}
+                          onChange={(e) => handleProfileChange('website', e.target.value)}
+                          placeholder={t('pages.settings.profile.websitePlaceholder')}
+                        />
+                      </div>
+
+                      <div className='space-y-2'>
+                        <label className='text-sm font-medium text-neutral-700 dark:text-neutral-300'>
+                          {t('pages.settings.profile.locationLabel')}
+                        </label>
+                        <Input
+                          value={profileData.location}
+                          onChange={(e) => handleProfileChange('location', e.target.value)}
+                          placeholder={t('pages.settings.profile.locationPlaceholder')}
+                        />
+                      </div>
                     </div>
 
                     <div className='space-y-2'>
                       <label className='text-sm font-medium text-neutral-700 dark:text-neutral-300'>
-                        Kullanıcı Adı *
+                        {t('pages.settings.profile.bioLabel')}
                       </label>
-                      <Input
-                        value={profileData.username}
-                        onChange={(e) => handleProfileChange('username', e.target.value)}
-                        placeholder='kullanici_adi'
+                      <Textarea
+                        value={profileData.bio}
+                        onChange={(e) => handleProfileChange('bio', e.target.value)}
+                        placeholder={t('pages.settings.profile.bioPlaceholder')}
+                        className='resize-none'
+                        rows={3}
                       />
+                      <p className='text-xs text-neutral-500 dark:text-neutral-400'>
+                        {t('pages.settings.profile.bioNote')}
+                      </p>
                     </div>
-
-                    <div className='space-y-2'>
-                      <label className='text-sm font-medium text-neutral-700 dark:text-neutral-300'>E-posta *</label>
-                      <Input
-                        type='email'
-                        value={profileData.email}
-                        onChange={(e) => handleProfileChange('email', e.target.value)}
-                        placeholder='email@example.com'
-                      />
-                    </div>
-
-                    <div className='space-y-2'>
-                      <label className='text-sm font-medium text-neutral-700 dark:text-neutral-300'>Telefon</label>
-                      <Input
-                        value={profileData.phone}
-                        onChange={(e) => handleProfileChange('phone', e.target.value)}
-                        placeholder='+90 555 123 45 67'
-                      />
-                    </div>
-
-                    <div className='space-y-2'>
-                      <label className='text-sm font-medium text-neutral-700 dark:text-neutral-300'>Website</label>
-                      <Input
-                        value={profileData.website}
-                        onChange={(e) => handleProfileChange('website', e.target.value)}
-                        placeholder='https://website.com'
-                      />
-                    </div>
-
-                    <div className='space-y-2'>
-                      <label className='text-sm font-medium text-neutral-700 dark:text-neutral-300'>Konum</label>
-                      <Input
-                        value={profileData.location}
-                        onChange={(e) => handleProfileChange('location', e.target.value)}
-                        placeholder='İstanbul, Türkiye'
-                      />
-                    </div>
-                  </div>
-
-                  <div className='space-y-2'>
-                    <label className='text-sm font-medium text-neutral-700 dark:text-neutral-300'>Biyografi</label>
-                    <Textarea
-                      value={profileData.bio}
-                      onChange={(e) => handleProfileChange('bio', e.target.value)}
-                      placeholder='Kendinizden bahsedin...'
-                      className='resize-none'
-                      rows={3}
-                    />
-                    <p className='text-xs text-neutral-500 dark:text-neutral-400'>Maksimum 160 karakter</p>
-                  </div>
-                </CardContent>
+                  </CardContent>
+                </div>
               </Card>
             </TabsContent>
 
             {/* Notification Settings */}
             <TabsContent value='notifications' className='space-y-6'>
-              <Card className='bg-white/70 dark:bg-neutral-800/70 backdrop-blur-sm border-neutral-200/80 dark:border-neutral-700/50'>
-                <CardHeader>
-                  <CardTitle className='flex items-center gap-2'>
-                    <Bell className='h-5 w-5' />
-                    Bildirim Tercihleri
-                  </CardTitle>
-                  <CardDescription>Hangi bildirimleri almak istediğinizi seçin</CardDescription>
-                </CardHeader>
-                <CardContent className='space-y-6'>
-                  {/* Email Notifications */}
-                  <div className='space-y-4'>
-                    <h3 className='font-medium text-neutral-900 dark:text-neutral-50'>E-posta Bildirimleri</h3>
-                    <div className='space-y-3'>
-                      {[
-                        {
-                          key: 'emailNotifications' as keyof NotificationSettings,
-                          label: 'E-posta bildirimleri',
-                          description: 'Genel e-posta bildirimlerini alın',
-                        },
-                        {
-                          key: 'securityAlerts' as keyof NotificationSettings,
-                          label: 'Güvenlik uyarıları',
-                          description: 'Hesap güvenliği ile ilgili önemli bildirimleri alın',
-                        },
-                        {
-                          key: 'productUpdates' as keyof NotificationSettings,
-                          label: 'Ürün güncellemeleri',
-                          description: 'Yeni özellikler ve güncellemeler hakkında bilgi alın',
-                        },
-                        {
-                          key: 'marketingEmails' as keyof NotificationSettings,
-                          label: 'Pazarlama e-postaları',
-                          description: 'Özel teklifler ve kampanyalar hakkında bilgi alın',
-                        },
-                        {
-                          key: 'weeklyDigest' as keyof NotificationSettings,
-                          label: 'Haftalık özet',
-                          description: 'Haftalık aktivite özetini e-posta ile alın',
-                        },
-                      ].map((item) => (
-                        <div key={item.key} className='flex items-center justify-between py-2'>
-                          <div className='space-y-1'>
-                            <div className='text-sm font-medium text-neutral-900 dark:text-neutral-50'>
-                              {item.label}
+              <Card className='bg-white/80 dark:bg-neutral-800/80 backdrop-blur-sm border-0 shadow-xl overflow-hidden'>
+                <div className='absolute inset-0 bg-gradient-to-br from-green-500/5 via-emerald-500/5 to-teal-500/5 pointer-events-none'></div>
+                <div className='relative'>
+                  <CardHeader>
+                    <CardTitle className='flex items-center gap-3'>
+                      <div className='p-2 bg-gradient-to-br from-green-500 to-emerald-500 rounded-lg'>
+                        <Bell className='h-5 w-5 text-white' />
+                      </div>
+                      <span>{t('pages.settings.notifications.title')}</span>
+                    </CardTitle>
+                    <CardDescription>{t('pages.settings.notifications.description')}</CardDescription>
+                  </CardHeader>
+                  <CardContent className='space-y-6'>
+                    {/* Email Notifications */}
+                    <div className='space-y-4'>
+                      <h3 className='font-medium text-neutral-900 dark:text-neutral-50'>
+                        {t('pages.settings.notifications.emailNotifications')}
+                      </h3>
+                      <div className='space-y-3'>
+                        {[
+                          {
+                            key: 'emailNotifications' as keyof NotificationSettings,
+                            label: t('pages.settings.notifications.emailNotifications'),
+                            description: t('pages.settings.notifications.emailNotificationsDesc'),
+                          },
+                          {
+                            key: 'securityAlerts' as keyof NotificationSettings,
+                            label: t('pages.settings.notifications.securityAlerts'),
+                            description: t('pages.settings.notifications.securityAlertsDesc'),
+                          },
+                          {
+                            key: 'productUpdates' as keyof NotificationSettings,
+                            label: t('pages.settings.notifications.productUpdates'),
+                            description: t('pages.settings.notifications.productUpdatesDesc'),
+                          },
+                          {
+                            key: 'marketingEmails' as keyof NotificationSettings,
+                            label: t('pages.settings.notifications.marketingEmails'),
+                            description: t('pages.settings.notifications.marketingEmailsDesc'),
+                          },
+                          {
+                            key: 'weeklyDigest' as keyof NotificationSettings,
+                            label: t('pages.settings.notifications.weeklyDigest'),
+                            description: t('pages.settings.notifications.weeklyDigestDesc'),
+                          },
+                        ].map((item) => (
+                          <div key={item.key} className='flex items-center justify-between py-2'>
+                            <div className='space-y-1'>
+                              <div className='text-sm font-medium text-neutral-900 dark:text-neutral-50'>
+                                {item.label}
+                              </div>
+                              <div className='text-xs text-neutral-600 dark:text-neutral-400'>{item.description}</div>
                             </div>
-                            <div className='text-xs text-neutral-600 dark:text-neutral-400'>{item.description}</div>
+                            <Switch
+                              checked={notificationSettings[item.key]}
+                              onCheckedChange={(checked) => handleNotificationChange(item.key, checked)}
+                            />
                           </div>
-                          <Switch
-                            checked={notificationSettings[item.key]}
-                            onCheckedChange={(checked) => handleNotificationChange(item.key, checked)}
-                          />
-                        </div>
-                      ))}
+                        ))}
+                      </div>
                     </div>
-                  </div>
 
-                  <Separator />
+                    <Separator />
 
-                  {/* Push Notifications */}
-                  <div className='space-y-4'>
-                    <h3 className='font-medium text-neutral-900 dark:text-neutral-50'>Anlık Bildirimler</h3>
-                    <div className='space-y-3'>
-                      {[
-                        {
-                          key: 'pushNotifications' as keyof NotificationSettings,
-                          label: 'Push bildirimleri',
-                          description: 'Tarayıcı bildirimleri alın',
-                        },
-                        {
-                          key: 'smsNotifications' as keyof NotificationSettings,
-                          label: 'SMS bildirimleri',
-                          description: 'Önemli güncellemeler için SMS alın',
-                        },
-                      ].map((item) => (
-                        <div key={item.key} className='flex items-center justify-between py-2'>
-                          <div className='space-y-1'>
-                            <div className='text-sm font-medium text-neutral-900 dark:text-neutral-50'>
-                              {item.label}
+                    {/* Push Notifications */}
+                    <div className='space-y-4'>
+                      <h3 className='font-medium text-neutral-900 dark:text-neutral-50'>
+                        {t('pages.settings.notifications.instantNotifications')}
+                      </h3>
+                      <div className='space-y-3'>
+                        {[
+                          {
+                            key: 'pushNotifications' as keyof NotificationSettings,
+                            label: t('pages.settings.notifications.pushNotifications'),
+                            description: t('pages.settings.notifications.pushNotificationsDesc'),
+                          },
+                          {
+                            key: 'smsNotifications' as keyof NotificationSettings,
+                            label: t('pages.settings.notifications.smsNotifications'),
+                            description: t('pages.settings.notifications.smsNotificationsDesc'),
+                          },
+                        ].map((item) => (
+                          <div key={item.key} className='flex items-center justify-between py-2'>
+                            <div className='space-y-1'>
+                              <div className='text-sm font-medium text-neutral-900 dark:text-neutral-50'>
+                                {item.label}
+                              </div>
+                              <div className='text-xs text-neutral-600 dark:text-neutral-400'>{item.description}</div>
                             </div>
-                            <div className='text-xs text-neutral-600 dark:text-neutral-400'>{item.description}</div>
+                            <Switch
+                              checked={notificationSettings[item.key]}
+                              onCheckedChange={(checked) => handleNotificationChange(item.key, checked)}
+                            />
                           </div>
-                          <Switch
-                            checked={notificationSettings[item.key]}
-                            onCheckedChange={(checked) => handleNotificationChange(item.key, checked)}
-                          />
-                        </div>
-                      ))}
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                </CardContent>
+                  </CardContent>
+                </div>
               </Card>
             </TabsContent>
 
             {/* Privacy Settings */}
             <TabsContent value='privacy' className='space-y-6'>
-              <Card className='bg-white/70 dark:bg-neutral-800/70 backdrop-blur-sm border-neutral-200/80 dark:border-neutral-700/50'>
-                <CardHeader>
-                  <CardTitle className='flex items-center gap-2'>
-                    <Shield className='h-5 w-5' />
-                    Gizlilik Ayarları
-                  </CardTitle>
-                  <CardDescription>Kişisel bilgilerinizin nasıl kullanıldığını kontrol edin</CardDescription>
-                </CardHeader>
-                <CardContent className='space-y-6'>
-                  {/* Profile Visibility */}
-                  <div className='space-y-3'>
-                    <label className='text-sm font-medium text-neutral-700 dark:text-neutral-300'>
-                      Profil Görünürlüğü
-                    </label>
-                    <Select
-                      value={privacySettings.profileVisibility}
-                      onValueChange={(value: 'public' | 'private' | 'friends') =>
-                        handlePrivacyChange('profileVisibility', value)
-                      }
-                    >
-                      <SelectTrigger>
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value='public'>Herkese Açık</SelectItem>
-                        <SelectItem value='friends'>Sadece Arkadaşlar</SelectItem>
-                        <SelectItem value='private'>Özel</SelectItem>
-                      </SelectContent>
-                    </Select>
-                    <p className='text-xs text-neutral-600 dark:text-neutral-400'>
-                      Profilinizi kimlerin görebileceğini seçin
-                    </p>
-                  </div>
-                  <Separator />
-
-                  {/* Contact Information */}
-                  <div className='space-y-4'>
-                    <h3 className='font-medium text-neutral-900 dark:text-neutral-50'>İletişim Bilgileri</h3>
+              <Card className='bg-white/80 dark:bg-neutral-800/80 backdrop-blur-sm border-0 shadow-xl overflow-hidden'>
+                <div className='absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-blue-500/5 to-cyan-500/5 pointer-events-none'></div>
+                <div className='relative'>
+                  <CardHeader>
+                    <CardTitle className='flex items-center gap-3'>
+                      <div className='p-2 bg-gradient-to-br from-indigo-500 to-blue-500 rounded-lg'>
+                        <Shield className='h-5 w-5 text-white' />
+                      </div>
+                      <span>{t('pages.settings.privacy.title')}</span>
+                    </CardTitle>
+                    <CardDescription>{t('pages.settings.privacy.description')}</CardDescription>
+                  </CardHeader>
+                  <CardContent className='space-y-6'>
+                    {/* Profile Visibility */}
                     <div className='space-y-3'>
-                      <div className='flex items-center justify-between py-2'>
-                        <div className='space-y-1'>
-                          <div className='text-sm font-medium text-neutral-900 dark:text-neutral-50'>
-                            E-posta adresini göster
-                          </div>
-                          <div className='text-xs text-neutral-600 dark:text-neutral-400'>
-                            E-posta adresinizin profilinizde görünmesine izin verin
-                          </div>
-                        </div>
-                        <Switch
-                          checked={privacySettings.showEmail}
-                          onCheckedChange={(checked) => handlePrivacyChange('showEmail', checked)}
-                        />
-                      </div>
-
-                      <div className='flex items-center justify-between py-2'>
-                        <div className='space-y-1'>
-                          <div className='text-sm font-medium text-neutral-900 dark:text-neutral-50'>
-                            Telefon numarasını göster
-                          </div>
-                          <div className='text-xs text-neutral-600 dark:text-neutral-400'>
-                            Telefon numaranızın profilinizde görünmesine izin verin
-                          </div>
-                        </div>
-                        <Switch
-                          checked={privacySettings.showPhone}
-                          onCheckedChange={(checked) => handlePrivacyChange('showPhone', checked)}
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <Separator />
-
-                  {/* Data Usage */}
-                  <div className='space-y-4'>
-                    <h3 className='font-medium text-neutral-900 dark:text-neutral-50'>Veri Kullanımı</h3>
-                    <div className='space-y-3'>
-                      <div className='flex items-center justify-between py-2'>
-                        <div className='space-y-1'>
-                          <div className='text-sm font-medium text-neutral-900 dark:text-neutral-50'>
-                            Arama motorlarında indeksleme
-                          </div>
-                          <div className='text-xs text-neutral-600 dark:text-neutral-400'>
-                            Profilinizin arama motorlarında görünmesine izin verin
-                          </div>
-                        </div>
-                        <Switch
-                          checked={privacySettings.allowIndexing}
-                          onCheckedChange={(checked) => handlePrivacyChange('allowIndexing', checked)}
-                        />
-                      </div>
-
-                      <div className='flex items-center justify-between py-2'>
-                        <div className='space-y-1'>
-                          <div className='text-sm font-medium text-neutral-900 dark:text-neutral-50'>
-                            Veri işleme ve analitik
-                          </div>
-                          <div className='text-xs text-neutral-600 dark:text-neutral-400'>
-                            Hizmet iyileştirme için verilerinizin analiz edilmesine izin verin
-                          </div>
-                        </div>
-                        <Switch
-                          checked={privacySettings.dataProcessing}
-                          onCheckedChange={(checked) => handlePrivacyChange('dataProcessing', checked)}
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Data Export */}
-                  <div className='space-y-4'>
-                    <h3 className='font-medium text-neutral-900 dark:text-neutral-50'>Veri Yönetimi</h3>
-                    <div className='flex flex-col sm:flex-row gap-3'>
-                      <Button variant='outline' onClick={handleExportData} className='flex items-center gap-2'>
-                        <Download className='h-4 w-4' />
-                        Verilerimi İndir
-                      </Button>
-                      <Button
-                        variant='outline'
-                        onClick={() => setShowDeleteDialog(true)}
-                        className='flex items-center gap-2 text-red-600 border-red-200 hover:bg-red-50 dark:text-red-400 dark:border-red-800 dark:hover:bg-red-950/20'
+                      <label className='text-sm font-medium text-neutral-700 dark:text-neutral-300'>
+                        {t('pages.settings.privacy.profileVisibilityLabel')}
+                      </label>
+                      <Select
+                        value={privacySettings.profileVisibility}
+                        onValueChange={(value: 'public' | 'private' | 'friends') =>
+                          handlePrivacyChange('profileVisibility', value)
+                        }
                       >
-                        <Trash2 className='h-4 w-4' />
-                        Hesabı Sil
-                      </Button>
+                        <SelectTrigger>
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value='public'>{t('pages.settings.privacy.profileVisibilityPublic')}</SelectItem>
+                          <SelectItem value='friends'>
+                            {t('pages.settings.privacy.profileVisibilityFriends')}
+                          </SelectItem>
+                          <SelectItem value='private'>
+                            {t('pages.settings.privacy.profileVisibilityPrivate')}
+                          </SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <p className='text-xs text-neutral-600 dark:text-neutral-400'>
+                        {t('pages.settings.privacy.profileVisibilityDesc')}
+                      </p>
                     </div>
-                    <p className='text-xs text-neutral-600 dark:text-neutral-400'>
-                      Tüm kişisel verilerinizi JSON formatında indirebilir veya hesabınızı kalıcı olarak silebilirsiniz.
-                    </p>
-                  </div>
-                </CardContent>
+
+                    <Separator />
+
+                    {/* Data Export */}
+                    <div className='space-y-4'>
+                      <h3 className='font-medium text-neutral-900 dark:text-neutral-50'>
+                        {t('pages.settings.privacy.dataManagement')}
+                      </h3>
+                      <div className='flex flex-col sm:flex-row gap-3'>
+                        <Button variant='outline' onClick={handleExportData} className='flex items-center gap-2'>
+                          <Download className='h-4 w-4' />
+                          {t('pages.settings.privacy.downloadData')}
+                        </Button>
+                        <Button
+                          variant='outline'
+                          onClick={() => setShowDeleteDialog(true)}
+                          className='flex items-center gap-2 text-red-600 border-red-200 hover:bg-red-50 dark:text-red-400 dark:border-red-800 dark:hover:bg-red-950/20'
+                        >
+                          <Trash2 className='h-4 w-4' />
+                          {t('pages.settings.privacy.deleteAccount')}
+                        </Button>
+                      </div>
+                      <p className='text-xs text-neutral-600 dark:text-neutral-400'>
+                        {t('pages.settings.privacy.dataManagementDesc')}
+                      </p>
+                    </div>
+                  </CardContent>
+                </div>
               </Card>
             </TabsContent>
 
             {/* Security Settings */}
             <TabsContent value='security' className='space-y-6'>
-              <Card className='bg-white/70 dark:bg-neutral-800/70 backdrop-blur-sm border-neutral-200/80 dark:border-neutral-700/50'>
-                <CardHeader>
-                  <CardTitle className='flex items-center gap-2'>
-                    <Key className='h-5 w-5' />
-                    Güvenlik Ayarları
-                  </CardTitle>
-                  <CardDescription>Hesabınızın güvenliğini artırmak için ayarları yapılandırın</CardDescription>
-                </CardHeader>
-                <CardContent className='space-y-6'>
-                  {/* Password Section */}
-                  <div className='space-y-4'>
-                    <h3 className='font-medium text-neutral-900 dark:text-neutral-50'>Şifre ve Oturum</h3>
-                    <div className='flex flex-col sm:flex-row gap-3'>
-                      <Button
-                        variant='outline'
-                        onClick={() => setShowPasswordDialog(true)}
-                        className='flex items-center gap-2'
-                      >
-                        <Lock className='h-4 w-4' />
-                        Şifre Değiştir
-                      </Button>
-                      <Button variant='outline' className='flex items-center gap-2'>
-                        <RefreshCw className='h-4 w-4' />
-                        Tüm Oturumları Sonlandır
-                      </Button>
-                    </div>
-                    <div className='text-xs text-neutral-600 dark:text-neutral-400 space-y-1'>
-                      <p>• Son şifre değişikliği: 30 gün önce</p>
-                      <p>• Aktif oturum sayısı: 3 cihaz</p>
-                    </div>
-                  </div>
-
-                  <Separator />
-
-                  {/* Two-Factor Authentication */}
-                  <div className='space-y-4'>
-                    <h3 className='font-medium text-neutral-900 dark:text-neutral-50'>İki Faktörlü Doğrulama (2FA)</h3>
-                    <div className='flex items-center justify-between py-2'>
-                      <div className='space-y-1'>
-                        <div className='text-sm font-medium text-neutral-900 dark:text-neutral-50'>2FA Etkinleştir</div>
-                        <div className='text-xs text-neutral-600 dark:text-neutral-400'>
-                          Hesabınız için ek güvenlik katmanı ekleyin
-                        </div>
+              <Card className='bg-white/80 dark:bg-neutral-800/80 backdrop-blur-sm border-0 shadow-xl overflow-hidden'>
+                <div className='absolute inset-0 bg-gradient-to-br from-red-500/5 via-orange-500/5 to-yellow-500/5 pointer-events-none'></div>
+                <div className='relative'>
+                  <CardHeader>
+                    <CardTitle className='flex items-center gap-3'>
+                      <div className='p-2 bg-gradient-to-br from-red-500 to-orange-500 rounded-lg'>
+                        <Key className='h-5 w-5 text-white' />
                       </div>
-                      <Switch
-                        checked={securitySettings.twoFactorAuth}
-                        onCheckedChange={(checked) => handleSecurityChange('twoFactorAuth', checked)}
-                      />
-                    </div>
-                    {securitySettings.twoFactorAuth && (
-                      <div className='p-4 bg-green-50 dark:bg-green-950/20 border border-green-200 dark:border-green-800 rounded-lg'>
-                        <div className='flex items-center gap-2 text-green-800 dark:text-green-300'>
-                          <Check className='h-4 w-4' />
-                          <span className='text-sm font-medium'>2FA aktif</span>
-                          <Badge variant='outline' className='text-xs'>
-                            Google Authenticator ile yapılandırılmış
-                          </Badge>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-
-                  <Separator />
-
-                  {/* Session Settings */}
-                  <div className='space-y-4'>
-                    <h3 className='font-medium text-neutral-900 dark:text-neutral-50'>Oturum Ayarları</h3>
-                    <div className='space-y-3'>
-                      <div className='space-y-2'>
-                        <label className='text-sm font-medium text-neutral-700 dark:text-neutral-300'>
-                          Otomatik oturum kapatma (dakika)
-                        </label>
-                        <Select
-                          value={securitySettings.sessionTimeout.toString()}
-                          onValueChange={(value) => handleSecurityChange('sessionTimeout', parseInt(value))}
+                      <span>{t('pages.settings.security.title')}</span>
+                    </CardTitle>
+                    <CardDescription>{t('pages.settings.security.description')}</CardDescription>
+                  </CardHeader>
+                  <CardContent className='space-y-6'>
+                    {/* Password Section */}
+                    <div className='space-y-4'>
+                      <h3 className='font-medium text-neutral-900 dark:text-neutral-50'>
+                        {t('pages.settings.security.passwordAndSession')}
+                      </h3>
+                      <div className='flex flex-col sm:flex-row gap-3'>
+                        <Button
+                          variant='outline'
+                          onClick={() => setShowPasswordDialog(true)}
+                          className='flex items-center gap-2'
                         >
-                          <SelectTrigger className='w-full sm:w-[200px]'>
-                            <SelectValue />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value='15'>15 dakika</SelectItem>
-                            <SelectItem value='30'>30 dakika</SelectItem>
-                            <SelectItem value='60'>1 saat</SelectItem>
-                            <SelectItem value='120'>2 saat</SelectItem>
-                            <SelectItem value='480'>8 saat</SelectItem>
-                          </SelectContent>
-                        </Select>
+                          <Lock className='h-4 w-4' />
+                          {t('pages.settings.security.changePassword')}
+                        </Button>
+                        <Button variant='outline' className='flex items-center gap-2'>
+                          <RefreshCw className='h-4 w-4' />
+                          {t('pages.settings.security.endAllSessions')}
+                        </Button>
                       </div>
+                      <div className='text-xs text-neutral-600 dark:text-neutral-400 space-y-1'>
+                        <p>• {t('pages.settings.security.lastPasswordChange')}</p>
+                        <p>• {t('pages.settings.security.activeSessions')}</p>
+                      </div>
+                    </div>
 
+                    <Separator />
+
+                    {/* Two-Factor Authentication */}
+                    <div className='space-y-4'>
+                      <h3 className='font-medium text-neutral-900 dark:text-neutral-50'>
+                        {t('pages.settings.security.twoFactorAuth')}
+                      </h3>
                       <div className='flex items-center justify-between py-2'>
                         <div className='space-y-1'>
                           <div className='text-sm font-medium text-neutral-900 dark:text-neutral-50'>
-                            Giriş uyarıları
+                            {t('pages.settings.security.enable2FA')}
                           </div>
                           <div className='text-xs text-neutral-600 dark:text-neutral-400'>
-                            Yeni cihazdan giriş yapıldığında e-posta ile bildirim alın
+                            {t('pages.settings.security.twoFactorDesc')}
                           </div>
                         </div>
                         <Switch
-                          checked={securitySettings.loginAlerts}
-                          onCheckedChange={(checked) => handleSecurityChange('loginAlerts', checked)}
+                          checked={securitySettings.twoFactorAuth}
+                          onCheckedChange={(checked) => handleSecurityChange('twoFactorAuth', checked)}
                         />
                       </div>
-
-                      <div className='flex items-center justify-between py-2'>
-                        <div className='space-y-1'>
-                          <div className='text-sm font-medium text-neutral-900 dark:text-neutral-50'>Cihaz takibi</div>
-                          <div className='text-xs text-neutral-600 dark:text-neutral-400'>
-                            Giriş yapılan cihazları kaydet ve izle
+                      {securitySettings.twoFactorAuth && (
+                        <div className='p-4 bg-green-50 dark:bg-green-950/20 border border-green-200 dark:border-green-800 rounded-lg'>
+                          <div className='flex items-center gap-2 text-green-800 dark:text-green-300'>
+                            <Check className='h-4 w-4' />
+                            <span className='text-sm font-medium'>{t('pages.settings.security.twoFactorActive')}</span>
+                            <Badge variant='outline' className='text-xs'>
+                              {t('pages.settings.security.twoFactorConfigured')}
+                            </Badge>
                           </div>
                         </div>
-                        <Switch
-                          checked={securitySettings.deviceTracking}
-                          onCheckedChange={(checked) => handleSecurityChange('deviceTracking', checked)}
-                        />
-                      </div>
+                      )}
                     </div>
-                  </div>
-
-                  <Separator />
-
-                  {/* Active Sessions */}
-                  <div className='space-y-4'>
-                    <h3 className='font-medium text-neutral-900 dark:text-neutral-50'>Aktif Oturumlar</h3>
-                    <div className='space-y-3'>
-                      {[
-                        {
-                          device: 'Chrome - Windows',
-                          location: 'İstanbul, Türkiye',
-                          lastActive: '2 dakika önce',
-                          current: true,
-                        },
-                        {
-                          device: 'Safari - iPhone',
-                          location: 'İstanbul, Türkiye',
-                          lastActive: '1 saat önce',
-                          current: false,
-                        },
-                        {
-                          device: 'Firefox - Ubuntu',
-                          location: 'Ankara, Türkiye',
-                          lastActive: '2 gün önce',
-                          current: false,
-                        },
-                      ].map((session, index) => (
-                        <div
-                          key={index}
-                          className='flex items-center justify-between p-3 bg-neutral-50/50 dark:bg-neutral-800/50 rounded-lg'
-                        >
-                          <div className='flex items-center gap-3'>
-                            <div className='p-2 bg-white dark:bg-neutral-700 rounded-lg'>
-                              <Smartphone className='h-4 w-4 text-neutral-600 dark:text-neutral-400' />
-                            </div>
-                            <div>
-                              <div className='text-sm font-medium text-neutral-900 dark:text-neutral-50 flex items-center gap-2'>
-                                {session.device}
-                                {session.current && (
-                                  <Badge variant='outline' className='text-xs'>
-                                    Bu cihaz
-                                  </Badge>
-                                )}
-                              </div>
-                              <div className='text-xs text-neutral-600 dark:text-neutral-400'>
-                                {session.location} • {session.lastActive}
-                              </div>
-                            </div>
-                          </div>
-                          {!session.current && (
-                            <Button variant='ghost' size='sm' className='text-red-600'>
-                              <X className='h-4 w-4' />
-                            </Button>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </CardContent>
+                  </CardContent>
+                </div>
               </Card>
             </TabsContent>
 
             {/* Appearance Settings */}
             <TabsContent value='appearance' className='space-y-6'>
-              <Card className='bg-white/70 dark:bg-neutral-800/70 backdrop-blur-sm border-neutral-200/80 dark:border-neutral-700/50'>
-                <CardHeader>
-                  <CardTitle className='flex items-center gap-2'>
-                    <Palette className='h-5 w-5' />
-                    Görünüm ve Tema
-                  </CardTitle>
-                  <CardDescription>Arayüz temasını ve dil tercihlerinizi özelleştirin</CardDescription>
-                </CardHeader>
-                <CardContent className='space-y-6'>
-                  {/* Theme Selection */}
-                  <SettingsThemeSection />
-
-                  <Separator />
-
-                  {/* Language Selection */}
-                  <SettingsLanguageSection />
-
-                  <Separator />
-
-                  {/* Display Settings */}
-                  <div className='space-y-4'>
-                    <h3 className='font-medium text-neutral-900 dark:text-neutral-50'>Görüntüleme Ayarları</h3>
-                    <div className='space-y-3'>
-                      <div className='flex items-center justify-between py-2'>
-                        <div className='space-y-1'>
-                          <div className='text-sm font-medium text-neutral-900 dark:text-neutral-50'>Kompakt mod</div>
-                          <div className='text-xs text-neutral-600 dark:text-neutral-400'>
-                            Daha fazla içerik görmek için sıkıştırılmış görünüm
-                          </div>
-                        </div>
-                        <Switch defaultChecked={false} />
+              <Card className='bg-white/80 dark:bg-neutral-800/80 backdrop-blur-sm border-0 shadow-xl overflow-hidden'>
+                <div className='absolute inset-0 bg-gradient-to-br from-pink-500/5 via-rose-500/5 to-red-500/5 pointer-events-none'></div>
+                <div className='relative'>
+                  <CardHeader>
+                    <CardTitle className='flex items-center gap-3'>
+                      <div className='p-2 bg-gradient-to-br from-pink-500 to-rose-500 rounded-lg'>
+                        <Palette className='h-5 w-5 text-white' />
                       </div>
+                      <span>{t('pages.settings.appearance.title')}</span>
+                    </CardTitle>
+                    <CardDescription>{t('pages.settings.appearance.description')}</CardDescription>
+                  </CardHeader>
+                  <CardContent className='space-y-6'>
+                    {/* Theme Selection */}
+                    <SettingsThemeSection />
 
-                      <div className='flex items-center justify-between py-2'>
-                        <div className='space-y-1'>
-                          <div className='text-sm font-medium text-neutral-900 dark:text-neutral-50'>
-                            Animasyonları azalt
+                    <Separator />
+
+                    {/* Language Selection */}
+                    <SettingsLanguageSection />
+
+                    <Separator />
+
+                    {/* Display Settings */}
+                    <div className='space-y-4'>
+                      <h3 className='font-medium text-neutral-900 dark:text-neutral-50'>
+                        {t('pages.settings.appearance.displaySettings')}
+                      </h3>
+                      <div className='space-y-3'>
+                        <div className='flex items-center justify-between py-2'>
+                          <div className='space-y-1'>
+                            <div className='text-sm font-medium text-neutral-900 dark:text-neutral-50'>
+                              {t('pages.settings.appearance.compactMode')}
+                            </div>
+                            <div className='text-xs text-neutral-600 dark:text-neutral-400'>
+                              {t('pages.settings.appearance.compactModeDesc')}
+                            </div>
                           </div>
-                          <div className='text-xs text-neutral-600 dark:text-neutral-400'>
-                            Performans için animasyonları sınırla
-                          </div>
+                          <Switch defaultChecked={false} />
                         </div>
-                        <Switch defaultChecked={false} />
+
+                        <div className='flex items-center justify-between py-2'>
+                          <div className='space-y-1'>
+                            <div className='text-sm font-medium text-neutral-900 dark:text-neutral-50'>
+                              {t('pages.settings.appearance.reduceAnimations')}
+                            </div>
+                            <div className='text-xs text-neutral-600 dark:text-neutral-400'>
+                              {t('pages.settings.appearance.reduceAnimationsDesc')}
+                            </div>
+                          </div>
+                          <Switch defaultChecked={false} />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </CardContent>
+                  </CardContent>
+                </div>
               </Card>
             </TabsContent>
           </Tabs>
         </div>
       </div>
 
+      {/* Floating Elements */}
+      <div className='fixed top-20 left-10 opacity-20 dark:opacity-10 pointer-events-none'>
+        <div className='w-32 h-32 bg-gradient-to-br from-orange-400 to-red-500 rounded-full blur-3xl animate-pulse'></div>
+      </div>
+      <div className='fixed bottom-20 right-10 opacity-20 dark:opacity-10 pointer-events-none'>
+        <div
+          className='w-24 h-24 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full blur-2xl animate-pulse'
+          style={{ animationDelay: '1s' }}
+        ></div>
+      </div>
+
       {/* Password Change Dialog */}
       <Dialog open={showPasswordDialog} onOpenChange={setShowPasswordDialog}>
         <DialogContent className='max-w-md p-6'>
           <DialogHeader>
-            <DialogTitle>Şifre Değiştir</DialogTitle>
-            <DialogDescription>Hesabınızın güvenliği için güçlü bir şifre seçin.</DialogDescription>
+            <DialogTitle>{t('pages.settings.passwordDialog.title')}</DialogTitle>
+            <DialogDescription>{t('pages.settings.passwordDialog.description')}</DialogDescription>
           </DialogHeader>
           <div className='space-y-4 py-4'>
             <div className='space-y-2'>
-              <label className='text-sm font-medium'>Mevcut Şifre</label>
+              <label className='text-sm font-medium'>{t('pages.settings.passwordDialog.currentPasswordLabel')}</label>
               <div className='relative'>
                 <Input
                   type={showPassword ? 'text' : 'password'}
                   value={passwordData.currentPassword}
                   onChange={(e) => setPasswordData((prev) => ({ ...prev, currentPassword: e.target.value }))}
-                  placeholder='Mevcut şifrenizi girin'
+                  placeholder={t('pages.settings.passwordDialog.currentPasswordPlaceholder')}
                 />
                 <Button
                   type='button'
@@ -868,40 +782,40 @@ export default function SettingsPage() {
             </div>
 
             <div className='space-y-2'>
-              <label className='text-sm font-medium'>Yeni Şifre</label>
+              <label className='text-sm font-medium'>{t('pages.settings.passwordDialog.newPasswordLabel')}</label>
               <Input
                 type='password'
                 value={passwordData.newPassword}
                 onChange={(e) => setPasswordData((prev) => ({ ...prev, newPassword: e.target.value }))}
-                placeholder='Yeni şifrenizi girin'
+                placeholder={t('pages.settings.passwordDialog.newPasswordPlaceholder')}
               />
             </div>
 
             <div className='space-y-2'>
-              <label className='text-sm font-medium'>Yeni Şifre (Tekrar)</label>
+              <label className='text-sm font-medium'>{t('pages.settings.passwordDialog.confirmPasswordLabel')}</label>
               <Input
                 type='password'
                 value={passwordData.confirmPassword}
                 onChange={(e) => setPasswordData((prev) => ({ ...prev, confirmPassword: e.target.value }))}
-                placeholder='Yeni şifrenizi tekrar girin'
+                placeholder={t('pages.settings.passwordDialog.confirmPasswordPlaceholder')}
               />
             </div>
 
             <div className='text-xs text-neutral-600 dark:text-neutral-400 space-y-1'>
-              <p>Şifreniz en az:</p>
+              <p>{t('pages.settings.passwordDialog.passwordRequirements')}</p>
               <ul className='list-disc list-inside space-y-1 ml-2'>
-                <li>8 karakter uzunluğunda olmalı</li>
-                <li>Büyük ve küçük harf içermeli</li>
-                <li>En az bir rakam içermeli</li>
-                <li>En az bir özel karakter içermeli</li>
+                <li>{t('pages.settings.passwordDialog.requirement1')}</li>
+                <li>{t('pages.settings.passwordDialog.requirement2')}</li>
+                <li>{t('pages.settings.passwordDialog.requirement3')}</li>
+                <li>{t('pages.settings.passwordDialog.requirement4')}</li>
               </ul>
             </div>
           </div>
           <DialogFooter>
             <Button variant='outline' onClick={() => setShowPasswordDialog(false)}>
-              İptal
+              {t('pages.settings.passwordDialog.cancel')}
             </Button>
-            <Button onClick={handlePasswordChange}>Şifreyi Değiştir</Button>
+            <Button onClick={handlePasswordChange}>{t('pages.settings.passwordDialog.change')}</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
@@ -912,25 +826,25 @@ export default function SettingsPage() {
           <AlertDialogHeader>
             <AlertDialogTitle className='flex items-center gap-2 text-red-600'>
               <AlertTriangle className='h-5 w-5' />
-              Hesabı Kalıcı Olarak Sil
+              {t('pages.settings.deleteDialog.title')}
             </AlertDialogTitle>
             <AlertDialogDescription className='space-y-2'>
-              <p>
-                Bu işlem <strong>geri alınamaz</strong>. Hesabınızı sildiğinizde:
-              </p>
+              <p>{t('pages.settings.deleteDialog.warning')}</p>
               <ul className='list-disc list-inside space-y-1 text-sm'>
-                <li>Tüm kişisel verileriniz kalıcı olarak silinecek</li>
-                <li>Profil bilgileriniz ve içerikleriniz kaldırılacak</li>
-                <li>Bu hesapla ilişkili tüm abonelikler iptal edilecek</li>
-                <li>Bu işlem geri alınamayacak</li>
+                <li>{t('pages.settings.deleteDialog.consequence1')}</li>
+                <li>{t('pages.settings.deleteDialog.consequence2')}</li>
+                <li>{t('pages.settings.deleteDialog.consequence3')}</li>
+                <li>{t('pages.settings.deleteDialog.consequence4')}</li>
               </ul>
-              <p className='text-red-600 dark:text-red-400 font-medium'>Devam etmek istediğinizden emin misiniz?</p>
+              <p className='text-red-600 dark:text-red-400 font-medium'>
+                {t('pages.settings.deleteDialog.confirmation')}
+              </p>
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>İptal</AlertDialogCancel>
+            <AlertDialogCancel>{t('pages.settings.deleteDialog.cancel')}</AlertDialogCancel>
             <AlertDialogAction onClick={handleDeleteAccount} className='bg-red-600 hover:bg-red-700 text-white'>
-              Evet, Hesabı Sil
+              {t('pages.settings.deleteDialog.confirm')}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

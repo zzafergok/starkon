@@ -701,7 +701,7 @@ nav {
 
 /* Fix Radix UI Dropdown Scroll Lock Issue */
 /* Prevent body from being locked when dropdown opens */
-body[style*="overflow: hidden"] {
+body[style*='overflow: hidden'] {
   overflow: visible !important;
   padding-right: 0 !important;
   pointer-events: auto !important;
@@ -982,7 +982,7 @@ body[style*="overflow: hidden"] {
 @media print {
   * {
     background: transparent !important;
-    color: #FFFAFA !important;
+    color: #fffafa !important;
     box-shadow: none !important;
     text-shadow: none !important;
   }

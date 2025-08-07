@@ -1,57 +1,4 @@
 {
-  "pages": {
-    "contact": {
-      "title": "Contact",
-      "subtitle": "Get in touch with us",
-      "name": "Full Name",
-      "namePlaceholder": "Your full name",
-      "email": "Email",
-      "emailPlaceholder": "email@example.com",
-      "subject": "Subject",
-      "subjectPlaceholder": "Subject of your message",
-      "message": "Message",
-      "messagePlaceholder": "Write your message here...",
-      "sendButton": "Send Message",
-      "contactInfo": "Contact Information",
-      "successMessage": "Your message has been sent! We will get back to you soon.",
-      "privacy": "All messages are kept confidential and shared only with necessary personnel.",
-      "directContact": "Direct contact:",
-      "loading": "Sending...",
-      "error": "Message could not be sent. Please try again."
-    },
-    "support": {
-      "title": "Support",
-      "subtitle": "How can we help you?",
-      "name": "Full Name",
-      "namePlaceholder": "Your full name",
-      "email": "Email",
-      "emailPlaceholder": "email@example.com",
-      "subject": "Subject",
-      "subjectPlaceholder": "Brief description of the issue",
-      "message": "Message",
-      "messagePlaceholder": "Describe your issue in detail...",
-      "sendButton": "Send Support Request",
-      "contactInfo": "Alternative Contact",
-      "successMessage": "Your support request has been received! We will get back to you soon.",
-      "privacy": "Your support request is kept confidential and shared only with our technical team.",
-      "directContact": "For urgent matters, contact directly:",
-      "tip": "If you provide detailed information about your issue in the support request, we can help you faster.",
-      "responseTime": "We usually respond via email within 24 hours.",
-      "loading": "Sending...",
-      "error": "Support request could not be sent. Please try again."
-    },
-    "notFound": {
-      "title": "404",
-      "heading": "Page Not Found",
-      "description": "The page you're looking for doesn't exist or may have been moved.",
-      "goHome": "Go Home",
-      "goBack": "Go Back",
-      "searchHelp": "Can't find what you're looking for?",
-      "about": "About",
-      "contact": "Contact",
-      "components": "Components"
-    }
-  },
   "common": {
     "loading": "Loading...",
     "error": "An error occurred",
@@ -84,35 +31,8 @@
     "confirmDelete": "Yes, delete",
     "appName": "Starkon",
     "appTitle": "Starkon",
-    "loading": "Loading...",
-    "error": "An error occurred",
-    "success": "Success",
-    "cancel": "Cancel",
-    "save": "Save",
     "create": "Create",
     "update": "Update",
-    "edit": "Edit",
-    "delete": "Delete",
-    "search": "Search",
-    "filter": "Filter",
-    "noResults": "No results found",
-    "close": "Close",
-    "continue": "Continue",
-    "back": "Back",
-    "next": "Next",
-    "previous": "Previous",
-    "retry": "Retry",
-    "refresh": "Refresh",
-    "pleaseWait": "Please wait...",
-    "authenticating": "Authenticating...",
-    "pageLoading": "Loading page...",
-    "appLoading": "Loading application...",
-    "backToHome": "Back to Home",
-    "clearFilters": "Clear Filters",
-    "allCategories": "All Categories",
-    "viewMode": "View Mode",
-    "components": "Components",
-    "noComponentsFound": "No components found",
     "changeSearchCriteria": "Change your search criteria and try again",
     "sort": "Sort",
     "open": "Open",
@@ -370,7 +290,7 @@
       "users": {
         "ahmet": "John Smith",
         "ayse": "Jane Doe",
-        "mehmet": "Mike Johnson", 
+        "mehmet": "Mike Johnson",
         "fatma": "Sarah Wilson",
         "ali": "David Brown"
       },
@@ -391,7 +311,7 @@
     },
     "tableHeaders": {
       "fullName": "Full Name",
-      "email": "Email", 
+      "email": "Email",
       "role": "Role",
       "status": "Status",
       "name": "Name",
@@ -407,7 +327,7 @@
       "fullWidth": "Full Width",
       "deleteAccount": "Delete Account",
       "cancel": "Cancel",
-      "yesDelete": "Yes, Delete", 
+      "yesDelete": "Yes, Delete",
       "save": "Save",
       "openDialog": "Open Dialog",
       "menu": "Menu",
@@ -434,13 +354,412 @@
       "selectDateRange": "Select date range...",
       "start": "Start",
       "end": "End",
-      "richTextContent": "Write rich text content..."
+      "richTextContent": "Write rich text content...",
+      "allStatuses": "All Statuses",
+      "filters": "Filters",
+      "category": "Category",
+      "status": "Status",
+      "clearFilters": "Clear Filters",
+      "clearAll": "Clear all",
+      "activeFilters": "Active filters:",
+      "componentsShowing": "components showing",
+      "totalComponents": "total",
+      "popularSearches": "Popular searches: Button, Input, Modal, Form",
+      "backToTop": "Back to top",
+      "categories": "Categories",
+      "badgeVariants": {
+        "default": "Default",
+        "secondary": "Secondary",
+        "destructive": "Destructive",
+        "outline": "Outline"
+      },
+      "buttonVariants": {
+        "primary": "Primary",
+        "secondary": "Secondary",
+        "outline": "Outline",
+        "ghost": "Ghost",
+        "delete": "Delete",
+        "disabled": "Disabled"
+      },
+      "buttonActions": {
+        "addNew": "Add New",
+        "search": "Search",
+        "settings": "Settings"
+      },
+      "development": {
+        "frontend": "Frontend Development",
+        "backend": "Backend Development",
+        "mobile": "Mobile Development"
+      },
+      "formGroup": "Form Group",
+      "buttonSize": "Button size",
+      "cardPaddingSize": "Card padding size",
+      "alertDialog": {
+        "deleteWarningMessage": "This action cannot be undone. Your account and all data will be permanently deleted.",
+        "cancel": "Cancel",
+        "confirmDelete": "Yes, Delete"
+      },
+      "avatar": {
+        "altText": "Avatar image alternative text"
+      },
+      "badge": {
+        "sizeDescription": "Badge size"
+      },
+      "cardActions": {
+        "details": "Details",
+        "getReport": "Get Report"
+      },
+      "tableHeaders": {
+        "fullName": "Full Name",
+        "email": "Email"
+      },
+      "dataTable": {
+        "dataDescription": "Table data",
+        "searchPlaceholder": "Search input placeholder text",
+        "searchDefault": "Search..."
+      },
+      "notifications": "Notifications",
+      "textarea": {
+        "basicPlaceholder": "Basic textarea..."
+      },
+      "dialogLabels": {
+        "name": "Name",
+        "save": "Save"
+      },
+      "buttonClick": {
+        "alert": "Button clicked!",
+        "clickMe": "Click"
+      },
+      "profile": "Profile",
+      "listItem": "List item",
+      "placeholderText": "Placeholder text",
+      "loadingTypes": {
+        "spinner": "Spinner",
+        "dots": "Dots",
+        "pulse": "Pulse"
+      },
+      "loadingSize": "Loading size",
+      "progress": "Progress",
+      "account": "Account",
+      "volumeLevel": "Volume Level",
+      "quality": "Quality",
+      "left": "Left",
+      "tooltipPosition": "Tooltip position",
+      "dates": {
+        "graduationDate": "Graduation Date",
+        "holidayDates": "Holiday Dates",
+        "appointmentDate": "Appointment Date"
+      },
+      "missing": {
+        "accordion": {
+          "notificationPreferences": "Notification Preferences"
+        },
+        "alertDialog": {
+          "confirmDelete": "Confirm Delete"
+        },
+        "badge": {
+          "active": "Active",
+          "error": "Error",
+          "pending": "Pending",
+          "userOnline": "Online",
+          "connectionError": "Connection Error",
+          "awaitingApproval": "Awaiting Approval"
+        },
+        "buttons": {
+          "small": "Small",
+          "large": "Large",
+          "fullWidth": "Full Width",
+          "menu": "Menu",
+          "openDialog": "Open Dialog",
+          "startNow": "Start Now"
+        },
+        "cards": {
+          "totalVisitors": "Total Visitors",
+          "newUsers": "New Users",
+          "conversionRate": "Conversion Rate",
+          "premiumFeature": "Premium Feature",
+          "premiumDesc": "Do more with these premium features",
+          "detailedAnalytics": "Detailed Analytics",
+          "customReports": "Custom Reports",
+          "apiAccess": "API Access",
+          "projectReport": "Project Report",
+          "projectReportDesc": "Project progress and details from last month"
+        },
+        "checkbox": {
+          "selected": "Selected",
+          "notSelected": "Not Selected",
+          "disabled": "Disabled",
+          "yourInterests": "Your Interests"
+        },
+        "datePicker": {
+          "birthDate": "Birth Date"
+        },
+        "dialog": {
+          "editProfile": "Edit Profile",
+          "editProfileDesc": "You can update your profile information here"
+        },
+        "dropdown": {
+          "emailUpdates": "Email Updates",
+          "myAccount": "My Account"
+        },
+        "loading": {
+          "loading": "Loading",
+          "completed": "Completed"
+        },
+        "popover": {
+          "openPopover": "Open Popover",
+          "adjustDimensions": "Adjust Dimensions",
+          "width": "Width",
+          "height": "Height"
+        },
+        "select": {
+          "turkey": "Turkey"
+        },
+        "separator": {
+          "section1": "Section 1",
+          "section2": "Section 2",
+          "exampleContent1": "First example content",
+          "exampleContent2": "Second example content",
+          "right": "Right"
+        },
+        "slider": {
+          "priceRange": "Price Range",
+          "priceRangeLabel": "Price Range: $200 - $800"
+        },
+        "switch": {
+          "emailUpdates": "Email Updates",
+          "disabled": "Disabled"
+        },
+        "tabs": {
+          "password": "Password",
+          "username": "Username",
+          "currentPassword": "Current Password",
+          "newPassword": "New Password"
+        }
+      },
+      "labels": {
+        "personalInfo": "Personal Information",
+        "personalInfoDesc": "You can update your personal information here",
+        "securitySettings": "Security Settings",
+        "securitySettingsDesc": "You can manage your security settings here",
+        "section1": "Section 1",
+        "section2": "Section 2",
+        "content1": "First section content",
+        "content2": "Second section content",
+        "openSection": "Open Section",
+        "otherSection": "Other Section",
+        "defaultOpenSection": "This section is open by default",
+        "canAlsoOpenThisSection": "You can also open this section",
+        "informationMessage": "This is an information message",
+        "warning": "Warning",
+        "operationFailed": "Operation failed",
+        "deleteAccount": "Delete Account",
+        "confirmDeleteAccount": "Confirm Account Deletion",
+        "deleteWarningMessage": "This action cannot be undone",
+        "cancel": "Cancel",
+        "avatarFallback": "AV",
+        "basicInput": "Basic input...",
+        "emailAddress": "Email address...",
+        "password": "Password...",
+        "disabledInput": "Disabled input...",
+        "small": "Small",
+        "large": "Large",
+        "iconButtons": "Icon Buttons",
+        "name": "Name",
+        "edit": "Edit",
+        "characterCounter": "With character counter...",
+        "sampleName": "John Doe",
+        "searchByName": "Search by name...",
+        "selectCountry": "Select country",
+        "selectDate": "Select date...",
+        "selectMonthYear": "Select month/year...",
+        "selectDateRange": "Select date range...",
+        "start": "Start",
+        "end": "End",
+        "richTextExample": "<p>This is a <strong>rich text</strong> example.</p>",
+        "richTextPlaceholder": "Write rich text content...",
+        "userOnline": "User online",
+        "notificationPreferences": "You can manage your notification preference settings here"
+      },
+      "descriptions": {
+        "multipleAccordion": "Accordion where multiple sections can be opened simultaneously",
+        "lastItemClosable": "Whether the last remaining item can also be closed",
+        "criticalOperations": "Modal dialog component for confirming critical operations",
+        "avatarComponent": "Avatar component for user profile pictures",
+        "avatarGroup": "Avatar group representing multiple users",
+        "avatarImageUrl": "Avatar image URL (for AvatarImage)",
+        "badgeComponent": "Badge component used for status and labeling",
+        "badgeExamples": "Badge examples representing different states",
+        "badgeVariant": "Badge appearance variant",
+        "buttonComponent": "Interactive button component with different variants and sizes",
+        "iconButtonExamples": "Button examples used with icons",
+        "buttonVariant": "Button appearance variant",
+        "additionalCssClasses": "Additional CSS classes (full width with w-full)",
+        "disableButton": "Disables the button",
+        "featureCard": "Card example used for feature introduction",
+        "cardComponent": "Card component used for content grouping",
+        "cardVariant": "Card appearance variant",
+        "hoverEffectType": "Hover effect type",
+        "checkboxComponent": "Checkbox component used for selection operations",
+        "checkboxFormGroup": "Checkbox group usage within forms",
+        "checkboxChecked": "Is checkbox selected (controlled)",
+        "defaultCheckedState": "Default selected state (uncontrolled)",
+        "checkboxDisabled": "Is checkbox disabled",
+        "statusChangeCallback": "Function called when selection state changes",
+        "dataTableComponent": "Advanced table component with sorting, filtering and pagination",
+        "tableColumnDefinitions": "Table column definitions",
+        "enablePagination": "Enable pagination feature",
+        "enableRowSelection": "Enable row selection feature",
+        "enableGlobalSearch": "Enable global search feature",
+        "enableExport": "Enable export feature",
+        "rowClickEvent": "Row click event",
+        "dataGridComponent": "Simple and fast table component with basic sorting and filtering",
+        "searchColumnKey": "Column key to search in",
+        "switchComponent": "Toggle switch component used for on/off operations",
+        "switchChecked": "Is switch open (controlled)",
+        "defaultOpenState": "Default open state (uncontrolled)",
+        "switchDisabled": "Is switch disabled",
+        "selectComponent": "Dropdown component used for selecting from options",
+        "selectedValue": "Selected value (controlled)",
+        "defaultSelectedValue": "Default selected value (uncontrolled)",
+        "selectionChangeCallback": "Function called when selection changes",
+        "disabledState": "Disabled state",
+        "textareaComponent": "Textarea component used for long text input",
+        "autoResize": "Automatic resize",
+        "maxCharacterCount": "Maximum character count",
+        "showCharacterCounter": "Show character counter",
+        "dialogComponent": "Modal dialog component used for various content",
+        "dialogOpenState": "Dialog open/closed state",
+        "dialogStateChangeCallback": "Function that runs when dialog state changes",
+        "editUserProfile": "Edit user profile",
+        "confirmationDialogs": "Confirmation dialogs",
+        "modalForms": "Modal forms",
+        "dropdownComponent": "Dropdown menu component with various menu items",
+        "menuOpenState": "Menu open/closed state",
+        "menuStateChangeCallback": "Function that runs when menu state changes",
+        "userMenus": "User menus",
+        "navigationDropdowns": "Navigation dropdowns",
+        "contextMenus": "Context menus",
+        "actionMenus": "Action menus",
+        "inputComponent": "Input component used for text input",
+        "inputValue": "Input value",
+        "inputDisabledState": "Input disabled state",
+        "loadingComponent": "Loading components used for loading states",
+        "pageLoadingStatus": "Page loading status",
+        "duringApiCalls": "During API calls",
+        "showWhileDataLoading": "Show while data is loading",
+        "progressComponent": "Progress bar component showing task progress",
+        "progressValue": "Progress value (0-100)",
+        "fileUploadProgress": "File upload progress",
+        "taskProgress": "Task progress",
+        "formCompletionStatus": "Form completion status",
+        "skeletonComponent": "Loading skeleton components",
+        "skeletonWidth": "Skeleton width",
+        "skeletonHeight": "Skeleton height",
+        "showPlaceholderWhileDataLoads": "Show placeholder while data loads",
+        "visualConsistencyWhileWaitingApi": "Visual consistency while waiting for API",
+        "pageTransitions": "Page transitions",
+        "tabsComponent": "Tab navigation component",
+        "defaultActiveTab": "Default active tab",
+        "controlledActiveTab": "Controlled active tab",
+        "tabChangeCallback": "Function that runs when tab changes",
+        "organizeFormFields": "Organize form fields",
+        "categorizedContent": "Categorized content",
+        "navigationMenus": "Navigation menus",
+        "settingsPages": "Settings pages",
+        "sliderComponent": "Value selector slider component",
+        "defaultValues": "Default value(s)",
+        "controlledValues": "Controlled value(s)",
+        "minimumValue": "Minimum value",
+        "incrementAmount": "Increment amount",
+        "volumeBrightnessControls": "Volume/brightness controls",
+        "priceRangeSelection": "Price range selection",
+        "valueRangeDetermination": "Value range determination",
+        "separatorComponent": "Separator line component",
+        "separatorDirection": "Separator direction",
+        "separateContentSections": "Separate content sections",
+        "separateDashboardSections": "Separate dashboard sections",
+        "cardSectionSeparations": "Card section separations",
+        "popoverComponent": "Popover content box component",
+        "popoverOpenState": "Popover open/closed state",
+        "popoverStateChangeCallback": "Function that runs when popover state changes",
+        "detailPopups": "Detail popups",
+        "quickSettingsMenus": "Quick settings menus",
+        "formHelperContent": "Form helper content",
+        "tooltipComponent": "Tooltip component used for showing additional information",
+        "tooltipContent": "Tooltip content",
+        "tooltipAlignment": "Tooltip alignment",
+        "tooltipDisplayDelay": "Tooltip display delay",
+        "tooltipDisabledState": "Tooltip disabled state",
+        "formFieldHelpTexts": "Form field help texts",
+        "buttonExplanations": "Button explanations",
+        "abbreviatedTextExplanations": "Abbreviated text explanations",
+        "explainIconMeanings": "Explain icon meanings",
+        "improveUserExperience": "Improve user experience",
+        "scrollAreaComponent": "Scroll area component for limited height content",
+        "limitedHeightContent": "Limited height content",
+        "longListDisplays": "Long list displays",
+        "chatMessageHistory": "Chat message history",
+        "productDescriptions": "Product descriptions",
+        "richTextComponent": "Rich text editor component",
+        "contentChangeCallback": "Function called when content changes",
+        "blogPosts": "Blog posts",
+        "emailEditors": "Email editors",
+        "richContentInComments": "Rich content in comments",
+        "datePickerComponent": "Date picker component used for single date selection",
+        "selectedDate": "Selected date",
+        "dateChangeCallback": "Function called when date changes",
+        "appointmentDateSelection": "Appointment date selection",
+        "deadlineDetermination": "Deadline determination",
+        "eventDateSelection": "Event date selection",
+        "birthdateInput": "Birthdate input",
+        "monthYearPickerComponent": "Month/Year picker component",
+        "selectedMonthYear": "Selected month/year",
+        "graduationDate": "Graduation date",
+        "workExperienceDates": "Work experience dates",
+        "creditCardExpirationDate": "Credit card expiration date",
+        "birthdateSelection": "Birthdate selection",
+        "dateRangePickerComponent": "Date range picker component",
+        "selectedDateRange": "Selected date range",
+        "dateRangeChangeCallback": "Function called when date range changes",
+        "vacationDateRangeSelection": "Vacation date range selection",
+        "reservationDateSelection": "Reservation date selection",
+        "reportDateRange": "Report date range",
+        "projectTimelinePlanning": "Project timeline planning",
+        "reportPeriodSelection": "Report period selection",
+        "reservationDateRange": "Reservation date range",
+        "eventDateDetermination": "Event date determination",
+        "reportPeriodDetermination": "Report period determination",
+        "modernDatePickerComponent": "Modern date picker component",
+        "formFields": "Form fields",
+        "searchBoxes": "Search boxes",
+        "loginRegisterForms": "Login/register forms",
+        "profileEditingForms": "Profile editing forms",
+        "filteringOptions": "Filtering options",
+        "optionLists": "Option lists",
+        "getUserData": "Get user data",
+        "valueChangeCallback": "Value change callback function",
+        "maximumValue": "Maximum value",
+        "buttonLoadingStates": "Button loading states",
+        "groupMenuItems": "Group menu items",
+        "showAdditionalInfo": "Show additional info",
+        "controlledContentValue": "Controlled content value"
+      },
+      "tooltips": {
+        "example": "This is a tooltip example",
+        "rightSide": "This tooltip appears on the right",
+        "bottomSide": "This tooltip appears on the bottom",
+        "disabled": "This button is disabled"
+      },
+      "extraDescriptions": {
+        "inputType": "Input type (text, email, password, etc.)"
+      }
     },
     "content": {
       "accordion": {
         "personalInfo": "Personal Information",
         "securitySettings": "Security Settings",
-        "notificationPreferences": "Notification Preferences", 
+        "notificationPreferences": "Notification Preferences",
         "personalInfoDesc": "You can update your name, surname, email and phone information in this section. Changes are saved instantly.",
         "securitySettingsDesc": "Your password change, two-factor authentication and security questions settings.",
         "notificationDesc": "Set your preferences for email, SMS and app notifications."
@@ -450,7 +769,7 @@
         "informationMsg": "This is an informational message. It contains important details.",
         "warning": "Warning",
         "warningMsg": "There is a situation that requires attention.",
-        "error": "Error", 
+        "error": "Error",
         "errorMsg": "The operation could not be completed. Please try again."
       },
       "dialogs": {
@@ -472,11 +791,11 @@
         "projectReportDesc": "Last week's performance summary and analytics data.",
         "totalVisitors": "Total Visitors",
         "newUsers": "New Users",
-        "conversionRate": "Conversion Rate", 
+        "conversionRate": "Conversion Rate",
         "premiumFeature": "Premium Feature",
         "premiumFeatureDesc": "Advanced analytics and reporting tools",
         "detailedAnalytics": "• Detailed analytics",
-        "customReports": "• Custom reports", 
+        "customReports": "• Custom reports",
         "apiAccess": "• API access"
       },
       "categories": {
@@ -491,11 +810,11 @@
     "descriptions": {
       "accordion": "Accordion component used for expandable content sections. Provides enhanced user experience with Framer Motion animations.",
       "alert": "Alert component used to communicate important messages to users. Can display different types of warnings.",
-      "alertDialog": "Modal dialog component that requires confirmation for critical operations. Requires user interaction.", 
+      "alertDialog": "Modal dialog component that requires confirmation for critical operations. Requires user interaction.",
       "avatar": "Component used for user profile pictures and avatars. Offers fallback and different size options.",
       "badge": "Badge component used for status and labeling. Offers different variant and size options.",
       "button": "Interactive button component with different variants and sizes. Offers loading state and icon support.",
-      "card": "Card component used to group and organize content. Supports header, content and footer sections.", 
+      "card": "Card component used to group and organize content. Supports header, content and footer sections.",
       "checkbox": "Checkbox component used for selection operations. Supports controlled and uncontrolled modes.",
       "dataTable": "Advanced table component. Has sorting, filtering, pagination, row selection and export features."
     },
@@ -508,7 +827,7 @@
       "dialogOpen": "Is dialog open (controlled)",
       "dialogOpenChangeCallback": "Function called when dialog open state changes",
       "badgeVariant": "Badge appearance variant",
-      "buttonVariant": "Button appearance variant", 
+      "buttonVariant": "Button appearance variant",
       "additionalCssClasses": "Additional CSS classes (full width with w-full)",
       "disableButton": "Disables the button"
     },
@@ -736,24 +1055,6 @@
         "eventDateSelection": "Date selection for event planning",
         "birthdateInput": "Input field for birthdate information"
       },
-      "labels": {
-        "iconButtons": "Icon Buttons",
-        "edit": "Edit",
-        "searchByName": "Search by name...",
-        "selectCountry": "Select country",
-        "characterCounter": "With character counter...",
-        "password": "Password...",
-        "disabledInput": "Disabled input",
-        "selectDate": "Select date...",
-        "selectMonthYear": "Select month/year...",
-        "richTextPlaceholder": "Write rich text content...",
-        "richTextExample": "<p>This is a <strong>rich text</strong> example.</p>",
-        "selectDate": "Select date...",
-        "selectMonthYear": "Select month/year...",
-        "selectDateRange": "Select date range...",
-        "start": "Start",
-        "end": "End"
-      },
       "tooltips": {
         "example": "This is a tooltip example",
         "rightSide": "This tooltip appears on the right",
@@ -880,7 +1181,16 @@
         "characterCounter": "With character counter...",
         "password": "Password...",
         "disabledInput": "Disabled input",
-        "sampleName": "John Doe"
+        "sampleName": "John Doe",
+        "basicInput": "Basic input...",
+        "emailAddress": "Email address...",
+        "richTextPlaceholder": "Write rich text content...",
+        "richTextExample": "<p>This is a <strong>rich text</strong> example.</p>",
+        "selectDate": "Select date...",
+        "selectMonthYear": "Select month/year...",
+        "selectDateRange": "Select date range...",
+        "start": "Start",
+        "end": "End"
       },
       "extraDescriptions": {
         "inputType": "Input type (text, email, password, etc.)",
@@ -975,10 +1285,7 @@
   "auth": {
     "signIn": "Sign In",
     "signUp": "Sign Up",
-    "login": "Login",
     "logout": "Logout",
-    "register": "Register",
-    "forgotPassword": "Forgot Password",
     "email": "Email",
     "password": "Password",
     "confirmPassword": "Confirm Password",
@@ -1230,7 +1537,9 @@
     "profile": "Profile",
     "settings": "Settings",
     "dashboard": "Dashboard",
+    "dashboardDescription": "Main dashboard and overview",
     "users": "Users",
+    "usersDescription": "User management and listing",
     "components": "Components",
     "about": "About",
     "contact": "Contact",
@@ -1244,7 +1553,8 @@
     "quickLinks": "Quick Links",
     "legal": "Legal",
     "madeWith": "Made with ❤️ in Turkey",
-    "language": "Language Selection"
+    "language": "Language Selection",
+    "menu": "Menu"
   },
   "language": {
     "title": "Language",
@@ -1285,86 +1595,6 @@
     "loading": "Loading theme...",
     "applying": "Applying theme...",
     "note": "Theme changes are applied instantly and saved in your browser"
-  },
-  "pages": {
-    "home": {
-      "title": "Welcome to Starkon",
-      "subtitle": "Comprehensive component library designed for modern React applications. Radix UI based, accessible and customizable components.",
-      "getStarted": "Get Started",
-      "learnMore": "Learn More",
-      "goToDashboard": "Go to Dashboard",
-      "features": {
-        "title": "Features",
-        "subtitle": "Build modern applications with Starkon",
-        "modern": {
-          "title": "Modern Design",
-          "description": "Create modern and elegant interfaces with sea blue theme"
-        },
-        "performance": {
-          "title": "Performance",
-          "description": "Build fast applications with optimized components"
-        },
-        "customizable": {
-          "title": "Customizable",
-          "description": "All components can be customized according to your needs"
-        }
-      },
-      "footer": {
-        "copyright": "© 2024 Starkon. All rights reserved."
-      }
-    },
-    "dashboard": {
-      "welcome": "Welcome, {{name}}!",
-      "description": "This page can only be viewed by logged-in users.",
-      "viewProfile": "View Profile",
-      "logout": "Logout",
-      "userInfoNotLoaded": "User information could not be loaded"
-    },
-    "components": {
-      "title": "Components",
-      "searchPlaceholder": "Search components... (Button, Input, Card...)",
-      "showcase": "Component Showcase",
-      "count": "Components ({{count}})"
-    },
-    "notFound": {
-      "title": "404",
-      "heading": "Page Not Found",
-      "description": "The page you're looking for doesn't exist or has been removed.",
-      "goHome": "Go to Homepage",
-      "goBack": "Go Back"
-    },
-    "about": {
-      "title": "About Us",
-      "content": "Learn more about Starkon and our mission."
-    },
-    "contact": {
-      "title": "Contact",
-      "content": "Get in touch with our team."
-    },
-    "pricing": {
-      "title": "Pricing",
-      "content": "Choose the plan that's right for you."
-    },
-    "profile": {
-      "title": "Profile",
-      "content": "Manage your profile information."
-    },
-    "settings": {
-      "title": "Settings",
-      "content": "Configure your application preferences."
-    },
-    "users": {
-      "title": "Users",
-      "content": "Manage system users."
-    },
-    "register": {
-      "title": "Register",
-      "content": "Create a new account."
-    },
-    "forgotPassword": {
-      "title": "Forgot Password",
-      "content": "Reset your password."
-    }
   },
   "validation": {
     "required": "This field is required",
@@ -1553,6 +1783,373 @@
           "content": "If you have questions about our privacy policy or data processing practices, you can contact us:"
         }
       }
+    }
+  },
+  "user": {
+    "defaultName": "User",
+    "profile": "Profile",
+    "settings": "Settings",
+    "logout": "Logout"
+  },
+  "pages": {
+    "dashboard": {
+      "welcome": "Welcome, {{name}}!",
+      "description": "Welcome to your dashboard. You can manage all your operations from here.",
+      "userInfoNotLoaded": "User information could not be loaded",
+      "debugAuthState": "Debug Auth State",
+      "defaultUser": "User",
+      "userInfo": "User Information",
+      "accountDetails": "Account details and information",
+      "quickActions": "Quick Actions",
+      "recentActivity": "Recent Activity",
+      "fromLastMonth": "from last month",
+      "viewProfile": "View Profile",
+      "accountSettings": "Account Settings",
+      "logout": "Logout",
+      "loggingOut": "Logging out...",
+      "noInfo": "No information",
+      "stats": {
+        "totalProjects": "Total Projects",
+        "activeUsers": "Active Users",
+        "revenue": "Revenue",
+        "activities": "Activities"
+      },
+      "fields": {
+        "fullName": "Full Name",
+        "email": "Email",
+        "role": "Role",
+        "joinDate": "Join Date",
+        "lastLogin": "Last Login"
+      },
+      "activity": {
+        "login": "Logged into system",
+        "profileUpdated": "Profile updated",
+        "passwordChanged": "Password changed",
+        "now": "Now",
+        "yesterday": "Yesterday",
+        "lastWeek": "Last week"
+      },
+      "boilerplateProject": "Boilerplate Project",
+      "welcomeToStarkon": "Welcome to Starkon",
+      "boilerplateDescription": "Comprehensive starter template for modern React applications. 30+ ready components, TypeScript support, and modern design system.",
+      "getStarted": "Get Started",
+      "installationTitle": "Installation Guide",
+      "installationDescription": "Set up your project in minutes and start developing.",
+      "installationSteps": "Installation Steps",
+      "step1Title": "Create Project",
+      "step1Description": "Create a new project using our CLI tool:",
+      "step2Title": "Start Development",
+      "step2Description": "Navigate to project folder and start the development server:",
+      "step3Title": "Enjoy!",
+      "step3Description": "Now you can start developing your modern React application.",
+      "whatYouGet": "What You Get",
+      "features": {
+        "components": "30+ Components",
+        "componentsDesc": "Ready-to-use, modern UI components",
+        "readyToUse": "100% Ready",
+        "readyToUseDesc": "Fully completed components ready to use",
+        "typescript": "TypeScript",
+        "typescriptDesc": "Safe development with full TypeScript support",
+        "performance": "Performance",
+        "performanceDesc": "Optimized and fast component library"
+      },
+      "preview": {
+        "components": "30+ UI Components",
+        "componentsDesc": "Ready components like Button, Card, Form",
+        "typescript": "Full TypeScript",
+        "typescriptDesc": "Type safety and IntelliSense support",
+        "performance": "High Performance",
+        "performanceDesc": "Optimized performance with Next.js 15",
+        "authentication": "Authentication System",
+        "authenticationDesc": "JWT-based secure login system"
+      },
+      "exploreComponents": "Explore Components",
+      "viewOnGithub": "View on GitHub",
+      "freeAndOpenSource": "Free and open source"
+    },
+    "components": {
+      "title": "Components",
+      "searchPlaceholder": "Search components... (Button, Input, Card...)",
+      "showcase": "Component Showcase",
+      "count": "Components ({{count}})"
+    },
+    "about": {
+      "title": "About Us",
+      "content": "Learn more about Starkon and our mission."
+    },
+    "pricing": {
+      "title": "Pricing",
+      "content": "Choose the plan that's right for you."
+    },
+    "profile": {
+      "title": "Profile",
+      "content": "Manage your profile information.",
+      "description": "Manage your personal information and account settings.",
+      "boilerplateDemo": "Boilerplate Profile Example",
+      "editProfile": "Edit Profile",
+      "changeCover": "Change Cover Photo",
+      "bio": "Bio",
+      "bioPlaceholder": "Write a short description about yourself...",
+      "defaultBio": "This user hasn't written a description yet.",
+      "joinedDate": "Joined: {{date}}",
+      "location": "Location",
+      "locationPlaceholder": "City, Country",
+      "phone": "Phone",
+      "phonePlaceholder": "+1 555 000 0000",
+      "company": "Company",
+      "companyPlaceholder": "Company name",
+      "website": "Website",
+      "websitePlaceholder": "https://example.com",
+      "socialLinks": "Social Media Links",
+      "notSpecified": "Not specified",
+      "quickActions": "Quick Actions",
+      "recentActivity": "Recent Activity",
+      "stats": {
+        "title": "Statistics",
+        "projectsCompleted": "Projects Completed",
+        "totalHours": "Total Hours",
+        "teamMembers": "Team Members",
+        "achievements": "Achievements"
+      },
+      "details": {
+        "title": "Profile Details"
+      },
+      "actions": {
+        "editProfile": "Edit Profile",
+        "editProfileDesc": "Update your profile information",
+        "security": "Security",
+        "securityDesc": "Password and security settings",
+        "notifications": "Notifications",
+        "notificationsDesc": "Manage your notification preferences",
+        "preferences": "Preferences",
+        "preferencesDesc": "Configure your app preferences"
+      },
+      "activities": {
+        "profileUpdated": "Profile updated",
+        "loginSuccess": "Login successful",
+        "passwordChanged": "Password changed"
+      }
+    },
+    "settings": {
+      "title": "Settings",
+      "description": "Manage your account settings and personalize your experience.",
+      "passwordDialog": {
+        "title": "Change Password",
+        "description": "Choose a strong password for your account security.",
+        "currentPasswordLabel": "Current Password",
+        "currentPasswordPlaceholder": "Enter your current password",
+        "newPasswordLabel": "New Password",
+        "newPasswordPlaceholder": "Enter your new password",
+        "confirmPasswordLabel": "New Password (Repeat)",
+        "confirmPasswordPlaceholder": "Enter your new password again",
+        "passwordRequirements": "Your password must have at least:",
+        "requirement1": "8 characters long",
+        "requirement2": "Contains uppercase and lowercase letters",
+        "requirement3": "Contains at least one number",
+        "requirement4": "Contains at least one special character",
+        "cancel": "Cancel",
+        "change": "Change Password",
+        "mismatchError": "New passwords do not match!"
+      },
+      "deleteDialog": {
+        "title": "Permanently Delete Account",
+        "warning": "This action cannot be undone. When you delete your account:",
+        "consequence1": "All your personal data will be permanently deleted",
+        "consequence2": "Your profile information and content will be removed",
+        "consequence3": "All subscriptions associated with this account will be canceled",
+        "consequence4": "This action cannot be undone",
+        "confirmation": "Are you sure you want to continue?",
+        "cancel": "Cancel",
+        "confirm": "Yes, Delete Account"
+      },
+      "content": "Configure your application preferences.",
+      "boilerplateDemo": "Boilerplate Settings Example",
+      "unsavedChanges": "Unsaved changes",
+      "tabs": {
+        "profile": "Profile",
+        "notifications": "Notifications",
+        "notificationsShort": "Notif",
+        "privacy": "Privacy",
+        "appearance": "Appearance",
+        "security": "Security"
+      },
+      "profile": {
+        "title": "Profile Information",
+        "description": "Update your personal information and profile settings",
+        "uploadPhoto": "Upload Photo",
+        "removePhoto": "Remove",
+        "photoRequirements": "JPG, PNG or GIF. Max 2MB.",
+        "fullNameLabel": "Full Name *",
+        "fullNamePlaceholder": "Enter your first and last name",
+        "usernameLabel": "Username *",
+        "usernamePlaceholder": "username",
+        "emailLabel": "Email *",
+        "emailPlaceholder": "email@example.com",
+        "phoneLabel": "Phone",
+        "phonePlaceholder": "+1 555 123 45 67",
+        "websiteLabel": "Website",
+        "websitePlaceholder": "https://website.com",
+        "locationLabel": "Location",
+        "locationPlaceholder": "New York, USA",
+        "bioLabel": "Biography",
+        "bioPlaceholder": "Tell us about yourself...",
+        "bioNote": "Maximum 160 characters"
+      },
+      "notifications": {
+        "title": "Notification Preferences",
+        "description": "Choose which notifications you want to receive",
+        "emailNotifications": "Email Notifications",
+        "emailNotificationsDesc": "Receive general email notifications",
+        "securityAlerts": "Security alerts",
+        "securityAlertsDesc": "Receive important notifications about account security",
+        "productUpdates": "Product updates",
+        "productUpdatesDesc": "Get information about new features and updates",
+        "marketingEmails": "Marketing emails",
+        "marketingEmailsDesc": "Get information about special offers and campaigns",
+        "weeklyDigest": "Weekly digest",
+        "weeklyDigestDesc": "Receive weekly activity summary via email",
+        "instantNotifications": "Push Notifications",
+        "pushNotifications": "Push notifications",
+        "pushNotificationsDesc": "Receive browser notifications",
+        "smsNotifications": "SMS notifications",
+        "smsNotificationsDesc": "Receive SMS for important updates"
+      },
+      "privacy": {
+        "title": "Privacy Settings",
+        "description": "Control how your personal information is used",
+        "profileVisibilityLabel": "Profile Visibility",
+        "profileVisibilityDesc": "Choose who can see your profile",
+        "profileVisibilityPublic": "Public",
+        "profileVisibilityFriends": "Friends Only",
+        "profileVisibilityPrivate": "Private",
+        "dataManagement": "Data Management",
+        "downloadData": "Download My Data",
+        "deleteAccount": "Delete Account",
+        "dataManagementDesc": "You can download all your personal data in JSON format or permanently delete your account."
+      },
+      "security": {
+        "title": "Security Settings",
+        "description": "Configure settings to enhance your account security",
+        "passwordAndSession": "Password and Session",
+        "changePassword": "Change Password",
+        "endAllSessions": "End All Sessions",
+        "lastPasswordChange": "Last password change: 30 days ago",
+        "activeSessions": "Active sessions: 3 devices",
+        "twoFactorAuth": "Two-Factor Authentication (2FA)",
+        "enable2FA": "Enable 2FA",
+        "twoFactorDesc": "Add an extra layer of security to your account",
+        "twoFactorActive": "2FA active",
+        "twoFactorConfigured": "Configured with Google Authenticator"
+      },
+      "appearance": {
+        "title": "Appearance & Theme",
+        "description": "Customize interface theme and language preferences",
+        "displaySettings": "Display Settings",
+        "compactMode": "Compact mode",
+        "compactModeDesc": "Compressed view to see more content",
+        "reduceAnimations": "Reduce animations",
+        "reduceAnimationsDesc": "Limit animations for performance"
+      }
+    },
+    "users": {
+      "title": "Users",
+      "content": "Manage system users."
+    },
+    "register": {
+      "title": "Register",
+      "content": "Create a new account."
+    },
+    "forgotPassword": {
+      "title": "Forgot Password",
+      "content": "Reset your password."
+    },
+    "home": {
+      "title": "Welcome to Starkon",
+      "subtitle": "Comprehensive component library designed for modern React applications. Radix UI based, accessible and customizable components.",
+      "getStarted": "Get Started",
+      "learnMore": "Learn More",
+      "goToDashboard": "Go to Dashboard",
+      "features": {
+        "title": "Features",
+        "subtitle": "Build modern applications with Starkon",
+        "modern": {
+          "title": "Modern Design",
+          "description": "Create modern and elegant interfaces with sea blue theme"
+        },
+        "performance": {
+          "title": "Performance",
+          "description": "Build fast applications with optimized components"
+        },
+        "customizable": {
+          "title": "Customizable",
+          "description": "All components can be customized according to your needs"
+        }
+      },
+      "stats": {
+        "components": "Components",
+        "accessible": "Accessible",
+        "openSource": "Open Source"
+      },
+      "cta": {
+        "title": "Get Started Now",
+        "description": "Start building your modern React application today. Experience fast and reliable development with Starkon.",
+        "viewOnGithub": "View on GitHub"
+      },
+      "footer": {
+        "copyright": "© 2024 Starkon. All rights reserved."
+      }
+    },
+    "contact": {
+      "title": "Contact",
+      "subtitle": "Get in touch with us",
+      "name": "Full Name",
+      "namePlaceholder": "Your full name",
+      "email": "Email",
+      "emailPlaceholder": "email@example.com",
+      "subject": "Subject",
+      "subjectPlaceholder": "Subject of your message",
+      "message": "Message",
+      "messagePlaceholder": "Write your message here...",
+      "sendButton": "Send Message",
+      "contactInfo": "Contact Information",
+      "successMessage": "Your message has been sent! We will get back to you soon.",
+      "privacy": "All messages are kept confidential and shared only with necessary personnel.",
+      "directContact": "Direct contact:",
+      "loading": "Sending...",
+      "error": "Message could not be sent. Please try again.",
+      "content": "Get in touch with our team."
+    },
+    "support": {
+      "title": "Support",
+      "subtitle": "How can we help you?",
+      "name": "Full Name",
+      "namePlaceholder": "Your full name",
+      "email": "Email",
+      "emailPlaceholder": "email@example.com",
+      "subject": "Subject",
+      "subjectPlaceholder": "Brief description of the issue",
+      "message": "Message",
+      "messagePlaceholder": "Describe your issue in detail...",
+      "sendButton": "Send Support Request",
+      "contactInfo": "Alternative Contact",
+      "successMessage": "Your support request has been received! We will get back to you soon.",
+      "privacy": "Your support request is kept confidential and shared only with our technical team.",
+      "directContact": "For urgent matters, contact directly:",
+      "tip": "If you provide detailed information about your issue in the support request, we can help you faster.",
+      "responseTime": "We usually respond via email within 24 hours.",
+      "loading": "Sending...",
+      "error": "Support request could not be sent. Please try again."
+    },
+    "notFound": {
+      "title": "404",
+      "heading": "Page Not Found",
+      "description": "The page you're looking for doesn't exist or may have been moved.",
+      "goHome": "Go Home",
+      "goBack": "Go Back",
+      "searchHelp": "Can't find what you're looking for?",
+      "about": "About",
+      "contact": "Contact",
+      "components": "Components"
     }
   }
 }

@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Sparkles, Zap, Palette, Code, ArrowRight, Github } from 'lucide-react'
+import { Sparkles, Zap, Palette, Code, ArrowRight, ExternalLink } from 'lucide-react'
 import { useAuth } from '@/hooks/useAuth'
 import { Button } from '@/components/core/button'
 import { Card, CardContent } from '@/components/core/card'
@@ -23,7 +23,7 @@ export default function HomePage() {
     if (isAuthenticated) {
       router.push('/dashboard')
     } else {
-      router.push('/auth/login')
+      router.push('/login')
     }
   }
 
@@ -36,7 +36,7 @@ export default function HomePage() {
       <div className='min-h-screen flex items-center justify-center bg-white dark:bg-neutral-900'>
         <div className='text-center space-y-4'>
           <LoadingSpinner size='lg' />
-          <p className='text-sm text-neutral-600 dark:text-neutral-300'>{t('common.pageLoading')}</p>
+          <p className='text-sm text-neutral-600 dark:text-neutral-300'>Loading page...</p>
         </div>
       </div>
     )
@@ -186,9 +186,11 @@ export default function HomePage() {
           <div className='grid grid-cols-2 gap-8 lg:grid-cols-4'>
             <div className='text-center group'>
               <div className='text-4xl font-bold text-primary-600 dark:text-primary-400 mb-2 group-hover:scale-110 transition-transform duration-300'>
-                50+
+                30+
               </div>
-              <div className='text-sm font-medium text-neutral-600 dark:text-neutral-300'>Bileşen</div>
+              <div className='text-sm font-medium text-neutral-600 dark:text-neutral-300'>
+                {t('pages.home.stats.components')}
+              </div>
             </div>
             <div className='text-center group'>
               <div className='text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2 group-hover:scale-110 transition-transform duration-300'>
@@ -200,13 +202,17 @@ export default function HomePage() {
               <div className='text-4xl font-bold text-accent-600 dark:text-accent-400 mb-2 group-hover:scale-110 transition-transform duration-300'>
                 A11Y
               </div>
-              <div className='text-sm font-medium text-neutral-600 dark:text-neutral-300'>Erişilebilir</div>
+              <div className='text-sm font-medium text-neutral-600 dark:text-neutral-300'>
+                {t('pages.home.stats.accessible')}
+              </div>
             </div>
             <div className='text-center group'>
               <div className='text-4xl font-bold text-teal-600 dark:text-teal-400 mb-2 group-hover:scale-110 transition-transform duration-300'>
                 MIT
               </div>
-              <div className='text-sm font-medium text-neutral-600 dark:text-neutral-300'>Açık Kaynak</div>
+              <div className='text-sm font-medium text-neutral-600 dark:text-neutral-300'>
+                {t('pages.home.stats.openSource')}
+              </div>
             </div>
           </div>
         </div>
@@ -219,10 +225,11 @@ export default function HomePage() {
 
         <div className='max-w-7xl mx-auto px-4 py-20 sm:px-6 lg:px-8 relative z-10'>
           <div className='text-center'>
-            <h2 className='text-3xl sm:text-4xl font-bold text-white mb-6 drop-shadow-md'>Hemen Başlayın</h2>
+            <h2 className='text-3xl sm:text-4xl font-bold text-white mb-6 drop-shadow-md'>
+              {t('pages.home.cta.title')}
+            </h2>
             <p className='text-lg text-white/95 mb-8 max-w-2xl mx-auto drop-shadow leading-relaxed'>
-              Modern React uygulamanızı oluşturmaya bugün başlayın. Starkon ile hızlı ve güvenilir geliştirme deneyimi
-              yaşayın.
+              {t('pages.home.cta.description')}
             </p>
 
             <div className='flex flex-col sm:flex-row gap-4 justify-center items-center'>
@@ -243,8 +250,8 @@ export default function HomePage() {
                 size='lg'
                 className='w-full sm:w-auto border-white/80 dark:border-white/60 text-white hover:bg-white/10 dark:hover:bg-white/20 backdrop-blur-sm transition-all duration-300'
               >
-                <Github className='h-4 w-4 mr-2' />
-                GitHub&apos;da İncele
+                <ExternalLink className='h-4 w-4 mr-2' />
+                {t('pages.home.cta.viewOnGithub')}
               </Button>
             </div>
           </div>

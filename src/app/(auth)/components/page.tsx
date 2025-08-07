@@ -52,11 +52,11 @@ export default function ComponentsPage() {
   const componentDemoData = useComponentDemoData()
 
   const [searchQuery, setSearchQuery] = useState('')
-  const [isFilterOpen, setIsFilterOpen] = useState(false)
   const [viewMode] = useState<'grid' | 'list'>('grid')
-  const [selectedCategory, setSelectedCategory] = useState<string>('all')
-  const [selectedStatus, setSelectedStatus] = useState<string>('all')
+  const [isFilterOpen, setIsFilterOpen] = useState(false)
   const [showScrollTop, setShowScrollTop] = useState(false)
+  const [selectedStatus, setSelectedStatus] = useState<string>('all')
+  const [selectedCategory, setSelectedCategory] = useState<string>('all')
 
   // Filtreleme mantığı
   const filteredComponents = useMemo(() => {
@@ -88,7 +88,7 @@ export default function ComponentsPage() {
     const stats = ['all', ...Array.from(new Set(componentDemoData.map((c) => c.status)))]
     return stats.map((status) => ({
       value: status,
-      label: status === 'all' ? 'Tüm Durumlar' : status,
+      label: status === 'all' ? t('demo.remaining.allStatuses') : status,
       count: status === 'all' ? componentDemoData.length : componentDemoData.filter((c) => c.status === status).length,
     }))
   }, [componentDemoData])
@@ -243,7 +243,7 @@ export default function ComponentsPage() {
                       className='flex items-center gap-2 bg-white/70 dark:bg-neutral-700/70 border-neutral-200/80 dark:border-neutral-600/80'
                     >
                       <Filter className='h-4 w-4' />
-                      Filtreler
+                      {t('demo.remaining.filters')}
                       {hasActiveFilters && (
                         <Badge variant='default' className='text-xs px-1.5 py-0.5'>
                           !
@@ -258,7 +258,9 @@ export default function ComponentsPage() {
                   <div className='lg:hidden space-y-4 p-4 bg-neutral-50/50 dark:bg-neutral-800/50 rounded-xl border border-neutral-200/50 dark:border-neutral-600/50'>
                     <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
                       <div className='space-y-2'>
-                        <label className='text-sm font-medium text-neutral-700 dark:text-neutral-300'>Kategori</label>
+                        <label className='text-sm font-medium text-neutral-700 dark:text-neutral-300'>
+                          {t('demo.remaining.category')}
+                        </label>
                         <Select value={selectedCategory} onValueChange={setSelectedCategory}>
                           <SelectTrigger className='w-full'>
                             <SelectValue />
@@ -274,7 +276,9 @@ export default function ComponentsPage() {
                       </div>
 
                       <div className='space-y-2'>
-                        <label className='text-sm font-medium text-neutral-700 dark:text-neutral-300'>Durum</label>
+                        <label className='text-sm font-medium text-neutral-700 dark:text-neutral-300'>
+                          {t('demo.remaining.status')}
+                        </label>
                         <Select value={selectedStatus} onValueChange={setSelectedStatus}>
                           <SelectTrigger className='w-full'>
                             <SelectValue />
@@ -292,7 +296,7 @@ export default function ComponentsPage() {
 
                     {hasActiveFilters && (
                       <Button variant='outline' onClick={clearFilters} className='w-full'>
-                        Filtreleri Temizle
+                        {t('demo.remaining.clearFilters')}
                       </Button>
                     )}
                   </div>
@@ -301,7 +305,9 @@ export default function ComponentsPage() {
                 {/* Aktif Filtreler */}
                 {hasActiveFilters && (
                   <div className='flex items-center gap-2 flex-wrap'>
-                    <span className='text-sm font-medium text-neutral-600 dark:text-neutral-400'>Aktif filtreler:</span>
+                    <span className='text-sm font-medium text-neutral-600 dark:text-neutral-400'>
+                      {t('demo.remaining.activeFilters')}
+                    </span>
                     {searchQuery && (
                       <Badge key='search-filter' variant='secondary' className='gap-1'>
                         {`"${searchQuery}"`}
@@ -347,7 +353,7 @@ export default function ComponentsPage() {
                       onClick={clearFilters}
                       className='text-xs text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200'
                     >
-                      Tümünü temizle
+                      {t('demo.remaining.clearAll')}
                     </Button>
                   </div>
                 )}
@@ -356,9 +362,11 @@ export default function ComponentsPage() {
                 <div className='flex items-center justify-between text-sm text-neutral-600 dark:text-neutral-400'>
                   <span>
                     <strong className='text-neutral-900 dark:text-neutral-100'>{filteredComponents.length}</strong>{' '}
-                    bileşen gösteriliyor
+                    {t('demo.remaining.componentsShowing')}
                     {filteredComponents.length !== componentDemoData.length && (
-                      <span className='ml-1'>({componentDemoData.length} toplam)</span>
+                      <span className='ml-1'>
+                        ({componentDemoData.length} {t('demo.remaining.totalComponents')})
+                      </span>
                     )}
                   </span>
                 </div>
@@ -439,7 +447,7 @@ export default function ComponentsPage() {
                     {t('common.clearFilters')}
                   </Button>
                   <div className='text-sm text-neutral-500 dark:text-neutral-400'>
-                    Popüler aramalar: Button, Input, Modal, Form
+                    {t('demo.remaining.popularSearches')}
                   </div>
                 </div>
               </div>
@@ -526,7 +534,7 @@ export default function ComponentsPage() {
           onClick={scrollToTop}
           size='lg'
           className='h-12 w-12 rounded-full p-0 bg-primary-600 hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 backdrop-blur-sm'
-          aria-label='Sayfa başına dön'
+          aria-label={t('demo.remaining.backToTop')}
         >
           <ChevronUp className='h-6 w-6' />
         </Button>
@@ -557,7 +565,7 @@ export default function ComponentsPage() {
               </div>
               <div className='space-y-2'>
                 <div className='text-2xl font-bold text-teal-600 dark:text-teal-400'>{categories.length - 1}</div>
-                <div className='text-sm text-neutral-600 dark:text-neutral-400'>Kategoriler</div>
+                <div className='text-sm text-neutral-600 dark:text-neutral-400'>{t('demo.remaining.categories')}</div>
               </div>
             </div>
           </div>

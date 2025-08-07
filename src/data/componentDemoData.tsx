@@ -1,89 +1,65 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState } from 'react'
+import React from 'react'
+
 import { useTranslation } from 'react-i18next'
+import { AlertCircle, AlertTriangle, Edit, Heart, Info, Plus, Search, Settings, Star, Trash2 } from 'lucide-react'
 
 // Import all core components
-import { Accordion } from '@/components/core/accordion'
-import { Alert, AlertTitle, AlertDescription } from '@/components/core/alert'
+import {
+  Dialog,
+  DialogTitle,
+  DialogFooter,
+  DialogHeader,
+  DialogContent,
+  DialogTrigger,
+  DialogDescription,
+} from '@/components/core/dialog'
+import {
+  DropdownMenu,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+  DropdownMenuSeparator,
+  DropdownMenuCheckboxItem,
+} from '@/components/core/dropdown'
 import {
   AlertDialog,
   AlertDialogAction,
   AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
+  AlertDialogTitle,
   AlertDialogFooter,
   AlertDialogHeader,
-  AlertDialogTitle,
+  AlertDialogContent,
   AlertDialogTrigger,
+  AlertDialogDescription,
 } from '@/components/core/alert-dialog'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/core/avatar'
 import { Badge } from '@/components/core/badge'
-import { Button } from '@/components/core/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/core/card'
-import { Checkbox } from '@/components/core/checkbox'
-
-import { DataGrid, createSelectionColumn, createActionsColumn } from '@/components/core/data-grid'
-import { DataTable } from '@/components/core/data-table'
-import { DatePicker } from '@/components/core/date-picker'
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/components/core/dialog'
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '@/components/core/dropdown'
 import { Input } from '@/components/core/input'
 import { Label } from '@/components/core/label'
-import { LoadingSpinner, LoadingDots, LoadingPulse } from '@/components/core/loading-spinner'
-import { ModernDatePicker } from '@/components/core/modern-date-picker'
-import { MonthYearPicker } from '@/components/core/month-year-picker'
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/core/popover'
-import { Progress } from '@/components/core/progress'
-import { RichTextEditor } from '@/components/core/rich-text-editor'
-import { ScrollArea } from '@/components/core/scroll-area'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/core/select'
-import { Separator } from '@/components/core/separator'
-import { Skeleton, SkeletonText, SkeletonAvatar, SkeletonButton, SkeletonCard } from '@/components/core/skeleton'
+import { Button } from '@/components/core/button'
 import { Slider } from '@/components/core/slider'
 import { Switch } from '@/components/core/switch'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/core/tabs'
+import { Progress } from '@/components/core/progress'
+import { Checkbox } from '@/components/core/checkbox'
 import { Textarea } from '@/components/core/textarea'
+import { Accordion } from '@/components/core/accordion'
+import { Separator } from '@/components/core/separator'
+import { DataTable } from '@/components/core/data-table'
+import { DatePicker } from '@/components/core/date-picker'
+import { ScrollArea } from '@/components/core/scroll-area'
+import { RichTextEditor } from '@/components/core/rich-text-editor'
+import { MonthYearPicker } from '@/components/core/month-year-picker'
+import { ModernDatePicker } from '@/components/core/modern-date-picker'
 import { TooltipComponent, TooltipProvider } from '@/components/core/tooltip'
-
-// Icons
-import {
-  AlertCircle,
-  AlertTriangle,
-  Calendar,
-  Check,
-  ChevronDown,
-  Copy,
-  Edit,
-  Eye,
-  Heart,
-  Home,
-  Info,
-  Mail,
-  MoreHorizontal,
-  Plus,
-  Search,
-  Settings,
-  Star,
-  Trash2,
-  User,
-  X,
-} from 'lucide-react'
+import { Alert, AlertTitle, AlertDescription } from '@/components/core/alert'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/core/avatar'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/core/tabs'
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/core/popover'
+import { LoadingSpinner, LoadingDots, LoadingPulse } from '@/components/core/loading-spinner'
+import { DataGrid, createSelectionColumn, createActionsColumn } from '@/components/core/data-grid'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/core/select'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/core/card'
+import { Skeleton, SkeletonText, SkeletonAvatar, SkeletonButton, SkeletonCard } from '@/components/core/skeleton'
 
 // Component demo data generator function
 export const useComponentDemoData = () => {
@@ -250,13 +226,17 @@ function Example() {
               <Accordion.Item value='item-1'>
                 <Accordion.Trigger>{t('demo.remaining.labels.openSection')}</Accordion.Trigger>
                 <Accordion.Content>
-                  <p className='text-sm text-neutral-600 dark:text-neutral-400'>{t('demo.remaining.labels.defaultOpenSection')}</p>
+                  <p className='text-sm text-neutral-600 dark:text-neutral-400'>
+                    {t('demo.remaining.labels.defaultOpenSection')}
+                  </p>
                 </Accordion.Content>
               </Accordion.Item>
               <Accordion.Item value='item-2'>
                 <Accordion.Trigger>{t('demo.remaining.labels.otherSection')}</Accordion.Trigger>
                 <Accordion.Content>
-                  <p className='text-sm text-neutral-600 dark:text-neutral-400'>{t('demo.remaining.labels.canAlsoOpenThisSection')}</p>
+                  <p className='text-sm text-neutral-600 dark:text-neutral-400'>
+                    {t('demo.remaining.labels.canAlsoOpenThisSection')}
+                  </p>
                 </Accordion.Content>
               </Accordion.Item>
             </Accordion.Root>
@@ -373,13 +353,11 @@ function Example() {
           <AlertDialogContent>
             <AlertDialogHeader>
               <AlertDialogTitle>{t('demo.remaining.labels.confirmDeleteAccount')}</AlertDialogTitle>
-              <AlertDialogDescription>
-                {t('demo.remaining.labels.deleteWarningMessage')}
-              </AlertDialogDescription>
+              <AlertDialogDescription>{t('demo.remaining.labels.deleteWarningMessage')}</AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
               <AlertDialogCancel>{t('demo.remaining.labels.cancel')}</AlertDialogCancel>
-              <AlertDialogAction>Evet, Sil</AlertDialogAction>
+              <AlertDialogAction>{t('demo.remaining.alertDialog.confirmDelete')}</AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>
@@ -406,12 +384,12 @@ function Example() {
         <AlertDialogHeader>
           <AlertDialogTitle>{t('demo.remaining.missing.alertDialog.confirmDelete')}</AlertDialogTitle>
           <AlertDialogDescription>
-            Bu işlem geri alınamaz. Hesabınız ve tüm verileriniz kalıcı olarak silinecektir.
+            {t('demo.remaining.alertDialog.deleteWarningMessage')}
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>İptal</AlertDialogCancel>
-          <AlertDialogAction>Evet, Sil</AlertDialogAction>
+          <AlertDialogCancel>{t('demo.remaining.alertDialog.cancel')}</AlertDialogCancel>
+          <AlertDialogAction>{t('demo.remaining.alertDialog.confirmDelete')}</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
@@ -435,8 +413,7 @@ function Example() {
     {
       id: 'avatar',
       title: 'Avatar',
-      description:
-        t('demo.remaining.descriptions.avatarComponent'),
+      description: t('demo.remaining.descriptions.avatarComponent'),
       category: t('demo.content.categories.dataDisplay'),
       status: 'stable',
       demoComponent: (
@@ -513,7 +490,7 @@ function Example() {
         {
           name: 'alt',
           type: 'string',
-          description: 'Avatar resmi alternatif metni',
+          description: t('demo.remaining.avatar.altText'),
         },
       ],
     },
@@ -527,10 +504,10 @@ function Example() {
       status: 'stable',
       demoComponent: (
         <div className='flex items-center gap-2 flex-wrap'>
-          <Badge variant='default'>Default</Badge>
-          <Badge variant='secondary'>Secondary</Badge>
-          <Badge variant='destructive'>Destructive</Badge>
-          <Badge variant='outline'>Outline</Badge>
+          <Badge variant='default'>{t('demo.remaining.badgeVariants.default')}</Badge>
+          <Badge variant='secondary'>{t('demo.remaining.badgeVariants.secondary')}</Badge>
+          <Badge variant='destructive'>{t('demo.remaining.badgeVariants.destructive')}</Badge>
+          <Badge variant='outline'>{t('demo.remaining.badgeVariants.outline')}</Badge>
           <Badge size='sm'>{t('demo.remaining.labels.small')}</Badge>
           <Badge size='lg'>{t('demo.remaining.labels.large')}</Badge>
         </div>
@@ -540,10 +517,10 @@ function Example() {
 function Example() {
   return (
     <div className="flex items-center gap-2 flex-wrap">
-      <Badge variant="default">Default</Badge>
-      <Badge variant="secondary">Secondary</Badge>
-      <Badge variant="destructive">Destructive</Badge>
-      <Badge variant="outline">Outline</Badge>
+      <Badge variant="default">{t('demo.remaining.badgeVariants.default')}</Badge>
+      <Badge variant="secondary">{t('demo.remaining.badgeVariants.secondary')}</Badge>
+      <Badge variant="destructive">{t('demo.remaining.badgeVariants.destructive')}</Badge>
+      <Badge variant="outline">{t('demo.remaining.badgeVariants.outline')}</Badge>
       <Badge size="sm">{t('demo.remaining.labels.small')}</Badge>
       <Badge size="lg">{t('demo.remaining.labels.large')}</Badge>
     </div>
@@ -595,7 +572,7 @@ function Example() {
         {
           name: 'size',
           type: "'sm' | 'default' | 'lg'",
-          description: 'Badge boyutu',
+          description: t('demo.remaining.badge.sizeDescription'),
           default: 'default',
         },
       ],
@@ -610,12 +587,12 @@ function Example() {
       status: 'stable',
       demoComponent: (
         <div className='grid grid-cols-2 gap-4 max-w-lg'>
-          <Button variant='default'>Primary</Button>
-          <Button variant='secondary'>Secondary</Button>
-          <Button variant='outline'>Outline</Button>
-          <Button variant='ghost'>Ghost</Button>
-          <Button variant='destructive'>Delete</Button>
-          <Button disabled>Disabled</Button>
+          <Button variant='default'>{t('demo.remaining.buttonVariants.primary')}</Button>
+          <Button variant='secondary'>{t('demo.remaining.buttonVariants.secondary')}</Button>
+          <Button variant='outline'>{t('demo.remaining.buttonVariants.outline')}</Button>
+          <Button variant='ghost'>{t('demo.remaining.buttonVariants.ghost')}</Button>
+          <Button variant='destructive'>{t('demo.remaining.buttonVariants.delete')}</Button>
+          <Button disabled>{t('demo.remaining.buttonVariants.disabled')}</Button>
           <Button size='sm'>{t('demo.remaining.missing.buttons.small')}</Button>
           <Button size='lg'>{t('demo.remaining.missing.buttons.large')}</Button>
           <Button size='icon'>
@@ -630,12 +607,12 @@ import { Heart } from 'lucide-react'
 function Example() {
   return (
     <div className="grid grid-cols-2 gap-4">
-      <Button variant="default">Primary</Button>
-      <Button variant="secondary">Secondary</Button>
-      <Button variant="outline">Outline</Button>
-      <Button variant="ghost">Ghost</Button>
-      <Button variant="destructive">Delete</Button>
-      <Button disabled>Disabled</Button>
+      <Button variant="default">{t('demo.remaining.buttonVariants.primary')}</Button>
+      <Button variant="secondary">{t('demo.remaining.buttonVariants.secondary')}</Button>
+      <Button variant="outline">{t('demo.remaining.buttonVariants.outline')}</Button>
+      <Button variant="ghost">{t('demo.remaining.buttonVariants.ghost')}</Button>
+      <Button variant="destructive">{t('demo.remaining.buttonVariants.delete')}</Button>
+      <Button disabled>{t('demo.remaining.buttonVariants.disabled')}</Button>
       <Button size="sm">{t('demo.remaining.missing.buttons.small')}</Button>
       <Button size="lg">{t('demo.remaining.missing.buttons.large')}</Button>
       <Button size="icon">
@@ -652,30 +629,30 @@ function Example() {
           code: `<div className="flex items-center gap-2">
   <Button>
     <Plus className="w-4 h-4 mr-2" />
-    Yeni Ekle
+    {t('demo.remaining.buttonActions.addNew')}
   </Button>
   <Button variant="outline">
     <Search className="w-4 h-4 mr-2" />
-    Ara
+    {t('demo.remaining.buttonActions.search')}
   </Button>
   <Button variant="ghost">
     <Settings className="w-4 h-4 mr-2" />
-    Ayarlar
+    {t('demo.remaining.buttonActions.settings')}
   </Button>
 </div>`,
           component: (
             <div className='flex items-center gap-2'>
               <Button>
                 <Plus className='w-4 h-4 mr-2' />
-                Yeni Ekle
+                {t('demo.remaining.buttonActions.addNew')}
               </Button>
               <Button variant='outline'>
                 <Search className='w-4 h-4 mr-2' />
-                Ara
+                {t('demo.remaining.buttonActions.search')}
               </Button>
               <Button variant='ghost'>
                 <Settings className='w-4 h-4 mr-2' />
-                Ayarlar
+                {t('demo.remaining.buttonActions.settings')}
               </Button>
             </div>
           ),
@@ -691,7 +668,7 @@ function Example() {
         {
           name: 'size',
           type: "'sm' | 'md' | 'lg' | 'icon'",
-          description: 'Buton boyutu',
+          description: t('demo.remaining.buttonSize'),
           default: 'md',
         },
         {
@@ -713,8 +690,7 @@ function Example() {
     {
       id: 'card',
       title: 'Card',
-      description:
-        t('demo.remaining.descriptions.cardComponent'),
+      description: t('demo.remaining.descriptions.cardComponent'),
       category: 'Layout',
       status: 'stable',
       demoComponent: (
@@ -741,9 +717,9 @@ function Example() {
           </CardContent>
           <CardFooter className='flex justify-between'>
             <Button variant='ghost' size='sm'>
-              Detaylar
+              {t('demo.remaining.cardActions.details')}
             </Button>
-            <Button size='sm'>Rapor Al</Button>
+            <Button size='sm'>{t('demo.remaining.cardActions.getReport')}</Button>
           </CardFooter>
         </Card>
       ),
@@ -772,8 +748,8 @@ function Example() {
         </div>
       </CardContent>
       <CardFooter className="flex justify-between">
-        <Button variant="ghost">Detaylar</Button>
-        <Button>Rapor Al</Button>
+        <Button variant="ghost">{t('demo.remaining.cardActions.details')}</Button>
+        <Button>{t('demo.remaining.cardActions.getReport')}</Button>
       </CardFooter>
     </Card>
   )
@@ -836,7 +812,7 @@ function Example() {
         {
           name: 'size',
           type: "'sm' | 'md' | 'lg' | 'xl'",
-          description: 'Kart padding boyutu',
+          description: t('demo.remaining.cardPaddingSize'),
           default: 'md',
         },
         {
@@ -852,8 +828,7 @@ function Example() {
     {
       id: 'checkbox',
       title: 'Checkbox',
-      description:
-        t('demo.remaining.descriptions.checkboxComponent'),
+      description: t('demo.remaining.descriptions.checkboxComponent'),
       category: t('demo.content.categories.formInput'),
       status: 'stable',
       demoComponent: (
@@ -900,22 +875,22 @@ function Example() {
 }`,
       usageExamples: [
         {
-          title: 'Form Group',
+          title: t('demo.remaining.formGroup'),
           description: t('demo.remaining.descriptions.checkboxFormGroup'),
           code: `<div className="space-y-2">
   <p className="font-medium">{t('demo.remaining.missing.checkbox.yourInterests')}</p>
   <div className="space-y-2">
     <div className="flex items-center space-x-2">
       <Checkbox id="frontend" />
-      <label htmlFor="frontend">Frontend Development</label>
+      <label htmlFor="frontend">{t('demo.remaining.development.frontend')}</label>
     </div>
     <div className="flex items-center space-x-2">
       <Checkbox id="backend" />
-      <label htmlFor="backend">Backend Development</label>
+      <label htmlFor="backend">{t('demo.remaining.development.backend')}</label>
     </div>
     <div className="flex items-center space-x-2">
       <Checkbox id="mobile" />
-      <label htmlFor="mobile">Mobile Development</label>
+      <label htmlFor="mobile">{t('demo.remaining.development.mobile')}</label>
     </div>
   </div>
 </div>`,
@@ -926,19 +901,19 @@ function Example() {
                 <div className='flex items-center space-x-2'>
                   <Checkbox id='frontend-demo' />
                   <label htmlFor='frontend-demo' className='text-sm'>
-                    Frontend Development
+                    {t('demo.remaining.development.frontend')}
                   </label>
                 </div>
                 <div className='flex items-center space-x-2'>
                   <Checkbox id='backend-demo' />
                   <label htmlFor='backend-demo' className='text-sm'>
-                    Backend Development
+                    {t('demo.remaining.development.backend')}
                   </label>
                 </div>
                 <div className='flex items-center space-x-2'>
                   <Checkbox id='mobile-demo' />
                   <label htmlFor='mobile-demo' className='text-sm'>
-                    Mobile Development
+                    {t('demo.remaining.development.mobile')}
                   </label>
                 </div>
               </div>
@@ -976,8 +951,7 @@ function Example() {
     {
       id: 'data-grid',
       title: 'Data Grid',
-      description:
-        t('demo.remaining.descriptions.dataGridComponent'),
+      description: t('demo.remaining.descriptions.dataGridComponent'),
       category: t('demo.content.categories.dataDisplay'),
       status: 'stable',
       demoComponent: (
@@ -1004,11 +978,11 @@ const columns: Array<import('@/components/core/data-grid').DataGridColumn<Record
   createSelectionColumn(),
   {
     accessorKey: 'name',
-    header: 'Ad Soyad',
+    header: t('demo.remaining.tableHeaders.fullName'),
   },
   {
     accessorKey: 'email',
-    header: 'E-posta',
+    header: t('demo.remaining.tableHeaders.email'),
   },
   {
     accessorKey: 'role',
@@ -1044,7 +1018,7 @@ function Example() {
         {
           name: 'data',
           type: 'T[]',
-          description: 'Tablo verisi',
+          description: t('demo.remaining.dataTable.dataDescription'),
         },
         {
           name: 'columns',
@@ -1100,7 +1074,7 @@ function Example() {
               },
               {
                 accessorKey: 'email',
-                header: 'E-posta',
+                header: t('demo.remaining.tableHeaders.email'),
               },
               {
                 accessorKey: 'role',
@@ -1124,7 +1098,7 @@ function Example() {
     },
     {
       accessorKey: 'email',
-      header: 'E-posta',
+      header: t('demo.remaining.tableHeaders.email'),
     },
     {
       accessorKey: 'role',
@@ -1155,7 +1129,7 @@ function Example() {
         {
           name: 'data',
           type: 'TData[]',
-          description: 'Tablo verisi',
+          description: t('demo.remaining.dataTable.dataDescription'),
         },
         {
           name: 'searchKey',
@@ -1165,8 +1139,8 @@ function Example() {
         {
           name: 'searchPlaceholder',
           type: 'string',
-          description: 'Arama input placeholder metni',
-          default: 'Ara...',
+          description: t('demo.remaining.dataTable.searchPlaceholder'),
+          default: t('demo.remaining.dataTable.searchDefault'),
         },
       ],
     },
@@ -1181,7 +1155,7 @@ function Example() {
       demoComponent: (
         <div className='space-y-4'>
           <div className='flex items-center justify-between gap-4'>
-            <span className='text-sm font-medium'>Bildirimler</span>
+            <span className='text-sm font-medium'>{t('demo.remaining.notifications')}</span>
             <Switch defaultChecked />
           </div>
           <div className='flex items-center justify-between gap-4'>
@@ -1200,7 +1174,7 @@ function Example() {
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between gap-4">
-        <span>Bildirimler</span>
+        <span>{t('demo.remaining.notifications')}</span>
         <Switch defaultChecked />
       </div>
       <div className="flex items-center justify-between gap-4">
@@ -1255,9 +1229,9 @@ function Example() {
             </SelectTrigger>
             <SelectContent>
               <SelectItem value='tr'>{t('demo.remaining.missing.select.turkey')}</SelectItem>
-              <SelectItem value='us'>Amerika</SelectItem>
-              <SelectItem value='de'>Almanya</SelectItem>
-              <SelectItem value='fr'>Fransa</SelectItem>
+              <SelectItem value='us'>{t('demo.remaining.countries.america')}</SelectItem>
+              <SelectItem value='de'>{t('demo.remaining.countries.germany')}</SelectItem>
+              <SelectItem value='fr'>{t('demo.remaining.countries.france')}</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -1272,9 +1246,9 @@ function Example() {
       </SelectTrigger>
       <SelectContent>
         <SelectItem value="tr">{t('demo.remaining.missing.select.turkey')}</SelectItem>
-        <SelectItem value="us">Amerika</SelectItem>
-        <SelectItem value="de">Almanya</SelectItem>
-        <SelectItem value="fr">Fransa</SelectItem>
+        <SelectItem value="us">{t('demo.remaining.countries.america')}</SelectItem>
+        <SelectItem value="de">{t('demo.remaining.countries.germany')}</SelectItem>
+        <SelectItem value="fr">{t('demo.remaining.countries.france')}</SelectItem>
       </SelectContent>
     </Select>
   )
@@ -1312,7 +1286,7 @@ function Example() {
       status: 'stable',
       demoComponent: (
         <div className='space-y-4 w-full max-w-sm'>
-          <Textarea placeholder='Temel textarea...' rows={3} />
+          <Textarea placeholder={t('demo.remaining.textarea.basicPlaceholder')} rows={3} />
           <Textarea placeholder={t('demo.remaining.labels.characterCounter')} maxLength={100} rows={3} />
         </div>
       ),
@@ -1322,7 +1296,7 @@ function Example() {
   return (
     <div className="space-y-4">
       <Textarea 
-        placeholder="Temel textarea..."
+        placeholder={t('demo.remaining.textarea.basicPlaceholder')}
         rows={3}
       />
       <Textarea 
@@ -1380,7 +1354,7 @@ function Example() {
             <div className='grid gap-4 py-4'>
               <div className='grid grid-cols-4 items-center gap-4'>
                 <Label htmlFor='name' className='text-right'>
-                  İsim
+                  {t('demo.remaining.dialogLabels.name')}
                 </Label>
                 <Input id='name' defaultValue={t('demo.remaining.labels.sampleName')} className='col-span-3' />
               </div>
@@ -1392,7 +1366,7 @@ function Example() {
               </div>
             </div>
             <DialogFooter>
-              <Button type='submit'>Kaydet</Button>
+              <Button type='submit'>{t('demo.remaining.dialogLabels.save')}</Button>
             </DialogFooter>
           </DialogContent>
         </Dialog>
@@ -1474,10 +1448,10 @@ function Example() {
           <DropdownMenuContent className='w-56'>
             <DropdownMenuLabel>{t('demo.remaining.missing.dropdown.myAccount')}</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Profil</DropdownMenuItem>
-            <DropdownMenuItem>Ayarlar</DropdownMenuItem>
+            <DropdownMenuItem>{t('demo.remaining.profile')}</DropdownMenuItem>
+            <DropdownMenuItem>{t('demo.remaining.buttonActions.settings')}</DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuCheckboxItem checked>Bildirimler</DropdownMenuCheckboxItem>
+            <DropdownMenuCheckboxItem checked>{t('demo.remaining.notifications')}</DropdownMenuCheckboxItem>
             <DropdownMenuCheckboxItem>{t('demo.remaining.missing.dropdown.emailUpdates')}</DropdownMenuCheckboxItem>
           </DropdownMenuContent>
         </DropdownMenu>
@@ -1503,10 +1477,10 @@ function Example() {
         <DropdownMenuLabel>{t('demo.remaining.missing.dropdown.myAccount')}</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem>Profil</DropdownMenuItem>
-        <DropdownMenuItem>Ayarlar</DropdownMenuItem>
+        <DropdownMenuItem>{t('demo.remaining.buttonActions.settings')}</DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuCheckboxItem checked>
-          Bildirimler
+          {t('demo.remaining.notifications')}
         </DropdownMenuCheckboxItem>
       </DropdownMenuContent>
     </DropdownMenu>
@@ -1541,8 +1515,8 @@ function Example() {
       status: 'stable',
       demoComponent: (
         <div className='space-y-4 w-full max-w-sm'>
-          <Input placeholder='Temel input...' />
-          <Input type='email' placeholder='E-posta adresi...' />
+          <Input placeholder={t('demo.remaining.labels.basicInput')} />
+          <Input type='email' placeholder={t('demo.remaining.labels.emailAddress')} />
           <Input type='password' placeholder={t('demo.remaining.labels.password')} />
           <Input disabled placeholder={t('demo.remaining.labels.disabledInput')} />
         </div>
@@ -1552,10 +1526,10 @@ function Example() {
 function Example() {
   return (
     <div className="space-y-4">
-      <Input placeholder="Temel input..." />
-      <Input type="email" placeholder="E-posta adresi..." />
-      <Input type="password" placeholder={t('demo.remaining.labels.password')} />
-      <Input disabled placeholder={t('demo.remaining.labels.disabledInput')} />
+      <Input placeholder="${t('demo.remaining.labels.basicInput')}" />
+      <Input type="email" placeholder="${t('demo.remaining.labels.emailAddress')}" />
+      <Input type="password" placeholder="${t('demo.remaining.labels.password')}" />
+      <Input disabled placeholder="${t('demo.remaining.labels.disabledInput')}" />
     </div>
   )
 }`,
@@ -1575,7 +1549,7 @@ function Example() {
         {
           name: 'placeholder',
           type: 'string',
-          description: 'Placeholder metni',
+          description: t('demo.remaining.placeholderText'),
         },
         {
           name: 'disabled',
@@ -1602,15 +1576,15 @@ function Example() {
         <div className='grid grid-cols-3 gap-8 items-center justify-items-center'>
           <div className='text-center space-y-2'>
             <LoadingSpinner size='md' />
-            <p className='text-sm text-neutral-500'>Spinner</p>
+            <p className='text-sm text-neutral-500'>{t('demo.remaining.loadingTypes.spinner')}</p>
           </div>
           <div className='text-center space-y-2'>
             <LoadingDots />
-            <p className='text-sm text-neutral-500'>Dots</p>
+            <p className='text-sm text-neutral-500'>{t('demo.remaining.loadingTypes.dots')}</p>
           </div>
           <div className='text-center space-y-2'>
             <LoadingPulse />
-            <p className='text-sm text-neutral-500'>Pulse</p>
+            <p className='text-sm text-neutral-500'>{t('demo.remaining.loadingTypes.pulse')}</p>
           </div>
         </div>
       ),
@@ -1639,7 +1613,7 @@ function Example() {
         {
           name: 'size',
           type: 'sm | md | lg',
-          description: 'Loading boyutu',
+          description: t('demo.remaining.loadingSize'),
           default: 'md',
         },
         {
@@ -1661,7 +1635,7 @@ function Example() {
         <div className='space-y-4 w-full max-w-sm'>
           <div>
             <div className='flex justify-between text-sm mb-1'>
-              <span>İlerleme</span>
+              <span>{t('demo.remaining.progress')}</span>
               <span>33%</span>
             </div>
             <Progress value={33} />
@@ -1820,12 +1794,12 @@ function Example() {
       demoComponent: (
         <Tabs defaultValue='account' className='w-full'>
           <TabsList className='grid w-full grid-cols-2'>
-            <TabsTrigger value='account'>Hesap</TabsTrigger>
+            <TabsTrigger value='account'>{t('demo.remaining.account')}</TabsTrigger>
             <TabsTrigger value='password'>{t('demo.remaining.missing.tabs.password')}</TabsTrigger>
           </TabsList>
           <TabsContent value='account' className='space-y-4'>
             <div className='space-y-2'>
-              <Label htmlFor='name'>İsim</Label>
+              <Label htmlFor='name'>{t('demo.remaining.dialogLabels.name')}</Label>
               <Input id='name' defaultValue={t('demo.remaining.labels.sampleName')} />
             </div>
             <div className='space-y-2'>
@@ -1858,7 +1832,7 @@ function Example() {
   return (
     <Tabs defaultValue="account" className="w-full">
       <TabsList className="grid w-full grid-cols-2">
-        <TabsTrigger value="account">Hesap</TabsTrigger>
+        <TabsTrigger value="account">{t('demo.remaining.account')}</TabsTrigger>
         <TabsTrigger value="password">{t('demo.remaining.missing.tabs.password')}</TabsTrigger>
       </TabsList>
       <TabsContent value="account">
@@ -1911,7 +1885,7 @@ function Example() {
       demoComponent: (
         <div className='space-y-6 w-full max-w-sm'>
           <div>
-            <Label className='text-sm font-medium'>Ses Seviyesi: 50</Label>
+            <Label className='text-sm font-medium'>{t('demo.remaining.volumeLevel')}: 50</Label>
             <Slider defaultValue={[50]} max={100} step={1} className='mt-2' />
           </div>
           <div>
@@ -1919,7 +1893,7 @@ function Example() {
             <Slider defaultValue={[200, 800]} max={1000} step={10} className='mt-2' />
           </div>
           <div>
-            <Label className='text-sm font-medium'>Kalite: 8/10</Label>
+            <Label className='text-sm font-medium'>{t('demo.remaining.quality')}: 8/10</Label>
             <Slider defaultValue={[8]} max={10} step={1} className='mt-2' />
           </div>
         </div>
@@ -1931,7 +1905,7 @@ function Example() {
   return (
     <div className="space-y-6">
       <div>
-        <Label className="text-sm font-medium">Ses Seviyesi</Label>
+        <Label className="text-sm font-medium">{t('demo.remaining.volumeLevel')}</Label>
         <Slider 
           defaultValue={[50]} 
           max={100} 
@@ -2009,7 +1983,7 @@ function Example() {
           </div>
           <Separator orientation='vertical' className='h-20' />
           <div className='flex items-center gap-4'>
-            <span>Sol</span>
+            <span>{t('demo.remaining.left')}</span>
             <Separator orientation='vertical' className='h-6' />
             <span>{t('demo.remaining.missing.separator.right')}</span>
           </div>
@@ -2166,7 +2140,7 @@ function Example() {
               <Button variant='outline'>Bottom Tooltip</Button>
             </TooltipComponent>
             <TooltipComponent content={t('demo.remaining.tooltips.disabled')} disabled>
-              <Button variant='outline'>Disabled</Button>
+              <Button variant='outline'>{t('demo.remaining.buttonVariants.disabled')}</Button>
             </TooltipComponent>
           </div>
         </TooltipProvider>
@@ -2191,7 +2165,7 @@ function Example() {
         </TooltipComponent>
         
         <TooltipComponent content={t('demo.remaining.tooltips.disabled')} disabled>
-          <Button variant="outline">Disabled</Button>
+          <Button variant="outline">{t('demo.remaining.buttonVariants.disabled')}</Button>
         </TooltipComponent>
       </div>
     </TooltipProvider>
@@ -2212,7 +2186,7 @@ function Example() {
         {
           name: 'side',
           type: 'top | right | bottom | left',
-          description: 'Tooltip konumu',
+          description: t('demo.remaining.tooltipPosition'),
           default: 'top',
         },
         {
@@ -2249,7 +2223,7 @@ function Example() {
             <div className='space-y-2'>
               {Array.from({ length: 20 }, (_, i) => (
                 <div key={i} className='text-sm'>
-                  Liste öğesi {i + 1}
+                  {t('demo.remaining.listItem')} {i + 1}
                 </div>
               ))}
             </div>
@@ -2264,7 +2238,7 @@ function Example() {
       <div className="space-y-2">
         {Array.from({ length: 20 }, (_, i) => (
           <div key={i} className="text-sm">
-            Liste öğesi {i + 1}
+            {t('demo.remaining.listItem')} {i + 1}
           </div>
         ))}
       </div>
@@ -2333,7 +2307,7 @@ function Example() {
         {
           name: 'placeholder',
           type: 'string',
-          description: 'Placeholder metni',
+          description: t('demo.remaining.placeholderText'),
         },
       ],
     },
@@ -2349,7 +2323,10 @@ function Example() {
         <div className='space-y-4 w-full max-w-sm'>
           <div>
             <Label>{t('demo.remaining.missing.datePicker.birthDate')}</Label>
-            <ModernDatePicker placeholder={t('demo.remaining.labels.selectDate')} onChange={(date) => console.log(date)} />
+            <ModernDatePicker
+              placeholder={t('demo.remaining.labels.selectDate')}
+              onChange={(date) => console.log(date)}
+            />
           </div>
         </div>
       ),
@@ -2387,7 +2364,7 @@ function Example() {
         {
           name: 'placeholder',
           type: 'string',
-          description: 'Placeholder metni',
+          description: t('demo.remaining.placeholderText'),
         },
         {
           name: 'disabled',
@@ -2408,8 +2385,11 @@ function Example() {
       demoComponent: (
         <div className='space-y-4 w-full max-w-sm'>
           <div>
-            <Label>Mezuniyet Tarihi</Label>
-            <MonthYearPicker placeholder={t('demo.remaining.labels.selectMonthYear')} onChange={(date) => console.log(date)} />
+            <Label>{t('demo.remaining.dates.graduationDate')}</Label>
+            <MonthYearPicker
+              placeholder={t('demo.remaining.labels.selectMonthYear')}
+              onChange={(date) => console.log(date)}
+            />
           </div>
         </div>
       ),
@@ -2419,7 +2399,7 @@ import { Label } from '@/components/core/label'
 function Example() {
   return (
     <div className="space-y-2">
-      <Label>Mezuniyet Tarihi</Label>
+      <Label>{t('demo.remaining.dates.graduationDate')}</Label>
       <MonthYearPicker 
         placeholder={t('demo.remaining.labels.selectMonthYear')} 
         onChange={(date) => console.log(date)}
@@ -2447,7 +2427,7 @@ function Example() {
         {
           name: 'placeholder',
           type: 'string',
-          description: 'Placeholder metni',
+          description: t('demo.remaining.placeholderText'),
         },
         {
           name: 'disabled',
@@ -2468,7 +2448,7 @@ function Example() {
       demoComponent: (
         <div className='space-y-4 w-full max-w-sm'>
           <div className='flex flex-col space-y-2'>
-            <Label>Tatil Tarihleri</Label>
+            <Label>{t('demo.remaining.dates.holidayDates')}</Label>
             <DatePicker
               mode='range'
               enablePresets={true}
@@ -2486,7 +2466,7 @@ function Example() {
   
   return (
     <div className="space-y-2">
-      <Label>Tatil Tarihleri</Label>
+      <Label>{t('demo.remaining.dates.holidayDates')}</Label>
       <RangePicker 
         placeholder={{ from: t('demo.remaining.labels.start'), to: t('demo.remaining.labels.end') }}
         onChange={(range) => console.log(range)}
@@ -2535,8 +2515,12 @@ function Example() {
       demoComponent: (
         <div className='space-y-4 w-full max-w-sm'>
           <div className='flex flex-col space-y-2'>
-            <Label>Randevu Tarihi</Label>
-            <DatePicker mode='single' placeholder={t('demo.remaining.labels.selectDate')} onChange={(date: any) => console.log(date)} />
+            <Label>{t('demo.remaining.dates.appointmentDate')}</Label>
+            <DatePicker
+              mode='single'
+              placeholder={t('demo.remaining.labels.selectDate')}
+              onChange={(date: any) => console.log(date)}
+            />
           </div>
         </div>
       ),
@@ -2548,7 +2532,7 @@ function Example() {
   
   return (
     <div className="space-y-2">
-      <Label>Randevu Tarihi</Label>
+      <Label>{t('demo.remaining.dates.appointmentDate')}</Label>
       <SinglePicker 
         placeholder={t('demo.remaining.labels.selectDate')}
         onChange={(date) => console.log(date)}
@@ -2576,7 +2560,7 @@ function Example() {
         {
           name: 'placeholder',
           type: 'string',
-          description: 'Placeholder metni',
+          description: t('demo.remaining.placeholderText'),
         },
         {
           name: 'disabled',

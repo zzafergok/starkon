@@ -71,7 +71,7 @@ export default function AboutPage() {
     { name: 'Next.js 14+', description: 'Full-stack framework' },
     { name: 'Tailwind CSS', description: 'Utility-first CSS' },
     { name: 'Radix UI', description: 'Erişilebilir komponentler' },
-    { name: 'Redux Toolkit', description: 'State management' },
+    { name: 'Zustand', description: 'State management' },
   ]
 
   return (
@@ -196,43 +196,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Team Section */}
-      <section className='py-20'>
-        <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-          <div className='text-center mb-16'>
-            <h2 className='text-3xl sm:text-4xl font-bold text-neutral-900 dark:text-neutral-100 mb-4'>Ekibimiz</h2>
-            <p className='text-lg text-neutral-600 dark:text-neutral-300 max-w-2xl mx-auto'>
-              Deneyimli ve tutkulu profesyonellerden oluşan ekibimizle projelerinizi başarıya taşıyoruz.
-            </p>
-          </div>
-
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-            {teamMembers.map((member, index) => (
-              <Card
-                key={index}
-                className='group hover:shadow-lg dark:hover:shadow-xl transition-all duration-300 hover:-translate-y-1'
-              >
-                <CardContent className='p-8 text-center'>
-                  <div className='text-6xl mb-4'>{member.avatar}</div>
-                  <h3 className='text-xl font-semibold text-neutral-900 dark:text-neutral-100 mb-2'>{member.name}</h3>
-                  <Badge variant='secondary' className='mb-4'>
-                    {member.role}
-                  </Badge>
-                  <p className='text-neutral-600 dark:text-neutral-300 mb-6 leading-relaxed'>{member.bio}</p>
-                  <div className='flex flex-wrap justify-center gap-2'>
-                    {member.skills.map((skill, skillIndex) => (
-                      <Badge key={skillIndex} variant='outline' size='sm'>
-                        {skill}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className='relative overflow-hidden bg-gradient-to-r from-primary-500 via-blue-500 to-accent-500 dark:from-primary-700 dark:via-blue-700 dark:to-accent-700 py-20'>
         <div className='absolute inset-0 bg-grid-white/10 dark:bg-grid-white/5 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))]' />
@@ -246,7 +209,7 @@ export default function AboutPage() {
               Starkon ile projelerinizi bir üst seviyeye taşımaya hazır mısınız? Hemen başlayın ve farkı deneyimleyin.
             </p>
             <div className='flex flex-col sm:flex-row gap-4 justify-center items-center'>
-              <button className='inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-white hover:bg-neutral-100 text-primary-600 dark:bg-neutral-100 dark:text-primary-700 dark:hover:bg-white shadow-lg hover:shadow-xl h-10 px-6 py-2 font-semibold'>
+              <button className='inline-flex items-center justify-center rounded-md text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-white hover:bg-neutral-100 text-primary-600 dark:bg-neutral-100 dark:text-primary-700 dark:hover:bg-white shadow-lg hover:shadow-xl h-10 px-6 py-2 font-semibold'>
                 <Rocket className='h-4 w-4 mr-2' />
                 Hemen Başla
               </button>
