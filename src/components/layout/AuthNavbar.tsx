@@ -16,7 +16,6 @@ import {
   DropdownMenuSeparator,
 } from '@/components/core/dropdown'
 import { Badge } from '@/components/core/badge'
-import { Avatar } from '@/components/core/avatar'
 import { Button } from '@/components/core/button'
 
 import { useAuth } from '@/providers/AuthProvider'

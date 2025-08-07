@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react'
 
-import { useTranslation } from 'react-i18next'
 import { Mail, Heart, Sparkles, ArrowRight, ExternalLink } from 'lucide-react'
 
 import { Button } from '@/components/core/button'
@@ -91,7 +90,7 @@ export function PublicFooter() {
     <footer className='relative bg-gradient-to-br from-neutral-50 via-white to-primary-50/30 dark:from-neutral-900 dark:via-neutral-800 dark:to-primary-900/20 border-t border-neutral-200 dark:border-neutral-700'>
       {/* Background Pattern */}
       <div className='absolute inset-0 bg-grid-neutral-200/20 dark:bg-grid-neutral-700/10 [mask-image:linear-gradient(0deg,transparent,rgba(255,255,255,0.4),transparent)] dark:[mask-image:linear-gradient(0deg,transparent,rgba(0,0,0,0.3),transparent)]' />
-      
+
       {/* Floating Elements */}
       <div className='absolute top-20 left-10 w-64 h-64 bg-primary-200/20 dark:bg-primary-700/10 rounded-full blur-3xl animate-pulse opacity-40' />
       <div className='absolute bottom-20 right-10 w-80 h-80 bg-accent-200/20 dark:bg-accent-700/10 rounded-full blur-3xl animate-pulse opacity-30' />
@@ -182,7 +181,11 @@ export function PublicFooter() {
                       className='group text-sm text-neutral-600 dark:text-neutral-400 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-300 flex items-center'
                     >
                       <span className='group-hover:translate-x-1 transition-transform duration-300'>
-                        {link.labelKey === 'navigation.home' ? 'Ana Sayfa' : link.labelKey === 'navigation.about' ? 'Hakkımızda' : link.labelKey}
+                        {link.labelKey === 'navigation.home'
+                          ? 'Ana Sayfa'
+                          : link.labelKey === 'navigation.about'
+                            ? 'Hakkımızda'
+                            : link.labelKey}
                       </span>
                       <ArrowRight className='h-3 w-3 ml-1 opacity-0 group-hover:opacity-100 transition-all duration-300' />
                     </button>

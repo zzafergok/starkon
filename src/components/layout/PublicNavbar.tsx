@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
 
 import { useTranslation } from 'react-i18next'
-import { Sparkles, Home, Info, Mail, Palette, Menu, X, ChevronRight, Sun, Moon } from 'lucide-react'
+import { Sparkles, Home, Info, Mail, Menu, X, ChevronRight, Sun, Moon } from 'lucide-react'
 
 import { Button } from '@/components/core/button'
 import { useTheme } from '@/hooks/useTheme'

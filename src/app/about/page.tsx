@@ -11,30 +11,6 @@ import { Card, CardContent } from '@/components/core/card'
 export default function AboutPage() {
   const { t } = useTranslation()
 
-  const teamMembers = [
-    {
-      name: 'Zafer Gök',
-      role: 'Kurucu & Baş Geliştirici',
-      bio: '15+ yıllık deneyime sahip full-stack developer. React ekosisteminde uzman.',
-      avatar: '👨‍💻',
-      skills: ['React', 'TypeScript', 'Node.js', 'Next.js'],
-    },
-    {
-      name: 'Sarah Johnson',
-      role: 'UX/UI Tasarımcısı',
-      bio: 'Kullanıcı deneyimi konusunda 10 yıllık tecrübe. Erişilebilir tasarım uzmanı.',
-      avatar: '👩‍🎨',
-      skills: ['Figma', 'Design Systems', 'Accessibility', 'Prototyping'],
-    },
-    {
-      name: 'Michael Chen',
-      role: 'Backend Geliştirici',
-      bio: 'Scalable sistemler ve API geliştirme konularında deneyimli.',
-      avatar: '👨‍💼',
-      skills: ['Node.js', 'PostgreSQL', 'Redis', 'Docker'],
-    },
-  ]
-
   const achievements = [
     { icon: Users, count: '10,000+', label: 'Aktif Kullanıcı' },
     { icon: Award, count: '50+', label: 'Tamamlanan Proje' },
