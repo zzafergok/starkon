@@ -16,40 +16,7 @@ export function useForm<T extends z.ZodType<any, any>>(
   const { t } = useTranslation()
 
   // Create a custom resolver that translates Zod error messages
-  const resolver = zodResolver(schema, {
-    errorMap: (issue, ctx) => {
-      // Translate common error messages
-      let message = issue.message
-
-      // Map Zod error codes to translation keys
-      switch (issue.code) {
-        case z.ZodIssueCode.invalid_type:
-          if (issue.received === 'undefined' || issue.received === 'null') {
-            message = t('validation.required')
-          }
-          break
-        case z.ZodIssueCode.too_small:
-          if (issue.type === 'string') {
-            message = t('validation.minLength', { min: issue.minimum })
-          }
-          break
-        case z.ZodIssueCode.too_big:
-          if (issue.type === 'string') {
-            message = t('validation.maxLength', { max: issue.maximum })
-          }
-          break
-        case z.ZodIssueCode.invalid_string:
-          if (issue.validation === 'email') {
-            message = t('validation.email')
-          } else {
-            message = t('validation.invalidFormat')
-          }
-          break
-      }
-
-      return { message: message ?? ctx.defaultError }
-    },
-  })
+  const resolver = zodResolver(schema)
 
   // Return the useForm hook with our custom resolver
   return useReactHookForm<z.infer<T>>({

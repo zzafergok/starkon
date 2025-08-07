@@ -5,7 +5,6 @@ import { usePathname } from 'next/navigation'
 
 import { useState, useEffect } from 'react'
 
-import { useTranslation } from 'react-i18next'
 import { Sparkles, Home, Info, Mail, Menu, X, ChevronRight, Sun, Moon } from 'lucide-react'
 
 import { Button } from '@/components/core/button'
@@ -21,7 +20,6 @@ interface NavigationItem {
 }
 
 export function PublicNavbar() {
-  const { t } = useTranslation()
   const pathname = usePathname()
   const { theme, toggleTheme } = useTheme()
 

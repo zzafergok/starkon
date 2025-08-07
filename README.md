@@ -65,12 +65,9 @@ starkon/
 │   │   └── componentDemoData.tsx # Demo component verileri
 │   ├── hooks/                 # Özel React hook'ları
 │   │   ├── useAuth.ts         # Authentication yönetimi
-│   │   ├── useDropdownPortal.ts # Dropdown portal yönetimi
-│   │   ├── useDropdownState.ts  # Dropdown durumu
 │   │   ├── useForm.ts         # Form yönetimi (Zod entegrasyonu)
 │   │   ├── useLocalStorage.ts # LocalStorage hook'u
 │   │   ├── useLocale.ts       # Çoklu dil desteği
-│   │   ├── useScrollbarCompensation.ts # Scrollbar telafisi
 │   │   ├── useTheme.ts        # Tema yönetimi
 │   │   └── useTokenManager.ts # Token yönetimi
 │   ├── lib/                   # Yardımcı kütüphaneler
