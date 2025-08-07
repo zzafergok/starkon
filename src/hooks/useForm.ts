@@ -1,7 +1,6 @@
 'use client'
 
 import { z } from 'zod'
-import { useTranslation } from 'react-i18next'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm as useReactHookForm, UseFormProps } from 'react-hook-form'
 
@@ -13,8 +12,6 @@ export function useForm<T extends z.ZodType<any, any>>(
   schema: T,
   options?: Omit<UseFormProps<z.infer<T>>, 'resolver'>,
 ) {
-  const { t } = useTranslation()
-
   // Create a custom resolver that translates Zod error messages
   const resolver = zodResolver(schema)
 
