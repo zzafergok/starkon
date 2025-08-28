@@ -6,8 +6,6 @@ import { AuthProvider } from '@/providers/AuthProvider'
 import { ThemeProvider } from '@/providers/theme-provider'
 import I18nProvider from '@/providers/I18nProvider'
 import { ToastProvider } from '@/providers/toast-provider'
-import { PublicNavbar } from '@/components/layout/PublicNavbar'
-import { PublicFooter } from '@/components/layout/PublicFooter'
 
 export const metadata: Metadata = {
   title: {
@@ -94,9 +92,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
               <I18nProvider>
                 <ToastProvider>
                   <div className='min-h-screen flex flex-col'>
-                    <PublicNavbar />
                     <main className='flex-1'>{children}</main>
-                    <PublicFooter />
                   </div>
                 </ToastProvider>
               </I18nProvider>

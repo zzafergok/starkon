@@ -72,22 +72,22 @@ class StarkonLogger {
     return (messageOrContext, message, context = {}) => {
       if (!this._shouldLog(level)) return
 
-      let finalMessage, finalContext, module
+      let finalMessage, finalContext, moduleName
 
       if (typeof messageOrContext === 'string') {
         finalMessage = messageOrContext
         finalContext = typeof message === 'object' ? message : context
-        module = typeof message === 'string' ? message : undefined
+        moduleName = typeof message === 'string' ? message : undefined
       } else if (typeof messageOrContext === 'object' && messageOrContext !== null) {
         finalMessage = message || 'Log message'
         finalContext = messageOrContext
-        module = messageOrContext.module
+        moduleName = messageOrContext.module
       } else {
         finalMessage = String(messageOrContext)
         finalContext = context
       }
 
-      const formatted = this._formatMessage(level, module, finalMessage, finalContext)
+      const formatted = this._formatMessage(level, moduleName, finalMessage, finalContext)
 
       // Use appropriate console method
       const consoleMethod =
@@ -384,8 +384,8 @@ async function safeImport(moduleName, fallback = null) {
 
   for (let i = 0; i < maxRetries; i++) {
     try {
-      const module = await import(moduleName)
-      return module.default || module
+      const importedModule = await import(moduleName)
+      return importedModule.default || importedModule
     } catch (error) {
       lastError = error
 
@@ -496,7 +496,7 @@ async function saveUserConfig(updates) {
   } catch (error) {
     configLog.error('Config save error', {
       error: error.message,
-      config,
+      updates,
       configPath: path.join(os.homedir(), '.starkon', 'config.json'),
     })
     return false
@@ -547,8 +547,8 @@ async function loadLocale(locale = 'tr') {
 async function getLocaleMessages(locale) {
   const messages = {
     tr: {
-      PROJECT_CREATING: '🌊 Create Starkon ile yeni proje oluşturuluyor...',
-      PROJECT_CREATED_SUCCESS: '🎉 Starkon projesi hazır!',
+      PROJECT_CREATING: '🌊 Starkon boilerplate ile yeni Next.js projesi oluşturuluyor...',
+      PROJECT_CREATED_SUCCESS: '🎉 Starkon boilerplate projesi başarıyla oluşturuldu!',
       PROJECT_NAME_PROMPT: 'Proje adını girin:',
       PROJECT_NAME_EMPTY: 'Proje adı boş olamaz',
       PROJECT_NAME_TOO_LONG: 'Proje adı 50 karakterden uzun olamaz',
@@ -574,8 +574,8 @@ async function getLocaleMessages(locale) {
       UPDATE_COMMAND: 'Güncellemek için: npm install -g starkon@latest',
     },
     en: {
-      PROJECT_CREATING: '🌊 Creating new project with Create Starkon...',
-      PROJECT_CREATED_SUCCESS: '🎉 Starkon project ready!',
+      PROJECT_CREATING: '🌊 Creating new Next.js project with Starkon boilerplate...',
+      PROJECT_CREATED_SUCCESS: '🎉 Starkon boilerplate project created successfully!',
       PROJECT_NAME_PROMPT: 'Enter project name:',
       PROJECT_NAME_EMPTY: 'Project name cannot be empty',
       PROJECT_NAME_TOO_LONG: 'Project name cannot be longer than 50 characters',
@@ -614,31 +614,24 @@ async function validateSystemRequirements() {
     npm: '>=8.0.0',
   }
 
-  try {
-    // Node.js version check
-    const nodeVersion = process.version
-    if (!satisfiesVersion(nodeVersion, requirements.node)) {
-      throw new StarkonError(
-        `Node.js ${requirements.node} gerekiyor, mevcut: ${nodeVersion}`,
-        'UNSUPPORTED_NODE_VERSION',
-      )
-    }
-
-    // NPM version check (optional)
-    try {
-      const childProcess = await safeImport('child_process')
-      const npmVersion = childProcess.execSync('npm --version', { encoding: 'utf8' }).trim()
-      if (!satisfiesVersion(`v${npmVersion}`, requirements.npm.replace('>=', '>='))) {
-        sysLog.warn('NPM version recommendation', { recommended: requirements.npm, current: `v${npmVersion}` })
-      }
-    } catch {
-      // NPM version check optional - silent fail
-    }
-
-    return true
-  } catch (error) {
-    throw error
+  // Node.js version check
+  const nodeVersion = process.version
+  if (!satisfiesVersion(nodeVersion, requirements.node)) {
+    throw new StarkonError(`Node.js ${requirements.node} gerekiyor, mevcut: ${nodeVersion}`, 'UNSUPPORTED_NODE_VERSION')
   }
+
+  // NPM version check (optional)
+  try {
+    const childProcess = await safeImport('child_process')
+    const npmVersion = childProcess.execSync('npm --version', { encoding: 'utf8' }).trim()
+    if (!satisfiesVersion(`v${npmVersion}`, requirements.npm.replace('>=', '>='))) {
+      sysLog.warn('NPM version recommendation', { recommended: requirements.npm, current: `v${npmVersion}` })
+    }
+  } catch {
+    // NPM version check optional - silent fail
+  }
+
+  return true
 }
 
 function satisfiesVersion(current, required) {
@@ -656,7 +649,7 @@ function satisfiesVersion(current, required) {
   const parseVersion = (v) => {
     const cleaned = v.replace(/^v/, '').trim()
     // Sadece valid semver karakterleri: rakamlar, noktalar, tire, artı
-    if (!/^[\d\.\-\+a-zA-Z]+$/.test(cleaned)) {
+    if (!/^[\d.-+a-zA-Z]+$/.test(cleaned)) {
       return []
     }
 
@@ -831,13 +824,17 @@ async function detectPackageManager() {
     try {
       childProcess.execSync('pnpm --version', { stdio: 'ignore' })
       return 'pnpm'
-    } catch {}
+    } catch {
+      // pnpm not available
+    }
 
     // yarn kontrolü
     try {
       childProcess.execSync('yarn --version', { stdio: 'ignore' })
       return 'yarn'
-    } catch {}
+    } catch {
+      // yarn not available
+    }
 
     // npm her zaman mevcut (Node.js ile gelir)
     return 'npm'
@@ -1007,13 +1004,12 @@ function normalizeProjectName(name) {
 
     // 2. Kapsamlı Turkish character mapping - tüm varyantlar dahil
     const turkishMap = {
-      // Ana Turkish karakterler
+      // Turkish karakterler - both normal and Unicode forms
       ç: 'c',
       Ç: 'C',
       ğ: 'g',
       Ğ: 'G',
       ı: 'i',
-      I: 'I',
       İ: 'I', // İ ve ı ayrı karakterler!
       ö: 'o',
       Ö: 'O',
@@ -1021,20 +1017,6 @@ function normalizeProjectName(name) {
       Ş: 'S',
       ü: 'u',
       Ü: 'U',
-
-      // Unicode varyantları ve composed forms
-      '\u0130': 'I', // İ - Latin Capital Letter I With Dot Above
-      '\u0131': 'i', // ı - Latin Small Letter Dotless I
-      '\u00E7': 'c', // ç - Latin Small Letter C With Cedilla
-      '\u00C7': 'C', // Ç - Latin Capital Letter C With Cedilla
-      '\u011F': 'g', // ğ - Latin Small Letter G With Breve
-      '\u011E': 'G', // Ğ - Latin Capital Letter G With Breve
-      '\u00F6': 'o', // ö - Latin Small Letter O With Diaeresis
-      '\u00D6': 'O', // Ö - Latin Capital Letter O With Diaeresis
-      '\u015F': 's', // ş - Latin Small Letter S With Cedilla
-      '\u015E': 'S', // Ş - Latin Capital Letter S With Cedilla
-      '\u00FC': 'u', // ü - Latin Small Letter U With Diaeresis
-      '\u00DC': 'U', // Ü - Latin Capital Letter U With Diaeresis
 
       // Diğer yaygın diacritic karakterler
       á: 'a',
@@ -1208,7 +1190,7 @@ function validateProjectName(name) {
     /^_/, // underscore ile başlayamaz
     /\s/, // boşluk içeremez
     /[A-Z]/, // büyük harf içeremez (npm packages)
-    /[@\/]/, // @ veya / içeremez
+    /[@/]/, // @ veya / içeremez
   ]
 
   for (const pattern of npmInvalidPatterns) {
@@ -1487,7 +1469,7 @@ async function checkForUpdates(locale) {
 /**
  * Anonim telemetry gönderme (optional)
  */
-async function sendTelemetry(data) {
+async function sendTelemetry(_data) {
   // Telemetry tamamen optional ve disable edilebilir
   if (process.env.STARKON_TELEMETRY === 'false' || process.env.NO_TELEMETRY === '1') {
     return
@@ -1794,7 +1776,7 @@ async function createProject(projectDir, options = {}) {
  */
 program
   .name('starkon')
-  .description('🌊 Starkon ile modern Next.js projesi oluşturun')
+  .description('🌊 Create production-ready Next.js applications with Starkon boilerplate')
   .version('0.1.44')
   .argument('[project-directory]', 'Projenin oluşturulacağı dizin adı')
   .option('--skip-git', 'Git repository initialize etme')
@@ -1886,7 +1868,7 @@ program.on('--help', () => {
   console.log("  STARKON_TELEMETRY=false    - Telemetry'yi devre dışı bırak")
   console.log("  NO_TELEMETRY=1             - Telemetry'yi devre dışı bırak (alternatif)")
   console.log('')
-  console.log(chalk.blue('🌊 Starkon ile modern React uygulamaları oluşturun!'))
+  console.log(chalk.blue('🌊 Create production-ready Next.js applications with Starkon boilerplate!'))
 })
 
 // Program'ı çalıştır

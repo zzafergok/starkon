@@ -69,9 +69,9 @@ export function middleware(request: NextRequest) {
     return languageResponse
   }
 
-  // Root route redirect to login
+  // Root route - allow access (will show public home page)
   if (pathname === '/') {
-    return NextResponse.redirect(new URL('/login', request.url))
+    return NextResponse.next()
   }
 
   // Check if route is public

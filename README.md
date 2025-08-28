@@ -1,376 +1,314 @@
-# Starkon
+# 🌊 Starkon - Next.js Boilerplate & Starter Template
 
-Starkon, modern React uygulamaları için tasarlanmış kapsamlı bir component kütüphanesidir. Radix UI tabanlı, erişilebilir ve özelleştirilebilir komponentler sunar.
+[![npm](https://img.shields.io/npm/v/starkon)](https://www.npmjs.com/package/starkon)
+[![downloads](https://img.shields.io/npm/dm/starkon)](https://www.npmjs.com/package/starkon)
+[![license](https://img.shields.io/github/license/zzafergok/starkon)](https://github.com/zzafergok/starkon/blob/main/LICENSE)
+[![Next.js](https://img.shields.io/badge/Next.js-15-black)](https://nextjs.org/)
 
-## Kurulum
+> 🚀 **Create production-ready Next.js applications in seconds, not hours**
+
+**The complete Next.js 15 starter template with authentication, internationalization, UI components, and CLI scaffolding.**
+
+## Quick Start
 
 ```bash
-npx starkon my-project
-cd my-project
+npx starkon my-awesome-app
+cd my-awesome-app
 npm install
 npm run dev
 ```
 
-```bash
-starkon/
-├── src/
-│   ├── app/                    # Next.js App Router
-│   │   ├── (auth)/            # Korumalı rotalar grubu
-│   │   │   ├── components/    # Bileşenler showcase sayfası
-│   │   │   ├── dashboard/     # Ana kontrol paneli
-│   │   │   ├── settings/      # Kullanıcı ayarları
-│   │   │   └── layout.tsx     # Auth layout bileşeni
-│   │   ├── auth/              # Authentication sayfaları
-│   │   │   └── login/         # Giriş sayfası
-│   │   ├── globals.css        # Global stil tanımları
-│   │   ├── layout.tsx         # Kök layout bileşeni
-│   │   └── page.tsx           # Ana sayfa
-│   ├── components/            # Component kütüphanesi
-│   │   ├── core/              # Temel UI bileşenleri
-│   │   │   ├── Accordion/     # Genişletilebilir içerik
-│   │   │   ├── AlertDialog/   # Uyarı diyalogları
-│   │   │   ├── Avatar/        # Kullanıcı avatarları
-│   │   │   ├── Badge/         # Durum etiketleri
-│   │   │   ├── Button/        # Etkileşimli butonlar
-│   │   │   ├── Card/          # İçerik kartları
-│   │   │   ├── Checkbox/      # Seçim kutuları
-│   │   │   ├── CommandMenu/   # Komut menüsü
-│   │   │   ├── DataTable/     # Gelişmiş veri tablosu
-│   │   │   ├── Dialog/        # Modal diyaloglar
-│   │   │   ├── Dropdown/      # Açılır menüler
-│   │   │   ├── Input/         # Metin giriş alanları
-│   │   │   ├── Label/         # Form etiketleri
-│   │   │   ├── Loading/       # Yükleme animasyonları
-│   │   │   ├── Popover/       # Açılır içerik kutuları
-│   │   │   ├── Select/        # Seçim dropdownları
-│   │   │   ├── Separator/     # Ayırıcı çizgiler
-│   │   │   ├── Skeleton/      # Yükleme placeholderları
-│   │   │   ├── Slider/        # Değer seçici kaydırıcılar
-│   │   │   ├── Switch/        # Açma/kapama düğmeleri
-│   │   │   ├── Tabs/          # Sekme navigasyonu
-│   │   │   ├── Textarea/      # Çok satırlı metin alanları
-│   │   │   ├── Toast/         # Bildirim mesajları
-│   │   │   └── Tooltip/       # Yardım ipuçları
-│   │   ├── forms/             # Form bileşenleri
-│   │   │   └── auth/          # Authentication formları
-│   │   └── ui/                # Özel UI bileşenleri
-│   │       ├── ComponentDemo/ # Bileşen demo wrapper
-│   │       ├── ErrorBoundary/ # Hata yakalama
-│   │       ├── FileUpload/    # Dosya yükleme
-│   │       ├── LanguageToggle/# Dil değiştirici
-│   │       ├── PageHeader/    # Sayfa başlığı
-│   │       ├── ThemeToggle/   # Tema değiştirici
-│   │       └── ToastContainer/# Toast yöneticisi
-│   ├── data/                  # Statik veri dosyaları
-│   │   └── componentDemoData.tsx # Demo component verileri
-│   ├── hooks/                 # Özel React hook'ları
-│   │   ├── useAuth.ts         # Authentication yönetimi
-│   │   ├── useForm.ts         # Form yönetimi (Zod entegrasyonu)
-│   │   ├── useLocalStorage.ts # LocalStorage hook'u
-│   │   ├── useLocale.ts       # Çoklu dil desteği
-│   │   ├── useTheme.ts        # Tema yönetimi
-│   │   └── useTokenManager.ts # Token yönetimi
-│   ├── lib/                   # Yardımcı kütüphaneler
-│   │   ├── locale-utils.ts    # Dil yardımcıları
-│   │   ├── utils.ts           # Genel yardımcı fonksiyonlar
-│   │   └── validations/       # Form validasyon şemaları
-│   │       └── auth.ts        # Authentication validasyonları
-│   ├── locales/               # Çoklu dil desteği
-│   │   ├── en/                # İngilizce çeviriler
-│   │   ├── tr/                # Türkçe çeviriler
-│   │   └── index.ts           # i18n yapılandırması
-│   ├── providers/             # React context sağlayıcıları
-│   │   ├── AuthProvider.tsx   # Authentication context
-│   │   ├── ClientProviders.tsx# Client-side provider wrapper
-│   │   └── TokenManagerProvider.tsx # Token yönetim context
-│   ├── services/              # API ve servis katmanları
-│   │   ├── apiService.ts      # Ana API servisi
-│   │   ├── apiSlice.ts        # RTK Query API slice
-│   │   ├── authService.ts     # Authentication servisleri
-│   │   ├── constants.ts       # API sabitleri
-│   │   ├── tokenManager.ts    # Token yönetim servisi
-│   │   └── utils.ts           # Servis yardımcıları
-│   ├── store/                 # Redux Toolkit store
-│   │   ├── slices/            # Redux slice'ları
-│   │   │   ├── langSlice.ts   # Dil durumu
-│   │   │   ├── loadingSlice.ts# Yükleme durumu
-│   │   │   ├── themeSlice.ts  # Tema durumu
-│   │   │   ├── toastSlice.ts  # Toast bildirimleri
-│   │   │   └── userSlice.ts   # Kullanıcı durumu
-│   │   ├── index.ts           # Store yapılandırması
-│   │   └── types.ts           # Store tip tanımları
-│   ├── types/                 # TypeScript tip tanımları
-│   │   └── index.ts           # Genel tip tanımları
-│   ├── utils/                 # Yardımcı fonksiyonlar
-│   │   └── security.ts        # Güvenlik yardımcıları
-│   ├── index.ts               # Ana export dosyası
-│   └── middleware.ts          # Next.js middleware
-├── public/                    # Statik dosyalar
-│   ├── favicon.svg            # Site ikonu
-│   ├── robots.txt             # Robot yönergeleri
-│   └── site.webmanifest       # PWA manifest
-├── next.config.mjs            # Next.js yapılandırması
-├── tailwind.config.mjs        # Tailwind CSS yapılandırması
-├── postcss.config.mjs         # PostCSS yapılandırması
-├── tsconfig.json              # TypeScript yapılandırması
-├── package.json               # Proje bağımlılıkları
-└── README.md                  # Bu dosya
-```
+Your Next.js app will be running at `http://localhost:3000` 🎉
 
-## Özellikler
+## What is Starkon?
 
-### Temel Bileşenler
+Starkon is a **comprehensive boilerplate and starter template** for Next.js applications that eliminates the tedious setup process. Instead of spending hours configuring tools and setting up authentication, internationalization, and UI components, Starkon gives you a production-ready foundation in seconds.
 
-- **Button**: 5 farklı varyant, 4 boyut seçeneği, loading durumu
-- **Input**: Çeşitli varyantlar, ikon desteği, validasyon entegrasyonu
-- **Card**: Esnek içerik kartları, hover efektleri
-- **Dialog**: Modal diyaloglar, erişilebilir tasarım
-- **Select**: Özelleştirilebilir dropdown seçiciler
-- **DataTable**: Sıralama, filtreleme, sayfalama desteği
+### ✨ Why Choose Starkon?
 
-### Form Yönetimi
+- 🚀 **Instant Setup** - One command, complete Next.js app ready
+- 🔐 **Authentication Ready** - JWT-based auth system with session management
+- 🌍 **Internationalization** - Built-in i18n support (English & Turkish)
+- 🎨 **Modern UI System** - Radix UI + Tailwind CSS components
+- 📱 **Responsive Design** - Mobile-first approach
+- ⚡ **Performance Optimized** - Next.js 15 with App Router
+- 🛠️ **Developer Experience** - TypeScript, ESLint, Prettier pre-configured
+- 📚 **Multiple Templates** - Choose from basic, standard, dashboard, or minimal
 
-- **React Hook Form** entegrasyonu
-- **Zod** validasyon şemaları
-- Çoklu dil form hata mesajları
-- Otomatik form durumu yönetimi
+## 🎯 Template Options
 
-### Çoklu Dil Desteği
+Choose the perfect starting point for your project:
 
-- Türkçe ve İngilizce dil desteği
-- **i18next** entegrasyonu
-- Otomatik dil algılama
-- Cookie tabanlı dil tercihi
-
-### Tema Sistemi
-
-- Açık/koyu tema desteği
-- Sistem tercihi algılama
-- CSS custom properties ile renk yönetimi
-- Smooth tema geçişleri
-
-### State Yönetimi
-
-- **Redux Toolkit** ile merkezi state
-- **Redux Persist** ile kalıcı veri
-- Optimistic UI güncellemeleri
-- Real-time bildirim sistemi
-
-### Authentication
-
-- JWT token yönetimi
-- Otomatik token yenileme
-- Korumalı rota sistemi
-- Middleware tabanlı yetkilendirme
-
-### Geliştirici Deneyimi
-
-- **TypeScript** ile tip güvenliği
-- **ESLint** ve **Prettier** entegrasyonu
-- Storybook benzeri component showcase
-- Kapsamlı JSDoc dokümantasyonu
-
-## Kullanılan Teknolojiler
-
-### Frontend Framework
-
-- **Next.js 15** - React framework
-- **React 18** - UI kütüphanesi
-- **TypeScript** - Tip güvenliği
-
-### UI/UX
-
-- **Tailwind CSS** - Utility-first CSS framework
-- **Radix UI** - Headless UI primitives
-- **Lucide React** - İkon kütüphanesi
-- **Framer Motion** - Animasyon kütüphanesi
-
-### State Management
-
-- **Redux Toolkit** - State yönetimi
-- **React Redux** - React-Redux bağlantısı
-- **Redux Persist** - State kalıcılığı
-
-### Form Yönetimi
-
-- **React Hook Form** - Form yönetimi
-- **Zod** - Schema validation
-- **@hookform/resolvers** - Zod entegrasyonu
-
-### Çoklu Dil
-
-- **i18next** - Uluslararasılaştırma
-- **react-i18next** - React entegrasyonu
-- **i18next-browser-languagedetector** - Dil algılama
-
-### API Yönetimi
-
-- **RTK Query** - Data fetching
-- **Axios** - HTTP client
-
-### Development Tools
-
-- **ESLint** - Kod kalitesi
-- **Prettier** - Kod formatlaması
-- **PostCSS** - CSS işleme
-
-## Başlangıç
-
-### Gereksinimler
-
-- Node.js 18.0.0 veya üzeri
-- npm, yarn veya pnpm
-
-# Kurulum ve Çalıştırma
-
-## Projeyi oluştur
-
+### 🏗️ **Standard Template** (Default)
+Complete full-stack setup with all features included.
 ```bash
 npx starkon my-app
-cd my-app
+# or explicitly
+npx starkon my-app --template standard
+```
+**Includes:** Authentication, i18n, complete UI kit, dashboard layouts
 
-# Bağımlılıkları yükle
-npm install
+### ⚡ **Basic Template**
+Essential features without the complexity.
+```bash
+npx starkon my-app --template basic
+```
+**Includes:** Next.js 15, TypeScript, Tailwind CSS, ESLint
 
-# Geliştirme sunucusunu başlat
-npm run dev
+### 📊 **Dashboard Template**
+Perfect for admin panels and data-heavy applications.
+```bash
+npx starkon my-app --template dashboard
+```
+**Includes:** Authentication, data tables, admin layouts, protected routes
 
-`Tarayıcıda http://localhost:3000 adresini aç`
+### 🎯 **Minimal Template**
+Bare minimum Next.js setup.
+```bash
+npx starkon my-app --template minimal
+```
+**Includes:** Next.js 15, TypeScript only
+
+## 🏗️ Project Structure
+
+```
+starkon-app/
+├── src/
+│   ├── app/                    # Next.js App Router
+│   │   ├── (auth)/            # Protected route group
+│   │   │   ├── dashboard/     # Main dashboard
+│   │   │   ├── settings/      # User settings
+│   │   │   └── layout.tsx     # Auth layout wrapper
+│   │   ├── login/             # Authentication pages
+│   │   ├── register/          
+│   │   └── layout.tsx         # Root layout
+│   ├── components/            # Reusable components
+│   │   ├── core/              # Base UI components (Button, Input, etc.)
+│   │   ├── ui/                # Complex components
+│   │   └── layout/            # Layout components
+│   ├── lib/                   # Core utilities
+│   │   ├── services/          # API services & auth
+│   │   ├── validations/       # Zod schemas
+│   │   └── utils.ts           # Helper utilities
+│   ├── hooks/                 # Custom React hooks
+│   ├── providers/             # Context providers
+│   └── locales/               # i18n translations
+├── public/                    # Static assets
+├── tailwind.config.mjs        # Tailwind configuration
+└── next.config.mjs            # Next.js configuration
 ```
 
-## Build ve Deploy
+## 🚀 Features
+
+### 🔐 **Authentication System**
+- JWT-based authentication with automatic token refresh
+- Session management with 5-minute buffer
+- "Remember Me" functionality (3-day persistence)
+- Protected routes with middleware
+- Mock authentication for development
+
+**Login Credentials (Development):**
+- Admin: `admin@example.com` / `admin123`
+- User: `user@example.com` / `user123` 
+- Demo: `demo@example.com` / `demo123`
+
+### 🌍 **Internationalization**
+- Built-in i18n with browser language detection
+- English and Turkish support out of the box
+- Easy to add new languages
+- URL parameter and cookie persistence
+
+### 🎨 **UI Component Library**
+Built on **Radix UI** primitives with **Tailwind CSS**:
+- **30+ Components:** Button, Input, Dialog, DataTable, and more
+- **Dark/Light Theme:** Automatic theme switching
+- **Responsive Design:** Mobile-first approach
+- **Accessibility:** WCAG compliant components
+- **Customizable:** Easy to extend and modify
+
+### ⚡ **Developer Experience**
+- **TypeScript:** Full type safety
+- **ESLint & Prettier:** Code quality and formatting
+- **Tailwind CSS:** Utility-first styling
+- **Next.js 15:** Latest App Router features
+- **React Query:** Data fetching and caching
+- **Jest & Testing Library:** Testing setup ready
+
+### 📱 **Production Ready**
+- **Performance Optimized:** Bundle analysis with `npm run analyze`
+- **SEO Friendly:** Meta tags and structured data
+- **Error Handling:** Comprehensive error boundaries
+- **Security:** XSS protection and secure headers
+
+## 📋 Available Scripts
 
 ```bash
-# Production build
-npm run build
+# Development
+npm run dev              # Start development server with Turbo
+npm run build            # Build for production
+npm start               # Start production server
 
-# Production sunucusunu başlat
-npm start
+# Code Quality  
+npm run lint            # Run ESLint
+npm run type-check      # TypeScript type checking
+npm run prettier        # Format code
+npm run prettier:check  # Check code formatting
 
-# Kod kalitesi kontrolü
-npm run lint
+# Testing
+npm test               # Run Jest tests
+npm run test:watch     # Run tests in watch mode
+npm run test:coverage  # Generate coverage report
 
-# TypeScript kontrolleri
-npm run type-check
-
-# Kod formatlaması
-npm run prettier
+# Analysis
+npm run analyze        # Analyze bundle size
 ```
 
-# Sayfalar
+## 🔧 Customization
 
-```bash
-### Ana Sayfalar
+### Environment Variables
 
--   `/` - Landing page
--   `/dashboard` - Kullanıcı dashboard'u (korumalı)
--   `/components` - Component showcase (korumalı)
--   `/settings` - Kullanıcı ayarları (korumalı)
+Create a `.env.local` file in your project root:
 
-### Authentication
+```env
+# API Configuration
+NEXT_PUBLIC_API_URL=http://localhost:3001/api
+NODE_ENV=development
 
--   `/login` - Giriş sayfası
+# Authentication (optional)
+NEXTAUTH_SECRET=your-secret-here
+NEXTAUTH_URL=http://localhost:3000
 ```
 
-## Demo Kullanıcıları
+### Adding New Components
+
+Starkon follows a consistent component structure:
 
 ```bash
-Admin: admin@example.com / Admin123!
-User: user@example.com / User123!
-Demo: demo@example.com / Demo123!
+src/components/core/
+├── my-component.tsx           # Component implementation
+└── index.ts                   # Export
 ```
 
-## Component Showcase
+Use the built-in utilities:
+```tsx
+import { cn } from '@/lib/utils'
+import { cva } from 'class-variance-authority'
 
-```bash
-Component showcase sayfası (`/components`) tüm mevcut bileşenleri interaktif olarak sunar:
-
--   Gerçek zamanlı preview
--   Kod örnekleri
--   Props dokümantasyonu
--   Kullanım senaryoları
--   Filtreleme ve arama
+const buttonVariants = cva(
+  "base-styles",
+  {
+    variants: {
+      variant: {
+        default: "default-styles",
+        outline: "outline-styles",
+      },
+    }
+  }
+)
 ```
 
-## Özelleştirme
+### Theme Customization
 
-### Tema Özelleştirme
+Modify `tailwind.config.mjs` to customize colors, fonts, and spacing:
 
-`tailwind.config.mjs` dosyasında renk paleti ve tasarım sistemini özelleştirebilirsiniz:
-
-```bash
-// Özel renkler tanımlama
-colors: {
-  primary: {
-    50: 'hsl(var(--primary-50))',
-    // ... diğer tonlar
+```js
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          50: 'hsl(var(--primary-50))',
+          // ... your color palette
+        }
+      }
+    }
   }
 }
 ```
 
-### Yeni Dil Ekleme
+## 🌟 CLI Options
 
-1.  `src/locales/` altında yeni dil klasörü oluşturun
-2.  `translation.json` dosyasını çevirin
-3.  `src/lib/locale-utils.ts` dosyasında dili SUPPORTED_LOCALES'a ekleyin
+```bash
+npx starkon [project-name] [options]
 
-### Yeni Component Ekleme
+Options:
+  -t, --template <type>     Template to use (basic|standard|dashboard|minimal)
+  --skip-git               Skip git repository initialization  
+  --skip-update-check      Skip version update check
+  --verbose                Show detailed output
+  --config-set <key=value> Set configuration option
+  --clear-cache            Clear template cache
+```
 
-1.  `src/components/core/` altında component klasörü oluşturun
-2.  Component'i geliştirin
-3.  `src/index.ts` dosyasından export edin
-4.  `src/data/componentDemoData.tsx` dosyasına demo ekleyin
+Examples:
+```bash
+# Create with specific template
+npx starkon my-dashboard --template dashboard
 
-## API Entegrasyonu
+# Skip git initialization
+npx starkon my-app --skip-git
 
-Proje mock authentication kullanır, ancak gerçek API entegrasyonu için:
+# Set default template
+npx starkon --config-set defaultTemplate=basic
+```
 
-1.  `src/config/api.ts` dosyasında API URL'lerini güncelleyin
-2.  `src/services/apiSlice.ts` dosyasında endpoint'leri tanımlayın
-3.  Authentication logic'ini `src/hooks/useAuth.ts` dosyasında güncelleyin
+## 📚 Documentation
 
-## Deployment
+- [Getting Started Guide](https://github.com/zzafergok/starkon/wiki/Getting-Started)
+- [Authentication Setup](https://github.com/zzafergok/starkon/wiki/Authentication)
+- [Component Documentation](https://github.com/zzafergok/starkon/wiki/Components)
+- [Deployment Guide](https://github.com/zzafergok/starkon/wiki/Deployment)
+- [Migration Guide](https://github.com/zzafergok/starkon/wiki/Migration)
 
-### Vercel (Önerilen)
+## 🚀 Deployment
 
+### Vercel (Recommended)
 ```bash
 npm install -g vercel
 vercel
 ```
 
 ### Netlify
-
 ```bash
 npm run build
-# out/ klasörünü Netlify'a yükleyin
+# Deploy the .next folder
 ```
 
 ### Docker
-
 ```bash
-FROM node:18-alpine
-WORKDIR /app
-COPY package*.json ./
-RUN npm ci --only=production
-COPY . .
-RUN npm run build
-EXPOSE 3000
-CMD ["npm", "start"]
+docker build -t my-starkon-app .
+docker run -p 3000:3000 my-starkon-app
 ```
 
-## Katkıda Bulunma
+## 🤝 Contributing
 
-1.  Fork yapın
-2.  Feature branch oluşturun (`git checkout -b feature/amazing-feature`)
-3.  Değişikliklerinizi commit edin (`git commit -m 'Add amazing feature'`)
-4.  Branch'inizi push edin (`git push origin feature/amazing-feature`)
-5.  Pull Request oluşturun
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
 
-## Lisans
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Commit changes: `git commit -m 'Add amazing feature'`
+4. Push to branch: `git push origin feature/amazing-feature`
+5. Submit a Pull Request
 
-MIT License - detaylar için [LICENSE](LICENSE) dosyasına bakın.
+## 📄 License
 
-## İletişim
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-- GitHub: [zzafergok/starkon](https://github.com/zzafergok/starkon)
-- Website: [starkon.website](https://starkon.website)
+## 🙏 Acknowledgments
+
+- **Next.js** - The React framework for production
+- **Radix UI** - Low-level UI primitives
+- **Tailwind CSS** - Utility-first CSS framework
+- **React Query** - Data fetching library
+
+---
+
+<div align="center">
+
+**[Website](https://www.starkon.website) • [Documentation](https://github.com/zzafergok/starkon/wiki) • [Examples](https://github.com/zzafergok/starkon/tree/main/examples)**
+
+Made with ❤️ by [Zafer Gök](https://github.com/zzafergok)
+
+⭐ **If Starkon helped you build faster, give us a star!**
+
+</div>
