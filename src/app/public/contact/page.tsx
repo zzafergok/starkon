@@ -109,7 +109,7 @@ const ContactPageContent = () => {
                 className='flex items-center gap-2 px-3 py-2 bg-primary-foreground/10 hover:bg-primary-foreground/20 rounded-lg transition-colors text-sm'
               >
                 <ArrowLeft className='w-4 h-4' />
-                Önceki
+                {t('common.previous')}
               </button>
             </div>
 
@@ -119,18 +119,18 @@ const ContactPageContent = () => {
                 className='flex items-center gap-2 px-3 py-2 bg-primary-foreground/10 hover:bg-primary-foreground/20 rounded-lg transition-colors text-sm'
               >
                 <LogIn className='w-4 h-4' />
-                Çıkış Yap
+                {t('navigation.login')}
               </button>
             </div>
 
             <User className='w-16 h-16 mx-auto mb-4 opacity-90' />
-            <h1 className='text-3xl font-bold mb-2'>İletişim</h1>
-            <p className='opacity-90'>Bizimle iletişime geçin</p>
+            <h1 className='text-3xl font-bold mb-2'>{t('pages.contact.title')}</h1>
+            <p className='opacity-90'>{t('pages.contact.subtitle')}</p>
           </div>
 
           <div className='grid md:grid-cols-2 gap-8 p-8'>
             <div className='space-y-6'>
-              <h2 className='text-xl font-semibold text-foreground mb-6'>İletişim Bilgileri</h2>
+              <h2 className='text-xl font-semibold text-foreground mb-6'>{t('pages.contact.contactInfo')}</h2>
 
               <div className='space-y-4'>
                 {contactLinks.map((contact) => (
@@ -154,12 +154,12 @@ const ContactPageContent = () => {
             </div>
 
             <div className='space-y-6'>
-              <h2 className='text-xl font-semibold text-foreground mb-6'>Mesaj Gönder</h2>
+              <h2 className='text-xl font-semibold text-foreground mb-6'>{t('pages.contact.sendButton')}</h2>
 
               <form onSubmit={handleSubmit} className='space-y-4'>
                 <div className='grid sm:grid-cols-2 gap-4'>
                   <div>
-                    <label className='block text-sm font-medium text-foreground mb-2'>Ad Soyad</label>
+                    <label className='block text-sm font-medium text-foreground mb-2'>{t('pages.contact.name')}</label>
                     <input
                       type='text'
                       name='name'
@@ -168,11 +168,11 @@ const ContactPageContent = () => {
                       required
                       disabled={isLoading}
                       className='w-full px-4 py-3 border border-border rounded-lg focus:ring-1 focus:ring-primary/50 focus:ring-inset focus:border-transparent transition-all bg-background text-foreground disabled:opacity-50'
-                      placeholder='Adınız ve soyadınız'
+                      placeholder={t('pages.contact.namePlaceholder')}
                     />
                   </div>
                   <div>
-                    <label className='block text-sm font-medium text-foreground mb-2'>E-posta</label>
+                    <label className='block text-sm font-medium text-foreground mb-2'>{t('pages.contact.email')}</label>
                     <input
                       type='email'
                       name='email'
@@ -181,13 +181,13 @@ const ContactPageContent = () => {
                       required
                       disabled={isLoading}
                       className='w-full px-4 py-3 border border-border rounded-lg focus:ring-1 focus:ring-primary/50 focus:ring-inset focus:border-transparent transition-all bg-background text-foreground disabled:opacity-50'
-                      placeholder='email@example.com'
+                      placeholder={t('pages.contact.emailPlaceholder')}
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className='block text-sm font-medium text-foreground mb-2'>Konu</label>
+                  <label className='block text-sm font-medium text-foreground mb-2'>{t('pages.contact.subject')}</label>
                   <input
                     type='text'
                     name='subject'
@@ -196,12 +196,12 @@ const ContactPageContent = () => {
                     required
                     disabled={isLoading}
                     className='w-full px-4 py-3 border border-border rounded-lg focus:ring-1 focus:ring-primary/50 focus:ring-inset focus:border-transparent transition-all bg-background text-foreground disabled:opacity-50'
-                    placeholder='Mesajınızın konusu'
+                    placeholder={t('pages.contact.subjectPlaceholder')}
                   />
                 </div>
 
                 <div>
-                  <label className='block text-sm font-medium text-foreground mb-2'>Mesaj</label>
+                  <label className='block text-sm font-medium text-foreground mb-2'>{t('pages.contact.message')}</label>
                   <textarea
                     name='message'
                     value={formData.message}
@@ -210,7 +210,7 @@ const ContactPageContent = () => {
                     disabled={isLoading}
                     rows={5}
                     className='w-full px-4 py-3 border border-border rounded-lg focus:ring-1 focus:ring-primary/50 focus:ring-inset focus:border-transparent transition-all resize-none bg-background text-foreground disabled:opacity-50'
-                    placeholder='Mesajınızı buraya yazın...'
+                    placeholder={t('pages.contact.messagePlaceholder')}
                   />
                 </div>
 
@@ -220,14 +220,14 @@ const ContactPageContent = () => {
                   className='w-full bg-primary text-primary-foreground py-3 px-6 rounded-lg font-medium hover:bg-primary/90 focus:ring-1 focus:ring-primary/50 focus:ring-inset transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed'
                 >
                   <Send className='w-4 h-4' />
-                  {isLoading ? 'Gönderiliyor...' : 'Mesaj Gönder'}
+                  {isLoading ? t('pages.contact.loading') : t('pages.contact.sendButton')}
                 </button>
               </form>
             </div>
           </div>
 
           <div className='bg-muted px-8 py-4 text-center text-sm text-muted-foreground border-t border-border'>
-            <p>Tüm mesajlar gizli tutulur ve sadece gerekli kişilerle paylaşılır.</p>
+            <p>{t('pages.contact.privacy')}</p>
           </div>
         </div>
       </div>
