@@ -1876,7 +1876,49 @@
     },
     "about": {
       "title": "About Us",
-      "content": "Learn more about Starkon and our mission."
+      "content": "Learn more about Starkon and our mission.",
+      "description": "We are a passionate team developing next-generation applications with modern web technologies. We're redefining the developer experience with Starkon.",
+      "trustedPartner": "Trusted partner since 2024",
+      "achievements": {
+        "activeUsers": "Active Users",
+        "completedProjects": "Completed Projects",
+        "countries": "Countries", 
+        "satisfaction": "User Satisfaction"
+      },
+      "missionTitle": "Our Mission & Values",
+      "missionDescription": "Our main goal is to make life easier with technology and provide powerful tools to developers.",
+      "values": {
+        "quality": {
+          "title": "Quality Focused",
+          "description": "We provide the best experience to our users with the pursuit of excellence in every detail."
+        },
+        "userCentric": {
+          "title": "User Centric",
+          "description": "We make all our decisions based on user needs and feedback."
+        },
+        "innovative": {
+          "title": "Innovative Approach",
+          "description": "We continuously research and develop to be at the forefront of technology."
+        },
+        "reliable": {
+          "title": "Reliability",
+          "description": "We apply the highest standards for the security and sustainability of your projects."
+        }
+      },
+      "techStackTitle": "Our Technology Stack",
+      "techStackDescription": "We bring your projects to life with the latest and most performant technologies.",
+      "technologies": {
+        "react": "Modern React features",
+        "typescript": "Type-safe development",
+        "nextjs": "Full-stack framework",
+        "tailwind": "Utility-first CSS",
+        "radix": "Accessible components",
+        "zustand": "State management"
+      },
+      "ctaTitle": "Let's Build Amazing Projects Together",
+      "ctaDescription": "Are you ready to take your projects to the next level with Starkon? Get started now and experience the difference.",
+      "getStarted": "Get Started",
+      "meetTeam": "Meet Our Team"
     },
     "pricing": {
       "title": "Pricing",

@@ -12,42 +12,42 @@ export default function AboutPage() {
   const { t } = useTranslation()
 
   const achievements = [
-    { icon: Users, count: '10,000+', label: 'Aktif Kullanıcı' },
-    { icon: Award, count: '50+', label: 'Tamamlanan Proje' },
-    { icon: Globe, count: '25+', label: 'Ülke' },
-    { icon: Star, count: '4.9/5', label: 'Kullanıcı Memnuniyeti' },
+    { icon: Users, count: '10,000+', label: t('pages.about.achievements.activeUsers') },
+    { icon: Award, count: '50+', label: t('pages.about.achievements.completedProjects') },
+    { icon: Globe, count: '25+', label: t('pages.about.achievements.countries') },
+    { icon: Star, count: '4.9/5', label: t('pages.about.achievements.satisfaction') },
   ]
 
   const values = [
     {
       icon: Target,
-      title: 'Kalite Odaklı',
-      description: 'Her detayda mükemmellik arayışı ile kullanıcılarımıza en iyi deneyimi sunuyoruz.',
+      title: t('pages.about.values.quality.title'),
+      description: t('pages.about.values.quality.description'),
     },
     {
       icon: Heart,
-      title: 'Kullanıcı Merkezli',
-      description: 'Tüm kararlarımızı kullanıcı ihtiyaçları ve geri bildirimleri doğrultusunda alıyoruz.',
+      title: t('pages.about.values.userCentric.title'),
+      description: t('pages.about.values.userCentric.description'),
     },
     {
       icon: Rocket,
-      title: 'İnovatif Yaklaşım',
-      description: 'Teknolojinin öncüsü olmak için sürekli araştırma ve geliştirme yapıyoruz.',
+      title: t('pages.about.values.innovative.title'),
+      description: t('pages.about.values.innovative.description'),
     },
     {
       icon: Shield,
-      title: 'Güvenilirlik',
-      description: 'Projelerinizin güvenliği ve sürdürülebilirliği için en yüksek standartları uyguluyoruz.',
+      title: t('pages.about.values.reliable.title'),
+      description: t('pages.about.values.reliable.description'),
     },
   ]
 
   const technologies = [
-    { name: 'React 18+', description: 'Modern React özellikleri' },
-    { name: 'TypeScript', description: 'Type-safe geliştirme' },
-    { name: 'Next.js 14+', description: 'Full-stack framework' },
-    { name: 'Tailwind CSS', description: 'Utility-first CSS' },
-    { name: 'Radix UI', description: 'Erişilebilir komponentler' },
-    { name: 'Zustand', description: 'State management' },
+    { name: 'React 18+', description: t('pages.about.technologies.react') },
+    { name: 'TypeScript', description: t('pages.about.technologies.typescript') },
+    { name: 'Next.js 14+', description: t('pages.about.technologies.nextjs') },
+    { name: 'Tailwind CSS', description: t('pages.about.technologies.tailwind') },
+    { name: 'Radix UI', description: t('pages.about.technologies.radix') },
+    { name: 'Zustand', description: t('pages.about.technologies.zustand') },
   ]
 
   return (
@@ -67,13 +67,12 @@ export default function AboutPage() {
               </span>
             </h1>
             <p className='text-xl text-neutral-600 dark:text-neutral-300 mb-8 max-w-3xl mx-auto leading-relaxed'>
-              Modern web teknolojileri ile gelecek nesil uygulamalar geliştiren tutkulu bir ekibiz. Starkon ile
-              developer deneyimini yeniden tanımlıyoruz.
+              {t('pages.about.description')}
             </p>
             <div className='flex justify-center'>
               <Badge variant='default' size='lg' className='px-6 py-2'>
                 <Rocket className='h-4 w-4 mr-2' />
-                2024&apos;ten beri güvenilen partner
+                {t('pages.about.trustedPartner')}
               </Badge>
             </div>
           </div>
@@ -107,10 +106,10 @@ export default function AboutPage() {
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
           <div className='text-center mb-16'>
             <h2 className='text-3xl sm:text-4xl font-bold text-neutral-900 dark:text-neutral-100 mb-4'>
-              Misyonumuz & Değerlerimiz
+              {t('pages.about.missionTitle')}
             </h2>
             <p className='text-lg text-neutral-600 dark:text-neutral-300 max-w-2xl mx-auto'>
-              Teknoloji ile hayatı kolaylaştırmak ve geliştiricilere güçlü araçlar sunmak temel amacımızdır.
+              {t('pages.about.missionDescription')}
             </p>
           </div>
 
@@ -146,10 +145,10 @@ export default function AboutPage() {
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
           <div className='text-center mb-16'>
             <h2 className='text-3xl sm:text-4xl font-bold text-neutral-900 dark:text-neutral-100 mb-4'>
-              Teknoloji Yığınımız
+              {t('pages.about.techStackTitle')}
             </h2>
             <p className='text-lg text-neutral-600 dark:text-neutral-300 max-w-2xl mx-auto'>
-              En güncel ve performanslı teknolojilerle projelerinizi hayata geçiriyoruz.
+              {t('pages.about.techStackDescription')}
             </p>
           </div>
 
@@ -179,19 +178,19 @@ export default function AboutPage() {
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
           <div className='text-center'>
             <h2 className='text-3xl sm:text-4xl font-bold text-white mb-6 drop-shadow-md'>
-              Birlikte Harika Projeler Yapalım
+              {t('pages.about.ctaTitle')}
             </h2>
             <p className='text-lg text-white/95 mb-8 max-w-2xl mx-auto drop-shadow leading-relaxed'>
-              Starkon ile projelerinizi bir üst seviyeye taşımaya hazır mısınız? Hemen başlayın ve farkı deneyimleyin.
+              {t('pages.about.ctaDescription')}
             </p>
             <div className='flex flex-col sm:flex-row gap-4 justify-center items-center'>
               <button className='inline-flex items-center justify-center rounded-md text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-white hover:bg-neutral-100 text-primary-600 dark:bg-neutral-100 dark:text-primary-700 dark:hover:bg-white shadow-lg hover:shadow-xl h-10 px-6 py-2 font-semibold'>
                 <Rocket className='h-4 w-4 mr-2' />
-                Hemen Başla
+                {t('pages.about.getStarted')}
               </button>
               <button className='inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 border border-white/80 dark:border-white/60 text-white hover:bg-white/10 dark:hover:bg-white/20 backdrop-blur-sm h-10 px-6 py-2'>
                 <Users className='h-4 w-4 mr-2' />
-                Ekibimizle Tanış
+                {t('pages.about.meetTeam')}
               </button>
             </div>
           </div>

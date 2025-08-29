@@ -1844,7 +1844,49 @@
     },
     "about": {
       "title": "Hakkımızda",
-      "content": "Starkon ve misyonumuz hakkında daha fazla bilgi edinin."
+      "content": "Starkon ve misyonumuz hakkında daha fazla bilgi edinin.",
+      "description": "Modern web teknolojileri ile gelecek nesil uygulamalar geliştiren tutkulu bir ekibiz. Starkon ile developer deneyimini yeniden tanımlıyoruz.",
+      "trustedPartner": "2024'ten beri güvenilen partner",
+      "achievements": {
+        "activeUsers": "Aktif Kullanıcı",
+        "completedProjects": "Tamamlanan Proje", 
+        "countries": "Ülke",
+        "satisfaction": "Kullanıcı Memnuniyeti"
+      },
+      "missionTitle": "Misyonumuz & Değerlerimiz",
+      "missionDescription": "Teknoloji ile hayatı kolaylaştırmak ve geliştiricilere güçlü araçlar sunmak temel amacımızdır.",
+      "values": {
+        "quality": {
+          "title": "Kalite Odaklı",
+          "description": "Her detayda mükemmellik arayışı ile kullanıcılarımıza en iyi deneyimi sunuyoruz."
+        },
+        "userCentric": {
+          "title": "Kullanıcı Merkezli",
+          "description": "Tüm kararlarımızı kullanıcı ihtiyaçları ve geri bildirimleri doğrultusunda alıyoruz."
+        },
+        "innovative": {
+          "title": "İnovatif Yaklaşım", 
+          "description": "Teknolojinin öncüsü olmak için sürekli araştırma ve geliştirme yapıyoruz."
+        },
+        "reliable": {
+          "title": "Güvenilirlik",
+          "description": "Projelerinizin güvenliği ve sürdürülebilirliği için en yüksek standartları uyguluyoruz."
+        }
+      },
+      "techStackTitle": "Teknoloji Yığınımız",
+      "techStackDescription": "En güncel ve performanslı teknolojilerle projelerinizi hayata geçiriyoruz.",
+      "technologies": {
+        "react": "Modern React özellikleri",
+        "typescript": "Type-safe geliştirme",
+        "nextjs": "Full-stack framework",
+        "tailwind": "Utility-first CSS",
+        "radix": "Erişilebilir komponentler",
+        "zustand": "State management"
+      },
+      "ctaTitle": "Birlikte Harika Projeler Yapalım",
+      "ctaDescription": "Starkon ile projelerinizi bir üst seviyeye taşımaya hazır mısınız? Hemen başlayın ve farkı deneyimleyin.",
+      "getStarted": "Hemen Başla",
+      "meetTeam": "Ekibimizle Tanış"
     },
     "contact": {
       "title": "İletişim",
