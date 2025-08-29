@@ -1773,7 +1773,7 @@ async function createProject(projectDir, options = {}) {
     }
 
     createLog.info('Project setup completed', {
-      repository: 'https://github.com/zzafergok/sea-ui-kit',
+      repository: 'https://github.com/zzafergok/starkon',
       telemetryEnabled: config.telemetryEnabled,
     })
 

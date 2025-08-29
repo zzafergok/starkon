@@ -246,7 +246,7 @@ export default function HomePage() {
 
               <Button
                 variant='outline'
-                onClick={() => window.open('https://github.com/zzafergok/sea-ui-kit', '_blank')}
+                onClick={() => window.open('https://github.com/zzafergok/starkon', '_blank')}
                 size='lg'
                 className='w-full sm:w-auto border-white/80 dark:border-white/60 text-white hover:bg-white/10 dark:hover:bg-white/20 backdrop-blur-sm transition-all duration-300'
               >

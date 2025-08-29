@@ -35,7 +35,7 @@ export function AuthFooter() {
               <Button
                 variant='ghost'
                 size='sm'
-                onClick={() => window.open('https://github.com/zzafergok/sea-ui-kit', '_blank')}
+                onClick={() => window.open('https://github.com/zzafergok/starkon', '_blank')}
                 className='flex items-center gap-2 text-neutral-600 dark:text-neutral-400 hover:text-primary-600 dark:hover:text-primary-400'
               >
                 <Github className='h-4 w-4' />
@@ -45,7 +45,7 @@ export function AuthFooter() {
               <Button
                 variant='ghost'
                 size='sm'
-                onClick={() => window.open('https://github.com/zzafergok/sea-ui-kit/issues', '_blank')}
+                onClick={() => window.open('https://github.com/zzafergok/starkon/issues', '_blank')}
                 className='flex items-center gap-2 text-neutral-600 dark:text-neutral-400 hover:text-primary-600 dark:hover:text-primary-400'
               >
                 <HelpCircle className='h-4 w-4' />
