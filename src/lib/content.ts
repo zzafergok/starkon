@@ -76,44 +76,29 @@ export const mockServices: Service[] = [
     id: '1',
     title: 'Web Geliştirme',
     description: 'Modern ve responsive web siteleri ile web uygulamaları geliştiriyoruz.',
-    features: [
-      'Responsive tasarım',
-      'SEO optimizasyonu',
-      'Hızlı loading süreleri',
-      'Modern teknolojiler'
-    ],
+    features: ['Responsive tasarım', 'SEO optimizasyonu', 'Hızlı loading süreleri', 'Modern teknolojiler'],
     slug: 'web-gelistirme',
     category: 'Yazılım',
-    price: '₺5.000 - ₺25.000'
+    price: '₺5.000 - ₺25.000',
   },
   {
     id: '2',
     title: 'Mobil Uygulama',
     description: 'iOS ve Android platformları için native ve cross-platform uygulamalar.',
-    features: [
-      'Native performans',
-      'Cross-platform uyumluluk',
-      'App Store yayınlama',
-      'Maintenance desteği'
-    ],
+    features: ['Native performans', 'Cross-platform uyumluluk', 'App Store yayınlama', 'Maintenance desteği'],
     slug: 'mobil-uygulama',
     category: 'Yazılım',
-    price: '₺15.000 - ₺50.000'
+    price: '₺15.000 - ₺50.000',
   },
   {
     id: '3',
     title: 'UI/UX Tasarım',
     description: 'Kullanıcı dostu ve estetik arayüz tasarımları.',
-    features: [
-      'User research',
-      'Wireframe ve mockup',
-      'Prototype geliştirme',
-      'Usability testing'
-    ],
+    features: ['User research', 'Wireframe ve mockup', 'Prototype geliştirme', 'Usability testing'],
     slug: 'ui-ux-tasarim',
     category: 'Tasarım',
-    price: '₺3.000 - ₺15.000'
-  }
+    price: '₺3.000 - ₺15.000',
+  },
 ]
 
 export const mockTeamMembers: TeamMember[] = [
@@ -125,9 +110,9 @@ export const mockTeamMembers: TeamMember[] = [
     email: 'ahmet@company.com',
     social: {
       linkedin: 'https://linkedin.com/in/ahmetyilmaz',
-      twitter: 'https://twitter.com/ahmetyilmaz'
+      twitter: 'https://twitter.com/ahmetyilmaz',
     },
-    skills: ['Leadership', 'Strategy', 'Business Development']
+    skills: ['Leadership', 'Strategy', 'Business Development'],
   },
   {
     id: '2',
@@ -137,9 +122,9 @@ export const mockTeamMembers: TeamMember[] = [
     email: 'elif@company.com',
     social: {
       linkedin: 'https://linkedin.com/in/elifdemir',
-      github: 'https://github.com/elifdemir'
+      github: 'https://github.com/elifdemir',
     },
-    skills: ['React', 'Node.js', 'System Architecture', 'Team Management']
+    skills: ['React', 'Node.js', 'System Architecture', 'Team Management'],
   },
   {
     id: '3',
@@ -149,10 +134,10 @@ export const mockTeamMembers: TeamMember[] = [
     email: 'mehmet@company.com',
     social: {
       github: 'https://github.com/mehmetkaya',
-      linkedin: 'https://linkedin.com/in/mehmetkaya'
+      linkedin: 'https://linkedin.com/in/mehmetkaya',
     },
-    skills: ['React', 'Next.js', 'TypeScript', 'GraphQL']
-  }
+    skills: ['React', 'Next.js', 'TypeScript', 'GraphQL'],
+  },
 ]
 
 export const mockBlogPosts: BlogPost[] = [
@@ -160,18 +145,18 @@ export const mockBlogPosts: BlogPost[] = [
     id: '1',
     title: 'Next.js 15 ile Modern Web Geliştirme',
     slug: 'nextjs-15-modern-web-gelistirme',
-    excerpt: 'Next.js 15\'in yeni özellikleri ve modern web geliştirme practices.',
+    excerpt: "Next.js 15'in yeni özellikleri ve modern web geliştirme practices.",
     content: 'Lorem ipsum dolor sit amet...',
     publishedAt: '2024-01-15',
     author: {
       name: 'Elif Demir',
-      avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786'
+      avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786',
     },
     category: 'Web Development',
     tags: ['Next.js', 'React', 'TypeScript'],
     readingTime: '5 dk',
     featured: true,
-    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c'
+    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c',
   },
   {
     id: '2',
@@ -187,8 +172,8 @@ export const mockBlogPosts: BlogPost[] = [
     tags: ['TypeScript', 'JavaScript', 'Best Practices'],
     readingTime: '7 dk',
     featured: false,
-    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3'
-  }
+    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3',
+  },
 ]
 
 export const mockGalleryItems: GalleryItem[] = [
@@ -199,7 +184,7 @@ export const mockGalleryItems: GalleryItem[] = [
     image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d',
     category: 'Web Development',
     projectUrl: 'https://example.com',
-    tags: ['React', 'Node.js', 'E-commerce']
+    tags: ['React', 'Node.js', 'E-commerce'],
   },
   {
     id: '2',
@@ -207,7 +192,7 @@ export const mockGalleryItems: GalleryItem[] = [
     description: 'iOS ve Android için bankacılık uygulaması UI tasarımı',
     image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3',
     category: 'Mobile App',
-    tags: ['Mobile', 'Banking', 'UI/UX']
+    tags: ['Mobile', 'Banking', 'UI/UX'],
   },
   {
     id: '3',
@@ -216,8 +201,8 @@ export const mockGalleryItems: GalleryItem[] = [
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f',
     category: 'Web Design',
     projectUrl: 'https://example.com',
-    tags: ['Corporate', 'Branding', 'Web Design']
-  }
+    tags: ['Corporate', 'Branding', 'Web Design'],
+  },
 ]
 
 export const mockCompanyInfo: CompanyInfo = {
@@ -231,27 +216,27 @@ export const mockCompanyInfo: CompanyInfo = {
   contact: {
     email: 'info@techcorp.com',
     phone: '+90 212 555 0123',
-    address: 'Maslak Mahallesi, Teknoloji Sokağı No:1, Sarıyer/İstanbul'
-  }
+    address: 'Maslak Mahallesi, Teknoloji Sokağı No:1, Sarıyer/İstanbul',
+  },
 }
 
 // Content utilities
 export function getServiceBySlug(slug: string): Service | undefined {
-  return mockServices.find(service => service.slug === slug)
+  return mockServices.find((service) => service.slug === slug)
 }
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
-  return mockBlogPosts.find(post => post.slug === slug)
+  return mockBlogPosts.find((post) => post.slug === slug)
 }
 
 export function getFeaturedBlogPosts(): BlogPost[] {
-  return mockBlogPosts.filter(post => post.featured)
+  return mockBlogPosts.filter((post) => post.featured)
 }
 
 export function getBlogPostsByCategory(category: string): BlogPost[] {
-  return mockBlogPosts.filter(post => post.category === category)
+  return mockBlogPosts.filter((post) => post.category === category)
 }
 
 export function getGalleryItemsByCategory(category: string): GalleryItem[] {
-  return mockGalleryItems.filter(item => item.category === category)
+  return mockGalleryItems.filter((item) => item.category === category)
 }

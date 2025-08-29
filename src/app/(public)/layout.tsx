@@ -1,7 +1,6 @@
 'use client'
 
 import React from 'react'
-import Link from 'next/link'
 import { Button } from '@/components/core/button'
 
 function LandingNavbar() {
@@ -47,9 +46,7 @@ function LandingNavbar() {
             >
               FAQ
             </button>
-            <Button onClick={() => scrollToSection('#contact')}>
-              Get Started
-            </Button>
+            <Button onClick={() => scrollToSection('#contact')}>Get Started</Button>
           </div>
         </div>
       </div>
@@ -63,9 +60,7 @@ function LandingFooter() {
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12'>
         <div className='text-center'>
           <h3 className='text-xl font-bold mb-4'>Starkon</h3>
-          <p className='text-gray-300 mb-6'>
-            Enterprise-ready Next.js boilerplate for modern web applications.
-          </p>
+          <p className='text-gray-300 mb-6'>Enterprise-ready Next.js boilerplate for modern web applications.</p>
           <div className='flex justify-center space-x-6'>
             <a href='#' className='text-gray-300 hover:text-white transition-colors'>
               GitHub

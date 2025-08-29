@@ -4,7 +4,7 @@ import { Hero, Features, Testimonials, CTA, ContactForm } from '@/components/sec
 
 export default function LandingPage() {
   return (
-    <main className="min-h-screen">
+    <main className='min-h-screen'>
       <Hero />
       <Features />
       <Testimonials />
