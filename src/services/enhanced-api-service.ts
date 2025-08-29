@@ -4,7 +4,6 @@ import axios, { AxiosInstance, AxiosError, InternalAxiosRequestConfig, AxiosResp
 import { useToast } from '@/store/toastStore'
 
 import apiConfig from '@/config/api'
-import { tokenManagerService } from './authService'
 
 import { HTTP_STATUS, ApiResponse, RequestConfig, ApiError } from './utils'
 
@@ -91,29 +90,22 @@ export class EnhancedApiService {
           console.log(`🚀 API Request: ${config.method?.toUpperCase()} ${config.url}`)
         }
 
+        // Auth sistemi mevcut değilse token kontrolü yapma
         if (config.skipAuth) {
           return config
         }
 
-        const token = tokenManagerService.getAccessToken()
-        if (token) {
-          if (tokenManagerService.isTokenExpired()) {
-            try {
-              const refreshResult = await tokenManagerService.refreshAccessToken(this.axiosInstance)
-              if (refreshResult) {
-                config.headers.Authorization = `Bearer ${refreshResult.token}`
-              } else {
-                return Promise.reject(new Error('Token yenileme başarısız'))
-              }
-            } catch (error) {
-              return Promise.reject(error)
+        // Token kontrolü sadece auth sistemi varsa
+        try {
+          if (typeof window !== 'undefined' && sessionStorage) {
+            const token = sessionStorage.getItem('accessToken')
+            if (token && config.headers) {
+              config.headers.Authorization = `Bearer ${token}`
             }
-          } else {
-            config.headers.Authorization = `Bearer ${token}`
           }
+        } catch {
+          // Auth sistemi yoksa sessizce devam et
         }
-
-        tokenManagerService.updateLastActivity()
         return config
       },
       (error: AxiosError) => Promise.reject(error),
@@ -149,35 +141,17 @@ export class EnhancedApiService {
           return Promise.reject(error)
         }
 
-        // Token refresh logic
-        if (error.response?.status === HTTP_STATUS.UNAUTHORIZED && originalRequest && !originalRequest.skipAuth) {
-          if (this.requestQueue.isRefreshingToken()) {
-            try {
-              const newConfig = await this.requestQueue.addToQueue(originalRequest)
-              return this.axiosInstance(newConfig)
-            } catch (queueError) {
-              return Promise.reject(queueError)
-            }
-          }
-
-          this.requestQueue.setRefreshing(true)
+        // 401 durumunda basit logout yapmaya çalış (auth sistemi varsa)
+        if (error.response?.status === HTTP_STATUS.UNAUTHORIZED && !originalRequest?.skipAuth) {
           try {
-            const refreshResult = await tokenManagerService.refreshAccessToken(this.axiosInstance)
-            if (refreshResult) {
-              originalRequest.headers = originalRequest.headers || {}
-              originalRequest.headers.Authorization = `Bearer ${refreshResult.token}`
-              this.requestQueue.processQueue(null, refreshResult.token)
-              return this.axiosInstance(originalRequest)
-            } else {
-              const refreshError = new Error('Token yenileme başarısız')
-              this.requestQueue.processQueue(refreshError, null)
-              return Promise.reject(refreshError)
+            if (typeof window !== 'undefined' && sessionStorage) {
+              sessionStorage.clear()
+              if (window.location) {
+                window.location.href = '/login'
+              }
             }
-          } catch (refreshError) {
-            this.requestQueue.processQueue(refreshError, null)
-            return Promise.reject(refreshError)
-          } finally {
-            this.requestQueue.setRefreshing(false)
+          } catch {
+            // Auth sistemi yoksa sessizce devam et
           }
         }
 
