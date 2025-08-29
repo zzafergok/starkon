@@ -41,6 +41,10 @@ CLAUDE.md
 # NPM Publishing guide
 NPM_PUBLISH.md
 
+# Template research documentation
+TEMPLATE_RESEARCH.md
+TEMPLATE_ROADMAP.md
+
 # Local env files
 .env
 .env*.local
