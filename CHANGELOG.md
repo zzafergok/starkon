@@ -5,6 +5,94 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.14] - 2025-08-29
+
+### Added
+
+- **Corporate Website Template** - Complete business website solution
+  - ServiceCard, TeamMember, BlogCard, GalleryItem components
+  - Corporate route group with About, Services, Blog, Gallery pages
+  - Built-in content management system with TypeScript interfaces
+  - Professional business-focused design system
+- **Landing Page Template Enhancements** - Marketing-optimized components
+  - Hero, Features, Testimonials, CTA, ContactForm sections
+  - Scroll-triggered animations with Framer Motion
+  - Conversion-focused design patterns
+- **CLI Usage Guide** - Comprehensive documentation (CLI_USAGE_GUIDE.md)
+- **Enhanced README.md** - Complete feature comparison and usage examples
+
+### Fixed
+
+- **TypeScript Icon Component Errors** - Fixed JSX element type issues
+  - Changed `React.ElementType` to `LucideIcon` for proper typing
+  - Added proper imports for `LucideIcon` from 'lucide-react'
+- **Next.js Image Optimization** - Replaced all img elements with Next.js Image
+  - Added proper width/height attributes for optimization
+  - Improved performance with automatic image optimization
+  - Fixed ESLint warnings about slower LCP and higher bandwidth
+
+### Changed
+
+- **Template Exclusion System** - Updated corporate template excludeFiles
+  - Excludes authentication and i18n complexity for cleaner corporate sites
+  - Maintains core UI components while removing auth-specific features
+- **CLI Template Options** - Added corporate template to available templates
+  - Users can now create corporate websites with `--template corporate`
+  - Updated help documentation with new template descriptions
+
+### Performance
+
+- **Bundle Size Optimization** - Corporate and landing templates are lighter
+  - Removed unnecessary authentication systems from corporate sites
+  - Excluded complex i18n setup for faster loading
+  - Image optimization with Next.js Image component
+
+## [0.0.13] - 2025-08-29
+
+### Added
+
+- **Landing Page Template** - Single-page marketing website template
+  - Hero section with CTA optimization
+  - Features showcase with icon grid
+  - Testimonials section for social proof
+  - Contact form with validation
+  - Smooth scroll animations with Framer Motion
+
+### Fixed
+
+- **Template Exclusion Logic** - Improved file filtering for different templates
+  - Landing template excludes authentication and i18n systems
+  - Better separation of concerns for specialized templates
+
+## [0.0.12] - 2025-08-29
+
+### Added
+
+- **Enhanced Template System** - Multiple template types support
+- **Improved CLI Interface** - Better user experience and error handling
+- **Version Management** - Automatic version checking and updates
+
+## [0.0.11] - 2025-08-29
+
+### Fixed
+
+- **CLI Script Functionality** - Template generation and file copying
+- **Package Manager Detection** - Auto-detection for npm, yarn, pnpm
+
+## [0.0.10] - 2025-08-29
+
+### Changed
+
+- **Project Structure** - Reorganized components and templates
+- **Build System** - Improved build configuration and optimization
+
+## [0.0.9] - 2025-08-29
+
+### Added
+
+- **Translation System Improvements** - Enhanced i18n integration
+- **Component Library Expansion** - Additional UI components
+
 ## [0.0.8] - 2024-12-06
 
 ### Added

@@ -1,4 +1,4 @@
-# 🌊 Starkon - Next.js Boilerplate & Starter Template
+# 🌊 Starkon - Next.js Boilerplate & Template Generator
 
 [![npm](https://img.shields.io/npm/v/starkon)](https://www.npmjs.com/package/starkon)
 [![downloads](https://img.shields.io/npm/dm/starkon)](https://www.npmjs.com/package/starkon)
@@ -7,312 +7,793 @@
 
 > 🚀 **Create production-ready Next.js applications in seconds, not hours**
 
-**The complete Next.js 15 starter template with authentication, internationalization, UI components, and CLI scaffolding.**
+**The most comprehensive Next.js 15 starter template with authentication, internationalization, corporate features, and powerful CLI scaffolding.**
 
-## Quick Start
+## ⚡ Quick Start
 
+### 🏢 Corporate Website
+Perfect for business websites, agencies, and companies:
 ```bash
-npx starkon my-awesome-app
-cd my-awesome-app
+npx starkon my-company-site --template corporate
+cd my-company-site
+npm install
+npm run dev
+```
+
+### 🎯 Landing Page
+Optimized for product launches and marketing pages:
+```bash
+npx starkon my-landing --template landing
+cd my-landing
+npm install
+npm run dev
+```
+
+### 🔐 Full-Stack App
+Complete with authentication and internationalization:
+```bash
+npx starkon my-app --template standard
+cd my-app
 npm install
 npm run dev
 ```
 
 Your Next.js app will be running at `http://localhost:3000` 🎉
 
-## What is Starkon?
+## 🎯 Template Library
 
-Starkon is a **comprehensive boilerplate and starter template** for Next.js applications that eliminates the tedious setup process. Instead of spending hours configuring tools and setting up authentication, internationalization, and UI components, Starkon gives you a production-ready foundation in seconds.
+Choose the perfect starting point for your specific use case:
 
-### ✨ Why Choose Starkon?
-
-- 🚀 **Instant Setup** - One command, complete Next.js app ready
-- 🔐 **Authentication Ready** - JWT-based auth system with session management
-- 🌍 **Internationalization** - Built-in i18n support (English & Turkish)
-- 🎨 **Modern UI System** - Radix UI + Tailwind CSS components
-- 📱 **Responsive Design** - Mobile-first approach
-- ⚡ **Performance Optimized** - Next.js 15 with App Router
-- 🛠️ **Developer Experience** - TypeScript, ESLint, Prettier pre-configured
-- 📚 **Multiple Templates** - Choose from basic, standard, dashboard, or minimal
-
-## 🎯 Template Options
-
-Choose the perfect starting point for your project:
-
-### 🏗️ **Standard Template** (Default)
-
-Complete full-stack setup with all features included.
+### 🏢 **Corporate Template** ⭐ *New*
+Complete business website with content management system.
 
 ```bash
-npx starkon my-app
-# or explicitly
-npx starkon my-app --template standard
+npx starkon company-website --template corporate
 ```
 
-**Includes:** Next.js 15, TypeScript, Tailwind CSS, Authentication, i18n, Comprehensive UI Kit
+**Perfect for:**
+- Corporate websites
+- Agency portfolios  
+- Business landing pages
+- Service companies
+
+**Includes:**
+- 📄 **Pages:** Home, About, Services, Blog, Gallery, Contact
+- 🧩 **Components:** ServiceCard, TeamMember, BlogCard, GalleryItem
+- 📝 **Content System:** Built-in content management with TypeScript interfaces
+- 🎨 **Professional Design:** Clean, modern business aesthetic
+- 📱 **Responsive:** Mobile-optimized layouts
+
+**Excludes:** Authentication system, i18n complexity for cleaner corporate focus
+
+### 🎯 **Landing Template** ⭐ *Popular*
+Single-page marketing websites optimized for conversions.
+
+```bash
+npx starkon product-launch --template landing
+```
+
+**Perfect for:**
+- Product launches
+- SaaS marketing sites
+- Portfolio websites
+- Event pages
+
+**Includes:**
+- 🎨 **Sections:** Hero, Features, Testimonials, CTA, Contact
+- ⚡ **Animations:** Smooth scroll-triggered animations with Framer Motion
+- 📝 **Forms:** Contact forms with validation
+- 🎯 **CTA Optimized:** Conversion-focused design patterns
+
+**Excludes:** Authentication, i18n, dashboard components for faster loading
+
+### 🏗️ **Standard Template** (Full-Featured)
+Complete full-stack setup with all enterprise features.
+
+```bash
+npx starkon enterprise-app --template standard
+```
+
+**Perfect for:**
+- SaaS applications
+- Admin dashboards
+- Enterprise tools
+- Multi-user platforms
+
+**Includes:**
+- 🔐 **Authentication:** JWT-based auth with session management
+- 🌍 **i18n:** English/Turkish with easy language addition
+- 📊 **Dashboard:** Admin panels and user management
+- 🛡️ **Security:** Protected routes, XSS protection
+- 🎨 **Complete UI Kit:** 30+ production-ready components
 
 ### ⚡ **Basic Template**
-
-Minimal Next.js template - essential features only.
+Essential Next.js setup without complexity.
 
 ```bash
-npx starkon my-app --template basic
+npx starkon simple-app --template basic
 ```
 
-**Includes:** Next.js 15, TypeScript, Tailwind CSS, ESLint  
-**Excludes:** Authentication system, i18n, UI components, forms
+**Perfect for:**
+- Small projects
+- Prototypes
+- Learning Next.js
+- Quick experiments
+
+**Includes:** Next.js 15, TypeScript, Tailwind CSS, ESLint
+**Excludes:** Authentication, i18n, complex UI components
 
 ### 📊 **Dashboard Template**
-
-Admin dashboard optimized template.
+Admin dashboard optimized for data-heavy applications.
 
 ```bash
-npx starkon my-app --template dashboard
+npx starkon admin-panel --template dashboard
 ```
 
-**Includes:** Next.js 15, TypeScript, Dashboard Layout, Data Tables, Charts Ready  
-**Excludes:** Public pages (about, contact, pricing), public navigation components
+**Perfect for:**
+- Admin dashboards
+- Analytics tools
+- Data management
+- Internal tools
+
+**Includes:** Dashboard layout, data tables, charts integration
+**Excludes:** Public marketing pages
 
 ### 🎯 **Minimal Template**
-
-Most basic template - Next.js and TypeScript only.
+Bare-bones Next.js setup for maximum control.
 
 ```bash
-npx starkon my-app --template minimal
+npx starkon minimal-app --template minimal
 ```
 
-**Includes:** Next.js 15, TypeScript, Minimal Setup  
-**Excludes:** All UI components, services, providers, hooks, authentication, i18n, layouts
+**Perfect for:**
+- Custom implementations
+- Learning projects
+- Starting from scratch
 
-## 🏗️ Project Structure
+**Includes:** Next.js 15, TypeScript only
+**Excludes:** Everything else - build your own way
 
+## 🏗️ Architecture Overview
+
+### Project Structure
 ```
 starkon-app/
 ├── src/
 │   ├── app/                    # Next.js App Router
-│   │   ├── (auth)/            # Protected route group
+│   │   ├── (auth)/            # 🔐 Protected route group
 │   │   │   ├── dashboard/     # Main dashboard
-│   │   │   ├── settings/      # User settings
+│   │   │   ├── settings/      # User settings  
 │   │   │   └── layout.tsx     # Auth layout wrapper
-│   │   ├── login/             # Authentication pages
-│   │   ├── register/
+│   │   ├── (corporate)/       # 🏢 Corporate route group
+│   │   │   ├── about/         # Company info
+│   │   │   ├── services/      # Services catalog
+│   │   │   ├── blog/          # Blog system
+│   │   │   ├── gallery/       # Project gallery
+│   │   │   └── layout.tsx     # Corporate layout
+│   │   ├── (authentication)/ # Login/register flows
+│   │   │   ├── login/         
+│   │   │   ├── register/      
+│   │   │   └── verify-email/  
 │   │   └── layout.tsx         # Root layout
 │   ├── components/            # Reusable components
-│   │   ├── core/              # Base UI components (Button, Input, etc.)
+│   │   ├── core/              # 🧩 Base UI (Button, Input, Card, etc.)
+│   │   ├── corporate/         # 🏢 Business components
+│   │   │   ├── ServiceCard.tsx
+│   │   │   ├── TeamMember.tsx
+│   │   │   ├── BlogCard.tsx
+│   │   │   └── GalleryItem.tsx
+│   │   ├── sections/          # 🎯 Landing page sections
+│   │   │   ├── Hero.tsx
+│   │   │   ├── Features.tsx
+│   │   │   └── Testimonials.tsx
 │   │   ├── ui/                # Complex components
 │   │   └── layout/            # Layout components
 │   ├── lib/                   # Core utilities
+│   │   ├── content.ts         # 📄 Content management system
 │   │   ├── services/          # API services & auth
 │   │   ├── validations/       # Zod schemas
 │   │   └── utils.ts           # Helper utilities
 │   ├── hooks/                 # Custom React hooks
 │   ├── providers/             # Context providers
-│   └── locales/               # i18n translations
+│   └── locales/               # 🌍 i18n translations
 ├── public/                    # Static assets
 ├── tailwind.config.mjs        # Tailwind configuration
 └── next.config.mjs            # Next.js configuration
 ```
 
-## 🚀 Features
+### Technology Stack
 
-### 🔐 **Authentication System**
+**Core Framework:**
+- **Next.js 15** - App Router, Server Components, optimized performance
+- **TypeScript** - Full type safety and developer experience
+- **Tailwind CSS** - Utility-first styling with custom design system
 
-- JWT-based authentication with automatic token refresh
-- Session management with 5-minute buffer
-- "Remember Me" functionality (3-day persistence)
-- Protected routes with middleware
-- Mock authentication for development
+**UI & Design:**
+- **Radix UI** - Accessible, unstyled component primitives
+- **Framer Motion** - Smooth animations and transitions  
+- **Lucide React** - Beautiful, consistent icon library
+- **CSS Variables** - Dynamic theming support
 
-**Login Credentials (Development):**
+**State & Data:**
+- **React Query** - Server state management and caching
+- **Zustand** - Lightweight client state management
+- **React Hook Form** - Performant forms with validation
 
-- Admin: `admin@example.com` / `admin123`
-- User: `user@example.com` / `user123`
-- Demo: `demo@example.com` / `demo123`
+**Development:**
+- **ESLint** - Code linting with Next.js rules
+- **Prettier** - Code formatting with Tailwind plugin
+- **Jest** - Unit testing framework
+- **React Testing Library** - Component testing utilities
 
-### 🌍 **Internationalization**
+## 🔐 Authentication System
 
-- Built-in i18n with browser language detection
-- English and Turkish support out of the box
-- Easy to add new languages
-- URL parameter and cookie persistence
+### Features
+- **JWT Tokens** - Secure access and refresh token system
+- **Auto-refresh** - Automatic token renewal with 5-minute buffer
+- **Session Management** - Persistent login with "Remember Me"
+- **Protected Routes** - Middleware-based route protection
+- **Mock Development** - Built-in test users for development
 
-### 🎨 **UI Component Library**
-
-Built on **Radix UI** primitives with **Tailwind CSS**:
-
-- **30+ Components:** Button, Input, Dialog, DataTable, and more
-- **Dark/Light Theme:** Automatic theme switching
-- **Responsive Design:** Mobile-first approach
-- **Accessibility:** WCAG compliant components
-- **Customizable:** Easy to extend and modify
-
-### ⚡ **Developer Experience**
-
-- **TypeScript:** Full type safety
-- **ESLint & Prettier:** Code quality and formatting
-- **Tailwind CSS:** Utility-first styling
-- **Next.js 15:** Latest App Router features
-- **React Query:** Data fetching and caching
-- **Jest & Testing Library:** Testing setup ready
-
-### 📱 **Production Ready**
-
-- **Performance Optimized:** Bundle analysis with `npm run analyze`
-- **SEO Friendly:** Meta tags and structured data
-- **Error Handling:** Comprehensive error boundaries
-- **Security:** XSS protection and secure headers
-
-## 📋 Available Scripts
-
-```bash
-# Development
-npm run dev              # Start development server with Turbo
-npm run build            # Build for production
-npm start               # Start production server
-
-# Code Quality
-npm run lint            # Run ESLint
-npm run type-check      # TypeScript type checking
-npm run prettier        # Format code
-npm run prettier:check  # Check code formatting
-
-# Testing
-npm test               # Run Jest tests
-npm run test:watch     # Run tests in watch mode
-npm run test:coverage  # Generate coverage report
-
-# Analysis
-npm run analyze        # Analyze bundle size
+### Development Users
+```typescript
+// Available test accounts
+admin@example.com    / admin123     // Full admin access
+user@example.com     / user123      // Standard user
+demo@example.com     / demo123      // Demo account
 ```
 
-## 🔧 Customization
+### Usage
+```tsx
+import { useAuth } from '@/hooks/useAuth'
+
+function Dashboard() {
+  const { user, logout, isAuthenticated } = useAuth()
+  
+  if (!isAuthenticated) return <LoginForm />
+  
+  return <h1>Welcome {user.name}!</h1>
+}
+```
+
+## 🌍 Internationalization
+
+### Built-in Language Support
+- **English (en)** - Complete translations
+- **Turkish (tr)** - Native language support  
+- **Browser Detection** - Automatic language detection
+- **URL Persistence** - Language state in URL parameters
+
+### Adding New Languages
+```bash
+# 1. Create translation file
+src/locales/es/translation.json
+
+# 2. Add to supported locales
+src/lib/locale-utils.ts
+```
+
+### Usage
+```tsx
+import { useTranslation } from 'react-i18next'
+
+function Component() {
+  const { t } = useTranslation()
+  return <h1>{t('welcome.title')}</h1>
+}
+```
+
+## 🎨 UI Component System
+
+### Core Components (30+)
+```tsx
+// Form Components
+<Button variant="default | outline | ghost" size="sm | md | lg" />
+<Input type="text | email | password" />
+<Textarea placeholder="Enter text..." />
+<Checkbox checked={true} />
+<Switch enabled={true} />
+
+// Layout Components  
+<Card>
+  <CardHeader>
+    <CardTitle>Title</CardTitle>
+  </CardHeader>
+  <CardContent>Content</CardContent>
+</Card>
+
+// Data Display
+<DataTable data={data} columns={columns} />
+<Badge variant="default | secondary | outline" />
+<Avatar src="/avatar.jpg" fallback="JD" />
+
+// Navigation
+<Tabs defaultValue="tab1">
+  <TabsList>
+    <TabsTrigger value="tab1">Tab 1</TabsTrigger>
+  </TabsList>
+</Tabs>
+
+// Feedback
+<Alert variant="default | destructive">
+  <AlertTitle>Alert Title</AlertTitle>
+  <AlertDescription>Description</AlertDescription>
+</Alert>
+```
+
+### Corporate Components
+```tsx
+// Service showcase
+<ServiceCard 
+  title="Web Development"
+  description="Custom web solutions"
+  features={["React", "Next.js", "TypeScript"]}
+  icon={Code}
+  href="/services/web"
+/>
+
+// Team member display
+<TeamMember
+  name="John Doe"
+  role="Lead Developer" 
+  bio="10+ years experience"
+  image="/team/john.jpg"
+  social={{ linkedin: "...", github: "..." }}
+  skills={["React", "Node.js", "AWS"]}
+/>
+
+// Blog post cards
+<BlogCard
+  title="Getting Started with Next.js"
+  excerpt="Learn the fundamentals..."
+  author={{ name: "Jane Smith", avatar: "/authors/jane.jpg" }}
+  category="Tutorial"
+  readingTime="5 min read"
+  publishedAt="2024-01-15"
+/>
+```
+
+### Landing Page Sections
+```tsx
+// Hero section with CTA
+<Hero 
+  title="Build Amazing Apps"
+  subtitle="Next.js boilerplate for rapid development"
+  primaryAction="Get Started"
+  secondaryAction="View Demo"
+/>
+
+// Feature showcase
+<Features 
+  title="Everything You Need"
+  features={[
+    { title: "Fast Setup", icon: Zap, description: "..." },
+    { title: "TypeScript", icon: Shield, description: "..." }
+  ]}
+/>
+
+// Social proof
+<Testimonials
+  title="What Developers Say"
+  testimonials={[
+    { name: "Developer", role: "CTO", content: "Amazing tool!" }
+  ]}
+/>
+```
+
+## 🛠️ Development Workflow
+
+### Getting Started
+```bash
+# 1. Create project
+npx starkon my-project --template corporate
+
+# 2. Setup development
+cd my-project
+npm install
+
+# 3. Start development server
+npm run dev
+
+# 4. Open browser
+open http://localhost:3000
+```
+
+### Code Quality
+```bash
+# Linting and formatting
+npm run lint              # ESLint check
+npm run lint:fix          # Auto-fix ESLint errors
+npm run prettier          # Format code
+npm run prettier:check    # Check formatting
+
+# Type checking
+npm run type-check        # TypeScript validation
+
+# Testing
+npm test                  # Run test suite
+npm run test:watch        # Watch mode testing
+npm run test:coverage     # Coverage report
+```
+
+### Build and Deploy
+```bash
+# Production build
+npm run build
+
+# Analyze bundle size
+npm run analyze           # Opens webpack-bundle-analyzer
+
+# Start production server
+npm run start
+```
+
+## 🌟 CLI Reference
+
+### Basic Usage
+```bash
+npx starkon <project-name> [options]
+```
+
+### Options
+| Option | Description | Example |
+|--------|-------------|---------|
+| `--template <type>` | Choose template type | `--template corporate` |
+| `--skip-git` | Skip git repository initialization | - |
+| `--skip-update-check` | Skip version update check | - |
+| `--verbose` | Show detailed output | - |
+| `--config-set <key=value>` | Set user configuration | `--config-set locale=en` |
+| `--config-get <key>` | Get configuration value | `--config-get defaultTemplate` |
+| `--clear-cache` | Clear template cache | - |
+
+### Template Types
+| Template | Use Case | Command |
+|----------|----------|---------|
+| `standard` | Full-stack apps with auth + i18n | `npx starkon app --template standard` |
+| `corporate` | Business websites | `npx starkon company --template corporate` |
+| `landing` | Marketing/product pages | `npx starkon landing --template landing` |
+| `dashboard` | Admin panels | `npx starkon admin --template dashboard` |
+| `basic` | Simple projects | `npx starkon simple --template basic` |
+| `minimal` | Bare-bones setup | `npx starkon minimal --template minimal` |
+
+### Advanced Examples
+```bash
+# Corporate website with git skipped
+npx starkon acme-corp --template corporate --skip-git
+
+# Landing page with verbose output  
+npx starkon product-launch --template landing --verbose
+
+# Set default template for future projects
+npx starkon --config-set defaultTemplate=corporate
+
+# Check current configuration
+npx starkon --config-get locale
+
+# Clear template cache
+npx starkon --clear-cache
+```
+
+## 📊 Feature Comparison
+
+| Feature | Standard | Corporate | Landing | Dashboard | Basic | Minimal |
+|---------|----------|-----------|---------|-----------|-------|---------|
+| **Core** |
+| Next.js 15 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| TypeScript | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Tailwind CSS | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
+| **Authentication** |
+| JWT Auth System | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ |
+| Protected Routes | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ |
+| User Management | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ |
+| **Internationalization** |
+| i18n Support | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ |
+| Multi-language | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ |
+| **UI Components** |
+| Core UI Kit | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
+| Corporate Components | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ |
+| Landing Sections | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ |
+| Dashboard Components | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ |
+| **Pages & Routing** |
+| Public Pages | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ |
+| Corporate Pages | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ |
+| Auth Pages | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ |
+| **Performance** |
+| Bundle Size | Large | Medium | Small | Medium | Small | Tiny |
+| Setup Time | 2-3 min | 1-2 min | 1 min | 2 min | 30 sec | 15 sec |
+
+## 🚀 Deployment Guide
+
+### 🟢 Vercel (Recommended)
+Zero-configuration deployment for Next.js apps:
+
+```bash
+# Install Vercel CLI
+npm install -g vercel
+
+# Deploy
+vercel
+
+# Production deployment  
+vercel --prod
+```
+
+**Features:**
+- Automatic builds on git push
+- Edge functions support
+- Built-in analytics
+- Custom domains
+
+### 🟠 Netlify  
+Great for static and hybrid apps:
+
+```bash
+# Build for deployment
+npm run build
+
+# Deploy to Netlify
+netlify deploy --prod --dir=.next
+```
+
+### 🔵 Docker
+Containerized deployment:
+
+```dockerfile
+# Dockerfile included in template
+FROM node:18-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --only=production
+COPY . .
+RUN npm run build
+EXPOSE 3000
+CMD ["npm", "start"]
+```
+
+```bash
+# Build and run
+docker build -t my-starkon-app .
+docker run -p 3000:3000 my-starkon-app
+```
+
+### ☁️ Other Platforms
+- **Railway:** `railway deploy`
+- **Render:** Connect GitHub repository
+- **AWS Amplify:** Push to connected git branch
+- **Google Cloud:** `gcloud app deploy`
+
+## ⚙️ Configuration
 
 ### Environment Variables
-
-Create a `.env.local` file in your project root:
-
 ```env
 # API Configuration
 NEXT_PUBLIC_API_URL=http://localhost:3001/api
 NODE_ENV=development
 
-# Authentication (optional)
-NEXTAUTH_SECRET=your-secret-here
+# Authentication (Standard template)
+NEXTAUTH_SECRET=your-secret-key
 NEXTAUTH_URL=http://localhost:3000
+
+# Database (if using)
+DATABASE_URL=postgresql://user:pass@localhost:5432/db
+
+# Analytics (optional)
+NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
 ```
 
-### Adding New Components
-
-Starkon follows a consistent component structure:
-
+### User Configuration
 ```bash
-src/components/core/
-├── my-component.tsx           # Component implementation
-└── index.ts                   # Export
+# Set default template
+npx starkon --config-set defaultTemplate=corporate
+
+# Set preferred package manager  
+npx starkon --config-set preferredPackageManager=pnpm
+
+# Set default locale
+npx starkon --config-set locale=en
+
+# Disable telemetry
+npx starkon --config-set telemetryEnabled=false
 ```
 
-Use the built-in utilities:
+## 🧪 Testing
 
+### Running Tests
+```bash
+npm test                  # Run all tests
+npm run test:watch        # Watch mode
+npm run test:coverage     # Coverage report
+```
+
+### Writing Tests
 ```tsx
-import { cn } from '@/lib/utils'
+import { render, screen } from '@testing-library/react'
+import { Button } from '@/components/core/button'
+
+test('Button renders correctly', () => {
+  render(<Button>Click me</Button>)
+  expect(screen.getByRole('button')).toHaveTextContent('Click me')
+})
+```
+
+## 🎨 Customization
+
+### Theme System
+```tsx
+// Custom theme configuration
+// tailwind.config.mjs
+export default {
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          50: 'hsl(210 40% 98%)',
+          // ... your brand colors
+        }
+      }
+    }
+  }
+}
+```
+
+### Component Variants
+```tsx
+// Using class-variance-authority
 import { cva } from 'class-variance-authority'
 
 const buttonVariants = cva('base-styles', {
   variants: {
     variant: {
-      default: 'default-styles',
-      outline: 'outline-styles',
+      default: 'bg-primary text-white',
+      outline: 'border border-primary text-primary',
     },
-  },
+    size: {
+      sm: 'px-3 py-1.5 text-sm',
+      lg: 'px-6 py-3 text-lg',
+    }
+  }
 })
 ```
 
-### Theme Customization
+## 📋 Available Scripts
 
-Modify `tailwind.config.mjs` to customize colors, fonts, and spacing:
-
-```js
-module.exports = {
-  theme: {
-    extend: {
-      colors: {
-        primary: {
-          50: 'hsl(var(--primary-50))',
-          // ... your color palette
-        },
-      },
-    },
-  },
-}
-```
-
-## 🌟 CLI Options
-
+### Development
 ```bash
-npx starkon [project-name] [options]
-
-Options:
-  -t, --template <type>     Template to use (basic|standard|dashboard|minimal)
-  --skip-git               Skip git repository initialization
-  --skip-update-check      Skip version update check
-  --verbose                Show detailed output
-  --config-set <key=value> Set configuration option
-  --clear-cache            Clear template cache
+npm run dev              # Next.js development server (Turbo mode)
+npm run build            # Production build
+npm run start            # Production server
+npm run analyze          # Bundle analyzer (set ANALYZE=true)
 ```
 
-Examples:
-
+### Code Quality
 ```bash
-# Create with specific template
-npx starkon my-dashboard --template dashboard
-
-# Skip git initialization
-npx starkon my-app --skip-git
-
-# Set default template
-npx starkon --config-set defaultTemplate=basic
+npm run lint             # ESLint check
+npm run type-check       # TypeScript validation  
+npm run prettier         # Code formatting
+npm run prettier:check   # Check formatting only
 ```
 
-## 📚 Documentation
-
-- [Getting Started Guide](https://github.com/zzafergok/starkon/wiki/Getting-Started)
-- [Authentication Setup](https://github.com/zzafergok/starkon/wiki/Authentication)
-- [Component Documentation](https://github.com/zzafergok/starkon/wiki/Components)
-- [Deployment Guide](https://github.com/zzafergok/starkon/wiki/Deployment)
-- [Migration Guide](https://github.com/zzafergok/starkon/wiki/Migration)
-
-## 🚀 Deployment
-
-### Vercel (Recommended)
-
+### Testing
 ```bash
-npm install -g vercel
-vercel
+npm test                 # Jest test runner
+npm run test:watch       # Watch mode testing
+npm run test:coverage    # Generate coverage report
 ```
 
-### Netlify
+## 🔄 Migration Guide
 
+### From Create Next App
 ```bash
-npm run build
-# Deploy the .next folder
+# 1. Create Starkon project
+npx starkon my-app --template basic
+
+# 2. Copy your existing code
+cp -r old-project/src/pages/* new-project/src/app/
+cp -r old-project/components/* new-project/src/components/
+
+# 3. Update imports
+# Change: import { Button } from '../components/Button'
+# To:     import { Button } from '@/components/core/button'
 ```
 
-### Docker
-
-```bash
-docker build -t my-starkon-app .
-docker run -p 3000:3000 my-starkon-app
-```
+### From Other Boilerplates
+1. **Extract your custom components** to `src/components/`
+2. **Move API logic** to `src/lib/services/`
+3. **Update styling** to use Tailwind classes
+4. **Add TypeScript types** in `src/types/`
 
 ## 🤝 Contributing
 
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+We welcome contributions to make Starkon even better!
 
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Commit changes: `git commit -m 'Add amazing feature'`
-4. Push to branch: `git push origin feature/amazing-feature`
-5. Submit a Pull Request
+### Development Setup
+```bash
+# Clone repository
+git clone https://github.com/zzafergok/starkon.git
+cd starkon
+
+# Install dependencies
+npm install
+
+# Start development
+npm run dev
+
+# Run tests
+npm test
+```
+
+### Creating New Templates
+```bash
+# 1. Add template to index.js TEMPLATES object
+# 2. Create template-specific components
+# 3. Test template generation
+# 4. Update README.md
+# 5. Submit PR
+```
+
+### Guidelines
+- **Code Quality:** Follow ESLint and Prettier rules
+- **Testing:** Add tests for new features  
+- **Documentation:** Update README for new features
+- **TypeScript:** Maintain full type safety
+
+## 📈 Performance
+
+### Bundle Analysis
+```bash
+# Analyze your build
+ANALYZE=true npm run build
+
+# Opens webpack-bundle-analyzer in browser
+```
+
+### Optimization Features
+- **Automatic Code Splitting** - Route-based splitting
+- **Image Optimization** - Next.js Image component  
+- **Font Optimization** - Google Fonts optimization
+- **Static Generation** - ISG and SSG support
+- **Edge Runtime** - Faster cold starts
+
+## 🛠️ Troubleshooting
+
+### Common Issues
+
+**Build Errors:**
+```bash
+# Clear Next.js cache
+rm -rf .next
+
+# Clear npm cache  
+npm cache clean --force
+
+# Reinstall dependencies
+rm -rf node_modules package-lock.json
+npm install
+```
+
+**TypeScript Errors:**
+```bash
+# Check types without building
+npm run type-check
+
+# Clear TypeScript cache
+rm -rf node_modules/.cache
+```
+
+**Authentication Issues:**
+```bash
+# Check token in browser storage
+# DevTools -> Application -> Session Storage -> tokens
+
+# Clear all auth data
+localStorage.clear()
+sessionStorage.clear()
+```
+
+### Getting Help
+- 🐛 **Bug Reports:** [GitHub Issues](https://github.com/zzafergok/starkon/issues)
+- 💬 **Questions:** [Discussions](https://github.com/zzafergok/starkon/discussions)  
+- 📧 **Contact:** [zafer@starkon.website](mailto:zafer@starkon.website)
 
 ## 📄 License
 
@@ -320,19 +801,38 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
-- **Next.js** - The React framework for production
-- **Radix UI** - Low-level UI primitives
-- **Tailwind CSS** - Utility-first CSS framework
-- **React Query** - Data fetching library
+**Core Technologies:**
+- **[Next.js](https://nextjs.org/)** - The React framework for production
+- **[Radix UI](https://www.radix-ui.com/)** - Low-level accessible UI primitives  
+- **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS framework
+- **[React Query](https://tanstack.com/query)** - Powerful data synchronization
+
+**Inspiration:**
+- **[shadcn/ui](https://ui.shadcn.com/)** - Component design patterns
+- **[T3 Stack](https://create.t3.gg/)** - TypeScript-first development
+- **[Vercel Templates](https://vercel.com/templates)** - Deployment optimization
 
 ---
 
 <div align="center">
 
-**[Website](https://www.starkon.website) • [Documentation](https://github.com/zzafergok/starkon/wiki) • [Examples](https://github.com/zzafergok/starkon/tree/main/examples)**
+### 🌊 Ready to Build Something Amazing?
+
+**[Get Started](https://github.com/zzafergok/starkon#quick-start) • [View Examples](https://starkon.website) • [Read Docs](https://github.com/zzafergok/starkon/wiki)**
 
 Made with ❤️ by [Zafer Gök](https://github.com/zzafergok)
 
-⭐ **If Starkon helped you build faster, give us a star!**
+⭐ **If Starkon helped you ship faster, please give us a star on GitHub!**
 
 </div>
+
+---
+
+## 📊 Stats
+
+- 🎨 **30+ UI Components** ready to use
+- 🔐 **Complete Auth System** with JWT tokens  
+- 🌍 **2 Languages** supported (English, Turkish)
+- 📱 **6 Templates** for different use cases
+- ⚡ **< 30 seconds** from CLI to running app
+- 🚀 **Production Ready** - no additional setup needed
