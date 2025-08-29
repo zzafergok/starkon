@@ -213,7 +213,7 @@ const setupResponseInterceptor = (instance: AxiosInstance): void => {
           if (!SessionTokenManager) {
             throw new Error('Auth system not available')
           }
-          
+
           const newToken = await refreshAccessToken()
           processRequestQueue(null, newToken)
 
