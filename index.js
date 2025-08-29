@@ -335,7 +335,7 @@ try {
                 path: urlParsed.pathname + urlParsed.search,
                 method: options.method || 'GET',
                 headers: {
-                  'User-Agent': 'starkon/0.0.11',
+                  'User-Agent': 'starkon/0.0.12',
                   ...options.headers,
                 },
               },
@@ -719,7 +719,7 @@ async function cacheTemplate(templateKey, templateData) {
     const cachePath = path.join(cacheDir, `${templateKey}.json`)
     const cacheData = {
       timestamp: Date.now(),
-      version: '0.0.11',
+      version: '0.0.12',
       data: templateData,
     }
 
@@ -1448,7 +1448,7 @@ async function initializeGit(targetDir) {
  */
 async function checkForUpdates(locale) {
   try {
-    const currentVersion = '0.0.11'
+    const currentVersion = '0.0.12'
     const response = await safeFetch('https://registry.npmjs.org/starkon/latest')
     const data = await response.json()
 
@@ -1732,7 +1732,7 @@ async function createProject(projectDir, options = {}) {
     // Telemetry gönder (optional)
     if (config.telemetryEnabled) {
       await sendTelemetry({
-        version: '0.0.11',
+        version: '0.0.12',
         template: selectedTemplate,
         packageManager: packageManager,
       })
@@ -1777,7 +1777,7 @@ async function createProject(projectDir, options = {}) {
 program
   .name('starkon')
   .description('🌊 Create production-ready Next.js applications with Starkon boilerplate')
-  .version('0.0.11')
+  .version('0.0.12')
   .argument('[project-directory]', 'Projenin oluşturulacağı dizin adı')
   .option('--skip-git', 'Git repository initialize etme')
   .option('--skip-update-check', 'Version update kontrolünü atla')
