@@ -40,34 +40,49 @@ Starkon is a **comprehensive boilerplate and starter template** for Next.js appl
 Choose the perfect starting point for your project:
 
 ### 🏗️ **Standard Template** (Default)
+
 Complete full-stack setup with all features included.
+
 ```bash
 npx starkon my-app
 # or explicitly
 npx starkon my-app --template standard
 ```
-**Includes:** Authentication, i18n, complete UI kit, dashboard layouts
+
+**Includes:** Next.js 15, TypeScript, Tailwind CSS, Authentication, i18n, Comprehensive UI Kit
 
 ### ⚡ **Basic Template**
-Essential features without the complexity.
+
+Minimal Next.js template - essential features only.
+
 ```bash
 npx starkon my-app --template basic
 ```
-**Includes:** Next.js 15, TypeScript, Tailwind CSS, ESLint
+
+**Includes:** Next.js 15, TypeScript, Tailwind CSS, ESLint  
+**Excludes:** Authentication system, i18n, UI components, forms
 
 ### 📊 **Dashboard Template**
-Perfect for admin panels and data-heavy applications.
+
+Admin dashboard optimized template.
+
 ```bash
 npx starkon my-app --template dashboard
 ```
-**Includes:** Authentication, data tables, admin layouts, protected routes
+
+**Includes:** Next.js 15, TypeScript, Dashboard Layout, Data Tables, Charts Ready  
+**Excludes:** Public pages (about, contact, pricing), public navigation components
 
 ### 🎯 **Minimal Template**
-Bare minimum Next.js setup.
+
+Most basic template - Next.js and TypeScript only.
+
 ```bash
 npx starkon my-app --template minimal
 ```
-**Includes:** Next.js 15, TypeScript only
+
+**Includes:** Next.js 15, TypeScript, Minimal Setup  
+**Excludes:** All UI components, services, providers, hooks, authentication, i18n, layouts
 
 ## 🏗️ Project Structure
 
@@ -80,7 +95,7 @@ starkon-app/
 │   │   │   ├── settings/      # User settings
 │   │   │   └── layout.tsx     # Auth layout wrapper
 │   │   ├── login/             # Authentication pages
-│   │   ├── register/          
+│   │   ├── register/
 │   │   └── layout.tsx         # Root layout
 │   ├── components/            # Reusable components
 │   │   ├── core/              # Base UI components (Button, Input, etc.)
@@ -101,6 +116,7 @@ starkon-app/
 ## 🚀 Features
 
 ### 🔐 **Authentication System**
+
 - JWT-based authentication with automatic token refresh
 - Session management with 5-minute buffer
 - "Remember Me" functionality (3-day persistence)
@@ -108,18 +124,22 @@ starkon-app/
 - Mock authentication for development
 
 **Login Credentials (Development):**
+
 - Admin: `admin@example.com` / `admin123`
-- User: `user@example.com` / `user123` 
+- User: `user@example.com` / `user123`
 - Demo: `demo@example.com` / `demo123`
 
 ### 🌍 **Internationalization**
+
 - Built-in i18n with browser language detection
 - English and Turkish support out of the box
 - Easy to add new languages
 - URL parameter and cookie persistence
 
 ### 🎨 **UI Component Library**
+
 Built on **Radix UI** primitives with **Tailwind CSS**:
+
 - **30+ Components:** Button, Input, Dialog, DataTable, and more
 - **Dark/Light Theme:** Automatic theme switching
 - **Responsive Design:** Mobile-first approach
@@ -127,6 +147,7 @@ Built on **Radix UI** primitives with **Tailwind CSS**:
 - **Customizable:** Easy to extend and modify
 
 ### ⚡ **Developer Experience**
+
 - **TypeScript:** Full type safety
 - **ESLint & Prettier:** Code quality and formatting
 - **Tailwind CSS:** Utility-first styling
@@ -135,6 +156,7 @@ Built on **Radix UI** primitives with **Tailwind CSS**:
 - **Jest & Testing Library:** Testing setup ready
 
 ### 📱 **Production Ready**
+
 - **Performance Optimized:** Bundle analysis with `npm run analyze`
 - **SEO Friendly:** Meta tags and structured data
 - **Error Handling:** Comprehensive error boundaries
@@ -148,7 +170,7 @@ npm run dev              # Start development server with Turbo
 npm run build            # Build for production
 npm start               # Start production server
 
-# Code Quality  
+# Code Quality
 npm run lint            # Run ESLint
 npm run type-check      # TypeScript type checking
 npm run prettier        # Format code
@@ -190,21 +212,19 @@ src/components/core/
 ```
 
 Use the built-in utilities:
+
 ```tsx
 import { cn } from '@/lib/utils'
 import { cva } from 'class-variance-authority'
 
-const buttonVariants = cva(
-  "base-styles",
-  {
-    variants: {
-      variant: {
-        default: "default-styles",
-        outline: "outline-styles",
-      },
-    }
-  }
-)
+const buttonVariants = cva('base-styles', {
+  variants: {
+    variant: {
+      default: 'default-styles',
+      outline: 'outline-styles',
+    },
+  },
+})
 ```
 
 ### Theme Customization
@@ -219,10 +239,10 @@ module.exports = {
         primary: {
           50: 'hsl(var(--primary-50))',
           // ... your color palette
-        }
-      }
-    }
-  }
+        },
+      },
+    },
+  },
 }
 ```
 
@@ -233,7 +253,7 @@ npx starkon [project-name] [options]
 
 Options:
   -t, --template <type>     Template to use (basic|standard|dashboard|minimal)
-  --skip-git               Skip git repository initialization  
+  --skip-git               Skip git repository initialization
   --skip-update-check      Skip version update check
   --verbose                Show detailed output
   --config-set <key=value> Set configuration option
@@ -241,6 +261,7 @@ Options:
 ```
 
 Examples:
+
 ```bash
 # Create with specific template
 npx starkon my-dashboard --template dashboard
@@ -263,18 +284,21 @@ npx starkon --config-set defaultTemplate=basic
 ## 🚀 Deployment
 
 ### Vercel (Recommended)
+
 ```bash
 npm install -g vercel
 vercel
 ```
 
 ### Netlify
+
 ```bash
 npm run build
 # Deploy the .next folder
 ```
 
 ### Docker
+
 ```bash
 docker build -t my-starkon-app .
 docker run -p 3000:3000 my-starkon-app
