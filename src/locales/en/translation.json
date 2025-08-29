@@ -2417,6 +2417,93 @@
         "title": "Our Team",
         "description": "We provide the best solutions with our experienced and passionate team."
       }
+    },
+    "blog": {
+      "title": "Blog",
+      "description": "Current content and expert opinions on technology, software development and digital transformation.",
+      "featured": {
+        "badge": "Featured",
+        "title": "Featured Posts"
+      },
+      "search": {
+        "placeholder": "Search in blog posts..."
+      },
+      "filter": {
+        "all": "All"
+      },
+      "allPosts": {
+        "title": "All Posts",
+        "results": "{{count}} posts found"
+      },
+      "noResults": "No posts found matching your criteria.",
+      "newsletter": {
+        "title": "Stay Updated",
+        "description": "Subscribe to our newsletter to get information about our new blog posts and technology updates.",
+        "placeholder": "Your email address",
+        "button": "Subscribe"
+      }
+    },
+    "contact": {
+      "hero": {
+        "title": "Contact Us",
+        "description": "Get in touch with us to discuss your projects. We'd love to learn how we can help you."
+      },
+      "info": {
+        "email": {
+          "title": "Email"
+        },
+        "phone": {
+          "title": "Phone"
+        },
+        "address": {
+          "title": "Address",
+          "value": "Maslak District, Büyükdere St. No:123, 34485 Sarıyer/Istanbul"
+        },
+        "hours": {
+          "title": "Working Hours",
+          "value": "Monday - Friday: 09:00 - 18:00"
+        }
+      },
+      "form": {
+        "title": "Send Message",
+        "name": {
+          "label": "Full Name",
+          "placeholder": "Enter your name"
+        },
+        "email": {
+          "label": "Email",
+          "placeholder": "Enter your email address"
+        },
+        "subject": {
+          "label": "Subject",
+          "placeholder": "Enter message subject"
+        },
+        "message": {
+          "label": "Message",
+          "placeholder": "Write your message..."
+        },
+        "submitting": "Sending...",
+        "submit": "Send Message"
+      },
+      "office": {
+        "title": "Our Office",
+        "main": {
+          "title": "Main Office",
+          "address": "Maslak District, Büyükdere St. No:123, 34485 Sarıyer/Istanbul"
+        },
+        "hours": {
+          "title": "Working Hours",
+          "weekdays": "Monday - Friday: 09:00 - 18:00",
+          "saturday": "Saturday: 10:00 - 15:00",
+          "sunday": "Sunday: Closed"
+        },
+        "social": {
+          "title": "Social Media"
+        },
+        "map": {
+          "placeholder": "Map integration will be here"
+        }
+      }
     }
   }
 }

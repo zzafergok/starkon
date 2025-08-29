@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import { BlogCard } from '@/components/corporate'
 import { mockBlogPosts, getFeaturedBlogPosts } from '@/lib/content'
 import { Badge } from '@/components/core/badge'
@@ -10,6 +11,7 @@ import { Search, Filter } from 'lucide-react'
 import { useState } from 'react'
 
 export default function BlogPage() {
+  const { t } = useTranslation()
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('')
 
@@ -39,9 +41,11 @@ export default function BlogPage() {
             transition={{ duration: 0.6 }}
             className='text-center'
           >
-            <h1 className='text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl'>Blog</h1>
+            <h1 className='text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl'>
+              {t('corporate.blog.title')}
+            </h1>
             <p className='mt-6 text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto'>
-              Teknoloji, yazılım geliştirme ve dijital dönüşüm hakkında güncel içerikler ve uzman görüşleri.
+              {t('corporate.blog.description')}
             </p>
           </motion.div>
         </div>
@@ -59,8 +63,10 @@ export default function BlogPage() {
               className='mb-12'
             >
               <div className='flex items-center gap-3 mb-8'>
-                <Badge className='bg-blue-600 text-white'>Öne Çıkanlar</Badge>
-                <h2 className='text-2xl font-bold text-gray-900 dark:text-white'>Öne Çıkan Yazılar</h2>
+                <Badge className='bg-blue-600 text-white'>{t('corporate.blog.featured.badge')}</Badge>
+                <h2 className='text-2xl font-bold text-gray-900 dark:text-white'>
+                  {t('corporate.blog.featured.title')}
+                </h2>
               </div>
             </motion.div>
 
@@ -90,7 +96,7 @@ export default function BlogPage() {
                 <Search className='absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400' />
                 <Input
                   type='text'
-                  placeholder='Blog yazılarında ara...'
+                  placeholder={t('corporate.blog.search.placeholder')}
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className='pl-10'
@@ -106,7 +112,7 @@ export default function BlogPage() {
                   size='sm'
                   onClick={() => setSelectedCategory('')}
                 >
-                  Tümü
+                  {t('corporate.blog.filter.all')}
                 </Button>
                 {categories.map((category) => (
                   <Button
@@ -134,8 +140,12 @@ export default function BlogPage() {
             viewport={{ once: true }}
             className='mb-12'
           >
-            <h2 className='text-2xl font-bold text-gray-900 dark:text-white mb-2'>Tüm Yazılar</h2>
-            <p className='text-gray-600 dark:text-gray-400'>{filteredPosts.length} yazı bulundu</p>
+            <h2 className='text-2xl font-bold text-gray-900 dark:text-white mb-2'>
+              {t('corporate.blog.allPosts.title')}
+            </h2>
+            <p className='text-gray-600 dark:text-gray-400'>
+              {t('corporate.blog.allPosts.results', { count: filteredPosts.length })}
+            </p>
           </motion.div>
 
           {filteredPosts.length > 0 ? (
@@ -154,7 +164,7 @@ export default function BlogPage() {
             </div>
           ) : (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className='text-center py-12'>
-              <p className='text-lg text-gray-600 dark:text-gray-400'>Aradığınız kriterlere uygun yazı bulunamadı.</p>
+              <p className='text-lg text-gray-600 dark:text-gray-400'>{t('corporate.blog.noResults')}</p>
             </motion.div>
           )}
         </div>
@@ -170,13 +180,13 @@ export default function BlogPage() {
             viewport={{ once: true }}
             className='text-center'
           >
-            <h2 className='text-3xl font-bold text-white sm:text-4xl'>Güncel Kalın</h2>
-            <p className='mt-6 text-xl text-blue-100 max-w-2xl mx-auto'>
-              Yeni blog yazılarımız ve teknoloji güncellemeleri hakkında bilgi almak için e-bültenimize abone olun.
-            </p>
+            <h2 className='text-3xl font-bold text-white sm:text-4xl'>{t('corporate.blog.newsletter.title')}</h2>
+            <p className='mt-6 text-xl text-blue-100 max-w-2xl mx-auto'>{t('corporate.blog.newsletter.description')}</p>
             <div className='mt-10 flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto'>
-              <Input type='email' placeholder='E-posta adresiniz' className='flex-1' />
-              <Button className='bg-white text-blue-600 hover:bg-gray-100'>Abone Ol</Button>
+              <Input type='email' placeholder={t('corporate.blog.newsletter.placeholder')} className='flex-1' />
+              <Button className='bg-white text-blue-600 hover:bg-gray-100'>
+                {t('corporate.blog.newsletter.button')}
+              </Button>
             </div>
           </motion.div>
         </div>

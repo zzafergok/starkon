@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import { Mail, Phone, MapPin, Clock, Send } from 'lucide-react'
 import { Button } from '@/components/core/button'
 import { Input } from '@/components/core/input'
@@ -15,32 +16,8 @@ interface ContactInfo {
   link?: string
 }
 
-const contactInfo: ContactInfo[] = [
-  {
-    icon: Mail,
-    title: 'E-posta',
-    info: 'info@starkon.com',
-    link: 'mailto:info@starkon.com',
-  },
-  {
-    icon: Phone,
-    title: 'Telefon',
-    info: '+90 (212) 123 45 67',
-    link: 'tel:+902121234567',
-  },
-  {
-    icon: MapPin,
-    title: 'Adres',
-    info: 'Maslak Mahallesi, Büyükdere Cd. No:123, 34485 Sarıyer/İstanbul',
-  },
-  {
-    icon: Clock,
-    title: 'Çalışma Saatleri',
-    info: 'Pazartesi - Cuma: 09:00 - 18:00',
-  },
-]
-
 export default function ContactPage() {
+  const { t } = useTranslation()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -48,6 +25,31 @@ export default function ContactPage() {
     message: '',
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
+
+  const contactInfo: ContactInfo[] = [
+    {
+      icon: Mail,
+      title: t('corporate.contact.info.email.title'),
+      info: 'info@starkon.com',
+      link: 'mailto:info@starkon.com',
+    },
+    {
+      icon: Phone,
+      title: t('corporate.contact.info.phone.title'),
+      info: '+90 (212) 123 45 67',
+      link: 'tel:+902121234567',
+    },
+    {
+      icon: MapPin,
+      title: t('corporate.contact.info.address.title'),
+      info: t('corporate.contact.info.address.value'),
+    },
+    {
+      icon: Clock,
+      title: t('corporate.contact.info.hours.title'),
+      info: t('corporate.contact.info.hours.value'),
+    },
+  ]
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -88,7 +90,7 @@ export default function ContactPage() {
               transition={{ duration: 0.6 }}
               className='text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl'
             >
-              İletişime Geçin
+              {t('corporate.contact.hero.title')}
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -96,8 +98,7 @@ export default function ContactPage() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className='mt-6 text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto'
             >
-              Projeleriniz hakkında konuşmak için bizimle iletişime geçin. Size nasıl yardımcı olabileceğimizi öğrenmek
-              isteriz.
+              {t('corporate.contact.hero.description')}
             </motion.p>
           </div>
         </div>
@@ -143,12 +144,14 @@ export default function ContactPage() {
               viewport={{ once: true }}
             >
               <Card className='p-8'>
-                <h2 className='text-2xl font-bold text-gray-900 dark:text-white mb-6'>Mesaj Gönder</h2>
+                <h2 className='text-2xl font-bold text-gray-900 dark:text-white mb-6'>
+                  {t('corporate.contact.form.title')}
+                </h2>
                 <form onSubmit={handleSubmit} className='space-y-6'>
                   <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
                     <div>
                       <label htmlFor='name' className='block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2'>
-                        Ad Soyad
+                        {t('corporate.contact.form.name.label')}
                       </label>
                       <Input
                         type='text'
@@ -157,7 +160,7 @@ export default function ContactPage() {
                         value={formData.name}
                         onChange={handleInputChange}
                         required
-                        placeholder='Adınızı girin'
+                        placeholder={t('corporate.contact.form.name.placeholder')}
                       />
                     </div>
                     <div>
@@ -165,7 +168,7 @@ export default function ContactPage() {
                         htmlFor='email'
                         className='block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2'
                       >
-                        E-posta
+                        {t('corporate.contact.form.email.label')}
                       </label>
                       <Input
                         type='email'
@@ -174,7 +177,7 @@ export default function ContactPage() {
                         value={formData.email}
                         onChange={handleInputChange}
                         required
-                        placeholder='E-posta adresinizi girin'
+                        placeholder={t('corporate.contact.form.email.placeholder')}
                       />
                     </div>
                   </div>
@@ -184,7 +187,7 @@ export default function ContactPage() {
                       htmlFor='subject'
                       className='block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2'
                     >
-                      Konu
+                      {t('corporate.contact.form.subject.label')}
                     </label>
                     <Input
                       type='text'
@@ -193,7 +196,7 @@ export default function ContactPage() {
                       value={formData.subject}
                       onChange={handleInputChange}
                       required
-                      placeholder='Mesaj konusunu girin'
+                      placeholder={t('corporate.contact.form.subject.placeholder')}
                     />
                   </div>
 
@@ -202,7 +205,7 @@ export default function ContactPage() {
                       htmlFor='message'
                       className='block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2'
                     >
-                      Mesaj
+                      {t('corporate.contact.form.message.label')}
                     </label>
                     <Textarea
                       id='message'
@@ -210,18 +213,18 @@ export default function ContactPage() {
                       value={formData.message}
                       onChange={handleInputChange}
                       required
-                      placeholder='Mesajınızı yazın...'
+                      placeholder={t('corporate.contact.form.message.placeholder')}
                       rows={6}
                     />
                   </div>
 
                   <Button type='submit' disabled={isSubmitting} className='w-full' size='lg'>
                     {isSubmitting ? (
-                      'Gönderiliyor...'
+                      t('corporate.contact.form.submitting')
                     ) : (
                       <>
                         <Send className='h-4 w-4 mr-2' />
-                        Mesaj Gönder
+                        {t('corporate.contact.form.submit')}
                       </>
                     )}
                   </Button>
@@ -237,31 +240,33 @@ export default function ContactPage() {
               viewport={{ once: true }}
             >
               <Card className='p-8 h-full'>
-                <h2 className='text-2xl font-bold text-gray-900 dark:text-white mb-6'>Ofisimiz</h2>
+                <h2 className='text-2xl font-bold text-gray-900 dark:text-white mb-6'>
+                  {t('corporate.contact.office.title')}
+                </h2>
 
                 <div className='space-y-6'>
                   <div>
-                    <h3 className='text-lg font-semibold text-gray-900 dark:text-white mb-2'>Ana Ofis</h3>
-                    <p className='text-gray-600 dark:text-gray-400'>
-                      Maslak Mahallesi
-                      <br />
-                      Büyükdere Cd. No:123
-                      <br />
-                      34485 Sarıyer/İstanbul
-                    </p>
+                    <h3 className='text-lg font-semibold text-gray-900 dark:text-white mb-2'>
+                      {t('corporate.contact.office.main.title')}
+                    </h3>
+                    <p className='text-gray-600 dark:text-gray-400'>{t('corporate.contact.office.main.address')}</p>
                   </div>
 
                   <div>
-                    <h3 className='text-lg font-semibold text-gray-900 dark:text-white mb-2'>Çalışma Saatleri</h3>
+                    <h3 className='text-lg font-semibold text-gray-900 dark:text-white mb-2'>
+                      {t('corporate.contact.office.hours.title')}
+                    </h3>
                     <div className='space-y-1 text-gray-600 dark:text-gray-400'>
-                      <p>Pazartesi - Cuma: 09:00 - 18:00</p>
-                      <p>Cumartesi: 10:00 - 15:00</p>
-                      <p>Pazar: Kapalı</p>
+                      <p>{t('corporate.contact.office.hours.weekdays')}</p>
+                      <p>{t('corporate.contact.office.hours.saturday')}</p>
+                      <p>{t('corporate.contact.office.hours.sunday')}</p>
                     </div>
                   </div>
 
                   <div>
-                    <h3 className='text-lg font-semibold text-gray-900 dark:text-white mb-2'>Sosyal Medya</h3>
+                    <h3 className='text-lg font-semibold text-gray-900 dark:text-white mb-2'>
+                      {t('corporate.contact.office.social.title')}
+                    </h3>
                     <div className='space-y-2'>
                       <a href='#' className='block text-blue-600 hover:text-blue-700'>
                         LinkedIn: /company/starkon
@@ -277,7 +282,7 @@ export default function ContactPage() {
 
                   {/* Placeholder for map */}
                   <div className='bg-gray-100 dark:bg-gray-800 rounded-lg h-48 flex items-center justify-center'>
-                    <p className='text-gray-500 dark:text-gray-400'>Harita entegrasyonu burada olacak</p>
+                    <p className='text-gray-500 dark:text-gray-400'>{t('corporate.contact.office.map.placeholder')}</p>
                   </div>
                 </div>
               </Card>

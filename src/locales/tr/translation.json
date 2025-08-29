@@ -2377,6 +2377,93 @@
         "title": "Ekibimiz",
         "description": "Deneyimli ve tutkulu ekibimizle en iyi çözümleri sunuyoruz."
       }
+    },
+    "blog": {
+      "title": "Blog",
+      "description": "Teknoloji, yazılım geliştirme ve dijital dönüşüm hakkında güncel içerikler ve uzman görüşleri.",
+      "featured": {
+        "badge": "Öne Çıkanlar",
+        "title": "Öne Çıkan Yazılar"
+      },
+      "search": {
+        "placeholder": "Blog yazılarında ara..."
+      },
+      "filter": {
+        "all": "Tümü"
+      },
+      "allPosts": {
+        "title": "Tüm Yazılar",
+        "results": "{{count}} yazı bulundu"
+      },
+      "noResults": "Aradığınız kriterlere uygun yazı bulunamadı.",
+      "newsletter": {
+        "title": "Güncel Kalın",
+        "description": "Yeni blog yazılarımız ve teknoloji güncellemeleri hakkında bilgi almak için e-bültenimize abone olun.",
+        "placeholder": "E-posta adresiniz",
+        "button": "Abone Ol"
+      }
+    },
+    "contact": {
+      "hero": {
+        "title": "İletişime Geçin",
+        "description": "Projeleriniz hakkında konuşmak için bizimle iletişime geçin. Size nasıl yardımcı olabileceğimizi öğrenmek isteriz."
+      },
+      "info": {
+        "email": {
+          "title": "E-posta"
+        },
+        "phone": {
+          "title": "Telefon"
+        },
+        "address": {
+          "title": "Adres",
+          "value": "Maslak Mahallesi, Büyükdere Cd. No:123, 34485 Sarıyer/İstanbul"
+        },
+        "hours": {
+          "title": "Çalışma Saatleri",
+          "value": "Pazartesi - Cuma: 09:00 - 18:00"
+        }
+      },
+      "form": {
+        "title": "Mesaj Gönder",
+        "name": {
+          "label": "Ad Soyad",
+          "placeholder": "Adınızı girin"
+        },
+        "email": {
+          "label": "E-posta",
+          "placeholder": "E-posta adresinizi girin"
+        },
+        "subject": {
+          "label": "Konu",
+          "placeholder": "Mesaj konusunu girin"
+        },
+        "message": {
+          "label": "Mesaj",
+          "placeholder": "Mesajınızı yazın..."
+        },
+        "submitting": "Gönderiliyor...",
+        "submit": "Mesaj Gönder"
+      },
+      "office": {
+        "title": "Ofisimiz",
+        "main": {
+          "title": "Ana Ofis",
+          "address": "Maslak Mahallesi, Büyükdere Cd. No:123, 34485 Sarıyer/İstanbul"
+        },
+        "hours": {
+          "title": "Çalışma Saatleri",
+          "weekdays": "Pazartesi - Cuma: 09:00 - 18:00",
+          "saturday": "Cumartesi: 10:00 - 15:00",
+          "sunday": "Pazar: Kapalı"
+        },
+        "social": {
+          "title": "Sosyal Medya"
+        },
+        "map": {
+          "placeholder": "Harita entegrasyonu burada olacak"
+        }
+      }
     }
   }
 }
