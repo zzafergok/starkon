@@ -952,6 +952,7 @@ const TEMPLATES = {
       'src/app/(auth)',
       'src/app/(authentication)',
       'src/app/(corporate)',
+      'src/app/corporate',
       'src/app/(public)/about',
       'src/app/(public)/contact',
       'src/app/(public)/support',
@@ -979,8 +980,9 @@ const TEMPLATES = {
     features: ['Next.js 15', 'TypeScript', 'Corporate Pages', 'Blog System', 'Content Management'],
     excludeFiles: [
       'src/app/(auth)',
-      'src/app/(authentication)',
+      'src/app/(authentication)', 
       'src/app/(public)',
+      'src/app/page.tsx',
       'src/components/sections',
       'src/components/ui/register',
       'src/components/ui/language',

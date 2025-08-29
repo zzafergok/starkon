@@ -16,20 +16,20 @@ function CorporateNavbar() {
             <Link href='/' className='text-gray-900 dark:text-white hover:text-blue-600'>
               Ana Sayfa
             </Link>
-            <Link href='/about' className='text-gray-900 dark:text-white hover:text-blue-600'>
+            <Link href='/corporate/about' className='text-gray-900 dark:text-white hover:text-blue-600'>
               Hakkımızda
             </Link>
-            <Link href='/services' className='text-gray-900 dark:text-white hover:text-blue-600'>
+            <Link href='/corporate/services' className='text-gray-900 dark:text-white hover:text-blue-600'>
               Hizmetler
             </Link>
-            <Link href='/blog' className='text-gray-900 dark:text-white hover:text-blue-600'>
+            <Link href='/corporate/blog' className='text-gray-900 dark:text-white hover:text-blue-600'>
               Blog
             </Link>
-            <Link href='/gallery' className='text-gray-900 dark:text-white hover:text-blue-600'>
+            <Link href='/corporate/gallery' className='text-gray-900 dark:text-white hover:text-blue-600'>
               Galeri
             </Link>
             <Button>
-              <Link href='/contact'>İletişim</Link>
+              <Link href='/corporate/contact'>İletişim</Link>
             </Button>
           </div>
         </div>
@@ -51,17 +51,17 @@ function CorporateFooter() {
             <h4 className='font-semibold mb-4'>Hızlı Linkler</h4>
             <ul className='space-y-2'>
               <li>
-                <Link href='/about' className='text-gray-300 hover:text-white'>
+                <Link href='/corporate/about' className='text-gray-300 hover:text-white'>
                   Hakkımızda
                 </Link>
               </li>
               <li>
-                <Link href='/services' className='text-gray-300 hover:text-white'>
+                <Link href='/corporate/services' className='text-gray-300 hover:text-white'>
                   Hizmetler
                 </Link>
               </li>
               <li>
-                <Link href='/blog' className='text-gray-300 hover:text-white'>
+                <Link href='/corporate/blog' className='text-gray-300 hover:text-white'>
                   Blog
                 </Link>
               </li>
