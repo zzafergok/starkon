@@ -1,7 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axios, { AxiosInstance, AxiosError, InternalAxiosRequestConfig, AxiosResponse } from 'axios'
 
-import { SessionTokenManager } from '@/lib/services/sessionTokenManager'
+// SessionTokenManager optional import for auth-enabled templates
+let SessionTokenManager: any = null
+try {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const sessionModule = require('@/lib/services/sessionTokenManager')
+  SessionTokenManager = sessionModule.SessionTokenManager
+} catch {
+  // SessionTokenManager not available in this template
+}
 
 // Global toast instance for interceptors
 let globalToast: any = null
@@ -54,14 +62,11 @@ const setupRequestInterceptor = (instance: AxiosInstance): void => {
         return config
       }
 
-      const token = SessionTokenManager.getAccessToken()
-
-      if (token) {
-        config.headers.Authorization = `Bearer ${token}`
-      } else {
-        console.error('❌ No access token available')
-        // Token yoksa ve auth gerekiyorsa hata fırlat
-        throw new Error('No access token available')
+      if (SessionTokenManager) {
+        const token = SessionTokenManager.getAccessToken()
+        if (token) {
+          config.headers.Authorization = `Bearer ${token}`
+        }
       }
 
       // FormData için Content-Type header'ı otomatik ayarlanması
@@ -76,6 +81,10 @@ const setupRequestInterceptor = (instance: AxiosInstance): void => {
 }
 
 const refreshAccessToken = async (): Promise<string> => {
+  if (!SessionTokenManager) {
+    throw new Error('Auth system not available')
+  }
+
   const refreshToken = SessionTokenManager.getRefreshToken()
   if (!refreshToken) {
     throw new Error('No refresh token available')
@@ -120,7 +129,9 @@ const processRequestQueue = (error: any, token: string | null): void => {
 
 const handleAuthFailure = (): void => {
   console.log('🚫 Authentication failure - clearing tokens and redirecting')
-  SessionTokenManager.clearTokens()
+  if (SessionTokenManager) {
+    SessionTokenManager.clearTokens()
+  }
 
   // Show authentication expired notification
   if (globalToast) {
@@ -199,6 +210,10 @@ const setupResponseInterceptor = (instance: AxiosInstance): void => {
         isRefreshing = true
 
         try {
+          if (!SessionTokenManager) {
+            throw new Error('Auth system not available')
+          }
+          
           const newToken = await refreshAccessToken()
           processRequestQueue(null, newToken)
 
