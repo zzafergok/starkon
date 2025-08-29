@@ -956,6 +956,7 @@ const TEMPLATES = {
       'src/app/public/about',
       'src/app/public/contact',
       'src/app/public/support',
+      'src/app/page.tsx',
       'src/components/auth',
       'src/components/corporate',
       'src/lib/services/mockAuthService.ts',
@@ -1461,6 +1462,36 @@ Thumbs.db
 `
 
     await fs.writeFile(path.join(targetDir, '.gitignore'), gitignoreContent)
+
+    // Landing template için özel işlemler
+    if (templateKey === 'landing') {
+      // src/app/public/page.tsx içeriğini src/app/page.tsx'e kopyala
+      const publicPagePath = path.join(targetDir, 'src/app/public/page.tsx')
+      const rootPagePath = path.join(targetDir, 'src/app/page.tsx')
+      
+      if (await fs.pathExists(publicPagePath)) {
+        await fs.copy(publicPagePath, rootPagePath)
+      }
+
+      // src/app/public/layout.tsx içeriğini src/app/layout.tsx'e merge et
+      const publicLayoutPath = path.join(targetDir, 'src/app/public/layout.tsx')
+      const rootLayoutPath = path.join(targetDir, 'src/app/layout.tsx')
+      
+      if (await fs.pathExists(publicLayoutPath)) {
+        // Landing layout'u kullan
+        const landingLayoutContent = await fs.readFile(publicLayoutPath, 'utf8')
+        // Root layout'taki metadata'yı koru, body'yi değiştir
+        const rootLayoutContent = await fs.readFile(rootLayoutPath, 'utf8')
+        
+        // Landing layout'taki LandingNavbar ve LandingFooter'ı kullan
+        const updatedContent = landingLayoutContent.replace(
+          'export default function PublicLayout',
+          'export default function RootLayout'
+        )
+        
+        await fs.writeFile(rootLayoutPath, updatedContent)
+      }
+    }
 
     return true
   } catch (error) {
