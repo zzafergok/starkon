@@ -2239,6 +2239,160 @@
       "cliCommand": "npx starkon my-app",
       "exploreButton": "Explore Components",
       "dashboardButton": "View Dashboard"
+    },
+    "navbar": {
+      "features": "Features",
+      "pricing": "Pricing",
+      "reviews": "Reviews",
+      "faq": "FAQ",
+      "getStarted": "Get Started"
+    },
+    "footer": {
+      "description": "Enterprise-ready Next.js boilerplate for modern web applications.",
+      "github": "GitHub",
+      "documentation": "Documentation",
+      "support": "Support",
+      "copyright": "© 2024 Starkon. All rights reserved."
+    }
+  },
+  "landing": {
+    "navbar": {
+      "features": "Features",
+      "pricing": "Pricing", 
+      "reviews": "Reviews",
+      "faq": "FAQ",
+      "getStarted": "Get Started"
+    },
+    "footer": {
+      "description": "Enterprise-ready Next.js boilerplate for modern web applications.",
+      "github": "GitHub", 
+      "documentation": "Documentation",
+      "support": "Support",
+      "copyright": "© 2024 Starkon. All rights reserved."
+    },
+    "hero": {
+      "badge": "Version 2.0 Now Available",
+      "title1": "Build Amazing",
+      "title2": "Products Fast",
+      "description": "The most comprehensive Next.js boilerplate with authentication, beautiful UI components, and everything you need to launch your SaaS product in days, not months.",
+      "getStarted": "Get Started Now",
+      "viewGithub": "View on GitHub"
+    },
+    "stats": {
+      "components": "Components",
+      "typescript": "TypeScript", 
+      "downloads": "Downloads",
+      "rating": "Rating"
+    },
+    "features": {
+      "sectionTitle": "Everything You Need to Build",
+      "sectionDescription": "Pre-built components, authentication, database integration, and deployment ready configuration.",
+      "fast": {
+        "title": "Lightning Fast",
+        "description": "Optimized for performance with Next.js 15, React 18, and modern build tools."
+      },
+      "secure": {
+        "title": "Secure by Default",
+        "description": "Built-in security best practices, JWT authentication, and data validation."
+      },
+      "ui": {
+        "title": "Beautiful UI",
+        "description": "Radix UI components with Tailwind CSS and dark mode support."
+      },
+      "developer": {
+        "title": "Developer Experience",
+        "description": "TypeScript, ESLint, Prettier, and hot reload for smooth development."
+      },
+      "production": {
+        "title": "Production Ready",
+        "description": "Deployment-ready configuration for Vercel, Netlify, and Docker."
+      },
+      "team": {
+        "title": "Team Collaboration",
+        "description": "User management, role-based access, and team workspace features."
+      }
+    },
+    "pricing": {
+      "sectionTitle": "Simple, Transparent Pricing",
+      "sectionDescription": "Choose the plan that's right for your project",
+      "mostPopular": "Most Popular",
+      "getStarted": "Get Started",
+      "purchaseNow": "Purchase Now",
+      "starter": {
+        "name": "Starter",
+        "price": "Free",
+        "description": "Perfect for personal projects and learning",
+        "features": {
+          "components": "Basic Components",
+          "auth": "Authentication",
+          "darkMode": "Dark Mode",
+          "typescript": "TypeScript Support"
+        }
+      },
+      "pro": {
+        "name": "Pro",
+        "price": "$49",
+        "description": "Everything you need for professional projects",
+        "features": {
+          "starter": "All Starter Features",
+          "advanced": "Advanced Components",
+          "templates": "Template Library",
+          "support": "Premium Support",
+          "license": "Commercial License"
+        }
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "price": "$199",
+        "description": "For teams and large-scale applications",
+        "features": {
+          "pro": "All Pro Features",
+          "custom": "Custom Development",
+          "priority": "Priority Support",
+          "training": "Team Training",
+          "whiteLabel": "White Label License"
+        }
+      }
+    },
+    "testimonials": {
+      "sectionTitle": "What Developers Are Saying",
+      "sectionDescription": "Join thousands of developers who trust Starkon for their projects",
+      "testimonial1": {
+        "content": "This boilerplate saved us months of development time. The authentication system and components are production-ready.",
+        "author": "Sarah Chen",
+        "role": "CTO",
+        "company": "TechStart Inc."
+      },
+      "testimonial2": {
+        "content": "Amazing developer experience. TypeScript setup and component library make building features incredibly fast.",
+        "author": "Michael Rodriguez",
+        "role": "Full Stack Developer",
+        "company": "Digital Solutions"
+      },
+      "testimonial3": {
+        "content": "The best Next.js starter I've used. Clean code, excellent documentation, everything just works!",
+        "author": "Emily Johnson",
+        "role": "Product Manager",
+        "company": "InnovateLab"
+      }
+    },
+    "faq": {
+      "sectionTitle": "Frequently Asked Questions",
+      "sectionDescription": "Everything you need to know about Starkon",
+      "question1": "What's included in the boilerplate?",
+      "answer1": "Authentication system, 50+ UI components, dashboard templates, database integration, and deployment configuration.",
+      "question2": "Can I use this for commercial projects?",
+      "answer2": "Yes! All paid plans include commercial licenses. The free version is for personal and open-source projects.",
+      "question3": "Do you provide support?",
+      "answer3": "Pro and Enterprise plans include email support. Enterprise customers get priority support and custom development assistance.",
+      "question4": "How often do you update the boilerplate?",
+      "answer4": "We release updates monthly with new components, bug fixes, and latest Next.js features."
+    },
+    "cta": {
+      "title": "Ready to Build Something Amazing?",
+      "description": "Join thousands of developers who have already shipped products with Starkon. Start building your next project today.",
+      "startBuilding": "Start Building Now",
+      "viewSource": "View Source Code"
     }
   }
 }

@@ -2199,6 +2199,160 @@
       "cliCommand": "npx starkon my-app",
       "exploreButton": "Bileşenleri Keşfet",
       "dashboardButton": "Dashboard'ı Görüntüle"
+    },
+    "navbar": {
+      "features": "Özellikler",
+      "pricing": "Fiyatlandırma",
+      "reviews": "Yorumlar",
+      "faq": "SSS",
+      "getStarted": "Başlayın"
+    },
+    "footer": {
+      "description": "Modern web uygulamaları için kurumsal düzeyde Next.js şablonu.",
+      "github": "GitHub",
+      "documentation": "Dokümantasyon",
+      "support": "Destek",
+      "copyright": "© 2024 Starkon. Tüm hakları saklıdır."
+    }
+  },
+  "landing": {
+    "navbar": {
+      "features": "Özellikler",
+      "pricing": "Fiyatlandırma",
+      "reviews": "Yorumlar", 
+      "faq": "SSS",
+      "getStarted": "Başlayın"
+    },
+    "footer": {
+      "description": "Modern web uygulamaları için kurumsal düzeyde Next.js şablonu.",
+      "github": "GitHub",
+      "documentation": "Dokümantasyon",
+      "support": "Destek", 
+      "copyright": "© 2024 Starkon. Tüm hakları saklıdır."
+    },
+    "hero": {
+      "badge": "Versiyon 2.0 Artık Mevcut",
+      "title1": "Harika Ürünler",
+      "title2": "Hızla Geliştirin",
+      "description": "Kimlik doğrulama, güzel UI bileşenleri ve SaaS ürününüzü aylar değil günler içinde başlatmak için ihtiyacınız olan her şeye sahip en kapsamlı Next.js şablonu.",
+      "getStarted": "Hemen Başlayın",
+      "viewGithub": "GitHub'da Görüntüle"
+    },
+    "stats": {
+      "components": "Bileşenler",
+      "typescript": "TypeScript",
+      "downloads": "İndirmeler",
+      "rating": "Değerlendirme"
+    },
+    "features": {
+      "sectionTitle": "Geliştirmek İçin İhtiyacınız Olan Her Şey",
+      "sectionDescription": "Önceden oluşturulmuş bileşenler, kimlik doğrulama, veritabanı entegrasyonu ve dağıtıma hazır yapılandırma.",
+      "fast": {
+        "title": "Yıldırım Hızı",
+        "description": "Next.js 15, React 18 ve modern derleme araçlarıyla performans için optimize edilmiş."
+      },
+      "secure": {
+        "title": "Varsayılan Olarak Güvenli",
+        "description": "Yerleşik güvenlik en iyi uygulamaları, JWT kimlik doğrulaması ve veri doğrulaması."
+      },
+      "ui": {
+        "title": "Güzel UI",
+        "description": "Tailwind CSS ve karanlık mod desteği ile Radix UI bileşenleri."
+      },
+      "developer": {
+        "title": "Geliştirici Deneyimi",
+        "description": "Pürüzsüz geliştirme için TypeScript, ESLint, Prettier ve hot reload."
+      },
+      "production": {
+        "title": "Üretime Hazır",
+        "description": "Vercel, Netlify ve Docker için dağıtıma hazır yapılandırma."
+      },
+      "team": {
+        "title": "Ekip İşbirliği",
+        "description": "Kullanıcı yönetimi, rol tabanlı erişim ve ekip çalışma alanı özellikleri."
+      }
+    },
+    "pricing": {
+      "sectionTitle": "Basit, Şeffaf Fiyatlandırma",
+      "sectionDescription": "Projeniz için doğru planı seçin",
+      "mostPopular": "En Popüler",
+      "getStarted": "Başlayın",
+      "purchaseNow": "Şimdi Satın Alın",
+      "starter": {
+        "name": "Başlangıç",
+        "price": "Ücretsiz",
+        "description": "Kişisel projeler ve öğrenme için mükemmel",
+        "features": {
+          "components": "Temel Bileşenler",
+          "auth": "Kimlik Doğrulama",
+          "darkMode": "Karanlık Mod",
+          "typescript": "TypeScript Desteği"
+        }
+      },
+      "pro": {
+        "name": "Pro",
+        "price": "$49",
+        "description": "Profesyonel projeler için ihtiyacınız olan her şey",
+        "features": {
+          "starter": "Tüm Başlangıç Özellikleri",
+          "advanced": "Gelişmiş Bileşenler",
+          "templates": "Şablon Kütüphanesi",
+          "support": "Premium Destek",
+          "license": "Ticari Lisans"
+        }
+      },
+      "enterprise": {
+        "name": "Kurumsal",
+        "price": "$199",
+        "description": "Ekipler ve büyük ölçekli uygulamalar için",
+        "features": {
+          "pro": "Tüm Pro Özellikler",
+          "custom": "Özel Geliştirme",
+          "priority": "Öncelikli Destek",
+          "training": "Ekip Eğitimi",
+          "whiteLabel": "Beyaz Etiket Lisansı"
+        }
+      }
+    },
+    "testimonials": {
+      "sectionTitle": "Geliştiriciler Ne Diyor",
+      "sectionDescription": "Projeleri için Starkon'a güvenen binlerce geliştiriciye katılın",
+      "testimonial1": {
+        "content": "Bu şablon bize aylarca geliştirme süresinden tasarruf ettirdi. Kimlik doğrulama sistemi ve bileşenler üretime hazır.",
+        "author": "Sarah Chen",
+        "role": "CTO",
+        "company": "TechStart Inc."
+      },
+      "testimonial2": {
+        "content": "Harika geliştirici deneyimi. TypeScript kurulumu ve bileşen kütüphanesi özellik geliştirmeyi inanılmaz derecede hızlandırıyor.",
+        "author": "Michael Rodriguez",
+        "role": "Full Stack Developer",
+        "company": "Digital Solutions"
+      },
+      "testimonial3": {
+        "content": "Kullandığım en iyi Next.js başlangıç şablonu. Temiz kod, mükemmel dokümantasyon, her şey mükemmel çalışıyor!",
+        "author": "Emily Johnson",
+        "role": "Ürün Müdürü",
+        "company": "InnovateLab"
+      }
+    },
+    "faq": {
+      "sectionTitle": "Sıkça Sorulan Sorular",
+      "sectionDescription": "Starkon hakkında bilmeniz gereken her şey",
+      "question1": "Şablonda neler var?",
+      "answer1": "Kimlik doğrulama sistemi, 50+ UI bileşeni, dashboard şablonları, veritabanı entegrasyonu ve dağıtım yapılandırması.",
+      "question2": "Bunu ticari projeler için kullanabilir miyim?",
+      "answer2": "Evet! Tüm ücretli planlar ticari lisans içerir. Ücretsiz versiyon kişisel ve açık kaynak projeler içindir.",
+      "question3": "Destek sağlıyor musunuz?",
+      "answer3": "Pro ve Enterprise planları e-posta desteği içerir. Enterprise müşterileri öncelikli destek ve özel geliştirme yardımı alır.",
+      "question4": "Şablonu ne sıklıkla güncelliyorsunuz?",
+      "answer4": "Yeni bileşenler, hata düzeltmeleri ve en son Next.js özellikleriyle aylık güncellemeler yayınlıyoruz."
+    },
+    "cta": {
+      "title": "Harika Bir Şey Geliştirmeye Hazır mısınız?",
+      "description": "Starkon ile zaten ürün çıkarmış binlerce geliştiriciye katılın. Bir sonraki projenizi bugün geliştirmeye başlayın.",
+      "startBuilding": "Şimdi Geliştirmeye Başlayın",
+      "viewSource": "Kaynak Kodunu Görüntüle"
     }
   }
 }

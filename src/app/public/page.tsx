@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import {
   Sparkles,
   Zap,
@@ -20,103 +21,145 @@ import { Button } from '@/components/core/button'
 import { Card, CardContent } from '@/components/core/card'
 import { Badge } from '@/components/core/badge'
 
-const features = [
-  {
-    icon: Zap,
-    title: 'Lightning Fast',
-    description: 'Optimized for performance with Next.js 15, React 18, and modern build tools.',
-    color: 'from-yellow-400 to-orange-500',
-  },
-  {
-    icon: Shield,
-    title: 'Secure by Default',
-    description: 'Built-in security best practices, JWT authentication, and data validation.',
-    color: 'from-green-400 to-blue-500',
-  },
-  {
-    icon: Palette,
-    title: 'Beautiful UI',
-    description: 'Radix UI components with Tailwind CSS and dark mode support.',
-    color: 'from-purple-400 to-pink-500',
-  },
-  {
-    icon: Code,
-    title: 'Developer Experience',
-    description: 'TypeScript, ESLint, Prettier, and hot reload for smooth development.',
-    color: 'from-blue-400 to-cyan-500',
-  },
-  {
-    icon: Rocket,
-    title: 'Production Ready',
-    description: 'Deployment-ready configuration for Vercel, Netlify, and Docker.',
-    color: 'from-red-400 to-orange-500',
-  },
-  {
-    icon: Users,
-    title: 'Team Collaboration',
-    description: 'User management, role-based access, and team workspace features.',
-    color: 'from-indigo-400 to-purple-500',
-  },
-]
-
-const stats = [
-  { number: '50+', label: 'Components', icon: Palette },
-  { number: '100%', label: 'TypeScript', icon: Code },
-  { number: '10k+', label: 'Downloads', icon: Zap },
-  { number: '5⭐', label: 'Rating', icon: Star },
-]
-
-const testimonials = [
-  {
-    content:
-      'This boilerplate saved us months of development time. The authentication system and components are production-ready.',
-    author: { name: 'Sarah Chen', role: 'CTO', company: 'TechStart Inc.' },
-    rating: 5,
-  },
-  {
-    content:
-      'Amazing developer experience. TypeScript setup and component library make building features incredibly fast.',
-    author: { name: 'Michael Rodriguez', role: 'Full Stack Developer', company: 'Digital Solutions' },
-    rating: 5,
-  },
-  {
-    content: "The best Next.js starter I've used. Clean code, excellent documentation, everything just works!",
-    author: { name: 'Emily Johnson', role: 'Product Manager', company: 'InnovateLab' },
-    rating: 5,
-  },
-]
-
-const pricingPlans = [
-  {
-    name: 'Starter',
-    price: 'Free',
-    description: 'Perfect for personal projects and learning',
-    features: ['Basic Components', 'Authentication', 'Dark Mode', 'TypeScript Support'],
-    popular: false,
-  },
-  {
-    name: 'Pro',
-    price: '$49',
-    description: 'Everything you need for professional projects',
-    features: [
-      'All Starter Features',
-      'Advanced Components',
-      'Template Library',
-      'Premium Support',
-      'Commercial License',
-    ],
-    popular: true,
-  },
-  {
-    name: 'Enterprise',
-    price: '$199',
-    description: 'For teams and large-scale applications',
-    features: ['All Pro Features', 'Custom Development', 'Priority Support', 'Team Training', 'White Label License'],
-    popular: false,
-  },
-]
-
 export default function LandingPage() {
+  const { t } = useTranslation()
+
+  const localizedFeatures = [
+    {
+      icon: Zap,
+      title: t('landing.features.fast.title'),
+      description: t('landing.features.fast.description'),
+      color: 'from-yellow-400 to-orange-500',
+    },
+    {
+      icon: Shield,
+      title: t('landing.features.secure.title'),
+      description: t('landing.features.secure.description'),
+      color: 'from-green-400 to-blue-500',
+    },
+    {
+      icon: Palette,
+      title: t('landing.features.ui.title'),
+      description: t('landing.features.ui.description'),
+      color: 'from-purple-400 to-pink-500',
+    },
+    {
+      icon: Code,
+      title: t('landing.features.developer.title'),
+      description: t('landing.features.developer.description'),
+      color: 'from-blue-400 to-cyan-500',
+    },
+    {
+      icon: Rocket,
+      title: t('landing.features.production.title'),
+      description: t('landing.features.production.description'),
+      color: 'from-red-400 to-orange-500',
+    },
+    {
+      icon: Users,
+      title: t('landing.features.team.title'),
+      description: t('landing.features.team.description'),
+      color: 'from-indigo-400 to-purple-500',
+    },
+  ]
+
+  const localizedStats = [
+    { number: '50+', label: t('landing.stats.components'), icon: Palette },
+    { number: '100%', label: t('landing.stats.typescript'), icon: Code },
+    { number: '10k+', label: t('landing.stats.downloads'), icon: Zap },
+    { number: '5⭐', label: t('landing.stats.rating'), icon: Star },
+  ]
+
+  const localizedPricingPlans = [
+    {
+      name: t('landing.pricing.starter.name'),
+      price: t('landing.pricing.starter.price'),
+      description: t('landing.pricing.starter.description'),
+      features: [
+        t('landing.pricing.starter.features.components'),
+        t('landing.pricing.starter.features.auth'),
+        t('landing.pricing.starter.features.darkMode'),
+        t('landing.pricing.starter.features.typescript'),
+      ],
+      popular: false,
+    },
+    {
+      name: t('landing.pricing.pro.name'),
+      price: t('landing.pricing.pro.price'),
+      description: t('landing.pricing.pro.description'),
+      features: [
+        t('landing.pricing.pro.features.starter'),
+        t('landing.pricing.pro.features.advanced'),
+        t('landing.pricing.pro.features.templates'),
+        t('landing.pricing.pro.features.support'),
+        t('landing.pricing.pro.features.license'),
+      ],
+      popular: true,
+    },
+    {
+      name: t('landing.pricing.enterprise.name'),
+      price: t('landing.pricing.enterprise.price'),
+      description: t('landing.pricing.enterprise.description'),
+      features: [
+        t('landing.pricing.enterprise.features.pro'),
+        t('landing.pricing.enterprise.features.custom'),
+        t('landing.pricing.enterprise.features.priority'),
+        t('landing.pricing.enterprise.features.training'),
+        t('landing.pricing.enterprise.features.whiteLabel'),
+      ],
+      popular: false,
+    },
+  ]
+
+  const localizedTestimonials = [
+    {
+      content: t('landing.testimonials.testimonial1.content'),
+      author: {
+        name: t('landing.testimonials.testimonial1.author'),
+        role: t('landing.testimonials.testimonial1.role'),
+        company: t('landing.testimonials.testimonial1.company'),
+      },
+      rating: 5,
+    },
+    {
+      content: t('landing.testimonials.testimonial2.content'),
+      author: {
+        name: t('landing.testimonials.testimonial2.author'),
+        role: t('landing.testimonials.testimonial2.role'),
+        company: t('landing.testimonials.testimonial2.company'),
+      },
+      rating: 5,
+    },
+    {
+      content: t('landing.testimonials.testimonial3.content'),
+      author: {
+        name: t('landing.testimonials.testimonial3.author'),
+        role: t('landing.testimonials.testimonial3.role'),
+        company: t('landing.testimonials.testimonial3.company'),
+      },
+      rating: 5,
+    },
+  ]
+
+  const localizedFaqs = [
+    {
+      question: t('landing.faq.question1'),
+      answer: t('landing.faq.answer1'),
+    },
+    {
+      question: t('landing.faq.question2'),
+      answer: t('landing.faq.answer2'),
+    },
+    {
+      question: t('landing.faq.question3'),
+      answer: t('landing.faq.answer3'),
+    },
+    {
+      question: t('landing.faq.question4'),
+      answer: t('landing.faq.answer4'),
+    },
+  ]
+
   return (
     <div className='min-h-screen overflow-hidden'>
       {/* Hero Section */}
@@ -156,15 +199,15 @@ export default function LandingPage() {
           <div className='text-center'>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
               <Badge className='mb-6 bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200'>
-                🚀 Version 2.0 Now Available
+                🚀 {t('landing.hero.badge')}
               </Badge>
 
               <h1 className='text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight'>
                 <span className='bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent'>
-                  Build Amazing
+                  {t('landing.hero.title1')}
                 </span>
                 <br />
-                <span className='text-gray-900 dark:text-white'>Products Fast</span>
+                <span className='text-gray-900 dark:text-white'>{t('landing.hero.title2')}</span>
               </h1>
             </motion.div>
 
@@ -174,8 +217,7 @@ export default function LandingPage() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className='text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed'
             >
-              The most comprehensive Next.js boilerplate with authentication, beautiful UI components, and everything
-              you need to launch your SaaS product in days, not months.
+              {t('landing.hero.description')}
             </motion.p>
 
             <motion.div
@@ -190,7 +232,7 @@ export default function LandingPage() {
                 onClick={() => document.querySelector('#pricing')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 <Play className='h-5 w-5 mr-2' />
-                Get Started Now
+                {t('landing.hero.getStarted')}
               </Button>
 
               <Button
@@ -200,7 +242,7 @@ export default function LandingPage() {
                 onClick={() => document.querySelector('#features')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 <Github className='h-5 w-5 mr-2' />
-                View on GitHub
+                {t('landing.hero.viewGithub')}
               </Button>
             </motion.div>
 
@@ -211,7 +253,7 @@ export default function LandingPage() {
               transition={{ duration: 0.8, delay: 0.6 }}
               className='grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-4xl mx-auto'
             >
-              {stats.map((stat, _index) => (
+              {localizedStats.map((stat, _index) => (
                 <motion.div key={stat.label} whileHover={{ scale: 1.05 }} className='text-center'>
                   <stat.icon className='h-8 w-8 text-blue-600 mx-auto mb-2' />
                   <div className='text-3xl font-bold text-gray-900 dark:text-white mb-1'>{stat.number}</div>
@@ -242,14 +284,16 @@ export default function LandingPage() {
             viewport={{ once: true }}
             className='text-center mb-16'
           >
-            <h2 className='text-4xl font-bold text-gray-900 dark:text-white mb-4'>Everything You Need to Build</h2>
+            <h2 className='text-4xl font-bold text-gray-900 dark:text-white mb-4'>
+              {t('landing.features.sectionTitle')}
+            </h2>
             <p className='text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto'>
-              Pre-built components, authentication, database integration, and deployment ready configuration.
+              {t('landing.features.sectionDescription')}
             </p>
           </motion.div>
 
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-            {features.map((feature, index) => (
+            {localizedFeatures.map((feature, index) => (
               <motion.div
                 key={feature.title}
                 initial={{ opacity: 0, y: 20 }}
@@ -285,12 +329,14 @@ export default function LandingPage() {
             viewport={{ once: true }}
             className='text-center mb-16'
           >
-            <h2 className='text-4xl font-bold text-gray-900 dark:text-white mb-4'>Simple, Transparent Pricing</h2>
-            <p className='text-xl text-gray-600 dark:text-gray-300'>Choose the plan that's right for your project</p>
+            <h2 className='text-4xl font-bold text-gray-900 dark:text-white mb-4'>
+              {t('landing.pricing.sectionTitle')}
+            </h2>
+            <p className='text-xl text-gray-600 dark:text-gray-300'>{t('landing.pricing.sectionDescription')}</p>
           </motion.div>
 
           <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
-            {pricingPlans.map((plan, index) => (
+            {localizedPricingPlans.map((plan, index) => (
               <motion.div
                 key={plan.name}
                 initial={{ opacity: 0, y: 20 }}
@@ -302,7 +348,7 @@ export default function LandingPage() {
                 <Card className={`relative h-full ${plan.popular ? 'ring-2 ring-blue-500 shadow-xl' : ''}`}>
                   {plan.popular && (
                     <div className='absolute -top-4 left-1/2 transform -translate-x-1/2'>
-                      <Badge className='bg-blue-500 text-white px-4 py-1'>Most Popular</Badge>
+                      <Badge className='bg-blue-500 text-white px-4 py-1'>{t('landing.pricing.mostPopular')}</Badge>
                     </div>
                   )}
 
@@ -327,7 +373,9 @@ export default function LandingPage() {
                       className={`w-full ${plan.popular ? 'bg-blue-600 hover:bg-blue-700' : ''}`}
                       variant={plan.popular ? 'default' : 'outline'}
                     >
-                      {plan.price === 'Free' ? 'Get Started' : 'Purchase Now'}
+                      {plan.price === t('landing.pricing.starter.price')
+                        ? t('landing.pricing.getStarted')
+                        : t('landing.pricing.purchaseNow')}
                     </Button>
                   </CardContent>
                 </Card>
@@ -347,14 +395,14 @@ export default function LandingPage() {
             viewport={{ once: true }}
             className='text-center mb-16'
           >
-            <h2 className='text-4xl font-bold text-gray-900 dark:text-white mb-4'>What Developers Are Saying</h2>
-            <p className='text-xl text-gray-600 dark:text-gray-300'>
-              Join thousands of developers who trust Starkon for their projects
-            </p>
+            <h2 className='text-4xl font-bold text-gray-900 dark:text-white mb-4'>
+              {t('landing.testimonials.sectionTitle')}
+            </h2>
+            <p className='text-xl text-gray-600 dark:text-gray-300'>{t('landing.testimonials.sectionDescription')}</p>
           </motion.div>
 
           <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
-            {testimonials.map((testimonial, index) => (
+            {localizedTestimonials.map((testimonial, index) => (
               <motion.div
                 key={testimonial.author.name}
                 initial={{ opacity: 0, y: 20 }}
@@ -407,32 +455,12 @@ export default function LandingPage() {
             viewport={{ once: true }}
             className='text-center mb-16'
           >
-            <h2 className='text-4xl font-bold text-gray-900 dark:text-white mb-4'>Frequently Asked Questions</h2>
-            <p className='text-xl text-gray-600 dark:text-gray-300'>Everything you need to know about Starkon</p>
+            <h2 className='text-4xl font-bold text-gray-900 dark:text-white mb-4'>{t('landing.faq.sectionTitle')}</h2>
+            <p className='text-xl text-gray-600 dark:text-gray-300'>{t('landing.faq.sectionDescription')}</p>
           </motion.div>
 
           <div className='space-y-6'>
-            {[
-              {
-                question: "What's included in the boilerplate?",
-                answer:
-                  'Authentication system, 50+ UI components, dashboard templates, database integration, and deployment configuration.',
-              },
-              {
-                question: 'Can I use this for commercial projects?',
-                answer:
-                  'Yes! All paid plans include commercial licenses. The free version is for personal and open-source projects.',
-              },
-              {
-                question: 'Do you provide support?',
-                answer:
-                  'Pro and Enterprise plans include email support. Enterprise customers get priority support and custom development assistance.',
-              },
-              {
-                question: 'How often do you update the boilerplate?',
-                answer: 'We release updates monthly with new components, bug fixes, and latest Next.js features.',
-              },
-            ].map((faq, index) => (
+            {localizedFaqs.map((faq, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -468,12 +496,9 @@ export default function LandingPage() {
           >
             <Sparkles className='h-16 w-16 mx-auto mb-6 text-yellow-300' />
 
-            <h2 className='text-4xl sm:text-5xl font-bold mb-6'>Ready to Build Something Amazing?</h2>
+            <h2 className='text-4xl sm:text-5xl font-bold mb-6'>{t('landing.cta.title')}</h2>
 
-            <p className='text-xl mb-8 text-blue-100'>
-              Join thousands of developers who have already shipped products with Starkon. Start building your next
-              project today.
-            </p>
+            <p className='text-xl mb-8 text-blue-100'>{t('landing.cta.description')}</p>
 
             <div className='flex flex-col sm:flex-row gap-4 justify-center'>
               <Button
@@ -482,7 +507,7 @@ export default function LandingPage() {
                 onClick={() => document.querySelector('#pricing')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 <Rocket className='h-5 w-5 mr-2' />
-                Start Building Now
+                {t('landing.cta.startBuilding')}
               </Button>
 
               <Button
@@ -492,7 +517,7 @@ export default function LandingPage() {
                 onClick={() => window.open('https://github.com/zzafergok/starkon', '_blank')}
               >
                 <Github className='h-5 w-5 mr-2' />
-                View Source Code
+                {t('landing.cta.viewSource')}
               </Button>
             </div>
           </motion.div>
