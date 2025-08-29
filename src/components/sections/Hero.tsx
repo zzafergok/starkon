@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { Button } from '@/components/core/button'
 import { motion } from 'framer-motion'
 
@@ -30,7 +31,13 @@ export default function Hero({
     <section className='relative overflow-hidden bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-gray-800 py-20 sm:py-32'>
       {backgroundImage && (
         <div className='absolute inset-0 z-0'>
-          <img src={backgroundImage} alt='Hero background' className='h-full w-full object-cover opacity-20' />
+          <Image
+            src={backgroundImage}
+            alt='Hero background'
+            fill
+            className='object-cover opacity-20'
+            priority
+          />
         </div>
       )}
 
