@@ -468,7 +468,7 @@ async function loadUserConfig() {
 
 function getDefaultConfig() {
   return {
-    defaultTemplate: 'standard',
+    defaultTemplate: null,
     preferredPackageManager: 'auto',
     skipGit: false,
     skipUpdateCheck: false,
@@ -898,8 +898,8 @@ const TEMPLATES = {
     ],
   },
   standard: {
-    name: 'Standart Template',
-    description: 'Tam özellikli template - authentication ve i18n dahil',
+    name: 'Next.js Boilerplate',
+    description: 'Tam özellikli boilerplate - authentication, i18n ve tüm componentler dahil',
     features: ['Next.js 15', 'TypeScript', 'Tailwind CSS', 'Authentication', 'i18n', 'Comprehensive UI Kit'],
     excludeFiles: [], // Hiçbir dosya exclude edilmez
   },
@@ -976,7 +976,7 @@ const TEMPLATES = {
     ],
   },
   corporate: {
-    name: 'Corporate Website Template',
+    name: 'Corporate Template',
     description: 'Kurumsal şirket sitesi - Hakkımızda, Hizmetler, Blog, Galeri',
     features: ['Next.js 15', 'TypeScript', 'Corporate Pages', 'Blog System', 'Content Management'],
     excludeFiles: [
@@ -1014,21 +1014,26 @@ async function selectTemplate() {
 
   templateLog.info('Showing template selection prompt', {
     locale: config.locale,
-    availableTemplates: Object.keys(TEMPLATES),
+    availableTemplates: ['standard', 'landing', 'corporate'],
   })
 
-  const templateChoices = Object.entries(TEMPLATES).map(([key, template]) => ({
-    title: `${template.name}`,
-    description: template.description,
-    value: key,
-  }))
+  // Sadece ana 3 template'i göster
+  const mainTemplates = ['standard', 'landing', 'corporate']
+  const templateChoices = mainTemplates.map((key) => {
+    const template = TEMPLATES[key]
+    return {
+      title: `${template.name}`,
+      description: template.description,
+      value: key,
+    }
+  })
 
   const response = await prompts({
     type: 'select',
     name: 'template',
     message: "Hangi template'i kullanmak istersiniz?",
     choices: templateChoices,
-    initial: Object.keys(TEMPLATES).indexOf(config.defaultTemplate) || 1,
+    initial: mainTemplates.indexOf(config.defaultTemplate) >= 0 ? mainTemplates.indexOf(config.defaultTemplate) : 0,
   })
 
   if (!response.template) {
@@ -1537,7 +1542,7 @@ async function initializeGit(targetDir) {
  */
 async function checkForUpdates(locale) {
   try {
-    const currentVersion = '0.0.12'
+    const currentVersion = '0.0.48'
     const response = await safeFetch('https://registry.npmjs.org/starkon/latest')
     const data = await response.json()
 
@@ -1821,7 +1826,7 @@ async function createProject(projectDir, options = {}) {
     // Telemetry gönder (optional)
     if (config.telemetryEnabled) {
       await sendTelemetry({
-        version: '0.0.12',
+        version: '0.0.48',
         template: selectedTemplate,
         packageManager: packageManager,
       })
@@ -1866,12 +1871,12 @@ async function createProject(projectDir, options = {}) {
 program
   .name('starkon')
   .description('🌊 Create production-ready Next.js applications with Starkon boilerplate')
-  .version('0.0.12')
+  .version('0.0.48')
   .argument('[project-directory]', 'Projenin oluşturulacağı dizin adı')
   .option('--skip-git', 'Git repository initialize etme')
   .option('--skip-update-check', 'Version update kontrolünü atla')
   .option('--verbose', 'Detaylı çıktı göster')
-  .option('-t, --template <template>', 'Kullanılacak template (basic, standard, dashboard, minimal)', 'standard')
+  .option('-t, --template <template>', 'Kullanılacak template (standard, landing, corporate)')
   .option('--config-set <key=value>', 'Konfigürasyon ayarla (örnek: --config-set locale=en)')
   .option('--config-get <key>', 'Konfigürasyon değerini göster')
   .option('--clear-cache', "Template cache'ini temizle")
