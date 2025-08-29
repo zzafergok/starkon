@@ -3,6 +3,7 @@
 ## 🚀 Kurulum ve Kullanım
 
 ### Hızlı Başlangıç
+
 ```bash
 npx test-corporate-app@latest my-project --template corporate
 cd my-project
@@ -12,22 +13,25 @@ npm run dev
 
 ## 📋 Komut Tablosu
 
-| Komut | Açıklama | Örnek |
-|-------|----------|--------|
-| `npx test-corporate-app@latest <proje-adı>` | Varsayılan template ile proje oluşturur | `npx test-corporate-app@latest my-app` |
-| `npx test-corporate-app@latest <proje-adı> --template default` | Tam özellikli template (auth + i18n) | `npx test-corporate-app@latest my-app --template default` |
-| `npx test-corporate-app@latest <proje-adı> --template landing` | Landing page template | `npx test-corporate-app@latest landing-site --template landing` |
-| `npx test-corporate-app@latest <proje-adı> --template corporate` | Kurumsal website template | `npx test-corporate-app@latest sirket-web --template corporate` |
-| `npx test-corporate-app@latest --help` | Yardım menüsünü gösterir | - |
-| `npx test-corporate-app@latest --version` | Versiyon bilgisini gösterir | - |
+| Komut                                                            | Açıklama                                | Örnek                                                           |
+| ---------------------------------------------------------------- | --------------------------------------- | --------------------------------------------------------------- |
+| `npx test-corporate-app@latest <proje-adı>`                      | Varsayılan template ile proje oluşturur | `npx test-corporate-app@latest my-app`                          |
+| `npx test-corporate-app@latest <proje-adı> --template default`   | Tam özellikli template (auth + i18n)    | `npx test-corporate-app@latest my-app --template default`       |
+| `npx test-corporate-app@latest <proje-adı> --template landing`   | Landing page template                   | `npx test-corporate-app@latest landing-site --template landing` |
+| `npx test-corporate-app@latest <proje-adı> --template corporate` | Kurumsal website template               | `npx test-corporate-app@latest sirket-web --template corporate` |
+| `npx test-corporate-app@latest --help`                           | Yardım menüsünü gösterir                | -                                                               |
+| `npx test-corporate-app@latest --version`                        | Versiyon bilgisini gösterir             | -                                                               |
 
 ## 🎯 Template Türleri
 
 ### 1. Default Template
+
 ```bash
 npx test-corporate-app@latest my-app --template default
 ```
+
 **İçerik:**
+
 - ✅ Tam authentication sistemi (JWT)
 - ✅ Çoklu dil desteği (i18n)
 - ✅ User dashboard ve settings
@@ -35,10 +39,13 @@ npx test-corporate-app@latest my-app --template default
 - ✅ Protected routes
 
 ### 2. Landing Template
+
 ```bash
 npx test-corporate-app@latest landing-site --template landing
 ```
+
 **İçerik:**
+
 - ✅ Hero, Features, Testimonials, CTA bölümleri
 - ✅ Contact form
 - ✅ Basit ve hızlı landing page odaklı
@@ -46,10 +53,13 @@ npx test-corporate-app@latest landing-site --template landing
 - ❌ i18n karmaşıklığı yok
 
 ### 3. Corporate Template
+
 ```bash
 npx test-corporate-app@latest sirket-web --template corporate
 ```
+
 **İçerik:**
+
 - ✅ Ana sayfa, Hakkımızda, Hizmetler, Blog, Galeri sayfaları
 - ✅ Corporate componentler (ServiceCard, TeamMember, BlogCard)
 - ✅ Content management sistemi
@@ -60,6 +70,7 @@ npx test-corporate-app@latest sirket-web --template corporate
 ## 🖥️ CLI Ekran Görünümü
 
 ### 1. Yardım Menüsü
+
 ```bash
 ❯ npx test-corporate-app@latest --help
 
@@ -78,6 +89,7 @@ Options:
 ```
 
 ### 2. Proje Oluşturma Süreci
+
 ```bash
 ❯ npx test-corporate-app@latest demo-sirket --template corporate
 
@@ -96,6 +108,7 @@ npm warn exec The following package was not found and will be installed: test-co
 ### 3. Hata Durumları
 
 #### Mevcut Klasör Hatası
+
 ```bash
 ❯ npx test-corporate-app@latest existing-folder --template corporate
 
@@ -104,6 +117,7 @@ npm warn exec The following package was not found and will be installed: test-co
 ```
 
 #### Geçersiz Template
+
 ```bash
 ❯ npx test-corporate-app@latest my-app --template invalid
 
@@ -133,15 +147,15 @@ npm run dev
 
 ## 🔧 Geliştirme Komutları
 
-| Komut | Ne Yapar |
-|-------|----------|
-| `npm run dev` | Development server başlatır |
-| `npm run build` | Production build oluşturur |
-| `npm run start` | Production server başlatır |
-| `npm run lint` | ESLint ile kod kalitesi kontrol |
-| `npm run type-check` | TypeScript tip kontrolü |
-| `npm run prettier` | Kod formatlaması |
-| `npm test` | Jest testleri çalıştırır |
+| Komut                | Ne Yapar                        |
+| -------------------- | ------------------------------- |
+| `npm run dev`        | Development server başlatır     |
+| `npm run build`      | Production build oluşturur      |
+| `npm run start`      | Production server başlatır      |
+| `npm run lint`       | ESLint ile kod kalitesi kontrol |
+| `npm run type-check` | TypeScript tip kontrolü         |
+| `npm run prettier`   | Kod formatlaması                |
+| `npm test`           | Jest testleri çalıştırır        |
 
 ## 📱 Örnek Corporate Website Özellikleri
 
@@ -150,7 +164,7 @@ Corporate template ile oluşturacağınız projede:
 - **Ana Sayfa:** Hero section, özellikler, hizmetler, ekip, blog önizleme
 - **Hakkımızda:** Şirket hikayesi ve değerler
 - **Hizmetler:** Detaylı hizmet kartları
-- **Blog:** Makale listesi ve kategoriler  
+- **Blog:** Makale listesi ve kategoriler
 - **Galeri:** Proje galerileri
 - **Modern UI:** Framer Motion animasyonları
 - **Responsive:** Mobil uyumlu tasarım
