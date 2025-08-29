@@ -2151,5 +2151,51 @@
       "contact": "Contact",
       "components": "Components"
     }
+  },
+  "homepage": {
+    "welcome": "Welcome to Starkon",
+    "title": "Next.js Enterprise Boilerplate",
+    "description": "A comprehensive starter template with authentication, UI components, and everything you need to build modern web applications.",
+    "authentication": {
+      "title": "Authentication",
+      "description": "Complete auth system with JWT tokens, protected routes, and user management.",
+      "loginButton": "Login",
+      "registerButton": "Register"
+    },
+    "components": {
+      "title": "Components",
+      "description": "50+ pre-built components with Radix UI and Tailwind CSS styling.",
+      "viewButton": "View Components"
+    },
+    "dashboard": {
+      "title": "Dashboard",
+      "description": "Admin dashboard with user management, analytics, and settings.",
+      "goButton": "Go to Dashboard"
+    },
+    "features": {
+      "nextjs": {
+        "title": "Next.js 15",
+        "description": "Latest features and optimizations"
+      },
+      "typescript": {
+        "title": "TypeScript",
+        "description": "Fully typed for better development"
+      },
+      "components": {
+        "title": "UI Components",
+        "description": "Radix UI with custom styling"
+      },
+      "deploy": {
+        "title": "Ready to Deploy",
+        "description": "Vercel, Netlify, Docker support"
+      }
+    },
+    "getStarted": {
+      "title": "Get Started",
+      "description": "Create a new project with Starkon CLI or explore the demo features.",
+      "cliCommand": "npx starkon my-app",
+      "exploreButton": "Explore Components",
+      "dashboardButton": "View Dashboard"
+    }
   }
 }

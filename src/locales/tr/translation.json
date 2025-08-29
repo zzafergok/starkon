@@ -2111,5 +2111,51 @@
         "authenticationDesc": "JWT tabanlı güvenli giriş sistemi"
       }
     }
+  },
+  "homepage": {
+    "welcome": "Starkon'a Hoş Geldiniz",
+    "title": "Next.js Enterprise Boilerplate",
+    "description": "Authentication, UI bileşenleri ve modern web uygulamaları geliştirmek için ihtiyacınız olan her şeyin bulunduğu kapsamlı bir starter template.",
+    "authentication": {
+      "title": "Authentication",
+      "description": "JWT token'ları, korumalı route'lar ve kullanıcı yönetimi ile eksiksiz auth sistemi.",
+      "loginButton": "Giriş Yap",
+      "registerButton": "Kayıt Ol"
+    },
+    "components": {
+      "title": "Bileşenler", 
+      "description": "Radix UI ve Tailwind CSS ile stillendirilmiş 50+ önceden oluşturulmuş bileşen.",
+      "viewButton": "Bileşenleri Görüntüle"
+    },
+    "dashboard": {
+      "title": "Dashboard",
+      "description": "Kullanıcı yönetimi, analitik ve ayarlar ile admin dashboard.",
+      "goButton": "Dashboard'a Git"
+    },
+    "features": {
+      "nextjs": {
+        "title": "Next.js 15",
+        "description": "En son özellikler ve optimizasyonlar"
+      },
+      "typescript": {
+        "title": "TypeScript",
+        "description": "Daha iyi geliştirme için tamamen tiplendirilmiş"
+      },
+      "components": {
+        "title": "UI Bileşenleri",
+        "description": "Özel stilleme ile Radix UI"
+      },
+      "deploy": {
+        "title": "Deploy'a Hazır",
+        "description": "Vercel, Netlify, Docker desteği"
+      }
+    },
+    "getStarted": {
+      "title": "Başlayın",
+      "description": "Starkon CLI ile yeni bir proje oluşturun veya demo özelliklerini keşfedin.",
+      "cliCommand": "npx starkon my-app",
+      "exploreButton": "Bileşenleri Keşfet",
+      "dashboardButton": "Dashboard'ı Görüntüle"
+    }
   }
 }
