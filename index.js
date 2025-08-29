@@ -951,10 +951,12 @@ const TEMPLATES = {
     excludeFiles: [
       'src/app/(auth)',
       'src/app/(authentication)',
+      'src/app/(corporate)',
       'src/app/(public)/about',
       'src/app/(public)/contact',
       'src/app/(public)/support',
       'src/components/auth',
+      'src/components/corporate',
       'src/lib/services/mockAuthService.ts',
       'src/lib/services/authApiService.ts',
       'src/lib/services/sessionTokenManager.ts',
