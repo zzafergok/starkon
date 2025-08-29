@@ -88,7 +88,7 @@ const SupportPageContent = () => {
                 className='flex items-center gap-2 px-3 py-2 bg-primary-foreground/10 hover:bg-primary-foreground/20 rounded-lg transition-colors text-sm'
               >
                 <ArrowLeft className='w-4 h-4' />
-                Önceki
+                {t('common.previous')}
               </button>
             </div>
 
@@ -98,26 +98,26 @@ const SupportPageContent = () => {
                 className='flex items-center gap-2 px-3 py-2 bg-primary-foreground/10 hover:bg-primary-foreground/20 rounded-lg transition-colors text-sm'
               >
                 <LogIn className='w-4 h-4' />
-                Çıkış Yap
+                {t('navigation.login')}
               </button>
             </div>
 
             <HelpCircle className='w-16 h-16 mx-auto mb-4 opacity-90' />
-            <h1 className='text-3xl font-bold mb-2'>Destek</h1>
-            <p className='opacity-90'>Size nasıl yardımcı olabiliriz?</p>
+            <h1 className='text-3xl font-bold mb-2'>{t('pages.support.title')}</h1>
+            <p className='opacity-90'>{t('pages.support.subtitle')}</p>
           </div>
 
           <div className='grid md:grid-cols-2 gap-8 p-8'>
             <div className='space-y-6'>
               <div className='flex items-center gap-3 mb-6'>
                 <MessageSquare className='w-6 h-6 text-primary' />
-                <h2 className='text-xl font-semibold text-foreground'>Destek Talebi Gönder</h2>
+                <h2 className='text-xl font-semibold text-foreground'>{t('pages.support.sendButton')}</h2>
               </div>
 
               <form onSubmit={handleSupportSubmit} className='space-y-4'>
                 <div className='grid sm:grid-cols-2 gap-4'>
                   <div>
-                    <label className='block text-sm font-medium text-foreground mb-2'>Ad Soyad</label>
+                    <label className='block text-sm font-medium text-foreground mb-2'>{t('pages.support.name')}</label>
                     <input
                       type='text'
                       name='name'
@@ -126,11 +126,11 @@ const SupportPageContent = () => {
                       required
                       disabled={isLoading}
                       className='w-full px-4 py-3 border border-border rounded-lg focus:ring-1 focus:ring-primary/50 focus:ring-inset focus:border-transparent transition-all bg-background text-foreground disabled:opacity-50'
-                      placeholder='Adınız ve soyadınız'
+                      placeholder={t('pages.support.namePlaceholder')}
                     />
                   </div>
                   <div>
-                    <label className='block text-sm font-medium text-foreground mb-2'>E-posta</label>
+                    <label className='block text-sm font-medium text-foreground mb-2'>{t('pages.support.email')}</label>
                     <input
                       type='email'
                       name='email'
@@ -139,13 +139,13 @@ const SupportPageContent = () => {
                       required
                       disabled={isLoading}
                       className='w-full px-4 py-3 border border-border rounded-lg focus:ring-1 focus:ring-primary/50 focus:ring-inset focus:border-transparent transition-all bg-background text-foreground disabled:opacity-50'
-                      placeholder='email@example.com'
+                      placeholder={t('pages.support.emailPlaceholder')}
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className='block text-sm font-medium text-foreground mb-2'>Konu</label>
+                  <label className='block text-sm font-medium text-foreground mb-2'>{t('pages.support.subject')}</label>
                   <input
                     type='text'
                     name='subject'
@@ -154,12 +154,12 @@ const SupportPageContent = () => {
                     required
                     disabled={isLoading}
                     className='w-full px-4 py-3 border border-border rounded-lg focus:ring-1 focus:ring-primary/50 focus:ring-inset focus:border-transparent transition-all bg-background text-foreground disabled:opacity-50'
-                    placeholder='Sorunun kısa açıklaması'
+                    placeholder={t('pages.support.subjectPlaceholder')}
                   />
                 </div>
 
                 <div>
-                  <label className='block text-sm font-medium text-foreground mb-2'>Mesaj</label>
+                  <label className='block text-sm font-medium text-foreground mb-2'>{t('pages.support.message')}</label>
                   <textarea
                     name='message'
                     value={supportForm.message}
@@ -168,7 +168,7 @@ const SupportPageContent = () => {
                     disabled={isLoading}
                     rows={6}
                     className='w-full px-4 py-3 border border-border rounded-lg focus:ring-1 focus:ring-primary/50 focus:ring-inset focus:border-transparent transition-all resize-none bg-background text-foreground disabled:opacity-50'
-                    placeholder='Sorununuzu detaylı açıklayın...'
+                    placeholder={t('pages.support.messagePlaceholder')}
                   />
                 </div>
 
@@ -178,7 +178,7 @@ const SupportPageContent = () => {
                   className='w-full bg-primary text-primary-foreground py-3 px-6 rounded-lg font-medium hover:bg-primary/90 focus:ring-1 focus:ring-primary/50 focus:ring-inset transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed'
                 >
                   <Send className='w-4 h-4' />
-                  {isLoading ? 'Gönderiliyor...' : 'Destek Talebi Gönder'}
+                  {isLoading ? t('pages.support.loading') : t('pages.support.sendButton')}
                 </button>
               </form>
             </div>
@@ -186,12 +186,12 @@ const SupportPageContent = () => {
             <div className='space-y-6'>
               <div className='flex items-center gap-3 mb-6'>
                 <Mail className='w-6 h-6 text-primary' />
-                <h2 className='text-xl font-semibold text-foreground'>Alternatif İletişim</h2>
+                <h2 className='text-xl font-semibold text-foreground'>{t('pages.support.contactInfo')}</h2>
               </div>
 
               <div className='space-y-4'>
                 <div className='bg-muted/50 rounded-lg p-6 border border-border'>
-                  <h3 className='font-semibold text-foreground mb-3'>Acil durumlar için doğrudan iletişim:</h3>
+                  <h3 className='font-semibold text-foreground mb-3'>{t('pages.support.directContact')}</h3>
                   <div className='space-y-3'>
                     <a
                       href='mailto:gok.zaferr@gmail.com'
@@ -205,14 +205,13 @@ const SupportPageContent = () => {
 
                 <div className='bg-primary/5 border border-primary/20 rounded-lg p-4'>
                   <p className='text-sm text-foreground'>
-                    <strong>💡 İpucu:</strong> Destek talebinizde sorununuzu detaylı açıklarsanız, size daha hızlı
-                    yardımcı olabiliriz.
+                    <strong>💡 İpucu:</strong> {t('pages.support.tip')}
                   </p>
                 </div>
 
                 <div className='bg-muted/30 rounded-lg p-4 border border-border'>
                   <p className='text-sm text-muted-foreground'>
-                    <strong>📋 Yanıt Süresi:</strong> Genellikle 24 saat içerisinde e-posta ile yanıt veriyoruz.
+                    <strong>📋 Yanıt Süresi:</strong> {t('pages.support.responseTime')}
                   </p>
                 </div>
               </div>
@@ -220,7 +219,7 @@ const SupportPageContent = () => {
           </div>
 
           <div className='bg-muted px-8 py-4 text-center text-sm text-muted-foreground border-t border-border'>
-            <p>Destek talebiniz gizli tutulur ve sadece teknik ekibimizle paylaşılır.</p>
+            <p>{t('pages.support.privacy')}</p>
           </div>
         </div>
       </div>
