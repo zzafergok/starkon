@@ -1353,8 +1353,11 @@ async function copyTemplateFiles(targetDir, templateKey = 'standard') {
       'Thumbs.db',
       // Development/Internal dosyalar - kullanıcının görmemesi gerekenler
       'CLAUDE.md', // Claude instructions
+      'CLI_USAGE_GUIDE.md', // CLI documentation
+      '.claude', // Claude settings directory
       'LICENSE', // Package license
       'tsup.config.ts', // Build configuration
+      'tsconfig.cjs.json', // CJS TypeScript config
       '.npmignore', // NPM ignore rules
     ]
 
