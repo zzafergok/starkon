@@ -980,6 +980,7 @@ const TEMPLATES = {
     features: ['Next.js 15', 'TypeScript', 'Corporate Pages', 'Blog System', 'Content Management'],
     excludeFiles: [
       'src/app/(auth)',
+      'src/app/(authentication)',
       'src/app/(public)',
       'src/components/sections',
       'src/components/ui/register',
