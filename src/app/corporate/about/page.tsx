@@ -1,12 +1,15 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import { Card, CardContent } from '@/components/core/card'
 import { TeamMember } from '@/components/corporate'
 import { mockCompanyInfo, mockTeamMembers } from '@/lib/content'
 import { Building, Users, Calendar, MapPin } from 'lucide-react'
 
 export default function AboutPage() {
+  const { t } = useTranslation()
+
   return (
     <div className='min-h-screen bg-white dark:bg-gray-900'>
       {/* Hero Section */}
@@ -18,9 +21,11 @@ export default function AboutPage() {
             transition={{ duration: 0.6 }}
             className='text-center'
           >
-            <h1 className='text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl'>Hakkımızda</h1>
+            <h1 className='text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl'>
+              {t('corporate.about.title')}
+            </h1>
             <p className='mt-6 text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto'>
-              {mockCompanyInfo.description}
+              {t('corporate.about.description')}
             </p>
           </motion.div>
         </div>
@@ -31,10 +36,10 @@ export default function AboutPage() {
         <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
           <div className='grid grid-cols-1 md:grid-cols-4 gap-8'>
             {[
-              { icon: Calendar, label: 'Kuruluş', value: mockCompanyInfo.founded },
-              { icon: Users, label: 'Çalışan', value: mockCompanyInfo.employees },
-              { icon: MapPin, label: 'Lokasyon', value: mockCompanyInfo.location },
-              { icon: Building, label: 'Projeler', value: '100+' },
+              { icon: Calendar, label: t('corporate.about.stats.founded'), value: mockCompanyInfo.founded },
+              { icon: Users, label: t('corporate.about.stats.employees'), value: mockCompanyInfo.employees },
+              { icon: MapPin, label: t('corporate.about.stats.location'), value: mockCompanyInfo.location },
+              { icon: Building, label: t('corporate.about.stats.projects'), value: '100+' },
             ].map((stat, index) => {
               const Icon = stat.icon
               return (
@@ -71,8 +76,12 @@ export default function AboutPage() {
             >
               <Card className='h-full'>
                 <CardContent className='p-8'>
-                  <h2 className='text-3xl font-bold text-gray-900 dark:text-white mb-6'>Misyonumuz</h2>
-                  <p className='text-lg text-gray-600 dark:text-gray-300 leading-relaxed'>{mockCompanyInfo.mission}</p>
+                  <h2 className='text-3xl font-bold text-gray-900 dark:text-white mb-6'>
+                    {t('corporate.about.mission.title')}
+                  </h2>
+                  <p className='text-lg text-gray-600 dark:text-gray-300 leading-relaxed'>
+                    {t('corporate.about.mission.description')}
+                  </p>
                 </CardContent>
               </Card>
             </motion.div>
@@ -85,8 +94,12 @@ export default function AboutPage() {
             >
               <Card className='h-full'>
                 <CardContent className='p-8'>
-                  <h2 className='text-3xl font-bold text-gray-900 dark:text-white mb-6'>Vizyonumuz</h2>
-                  <p className='text-lg text-gray-600 dark:text-gray-300 leading-relaxed'>{mockCompanyInfo.vision}</p>
+                  <h2 className='text-3xl font-bold text-gray-900 dark:text-white mb-6'>
+                    {t('corporate.about.vision.title')}
+                  </h2>
+                  <p className='text-lg text-gray-600 dark:text-gray-300 leading-relaxed'>
+                    {t('corporate.about.vision.description')}
+                  </p>
                 </CardContent>
               </Card>
             </motion.div>
@@ -104,10 +117,10 @@ export default function AboutPage() {
             viewport={{ once: true }}
             className='text-center mb-16'
           >
-            <h2 className='text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl'>Ekibimiz</h2>
-            <p className='mt-6 text-lg text-gray-600 dark:text-gray-300'>
-              Deneyimli ve tutkulu ekibimizle en iyi çözümleri sunuyoruz.
-            </p>
+            <h2 className='text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl'>
+              {t('corporate.about.team.title')}
+            </h2>
+            <p className='mt-6 text-lg text-gray-600 dark:text-gray-300'>{t('corporate.about.team.description')}</p>
           </motion.div>
 
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>

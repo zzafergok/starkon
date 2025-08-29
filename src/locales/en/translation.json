@@ -2394,5 +2394,29 @@
       "startBuilding": "Start Building Now",
       "viewSource": "View Source Code"
     }
+  },
+  "corporate": {
+    "about": {
+      "title": "About Us",
+      "description": "We are a team focused on providing the best digital solutions to our customers with modern technologies.",
+      "stats": {
+        "founded": "Founded",
+        "employees": "Employees",
+        "location": "Location",
+        "projects": "Projects"
+      },
+      "mission": {
+        "title": "Our Mission",
+        "description": "To guide businesses on their digital transformation journeys and support their growth with the power of technology."
+      },
+      "vision": {
+        "title": "Our Vision",
+        "description": "To become the leading digital agency that combines technology and creativity to turn our customers' dreams into reality."
+      },
+      "team": {
+        "title": "Our Team",
+        "description": "We provide the best solutions with our experienced and passionate team."
+      }
+    }
   }
 }

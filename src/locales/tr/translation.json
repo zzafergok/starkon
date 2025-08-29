@@ -2354,5 +2354,29 @@
       "startBuilding": "Şimdi Geliştirmeye Başlayın",
       "viewSource": "Kaynak Kodunu Görüntüle"
     }
+  },
+  "corporate": {
+    "about": {
+      "title": "Hakkımızda",
+      "description": "Modern teknolojilerle müşterilerimize en iyi dijital çözümleri sunmaya odaklanmış bir ekibiz.",
+      "stats": {
+        "founded": "Kuruluş",
+        "employees": "Çalışan",
+        "location": "Lokasyon",
+        "projects": "Projeler"
+      },
+      "mission": {
+        "title": "Misyonumuz",
+        "description": "İşletmelerin dijital dönüşüm yolculuklarında onlara rehberlik etmek ve teknoloji gücüyle büyümelerine destek olmak."
+      },
+      "vision": {
+        "title": "Vizyonumuz", 
+        "description": "Teknoloji ve yaratıcılığı birleştirerek, müşterilerimizin hayallerini gerçeğe dönüştüren lider dijital ajans olmak."
+      },
+      "team": {
+        "title": "Ekibimiz",
+        "description": "Deneyimli ve tutkulu ekibimizle en iyi çözümleri sunuyoruz."
+      }
+    }
   }
 }
