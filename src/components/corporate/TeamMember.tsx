@@ -44,7 +44,13 @@ export default function TeamMember({
         <CardContent className='p-6 text-center'>
           <div className='mb-6'>
             {image ? (
-              <Image src={image} alt={name} width={96} height={96} className='w-24 h-24 rounded-full mx-auto object-cover' />
+              <Image
+                src={image}
+                alt={name}
+                width={96}
+                height={96}
+                className='w-24 h-24 rounded-full mx-auto object-cover'
+              />
             ) : (
               <div className='w-24 h-24 rounded-full bg-gray-300 dark:bg-gray-600 mx-auto flex items-center justify-center'>
                 <span className='text-2xl font-medium text-gray-600 dark:text-gray-300'>

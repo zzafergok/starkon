@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { ZoomIn, ExternalLink } from 'lucide-react'
 import { Button } from '@/components/core/button'
@@ -35,9 +36,11 @@ export default function GalleryItem({
       onMouseLeave={() => setIsHovered(false)}
     >
       <div className='relative'>
-        <img
+        <Image
           src={image}
           alt={title}
+          width={400}
+          height={256}
           className='w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110'
         />
 

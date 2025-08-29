@@ -56,7 +56,13 @@ export default function BlogCard({
         <CardContent className='p-0'>
           {image && (
             <div className='relative'>
-              <Image src={image} alt={title} width={400} height={192} className='w-full h-48 object-cover rounded-t-lg' />
+              <Image
+                src={image}
+                alt={title}
+                width={400}
+                height={192}
+                className='w-full h-48 object-cover rounded-t-lg'
+              />
               {featured && <Badge className='absolute top-3 left-3 bg-blue-600'>Öne Çıkan</Badge>}
             </div>
           )}
@@ -90,7 +96,13 @@ export default function BlogCard({
             <div className='flex items-center justify-between'>
               <div className='flex items-center gap-2'>
                 {author.avatar ? (
-                  <Image src={author.avatar} alt={author.name} width={32} height={32} className='w-8 h-8 rounded-full' />
+                  <Image
+                    src={author.avatar}
+                    alt={author.name}
+                    width={32}
+                    height={32}
+                    className='w-8 h-8 rounded-full'
+                  />
                 ) : (
                   <div className='w-8 h-8 rounded-full bg-gray-300 dark:bg-gray-600 flex items-center justify-center'>
                     <User className='h-4 w-4 text-gray-600 dark:text-gray-300' />
