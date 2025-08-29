@@ -649,7 +649,7 @@ function satisfiesVersion(current, required) {
   const parseVersion = (v) => {
     const cleaned = v.replace(/^v/, '').trim()
     // Sadece valid semver karakterleri: rakamlar, noktalar, tire, artı
-    if (!/^[\d.-+a-zA-Z]+$/.test(cleaned)) {
+    if (!/^[\d.\-+a-zA-Z]+$/.test(cleaned)) {
       return []
     }
 
@@ -942,6 +942,61 @@ const TEMPLATES = {
       'src/locales',
       'src/lib/i18n.ts',
       'src/store',
+    ],
+  },
+  landing: {
+    name: 'Landing Page Template',
+    description: 'Tek sayfalık tanıtım sitesi - Hero, Features, Testimonials',
+    features: ['Next.js 15', 'TypeScript', 'Landing Components', 'Animations', 'Contact Forms'],
+    excludeFiles: [
+      'src/app/(auth)',
+      'src/app/(authentication)',
+      'src/app/(public)/about',
+      'src/app/(public)/contact',
+      'src/app/(public)/support',
+      'src/components/auth',
+      'src/lib/services/mockAuthService.ts',
+      'src/lib/services/authApiService.ts',
+      'src/lib/services/sessionTokenManager.ts',
+      'src/providers/AuthProvider.tsx',
+      'src/hooks/useAuth.ts',
+      'src/locales',
+      'src/lib/i18n.ts',
+      'src/providers/I18nProvider.tsx',
+      'src/components/layout/AuthNavbar.tsx',
+      'src/components/layout/AuthFooter.tsx',
+      'src/store/toastStore.ts',
+      'src/data/componentDemoData.tsx',
+      'NPM_PUBLISH.md',
+      'TEMPLATE_RESEARCH.md',
+      'TEMPLATE_ROADMAP.md',
+    ],
+  },
+  corporate: {
+    name: 'Corporate Website Template',
+    description: 'Kurumsal şirket sitesi - Hakkımızda, Hizmetler, Blog, Galeri',
+    features: ['Next.js 15', 'TypeScript', 'Corporate Pages', 'Blog System', 'Content Management'],
+    excludeFiles: [
+      'src/app/(auth)',
+      'src/app/(authentication)',
+      'src/components/auth',
+      'src/components/sections',
+      'src/app/(public)/landing-page.tsx',
+      'src/lib/services/mockAuthService.ts',
+      'src/lib/services/authApiService.ts',
+      'src/lib/services/sessionTokenManager.ts',
+      'src/providers/AuthProvider.tsx',
+      'src/hooks/useAuth.ts',
+      'src/locales',
+      'src/lib/i18n.ts',
+      'src/providers/I18nProvider.tsx',
+      'src/components/layout/AuthNavbar.tsx',
+      'src/components/layout/AuthFooter.tsx',
+      'src/store/toastStore.ts',
+      'src/data/componentDemoData.tsx',
+      'NPM_PUBLISH.md',
+      'TEMPLATE_RESEARCH.md',
+      'TEMPLATE_ROADMAP.md',
     ],
   },
 }
