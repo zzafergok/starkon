@@ -1,8 +1,9 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Button } from '@/components/core/button'
 import { ArrowRight, Github } from 'lucide-react'
+
+import { Button } from '@/components/core/button'
 
 interface CTAProps {
   title?: string

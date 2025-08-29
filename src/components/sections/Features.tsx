@@ -1,8 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { CheckCircle, Zap, Shield, Globe, Code, Smartphone } from 'lucide-react'
-import { LucideIcon } from 'lucide-react'
+import { CheckCircle, Zap, Shield, Globe, Code, Smartphone, LucideIcon } from 'lucide-react'
 
 interface Feature {
   title: string

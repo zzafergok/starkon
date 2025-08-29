@@ -1,11 +1,13 @@
 'use client'
 
+import Link from 'next/link'
+
+import { useTranslation } from 'react-i18next'
+import { Zap, Shield, Code, Users, Activity, Settings } from 'lucide-react'
+
+import { Badge } from '@/components/core/badge'
 import { Button } from '@/components/core/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/core/card'
-import { Badge } from '@/components/core/badge'
-import { Zap, Shield, Code, Users, Activity, Settings } from 'lucide-react'
-import Link from 'next/link'
-import { useTranslation } from 'react-i18next'
 
 export default function HomePage() {
   const { t } = useTranslation()

@@ -1,8 +1,9 @@
 'use client'
 
 import Image from 'next/image'
-import { motion } from 'framer-motion'
+
 import { Star } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 interface Testimonial {
   content: string

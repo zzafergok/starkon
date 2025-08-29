@@ -1,9 +1,11 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ServiceCard } from '@/components/corporate'
-import { mockServices } from '@/lib/content'
 import { Code, Smartphone, Palette, Settings, Zap, Shield, LucideIcon } from 'lucide-react'
+
+import { ServiceCard } from '@/components/corporate'
+
+import { mockServices } from '@/lib/content'
 
 const serviceIcons: { [key: string]: LucideIcon } = {
   'web-gelistirme': Code,

@@ -1,12 +1,14 @@
 'use client'
 
 import { useState } from 'react'
+
 import { motion } from 'framer-motion'
-import { Button } from '@/components/core/button'
-import { Input } from '@/components/core/input'
-import { Textarea } from '@/components/core/textarea'
-import { Label } from '@/components/core/label'
 import { Mail, Phone, MapPin, Send } from 'lucide-react'
+
+import { Label } from '@/components/core/label'
+import { Input } from '@/components/core/input'
+import { Button } from '@/components/core/button'
+import { Textarea } from '@/components/core/textarea'
 
 interface ContactInfo {
   email?: string

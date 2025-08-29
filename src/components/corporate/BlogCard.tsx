@@ -1,11 +1,13 @@
 'use client'
 
-import { Card, CardContent } from '@/components/core/card'
-import { Badge } from '@/components/core/badge'
-import { Button } from '@/components/core/button'
-import { ArrowRight, Calendar, Clock, User } from 'lucide-react'
-import { motion } from 'framer-motion'
 import Image from 'next/image'
+
+import { motion } from 'framer-motion'
+import { ArrowRight, Calendar, Clock, User } from 'lucide-react'
+
+import { Button } from '@/components/core/button'
+import { Badge } from '@/components/core/badge'
+import { Card, CardContent } from '@/components/core/card'
 
 interface BlogPost {
   title: string

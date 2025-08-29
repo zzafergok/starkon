@@ -2,10 +2,12 @@
 
 import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
-import { Card, CardContent } from '@/components/core/card'
-import { TeamMember } from '@/components/corporate'
-import { mockCompanyInfo, mockTeamMembers } from '@/lib/content'
 import { Building, Users, Calendar, MapPin } from 'lucide-react'
+
+import { TeamMember } from '@/components/corporate'
+import { Card, CardContent } from '@/components/core/card'
+
+import { mockCompanyInfo, mockTeamMembers } from '@/lib/content'
 
 export default function AboutPage() {
   const { t } = useTranslation()

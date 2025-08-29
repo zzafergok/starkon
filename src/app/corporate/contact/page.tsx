@@ -1,13 +1,15 @@
 'use client'
 
 import { useState } from 'react'
+
 import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { Mail, Phone, MapPin, Clock, Send } from 'lucide-react'
-import { Button } from '@/components/core/button'
-import { Input } from '@/components/core/input'
-import { Textarea } from '@/components/core/textarea'
+
 import { Card } from '@/components/core/card'
+import { Input } from '@/components/core/input'
+import { Button } from '@/components/core/button'
+import { Textarea } from '@/components/core/textarea'
 
 interface ContactInfo {
   icon: React.ComponentType<{ className?: string }>
@@ -18,6 +20,7 @@ interface ContactInfo {
 
 export default function ContactPage() {
   const { t } = useTranslation()
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',

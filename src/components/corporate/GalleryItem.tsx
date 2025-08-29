@@ -1,9 +1,12 @@
 'use client'
 
-import { useState } from 'react'
 import Image from 'next/image'
+
+import { useState } from 'react'
+
 import { motion } from 'framer-motion'
 import { ZoomIn, ExternalLink } from 'lucide-react'
+
 import { Button } from '@/components/core/button'
 
 interface GalleryItemProps {

@@ -1,10 +1,12 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { ArrowRight, Users, Award, Zap } from 'lucide-react'
+
 import { Button } from '@/components/core/button'
 import { ServiceCard, BlogCard, TeamMember } from '@/components/corporate'
+
 import { mockServices, mockBlogPosts, mockTeamMembers, mockCompanyInfo } from '@/lib/content'
-import { ArrowRight, Users, Award, Zap } from 'lucide-react'
 
 export default function CorporateHomePage() {
   const featuredServices = mockServices.slice(0, 3)

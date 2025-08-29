@@ -1,9 +1,12 @@
 import type { Metadata, Viewport } from 'next'
+
 import React from 'react'
-import './globals.css'
-import { ReactQueryProvider } from '@/providers/ReactQueryProvider'
+
 import { ThemeProvider } from '@/providers/theme-provider'
 import { ToastProvider } from '@/providers/toast-provider'
+import { ReactQueryProvider } from '@/providers/ReactQueryProvider'
+
+import './globals.css'
 
 // Provider wrapper component'leri - auth ve i18n optional
 function AuthWrapper({ children }: { children: React.ReactNode }) {

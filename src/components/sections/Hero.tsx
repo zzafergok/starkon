@@ -1,8 +1,10 @@
 'use client'
 
 import Image from 'next/image'
-import { Button } from '@/components/core/button'
+
 import { motion } from 'framer-motion'
+
+import { Button } from '@/components/core/button'
 
 interface HeroProps {
   title?: string

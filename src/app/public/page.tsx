@@ -1,25 +1,27 @@
 'use client'
 
 import React from 'react'
+
 import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import {
-  Sparkles,
   Zap,
-  Shield,
-  Rocket,
   Code,
-  Palette,
+  Star,
+  Play,
   Users,
   Check,
-  Star,
-  ChevronDown,
-  Play,
+  Shield,
+  Rocket,
   Github,
+  Palette,
+  Sparkles,
+  ChevronDown,
 } from 'lucide-react'
+
+import { Badge } from '@/components/core/badge'
 import { Button } from '@/components/core/button'
 import { Card, CardContent } from '@/components/core/card'
-import { Badge } from '@/components/core/badge'
 
 export default function LandingPage() {
   const { t } = useTranslation()

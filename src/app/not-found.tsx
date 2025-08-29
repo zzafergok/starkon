@@ -1,9 +1,12 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
+
 import React from 'react'
+
 import { useTranslation } from 'react-i18next'
 import { Home, ArrowLeft, Search } from 'lucide-react'
+
 import { Button } from '@/components/core/button'
 import { Card, CardContent } from '@/components/core/card'
 

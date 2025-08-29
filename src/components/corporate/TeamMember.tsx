@@ -1,10 +1,12 @@
 'use client'
 
-import { Card, CardContent } from '@/components/core/card'
-import { Button } from '@/components/core/button'
-import { Linkedin, Mail, Github } from 'lucide-react'
-import { motion } from 'framer-motion'
 import Image from 'next/image'
+
+import { motion } from 'framer-motion'
+import { Linkedin, Mail, Github } from 'lucide-react'
+
+import { Button } from '@/components/core/button'
+import { Card, CardContent } from '@/components/core/card'
 
 interface SocialLinks {
   linkedin?: string

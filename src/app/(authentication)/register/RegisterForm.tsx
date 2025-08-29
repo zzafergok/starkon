@@ -12,6 +12,7 @@ import { useLocale } from '@/hooks/useLocale'
 import TermsModal from '@/components/ui/register/TermsModal'
 import PrivacyModal from '@/components/ui/register/PrivacyModal'
 import { LoadingSpinner } from '@/components/core/loading-spinner'
+
 import AuthApiService from '@/lib/services/authApiService'
 
 interface RegisterFormData {

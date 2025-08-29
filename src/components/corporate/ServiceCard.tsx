@@ -1,11 +1,12 @@
 'use client'
 
-import { Card, CardContent } from '@/components/core/card'
-import { Button } from '@/components/core/button'
-import { ArrowRight } from 'lucide-react'
-import { motion } from 'framer-motion'
-import { LucideIcon } from 'lucide-react'
 import Image from 'next/image'
+
+import { motion } from 'framer-motion'
+import { ArrowRight, LucideIcon } from 'lucide-react'
+
+import { Button } from '@/components/core/button'
+import { Card, CardContent } from '@/components/core/card'
 
 interface ServiceCardProps {
   title: string

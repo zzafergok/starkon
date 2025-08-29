@@ -1,22 +1,25 @@
 'use client'
 
+import { useState } from 'react'
+
 import { motion } from 'framer-motion'
+import { Search, Filter } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
-import { BlogCard } from '@/components/corporate'
-import { mockBlogPosts, getFeaturedBlogPosts } from '@/lib/content'
+
 import { Badge } from '@/components/core/badge'
 import { Input } from '@/components/core/input'
+import { BlogCard } from '@/components/corporate'
 import { Button } from '@/components/core/button'
-import { Search, Filter } from 'lucide-react'
-import { useState } from 'react'
+
+import { mockBlogPosts, getFeaturedBlogPosts } from '@/lib/content'
 
 export default function BlogPage() {
   const { t } = useTranslation()
+  const allPosts = mockBlogPosts
+  const featuredPosts = getFeaturedBlogPosts()
+
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('')
-
-  const featuredPosts = getFeaturedBlogPosts()
-  const allPosts = mockBlogPosts
 
   // Get unique categories
   const categories = Array.from(new Set(allPosts.map((post) => post.category)))

@@ -1,11 +1,14 @@
 'use client'
 
 import { useState } from 'react'
+
 import { motion } from 'framer-motion'
-import { GalleryItem } from '@/components/corporate'
-import { mockGalleryItems, getGalleryItemsByCategory } from '@/lib/content'
-import { Button } from '@/components/core/button'
 import { Grid, List } from 'lucide-react'
+
+import { Button } from '@/components/core/button'
+import { GalleryItem } from '@/components/corporate'
+
+import { mockGalleryItems, getGalleryItemsByCategory } from '@/lib/content'
 
 export default function GalleryPage() {
   const [selectedCategory, setSelectedCategory] = useState('')
