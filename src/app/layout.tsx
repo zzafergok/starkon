@@ -5,22 +5,26 @@ import { ReactQueryProvider } from '@/providers/ReactQueryProvider'
 import { ThemeProvider } from '@/providers/theme-provider'
 import { ToastProvider } from '@/providers/toast-provider'
 
-// Auth ve I18n provider'larını optional olarak import et
-let AuthProvider: React.ComponentType<{ children: React.ReactNode }> | null = null
-let I18nProvider: React.ComponentType<{ children: React.ReactNode }> | null = null
-
-try {
-  const authModule = require('@/providers/AuthProvider')
-  AuthProvider = authModule.AuthProvider
-} catch {
-  // AuthProvider mevcut değil
+// Provider wrapper component'leri - auth ve i18n optional
+function AuthWrapper({ children }: { children: React.ReactNode }) {
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const { AuthProvider } = require('@/providers/AuthProvider')
+    return React.createElement(AuthProvider, null, children)
+  } catch {
+    return <>{children}</>
+  }
 }
 
-try {
-  const i18nModule = require('@/providers/I18nProvider')
-  I18nProvider = i18nModule.default
-} catch {
-  // I18nProvider mevcut değil
+function I18nWrapper({ children }: { children: React.ReactNode }) {
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const I18nProviderModule = require('@/providers/I18nProvider')
+    const I18nProvider = I18nProviderModule.default || I18nProviderModule.I18nProvider
+    return React.createElement(I18nProvider, null, children)
+  } catch {
+    return <>{children}</>
+  }
 }
 
 export const metadata: Metadata = {
@@ -103,45 +107,17 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang='tr'>
       <body className='bg-background text-foreground antialiased'>
         <ReactQueryProvider>
-          {AuthProvider ? (
-            <AuthProvider>
-              <ThemeProvider>
-                {I18nProvider ? (
-                  <I18nProvider>
-                    <ToastProvider>
-                      <div className='min-h-screen flex flex-col'>
-                        <main className='flex-1'>{children}</main>
-                      </div>
-                    </ToastProvider>
-                  </I18nProvider>
-                ) : (
-                  <ToastProvider>
-                    <div className='min-h-screen flex flex-col'>
-                      <main className='flex-1'>{children}</main>
-                    </div>
-                  </ToastProvider>
-                )}
-              </ThemeProvider>
-            </AuthProvider>
-          ) : (
+          <AuthWrapper>
             <ThemeProvider>
-              {I18nProvider ? (
-                <I18nProvider>
-                  <ToastProvider>
-                    <div className='min-h-screen flex flex-col'>
-                      <main className='flex-1'>{children}</main>
-                    </div>
-                  </ToastProvider>
-                </I18nProvider>
-              ) : (
+              <I18nWrapper>
                 <ToastProvider>
                   <div className='min-h-screen flex flex-col'>
                     <main className='flex-1'>{children}</main>
                   </div>
                 </ToastProvider>
-              )}
+              </I18nWrapper>
             </ThemeProvider>
-          )}
+          </AuthWrapper>
         </ReactQueryProvider>
       </body>
     </html>
