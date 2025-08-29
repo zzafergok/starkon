@@ -30,13 +30,25 @@ function LandingNavbar() {
               Features
             </button>
             <button
+              onClick={() => scrollToSection('#pricing')}
+              className='text-gray-900 dark:text-white hover:text-blue-600 transition-colors'
+            >
+              Pricing
+            </button>
+            <button
               onClick={() => scrollToSection('#testimonials')}
               className='text-gray-900 dark:text-white hover:text-blue-600 transition-colors'
             >
-              Testimonials
+              Reviews
+            </button>
+            <button
+              onClick={() => scrollToSection('#faq')}
+              className='text-gray-900 dark:text-white hover:text-blue-600 transition-colors'
+            >
+              FAQ
             </button>
             <Button onClick={() => scrollToSection('#contact')}>
-              Contact
+              Get Started
             </Button>
           </div>
         </div>
