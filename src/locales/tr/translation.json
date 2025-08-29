@@ -1534,6 +1534,7 @@
   },
   "navigation": {
     "home": "Ana Sayfa",
+    "login": "Giriş Yap",
     "profile": "Profil",
     "settings": "Ayarlar",
     "dashboard": "Kontrol Paneli",

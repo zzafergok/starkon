@@ -1534,6 +1534,7 @@
   },
   "navigation": {
     "home": "Home",
+    "login": "Login",
     "profile": "Profile",
     "settings": "Settings",
     "dashboard": "Dashboard",
