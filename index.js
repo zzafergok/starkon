@@ -967,7 +967,6 @@ const TEMPLATES = {
       'src/providers/I18nProvider.tsx',
       'src/components/layout/AuthNavbar.tsx',
       'src/components/layout/AuthFooter.tsx',
-      'src/store/toastStore.ts',
       'src/data/componentDemoData.tsx',
       'NPM_PUBLISH.md',
       'TEMPLATE_RESEARCH.md',
