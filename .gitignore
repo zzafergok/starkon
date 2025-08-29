@@ -38,6 +38,9 @@ yarn-error.log*
 CLAUDE.md
 .claude
 
+# NPM Publishing guide
+NPM_PUBLISH.md
+
 # Local env files
 .env
 .env*.local
