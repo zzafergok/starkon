@@ -1370,6 +1370,8 @@ async function copyTemplateFiles(targetDir, templateKey = 'standard') {
       'LICENSE', // Package license
       'tsup.config.ts', // Build configuration
       'tsconfig.cjs.json', // CJS TypeScript config
+      'docs', // Internal documentation
+      'MOCK_USERS.md', // Redundant (info in README)
       '.npmignore', // NPM ignore rules
     ]
 
