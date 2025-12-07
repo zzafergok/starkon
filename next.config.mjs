@@ -27,11 +27,6 @@ const nextConfig = {
     ignoreBuildErrors: false,
   },
 
-  eslint: {
-    // Linting hatalarını warning olarak işaretle
-    ignoreDuringBuilds: false,
-  },
-
   // Webpack konfigürasyonu
   webpack: (config) => {
     // Bundle analyzer desteği
@@ -66,6 +61,8 @@ const nextConfig = {
 
     return config
   },
+
+  turbopack: {},
 }
 
 export default nextConfig
