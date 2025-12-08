@@ -16,7 +16,20 @@
   },
   "plugins": {
     "@release-it/conventional-changelog": {
-      "preset": "conventionalcommits",
+      "preset": {
+        "name": "conventionalcommits",
+        "types": [
+          { "type": "feat", "section": "✨ Features | Yeni Özellikler" },
+          { "type": "fix", "section": "🐛 Bug Fixes | Hata Düzeltmeleri" },
+          { "type": "perf", "section": "🚀 Performance | Performans İyileştirmeleri" },
+          { "type": "refactor", "section": "♻️ Code Refactoring | Kod Düzenlemeleri" },
+          { "type": "chore", "section": "🔧 Chore | Bakım ve Yapılandırma" },
+          { "type": "docs", "section": "📚 Documentation | Dokümantasyon" },
+          { "type": "test", "section": "✅ Tests | Testler" },
+          { "type": "style", "section": "💎 Styles | Kod Biçimlendirme" },
+          { "type": "ci", "section": "👷 Continuous Integration | CI/CD İşlemleri" }
+        ]
+      },
       "infile": "CHANGELOG.md"
     }
   },
