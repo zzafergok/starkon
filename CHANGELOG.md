@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.1.0](///compare/v0.0.46...v0.1.0) (2025-12-08)
+
+### Features
+
+* add Suspense with a loading spinner fallback to the home page 0c12e8d
+* Add Turbopack configuration, update JSX transform to `react-jsx`, and refine TypeScript includes while removing ESLint build ignore. 18fa21c
+* Add warning and info variants to the Alert component. 226dd95
+* bump version to 0.0.49 d1827e9
+* bump version to 0.0.50 634e08e
+* enhance i18n support for blog and contact pages with new translations 21b1149
+* Include internal documentation and mock user data markdown in package files. 6c58994
+* Introduce new UI components, enhanced form fields, authentication flows, and profile management features. 6ed366c
+* reorganize imports and enhance component structure across multiple files 2efb00b
+* update default template and enhance template selection for better user experience 0386e22
+
+### Bug Fixes
+
+* Improve project cleanup by excluding unnecessary files from generated projects and update package version to 0.0.52. 664f358
+
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
