@@ -21,13 +21,13 @@
     }
   },
   "hooks": {
-    "after:bump": "echo \"Sürüm v${version} olarak güncellendi.\""
+    "after:bump": "echo \"Yeni surum v${version} olarak guncellendi.\""
   },
   "prompt": {
-    "commit": "Değişiklikler commit edilsin mi?",
-    "tag": "Tag oluşturulsun mu?",
-    "push": "Git push yapılsın mı?",
-    "ghRelease": "Github Release oluşturulsun mu?",
-    "publish": "NPM paketi yayınlansın mı?"
+    "commit": "Degisiklikler commit edilsin mi?",
+    "tag": "Tag olusturulsun mu?",
+    "push": "Git push yapilsin mi?",
+    "ghRelease": "Github Release olusturulsun mu?",
+    "publish": "NPM paketi yayinlansin mi?"
   }
 }
