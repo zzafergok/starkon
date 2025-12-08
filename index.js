@@ -1373,6 +1373,9 @@ async function copyTemplateFiles(targetDir, templateKey = 'standard') {
       'docs', // Internal documentation
       'MOCK_USERS.md', // Redundant (info in README)
       '.npmignore', // NPM ignore rules
+      '.commitlintrc.js', // Commitlint config for repo maintenance
+      '.release-it.json', // Release-it config for repo maintenance
+      '.husky', // Husky hooks for repo maintenance
     ]
 
     // Template'e özel exclude files
