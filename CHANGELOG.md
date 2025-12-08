@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.2.0](///compare/v0.1.0...v0.2.0) (2025-12-08)
+
+### Features
+
+* Configure library build with tsup, DTS generation, module exports, and updated peer dependencies. c8b7226
+
 ## [0.1.0](///compare/v0.0.46...v0.1.0) (2025-12-08)
 
 ### Features
