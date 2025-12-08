@@ -1,7 +1,5 @@
 'use client'
 
-import React from 'react'
-
 import { useTranslation } from 'react-i18next'
 import { Users, Award, Globe, Rocket, Star, Target, Heart, Code, Shield } from 'lucide-react'
 

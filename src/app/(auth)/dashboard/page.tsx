@@ -1,11 +1,8 @@
 'use client'
 
-import React from 'react'
-
 import { useTranslation } from 'react-i18next'
-import { Settings, Code2, Palette, Zap, Rocket, Package, ArrowRight, Star, Github } from 'lucide-react'
+import { Code2, Palette, Zap, Rocket, Package, ArrowRight } from 'lucide-react'
 
-import { Badge } from '@/components/core/badge'
 import { Button } from '@/components/core/button'
 import { Avatar, AvatarFallback } from '@/components/core/avatar'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/core/card'

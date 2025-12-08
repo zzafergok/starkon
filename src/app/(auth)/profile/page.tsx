@@ -1,18 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { useTranslation } from 'react-i18next'
 
-import { Badge } from '@/components/core/badge'
-import { Input } from '@/components/core/input'
-import { Label } from '@/components/core/label'
-import { Button } from '@/components/core/button'
-import { Textarea } from '@/components/core/textarea'
-import { Separator } from '@/components/core/separator'
-import { Avatar, AvatarFallback } from '@/components/core/avatar'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/core/card'
-
-import { useAuth } from '@/hooks/useAuth'
 import {
   X,
   Zap,
@@ -37,10 +26,22 @@ import {
   Briefcase,
   TrendingUp,
 } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
+
+import { Badge } from '@/components/core/badge'
+import { Input } from '@/components/core/input'
+import { Label } from '@/components/core/label'
+import { Button } from '@/components/core/button'
+import { Textarea } from '@/components/core/textarea'
+import { Separator } from '@/components/core/separator'
+import { Avatar, AvatarFallback } from '@/components/core/avatar'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/core/card'
+
+import { useAuth } from '@/hooks/useAuth'
 
 export default function ProfilePage() {
-  const { t } = useTranslation()
   const { user } = useAuth()
+  const { t } = useTranslation()
 
   const [isEditing, setIsEditing] = useState(false)
   const [formData, setFormData] = useState({

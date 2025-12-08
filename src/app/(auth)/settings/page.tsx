@@ -49,13 +49,12 @@ import { Textarea } from '@/components/core/textarea'
 import { Separator } from '@/components/core/separator'
 import { Avatar, AvatarFallback } from '@/components/core/avatar'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/core/tabs'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/core/select'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/core/card'
-
-import { useAuth } from '@/hooks/useAuth'
-
 import { SettingsThemeSection } from '@/components/ui/theme/settings-theme-section'
 import { SettingsLanguageSection } from '@/components/ui/language/settings-language-section'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/core/card'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/core/select'
+
+import { useAuth } from '@/hooks/useAuth'
 
 interface NotificationSettings {
   emailNotifications: boolean

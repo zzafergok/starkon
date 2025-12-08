@@ -4,34 +4,15 @@
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 
-import {
-  useState,
-  useCallback,
-  // useMemo,
-  useEffect,
-} from 'react'
+import { useState, useCallback, useEffect } from 'react'
 
-// import { z } from 'zod'
-// import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
-// import { zodResolver } from '@hookform/resolvers/zod'
-import {
-  Lock,
-  // Eye, EyeOff,
-  CheckCircle,
-  AlertCircle,
-  ArrowLeft,
-} from 'lucide-react'
+import { Lock, CheckCircle, AlertCircle, ArrowLeft } from 'lucide-react'
 
-// import { Label } from '@/components/core/label'
-// import { Input } from '@/components/core/input'
 import { Button } from '@/components/core/button'
 import { ThemeSwitcher } from '@/components/ui/theme/theme-switcher'
 import { LanguageSwitcher } from '@/components/ui/language/language-switcher'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/core/card'
-
-// import { authApi } from '@/lib/api/api'
-// import { createResetPasswordSchema } from '@/lib/validations'
 
 export const dynamic = 'force-dynamic'
 export const runtime = 'edge'
@@ -92,18 +73,6 @@ export default function ResetPasswordPage() {
 
   const token = searchParams.get('token')
 
-  // const resetPasswordSchema = useMemo(() => createResetPasswordSchema(t), [t])
-  // type ResetPasswordFormData = z.infer<typeof resetPasswordSchema>
-
-  // const {
-  //   register,
-  //   handleSubmit,
-  //   formState: { errors },
-  //   reset,
-  // } = useForm<ResetPasswordFormData>({
-  //   resolver: zodResolver(resetPasswordSchema),
-  // })
-
   useEffect(() => {
     if (!token) {
       setError(t('auth.resetPassword.error.tokenRequired'))
@@ -114,43 +83,9 @@ export default function ResetPasswordPage() {
     setShowPasswords((prev) => ({ ...prev, [field]: !prev[field] }))
   }, [])
 
-  const _onSubmit = useCallback(
-    async (data: any) => {
-      if (isLoading || !token) return
-
-      setIsLoading(true)
-      setError('')
-
-      try {
-        console.log('🚀 ~ ResetPasswordPage ~ data:', data)
-        // await authApi.resetPassword({ token, newPassword: data.newPassword, confirmPassword: data.confirmPassword })
-        // setIsSuccess(true)
-        // reset()
-
-        // // 2 saniye sonra login sayfasına yönlendir
-        // setTimeout(() => {
-        //   router.push('/login')
-        // }, 2000)
-      } catch (err: any) {
-        const errorMessage =
-          err?.response?.status === 400
-            ? t('auth.resetPassword.error.invalidToken')
-            : err?.response?.status === 429
-              ? t('auth.resetPassword.error.rateLimitExceeded')
-              : t('auth.resetPassword.error.default')
-        setError(errorMessage)
-      } finally {
-        setIsLoading(false)
-      }
-    },
-    [
-      isLoading,
-      token,
-      t,
-      // reset,
-      router,
-    ],
-  )
+  const _onSubmit = useCallback(async (data: any) => {
+    console.log('🚀 ~ ResetPasswordPage ~ data:', data)
+  }, [])
 
   if (!token || error) {
     return (
