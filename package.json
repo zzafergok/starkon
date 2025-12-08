@@ -38,7 +38,7 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "analyze": "ANALYZE=true npm run build",
-    "release": "release-it",
+    "release": "NO_COLOR=1 release-it",
     "commit": "cz",
     "prepare": "husky"
   },
