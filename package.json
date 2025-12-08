@@ -1,6 +1,6 @@
 {
   "name": "starkon",
-  "version": "0.2.0",
+  "version": "0.0.52",
   "type": "module",
   "description": "Complete Next.js boilerplate with authentication, i18n & CLI - Create production-ready apps instantly",
   "main": "dist/index.cjs",
