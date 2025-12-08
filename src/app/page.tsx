@@ -10,7 +10,11 @@ import { Badge } from '@/components/core/badge'
 import { Button } from '@/components/core/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/core/card'
 
-export default function HomePage() {
+import { Suspense } from 'react'
+
+import { LoadingSpinner } from '@/components/core/loading-spinner'
+
+function HomeContent() {
   const { t, isMounted } = useLocale()
 
   if (!isMounted) {
@@ -139,5 +143,19 @@ export default function HomePage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function HomePage() {
+  return (
+    <Suspense
+      fallback={
+        <div className='flex h-screen w-full items-center justify-center'>
+          <LoadingSpinner size='lg' />
+        </div>
+      }
+    >
+      <HomeContent />
+    </Suspense>
   )
 }
