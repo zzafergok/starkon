@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.2.0](///compare/v0.1.0...v0.2.0) (2025-12-08)
+
+### Features
+
+* add custom conventional changelog types and sections with Turkish translations. 2dc9d6d
+
 ## [0.1.0](///compare/v0.0.46...v0.1.0) (2025-12-08)
 
 ### Features
