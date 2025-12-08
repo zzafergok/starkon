@@ -19,38 +19,43 @@ function LandingNavbar() {
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='flex justify-between h-16'>
           <div className='flex items-center'>
-            <button
+            <Button
+              variant='ghost'
               onClick={() => scrollToSection('#hero')}
-              className='text-2xl font-bold text-blue-600 hover:text-blue-700'
+              className='text-2xl font-bold text-blue-600 hover:text-blue-700 hover:bg-transparent p-0'
             >
               Starkon
-            </button>
+            </Button>
           </div>
           <div className='flex items-center space-x-8'>
-            <button
+            <Button
+              variant='ghost'
               onClick={() => scrollToSection('#features')}
               className='text-gray-900 dark:text-white hover:text-blue-600 transition-colors'
             >
               {t('landing.navbar.features')}
-            </button>
-            <button
+            </Button>
+            <Button
+              variant='ghost'
               onClick={() => scrollToSection('#pricing')}
               className='text-gray-900 dark:text-white hover:text-blue-600 transition-colors'
             >
               {t('landing.navbar.pricing')}
-            </button>
-            <button
+            </Button>
+            <Button
+              variant='ghost'
               onClick={() => scrollToSection('#testimonials')}
               className='text-gray-900 dark:text-white hover:text-blue-600 transition-colors'
             >
               {t('landing.navbar.reviews')}
-            </button>
-            <button
+            </Button>
+            <Button
+              variant='ghost'
               onClick={() => scrollToSection('#faq')}
               className='text-gray-900 dark:text-white hover:text-blue-600 transition-colors'
             >
               {t('landing.navbar.faq')}
-            </button>
+            </Button>
             <Button onClick={() => scrollToSection('#contact')}>{t('landing.navbar.getStarted')}</Button>
           </div>
         </div>
@@ -69,15 +74,15 @@ function LandingFooter() {
           <h3 className='text-xl font-bold mb-4'>Starkon</h3>
           <p className='text-gray-300 mb-6'>{t('landing.footer.description')}</p>
           <div className='flex justify-center space-x-6'>
-            <a href='#' className='text-gray-300 hover:text-white transition-colors'>
-              {t('landing.footer.github')}
-            </a>
-            <a href='#' className='text-gray-300 hover:text-white transition-colors'>
-              {t('landing.footer.documentation')}
-            </a>
-            <a href='#' className='text-gray-300 hover:text-white transition-colors'>
-              {t('landing.footer.support')}
-            </a>
+            <Button variant='link' className='text-gray-300 hover:text-white transition-colors p-0 h-auto'>
+              <a href='#'>{t('landing.footer.github')}</a>
+            </Button>
+            <Button variant='link' className='text-gray-300 hover:text-white transition-colors p-0 h-auto'>
+              <a href='#'>{t('landing.footer.documentation')}</a>
+            </Button>
+            <Button variant='link' className='text-gray-300 hover:text-white transition-colors p-0 h-auto'>
+              <a href='#'>{t('landing.footer.support')}</a>
+            </Button>
           </div>
           <div className='border-t border-gray-800 mt-8 pt-8'>
             <p className='text-gray-400'>{t('landing.footer.copyright')}</p>
