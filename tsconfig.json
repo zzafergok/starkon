@@ -23,7 +23,8 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@/store": ["./src/store"]
     },
     "noUncheckedIndexedAccess": false,
     "exactOptionalPropertyTypes": false,

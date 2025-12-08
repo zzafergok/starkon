@@ -1882,7 +1882,7 @@
       "achievements": {
         "activeUsers": "Active Users",
         "completedProjects": "Completed Projects",
-        "countries": "Countries", 
+        "countries": "Countries",
         "satisfaction": "User Satisfaction"
       },
       "missionTitle": "Our Mission & Values",
@@ -2197,6 +2197,7 @@
   },
   "homepage": {
     "welcome": "Welcome to Starkon",
+    "returnToHome": "Return to Home",
     "title": "Next.js Enterprise Boilerplate",
     "description": "A comprehensive starter template with authentication, UI components, and everything you need to build modern web applications.",
     "authentication": {
@@ -2258,14 +2259,14 @@
   "landing": {
     "navbar": {
       "features": "Features",
-      "pricing": "Pricing", 
+      "pricing": "Pricing",
       "reviews": "Reviews",
       "faq": "FAQ",
       "getStarted": "Get Started"
     },
     "footer": {
       "description": "Enterprise-ready Next.js boilerplate for modern web applications.",
-      "github": "GitHub", 
+      "github": "GitHub",
       "documentation": "Documentation",
       "support": "Support",
       "copyright": "© 2024 Starkon. All rights reserved."
@@ -2280,7 +2281,7 @@
     },
     "stats": {
       "components": "Components",
-      "typescript": "TypeScript", 
+      "typescript": "TypeScript",
       "downloads": "Downloads",
       "rating": "Rating"
     },

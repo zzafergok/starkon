@@ -50,7 +50,6 @@ const LoadingSpinner = React.forwardRef<HTMLDivElement, LoadingSpinnerProps>(
       {...props}
     >
       <div className={cn('relative', spinnerVariants({ size, variant }))}>
-        {/* Modern gradient ring spinner */}
         <div className='absolute inset-0 rounded-full bg-gradient-to-r from-current via-transparent to-current opacity-20 animate-spin' />
         <div className='absolute inset-0 rounded-full'>
           <div
@@ -171,7 +170,6 @@ const LoadingPulse = React.forwardRef<HTMLDivElement, LoadingSpinnerProps>(
     return (
       <div ref={ref} className={cn('inline-flex items-center gap-3', className)} {...props}>
         <div className='relative'>
-          {/* Outer glow ring */}
           <div
             className={cn(
               'absolute inset-0 rounded-full opacity-30 blur-sm',

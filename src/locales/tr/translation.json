@@ -1849,7 +1849,7 @@
       "trustedPartner": "2024'ten beri güvenilen partner",
       "achievements": {
         "activeUsers": "Aktif Kullanıcı",
-        "completedProjects": "Tamamlanan Proje", 
+        "completedProjects": "Tamamlanan Proje",
         "countries": "Ülke",
         "satisfaction": "Kullanıcı Memnuniyeti"
       },
@@ -1865,7 +1865,7 @@
           "description": "Tüm kararlarımızı kullanıcı ihtiyaçları ve geri bildirimleri doğrultusunda alıyoruz."
         },
         "innovative": {
-          "title": "İnovatif Yaklaşım", 
+          "title": "İnovatif Yaklaşım",
           "description": "Teknolojinin öncüsü olmak için sürekli araştırma ve geliştirme yapıyoruz."
         },
         "reliable": {
@@ -2157,6 +2157,7 @@
   },
   "homepage": {
     "welcome": "Starkon'a Hoş Geldiniz",
+    "returnToHome": "Ana Sayfaya Dön",
     "title": "Next.js Enterprise Boilerplate",
     "description": "Authentication, UI bileşenleri ve modern web uygulamaları geliştirmek için ihtiyacınız olan her şeyin bulunduğu kapsamlı bir starter template.",
     "authentication": {
@@ -2166,7 +2167,7 @@
       "registerButton": "Kayıt Ol"
     },
     "components": {
-      "title": "Bileşenler", 
+      "title": "Bileşenler",
       "description": "Radix UI ve Tailwind CSS ile stillendirilmiş 50+ önceden oluşturulmuş bileşen.",
       "viewButton": "Bileşenleri Görüntüle"
     },
@@ -2219,7 +2220,7 @@
     "navbar": {
       "features": "Özellikler",
       "pricing": "Fiyatlandırma",
-      "reviews": "Yorumlar", 
+      "reviews": "Yorumlar",
       "faq": "SSS",
       "getStarted": "Başlayın"
     },
@@ -2227,7 +2228,7 @@
       "description": "Modern web uygulamaları için kurumsal düzeyde Next.js şablonu.",
       "github": "GitHub",
       "documentation": "Dokümantasyon",
-      "support": "Destek", 
+      "support": "Destek",
       "copyright": "© 2024 Starkon. Tüm hakları saklıdır."
     },
     "hero": {
@@ -2370,7 +2371,7 @@
         "description": "İşletmelerin dijital dönüşüm yolculuklarında onlara rehberlik etmek ve teknoloji gücüyle büyümelerine destek olmak."
       },
       "vision": {
-        "title": "Vizyonumuz", 
+        "title": "Vizyonumuz",
         "description": "Teknoloji ve yaratıcılığı birleştirerek, müşterilerimizin hayallerini gerçeğe dönüştüren lider dijital ajans olmak."
       },
       "team": {

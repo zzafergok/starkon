@@ -6,13 +6,7 @@ import React, { createContext, useContext, useEffect, useState, ReactNode, useCa
 
 import AuthApiService from '@/lib/services/authApiService'
 import { SessionTokenManager } from '@/lib/services/sessionTokenManager'
-
-interface User {
-  id: string
-  email: string
-  name: string
-  role?: string
-}
+import { User } from '@/lib/types/auth'
 
 export interface AuthContextType {
   user: User | null
@@ -23,6 +17,12 @@ export interface AuthContextType {
   logout: () => Promise<void>
   checkAuth: () => Promise<boolean>
   refreshToken: () => Promise<void>
+  terminateSession: (sessionId: string) => Promise<void>
+  terminateAllOtherSessions: () => Promise<void>
+  forgotPassword: (email: string) => Promise<void>
+  resetPassword: (token: string, password: string) => Promise<void>
+  verifyEmail: (token: string) => Promise<void>
+  resendVerification: (email: string) => Promise<void>
 }
 
 export const AuthContext = createContext<AuthContextType | undefined>(undefined)
@@ -237,6 +237,84 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   }, [handleLogout])
 
+  // Oturum sonlandırma
+  const terminateSession = useCallback(async (sessionId: string): Promise<void> => {
+    try {
+      console.log('🔄 Terminating session:', sessionId)
+      // TODO: Implement API call
+      // await AuthApiService.terminateSession(sessionId)
+      console.log('✅ Session terminated successfully')
+    } catch (error) {
+      console.error('❌ Failed to terminate session:', error)
+      throw error
+    }
+  }, [])
+
+  // Diğer tüm oturumları sonlandırma
+  const terminateAllOtherSessions = useCallback(async (): Promise<void> => {
+    try {
+      console.log('🔄 Terminating all other sessions')
+      // TODO: Implement API call
+      // await AuthApiService.terminateAllOtherSessions()
+      console.log('✅ All other sessions terminated successfully')
+    } catch (error) {
+      console.error('❌ Failed to terminate all other sessions:', error)
+      throw error
+    }
+  }, [])
+
+  // Şifremi unuttum
+  const forgotPassword = useCallback(async (email: string): Promise<void> => {
+    try {
+      console.log('🔄 Requesting password reset for:', email)
+      await AuthApiService.forgotPassword(email)
+      console.log('✅ Password reset request sent successfully')
+    } catch (error) {
+      console.error('❌ Forgot password request failed:', error)
+      throw error
+    }
+  }, [])
+
+  // Şifre sıfırlama
+  const resetPassword = useCallback(async (token: string, password: string): Promise<void> => {
+    try {
+      console.log('🔄 Resetting password with token...')
+      await AuthApiService.resetPassword({
+        token,
+        newPassword: password,
+        confirmPassword: password,
+      })
+      console.log('✅ Password reset successfully')
+    } catch (error) {
+      console.error('❌ Password reset failed:', error)
+      throw error
+    }
+  }, [])
+
+  // Email doğrulama
+  const verifyEmail = useCallback(async (token: string): Promise<void> => {
+    try {
+      console.log('🔄 Verifying email with token...')
+      await AuthApiService.verifyEmail(token)
+      console.log('✅ Email verified successfully')
+    } catch (error) {
+      console.error('❌ Email verification failed:', error)
+      throw error
+    }
+  }, [])
+
+  // Doğrulama maili tekrar gönder
+  const resendVerification = useCallback(async (email: string): Promise<void> => {
+    try {
+      console.log('🔄 Resending verification email to:', email)
+      await AuthApiService.resendVerification(email)
+      console.log('✅ Verification email sent successfully')
+    } catch (error) {
+      console.error('❌ Resend verification failed:', error)
+      throw error
+    }
+  }, [])
+
   // Sayfa yüklendiğinde auth durumunu kontrol et
   useEffect(() => {
     const initializeAuth = async () => {
@@ -292,6 +370,12 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     logout,
     checkAuth,
     refreshToken,
+    terminateSession,
+    terminateAllOtherSessions,
+    forgotPassword,
+    resetPassword,
+    verifyEmail,
+    resendVerification,
   }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

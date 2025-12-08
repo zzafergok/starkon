@@ -2,8 +2,6 @@
 
 import { useRouter } from 'next/navigation'
 
-import React from 'react'
-
 import { useTranslation } from 'react-i18next'
 import { Home, ArrowLeft, Search } from 'lucide-react'
 

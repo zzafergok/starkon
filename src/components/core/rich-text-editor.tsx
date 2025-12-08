@@ -40,7 +40,7 @@ import {
 import { Badge } from '@/components/core/badge'
 import { Input } from '@/components/core/input'
 import { Button } from '@/components/core/button'
-import { Separator } from '@/components/core/seperator'
+import { Separator } from '@/components/core/separator'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/core/select'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/core/dialog'
 
@@ -180,7 +180,7 @@ export function RichTextEditor({
   ]
 
   const colors = [
-    '#FFFAFA',
+    '#000000',
     '#ffffff',
     '#ff0000',
     '#00ff00',
@@ -260,26 +260,28 @@ export function RichTextEditor({
   // Insert HTML
   const insertHTML = useCallback(
     (html: string) => {
-      if (readOnly || disabled) return
+      if (typeof window !== 'undefined') {
+        if (readOnly || disabled) return
 
-      const selection = window.getSelection()
-      if (selection && selection.rangeCount > 0) {
-        const range = selection.getRangeAt(0)
-        range.deleteContents()
+        const selection = window.getSelection()
+        if (selection && selection.rangeCount > 0) {
+          const range = selection.getRangeAt(0)
+          range.deleteContents()
 
-        const div = document.createElement('div')
-        div.innerHTML = html
-        const fragment = document.createDocumentFragment()
-        let node
-        while ((node = div.firstChild)) {
-          fragment.appendChild(node)
-        }
-        range.insertNode(fragment)
+          const div = document.createElement('div')
+          div.innerHTML = html
+          const fragment = document.createDocumentFragment()
+          let node
+          while ((node = div.firstChild)) {
+            fragment.appendChild(node)
+          }
+          range.insertNode(fragment)
 
-        if (editorRef.current) {
-          const newContent = editorRef.current.innerHTML
-          setContent(newContent)
-          onChange?.(newContent)
+          if (editorRef.current) {
+            const newContent = editorRef.current.innerHTML
+            setContent(newContent)
+            onChange?.(newContent)
+          }
         }
       }
     },
@@ -708,7 +710,6 @@ export function RichTextEditor({
               className={cn(
                 'p-4 outline-none overflow-y-auto resize-none',
                 'prose prose-neutral dark:prose-invert max-w-none',
-                'focus:ring-1 focus:ring-primary/50 focus:ring-inset',
               )}
               style={{
                 height: typeof height === 'number' ? `${height}px` : height,

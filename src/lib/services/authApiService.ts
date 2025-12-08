@@ -151,6 +151,18 @@ export const registerUser = async (userData: RegisterCredentials): Promise<Regis
   try {
     console.log('🔄 Register attempt for:', userData.email)
 
+    if (USE_MOCK_DATA) {
+      console.log('✅ Mock registration successful')
+      return {
+        success: true,
+        data: {
+          message: 'Registration successful. Please verify your email.',
+          email: userData.email,
+          emailSent: true,
+        },
+      }
+    }
+
     const config: RequestConfig = { skipAuth: true }
     const response: any = await apiClient.post<RegisterResponse>(API_ENDPOINTS.AUTH.REGISTER, userData, config)
 
@@ -234,6 +246,13 @@ export const verifyEmail = async (token: string): Promise<LoginResponse> => {
   try {
     console.log('🔄 Email verification attempt with token')
 
+    if (USE_MOCK_DATA) {
+      console.log('✅ Mock email verification successful')
+      // Simulate login after verification
+      const mockUser = await MockAuthService.login('admin@example.com', 'admin123')
+      return mockUser
+    }
+
     const config: RequestConfig = { skipAuth: true }
     const verifyData: VerifyEmailRequest = { token }
     const response: any = await apiClient.post<LoginResponse>(API_ENDPOINTS.AUTH.VERIFY_EMAIL, verifyData, config)
@@ -263,6 +282,11 @@ export const verifyEmail = async (token: string): Promise<LoginResponse> => {
 export const resendVerification = async (email: string): Promise<BasicResponse> => {
   try {
     console.log('🔄 Resend verification attempt for:', email)
+
+    if (USE_MOCK_DATA) {
+      console.log('✅ Mock resend verification successful')
+      return { success: true, message: 'Verification email resent' }
+    }
 
     const config: RequestConfig = { skipAuth: true }
     const resendData: ResendVerificationRequest = { email }
@@ -336,6 +360,11 @@ export const forgotPassword = async (email: string): Promise<BasicResponse> => {
   try {
     console.log('🔄 Forgot password attempt for:', email)
 
+    if (USE_MOCK_DATA) {
+      console.log('✅ Mock forgot password email sent')
+      return { success: true, message: 'Password reset email sent' }
+    }
+
     const config: RequestConfig = { skipAuth: true }
     const forgotData: ForgotPasswordRequest = { email }
     const response: any = await apiClient.post<BasicResponse>(API_ENDPOINTS.AUTH.FORGOT_PASSWORD, forgotData, config)
@@ -356,6 +385,11 @@ export const forgotPassword = async (email: string): Promise<BasicResponse> => {
 export const resetPassword = async (resetData: ResetPasswordRequest): Promise<BasicResponse> => {
   try {
     console.log('🔄 Password reset attempt')
+
+    if (USE_MOCK_DATA) {
+      console.log('✅ Mock password reset successful')
+      return { success: true, message: 'Password reset successful' }
+    }
 
     const config: RequestConfig = { skipAuth: true }
     const response: any = await apiClient.post<BasicResponse>(API_ENDPOINTS.AUTH.RESET_PASSWORD, resetData, config)
@@ -416,6 +450,18 @@ export const updateProfile = async (profileData: UpdateProfileRequest): Promise<
   try {
     console.log('🔄 Updating user profile...')
 
+    if (USE_MOCK_DATA) {
+      console.log('✅ Mock profile update successful')
+      return {
+        user: {
+          id: '1',
+          email: profileData.email || 'admin@example.com',
+          name: profileData.name || 'Admin User',
+          role: 'admin',
+        },
+      }
+    }
+
     const response: any = await apiClient.put<CurrentUserResponse>(API_ENDPOINTS.AUTH.PROFILE, profileData)
 
     console.log('✅ Profile updated successfully')
@@ -435,6 +481,11 @@ export const changePassword = async (passwordData: ChangePasswordRequest): Promi
   try {
     console.log('🔄 Changing password...')
 
+    if (USE_MOCK_DATA) {
+      console.log('✅ Mock password change successful')
+      return { success: true, message: 'Password changed successfully' }
+    }
+
     const response: any = await apiClient.put<BasicResponse>(API_ENDPOINTS.AUTH.CHANGE_PASSWORD, passwordData)
 
     console.log('✅ Password changed successfully')
@@ -452,6 +503,11 @@ export const changePassword = async (passwordData: ChangePasswordRequest): Promi
 export const logoutUser = async (): Promise<void> => {
   try {
     console.log('🔄 Logout attempt...')
+
+    if (USE_MOCK_DATA) {
+      console.log('✅ Mock logout successful')
+      return
+    }
 
     const refreshToken = SessionTokenManager.getRefreshToken()
 

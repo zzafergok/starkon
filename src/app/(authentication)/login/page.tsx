@@ -3,6 +3,7 @@
 
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { ArrowLeft } from 'lucide-react'
 
 import React, { useEffect, useState } from 'react'
 
@@ -134,12 +135,21 @@ const LoginContent: React.FC = () => {
   }
 
   return (
-    <div className='min-h-screen flex items-center justify-center bg-background py-12 px-4 sm:px-6 lg:px-8'>
+    <div className='h-screen flex items-center justify-center bg-background px-4 sm:px-6 lg:px-8 overflow-hidden'>
       <div className='max-w-md w-full space-y-8'>
-        {/* Language & Theme Switchers */}
-        <div className='flex justify-center items-center space-x-2'>
-          <LanguageSwitcher variant='button' showLabel className='bg-card shadow-theme-sm border border-border' />
-          <ThemeSwitcher variant='button' showLabel />
+        {/* Navigation & Actions */}
+        <div className='flex justify-between items-center'>
+          <Link href='/'>
+            <Button variant='ghost' size='sm' className='text-muted-foreground hover:text-primary gap-2 pl-0'>
+              <ArrowLeft className='h-4 w-4' />
+              {t('homepage.returnToHome') || 'Ana Sayfa'}
+            </Button>
+          </Link>
+
+          <div className='flex items-center space-x-2'>
+            <LanguageSwitcher variant='button' showLabel className='bg-card shadow-theme-sm border border-border' />
+            <ThemeSwitcher variant='button' showLabel />
+          </div>
         </div>
 
         <Card className='w-full bg-card border-border shadow-theme-lg'>

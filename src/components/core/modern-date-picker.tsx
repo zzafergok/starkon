@@ -19,6 +19,7 @@ interface ModernDatePickerProps {
   maxDate?: Date
   className?: string
   error?: boolean
+  includeTime?: boolean
 }
 
 const MONTHS = [
@@ -56,6 +57,7 @@ export function ModernDatePicker({
   maxDate,
   className,
   error = false,
+  includeTime = false,
 }: ModernDatePickerProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [currentMonth, setCurrentMonth] = useState(value?.getMonth() ?? new Date().getMonth())
@@ -98,7 +100,14 @@ export function ModernDatePicker({
   }, [currentMonth, currentYear])
 
   const handleDateSelect = (date: Date) => {
-    onChange(date)
+    if (includeTime) {
+      // Set time to start of day (00:00:00.000Z) for consistent ISO datetime format
+      const dateWithTime = new Date(date)
+      dateWithTime.setHours(0, 0, 0, 0)
+      onChange(dateWithTime)
+    } else {
+      onChange(date)
+    }
     setIsOpen(false)
   }
 
@@ -109,6 +118,10 @@ export function ModernDatePicker({
 
   const handleQuickDateSelect = (quickDate: (typeof QUICK_DATES)[0]) => {
     const date = quickDate.getValue()
+    if (includeTime) {
+      // Set time to start of day (00:00:00.000Z) for consistent ISO datetime format
+      date.setHours(0, 0, 0, 0)
+    }
     onChange(date)
     setIsOpen(false)
   }
@@ -159,7 +172,7 @@ export function ModernDatePicker({
           className={cn(
             'w-full justify-start text-left font-normal h-10 px-3 py-2',
             !value && 'text-muted-foreground',
-            error && 'border-red-500 focus:border-red-500 focus:ring-red-500',
+            error && 'border-red-500 focus:border-red-500',
             'hover:bg-gray-50 dark:hover:bg-gray-800/50',
             'transition-all duration-200',
             className,
@@ -177,7 +190,10 @@ export function ModernDatePicker({
         </Button>
       </PopoverTrigger>
 
-      <PopoverContent className='w-auto p-0 shadow-lg border border-gray-200 dark:border-gray-700' align='start'>
+      <PopoverContent
+        className='w-auto p-0 shadow-lg border border-gray-200 dark:border-gray-700 z-[150]'
+        align='start'
+      >
         <div className='flex'>
           {/* Quick dates sidebar */}
           <div className='border-r border-gray-200 dark:border-gray-700 p-3 max-w-[100px]'>

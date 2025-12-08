@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+
 import { cn } from '@/lib/utils'
 
 interface LogoProps {
@@ -23,7 +24,7 @@ export function Logo({ size = 'md', className, showText = true }: LogoProps) {
       <div className={cn('rounded-lg flex items-center justify-center overflow-hidden', currentSize.class)}>
         <Image
           src='/assets/logo/logo-cat.png'
-          alt='Starkon'
+          alt='Starkon Kanban'
           width={currentSize.dimensions}
           height={currentSize.dimensions}
           className='w-full h-full object-contain'
@@ -31,11 +32,7 @@ export function Logo({ size = 'md', className, showText = true }: LogoProps) {
           quality={95}
         />
       </div>
-      {showText && (
-        <span className='text-xl font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent'>
-          Starkon Architect
-        </span>
-      )}
+      {showText && <span className='text-xl font-bold text-foreground'>Starkon Kanban</span>}
     </div>
   )
 }

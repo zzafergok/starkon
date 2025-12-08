@@ -1,9 +1,10 @@
 'use client'
 
 import * as React from 'react'
+
 import { cn } from '@/lib/utils'
 
-type BadgeVariant = 'default' | 'secondary' | 'destructive' | 'outline'
+type BadgeVariant = 'default' | 'secondary' | 'destructive' | 'outline' | 'warning'
 type BadgeSize = 'default' | 'sm' | 'lg'
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
@@ -29,6 +30,11 @@ const variantStyles: Record<BadgeVariant, React.CSSProperties> = {
   destructive: {
     backgroundColor: 'hsl(var(--destructive))',
     color: 'hsl(var(--destructive-foreground))',
+    borderWidth: '0',
+  },
+  warning: {
+    backgroundColor: 'rgb(251 146 60)', // orange-400
+    color: 'rgb(255 255 255)', // white
     borderWidth: '0',
   },
   outline: {
@@ -76,7 +82,7 @@ function Badge({
     <span
       className={cn(
         // Base classes without any border, background, or color classes
-        'inline-flex items-center font-semibold transition-colors focus:outline-none focus:ring-1 focus:ring-ring/50 focus:ring-inset rounded-full',
+        'inline-flex items-center font-semibold transition-colors focus:outline-none rounded-full',
         // Size classes
         sizeStyles[size],
         // Hover effects without color specifications

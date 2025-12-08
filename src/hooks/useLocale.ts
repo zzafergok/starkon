@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next'
 import { SupportedLocale, getUserLocale, setUserLocale, isSupportedLocale, ensureLocaleInUrl } from '@/lib/locale-utils'
 
 export function useLocale() {
-  const { i18n } = useTranslation()
+  const { i18n, t } = useTranslation()
   const searchParams = useSearchParams()
   const [currentLocale, setCurrentLocale] = useState<SupportedLocale>(() => getUserLocale())
 
@@ -137,5 +137,6 @@ export function useLocale() {
     isI18nReady,
     isMounted,
     isReady: isMounted && isI18nReady, // Hem mount hem de i18n hazır mı?
+    t, // Translation function
   }
 }

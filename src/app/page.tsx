@@ -2,15 +2,21 @@
 
 import Link from 'next/link'
 
-import { useTranslation } from 'react-i18next'
 import { Zap, Shield, Code, Users, Activity, Settings } from 'lucide-react'
+
+import { useLocale } from '@/hooks/useLocale'
 
 import { Badge } from '@/components/core/badge'
 import { Button } from '@/components/core/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/core/card'
 
 export default function HomePage() {
-  const { t } = useTranslation()
+  const { t, isMounted } = useLocale()
+
+  if (!isMounted) {
+    return null
+  }
+
   return (
     <div className='min-h-screen bg-gray-50 dark:bg-gray-900'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12'>

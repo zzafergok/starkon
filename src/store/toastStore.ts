@@ -14,6 +14,7 @@ export interface Toast {
   type: ToastType
   title?: string
   message: string
+  description?: string
   duration?: number
   persistent?: boolean
   action?: ToastAction
@@ -92,25 +93,25 @@ export const useToast = () => {
     success: (
       message: string,
       title?: string,
-      options?: Partial<Pick<Toast, 'duration' | 'persistent' | 'action' | 'hideProgressBar'>>,
+      options?: Partial<Pick<Toast, 'duration' | 'persistent' | 'action' | 'hideProgressBar' | 'description'>>,
     ) => addToast({ type: 'success', message, title, hideProgressBar: false, ...options }),
 
     error: (
       message: string,
       title?: string,
-      options?: Partial<Pick<Toast, 'duration' | 'persistent' | 'action' | 'hideProgressBar'>>,
+      options?: Partial<Pick<Toast, 'duration' | 'persistent' | 'action' | 'hideProgressBar' | 'description'>>,
     ) => addToast({ type: 'error', message, title, duration: 7000, hideProgressBar: false, ...options }),
 
     warning: (
       message: string,
       title?: string,
-      options?: Partial<Pick<Toast, 'duration' | 'persistent' | 'action' | 'hideProgressBar'>>,
+      options?: Partial<Pick<Toast, 'duration' | 'persistent' | 'action' | 'hideProgressBar' | 'description'>>,
     ) => addToast({ type: 'warning', message, title, duration: 6000, hideProgressBar: false, ...options }),
 
     info: (
       message: string,
       title?: string,
-      options?: Partial<Pick<Toast, 'duration' | 'persistent' | 'action' | 'hideProgressBar'>>,
+      options?: Partial<Pick<Toast, 'duration' | 'persistent' | 'action' | 'hideProgressBar' | 'description'>>,
     ) => addToast({ type: 'info', message, title, hideProgressBar: false, ...options }),
 
     custom: (toast: Omit<Toast, 'id'>) => addToast({ hideProgressBar: false, ...toast }),

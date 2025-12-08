@@ -5,6 +5,8 @@ export interface User {
   role?: string
   createdAt?: string
   updatedAt?: string
+  lastPasswordChange?: string
+  twoFactorEnabled?: boolean
 }
 
 export interface LoginCredentials {

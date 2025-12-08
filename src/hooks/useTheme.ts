@@ -69,7 +69,9 @@ export function useTheme() {
         clearTimeout(transitionTimeoutRef.current)
       }
 
-      // Apply theme changes instantly without any transitions
+      setIsTransitioning(true)
+      root.classList.add('theme-transitioning')
+
       if (isDark) {
         root.classList.remove('light')
         root.classList.add('dark')
@@ -85,8 +87,10 @@ export function useTheme() {
         metaThemeColor.setAttribute('content', isDark ? '#0f172a' : '#ffffff')
       }
 
-      // No transition state needed for instant switching
-      setIsTransitioning(false)
+      transitionTimeoutRef.current = setTimeout(() => {
+        root.classList.remove('theme-transitioning')
+        setIsTransitioning(false)
+      }, 200)
     },
     [setIsTransitioning],
   )
@@ -122,10 +126,10 @@ export function useTheme() {
 
   const setTheme = useCallback(
     (newTheme: Theme) => {
-      if (!isInitialized || theme === newTheme) return
+      if (!isInitialized || isTransitioning) return
       setStoreTheme(newTheme)
     },
-    [isInitialized, theme, setStoreTheme],
+    [isInitialized, isTransitioning, setStoreTheme],
   )
 
   const toggleTheme = useCallback(() => {
