@@ -2,7 +2,10 @@
   "git": {
     "commitMessage": "chore: release v${version}",
     "tagName": "v${version}",
-    "requireCleanWorkingDir": true
+    "requireCleanWorkingDir": true,
+    "commit": true,
+    "tag": true,
+    "push": true
   },
   "github": {
     "release": true,
@@ -16,5 +19,15 @@
       "preset": "conventionalcommits",
       "infile": "CHANGELOG.md"
     }
+  },
+  "hooks": {
+    "after:bump": "echo \"Sürüm v${version} olarak güncellendi.\""
+  },
+  "prompt": {
+    "commit": "Değişiklikler commit edilsin mi?",
+    "tag": "Tag oluşturulsun mu?",
+    "push": "Git push yapılsın mı?",
+    "ghRelease": "Github Release oluşturulsun mu?",
+    "publish": "NPM paketi yayınlansın mı?"
   }
 }
