@@ -131,8 +131,8 @@ export default function ProfilePage() {
   ]
 
   return (
-    <div className='min-h-screen bg-gradient-to-br from-neutral-50 to-neutral-100 dark:from-neutral-900 dark:to-neutral-800'>
-      <div className='container mx-auto px-4 py-6 lg:py-8'>
+    <div className=''>
+      <div className='container mx-auto px-4 py-6 lg:p-0'>
         <div className='max-w-6xl mx-auto space-y-6 lg:space-y-8'>
           {/* Header */}
           <div className='text-center space-y-4'>

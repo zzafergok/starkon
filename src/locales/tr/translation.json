@@ -1939,46 +1939,57 @@
       }
     },
     "dashboard": {
-      "boilerplateProject": "Boilerplate Projesi",
-      "welcomeToStarkon": "Starkon Template'e Hoş Geldiniz",
-      "boilerplateDescription": "Modern ve özellik açısından zengin bir Next.js boilerplate'i. Hazır UI bileşenleri, güçlü authentication sistemi ve daha fazlasıyla projelerinizi hızla başlatın.",
-      "defaultUser": "Varsayılan Kullanıcı",
-      "userInfoNotLoaded": "Kullanıcı bilgileri yüklenmedi",
-      "debugAuthState": "Auth durumunu debug et",
-      "getStarted": "Başlayın",
-      "installationTitle": "Hemen Kurulum Yapın",
-      "installationDescription": "Bu boilerplate'i kullanarak yeni projenizi dakikalar içinde başlatabilirsiniz.",
-      "installationSteps": "Kurulum Adımları",
-      "step1Title": "Projeyi Oluşturun",
-      "step1Description": "CLI aracımız ile yeni bir proje oluşturun",
-      "step2Title": "Geliştirme Sunucusunu Başlatın",
-      "step2Description": "Projeye girin ve development server'ı çalıştırın",
-      "step3Title": "Geliştirmeye Başlayın",
-      "step3Description": "Artık kodlamaya başlayabilir ve özelleştirmeler yapabilirsiniz",
-      "whatYouGet": "Neler Elde Edeceksiniz",
-      "exploreComponents": "Bileşenleri Keşfedin",
-      "viewOnGithub": "GitHub'da Görüntüle",
-      "freeAndOpenSource": "Ücretsiz ve açık kaynak",
+      "title": "Kontrol Paneli",
+      "welcomeToStarkon": "Starkon'a Hoş Geldiniz",
+      "boilerplateDescription": "Modern web uygulamalarınız için özellik açısından zengin, type-safe ve üretime hazır başlangıç kiti.",
+      "boilerplateProject": "Starter Kit",
+      "defaultUser": "Misafir Kullanıcı",
+      "userInfoNotLoaded": "Kullanıcı bilgisi yüklenemedi",
+      "debugAuthState": "Auth Durumunu Hata Ayıkla",
+      "viewComponents": "Bileşenleri İncele",
+      "starOnGithub": "GitHub'da Yıldızla",
       "features": {
         "components": "UI Bileşenleri",
-        "componentsDesc": "Hazır ve özelleştirilebilir UI bileşenleri",
+        "componentsDesc": "30+ Hazır Bileşen",
         "readyToUse": "Kullanıma Hazır",
-        "readyToUseDesc": "Tüm bileşenler test edilmiş ve kullanıma hazır",
+        "readyToUseDesc": "Tamamlanmış Kurulum",
         "typescript": "TypeScript",
-        "typescriptDesc": "Tam TypeScript desteği ile tip güvenliği",
-        "performance": "Yüksek Performans",
-        "performanceDesc": "Optimize edilmiş ve hızlı kullanıcı deneyimi"
+        "typescriptDesc": "Tam Tip Desteği",
+        "performance": "Performans",
+        "performanceDesc": "Optimize Edilmiş"
       },
-      "preview": {
-        "components": "30+ UI Bileşeni",
-        "componentsDesc": "Button, Card, Form gibi hazır bileşenler",
-        "typescript": "Full TypeScript",
-        "typescriptDesc": "Tip güvenliği ve IntelliSense desteği",
-        "performance": "Yüksek Performans",
-        "performanceDesc": "Next.js 15 ile optimize edilmiş performans",
-        "authentication": "Authentication Sistemi",
-        "authenticationDesc": "JWT tabanlı güvenli giriş sistemi"
+      "cli": {
+        "title": "CLI ile Hızlı Başlangıç",
+        "description": "Starkon CLI aracını kullanarak projelerinizi dakikalar içinde başlatın ve yönetin.",
+        "installation": {
+          "title": "Kurulum",
+          "global": "Global Kurulum (Önerilen)",
+          "npx": "NPX ile Tek Seferlik Kullanım"
+        },
+        "commands": {
+          "title": "Temel Komutlar",
+          "init": "Yeni proje başlatır",
+          "add": "Projeye yeni bileşen ekler",
+          "update": "Bileşenleri günceller",
+          "list": "Mevcut bileşenleri listeler"
+        },
+        "nextSteps": {
+          "title": "Sonraki Adımlar",
+          "step1": "Proje dizinine gidin",
+          "step2": "Geliştirme sunucusunu başlatın",
+          "step3": "Tarayıcıda görüntüleyin"
+        }
       }
+    },
+    "preview": {
+      "components": "30+ UI Bileşeni",
+      "componentsDesc": "Button, Card, Form gibi hazır bileşenler",
+      "typescript": "Full TypeScript",
+      "typescriptDesc": "Tip güvenliği ve IntelliSense desteği",
+      "performance": "Yüksek Performans",
+      "performanceDesc": "Next.js 15 ile optimize edilmiş performans",
+      "authentication": "Authentication Sistemi",
+      "authenticationDesc": "JWT tabanlı güvenli giriş sistemi"
     }
   },
   "homepage": {

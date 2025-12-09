@@ -6,7 +6,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import { useState, useEffect } from 'react'
 
 import { useTranslation } from 'react-i18next'
-import { LogOut, Settings, LayoutDashboard, UserCircle, Menu, X, ChevronDown, Users, Component } from 'lucide-react'
+import { LogOut, Settings, LayoutDashboard, UserCircle, Menu, X, ChevronDown, Component } from 'lucide-react'
 
 import {
   DropdownMenu,
@@ -59,12 +59,6 @@ export function AuthHeader() {
       href: '/components',
       icon: Component,
       description: 'UI component library and examples',
-    },
-    {
-      name: t('navigation.users'),
-      href: '/users',
-      icon: Users,
-      description: t('navigation.usersDescription'),
     },
   ]
 

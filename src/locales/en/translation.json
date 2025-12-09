@@ -1624,79 +1624,57 @@
   },
   "pages": {
     "dashboard": {
-      "welcome": "Welcome, {{name}}!",
-      "description": "Welcome to your dashboard. You can manage all your operations from here.",
-      "userInfoNotLoaded": "User information could not be loaded",
-      "debugAuthState": "Debug Auth State",
-      "defaultUser": "User",
-      "userInfo": "User Information",
-      "accountDetails": "Account details and information",
-      "quickActions": "Quick Actions",
-      "recentActivity": "Recent Activity",
-      "fromLastMonth": "from last month",
-      "viewProfile": "View Profile",
-      "accountSettings": "Account Settings",
-      "logout": "Logout",
-      "loggingOut": "Logging out...",
-      "noInfo": "No information",
-      "stats": {
-        "totalProjects": "Total Projects",
-        "activeUsers": "Active Users",
-        "revenue": "Revenue",
-        "activities": "Activities"
-      },
-      "fields": {
-        "fullName": "Full Name",
-        "email": "Email",
-        "role": "Role",
-        "joinDate": "Join Date",
-        "lastLogin": "Last Login"
-      },
-      "activity": {
-        "login": "Logged into system",
-        "profileUpdated": "Profile updated",
-        "passwordChanged": "Password changed",
-        "now": "Now",
-        "yesterday": "Yesterday",
-        "lastWeek": "Last week"
-      },
-      "boilerplateProject": "Boilerplate Project",
+      "title": "Dashboard",
       "welcomeToStarkon": "Welcome to Starkon",
-      "boilerplateDescription": "Comprehensive starter template for modern React applications. 30+ ready components, TypeScript support, and modern design system.",
-      "getStarted": "Get Started",
-      "installationTitle": "Installation Guide",
-      "installationDescription": "Set up your project in minutes and start developing.",
-      "installationSteps": "Installation Steps",
-      "step1Title": "Create Project",
-      "step1Description": "Create a new project using our CLI tool:",
-      "step2Title": "Start Development",
-      "step2Description": "Navigate to project folder and start the development server:",
-      "step3Title": "Enjoy!",
-      "step3Description": "Now you can start developing your modern React application.",
-      "whatYouGet": "What You Get",
+      "boilerplateDescription": "A feature-rich, type-safe, and production-ready starter kit for your modern web applications.",
+      "boilerplateProject": "Starter Kit",
+      "defaultUser": "Guest User",
+      "userInfoNotLoaded": "User info could not be loaded",
+      "debugAuthState": "Debug Auth State",
+      "viewComponents": "View Components",
+      "starOnGithub": "Star on GitHub",
       "features": {
-        "components": "30+ Components",
-        "componentsDesc": "Ready-to-use, modern UI components",
-        "readyToUse": "100% Ready",
-        "readyToUseDesc": "Fully completed components ready to use",
+        "components": "UI Components",
+        "componentsDesc": "30+ Ready Components",
+        "readyToUse": "Ready to Use",
+        "readyToUseDesc": "Complete Setup",
         "typescript": "TypeScript",
-        "typescriptDesc": "Safe development with full TypeScript support",
+        "typescriptDesc": "Full Type Support",
         "performance": "Performance",
-        "performanceDesc": "Optimized and fast component library"
+        "performanceDesc": "Fully Optimized"
       },
-      "preview": {
-        "components": "30+ UI Components",
-        "componentsDesc": "Ready components like Button, Card, Form",
-        "typescript": "Full TypeScript",
-        "typescriptDesc": "Type safety and IntelliSense support",
-        "performance": "High Performance",
-        "performanceDesc": "Optimized performance with Next.js 15",
-        "authentication": "Authentication System",
-        "authenticationDesc": "JWT-based secure login system"
-      },
-      "exploreComponents": "Explore Components",
-      "viewOnGithub": "View on GitHub",
-      "freeAndOpenSource": "Free and open source"
+      "cli": {
+        "title": "Quick Start with CLI",
+        "description": "Initialize and manage your projects in minutes using the Starkon CLI tool.",
+        "installation": {
+          "title": "Installation",
+          "global": "Global Install (Recommended)",
+          "npx": "One-time use with NPX"
+        },
+        "commands": {
+          "title": "Core Commands",
+          "init": "Initialize a new project",
+          "add": "Add a new component",
+          "update": "Update components",
+          "list": "List available components"
+        },
+        "nextSteps": {
+          "title": "Next Steps",
+          "step1": "Navigate to project directory",
+          "step2": "Start development server",
+          "step3": "View in browser"
+        }
+      }
+    },
+    "preview": {
+      "components": "30+ UI Components",
+      "componentsDesc": "Ready components like Button, Card, Form",
+      "typescript": "Full TypeScript",
+      "typescriptDesc": "Type safety and IntelliSense support",
+      "performance": "High Performance",
+      "performanceDesc": "Optimized performance with Next.js 15",
+      "authentication": "Authentication System",
+      "authenticationDesc": "JWT-based secure login system"
     },
     "components": {
       "title": "Components",
