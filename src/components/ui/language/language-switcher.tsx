@@ -12,17 +12,17 @@ import { changeLanguage, getCurrentLanguage } from '@/locales'
 import { cn } from '@/lib/utils'
 
 interface LanguageSwitcherProps {
-  variant?: 'button' | 'toggle'
-  size?: 'sm' | 'default' | 'lg'
   showLabel?: boolean
   className?: string
+  variant?: 'button' | 'toggle'
+  size?: 'sm' | 'default' | 'lg'
 }
 
 export function LanguageSwitcher({
-  variant = 'toggle',
-  size = 'default',
-  showLabel = false,
   className,
+  size = 'default',
+  variant = 'toggle',
+  showLabel = false,
 }: LanguageSwitcherProps) {
   const { t, i18n } = useTranslation()
 

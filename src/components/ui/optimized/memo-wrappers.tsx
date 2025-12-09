@@ -47,11 +47,11 @@ export const deepCompare = <T extends Record<string, unknown>>(prevProps: T, nex
 // Memoized Card component
 interface MemoizedCardProps {
   title?: string
-  description?: string
-  children: React.ReactNode
-  className?: string
   loading?: boolean
+  className?: string
+  description?: string
   error?: string | null
+  children: React.ReactNode
   actions?: React.ReactNode
 }
 
@@ -124,12 +124,12 @@ interface MemoizedBadgeListProps {
   items: Array<{
     id: string
     label: string
-    variant?: 'default' | 'secondary' | 'destructive' | 'outline'
     color?: string
+    variant?: 'default' | 'secondary' | 'destructive' | 'outline'
   }>
+  className?: string
   maxVisible?: number
   showCount?: boolean
-  className?: string
 }
 
 export const MemoizedBadgeList = memo<MemoizedBadgeListProps>(
@@ -188,11 +188,11 @@ MemoizedBadgeList.displayName = 'MemoizedBadgeList'
 // Memoized Table Row
 interface MemoizedTableRowProps {
   id: string
-  children: React.ReactNode
-  onClick?: (id: string) => void
+  hover?: boolean
   selected?: boolean
   className?: string
-  hover?: boolean
+  children: React.ReactNode
+  onClick?: (id: string) => void
 }
 
 export const MemoizedTableRow = memo<MemoizedTableRowProps>(
@@ -245,11 +245,11 @@ interface ListItemData {
 }
 
 interface MemoizedListItemProps {
+  compact?: boolean
   data: ListItemData
   selected?: boolean
   className?: string
   showActions?: boolean
-  compact?: boolean
 }
 
 export const MemoizedListItem = memo<MemoizedListItemProps>(
@@ -426,15 +426,15 @@ export function withPerformanceTracking<P extends object>(Component: React.Compo
 }
 
 const MemoWrappers = {
+  withMemo,
+  deepCompare,
   MemoizedCard,
-  MemoizedBadgeList,
+  shallowCompare,
   MemoizedTableRow,
   MemoizedListItem,
+  MemoizedBadgeList,
   createMemoizedComponent,
-  withMemo,
   withPerformanceTracking,
-  shallowCompare,
-  deepCompare,
 }
 
 export default MemoWrappers

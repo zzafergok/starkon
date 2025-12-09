@@ -13,39 +13,39 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/core/card
 import { cn } from '@/lib/utils'
 
 interface PerformanceData {
-  totalProjects: number
-  activeProjects: number
   totalTasks: number
-  completedTasks: number
-  inProgressTasks: number
   pendingTasks: number
   overdueTasks: number
+  totalProjects: number
+  activeProjects: number
+  completedTasks: number
+  inProgressTasks: number
 }
 
 interface PerformanceSummaryProps {
-  data: PerformanceData | null
   isLoading?: boolean
+  data: PerformanceData | null
   period?: 'week' | 'month' | 'quarter'
 }
 
 interface MetricCardProps {
   title: string
   value: string
+  bgClass: string
   subValue?: string
   progress?: number
-  trend?: 'up' | 'down' | 'neutral'
-  trendValue?: string
-  icon: React.ComponentType<{ className?: string }>
   colorClass: string
-  bgClass: string
+  trendValue?: string
+  trend?: 'up' | 'down' | 'neutral'
+  icon: React.ComponentType<{ className?: string }>
 }
 
 const MetricCard: React.FC<MetricCardProps> = ({
   title,
   value,
+  trend,
   subValue,
   progress,
-  trend,
   trendValue,
   icon: Icon,
   colorClass,
@@ -150,8 +150,8 @@ const LoadingState: React.FC = () => (
 
 export const PerformanceSummary: React.FC<PerformanceSummaryProps> = ({
   data,
-  isLoading = false,
   period = 'month',
+  isLoading = false,
 }) => {
   const { t } = useTranslation()
 
@@ -220,8 +220,8 @@ export const PerformanceSummary: React.FC<PerformanceSummaryProps> = ({
     return { trend: 'down', value: '-8%' }
   }
 
-  const completionTrend = getCompletionTrend()
   const activityTrend = getActivityTrend()
+  const completionTrend = getCompletionTrend()
   const efficiencyTrend = getEfficiencyTrend()
 
   return (

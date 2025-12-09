@@ -20,15 +20,15 @@ export default function SettingsPasswordSection() {
 
   const [isLoading, setIsLoading] = React.useState(false)
   const [showPasswords, setShowPasswords] = React.useState({
-    current: false,
     new: false,
+    current: false,
     confirm: false,
   })
 
   const {
+    // reset,
     register,
     handleSubmit,
-    // reset,
     formState: { errors },
   } = useForm<ChangePasswordRequest>({
     resolver: zodResolver(changePasswordSchema),

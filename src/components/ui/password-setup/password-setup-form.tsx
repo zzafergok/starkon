@@ -43,8 +43,9 @@ interface PasswordSetupFormProps {
 }
 
 export function PasswordSetupForm({ token, userEmail: _userEmail, onSetupComplete }: PasswordSetupFormProps) {
-  const { t } = useTranslation()
   const toast = useToast()
+  const { t } = useTranslation()
+
   const [isLoading, setIsLoading] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)

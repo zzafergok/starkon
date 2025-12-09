@@ -1,19 +1,23 @@
 'use client'
 
-import { useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
+
+import { useState } from 'react'
+
 import { Eye, EyeOff, Lock, Mail, CheckCircle2, XCircle, AlertTriangle, ArrowLeft, Shield, Key } from 'lucide-react'
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/core/card'
-import { Button } from '@/components/core/button'
 import { Input } from '@/components/core/input'
 import { Label } from '@/components/core/label'
+import { Button } from '@/components/core/button'
+import { Progress } from '@/components/core/progress'
 import { Alert, AlertDescription } from '@/components/core/alert'
 import { LoadingSpinner } from '@/components/core/loading-spinner'
-import { Progress } from '@/components/core/progress'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/core/card'
 
 import { useLocale } from '@/hooks/useLocale'
+
 import { useAuth } from '@/providers/AuthProvider'
+
 import { cn } from '@/lib/utils'
 
 interface EnhancedPasswordResetProps {

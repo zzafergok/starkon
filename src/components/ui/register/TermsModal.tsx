@@ -1,8 +1,9 @@
 'use client'
 
 import React from 'react'
-import { X, FileText, Calendar, Shield, AlertTriangle } from 'lucide-react'
+
 import { useTranslation } from 'react-i18next'
+import { X, FileText, Calendar, Shield, AlertTriangle } from 'lucide-react'
 
 interface TermsModalProps {
   isOpen: boolean

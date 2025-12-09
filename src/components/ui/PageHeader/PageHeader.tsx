@@ -24,37 +24,37 @@ export interface Action {
 export interface Tab {
   label: string
   value: string
-  icon?: React.ReactNode
   count?: number
   disabled?: boolean
+  icon?: React.ReactNode
 }
 
 export interface PageHeaderProps {
   title: string
-  subtitle?: string
-  breadcrumbs?: Breadcrumb[]
-  actions?: Action[]
   tabs?: Tab[]
-  activeTab?: string
-  onTabChange?: (value: string) => void
-  className?: string
   sticky?: boolean
+  subtitle?: string
+  actions?: Action[]
+  activeTab?: string
+  className?: string
   backButton?: boolean
+  breadcrumbs?: Breadcrumb[]
   onBackButtonClick?: () => void
+  onTabChange?: (value: string) => void
 }
 
 export function PageHeader({
-  title,
-  subtitle,
-  breadcrumbs,
-  actions,
   tabs,
+  title,
+  actions,
+  subtitle,
   activeTab,
-  onTabChange,
   className,
+  onTabChange,
+  breadcrumbs,
   sticky = false,
-  backButton = false,
   onBackButtonClick,
+  backButton = false,
 }: PageHeaderProps) {
   return (
     <div

@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+
 import { Bell, Mail, MessageSquare, Smartphone, Volume2, VolumeX } from 'lucide-react'
 
 import { Label } from '@/components/core/label'
@@ -13,9 +14,9 @@ import { cn } from '@/lib/utils'
 interface NotificationSetting {
   id: string
   title: string
+  enabled: boolean
   description: string
   icon: React.ReactNode
-  enabled: boolean
   category: 'email' | 'push' | 'desktop' | 'mobile'
 }
 
@@ -71,8 +72,8 @@ export function NotificationPreferences() {
     },
   ])
 
-  const [masterVolume, setMasterVolume] = useState(true)
   const [isSaving, setIsSaving] = useState(false)
+  const [masterVolume, setMasterVolume] = useState(true)
 
   const toggleSetting = (id: string) => {
     setSettings((prev) =>

@@ -19,17 +19,17 @@ interface PomodoroTimerProps {
 export function PomodoroTimer({ className }: PomodoroTimerProps) {
   const { t } = useTranslation()
   const {
+    tick,
     mode,
-    status,
-    timeLeft,
-    completedSessions,
-    currentCycle,
-    startFocus,
-    startBreak,
+    reset,
     pause,
     resume,
-    reset,
-    tick,
+    status,
+    timeLeft,
+    startFocus,
+    startBreak,
+    currentCycle,
+    completedSessions,
   } = usePomodoroStore()
 
   const [isMinimized, setIsMinimized] = useState(false)

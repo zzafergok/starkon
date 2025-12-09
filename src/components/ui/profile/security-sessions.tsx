@@ -27,29 +27,29 @@ import { cn } from '@/lib/utils'
 
 interface Session {
   id: string
+  os: string
+  ip: string
   device: string
   browser: string
-  os: string
-  location: string
-  ip: string
-  lastActive: string
   current: boolean
   trusted: boolean
+  location: string
+  lastActive: string
 }
 
 interface LoginAttempt {
   id: string
-  timestamp: string
-  location: string
   ip: string
-  success: boolean
   device: string
+  success: boolean
+  location: string
+  timestamp: string
 }
 
 export function SecuritySessions() {
+  const [isLoading, setIsLoading] = useState(false)
   const [twoFactorEnabled, setTwoFactorEnabled] = useState(false)
   const [loginNotifications, setLoginNotifications] = useState(true)
-  const [isLoading, setIsLoading] = useState(false)
 
   // Mock data - replace with real data
   const [sessions, setSessions] = useState<Session[]>([

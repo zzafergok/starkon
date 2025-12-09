@@ -7,24 +7,24 @@ import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
 
 interface ConfirmDialogProps {
   open: boolean
-  onOpenChange: (open: boolean) => void
   title: string
   description: string
-  onConfirm: () => void
-  confirmText?: string
   cancelText?: string
   isLoading?: boolean
+  confirmText?: string
+  onConfirm: () => void
   variant?: 'default' | 'destructive'
+  onOpenChange: (open: boolean) => void
 }
 
 export function ConfirmDialog({
   open,
-  onOpenChange,
   title,
-  description,
   onConfirm,
-  confirmText,
   cancelText,
+  confirmText,
+  description,
+  onOpenChange,
   isLoading = false,
   variant = 'destructive',
 }: ConfirmDialogProps) {

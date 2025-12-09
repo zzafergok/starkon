@@ -1,28 +1,31 @@
 'use client'
 
 import { useState } from 'react'
+
 import {
-  Monitor,
-  Smartphone,
+  Clock,
+  Users,
   Tablet,
   LogOut,
-  AlertTriangle,
-  CheckCircle2,
-  Clock,
   Shield,
-  Users,
+  Monitor,
+  Smartphone,
   AlertCircle,
+  CheckCircle2,
+  AlertTriangle,
 } from 'lucide-react'
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/core/card'
-import { Button } from '@/components/core/button'
 import { Badge } from '@/components/core/badge'
+import { Button } from '@/components/core/button'
+import { Checkbox } from '@/components/core/checkbox'
 import { Alert, AlertDescription } from '@/components/core/alert'
 import { LoadingSpinner } from '@/components/core/loading-spinner'
-import { Checkbox } from '@/components/core/checkbox'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/core/card'
 
 import { useLocale } from '@/hooks/useLocale'
+
 import { useAuth } from '@/providers/AuthProvider'
+
 import { cn } from '@/lib/utils'
 
 interface MultiSessionLogoutProps {

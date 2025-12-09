@@ -10,9 +10,9 @@ import { cn } from '@/lib/utils'
 interface AnimatedAvatarProps {
   name?: string
   email?: string
-  size?: 'sm' | 'md' | 'lg' | 'xl'
   online?: boolean
   className?: string
+  size?: 'sm' | 'md' | 'lg' | 'xl'
 }
 
 const sizeConfig = {

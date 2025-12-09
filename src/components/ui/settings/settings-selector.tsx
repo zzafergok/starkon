@@ -11,42 +11,42 @@ import { cn } from '@/lib/utils'
 export interface SelectorOption {
   value: string
   label: string
-  description: string
-  icon: LucideIcon
-  preview?: ReactNode | string
   native?: string
+  icon: LucideIcon
+  description: string
+  preview?: ReactNode | string
 }
 
 interface SettingsSelectorProps {
   title: string
+  value: string
+  noteText: string
+  className?: string
+  isLoading?: boolean
+  activeLabel: string
   description: string
   titleIcon: LucideIcon
-  options: SelectorOption[]
-  value: string
-  onChange: (value: string) => void
-  isLoading?: boolean
-  isTransitioning?: boolean
-  activeLabel: string
-  noteText: string
   preferenceTitle: string
+  options: SelectorOption[]
+  isTransitioning?: boolean
   preferenceDescription: string
-  className?: string
+  onChange: (value: string) => void
 }
 
 export function SettingsSelector({
   title,
-  description,
-  titleIcon: TitleIcon,
-  options,
   value,
+  options,
   onChange,
-  isLoading = false,
-  isTransitioning = false,
-  activeLabel,
   noteText,
-  preferenceTitle,
-  preferenceDescription,
   className,
+  description,
+  activeLabel,
+  preferenceTitle,
+  isLoading = false,
+  titleIcon: TitleIcon,
+  preferenceDescription,
+  isTransitioning = false,
 }: SettingsSelectorProps) {
   const [mounted, setMounted] = useState(false)
 

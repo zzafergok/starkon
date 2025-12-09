@@ -16,19 +16,20 @@ interface ToastContainerProps {
 }
 
 interface ProgressBarProps {
+  type: string
   delay: number
+  hide: boolean
   isRunning: boolean
   closeToast: () => void
-  type: string
-  hide: boolean
 }
 
 const ProgressBar: React.FC<ProgressBarProps> = ({ delay, isRunning, closeToast, type, hide }) => {
-  const [progress, setProgress] = useState(100)
-  const intervalRef = useRef<NodeJS.Timeout | null>(null)
-  const startTimeRef = useRef<number>(Date.now())
   const pausedTimeRef = useRef<number>(0)
   const totalPausedTimeRef = useRef<number>(0)
+  const startTimeRef = useRef<number>(Date.now())
+  const intervalRef = useRef<NodeJS.Timeout | null>(null)
+
+  const [progress, setProgress] = useState(100)
 
   const getProgressBarColor = (type: string) => {
     switch (type) {

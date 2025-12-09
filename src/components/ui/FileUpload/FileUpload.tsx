@@ -12,40 +12,42 @@ import { cn } from '@/lib/utils'
 export interface FileUploadProps {
   onChange: (files: File[]) => void
   value?: File[]
-  multiple?: boolean
+  error?: string
   accept?: string
-  maxSize?: number // MB cinsinden
   maxFiles?: number
   className?: string
-  dropzoneText?: string
-  browseText?: string
   disabled?: boolean
-  error?: string
-  showFileList?: boolean
+  multiple?: boolean
+  browseText?: string
   allowPaste?: boolean
+  dropzoneText?: string
+  showFileList?: boolean
+  maxSize?: number // MB cinsinden
   onError?: (error: string) => void
 }
 
 export function FileUpload({
-  onChange,
   value,
-  multiple = false,
   accept,
-  maxSize = 10, // 10MB varsayılan
-  maxFiles = 5,
-  className,
-  dropzoneText = 'Dosyaları buraya sürükleyin veya',
-  browseText = 'Dosya Seçin',
-  disabled = false,
-  error: externalError,
-  showFileList = true,
-  allowPaste = true,
   onError,
+  onChange,
+  className,
+  maxFiles = 5,
+  disabled = false,
+  multiple = false,
+  allowPaste = true,
+  showFileList = true,
+  error: externalError,
+  browseText = 'Dosya Seçin',
+  maxSize = 10, // 10MB varsayılan
+  dropzoneText = 'Dosyaları buraya sürükleyin veya',
 }: FileUploadProps) {
+  const currentFiles = value || []
+
+  const fileInputRef = useRef<HTMLInputElement>(null)
+
   const [isDragging, setIsDragging] = useState(false)
   const [internalError, setInternalError] = useState<string | null>(null)
-  const fileInputRef = useRef<HTMLInputElement>(null)
-  const currentFiles = value || []
 
   // Dosya tiplerini kontrol et
   const isValidFileType = useCallback(

@@ -1,11 +1,12 @@
 'use client'
 
 import { cn } from '@/lib/utils'
+
 import { usePomodoroStore } from '@/store/pomodoro-store'
 
 interface PomodoroButtonProps {
-  type: 'focus' | 'break'
   className?: string
+  type: 'focus' | 'break'
 }
 
 export function PomodoroButton({ type, className }: PomodoroButtonProps) {

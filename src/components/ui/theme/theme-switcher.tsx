@@ -12,17 +12,17 @@ import { Button } from '@/components/core/button'
 import { cn } from '@/lib/utils'
 
 interface ThemeSwitcherProps {
-  variant?: 'button' | 'toggle'
-  size?: 'sm' | 'default' | 'lg'
   showLabel?: boolean
   className?: string
+  variant?: 'button' | 'toggle'
+  size?: 'sm' | 'default' | 'lg'
 }
 
 export function ThemeSwitcher({
-  variant = 'toggle',
+  className,
   size = 'default',
   showLabel = false,
-  className,
+  variant = 'toggle',
 }: ThemeSwitcherProps) {
   const { t } = useTranslation()
   const { setTheme, isInitialized, isTransitioning, isDark } = useTheme()

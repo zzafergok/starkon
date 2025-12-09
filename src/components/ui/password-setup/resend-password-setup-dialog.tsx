@@ -41,8 +41,9 @@ interface ResendFormData {
 }
 
 export function ResendPasswordSetupDialog({ open, onOpenChange, userEmail }: ResendPasswordSetupDialogProps) {
-  const { t } = useTranslation()
   const toast = useToast()
+  const { t } = useTranslation()
+
   const [isLoading, setIsLoading] = useState(false)
   const [emailSent, setEmailSent] = useState(false)
   const [resendAttempts, setResendAttempts] = useState(0)

@@ -18,19 +18,20 @@ import { changePasswordSchema, type ChangePasswordRequest } from '@/lib/validati
 
 export function PasswordChangeSection() {
   const { t } = useTranslation()
-  const [showPasswords, setShowPasswords] = useState({
-    current: false,
-    new: false,
-    confirm: false,
-  })
+
   const [success, setSuccess] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const [showPasswords, setShowPasswords] = useState({
+    new: false,
+    current: false,
+    confirm: false,
+  })
 
   const {
-    register,
-    handleSubmit,
     watch,
     reset,
+    register,
+    handleSubmit,
     formState: { errors },
   } = useForm<ChangePasswordRequest>({
     resolver: zodResolver(changePasswordSchema),

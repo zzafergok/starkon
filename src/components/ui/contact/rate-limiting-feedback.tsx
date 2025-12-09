@@ -1,47 +1,49 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+
 import { Clock, AlertTriangle, Shield, CheckCircle2, XCircle, Info } from 'lucide-react'
 
-import { Alert, AlertDescription } from '@/components/core/alert'
-import { Progress } from '@/components/core/progress'
 import { Badge } from '@/components/core/badge'
 import { Button } from '@/components/core/button'
+import { Progress } from '@/components/core/progress'
+import { Alert, AlertDescription } from '@/components/core/alert'
 
 import { useLocale } from '@/hooks/useLocale'
+
 import { cn } from '@/lib/utils'
 
 interface RateLimitingFeedbackProps {
-  isRateLimited: boolean
-  remainingRequests?: number
-  totalRequests?: number
   resetTime?: string
-  lastRequestTime?: string
-  rateLimitType?: 'contact' | 'support' | 'api' | 'general'
   className?: string
   onRetry?: () => void
+  isRateLimited: boolean
+  totalRequests?: number
+  lastRequestTime?: string
+  remainingRequests?: number
+  rateLimitType?: 'contact' | 'support' | 'api' | 'general'
 }
 
 interface RateLimitInfo {
-  current: number
   max: number
+  current: number
   resetTime: Date
   windowDuration: number // in minutes
 }
 
 export function RateLimitingFeedback({
-  isRateLimited,
-  remainingRequests = 0,
-  totalRequests = 10,
-  resetTime,
-  lastRequestTime,
-  rateLimitType = 'general',
-  className,
   onRetry,
+  resetTime,
+  className,
+  isRateLimited,
+  lastRequestTime,
+  totalRequests = 10,
+  remainingRequests = 0,
+  rateLimitType = 'general',
 }: RateLimitingFeedbackProps) {
   const { t } = useLocale()
-  const [timeUntilReset, setTimeUntilReset] = useState<number>(0)
   const [isCountingDown, setIsCountingDown] = useState(false)
+  const [timeUntilReset, setTimeUntilReset] = useState<number>(0)
 
   useEffect(() => {
     if (resetTime && isRateLimited) {

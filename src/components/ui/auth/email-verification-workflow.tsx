@@ -1,19 +1,23 @@
 'use client'
 
-import { useState, useEffect } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
+
+import { useState, useEffect } from 'react'
+
 import { Mail, CheckCircle, XCircle, RefreshCw, ArrowRight, Clock, Shield } from 'lucide-react'
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/core/card'
-import { Button } from '@/components/core/button'
 import { Input } from '@/components/core/input'
 import { Label } from '@/components/core/label'
+import { Badge } from '@/components/core/badge'
+import { Button } from '@/components/core/button'
 import { Alert, AlertDescription } from '@/components/core/alert'
 import { LoadingSpinner } from '@/components/core/loading-spinner'
-import { Badge } from '@/components/core/badge'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/core/card'
 
 import { useLocale } from '@/hooks/useLocale'
+
 import { useAuth } from '@/providers/AuthProvider'
+
 import { cn } from '@/lib/utils'
 
 interface EmailVerificationWorkflowProps {

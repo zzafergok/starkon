@@ -1,39 +1,42 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+
 import {
-  Monitor,
-  Smartphone,
+  Clock,
   Tablet,
   MapPin,
-  Clock,
   Shield,
   Trash2,
   LogOut,
-  AlertTriangle,
+  Monitor,
+  Smartphone,
   CheckCircle2,
+  AlertTriangle,
 } from 'lucide-react'
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/core/card'
-import { Button } from '@/components/core/button'
-import { Badge } from '@/components/core/badge'
-import { Alert, AlertDescription } from '@/components/core/alert'
-import { LoadingSpinner } from '@/components/core/loading-spinner'
-import { Separator } from '@/components/core/separator'
 import {
   AlertDialog,
+  AlertDialogTitle,
   AlertDialogAction,
   AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
-  AlertDialogTitle,
   AlertDialogTrigger,
+  AlertDialogContent,
+  AlertDialogDescription,
 } from '@/components/core/alert-dialog'
+import { Badge } from '@/components/core/badge'
+import { Button } from '@/components/core/button'
+import { Separator } from '@/components/core/separator'
+import { Alert, AlertDescription } from '@/components/core/alert'
+import { LoadingSpinner } from '@/components/core/loading-spinner'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/core/card'
 
 import { useLocale } from '@/hooks/useLocale'
+
 import { useAuth } from '@/providers/AuthProvider'
+
 import { cn } from '@/lib/utils'
 
 interface SessionManagementProps {
