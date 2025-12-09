@@ -1227,3 +1227,16 @@ html {
     scrollbar-gutter: stable;
   }
 }
+
+/* Password Input Masking */
+.password-input {
+  -webkit-text-security: disc !important;
+  text-security: disc !important;
+}
+
+/* Ensure password masking works in all browsers */
+input.password-input:not([type='password']) {
+  -webkit-text-security: disc !important;
+  -moz-text-security: disc !important;
+  text-security: disc !important;
+}
