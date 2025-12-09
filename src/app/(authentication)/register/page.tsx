@@ -19,10 +19,7 @@ import { registerSchema, RegisterFormData } from './schemas/registerSchema'
 
 import { useRegisterForm } from './hooks'
 
-/**
- * Register page with atomic design structure
- */
-function RegisterContent() {
+export default function RegisterPage() {
   const { t } = useTranslation()
   const { handleSubmit } = useRegisterForm()
 
@@ -36,41 +33,35 @@ function RegisterContent() {
   }
 
   return (
-    <div className='min-h-screen bg-background flex items-center justify-center p-4 transition-colors duration-200'>
-      <div className='w-full max-w-md space-y-8'>
-        {/* Navigation bar */}
-        <div className='flex justify-between items-center'>
-          <Link href='/'>
-            <Button variant='ghost' size='sm' className='text-muted-foreground hover:text-primary gap-2 pl-0'>
-              <ArrowLeft className='h-4 w-4' />
-              {t('homepage.returnToHome') || 'Ana Sayfa'}
-            </Button>
-          </Link>
-
-          <div className='flex items-center space-x-2'>
-            <LanguageSwitcher variant='button' showLabel className='bg-card shadow-theme-sm border border-border' />
-            <ThemeSwitcher variant='button' showLabel />
-          </div>
-        </div>
-
-        <Card className='rounded-2xl shadow-xl border border-border overflow-hidden'>
-          <CardContent className='p-8'>
-            <RegisterHeader />
-
-            <Form schema={registerSchema} defaultValues={defaultValues} onSubmit={handleSubmit}>
-              <RegisterFormContent />
-            </Form>
-          </CardContent>
-        </Card>
-      </div>
-    </div>
-  )
-}
-
-export default function RegisterPage() {
-  return (
     <Suspense fallback={<LoadingSpinner />}>
-      <RegisterContent />
+      <div className='min-h-screen bg-background flex items-center justify-center p-4 transition-colors duration-200'>
+        <div className='w-full max-w-md space-y-8'>
+          {/* Navigation bar */}
+          <div className='flex justify-between items-center'>
+            <Link href='/'>
+              <Button variant='ghost' size='sm' className='text-muted-foreground hover:text-primary gap-2 pl-0'>
+                <ArrowLeft className='h-4 w-4' />
+                {t('homepage.returnToHome') || 'Ana Sayfa'}
+              </Button>
+            </Link>
+
+            <div className='flex items-center space-x-2'>
+              <LanguageSwitcher variant='button' showLabel className='bg-card shadow-theme-sm border border-border' />
+              <ThemeSwitcher variant='button' showLabel />
+            </div>
+          </div>
+
+          <Card className='rounded-2xl shadow-xl border border-border overflow-hidden'>
+            <CardContent className='p-8'>
+              <RegisterHeader />
+
+              <Form schema={registerSchema} defaultValues={defaultValues} onSubmit={handleSubmit}>
+                <RegisterFormContent />
+              </Form>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
     </Suspense>
   )
 }
