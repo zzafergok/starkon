@@ -194,12 +194,18 @@ export function ComponentDemo({
               )}
             </TabsList>
 
-            <TabsContent value='code' className='mt-6'>
+            <TabsContent
+              value='code'
+              className='mt-6 data-[state=active]:bg-transparent data-[state=active]:shadow-none dark:data-[state=active]:bg-transparent'
+            >
               <div className='overflow-hidden rounded-xl border border-neutral-200/80 dark:border-neutral-700/50 bg-white/50 dark:bg-neutral-900/50 backdrop-blur-sm'>
                 {/* Collapsible Kod Header */}
                 <button
                   onClick={() => setIsMainCodeOpen(!isMainCodeOpen)}
-                  className='w-full flex items-center justify-between p-4 hover:bg-neutral-50/50 dark:hover:bg-neutral-800/50 transition-colors group'
+                  className={cn(
+                    'w-full flex items-center justify-between p-4 hover:bg-neutral-50/50 dark:hover:bg-neutral-800/50 transition-colors group',
+                    isMainCodeOpen ? 'rounded-t-xl' : 'rounded-xl',
+                  )}
                 >
                   <div className='flex items-center gap-3'>
                     <div className='p-2 rounded-lg bg-primary-50 dark:bg-primary-950/30 group-hover:bg-primary-100 dark:group-hover:bg-primary-900/40 transition-colors'>
@@ -223,7 +229,7 @@ export function ComponentDemo({
                 {isMainCodeOpen && (
                   <div className='border-t border-neutral-200/50 dark:border-neutral-700/30'>
                     <div className='relative group'>
-                      <pre className='bg-neutral-900 dark:bg-neutral-950 text-neutral-100 p-6 pt-14 overflow-x-auto text-sm leading-relaxed border-0 font-mono'>
+                      <pre className='bg-neutral-900 dark:bg-neutral-950 text-neutral-100 p-6 pt-14 overflow-x-auto text-sm leading-relaxed border-0 font-mono rounded-b-xl'>
                         <code>{code}</code>
                       </pre>
                       <Button
@@ -246,7 +252,10 @@ export function ComponentDemo({
 
             {/* Örnekler Tab */}
             {usageExamples.length > 0 && (
-              <TabsContent value='examples' className='mt-6 space-y-8'>
+              <TabsContent
+                value='examples'
+                className='mt-6 space-y-8 data-[state=active]:bg-transparent data-[state=active]:shadow-none dark:data-[state=active]:bg-transparent'
+              >
                 {usageExamples.map((example, index) => (
                   <div
                     key={index}
@@ -284,7 +293,10 @@ export function ComponentDemo({
                     <div className='border-b border-neutral-200/50 dark:border-neutral-700/30'>
                       <button
                         onClick={() => toggleExampleCode(index)}
-                        className='w-full flex items-center justify-between p-4 hover:bg-neutral-50/30 dark:hover:bg-neutral-800/30 transition-colors group'
+                        className={cn(
+                          'w-full flex items-center justify-between p-4 hover:bg-neutral-50/30 dark:hover:bg-neutral-800/30 transition-colors group',
+                          openExampleCodes[index] ? 'rounded-t-xl' : 'rounded-xl',
+                        )}
                       >
                         <div className='flex items-center gap-3'>
                           <div className='p-2 rounded-lg bg-neutral-100 dark:bg-neutral-800 group-hover:bg-neutral-200 dark:group-hover:bg-neutral-700 transition-colors'>
@@ -309,7 +321,7 @@ export function ComponentDemo({
 
                       {openExampleCodes[index] && (
                         <div className='relative group'>
-                          <pre className='bg-neutral-900 dark:bg-neutral-950 text-neutral-100 p-6 overflow-x-auto text-sm leading-relaxed border-0 font-mono'>
+                          <pre className='bg-neutral-900 dark:bg-neutral-950 text-neutral-100 p-6 overflow-x-auto text-sm leading-relaxed border-0 font-mono rounded-b-xl'>
                             <code>{example.code}</code>
                           </pre>
                           <Button
@@ -334,7 +346,10 @@ export function ComponentDemo({
 
             {/* Props Tab */}
             {props.length > 0 && (
-              <TabsContent value='props' className='mt-6'>
+              <TabsContent
+                value='props'
+                className='mt-6 data-[state=active]:bg-transparent data-[state=active]:shadow-none dark:data-[state=active]:bg-transparent'
+              >
                 <div className='overflow-hidden rounded-xl border border-neutral-200/80 dark:border-neutral-700/50 bg-white/50 dark:bg-neutral-900/50 backdrop-blur-sm'>
                   {/* Props Header */}
                   <div className='flex items-center justify-between p-6 border-b border-neutral-200/50 dark:border-neutral-700/30 bg-neutral-50/50 dark:bg-neutral-800/50'>
@@ -485,12 +500,18 @@ export function ComponentDemo({
                 )}
               </TabsList>
 
-              <TabsContent value='code' className='mt-8'>
+              <TabsContent
+                value='code'
+                className='mt-8 data-[state=active]:bg-transparent data-[state=active]:shadow-none dark:data-[state=active]:bg-transparent'
+              >
                 <div className='overflow-hidden rounded-2xl border border-neutral-200/80 dark:border-neutral-700/50 bg-white/50 dark:bg-neutral-900/50 backdrop-blur-sm'>
                   {/* Fullscreen Collapsible Kod Header */}
                   <button
                     onClick={() => setIsFullscreenMainCodeOpen(!isFullscreenMainCodeOpen)}
-                    className='w-full flex items-center justify-between p-6 hover:bg-neutral-50/50 dark:hover:bg-neutral-800/50 transition-colors group'
+                    className={cn(
+                      'w-full flex items-center justify-between p-6 hover:bg-neutral-50/50 dark:hover:bg-neutral-800/50 transition-colors group',
+                      isFullscreenMainCodeOpen ? 'rounded-t-2xl' : 'rounded-2xl',
+                    )}
                   >
                     <div className='flex items-center gap-4'>
                       <div className='p-3 rounded-xl bg-primary-50 dark:bg-primary-950/30 group-hover:bg-primary-100 dark:group-hover:bg-primary-900/40 transition-colors'>
@@ -517,7 +538,7 @@ export function ComponentDemo({
                   {isFullscreenMainCodeOpen && (
                     <div className='border-t border-neutral-200/50 dark:border-neutral-700/30'>
                       <div className='relative group'>
-                        <pre className='bg-neutral-900 dark:bg-neutral-950 text-neutral-100 p-8 overflow-x-auto text-sm leading-relaxed border-0 font-mono'>
+                        <pre className='bg-neutral-900 dark:bg-neutral-950 text-neutral-100 p-8 overflow-x-auto text-sm leading-relaxed border-0 font-mono rounded-b-2xl'>
                           <code>{code}</code>
                         </pre>
                         <Button
@@ -539,7 +560,10 @@ export function ComponentDemo({
               </TabsContent>
 
               {usageExamples.length > 0 && (
-                <TabsContent value='examples' className='mt-8 space-y-10'>
+                <TabsContent
+                  value='examples'
+                  className='mt-8 space-y-10 data-[state=active]:bg-transparent data-[state=active]:shadow-none dark:data-[state=active]:bg-transparent'
+                >
                   {usageExamples.map((example, index) => (
                     <div
                       key={index}
@@ -577,7 +601,10 @@ export function ComponentDemo({
                       <div className='border-b border-neutral-200/50 dark:border-neutral-700/30 last:border-b-0'>
                         <button
                           onClick={() => toggleExampleCode(index, true)}
-                          className='w-full flex items-center justify-between p-6 hover:bg-neutral-50/30 dark:hover:bg-neutral-800/30 transition-colors group'
+                          className={cn(
+                            'w-full flex items-center justify-between p-6 hover:bg-neutral-50/30 dark:hover:bg-neutral-800/30 transition-colors group',
+                            openFullscreenExampleCodes[index] ? 'rounded-t-2xl' : 'rounded-2xl',
+                          )}
                         >
                           <div className='flex items-center gap-4'>
                             <div className='p-3 rounded-xl bg-neutral-100 dark:bg-neutral-800 group-hover:bg-neutral-200 dark:group-hover:bg-neutral-700 transition-colors'>
@@ -602,7 +629,7 @@ export function ComponentDemo({
 
                         {openFullscreenExampleCodes[index] && (
                           <div className='relative group'>
-                            <pre className='bg-neutral-900 dark:bg-neutral-950 text-neutral-100 p-8 overflow-x-auto text-sm leading-relaxed border-0 font-mono'>
+                            <pre className='bg-neutral-900 dark:bg-neutral-950 text-neutral-100 p-8 overflow-x-auto text-sm leading-relaxed border-0 font-mono rounded-b-2xl'>
                               <code>{example.code}</code>
                             </pre>
                             <Button
@@ -626,7 +653,10 @@ export function ComponentDemo({
               )}
 
               {props.length > 0 && (
-                <TabsContent value='props' className='mt-8'>
+                <TabsContent
+                  value='props'
+                  className='mt-8 data-[state=active]:bg-transparent data-[state=active]:shadow-none dark:data-[state=active]:bg-transparent'
+                >
                   <div className='overflow-hidden rounded-2xl border border-neutral-200/80 dark:border-neutral-700/50 bg-white/50 dark:bg-neutral-900/50 backdrop-blur-sm'>
                     {/* Props Header */}
                     <div className='flex items-center justify-between p-6 border-b border-neutral-200/50 dark:border-neutral-700/30 bg-neutral-50/50 dark:bg-neutral-800/50'>
