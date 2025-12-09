@@ -7,7 +7,7 @@ import { Button } from '@/components/core/button'
 
 import { LoginFormData } from '../schemas/loginSchema'
 
-type DemoAccountType = 'ahmet' | 'admin' | 'mehmet'
+type DemoAccountType = 'demo'
 
 interface DemoAccount {
   email: string
@@ -15,9 +15,7 @@ interface DemoAccount {
 }
 
 const DEMO_ACCOUNTS: Record<DemoAccountType, DemoAccount> = {
-  ahmet: { email: 'user@example.com', password: 'user123' },
-  admin: { email: 'admin@example.com', password: 'admin123' },
-  mehmet: { email: 'demo@example.com', password: 'demo123' },
+  demo: { email: 'demo@example.com', password: 'demo123' },
 }
 
 /**
@@ -41,36 +39,16 @@ export function DemoAccountButtons() {
       <div className='text-center'>
         <span className='text-sm text-muted-foreground'>{t('auth.login.demoAccounts.title')}</span>
       </div>
-      <div className='grid grid-cols-3 gap-2'>
+      <div className='flex w-full justify-center'>
         <Button
           type='button'
           variant='outline'
           size='sm'
-          onClick={() => fillDemoAccount('ahmet')}
+          onClick={() => fillDemoAccount('demo')}
           disabled={isSubmitting}
           className='text-xs theme-transition-colors'
         >
-          {t('auth.login.demoAccounts.ortak')}
-        </Button>
-        <Button
-          type='button'
-          variant='outline'
-          size='sm'
-          onClick={() => fillDemoAccount('admin')}
-          disabled={isSubmitting}
-          className='text-xs theme-transition-colors'
-        >
-          {t('auth.login.demoAccounts.zafer')}
-        </Button>
-        <Button
-          type='button'
-          variant='outline'
-          size='sm'
-          onClick={() => fillDemoAccount('mehmet')}
-          disabled={isSubmitting}
-          className='text-xs theme-transition-colors'
-        >
-          {t('auth.login.demoAccounts.akin')}
+          {t('auth.login.demoAccounts.demo')}
         </Button>
       </div>
     </div>

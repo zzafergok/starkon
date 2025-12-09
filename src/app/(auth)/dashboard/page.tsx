@@ -1,34 +1,29 @@
 'use client'
 
-import { useTranslation } from 'react-i18next'
-import {
-  Code2,
-  Palette,
-  Zap,
-  Rocket,
-  Package,
-  Terminal,
-  Copy,
-  Check,
-  ChevronRight,
-  Layout,
-  Cpu,
-  Shield,
-  Star,
-} from 'lucide-react'
+import { Link } from '@/components/core/link'
+import { useRouter } from 'next/navigation'
+
 import { useState } from 'react'
 
+import { useTranslation } from 'react-i18next'
+import { Zap, Cpu, Star, Copy, Code2, Check, Rocket, Shield, Layout, Terminal, ChevronRight } from 'lucide-react'
+
+import { Badge } from '@/components/core/badge'
 import { Button } from '@/components/core/button'
 import { Avatar, AvatarFallback } from '@/components/core/avatar'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/core/card'
-import { Badge } from '@/components/core/badge'
 
 import { useAuth } from '@/hooks/useAuth'
+
 import { logAuthDebug } from '@/utils/authDebug'
 
+import { cn } from '@/lib/utils'
+
 export default function DashboardPage() {
+  const router = useRouter()
   const { t } = useTranslation()
   const { user, logout } = useAuth()
+
   const [copiedCommand, setCopiedCommand] = useState<string | null>(null)
 
   const handleLogout = async () => {
@@ -108,12 +103,6 @@ export default function DashboardPage() {
     },
   ]
 
-  const cliCommands = [
-    { cmd: 'npx starkon init', desc: t('pages.dashboard.cli.commands.init') },
-    { cmd: 'npx starkon add [component]', desc: t('pages.dashboard.cli.commands.add') },
-    { cmd: 'npx starkon update', desc: t('pages.dashboard.cli.commands.update') },
-  ]
-
   return (
     <div className='w-full p-4 lg:p-8 space-y-8 animate-fade-in'>
       {/* Hero Section */}
@@ -137,22 +126,24 @@ export default function DashboardPage() {
 
             <div className='flex flex-wrap gap-4'>
               <Button
-                onClick={() => (window.location.href = '/components')}
+                onClick={() => router.push('/components')}
+                variant='default'
                 size='lg'
                 className='bg-white text-neutral-900 hover:bg-neutral-100'
               >
                 <Layout className='w-4 h-4 mr-2' />
                 {t('pages.dashboard.viewComponents')}
               </Button>
-              <Button
+              <Link
+                href='https://github.com/zzafergok/starkon'
+                target='_blank'
                 variant='outline'
                 size='lg'
                 className='border-neutral-700 hover:bg-neutral-800 text-white'
-                onClick={() => window.open('https://github.com/zzafergok/starkon', '_blank')}
               >
                 <Star className='w-4 h-4 mr-2' />
                 {t('pages.dashboard.starOnGithub')}
-              </Button>
+              </Link>
             </div>
           </div>
 
@@ -200,110 +191,138 @@ export default function DashboardPage() {
         ))}
       </div>
 
-      {/* CLI Installation Section */}
-      <div className='grid grid-cols-1 lg:grid-cols-3 gap-8'>
-        {/* Main Installation Guide */}
-        <Card className='lg:col-span-2 bg-white dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800'>
-          <CardHeader>
-            <div className='flex items-center gap-3 mb-2'>
-              <div className='p-2 bg-neutral-900 rounded-lg'>
-                <Terminal className='w-5 h-5 text-white' />
+      {/* Unified CLI & Next Steps Section */}
+      <Card className='bg-white dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 overflow-hidden'>
+        <CardHeader className='border-b border-neutral-100 dark:border-neutral-800/50 bg-neutral-50/50 dark:bg-neutral-900/50 pb-4'>
+          <div className='flex items-center gap-3'>
+            <div className='p-2 bg-neutral-900 rounded-lg'>
+              <Terminal className='w-5 h-5 text-white' />
+            </div>
+            <div>
+              <CardTitle>{t('pages.dashboard.cli.title')}</CardTitle>
+              <CardDescription>{t('pages.dashboard.cli.description')}</CardDescription>
+            </div>
+          </div>
+        </CardHeader>
+
+        <CardContent className='p-0'>
+          <div className='grid grid-cols-1 lg:grid-cols-3 divide-y lg:divide-y-0 lg:divide-x divide-neutral-200 dark:divide-neutral-800'>
+            {/* Left Column: Installation Guide */}
+            <div className='lg:col-span-2 p-6 lg:p-8 space-y-8'>
+              {/* Preferred Method */}
+              <div className='space-y-4'>
+                <h4 className='font-medium text-sm text-neutral-500 uppercase tracking-wider flex items-center gap-2'>
+                  <Zap className='w-4 h-4' />
+                  {t('pages.dashboard.cli.installation.global')}
+                </h4>
+                <div className='group relative bg-neutral-950 rounded-xl p-4 font-mono text-sm border border-neutral-800 shadow-xl'>
+                  <div className='flex items-center justify-between'>
+                    <div className='flex gap-2 text-neutral-300'>
+                      <span className='text-purple-400 select-none'>$</span>
+                      <span>npx starkon my-app</span>
+                    </div>
+                    <Button
+                      variant='ghost'
+                      size='icon'
+                      className='h-8 w-8 text-neutral-400 hover:text-white hover:bg-white/10'
+                      onClick={() => copyToClipboard('npx starkon my-app')}
+                    >
+                      {copiedCommand === 'npx starkon my-app' ? (
+                        <Check className='w-4 h-4 text-green-500' />
+                      ) : (
+                        <Copy className='w-4 h-4' />
+                      )}
+                    </Button>
+                  </div>
+                </div>
               </div>
+
+              {/* Interactive Menu Visualization */}
+              <div className='space-y-4'>
+                <h4 className='font-medium text-sm text-neutral-500 uppercase tracking-wider'>
+                  {t('pages.dashboard.cli.interactive.title')}
+                </h4>
+                <div className='rounded-xl bg-[#1e1e1e] border border-neutral-800 p-4 font-mono text-sm shadow-inner'>
+                  <div className='flex gap-2 mb-4 border-b border-neutral-800 pb-2'>
+                    <div className='w-2.5 h-2.5 rounded-full bg-red-500/80'></div>
+                    <div className='w-2.5 h-2.5 rounded-full bg-yellow-500/80'></div>
+                    <div className='w-2.5 h-2.5 rounded-full bg-green-500/80'></div>
+                  </div>
+                  <div className='space-y-1 text-neutral-300'>
+                    <div className='flex gap-2 items-center'>
+                      <span className='font-bold text-white'>{t('pages.dashboard.cli.interactive.prompt')}</span>
+                    </div>
+                    <div className='mt-2 space-y-1 pl-2'>
+                      <div className='flex gap-2 text-cyan-400 font-bold'>
+                        <span>❯</span>
+                        <span>{t('pages.dashboard.cli.interactive.options.standard')}</span>
+                      </div>
+                      <div className='flex gap-2 text-neutral-500 pl-4'>
+                        <span>{t('pages.dashboard.cli.interactive.options.landing')}</span>
+                      </div>
+                      <div className='flex gap-2 text-neutral-500 pl-4'>
+                        <span>{t('pages.dashboard.cli.interactive.options.corporate')}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Next Steps */}
+            <div className='lg:col-span-1 bg-neutral-50/50 dark:bg-neutral-900/30 p-6 lg:p-8 flex flex-col justify-between'>
               <div>
-                <CardTitle>{t('pages.dashboard.cli.title')}</CardTitle>
-                <CardDescription>{t('pages.dashboard.cli.description')}</CardDescription>
-              </div>
-            </div>
-          </CardHeader>
-          <CardContent className='space-y-8'>
-            {/* Preferred Method */}
-            <div className='space-y-4'>
-              <h4 className='font-medium text-sm text-neutral-500 uppercase tracking-wider flex items-center gap-2'>
-                <Zap className='w-4 h-4' />
-                {t('pages.dashboard.cli.installation.global')}
-              </h4>
-              <div className='group relative bg-neutral-950 rounded-xl p-4 font-mono text-sm border border-neutral-800'>
-                <div className='flex items-center justify-between'>
-                  <div className='flex gap-2 text-neutral-300'>
-                    <span className='text-purple-400 select-none'>$</span>
-                    <span>npx starkon init my-app</span>
-                  </div>
-                  <Button
-                    variant='ghost'
-                    size='icon'
-                    className='h-8 w-8 text-neutral-400 hover:text-white hover:bg-white/10'
-                    onClick={() => copyToClipboard('npx starkon init my-app')}
-                  >
-                    {copiedCommand === 'npx starkon init my-app' ? (
-                      <Check className='w-4 h-4 text-green-500' />
-                    ) : (
-                      <Copy className='w-4 h-4' />
-                    )}
-                  </Button>
+                <h4 className='font-bold text-lg text-orange-600 dark:text-orange-500 flex items-center gap-2 mb-8'>
+                  <Shield className='w-5 h-5' />
+                  {t('pages.dashboard.cli.nextSteps.title')}
+                </h4>
+                <div className='relative space-y-8'>
+                  {[1, 2, 3].map((step, idx) => (
+                    <div key={idx} className='relative flex gap-4'>
+                      {idx !== 2 && (
+                        <div className='absolute left-3.5 top-7 bottom-[-32px] w-0.5 bg-neutral-200 dark:bg-neutral-800' />
+                      )}
+                      <div className='relative z-10 flex-shrink-0 w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-sm shadow-lg shadow-blue-600/20'>
+                        {step}
+                      </div>
+                      <div className='pt-0.5'>
+                        <h5 className='font-semibold text-sm text-neutral-900 dark:text-white'>
+                          {t(`pages.dashboard.cli.nextSteps.step${step}`)}
+                        </h5>
+                        {step === 1 && (
+                          <code className='text-xs text-neutral-500 mt-1 block font-mono bg-white dark:bg-neutral-800 px-2 py-0.5 rounded border border-neutral-200 dark:border-neutral-700 w-fit'>
+                            cd my-app
+                          </code>
+                        )}
+                        {step === 2 && (
+                          <code className='text-xs text-neutral-500 mt-1 block font-mono bg-white dark:bg-neutral-800 px-2 py-0.5 rounded border border-neutral-200 dark:border-neutral-700 w-fit'>
+                            npm run dev
+                          </code>
+                        )}
+                        {step === 3 && (
+                          <code className='text-xs text-neutral-500 mt-1 block font-mono bg-white dark:bg-neutral-800 px-2 py-0.5 rounded border border-neutral-200 dark:border-neutral-700 w-fit'>
+                            http://localhost:3000
+                          </code>
+                        )}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
-            </div>
 
-            {/* Core Commands Grid */}
-            <div className='space-y-4'>
-              <h4 className='font-medium text-sm text-neutral-500 uppercase tracking-wider'>
-                {t('pages.dashboard.cli.commands.title')}
-              </h4>
-              <div className='grid gap-3'>
-                {cliCommands.map((item, i) => (
-                  <div
-                    key={i}
-                    className='flex items-center justify-between p-3 rounded-lg bg-neutral-50 dark:bg-neutral-800/50 border border-neutral-100 dark:border-neutral-800'
-                  >
-                    <code className='text-sm font-bold text-blue-600 dark:text-blue-400 font-mono bg-blue-50 dark:bg-blue-900/20 px-2 py-0.5 rounded'>
-                      {item.cmd}
-                    </code>
-                    <span className='text-sm text-neutral-500'>{item.desc}</span>
-                  </div>
-                ))}
+              <div className='mt-8 pt-6 border-t border-neutral-200 dark:border-neutral-800'>
+                <Button
+                  onClick={() => router.push('/components')}
+                  className='w-full bg-orange-600 hover:bg-orange-700 text-white shadow-lg shadow-orange-600/20 font-semibold h-11'
+                >
+                  {t('pages.dashboard.viewComponents')}
+                  <ChevronRight className='w-4 h-4 ml-2' />
+                </Button>
               </div>
             </div>
-          </CardContent>
-        </Card>
-
-        {/* Next Steps Side Panel */}
-        <Card className='bg-gradient-to-b from-blue-50 to-white dark:from-blue-950/20 dark:to-neutral-900 border-blue-100 dark:border-blue-900/30'>
-          <CardHeader>
-            <CardTitle className='flex items-center gap-2 text-blue-700 dark:text-blue-400'>
-              <Shield className='w-5 h-5' />
-              {t('pages.dashboard.cli.nextSteps.title')}
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className='relative space-y-6'>
-              {[1, 2, 3].map((step, idx) => (
-                <div key={idx} className='relative flex gap-4'>
-                  {idx !== 2 && (
-                    <div className='absolute left-3.5 top-8 bottom-[-24px] w-px bg-blue-200 dark:bg-blue-800' />
-                  )}
-                  <div className='relative z-10 flex-shrink-0 w-7 h-7 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 flex items-center justify-center font-bold text-sm border border-blue-200 dark:border-blue-700'>
-                    {step}
-                  </div>
-                  <div className='pt-1'>
-                    <h5 className='font-semibold text-sm text-neutral-900 dark:text-neutral-100'>
-                      {t(`pages.dashboard.cli.nextSteps.step${step}`)}
-                    </h5>
-                    {step === 1 && <code className='text-xs text-neutral-500 mt-1 block'>cd my-app</code>}
-                    {step === 2 && <code className='text-xs text-neutral-500 mt-1 block'>npm run dev</code>}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className='mt-8 pt-6 border-t border-blue-100 dark:border-blue-800/50'>
-              <Button className='w-full bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-500/20'>
-                {t('pages.dashboard.viewComponents')}
-                <ChevronRight className='w-4 h-4 ml-2' />
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   )
 }

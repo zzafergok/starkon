@@ -3,11 +3,11 @@
 [![npm](https://img.shields.io/npm/v/starkon)](https://www.npmjs.com/package/starkon)
 [![downloads](https://img.shields.io/npm/dm/starkon)](https://www.npmjs.com/package/starkon)
 [![license](https://img.shields.io/github/license/zzafergok/starkon)](https://github.com/zzafergok/starkon/blob/main/LICENSE)
-[![Next.js](https://img.shields.io/badge/Next.js-15-black)](https://nextjs.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-16-black)](https://nextjs.org/)
 
 > 🚀 **Create production-ready Next.js applications in seconds, not hours**
 
-**The most comprehensive Next.js 15 starter template with authentication, internationalization, corporate features, and an interactive CLI that lets you choose the perfect template.**
+**The most comprehensive Next.js 16 starter template with authentication, internationalization, corporate features, and an interactive CLI that lets you choose the perfect template.**
 
 ### ✨ Interactive Template Selection
 
@@ -15,11 +15,14 @@
 npx starkon my-app
 ```
 
-Choose from 3 optimized templates with arrow keys:
+Choose from 3 optimized templates with arrow keys, or use 3 additional specialized templates via `--template` flag:
 
 - 🏗️ **Next.js Boilerplate** - Full-stack with auth & i18n
 - 🎯 **Landing Page** - Marketing-optimized single page
 - 🏢 **Corporate** - Business website with CMS
+- 📊 **Dashboard** - Admin panel optimized (manual: `--template dashboard`)
+- ⚡ **Basic** - Essential setup (manual: `--template basic`)
+- 🎯 **Minimal** - Bare-bones (manual: `--template minimal`)
 
 ## ⚡ Quick Start
 
@@ -31,7 +34,7 @@ Simply run the command and choose your template:
 npx starkon my-app
 ```
 
-You'll see an interactive menu with 3 options:
+You'll see an interactive menu with 3 main options:
 
 - **❯ Next.js Boilerplate** - Full-featured with auth & i18n
 - **Landing Page Template** - Single-page marketing site
@@ -67,7 +70,7 @@ npx starkon my-app --template standard   # Full-stack app
 
 Choose the perfect starting point for your specific use case:
 
-### 🏢 **Corporate Template** ⭐ _New_
+### 🏢 **Corporate Template** ⭐
 
 Complete business website with content management system.
 
@@ -137,7 +140,7 @@ npx starkon enterprise-app --template standard
 - 🌍 **i18n:** English/Turkish with easy language addition
 - 📊 **Dashboard:** Admin panels and user management
 - 🛡️ **Security:** Protected routes, XSS protection
-- 🎨 **Complete UI Kit:** 30+ production-ready components
+- 🎨 **Complete UI Kit:** 46 production-ready components
 
 ### ⚡ **Basic Template**
 
@@ -154,7 +157,7 @@ npx starkon simple-app --template basic
 - Learning Next.js
 - Quick experiments
 
-**Includes:** Next.js 15, TypeScript, Tailwind CSS, ESLint
+**Includes:** Next.js 16, TypeScript, Tailwind CSS, ESLint
 **Excludes:** Authentication, i18n, complex UI components
 
 ### 📊 **Dashboard Template**
@@ -172,7 +175,7 @@ npx starkon admin-panel --template dashboard
 - Data management
 - Internal tools
 
-**Includes:** Dashboard layout, data tables, charts integration
+**Includes:** Dashboard layout, data tables, charts integration, auth system
 **Excludes:** Public marketing pages
 
 ### 🎯 **Minimal Template**
@@ -189,7 +192,7 @@ npx starkon minimal-app --template minimal
 - Learning projects
 - Starting from scratch
 
-**Includes:** Next.js 15, TypeScript only
+**Includes:** Next.js 16, TypeScript only
 **Excludes:** Everything else - build your own way
 
 ## 🏗️ Architecture Overview
@@ -203,20 +206,35 @@ starkon-app/
 │   │   ├── (auth)/            # 🔐 Protected route group
 │   │   │   ├── dashboard/     # Main dashboard
 │   │   │   ├── settings/      # User settings
+│   │   │   ├── profile/       # User profile management
+│   │   │   ├── components/    # Component showcase/demo
 │   │   │   └── layout.tsx     # Auth layout wrapper
 │   │   ├── (corporate)/       # 🏢 Corporate route group
 │   │   │   ├── about/         # Company info
 │   │   │   ├── services/      # Services catalog
 │   │   │   ├── blog/          # Blog system
 │   │   │   ├── gallery/       # Project gallery
+│   │   │   ├── contact/       # Contact page
 │   │   │   └── layout.tsx     # Corporate layout
-│   │   ├── (authentication)/ # Login/register flows
-│   │   │   ├── login/
-│   │   │   ├── register/
-│   │   │   └── verify-email/
+│   │   ├── (authentication)/  # 🔑 Auth flows
+│   │   │   ├── login/         # Login page
+│   │   │   ├── register/      # Registration
+│   │   │   ├── forgot-password/  # Password recovery
+│   │   │   ├── reset-password/   # Password reset
+│   │   │   ├── verify-email/  # Email verification
+│   │   │   └── layout.tsx     # Auth flow layout
+│   │   ├── page.tsx           # Home page
+│   │   ├── not-found.tsx      # 404 handler
 │   │   └── layout.tsx         # Root layout
 │   ├── components/            # Reusable components
-│   │   ├── core/              # 🧩 Base UI (Button, Input, Card, etc.)
+│   │   ├── core/              # 🧩 46 base UI components
+│   │   │   ├── button.tsx
+│   │   │   ├── input.tsx
+│   │   │   ├── card.tsx
+│   │   │   ├── data-table.tsx
+│   │   │   ├── command-menu.tsx
+│   │   │   ├── rich-text-editor.tsx
+│   │   │   └── ... (40+ more)
 │   │   ├── corporate/         # 🏢 Business components
 │   │   │   ├── ServiceCard.tsx
 │   │   │   ├── TeamMember.tsx
@@ -227,15 +245,44 @@ starkon-app/
 │   │   │   ├── Features.tsx
 │   │   │   └── Testimonials.tsx
 │   │   ├── ui/                # Complex components
-│   │   └── layout/            # Layout components
+│   │   │   ├── FileUpload/    # File upload with dropzone
+│   │   │   ├── brand/         # Brand components
+│   │   │   └── dashboard/     # Dashboard components
+│   │   ├── layout/            # Layout components
+│   │   └── forms/             # Form components
 │   ├── lib/                   # Core utilities
-│   │   ├── content.ts         # 📄 Content management system
+│   │   ├── api/
+│   │   │   └── axios.ts       # HTTP client with interceptors
 │   │   ├── services/          # API services & auth
+│   │   │   ├── authApiService.ts
+│   │   │   ├── mockAuthService.ts
+│   │   │   └── sessionTokenManager.ts
 │   │   ├── validations/       # Zod schemas
+│   │   │   └── auth.ts        # Auth validation schemas
+│   │   ├── types/             # TypeScript definitions
+│   │   ├── content.ts         # 📄 Content management system
+│   │   ├── i18n.ts            # Internationalization
 │   │   └── utils.ts           # Helper utilities
 │   ├── hooks/                 # Custom React hooks
+│   │   ├── useAuth.ts         # Authentication hook
+│   │   ├── useTheme.ts        # Theme management
+│   │   ├── useToast.ts        # Toast notifications
+│   │   ├── useLocale.ts       # Locale management
+│   │   ├── useClipboard.ts    # Clipboard utilities
+│   │   ├── usePasswordStrength.ts  # Password validation
+│   │   └── useForm.ts         # Form utilities
 │   ├── providers/             # Context providers
+│   │   ├── AuthProvider.tsx   # Auth state management
+│   │   ├── I18nProvider.tsx   # i18n integration
+│   │   ├── ReactQueryProvider.tsx  # Data fetching
+│   │   ├── theme-provider.tsx # Dark/light theme
+│   │   └── toast-provider.tsx # Toast system
+│   ├── store/                 # Zustand stores
+│   │   ├── toastStore.ts      # Toast notifications
+│   │   └── pomodoro-store.ts  # Pomodoro timer state
 │   └── locales/               # 🌍 i18n translations
+│       ├── en/                # English
+│       └── tr/                # Turkish
 ├── public/                    # Static assets
 ├── tailwind.config.mjs        # Tailwind configuration
 └── next.config.mjs            # Next.js configuration
@@ -245,22 +292,54 @@ starkon-app/
 
 **Core Framework:**
 
-- **Next.js 15** - App Router, Server Components, optimized performance
-- **TypeScript** - Full type safety and developer experience
-- **Tailwind CSS** - Utility-first styling with custom design system
+- **Next.js 16** - App Router, Server Components, optimized performance
+- **React 19** - Latest React features and improvements
+- **TypeScript 5.7** - Full type safety and developer experience
 
 **UI & Design:**
 
 - **Radix UI** - Accessible, unstyled component primitives
+- **Tailwind CSS 3.4** - Utility-first styling with custom design system
+- **class-variance-authority** - Type-safe component variants
 - **Framer Motion** - Smooth animations and transitions
 - **Lucide React** - Beautiful, consistent icon library
 - **CSS Variables** - Dynamic theming support
 
 **State & Data:**
 
-- **React Query** - Server state management and caching
-- **Zustand** - Lightweight client state management
+- **React Query (@tanstack/react-query)** - Server state management and caching
+- **Zustand 5.0** - Lightweight client state management
+- **Redux + Redux Persist** - Optional complex state with persistence
 - **React Hook Form** - Performant forms with validation
+
+**API & HTTP:**
+
+- **Axios** - HTTP client with custom interceptors
+- **Request/response queuing** - Token refresh handling
+- **FormData support** - File upload integration
+- **Environment-based switching** - Mock/real API toggle
+
+**Forms & Validation:**
+
+- **React Hook Form** - Form state management
+- **Zod** - TypeScript-first schema validation
+- **@hookform/resolvers** - Form validation integration
+
+**Internationalization:**
+
+- **i18next** - Complete i18n solution
+- **react-i18next** - React integration
+- **Browser language detection** - Automatic locale detection
+- **localStorage + cookie persistence** - Language preference storage
+
+**Advanced Features:**
+
+- **cmdk** - Command menu (Cmd+K)
+- **react-dropzone** - File upload interface
+- **@tanstack/react-table** - Headless table library
+- **date-fns** - Date manipulation utilities
+- **crypto-js** - Encryption utilities
+- **react-error-boundary** - Error handling
 
 **Development:**
 
@@ -268,6 +347,8 @@ starkon-app/
 - **Prettier** - Code formatting with Tailwind plugin
 - **Jest** - Unit testing framework
 - **React Testing Library** - Component testing utilities
+- **Husky** - Git hooks
+- **Commitizen** - Conventional commits
 
 ## 🔐 Authentication System
 
@@ -278,6 +359,7 @@ starkon-app/
 - **Session Management** - Persistent login with "Remember Me"
 - **Protected Routes** - Middleware-based route protection
 - **Mock Development** - Built-in test users for development
+- **4 Auth Flows** - Login, Register, Forgot Password, Reset Password, Verify Email
 
 ### Development Users
 
@@ -302,6 +384,16 @@ function Dashboard() {
 }
 ```
 
+### Authentication Architecture
+
+**5-Layer System:**
+
+1. **Token Management** (`sessionTokenManager.ts`) - sessionStorage with 5-minute refresh buffer
+2. **API Service** (`authApiService.ts`) - Environment-based mock/real API switching
+3. **Auth Provider** (`AuthProvider.tsx`) - React Context with periodic validation
+4. **Middleware** (`middleware.ts`) - Server-side language and route handling
+5. **Axios Interceptors** (`axios.ts`) - Auto token attachment and 401 retry queue
+
 ## 🌍 Internationalization
 
 ### Built-in Language Support
@@ -309,7 +401,16 @@ function Dashboard() {
 - **English (en)** - Complete translations
 - **Turkish (tr)** - Native language support
 - **Browser Detection** - Automatic language detection
-- **URL Persistence** - Language state in URL parameters
+- **URL Persistence** - Language state in URL parameters (`?lang=en`)
+- **localStorage & Cookie** - Persistent language preference
+
+### Detection Priority
+
+1. **localStorage** - Key: `language` (permanent)
+2. **Cookie** - Key: `language` (365-day expiry)
+3. **URL Parameter** - `?lang=tr`
+4. **Browser Navigator** - `navigator.language`
+5. **Default** - Turkish (`tr`)
 
 ### Adding New Languages
 
@@ -318,7 +419,7 @@ function Dashboard() {
 src/locales/es/translation.json
 
 # 2. Add to supported locales
-src/lib/locale-utils.ts
+src/lib/i18n.ts
 ```
 
 ### Usage
@@ -327,48 +428,184 @@ src/lib/locale-utils.ts
 import { useTranslation } from 'react-i18next'
 
 function Component() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+
+  // Change language
+  i18n.changeLanguage('en')
+
   return <h1>{t('welcome.title')}</h1>
 }
 ```
 
 ## 🎨 UI Component System
 
-### Core Components (30+)
+### Core Components (46)
+
+**Basic Components:**
 
 ```tsx
 // Form Components
-<Button variant="default | outline | ghost" size="sm | md | lg" />
+<Button variant="default | outline | ghost | destructive | link" size="sm | md | lg | icon" />
 <Input type="text | email | password" />
+<PasswordInput showStrength={true} />
+<NumberInput min={0} max={100} />
 <Textarea placeholder="Enter text..." />
 <Checkbox checked={true} />
 <Switch enabled={true} />
+<Select options={options} />
+```
 
-// Layout Components
+**Layout Components:**
+
+```tsx
 <Card>
   <CardHeader>
     <CardTitle>Title</CardTitle>
   </CardHeader>
   <CardContent>Content</CardContent>
 </Card>
-
-// Data Display
-<DataTable data={data} columns={columns} />
-<Badge variant="default | secondary | outline" />
-<Avatar src="/avatar.jpg" fallback="JD" />
-
-// Navigation
+<Separator orientation="horizontal | vertical" />
+<Accordion type="single | multiple" />
 <Tabs defaultValue="tab1">
   <TabsList>
     <TabsTrigger value="tab1">Tab 1</TabsTrigger>
   </TabsList>
 </Tabs>
+<Collapsible>
+  <CollapsibleTrigger>Toggle</CollapsibleTrigger>
+  <CollapsibleContent>Hidden content</CollapsibleContent>
+</Collapsible>
+```
 
-// Feedback
-<Alert variant="default | destructive">
+**Data Display:**
+
+```tsx
+// Tables with @tanstack/react-table
+<DataTable data={data} columns={columns} />
+<EnhancedDataTable data={data} columns={columns} searchable sortable />
+<DataGrid data={data} />
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Column</TableHead>
+    </TableRow>
+  </TableHeader>
+</Table>
+<Badge variant="default | secondary | outline | destructive" />
+<Avatar src="/avatar.jpg" fallback="JD" />
+```
+
+**Date & Time:**
+
+```tsx
+<Calendar selected={date} onSelect={setDate} />
+<DatePicker value={date} onChange={setDate} />
+<MonthYearPicker value={date} onChange={setDate} />
+<ModernDatePicker value={date} onChange={setDate} />
+```
+
+**Navigation:**
+
+```tsx
+<CommandMenu>
+  <CommandInput placeholder="Search..." />
+  <CommandList>
+    <CommandGroup heading="Suggestions">
+      <CommandItem>Calendar</CommandItem>
+    </CommandGroup>
+  </CommandList>
+</CommandMenu>
+<DynamicBreadcrumb items={items} />
+<EnhancedPaginationControls page={1} totalPages={10} />
+<Stepper steps={steps} currentStep={0} />
+<ModernDrawer open={isOpen} onClose={close}>
+  <DrawerContent>Content</DrawerContent>
+</ModernDrawer>
+```
+
+**Feedback:**
+
+```tsx
+<Alert variant="default | destructive | warning | info">
   <AlertTitle>Alert Title</AlertTitle>
   <AlertDescription>Description</AlertDescription>
 </Alert>
+<AlertDialog>
+  <AlertDialogTrigger>Open</AlertDialogTrigger>
+  <AlertDialogContent>
+    <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+  </AlertDialogContent>
+</AlertDialog>
+<Skeleton className="w-full h-20" />
+<LoadingSpinner size="sm | md | lg" />
+<Progress value={50} />
+<Toast title="Success" description="Action completed" />
+```
+
+**Advanced Components:**
+
+```tsx
+<Dialog open={isOpen} onOpenChange={setIsOpen}>
+  <DialogContent>
+    <DialogHeader>
+      <DialogTitle>Dialog Title</DialogTitle>
+    </DialogHeader>
+  </DialogContent>
+</Dialog>
+<Dropdown>
+  <DropdownTrigger>Menu</DropdownTrigger>
+  <DropdownContent>
+    <DropdownItem>Item 1</DropdownItem>
+  </DropdownContent>
+</Dropdown>
+<Popover>
+  <PopoverTrigger>Open</PopoverTrigger>
+  <PopoverContent>Content</PopoverContent>
+</Popover>
+<Tooltip content="Tooltip text">
+  <button>Hover me</button>
+</Tooltip>
+<ScrollArea className="h-96">
+  <div>Scrollable content</div>
+</ScrollArea>
+<Slider value={[50]} onValueChange={setValue} />
+```
+
+**Enterprise Components:**
+
+```tsx
+// File Upload with react-dropzone
+<FileUpload
+  accept={{ 'image/*': ['.png', '.jpg'] }}
+  maxSize={5242880}
+  onDrop={handleDrop}
+/>
+
+// Rich Text Editor
+<RichTextEditor
+  value={content}
+  onChange={setContent}
+  placeholder="Start typing..."
+/>
+
+// Advanced Search with Filters
+<EnhancedSearchFilters
+  filters={filters}
+  onFilterChange={handleFilterChange}
+/>
+
+// Accessibility Enhancer
+<AccessibilityEnhancer skipToContentId="main">
+  <YourContent />
+</AccessibilityEnhancer>
+
+// Enterprise Error Boundary
+<EnterpriseErrorBoundary
+  fallback={<ErrorFallback />}
+  onError={logError}
+>
+  <YourApp />
+</EnterpriseErrorBoundary>
 ```
 
 ### Corporate Components
@@ -402,6 +639,14 @@ function Component() {
   readingTime="5 min read"
   publishedAt="2024-01-15"
 />
+
+// Gallery items
+<GalleryItem
+  image="/projects/project1.jpg"
+  title="Project Name"
+  category="Web Design"
+  description="Project description"
+/>
 ```
 
 ### Landing Page Sections
@@ -431,6 +676,151 @@ function Component() {
     { name: "Developer", role: "CTO", content: "Amazing tool!" }
   ]}
 />
+
+// Call to action
+<CTA
+  title="Ready to Build?"
+  description="Start your next project today"
+  primaryAction="Get Started"
+  secondaryAction="View Pricing"
+/>
+```
+
+## 🪝 Custom Hooks
+
+### Authentication
+
+```tsx
+import { useAuth } from '@/hooks/useAuth'
+
+const { user, login, logout, isAuthenticated, loading } = useAuth()
+```
+
+### Theme Management
+
+```tsx
+import { useTheme } from '@/hooks/useTheme'
+
+const { theme, setTheme, systemTheme } = useTheme()
+setTheme('dark' | 'light' | 'system')
+```
+
+### Toast Notifications
+
+```tsx
+import { useToast } from '@/hooks/useToast'
+
+const { toast } = useToast()
+toast.success('Success message')
+toast.error('Error message')
+toast.warning('Warning message')
+toast.info('Info message')
+toast.promise(asyncFn, {
+  loading: 'Loading...',
+  success: 'Done!',
+  error: 'Failed',
+})
+```
+
+### Locale Management
+
+```tsx
+import { useLocale } from '@/hooks/useLocale'
+
+const { locale, setLocale, availableLocales } = useLocale()
+setLocale('en' | 'tr')
+```
+
+### Clipboard Utilities
+
+```tsx
+import { useClipboard } from '@/hooks/useClipboard'
+
+const { copy, copied, error } = useClipboard()
+copy('Text to copy')
+```
+
+### Password Strength
+
+```tsx
+import { usePasswordStrength } from '@/hooks/usePasswordStrength'
+
+const { strength, score, feedback } = usePasswordStrength(password)
+// Returns: weak | fair | good | strong
+```
+
+### Form Utilities
+
+```tsx
+import { useForm } from '@/hooks/useForm'
+
+const { values, errors, handleChange, handleSubmit } = useForm({
+  initialValues: { email: '', password: '' },
+  onSubmit: async (values) => {
+    /* ... */
+  },
+})
+```
+
+## 🔌 Providers
+
+### Auth Provider
+
+Manages authentication state across the application.
+
+```tsx
+// Wrap your app
+import { AuthProvider } from '@/providers/AuthProvider'
+;<AuthProvider>
+  <YourApp />
+</AuthProvider>
+
+// Access auth state
+const { user, isAuthenticated, login, logout } = useAuth()
+```
+
+### i18n Provider
+
+Provides internationalization support.
+
+```tsx
+import { I18nProvider } from '@/providers/I18nProvider'
+;<I18nProvider>
+  <YourApp />
+</I18nProvider>
+```
+
+### React Query Provider
+
+Configures React Query for data fetching and caching.
+
+```tsx
+import { ReactQueryProvider } from '@/providers/ReactQueryProvider'
+;<ReactQueryProvider>
+  <YourApp />
+</ReactQueryProvider>
+```
+
+### Theme Provider
+
+Manages dark/light theme with system preference detection.
+
+```tsx
+import { ThemeProvider } from '@/providers/theme-provider'
+;<ThemeProvider defaultTheme='system' storageKey='theme'>
+  <YourApp />
+</ThemeProvider>
+```
+
+### Toast Provider
+
+Displays toast notifications throughout the app.
+
+```tsx
+import { ToastProvider } from '@/providers/toast-provider'
+;<ToastProvider>
+  <YourApp />
+</ToastProvider>
 ```
 
 ## 🛠️ Development Workflow
@@ -489,10 +879,10 @@ npm run start
 ### Basic Usage
 
 ```bash
-# Interactive template selection
+# Interactive template selection (3 main templates)
 npx starkon <project-name>
 
-# Or specify template directly
+# Or specify any of 6 templates directly
 npx starkon <project-name> --template <template-type>
 ```
 
@@ -508,7 +898,9 @@ npx starkon <project-name> --template <template-type>
 | `--config-get <key>`       | Get configuration value            | `--config-get defaultTemplate` |
 | `--clear-cache`            | Clear template cache               | -                              |
 
-### Main Template Types (Interactive Menu)
+### Template Types
+
+**Interactive Menu (3 templates):**
 
 | Template    | Use Case                         | Interactive Selection     |
 | ----------- | -------------------------------- | ------------------------- |
@@ -516,7 +908,7 @@ npx starkon <project-name> --template <template-type>
 | `landing`   | Marketing/product pages          | **Landing Page Template** |
 | `corporate` | Business websites                | **Corporate Template**    |
 
-### Additional Templates (Manual Selection)
+**Manual Selection Only (3 templates):**
 
 | Template    | Use Case         | Command                                  |
 | ----------- | ---------------- | ---------------------------------------- |
@@ -547,25 +939,46 @@ npx starkon --clear-cache
 | Feature                  | Standard | Corporate | Landing | Dashboard | Basic  | Minimal |
 | ------------------------ | -------- | --------- | ------- | --------- | ------ | ------- |
 | **Core**                 |
-| Next.js 15               | ✅       | ✅        | ✅      | ✅        | ✅     | ✅      |
-| TypeScript               | ✅       | ✅        | ✅      | ✅        | ✅     | ✅      |
+| Next.js 16               | ✅       | ✅        | ✅      | ✅        | ✅     | ✅      |
+| TypeScript 5.7           | ✅       | ✅        | ✅      | ✅        | ✅     | ✅      |
 | Tailwind CSS             | ✅       | ✅        | ✅      | ✅        | ✅     | ❌      |
+| React 19                 | ✅       | ✅        | ✅      | ✅        | ✅     | ✅      |
 | **Authentication**       |
 | JWT Auth System          | ✅       | ❌        | ❌      | ✅        | ❌     | ❌      |
 | Protected Routes         | ✅       | ❌        | ❌      | ✅        | ❌     | ❌      |
 | User Management          | ✅       | ❌        | ❌      | ✅        | ❌     | ❌      |
+| Password Recovery        | ✅       | ❌        | ❌      | ✅        | ❌     | ❌      |
 | **Internationalization** |
 | i18n Support             | ✅       | ❌        | ❌      | ✅        | ❌     | ❌      |
 | Multi-language           | ✅       | ❌        | ❌      | ✅        | ❌     | ❌      |
+| URL Language Params      | ✅       | ❌        | ❌      | ✅        | ❌     | ❌      |
 | **UI Components**        |
-| Core UI Kit              | ✅       | ✅        | ✅      | ✅        | ✅     | ❌      |
+| Core UI Kit (46)         | ✅       | ✅        | ✅      | ✅        | ✅     | ❌      |
 | Corporate Components     | ❌       | ✅        | ❌      | ❌        | ❌     | ❌      |
 | Landing Sections         | ❌       | ❌        | ✅      | ❌        | ❌     | ❌      |
 | Dashboard Components     | ✅       | ❌        | ❌      | ✅        | ❌     | ❌      |
+| **Advanced Features**    |
+| Command Menu (Cmd+K)     | ✅       | ✅        | ✅      | ✅        | ❌     | ❌      |
+| File Upload              | ✅       | ✅        | ✅      | ✅        | ❌     | ❌      |
+| Rich Text Editor         | ✅       | ✅        | ❌      | ✅        | ❌     | ❌      |
+| Data Tables              | ✅       | ❌        | ❌      | ✅        | ❌     | ❌      |
+| Error Boundaries         | ✅       | ✅        | ✅      | ✅        | ❌     | ❌      |
+| **State Management**     |
+| React Query              | ✅       | ✅        | ✅      | ✅        | ❌     | ❌      |
+| Zustand                  | ✅       | ✅        | ✅      | ✅        | ❌     | ❌      |
+| Redux (Optional)         | ✅       | ❌        | ❌      | ✅        | ❌     | ❌      |
 | **Pages & Routing**      |
 | Public Pages             | ✅       | ❌        | ✅      | ❌        | ❌     | ❌      |
 | Corporate Pages          | ❌       | ✅        | ❌      | ❌        | ❌     | ❌      |
 | Auth Pages               | ✅       | ❌        | ❌      | ✅        | ❌     | ❌      |
+| Dashboard                | ✅       | ❌        | ❌      | ✅        | ❌     | ❌      |
+| **Custom Hooks**         |
+| useAuth                  | ✅       | ❌        | ❌      | ✅        | ❌     | ❌      |
+| useTheme                 | ✅       | ✅        | ✅      | ✅        | ❌     | ❌      |
+| useToast                 | ✅       | ✅        | ✅      | ✅        | ❌     | ❌      |
+| useLocale                | ✅       | ❌        | ❌      | ✅        | ❌     | ❌      |
+| useClipboard             | ✅       | ✅        | ✅      | ✅        | ❌     | ❌      |
+| usePasswordStrength      | ✅       | ❌        | ❌      | ✅        | ❌     | ❌      |
 | **Performance**          |
 | Bundle Size              | Large    | Medium    | Small   | Medium    | Small  | Tiny    |
 | Setup Time               | 2-3 min  | 1-2 min   | 1 min   | 2 min     | 30 sec | 15 sec  |
@@ -608,10 +1021,10 @@ netlify deploy --prod --dir=.next
 
 ### 🔵 Docker
 
-Containerized deployment:
+For containerized deployment, add a Dockerfile to your scaffolded project:
 
 ```dockerfile
-# Dockerfile included in template
+# Example Dockerfile (add to your project after scaffolding)
 FROM node:18-alpine
 WORKDIR /app
 COPY package*.json ./
@@ -628,6 +1041,8 @@ docker build -t my-starkon-app .
 docker run -p 3000:3000 my-starkon-app
 ```
 
+**Note:** Dockerfile is not included in the Starkon CLI package itself. Add it to your scaffolded project as needed.
+
 ### ☁️ Other Platforms
 
 - **Railway:** `railway deploy`
@@ -639,13 +1054,15 @@ docker run -p 3000:3000 my-starkon-app
 
 ### Environment Variables
 
+Create `.env.local` in your project root:
+
 ```env
 # API Configuration
 NEXT_PUBLIC_API_URL=http://localhost:3001/api
 NODE_ENV=development
 
-# Authentication (Standard template)
-NEXTAUTH_SECRET=your-secret-key
+# Authentication (Standard & Dashboard templates)
+NEXTAUTH_SECRET=your-secret-key-here-change-in-production
 NEXTAUTH_URL=http://localhost:3000
 
 # Database (if using)
@@ -653,22 +1070,25 @@ DATABASE_URL=postgresql://user:pass@localhost:5432/db
 
 # Analytics (optional)
 NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
+
+# App Configuration
+NEXT_PUBLIC_APP_NAME=My Starkon App
+NEXT_PUBLIC_APP_URL=http://localhost:3000
 ```
 
 ### User Configuration
 
-```bash
-# Set default template
-npx starkon --config-set defaultTemplate=corporate
+CLI configuration stored in `~/.starkon/config.json`:
 
-# Set preferred package manager
-npx starkon --config-set preferredPackageManager=pnpm
-
-# Set default locale
-npx starkon --config-set locale=en
-
-# Disable telemetry
-npx starkon --config-set telemetryEnabled=false
+```json
+{
+  "defaultTemplate": "corporate",
+  "preferredPackageManager": "pnpm",
+  "locale": "en",
+  "skipGit": false,
+  "skipUpdateCheck": false,
+  "telemetryEnabled": true
+}
 ```
 
 ## 🧪 Testing
@@ -697,8 +1117,9 @@ test('Button renders correctly', () => {
 
 ### Theme System
 
+Customize your brand colors in `tailwind.config.mjs`:
+
 ```tsx
-// Custom theme configuration
 // tailwind.config.mjs
 export default {
   theme: {
@@ -706,8 +1127,14 @@ export default {
       colors: {
         primary: {
           50: 'hsl(210 40% 98%)',
+          100: 'hsl(210 40% 96%)',
           // ... your brand colors
         },
+      },
+      animation: {
+        'fade-in': 'fadeIn 0.5s ease-in-out',
+        'slide-in': 'slideIn 0.3s ease-out',
+        // ... custom animations
       },
     },
   },
@@ -716,22 +1143,48 @@ export default {
 
 ### Component Variants
 
+Using class-variance-authority for type-safe variants:
+
 ```tsx
-// Using class-variance-authority
+// Custom component with variants
 import { cva } from 'class-variance-authority'
+import { cn } from '@/lib/utils'
 
 const buttonVariants = cva('base-styles', {
   variants: {
     variant: {
       default: 'bg-primary text-white',
       outline: 'border border-primary text-primary',
+      ghost: 'hover:bg-accent',
     },
     size: {
       sm: 'px-3 py-1.5 text-sm',
       lg: 'px-6 py-3 text-lg',
     },
   },
+  defaultVariants: {
+    variant: 'default',
+    size: 'default',
+  },
 })
+
+export function CustomButton({ variant, size, className, ...props }) {
+  return <button className={cn(buttonVariants({ variant, size }), className)} {...props} />
+}
+```
+
+### Dark Mode
+
+Theme switching with system preference detection:
+
+```tsx
+import { useTheme } from '@/hooks/useTheme'
+
+function ThemeToggle() {
+  const { theme, setTheme } = useTheme()
+
+  return <button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>Toggle Theme</button>
+}
 ```
 
 ## 📋 Available Scripts
@@ -762,6 +1215,15 @@ npm run test:watch       # Watch mode testing
 npm run test:coverage    # Generate coverage report
 ```
 
+### Package Management (for contributors)
+
+```bash
+npm run build:lib        # Build CLI with tsup
+npm run commit           # Commitizen conventional commits
+npm run release          # Release management with release-it
+npm run prepare          # Husky git hooks setup
+```
+
 ## 🔄 Migration Guide
 
 ### From Create Next App
@@ -771,12 +1233,16 @@ npm run test:coverage    # Generate coverage report
 npx starkon my-app --template basic
 
 # 2. Copy your existing code
-cp -r old-project/src/pages/* new-project/src/app/
+cp -r old-project/src/app/* new-project/src/app/
 cp -r old-project/components/* new-project/src/components/
 
 # 3. Update imports
 # Change: import { Button } from '../components/Button'
 # To:     import { Button } from '@/components/core/button'
+
+# 4. Install your additional dependencies
+cd new-project
+npm install your-packages
 ```
 
 ### From Other Boilerplates
@@ -784,7 +1250,17 @@ cp -r old-project/components/* new-project/src/components/
 1. **Extract your custom components** to `src/components/`
 2. **Move API logic** to `src/lib/services/`
 3. **Update styling** to use Tailwind classes
-4. **Add TypeScript types** in `src/types/`
+4. **Add TypeScript types** in `src/lib/types/`
+5. **Integrate with providers** in `src/providers/`
+
+### Migrating Authentication
+
+If you have existing auth:
+
+1. Review Starkon's JWT flow in `src/lib/services/authApiService.ts`
+2. Replace mock service with your API endpoints
+3. Update token structure in `sessionTokenManager.ts`
+4. Modify `AuthProvider.tsx` for your auth logic
 
 ## 🤝 Contributing
 
@@ -805,15 +1281,20 @@ npm run dev
 
 # Run tests
 npm test
+
+# Build CLI
+npm run build:lib
 ```
 
 ### Creating New Templates
 
 ```bash
 # 1. Add template to index.js TEMPLATES object
-# 2. Create template-specific components
+# 2. Define excludeFiles array (exclusion-based system)
 # 3. Test template generation
-# 4. Update README.md
+npx starkon test-app --template your-template
+
+# 4. Update README.md with template documentation
 # 5. Submit PR
 ```
 
@@ -823,6 +1304,7 @@ npm test
 - **Testing:** Add tests for new features
 - **Documentation:** Update README for new features
 - **TypeScript:** Maintain full type safety
+- **Conventional Commits:** Use `npm run commit` for commits
 
 ## 📈 Performance
 
@@ -842,6 +1324,7 @@ ANALYZE=true npm run build
 - **Font Optimization** - Google Fonts optimization
 - **Static Generation** - ISG and SSG support
 - **Edge Runtime** - Faster cold starts
+- **React Server Components** - Reduced client bundle
 
 ## 🛠️ Troubleshooting
 
@@ -882,11 +1365,37 @@ localStorage.clear()
 sessionStorage.clear()
 ```
 
+**i18n Not Working:**
+
+```bash
+# Check language detection priority:
+# 1. localStorage 'language' key
+# 2. Cookie 'language' key
+# 3. URL parameter ?lang=en
+# 4. Browser navigator.language
+# 5. Default: 'tr'
+
+# Force language
+localStorage.setItem('language', 'en')
+```
+
+**Component Not Found:**
+
+```bash
+# Check import path uses @ alias
+import { Button } from '@/components/core/button'  # ✅ Correct
+import { Button } from '../components/core/button' # ❌ Wrong
+
+# Verify tsconfig.json has paths configured:
+# "@/*": ["./src/*"]
+```
+
 ### Getting Help
 
 - 🐛 **Bug Reports:** [GitHub Issues](https://github.com/zzafergok/starkon/issues)
 - 💬 **Questions:** [Discussions](https://github.com/zzafergok/starkon/discussions)
 - 📧 **Contact:** [zafer@starkon.website](mailto:zafer@starkon.website)
+- 📚 **Documentation:** [CLAUDE.md](CLAUDE.md) (for development)
 
 ## 📄 License
 
@@ -900,6 +1409,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **[Radix UI](https://www.radix-ui.com/)** - Low-level accessible UI primitives
 - **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS framework
 - **[React Query](https://tanstack.com/query)** - Powerful data synchronization
+- **[Zustand](https://zustand-demo.pmnd.rs/)** - Lightweight state management
 
 **Inspiration:**
 
@@ -925,10 +1435,13 @@ Made with ❤️ by [Zafer Gök](https://github.com/zzafergok)
 
 ## 📊 Stats
 
-- 🎨 **30+ UI Components** ready to use
-- 🔐 **Complete Auth System** with JWT tokens
-- 🌍 **2 Languages** supported (English, Turkish)
-- 📱 **3 Main Templates** + 3 specialized templates
+- 🎨 **46 UI Components** ready to use
+- 🔐 **Complete Auth System** with JWT tokens & 5 auth flows
+- 🌍 **2 Languages** supported (English, Turkish) with easy expansion
+- 📱 **6 Templates** (3 interactive + 3 manual selection)
+- 🪝 **7 Custom Hooks** for common patterns
+- 🔌 **5 Providers** for app-wide state management
 - ⚡ **Interactive CLI** with arrow key navigation
 - 🚀 **< 30 seconds** from CLI to running app
 - 🛠️ **Production Ready** - no additional setup needed
+- 📦 **React 19** & **Next.js 16** - Latest versions

@@ -6,20 +6,6 @@
 const MOCK_USERS = [
   {
     id: '1',
-    email: 'admin@example.com',
-    password: 'admin123',
-    name: 'Admin User',
-    role: 'admin',
-  },
-  {
-    id: '2',
-    email: 'user@example.com',
-    password: 'user123',
-    name: 'Regular User',
-    role: 'user',
-  },
-  {
-    id: '3',
     email: 'demo@example.com',
     password: 'demo123',
     name: 'Demo User',

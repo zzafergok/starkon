@@ -1163,10 +1163,8 @@
         "loginError": "An error occurred while signing in"
       },
       "demoAccounts": {
-        "title": "Demo Accounts",
-        "ortak": "Ahmet",
-        "zafer": "Admin",
-        "akin": "Mehmet"
+        "title": "Demo Account",
+        "demo": "Demo"
       }
     },
     "register": {
@@ -1645,18 +1643,20 @@
       },
       "cli": {
         "title": "Quick Start with CLI",
-        "description": "Initialize and manage your projects in minutes using the Starkon CLI tool.",
+        "description": "Create your project with Starkon CLI and choose the best template for your needs.",
         "installation": {
           "title": "Installation",
-          "global": "Global Install (Recommended)",
+          "global": "Interactive Setup (Recommended)",
           "npx": "One-time use with NPX"
         },
-        "commands": {
-          "title": "Core Commands",
-          "init": "Initialize a new project",
-          "add": "Add a new component",
-          "update": "Update components",
-          "list": "List available components"
+        "interactive": {
+          "title": "Interactive Setup Wizard",
+          "prompt": "? Which template would you like to use? › - Use arrow-keys. Return to submit.",
+          "options": {
+            "standard": "Next.js Boilerplate - Full-stack boilerplate (Auth, i18n)",
+            "landing": "Landing Page Template",
+            "corporate": "Corporate Template"
+          }
         },
         "nextSteps": {
           "title": "Next Steps",

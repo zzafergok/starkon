@@ -1158,10 +1158,8 @@
         "loginError": "Giriş yapılırken bir hata oluştu"
       },
       "demoAccounts": {
-        "title": "Demo Hesaplar",
-        "ortak": "Ahmet",
-        "zafer": "Admin",
-        "akin": "Mehmet"
+        "title": "Demo Hesap",
+        "demo": "Demo"
       }
     },
     "register": {
@@ -1960,18 +1958,20 @@
       },
       "cli": {
         "title": "CLI ile Hızlı Başlangıç",
-        "description": "Starkon CLI aracını kullanarak projelerinizi dakikalar içinde başlatın ve yönetin.",
+        "description": "Starkon CLI ile projenizi oluşturun ve size en uygun şablonu seçin.",
         "installation": {
           "title": "Kurulum",
-          "global": "Global Kurulum (Önerilen)",
+          "global": "İnteraktif Kurulum (Önerilen)",
           "npx": "NPX ile Tek Seferlik Kullanım"
         },
-        "commands": {
-          "title": "Temel Komutlar",
-          "init": "Yeni proje başlatır",
-          "add": "Projeye yeni bileşen ekler",
-          "update": "Bileşenleri günceller",
-          "list": "Mevcut bileşenleri listeler"
+        "interactive": {
+          "title": "İnteraktif Kurulum Sihirbazı",
+          "prompt": "? Hangi template'i kullanmak istersiniz? › - Use arrow-keys. Return to submit.",
+          "options": {
+            "standard": "Next.js Boilerplate - Tam özellikli boilerplate (Auth, i18n)",
+            "landing": "Landing Page Template",
+            "corporate": "Corporate Template"
+          }
         },
         "nextSteps": {
           "title": "Sonraki Adımlar",
