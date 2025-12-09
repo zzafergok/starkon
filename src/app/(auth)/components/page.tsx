@@ -88,7 +88,7 @@ export default function ComponentsPage() {
     const stats = ['all', ...Array.from(new Set(componentDemoData.map((c) => c.status)))]
     return stats.map((status) => ({
       value: status,
-      label: status === 'all' ? t('demo.remaining.allStatuses') : status,
+      label: status === 'all' ? t('demo.filters.allStatuses') : status,
       count: status === 'all' ? componentDemoData.length : componentDemoData.filter((c) => c.status === status).length,
     }))
   }, [componentDemoData])
@@ -243,7 +243,7 @@ export default function ComponentsPage() {
                       className='flex items-center gap-2 bg-white/70 dark:bg-neutral-700/70 border-neutral-200/80 dark:border-neutral-600/80'
                     >
                       <Filter className='h-4 w-4' />
-                      {t('demo.remaining.filters')}
+                      {t('demo.filters.filters')}
                       {hasActiveFilters && (
                         <Badge variant='default' className='text-xs px-1.5 py-0.5'>
                           !
@@ -259,7 +259,7 @@ export default function ComponentsPage() {
                     <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
                       <div className='space-y-2'>
                         <label className='text-sm font-medium text-neutral-700 dark:text-neutral-300'>
-                          {t('demo.remaining.category')}
+                          {t('demo.filters.category')}
                         </label>
                         <Select value={selectedCategory} onValueChange={setSelectedCategory}>
                           <SelectTrigger className='w-full'>
@@ -277,7 +277,7 @@ export default function ComponentsPage() {
 
                       <div className='space-y-2'>
                         <label className='text-sm font-medium text-neutral-700 dark:text-neutral-300'>
-                          {t('demo.remaining.status')}
+                          {t('demo.filters.status')}
                         </label>
                         <Select value={selectedStatus} onValueChange={setSelectedStatus}>
                           <SelectTrigger className='w-full'>
@@ -296,7 +296,7 @@ export default function ComponentsPage() {
 
                     {hasActiveFilters && (
                       <Button variant='outline' onClick={clearFilters} className='w-full'>
-                        {t('demo.remaining.clearFilters')}
+                        {t('demo.filters.clear')}
                       </Button>
                     )}
                   </div>
@@ -306,7 +306,7 @@ export default function ComponentsPage() {
                 {hasActiveFilters && (
                   <div className='flex items-center gap-2 flex-wrap'>
                     <span className='text-sm font-medium text-neutral-600 dark:text-neutral-400'>
-                      {t('demo.remaining.activeFilters')}
+                      {t('demo.filters.active')}
                     </span>
                     {searchQuery && (
                       <Badge key='search-filter' variant='secondary' className='gap-1'>
@@ -353,7 +353,7 @@ export default function ComponentsPage() {
                       onClick={clearFilters}
                       className='text-xs text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200'
                     >
-                      {t('demo.remaining.clearAll')}
+                      {t('demo.filters.clearAll')}
                     </Button>
                   </div>
                 )}
@@ -362,10 +362,10 @@ export default function ComponentsPage() {
                 <div className='flex items-center justify-between text-sm text-neutral-600 dark:text-neutral-400'>
                   <span>
                     <strong className='text-neutral-900 dark:text-neutral-100'>{filteredComponents.length}</strong>{' '}
-                    {t('demo.remaining.componentsShowing')}
+                    {t('demo.stats.showing')}
                     {filteredComponents.length !== componentDemoData.length && (
                       <span className='ml-1'>
-                        ({componentDemoData.length} {t('demo.remaining.totalComponents')})
+                        ({componentDemoData.length} {t('demo.stats.total')})
                       </span>
                     )}
                   </span>
@@ -402,8 +402,8 @@ export default function ComponentsPage() {
                         // Check if it's a string array and convert to proper format
                         if (component.usageExamples.length > 0 && typeof component.usageExamples[0] === 'string') {
                           return (component.usageExamples as string[]).map((example, index) => ({
-                            title: `Example ${index + 1}`,
-                            description: 'Usage example',
+                            title: t('demo.componentDemo.example', { index: index + 1 }),
+                            description: t('demo.componentDemo.usageExample'),
                             code: example,
                           }))
                         }
@@ -446,9 +446,7 @@ export default function ComponentsPage() {
                   >
                     {t('common.clearFilters')}
                   </Button>
-                  <div className='text-sm text-neutral-500 dark:text-neutral-400'>
-                    {t('demo.remaining.popularSearches')}
-                  </div>
+                  <div className='text-sm text-neutral-500 dark:text-neutral-400'>{t('demo.search.popular')}</div>
                 </div>
               </div>
             )}
@@ -462,7 +460,8 @@ export default function ComponentsPage() {
                   <CardContent className='p-3 lg:p-4'>
                     <h3 className='text-xs lg:text-sm font-semibold text-neutral-900 dark:text-neutral-50 mb-3 lg:mb-4 flex items-center gap-2'>
                       <div className='w-2 h-2 rounded-full bg-primary-500'></div>
-                      <span className='hidden lg:inline'>Components </span>({filteredComponents.length})
+                      <span className='hidden lg:inline'>{t('demo.componentMap.components')} </span>(
+                      {filteredComponents.length})
                     </h3>
                     <div className='space-y-0.5 lg:space-y-1 max-h-[70vh] overflow-y-auto'>
                       {categories
@@ -534,7 +533,7 @@ export default function ComponentsPage() {
           onClick={scrollToTop}
           size='lg'
           className='h-12 w-12 rounded-full p-0 bg-primary-600 hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 backdrop-blur-sm'
-          aria-label={t('demo.remaining.backToTop')}
+          aria-label={t('demo.actions.backToTop')}
         >
           <ChevronUp className='h-6 w-6' />
         </Button>
@@ -549,23 +548,23 @@ export default function ComponentsPage() {
                 <div className='text-2xl font-bold text-primary-600 dark:text-primary-400'>
                   {componentDemoData.filter((c) => c.status === 'stable').length}
                 </div>
-                <div className='text-sm text-neutral-600 dark:text-neutral-400'>Stable</div>
+                <div className='text-sm text-neutral-600 dark:text-neutral-400'>{t('demo.status.stable')}</div>
               </div>
               <div className='space-y-2'>
                 <div className='text-2xl font-bold text-amber-600 dark:text-amber-400'>
                   {componentDemoData.filter((c) => c.status === 'beta').length}
                 </div>
-                <div className='text-sm text-neutral-600 dark:text-neutral-400'>Beta</div>
+                <div className='text-sm text-neutral-600 dark:text-neutral-400'>{t('demo.status.beta')}</div>
               </div>
               <div className='space-y-2'>
                 <div className='text-2xl font-bold text-orange-600 dark:text-orange-400'>
                   {componentDemoData.filter((c) => c.status === 'alpha').length}
                 </div>
-                <div className='text-sm text-neutral-600 dark:text-neutral-400'>Alpha</div>
+                <div className='text-sm text-neutral-600 dark:text-neutral-400'>{t('demo.status.alpha')}</div>
               </div>
               <div className='space-y-2'>
                 <div className='text-2xl font-bold text-teal-600 dark:text-teal-400'>{categories.length - 1}</div>
-                <div className='text-sm text-neutral-600 dark:text-neutral-400'>{t('demo.remaining.categories')}</div>
+                <div className='text-sm text-neutral-600 dark:text-neutral-400'>{t('demo.stats.categories')}</div>
               </div>
             </div>
           </div>

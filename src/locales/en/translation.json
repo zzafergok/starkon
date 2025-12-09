@@ -51,6 +51,38 @@
     "info": "Info"
   },
   "demo": {
+    "componentDemo": {
+      "example": "Example {{index}}",
+      "usageExample": "Usage example"
+    },
+    "filters": {
+      "filters": "Filters",
+      "category": "Category",
+      "status": "Status",
+      "clear": "Clear Filters",
+      "clearAll": "Clear All",
+      "active": "Active Filters:",
+      "allStatuses": "All Statuses"
+    },
+    "stats": {
+      "showing": "components showing",
+      "total": "total components",
+      "categories": "Categories"
+    },
+    "search": {
+      "popular": "Popular searches: Button, Input, Card"
+    },
+    "componentMap": {
+      "components": "Components"
+    },
+    "actions": {
+      "backToTop": "Back to top"
+    },
+    "status": {
+      "stable": "Stable",
+      "beta": "Beta",
+      "alpha": "Alpha"
+    },
     "sampleData": {
       "users": {
         "ahmet": "John Doe",

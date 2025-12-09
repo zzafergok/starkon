@@ -51,6 +51,38 @@
     "info": "Bilgi"
   },
   "demo": {
+    "componentDemo": {
+      "example": "Örnek {{index}}",
+      "usageExample": "Kullanım örneği"
+    },
+    "filters": {
+      "filters": "Filtreler",
+      "category": "Kategori",
+      "status": "Durum",
+      "clear": "Filtreleri Temizle",
+      "clearAll": "Tümünü Temizle",
+      "active": "Aktif Filtreler:",
+      "allStatuses": "Tüm Durumlar"
+    },
+    "stats": {
+      "showing": "bileşen gösteriliyor",
+      "total": "toplam bileşen",
+      "categories": "Kategoriler"
+    },
+    "search": {
+      "popular": "Popüler aramalar: Button, Input, Card"
+    },
+    "componentMap": {
+      "components": "Bileşenler"
+    },
+    "actions": {
+      "backToTop": "Yukarı çık"
+    },
+    "status": {
+      "stable": "Kararlı",
+      "beta": "Beta",
+      "alpha": "Alfa"
+    },
     "sampleData": {
       "users": {
         "ahmet": "Ahmet Yılmaz",
