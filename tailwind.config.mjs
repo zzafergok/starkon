@@ -181,6 +181,12 @@ const config = {
         128: '32rem',
       },
 
+      maxWidth: {
+        '8xl': '88rem',
+        '9xl': '96rem',
+        '10xl': '104rem',
+      },
+
       zIndex: {
         60: '60',
         70: '70',

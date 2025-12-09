@@ -10,7 +10,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
     <ProtectedRoute requireAuth={true}>
       <div className='min-h-screen flex flex-col'>
         <AuthHeader />
-        <main className='flex-1 relative'>{children}</main>
+        <main className='flex-1 relative w-full max-w-9xl mx-auto lg:py-6'>{children}</main>
         <PomodoroTimer />
       </div>
     </ProtectedRoute>

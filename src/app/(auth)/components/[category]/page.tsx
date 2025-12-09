@@ -124,9 +124,9 @@ export default function CategoryComponentsPage() {
   }
 
   return (
-    <div className='min-h-screen bg-gradient-to-br from-neutral-50 via-white to-neutral-100/50 dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-950/80'>
+    <div className='min-h-screen'>
       {/* Header Section */}
-      <section className='sticky top-0 z-40 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-xl border-b border-neutral-200/50 dark:border-neutral-700/30'>
+      <section className='sticky top-0 z-40'>
         <div className='max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8'>
           <div className='mb-6 flex items-center gap-4'>
             <Link href='/components'>
