@@ -16,7 +16,6 @@ export function RegisterFormFields() {
         name='fullName'
         label={t('auth.register.fullName')}
         placeholder={t('auth.register.fullNamePlaceholder')}
-        autoComplete='name'
         required
         className='theme-transition-colors'
       />
@@ -26,7 +25,6 @@ export function RegisterFormFields() {
         label={t('auth.register.email')}
         type='email'
         placeholder={t('auth.register.emailPlaceholder')}
-        autoComplete='email'
         required
         className='theme-transition-colors'
       />
@@ -38,7 +36,6 @@ export function RegisterFormFields() {
         isPassword={true}
         showPasswordStrength={true}
         placeholder={t('auth.register.passwordPlaceholder')}
-        autoComplete='new-password'
         required
         className='theme-transition-colors'
       />
@@ -49,7 +46,6 @@ export function RegisterFormFields() {
         type='text'
         isPassword={true}
         placeholder={t('auth.register.confirmPasswordPlaceholder')}
-        autoComplete='new-password'
         required
         className='theme-transition-colors'
       />
