@@ -1,575 +1,87 @@
 'use client'
 
-import dynamic from 'next/dynamic'
+import Link from 'next/link'
 
-import React, { useState, useMemo, useEffect } from 'react'
+import { useMemo } from 'react'
 
 import { useTranslation } from 'react-i18next'
-import { Search, Filter, X, ChevronUp } from 'lucide-react'
+import { Layout, Type, MousePointerClick, MessageSquare, Layers, Box, Settings, Activity } from 'lucide-react'
 
-import { Input } from '@/components/core/input'
-import { Badge } from '@/components/core/badge'
-import { Button } from '@/components/core/button'
 import { Card, CardContent } from '@/components/core/card'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/core/select'
 
-import { cn } from '@/lib/utils'
-import { useComponentDemoData } from '@/data/componentDemoData'
+import { CATEGORIES, useComponentDemoData } from '@/data/componentDemoData'
 
-const ComponentDemo = dynamic(
-  () => import('@/components/ui/ComponentDemo/ComponentDemo').then((mod) => mod.ComponentDemo),
-  {
-    loading: () => <ComponentDemoSkeleton />,
-    ssr: false,
-  },
-)
+// Map categories to Lucide icons for visual appeal
+const CategoryIcons: Record<string, any> = {
+  ui: Layout,
+  layout: Layout,
+  overlay: Layers,
+  dataDisplay: Box,
+  advanced: Settings,
+  feedback: MessageSquare,
+  navigation: MousePointerClick,
+  formInput: Type, // Using Type for inputs/forms generic
+  all: Layers, // Should not be shown usually, but fallback
+}
 
-const ComponentDemoSkeleton = () => (
-  <div className='bg-white/70 dark:bg-neutral-800/70 backdrop-blur-sm border border-neutral-200/80 dark:border-neutral-700/50 rounded-2xl shadow-sm overflow-hidden animate-pulse'>
-    <div className='p-6'>
-      <div className='flex items-start justify-between mb-4'>
-        <div className='space-y-3 flex-1'>
-          <div className='flex items-center gap-3'>
-            <div className='h-6 bg-neutral-200 dark:bg-neutral-700 rounded w-32'></div>
-            <div className='h-5 bg-neutral-200 dark:bg-neutral-700 rounded w-16'></div>
-          </div>
-          <div className='h-4 bg-neutral-200 dark:bg-neutral-700 rounded w-20'></div>
-        </div>
-        <div className='h-8 w-8 bg-neutral-200 dark:bg-neutral-700 rounded'></div>
-      </div>
-      <div className='h-4 bg-neutral-200 dark:bg-neutral-700 rounded w-full mb-2'></div>
-      <div className='h-4 bg-neutral-200 dark:bg-neutral-700 rounded w-5/6 mb-6'></div>
-      <div className='h-32 bg-neutral-200 dark:bg-neutral-700 rounded-xl'></div>
-    </div>
-    <div className='bg-neutral-100/50 dark:bg-neutral-700/30 p-6 border-t border-neutral-200/50 dark:border-neutral-600/30'>
-      <div className='h-24 bg-neutral-200 dark:bg-neutral-600 rounded-lg'></div>
-    </div>
-  </div>
-)
-
-export default function ComponentsPage() {
+export default function ComponentsLandingPage() {
   const { t } = useTranslation()
   const componentDemoData = useComponentDemoData()
 
-  const [searchQuery, setSearchQuery] = useState('')
-  const [viewMode] = useState<'grid' | 'list'>('grid')
-  const [isFilterOpen, setIsFilterOpen] = useState(false)
-  const [showScrollTop, setShowScrollTop] = useState(false)
-  const [selectedStatus, setSelectedStatus] = useState<string>('all')
-  const [selectedCategory, setSelectedCategory] = useState<string>('all')
-
-  // Filtreleme mantığı
-  const filteredComponents = useMemo(() => {
-    return componentDemoData.filter((component) => {
-      const matchesSearch =
-        !searchQuery ||
-        component.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        component.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        component.category.toLowerCase().includes(searchQuery.toLowerCase())
-
-      const matchesCategory = selectedCategory === 'all' || component.category === selectedCategory
-      const matchesStatus = selectedStatus === 'all' || component.status === selectedStatus
-
-      return matchesSearch && matchesCategory && matchesStatus
-    })
-  }, [searchQuery, selectedCategory, selectedStatus, componentDemoData])
-
-  // Kategoriler ve durumlar
-  const categories = useMemo(() => {
-    const cats = ['all', ...Array.from(new Set(componentDemoData.map((c) => c.category)))]
-    return cats.map((cat) => ({
-      value: cat,
-      label: cat === 'all' ? t('common.allCategories') : cat,
-      count: cat === 'all' ? componentDemoData.length : componentDemoData.filter((c) => c.category === cat).length,
-    }))
+  // Calculate counts for each category
+  const categoriesWithCounts = useMemo(() => {
+    return CATEGORIES.filter((cat) => cat !== 'all') // Don't show "All" as a specific category card typically
+      .map((cat) => {
+        const translatedCat = t(`demo.content.categories.${cat}`)
+        const count = componentDemoData.filter((c) => c.category === translatedCat).length
+        return {
+          key: cat,
+          label: translatedCat,
+          count,
+          icon: CategoryIcons[cat] || Activity,
+        }
+      })
   }, [t, componentDemoData])
-
-  const statuses = useMemo(() => {
-    const stats = ['all', ...Array.from(new Set(componentDemoData.map((c) => c.status)))]
-    return stats.map((status) => ({
-      value: status,
-      label: status === 'all' ? t('demo.filters.allStatuses') : status,
-      count: status === 'all' ? componentDemoData.length : componentDemoData.filter((c) => c.status === status).length,
-    }))
-  }, [componentDemoData])
-
-  const clearFilters = () => {
-    setSearchQuery('')
-    setSelectedCategory('all')
-    setSelectedStatus('all')
-  }
-
-  const hasActiveFilters = searchQuery || selectedCategory !== 'all' || selectedStatus !== 'all'
-
-  // Scroll to top functionality
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY
-      setShowScrollTop(scrollTop > 400) // 400px sonra görünür
-    }
-
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    })
-  }
 
   return (
     <div className='min-h-screen bg-gradient-to-br from-neutral-50 via-white to-neutral-100/50 dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-950/80'>
-      {/* Search and Filter Section */}
-      <section className='sticky top-0 z-40 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-xl border-b border-neutral-200/50 dark:border-neutral-700/30'>
-        <div className='max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8'>
-          <Card className='bg-white/70 dark:bg-neutral-800/70 backdrop-blur-sm border-neutral-200/80 dark:border-neutral-700/50 shadow-lg shadow-neutral-900/5 dark:shadow-neutral-950/20'>
-            <CardContent className='p-6'>
-              <div className='space-y-6'>
-                {/* Ana Arama ve Görünüm Kontrolleri */}
-                <div className='flex flex-col xl:flex-row gap-6 items-start xl:items-center'>
-                  {/* Arama Alanı - Desktop'ta daha geniş */}
-                  <div className='flex-1 w-full max-w-none xl:max-w-lg relative group'>
-                    <Search className='absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-neutral-400 group-focus-within:text-primary-500 transition-colors' />
-                    <Input
-                      placeholder={t('pages.components.searchPlaceholder')}
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      className='pl-12 pr-4 py-3 text-base bg-white/70 dark:bg-neutral-700/70 border-neutral-200/80 dark:border-neutral-600/80 text-neutral-900 dark:text-neutral-100 focus:ring-2 focus:ring-primary-500/20 dark:focus:ring-primary-400/20 focus:border-primary-500 dark:focus:border-primary-400 transition-all duration-200'
-                    />
-                    {searchQuery && (
-                      <Button
-                        variant='ghost'
-                        size='sm'
-                        onClick={() => setSearchQuery('')}
-                        className='absolute right-2 top-1/2 transform -translate-y-1/2 h-8 w-8 p-0 hover:bg-neutral-100 dark:hover:bg-neutral-600'
-                      >
-                        <X className='h-4 w-4' />
-                      </Button>
-                    )}
-                  </div>
-
-                  {/* Desktop Filtreler - Daha geniş alanlar */}
-                  <div className='hidden xl:flex items-center gap-4 shrink-0'>
-                    {/* Kategori Filtresi */}
-                    <div className='min-w-[220px]'>
-                      <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-                        <SelectTrigger className='w-full bg-white/70 dark:bg-neutral-700/70 border-neutral-200/80 dark:border-neutral-600/80'>
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {categories.map((category) => (
-                            <SelectItem key={category.value} value={category.value}>
-                              <div className='flex items-center justify-between w-full'>
-                                <span>{category.label}</span>
-                                <Badge variant='secondary' className='ml-2 text-xs'>
-                                  {category.count}
-                                </Badge>
-                              </div>
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
-
-                    {/* Durum Filtresi */}
-                    <div className='min-w-[180px]'>
-                      <Select value={selectedStatus} onValueChange={setSelectedStatus}>
-                        <SelectTrigger className='w-full bg-white/70 dark:bg-neutral-700/70 border-neutral-200/80 dark:border-neutral-600/80'>
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {statuses.map((status) => (
-                            <SelectItem key={status.value} value={status.value}>
-                              <div className='flex items-center justify-between w-full'>
-                                <span>{status.label}</span>
-                                <Badge variant='secondary' className='ml-2 text-xs'>
-                                  {status.count}
-                                </Badge>
-                              </div>
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  </div>
-
-                  {/* Tablet Filtreler (lg breakpoint) */}
-                  <div className='hidden lg:flex xl:hidden items-center gap-3 w-full justify-between'>
-                    <div className='flex items-center gap-3 flex-1'>
-                      <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-                        <SelectTrigger className='w-[200px] bg-white/70 dark:bg-neutral-700/70 border-neutral-200/80 dark:border-neutral-600/80'>
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {categories.map((category) => (
-                            <SelectItem key={category.value} value={category.value}>
-                              <div className='flex items-center justify-between w-full'>
-                                <span>{category.label}</span>
-                                <Badge variant='secondary' className='ml-2 text-xs'>
-                                  {category.count}
-                                </Badge>
-                              </div>
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                      <Select value={selectedStatus} onValueChange={setSelectedStatus}>
-                        <SelectTrigger className='w-auto gap-4 bg-white/70 dark:bg-neutral-700/70 border-neutral-200/80 dark:border-neutral-600/80'>
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {statuses.map((status) => (
-                            <SelectItem key={status.value} value={status.value}>
-                              <div className='flex items-center justify-between w-full'>
-                                <span>{status.label}</span>
-                                <Badge variant='secondary' className='ml-2 text-xs'>
-                                  {status.count}
-                                </Badge>
-                              </div>
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  </div>
-
-                  {/* Mobile Filter Toggle */}
-                  <div className='lg:hidden flex items-center gap-2 w-full'>
-                    <Button
-                      variant='outline'
-                      onClick={() => setIsFilterOpen(!isFilterOpen)}
-                      className='flex items-center gap-2 bg-white/70 dark:bg-neutral-700/70 border-neutral-200/80 dark:border-neutral-600/80'
-                    >
-                      <Filter className='h-4 w-4' />
-                      {t('demo.filters.filters')}
-                      {hasActiveFilters && (
-                        <Badge variant='default' className='text-xs px-1.5 py-0.5'>
-                          !
-                        </Badge>
-                      )}
-                    </Button>
-                  </div>
-                </div>
-
-                {/* Mobile Filters Dropdown */}
-                {isFilterOpen && (
-                  <div className='lg:hidden space-y-4 p-4 bg-neutral-50/50 dark:bg-neutral-800/50 rounded-xl border border-neutral-200/50 dark:border-neutral-600/50'>
-                    <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
-                      <div className='space-y-2'>
-                        <label className='text-sm font-medium text-neutral-700 dark:text-neutral-300'>
-                          {t('demo.filters.category')}
-                        </label>
-                        <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-                          <SelectTrigger className='w-full'>
-                            <SelectValue />
-                          </SelectTrigger>
-                          <SelectContent>
-                            {categories.map((category) => (
-                              <SelectItem key={category.value} value={category.value}>
-                                {category.label} ({category.count})
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                      </div>
-
-                      <div className='space-y-2'>
-                        <label className='text-sm font-medium text-neutral-700 dark:text-neutral-300'>
-                          {t('demo.filters.status')}
-                        </label>
-                        <Select value={selectedStatus} onValueChange={setSelectedStatus}>
-                          <SelectTrigger className='w-full'>
-                            <SelectValue />
-                          </SelectTrigger>
-                          <SelectContent>
-                            {statuses.map((status) => (
-                              <SelectItem key={status.value} value={status.value}>
-                                {status.label} ({status.count})
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                      </div>
-                    </div>
-
-                    {hasActiveFilters && (
-                      <Button variant='outline' onClick={clearFilters} className='w-full'>
-                        {t('demo.filters.clear')}
-                      </Button>
-                    )}
-                  </div>
-                )}
-
-                {/* Aktif Filtreler */}
-                {hasActiveFilters && (
-                  <div className='flex items-center gap-2 flex-wrap'>
-                    <span className='text-sm font-medium text-neutral-600 dark:text-neutral-400'>
-                      {t('demo.filters.active')}
-                    </span>
-                    {searchQuery && (
-                      <Badge key='search-filter' variant='secondary' className='gap-1'>
-                        {`"${searchQuery}"`}
-                        <Button
-                          variant='ghost'
-                          size='sm'
-                          onClick={() => setSearchQuery('')}
-                          className='h-4 w-4 p-0 hover:bg-transparent'
-                        >
-                          <X className='h-3 w-3' />
-                        </Button>
-                      </Badge>
-                    )}
-                    {selectedCategory !== 'all' && (
-                      <Badge key='category-filter' variant='secondary' className='gap-1'>
-                        {selectedCategory}
-                        <Button
-                          variant='ghost'
-                          size='sm'
-                          onClick={() => setSelectedCategory('all')}
-                          className='h-4 w-4 p-0 hover:bg-transparent'
-                        >
-                          <X className='h-3 w-3' />
-                        </Button>
-                      </Badge>
-                    )}
-                    {selectedStatus !== 'all' && (
-                      <Badge key='status-filter' variant='secondary' className='gap-1'>
-                        {selectedStatus}
-                        <Button
-                          variant='ghost'
-                          size='sm'
-                          onClick={() => setSelectedStatus('all')}
-                          className='h-4 w-4 p-0 hover:bg-transparent'
-                        >
-                          <X className='h-3 w-3' />
-                        </Button>
-                      </Badge>
-                    )}
-                    <Button
-                      variant='ghost'
-                      size='sm'
-                      onClick={clearFilters}
-                      className='text-xs text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200'
-                    >
-                      {t('demo.filters.clearAll')}
-                    </Button>
-                  </div>
-                )}
-
-                {/* Sonuç Özeti */}
-                <div className='flex items-center justify-between text-sm text-neutral-600 dark:text-neutral-400'>
-                  <span>
-                    <strong className='text-neutral-900 dark:text-neutral-100'>{filteredComponents.length}</strong>{' '}
-                    {t('demo.stats.showing')}
-                    {filteredComponents.length !== componentDemoData.length && (
-                      <span className='ml-1'>
-                        ({componentDemoData.length} {t('demo.stats.total')})
-                      </span>
-                    )}
-                  </span>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+      <div className='max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8'>
+        {/* Header */}
+        <div className='text-center mb-16'>
+          <h1 className='text-4xl font-extrabold text-neutral-900 dark:text-neutral-100 tracking-tight mb-4'>
+            {t('pages.components.title') || 'Bileşenler'}
+          </h1>
+          <p className='text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto'>
+            {t('pages.components.description') || 'Projelerinizde kullanabileceğiniz kapsamlı UI bileşen kütüphanesi.'}
+          </p>
         </div>
-      </section>
 
-      {/* Components Showcase */}
-      <section className='max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8'>
-        <div className='flex gap-8'>
-          {/* Ana İçerik Alanı */}
-          <div className='flex-1 min-w-0'>
-            {filteredComponents.length > 0 ? (
-              <div className={cn(viewMode === 'grid' ? 'columns-1 gap-8 space-y-8' : 'grid grid-cols-1 gap-8')}>
-                {filteredComponents.map((component) => (
-                  <div
-                    key={component.id}
-                    id={`component-${component.id}`}
-                    className={cn('w-full scroll-mt-24', viewMode === 'grid' ? 'break-inside-avoid mb-8' : '')}
-                  >
-                    <ComponentDemo
-                      title={component.title}
-                      description={component.description}
-                      category={component.category}
-                      status={component.status as 'stable' | 'beta' | 'alpha' | 'deprecated'}
-                      demoComponent={component.demoComponent}
-                      code={component.code}
-                      usageExamples={(() => {
-                        if (!component.usageExamples || !Array.isArray(component.usageExamples)) return undefined
-
-                        // Check if it's a string array and convert to proper format
-                        if (component.usageExamples.length > 0 && typeof component.usageExamples[0] === 'string') {
-                          return (component.usageExamples as string[]).map((example, index) => ({
-                            title: t('demo.componentDemo.example', { index: index + 1 }),
-                            description: t('demo.componentDemo.usageExample'),
-                            code: example,
-                          }))
-                        }
-
-                        // Otherwise assume it's already in correct format
-                        return component.usageExamples as Array<{
-                          title: string
-                          description: string
-                          code: string
-                          component?: React.ReactNode
-                        }>
-                      })()}
-                      props={component.props?.map((prop, index) => ({
-                        ...prop,
-                        key: prop.name || `prop-${index}`,
-                        description: prop.description || '',
-                        required: false,
-                      }))}
-                    />
-                  </div>
-                ))}
-              </div>
-            ) : (
-              /* No Results State */
-              <div className='text-center py-20'>
-                <div className='text-neutral-400 dark:text-neutral-500 mb-6'>
-                  <Search className='h-20 w-20 mx-auto opacity-50' />
-                </div>
-                <h3 className='text-2xl font-semibold text-neutral-900 dark:text-neutral-100 mb-3'>
-                  {t('common.noComponentsFound')}
-                </h3>
-                <p className='text-neutral-600 dark:text-neutral-400 mb-8 max-w-md mx-auto leading-relaxed'>
-                  {t('common.changeSearchCriteria')}
-                </p>
-                <div className='space-y-4'>
-                  <Button
-                    variant='outline'
-                    onClick={clearFilters}
-                    className='bg-white/70 dark:bg-neutral-800/70 border-neutral-200/80 dark:border-neutral-600/80'
-                  >
-                    {t('common.clearFilters')}
-                  </Button>
-                  <div className='text-sm text-neutral-500 dark:text-neutral-400'>{t('demo.search.popular')}</div>
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Component Map - Sağ Panel */}
-          {filteredComponents.length > 0 && (
-            <div className='hidden lg:block w-56 xl:w-64 shrink-0'>
-              <div className='sticky space-y-4'>
-                <Card className='bg-white/70 dark:bg-neutral-800/70 backdrop-blur-sm border-neutral-200/80 dark:border-neutral-700/50'>
-                  <CardContent className='p-3 lg:p-4'>
-                    <h3 className='text-xs lg:text-sm font-semibold text-neutral-900 dark:text-neutral-50 mb-3 lg:mb-4 flex items-center gap-2'>
-                      <div className='w-2 h-2 rounded-full bg-primary-500'></div>
-                      <span className='hidden lg:inline'>{t('demo.componentMap.components')} </span>(
-                      {filteredComponents.length})
-                    </h3>
-                    <div className='space-y-0.5 lg:space-y-1 max-h-[70vh] overflow-y-auto'>
-                      {categories
-                        .filter(
-                          (cat) =>
-                            cat.value !== 'all' && filteredComponents.some((comp) => comp.category === cat.value),
-                        )
-                        .map((category) => {
-                          const categoryComponents = filteredComponents.filter(
-                            (comp) => comp.category === category.value,
-                          )
-                          return (
-                            <div key={category.value} className='space-y-1'>
-                              <div className='text-xs font-medium text-neutral-600 dark:text-neutral-400 px-1.5 lg:px-2 py-0.5 lg:py-1 uppercase tracking-wider'>
-                                <span className='hidden lg:inline'>{category.label} </span>
-                                <span className='lg:hidden'>{category.label.charAt(0)}</span>(
-                                {categoryComponents.length})
-                              </div>
-                              {categoryComponents.map((component) => (
-                                <button
-                                  key={component.id}
-                                  onClick={() => {
-                                    const element = document.getElementById(`component-${component.id}`)
-                                    element?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-                                  }}
-                                  className='w-full text-left px-1.5 lg:px-2 py-1 lg:py-1.5 text-xs lg:text-sm rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-700/50 transition-colors group flex items-center justify-between'
-                                >
-                                  <span className='text-neutral-700 dark:text-neutral-300 group-hover:text-primary-600 dark:group-hover:text-primary-400 truncate'>
-                                    {component.title}
-                                  </span>
-                                  <Badge
-                                    variant='secondary'
-                                    className={cn(
-                                      'text-xs px-1 lg:px-1.5 py-0.5 opacity-70 shrink-0',
-                                      component.status === 'stable' &&
-                                        'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300',
-                                      component.status === 'beta' &&
-                                        'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300',
-                                      component.status === 'alpha' &&
-                                        'bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300',
-                                    )}
-                                  >
-                                    {component.status}
-                                  </Badge>
-                                </button>
-                              ))}
-                            </div>
-                          )
-                        })}
+        {/* Categories Grid */}
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
+          {categoriesWithCounts.map((category) => {
+            const Icon = category.icon
+            return (
+              <Link key={category.key} href={`/components/${category.key}`}>
+                <Card className='h-full hover:shadow-xl hover:scale-[1.02] transition-all duration-300 border-neutral-200/80 dark:border-neutral-700/50 bg-white/70 dark:bg-neutral-800/70 backdrop-blur-sm group cursor-pointer'>
+                  <CardContent className='p-6 flex flex-col items-center text-center space-y-4'>
+                    <div className='p-4 rounded-2xl bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 group-hover:bg-primary-100 dark:group-hover:bg-primary-900/30 transition-colors'>
+                      <Icon className='w-8 h-8' />
+                    </div>
+                    <div>
+                      <h3 className='text-xl font-semibold text-neutral-900 dark:text-neutral-100 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors'>
+                        {category.label}
+                      </h3>
+                      <span className='inline-block mt-2 px-3 py-1 bg-neutral-100 dark:bg-neutral-700/50 rounded-full text-xs font-medium text-neutral-600 dark:text-neutral-400'>
+                        {category.count} {t('demo.componentMap.components').toLowerCase()}
+                      </span>
                     </div>
                   </CardContent>
                 </Card>
-              </div>
-            </div>
-          )}
+              </Link>
+            )
+          })}
         </div>
-      </section>
-
-      {/* Scroll to Top Button */}
-      <div
-        className={cn(
-          'fixed bottom-8 right-8 z-50 transition-all duration-300',
-          showScrollTop
-            ? 'opacity-100 translate-y-0 pointer-events-auto'
-            : 'opacity-0 translate-y-8 pointer-events-none',
-        )}
-      >
-        <Button
-          onClick={scrollToTop}
-          size='lg'
-          className='h-12 w-12 rounded-full p-0 bg-primary-600 hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 backdrop-blur-sm'
-          aria-label={t('demo.actions.backToTop')}
-        >
-          <ChevronUp className='h-6 w-6' />
-        </Button>
       </div>
-
-      {/* Footer İstatistikleri */}
-      {filteredComponents.length > 0 && (
-        <section className='border-t border-neutral-200/50 dark:border-neutral-700/30 bg-neutral-50/50 dark:bg-neutral-900/50'>
-          <div className='max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8'>
-            <div className='grid grid-cols-2 md:grid-cols-4 gap-6 text-center'>
-              <div className='space-y-2'>
-                <div className='text-2xl font-bold text-primary-600 dark:text-primary-400'>
-                  {componentDemoData.filter((c) => c.status === 'stable').length}
-                </div>
-                <div className='text-sm text-neutral-600 dark:text-neutral-400'>{t('demo.status.stable')}</div>
-              </div>
-              <div className='space-y-2'>
-                <div className='text-2xl font-bold text-amber-600 dark:text-amber-400'>
-                  {componentDemoData.filter((c) => c.status === 'beta').length}
-                </div>
-                <div className='text-sm text-neutral-600 dark:text-neutral-400'>{t('demo.status.beta')}</div>
-              </div>
-              <div className='space-y-2'>
-                <div className='text-2xl font-bold text-orange-600 dark:text-orange-400'>
-                  {componentDemoData.filter((c) => c.status === 'alpha').length}
-                </div>
-                <div className='text-sm text-neutral-600 dark:text-neutral-400'>{t('demo.status.alpha')}</div>
-              </div>
-              <div className='space-y-2'>
-                <div className='text-2xl font-bold text-teal-600 dark:text-teal-400'>{categories.length - 1}</div>
-                <div className='text-sm text-neutral-600 dark:text-neutral-400'>{t('demo.stats.categories')}</div>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
     </div>
   )
 }

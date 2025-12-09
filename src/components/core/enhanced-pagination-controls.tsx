@@ -8,56 +8,59 @@ import { Input } from '@/components/core/input'
 import { Button } from '@/components/core/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/core/select'
 
+import { useTranslation } from 'react-i18next'
+
 import { cn } from '@/lib/utils'
 
 export interface PaginationInfo {
+  total: number
   current: number
   pageSize: number
-  total: number
   totalPages: number
 }
 
 export interface PaginationControlsProps {
-  pagination: PaginationInfo
-  onPageChange: (page: number) => void
-  onPageSizeChange: (pageSize: number) => void
-  showSizeChanger?: boolean
-  showQuickJumper?: boolean
-  showTotal?: boolean
-  pageSizeOptions?: number[]
+  simple?: boolean
   disabled?: boolean
   className?: string
-  size?: 'small' | 'default' | 'large'
-  simple?: boolean
+  showTotal?: boolean
+  maxPageButtons?: number
+  showSizeChanger?: boolean
+  showQuickJumper?: boolean
+  pagination: PaginationInfo
+  pageSizeOptions?: number[]
   hideOnSinglePage?: boolean
   showPrevNextJumpers?: boolean
-  maxPageButtons?: number
+  onPageChange: (page: number) => void
+  size?: 'small' | 'default' | 'large'
+  onPageSizeChange: (pageSize: number) => void
   itemRender?: (
     page: number,
-    type: 'page' | 'prev' | 'next' | 'jump-prev' | 'jump-next',
     originalElement: React.ReactElement,
+    type: 'page' | 'prev' | 'next' | 'jump-prev' | 'jump-next',
   ) => React.ReactNode
   showLessItems?: boolean
 }
 
 export function EnhancedPaginationControls({
-  pagination,
-  onPageChange,
-  onPageSizeChange,
-  showSizeChanger = true,
-  showQuickJumper = false,
-  showTotal = true,
-  pageSizeOptions = [10, 20, 50, 100],
-  disabled = false,
   className,
-  size = 'default',
+  pagination,
+  itemRender,
+  onPageChange,
   simple = false,
+  size = 'default',
+  onPageSizeChange,
+  disabled = false,
+  showTotal = false,
+  maxPageButtons = 7,
+  showLessItems = false,
+  showSizeChanger = false,
+  showQuickJumper = false,
   hideOnSinglePage = false,
   showPrevNextJumpers = true,
-  maxPageButtons = 7,
-  itemRender,
-  showLessItems = false,
+  pageSizeOptions = [10, 20, 50, 100],
 }: PaginationControlsProps) {
+  const { t } = useTranslation()
   const [jumpPage, setJumpPage] = useState('')
 
   const { current, pageSize, total, totalPages } = pagination
@@ -146,11 +149,15 @@ export function EnhancedPaginationControls({
     const end = Math.min(current * pageSize, total)
 
     if (total === 0) {
-      return 'No items'
+      return t('common.pagination.noItems')
     }
 
-    return `Showing ${start.toLocaleString()} to ${end.toLocaleString()} of ${total.toLocaleString()} items`
-  }, [current, pageSize, total])
+    return t('common.pagination.showing', {
+      start: start.toLocaleString(),
+      end: end.toLocaleString(),
+      total: total.toLocaleString(),
+    })
+  }, [current, pageSize, total, t])
 
   // Render page button
   const renderPageButton = useCallback(
@@ -169,7 +176,7 @@ export function EnhancedPaginationControls({
       )
 
       if (itemRender) {
-        return itemRender(page, 'page', buttonElement)
+        return itemRender(page, buttonElement, 'page')
       }
 
       return buttonElement
@@ -196,7 +203,7 @@ export function EnhancedPaginationControls({
       )
 
       if (itemRender) {
-        return itemRender(jumpPages, direction === 'prev' ? 'jump-prev' : 'jump-next', buttonElement)
+        return itemRender(jumpPages, buttonElement, direction === 'prev' ? 'jump-prev' : 'jump-next')
       }
 
       return buttonElement
@@ -262,32 +269,13 @@ export function EnhancedPaginationControls({
 
   return (
     <div
-      className={cn('flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between', sizeClasses[size], className)}
+      className={cn('flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-center', sizeClasses[size], className)}
     >
       {/* Total Info */}
       {showTotal && <div className='text-muted-foreground'>{getTotalText()}</div>}
 
       {/* Main Pagination Controls */}
       <div className='flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4'>
-        {/* Page Size Selector */}
-        {showSizeChanger && (
-          <div className='flex items-center gap-2'>
-            <span className='text-muted-foreground whitespace-nowrap'>Items per page:</span>
-            <Select value={String(pageSize)} onValueChange={handlePageSizeChange} disabled={disabled}>
-              <SelectTrigger className='w-20'>
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                {pageSizeOptions.map((option) => (
-                  <SelectItem key={option} value={String(option)}>
-                    {option}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-        )}
-
         {/* Page Navigation */}
         <div className='flex items-center gap-1'>
           {/* First Page & Previous */}
@@ -354,16 +342,34 @@ export function EnhancedPaginationControls({
           )}
         </div>
 
+        {/* Page Size Selector */}
+        {showSizeChanger && (
+          <div className='flex items-center gap-2'>
+            <Select value={String(pageSize)} onValueChange={handlePageSizeChange} disabled={disabled}>
+              <SelectTrigger className='w-20'>
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {pageSizeOptions.map((option) => (
+                  <SelectItem key={option} value={String(option)}>
+                    {option}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+        )}
+
         {/* Quick Jump */}
         {showQuickJumper && (
           <div className='flex items-center gap-2'>
-            <span className='text-muted-foreground whitespace-nowrap'>Go to:</span>
+            <span className='text-muted-foreground whitespace-nowrap'>{t('common.pagination.goTo')}</span>
             <Input
               type='number'
               value={jumpPage}
               onChange={(e) => setJumpPage(e.target.value)}
               onKeyDown={handleJumpKeyDown}
-              placeholder='Page'
+              placeholder={t('common.pagination.page')}
               className='w-20'
               min={1}
               max={totalPages}
@@ -375,7 +381,7 @@ export function EnhancedPaginationControls({
               onClick={handleQuickJump}
               disabled={disabled || !jumpPage || parseInt(jumpPage, 10) < 1 || parseInt(jumpPage, 10) > totalPages}
             >
-              Go
+              {t('common.pagination.go')}
             </Button>
           </div>
         )}

@@ -1,5 +1,13 @@
 {
   "common": {
+    "pagination": {
+      "itemsPerPage": "Sayfa başına öğe:",
+      "goTo": "Git:",
+      "page": "Sayfa",
+      "go": "Git",
+      "noItems": "Öğe yok",
+      "showing": "{{total}} öğeden {{start}}-{{end}} arası gösteriliyor"
+    },
     "loading": "Yükleniyor...",
     "error": "Bir hata oluştu",
     "success": "Başarılı",
@@ -22,6 +30,7 @@
     "pageLoading": "Sayfa yükleniyor...",
     "appLoading": "Uygulama yükleniyor...",
     "backToHome": "Ana Sayfaya Dön",
+    "backToCategories": "Kategorilere Dön",
     "clearFilters": "Filtreleri Temizle",
     "allCategories": "Tüm Kategoriler",
     "viewMode": "Görünüm Modu",
@@ -183,8 +192,10 @@
         "overlay": "Kaplama",
         "dataDisplay": "Veri Gösterimi",
         "formInput": "Form Girişi",
+        "navigation": "Navigasyon",
         "advanced": "Gelişmiş",
-        "ui": "UI Bileşenleri"
+        "ui": "UI Bileşenleri",
+        "forms": "Formlar"
       },
       "common": {
         "personalInfo": "Kişisel Bilgiler",
@@ -207,6 +218,165 @@
       "deleteWarning": "Bu işlem geri alınamaz. Bu işlem hesabınızı kalıcı olarak silecek ve verilerinizi sunucularımızdan kaldıracaktır.",
       "cancel": "İptal",
       "confirmAction": "Devam Et"
+    },
+    "forms": {
+      "header": {
+        "description": "React Hook Form ve Zod validation ile güçlü, tip-güvenli form sistemi. Sıfır prop drilling, otomatik hata yönetimi ve kapsamlı örnekler."
+      },
+      "info": {
+        "title": "Forms Sistemi Hakkında",
+        "description": "Bu bölüm React Hook Form ve Zod validation kullanarak oluşturulmuş kapsamlı form bileşenlerini içerir. Tüm bileşenler tip-güvenli, erişilebilir ve production-ready'dir."
+      },
+      "search": {
+        "placeholder": "Form bileşenlerinde ara..."
+      },
+      "categories": {
+        "base": "Temel",
+        "inputs": "Giriş Alanları",
+        "actions": "Aksiyonlar",
+        "helpers": "Yardımcılar",
+        "examples": "Örnekler"
+      },
+      "roles": {
+        "admin": "Yönetici",
+        "editor": "Editör",
+        "user": "Kullanıcı"
+      },
+      "countries": {
+        "turkey": "Türkiye",
+        "usa": "Amerika Birleşik Devletleri",
+        "uk": "Birleşik Krallık",
+        "germany": "Almanya"
+      },
+      "plans": {
+        "free": "Ücretsiz",
+        "pro": "Pro",
+        "enterprise": "Kurumsal"
+      },
+      "themes": {
+        "light": "Açık",
+        "dark": "Koyu",
+        "system": "Sistem"
+      },
+      "labels": {
+        "name": "İsim",
+        "firstName": "Ad",
+        "lastName": "Soyad",
+        "email": "E-posta",
+        "password": "Şifre",
+        "description": "Açıklama",
+        "bio": "Biyografi",
+        "role": "Rol",
+        "country": "Ülke",
+        "birthDate": "Doğum Tarihi",
+        "startDate": "Başlangıç Tarihi",
+        "acceptTerms": "Kullanım şartlarını kabul ediyorum",
+        "subscribeNewsletter": "Bültene abone ol",
+        "enableNotifications": "Bildirimleri etkinleştir",
+        "selectPlan": "Plan Seçin",
+        "selectTheme": "Tema Seçin",
+        "emailNotifications": "E-posta Bildirimleri",
+        "pushNotifications": "Push Bildirimleri",
+        "marketingEmails": "Pazarlama E-postaları",
+        "text": "Metin",
+        "number": "Sayı",
+        "url": "URL",
+        "phone": "Telefon",
+        "empty": "Boş"
+      },
+      "placeholders": {
+        "enterText": "Metin girin",
+        "enterDescription": "Açıklama girin",
+        "enterBio": "Kendiniz hakkında bilgi verin",
+        "selectCountry": "Ülke seçin"
+      },
+      "validation": {
+        "nameMin": "İsim en az 2 karakter olmalıdır",
+        "firstNameMin": "Ad en az 2 karakter olmalıdır",
+        "lastNameMin": "Soyad en az 2 karakter olmalıdır",
+        "emailInvalid": "Geçersiz e-posta adresi",
+        "passwordMin": "Şifre en az 8 karakter olmalıdır",
+        "descriptionMin": "Açıklama en az 10 karakter olmalıdır",
+        "bioMax": "Biyografi en fazla 500 karakter olabilir",
+        "roleRequired": "Lütfen bir rol seçin",
+        "countryRequired": "Lütfen bir ülke seçin",
+        "termsRequired": "Kullanım şartlarını kabul etmelisiniz",
+        "planRequired": "Lütfen bir plan seçin",
+        "themeRequired": "Lütfen bir tema seçin",
+        "birthDateRequired": "Doğum tarihi gereklidir"
+      },
+      "actions": {
+        "submit": "Gönder",
+        "register": "Kayıt Ol",
+        "saveAsDraft": "Taslak Olarak Kaydet",
+        "delete": "Sil"
+      },
+      "examples": {
+        "basicForm": "Temel Form",
+        "complexForm": "Karmaşık Form",
+        "textInputs": "Metin Girişleri",
+        "selectInputs": "Seçim Girişleri",
+        "textareaInput": "Textarea Girişi",
+        "checkboxInputs": "Checkbox Girişleri",
+        "radioInputs": "Radio Girişleri",
+        "switchInputs": "Switch Girişleri",
+        "dateInputs": "Tarih Girişleri",
+        "submitButtons": "Gönder Butonları",
+        "passwordStrength": "Şifre Gücü",
+        "passwordRules": "Şifre Kuralları",
+        "passwordWithRules": "Kurallarla Şifre",
+        "completeForm": "Kapsamlı Form Örneği",
+        "userRegistration": "Kullanıcı Kayıt Formu"
+      },
+      "descriptions": {
+        "form": "React Hook Form ve Zod validation ile güçlü form yönetimi",
+        "complexForm": "İç içe alanlar ve karmaşık validation ile gelişmiş form",
+        "textField": "Çeşitli input tipleri için çok yönlü metin alanı",
+        "selectField": "Dropdown seçim alanı",
+        "textareaField": "Çok satırlı metin girişi",
+        "checkboxField": "Checkbox seçim alanı",
+        "radioField": "Radio button grup seçimi",
+        "switchField": "Toggle switch alanı",
+        "dateField": "Modern tarih seçici alanı",
+        "submitButton": "Otomatik loading state ile gönder butonu",
+        "passwordStrengthBar": "Şifre gücü gösterge çubuğu",
+        "passwordRules": "Özelleştirilebilir şifre kuralları göstergesi",
+        "passwordRulesDemo": "Farklı şifre örnekleriyle kural kontrolü",
+        "completeFormExample": "Tüm form bileşenlerini içeren kapsamlı örnek"
+      },
+      "props": {
+        "schema": "Zod validation şeması",
+        "defaultValues": "Form için varsayılan değerler",
+        "onSubmit": "Form gönderildiğinde çağrılan fonksiyon",
+        "className": "Form container için CSS sınıfları",
+        "name": "Form field adı (dot notation destekler)",
+        "label": "Field etiketi",
+        "inputType": "Input tipi",
+        "placeholder": "Placeholder metni",
+        "required": "Zorunlu alan mı",
+        "disabled": "Devre dışı mı",
+        "isPassword": "Şifre alanı mı",
+        "showPasswordToggle": "Şifre göster/gizle toggle'ı göster",
+        "showPasswordStrength": "Şifre gücü göstergesini göster",
+        "showNumberButtons": "Sayı +/- butonlarını göster",
+        "min": "Minimum değer (number input için)",
+        "max": "Maksimum değer (number input için)",
+        "options": "Seçim seçenekleri dizisi",
+        "radioOptions": "Radio button seçenekleri",
+        "rows": "Textarea satır sayısı",
+        "maxLength": "Maksimum karakter sayısı",
+        "buttonText": "Buton metni",
+        "buttonVariant": "Buton görünüm varyantı",
+        "passwordValue": "Şifre değeri",
+        "passwordRules": "Şifre kuralları dizisi"
+      },
+      "rules": {
+        "minLength": "En az 8 karakter",
+        "uppercase": "Bir büyük harf",
+        "lowercase": "Bir küçük harf",
+        "number": "Bir rakam",
+        "special": "Bir özel karakter"
+      }
     },
     "avatar": {
       "title": "Avatar",
@@ -1486,6 +1656,7 @@
     },
     "components": {
       "title": "Bileşenler",
+      "description": "Projelerinizde kullanabileceğiniz kapsamlı UI bileşen kütüphanesi.",
       "searchPlaceholder": "Bileşen ara... (Button, Input, Card...)",
       "showcase": "Bileşen Vitrini",
       "count": "Bileşenler ({{count}})"
