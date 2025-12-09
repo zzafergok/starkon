@@ -6,7 +6,7 @@ import { useParams } from 'next/navigation'
 import { useState, useMemo, useEffect } from 'react'
 
 import { useTranslation } from 'react-i18next'
-import { Search, X, ChevronUp, ArrowLeft } from 'lucide-react'
+import { Search, X, ChevronUp, ArrowLeft, Rows3, Columns2 } from 'lucide-react'
 
 import { Input } from '@/components/core/input'
 import { Button } from '@/components/core/button'
@@ -32,7 +32,7 @@ export default function CategoryComponentsPage() {
 
   const [currentPage, setCurrentPage] = useState(1)
   const [searchQuery, setSearchQuery] = useState('')
-  const [viewMode] = useState<'grid' | 'list'>('grid')
+  const [viewMode, setViewMode] = useState<'single' | 'double'>('double')
   const [itemsPerPage, setItemsPerPage] = useState(10)
   const [showScrollTop, setShowScrollTop] = useState(false)
   const [selectedStatus, setSelectedStatus] = useState<string>('all')
@@ -150,6 +150,28 @@ export default function CategoryComponentsPage() {
                 {filteredComponents.length} {t('demo.stats.total')} {t('demo.componentMap.components').toLowerCase()}
               </p>
             </div>
+
+            {/* Layout Toggle Buttons */}
+            <div className='flex items-center gap-2'>
+              <Button
+                variant={viewMode === 'single' ? 'default' : 'outline'}
+                size='icon'
+                onClick={() => setViewMode('single')}
+                className='transition-all duration-200'
+                aria-label='Tek sütun görünümü'
+              >
+                <Rows3 className='h-4 w-4' />
+              </Button>
+              <Button
+                variant={viewMode === 'double' ? 'default' : 'outline'}
+                size='icon'
+                onClick={() => setViewMode('double')}
+                className='transition-all duration-200'
+                aria-label='İki sütun görünümü'
+              >
+                <Columns2 className='h-4 w-4' />
+              </Button>
+            </div>
           </div>
 
           <Card className='bg-white/70 dark:bg-neutral-800/70 backdrop-blur-sm border-neutral-200/80 dark:border-neutral-700/50 shadow-lg shadow-neutral-900/5 dark:shadow-neutral-950/20'>
@@ -216,12 +238,22 @@ export default function CategoryComponentsPage() {
       <section className='max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8'>
         {filteredComponents.length > 0 ? (
           <div className='space-y-8'>
-            <div className={cn(viewMode === 'grid' ? 'columns-1 gap-8 space-y-8' : 'grid grid-cols-1 gap-8')}>
-              {paginatedComponents.map((component) => (
+            <div
+              key={viewMode}
+              className={cn(
+                'gap-8 space-y-8 transition-all duration-700 ease-in-out',
+                viewMode === 'single' ? 'columns-1' : 'columns-1 lg:columns-2',
+              )}
+            >
+              {paginatedComponents.map((component, index) => (
                 <div
                   key={component.id}
                   id={`component-${component.id}`}
-                  className={cn('w-full scroll-mt-24', viewMode === 'grid' ? 'break-inside-avoid mb-8' : '')}
+                  className='w-full scroll-mt-24 break-inside-avoid mb-8 animate-in fade-in slide-in-from-bottom-4 duration-500'
+                  style={{
+                    animationDelay: `${index * 50}ms`,
+                    animationFillMode: 'backwards',
+                  }}
                 >
                   <ComponentDemo
                     title={component.title}
