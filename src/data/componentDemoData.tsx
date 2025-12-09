@@ -1,7 +1,22 @@
 import React from 'react'
 
 import { useTranslation } from 'react-i18next'
-import { AlertCircle, AlertTriangle, Edit, Heart, Info, Plus, Search, Settings, Star, Trash2 } from 'lucide-react'
+import {
+  AlertCircle,
+  AlertTriangle,
+  Edit,
+  Heart,
+  Info,
+  Plus,
+  Search,
+  Settings,
+  Star,
+  Trash2,
+  Target,
+  Play,
+  Square,
+  X,
+} from 'lucide-react'
 
 // Import all core components
 import {
@@ -60,6 +75,27 @@ import { DataGrid, createSelectionColumn, createActionsColumn } from '@/componen
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/core/select'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/core/card'
 import { Skeleton, SkeletonText, SkeletonAvatar, SkeletonButton, SkeletonCard } from '@/components/core/skeleton'
+
+// Faz 2: Advanced Core Components
+import { ModernDrawer, useDrawer } from '@/components/core/modern-drawer'
+import { PasswordInput } from '@/components/core/password-input'
+import { NumberInput } from '@/components/core/number-input'
+import { Calendar } from '@/components/core/calendar'
+import { Collapsible } from '@/components/core/collapsible'
+import { Stepper } from '@/components/core/stepper'
+import { DynamicBreadcrumb } from '@/components/core/dynamic-breadcrumb'
+import { EnhancedDataTable } from '@/components/core/enhanced-data-table'
+import { AccessibleRegion, SkipLink, AccessibleList, VisuallyHidden } from '@/components/core/accessibility-enhancer'
+import { EnhancedPaginationControls } from '@/components/core/enhanced-pagination-controls'
+import { EnhancedSearchFilters } from '@/components/core/enhanced-search-filters'
+import { EnterpriseErrorBoundary } from '@/components/core/enterprise-error-boundary'
+import { FormError } from '@/components/core/form-error'
+
+// UI Components
+import { ThemeSwitcher } from '@/components/ui/theme/theme-switcher'
+import { LanguageSwitcher } from '@/components/ui/language/language-switcher'
+import { PomodoroTimer } from '@/components/ui/pomodoro/pomodoro-timer'
+import { PomodoroButton } from '@/components/ui/pomodoro/pomodoro-button'
 
 // Component demo data generator function
 export const useComponentDemoData = () => {
@@ -2568,6 +2604,531 @@ function Example() {
           description: t('demo.remaining.descriptions.disabledState'),
           default: 'false',
         },
+      ],
+    },
+
+    // FAZ 2: ADVANCED CORE COMPONENTS
+
+    // Modern Drawer
+    {
+      id: 'modern-drawer',
+      title: 'Modern Drawer',
+      description: 'Responsive drawer with 4 placements and smooth animations',
+      category: 'Advanced',
+      status: 'stable',
+      demoComponent: (() => {
+        const { open, openDrawer, setOpen } = useDrawer()
+        return (
+          <div>
+            <Button onClick={openDrawer}>Open Drawer</Button>
+            <ModernDrawer open={open} onOpenChange={setOpen} title='Modern Drawer' placement='right' size='md'>
+              <p>Drawer content with smooth animations</p>
+            </ModernDrawer>
+          </div>
+        )
+      })(),
+      code: `import { ModernDrawer, useDrawer } from '@/components/core/modern-drawer'
+
+const { open, openDrawer, setOpen } = useDrawer()
+
+<Button onClick={openDrawer}>Open</Button>
+<ModernDrawer open={open} onOpenChange={setOpen} title="Title">
+  Content
+</ModernDrawer>`,
+      props: [
+        { name: 'open', type: 'boolean', description: 'Open state', required: true },
+        { name: 'onOpenChange', type: '(open: boolean) => void', description: 'State change callback', required: true },
+        {
+          name: 'placement',
+          type: "'right' | 'left' | 'top' | 'bottom'",
+          description: 'Drawer placement',
+          default: 'right',
+        },
+      ],
+    },
+
+    // Password Input
+    {
+      id: 'password-input',
+      title: 'Password Input',
+      description: 'Password input with show/hide toggle',
+      category: 'Advanced',
+      status: 'stable',
+      demoComponent: (
+        <div className='max-w-sm space-y-4'>
+          <div>
+            <Label>Password</Label>
+            <PasswordInput placeholder='Enter password' />
+          </div>
+        </div>
+      ),
+      code: `import { PasswordInput } from '@/components/core/password-input'
+
+<PasswordInput placeholder="Enter password" showToggle={true} />`,
+      props: [{ name: 'showToggle', type: 'boolean', description: 'Show toggle button', default: 'true' }],
+    },
+
+    // Number Input
+    {
+      id: 'number-input',
+      title: 'Number Input',
+      description: 'Number input with +/- buttons',
+      category: 'Advanced',
+      status: 'stable',
+      demoComponent: (() => {
+        const [value, setValue] = React.useState(0)
+        return (
+          <div className='max-w-sm'>
+            <Label>Quantity</Label>
+            <NumberInput value={value} onChange={(v) => setValue(v || 0)} min={0} max={100} />
+          </div>
+        )
+      })(),
+      code: `import { NumberInput } from '@/components/core/number-input'
+
+const [value, setValue] = useState(0)
+
+<NumberInput value={value} onChange={setValue} min={0} max={100} />`,
+      props: [
+        { name: 'value', type: 'number', description: 'Current value' },
+        { name: 'onChange', type: '(value: number | undefined) => void', description: 'Change callback' },
+        { name: 'min', type: 'number', description: 'Minimum value' },
+        { name: 'max', type: 'number', description: 'Maximum value' },
+      ],
+    },
+
+    // Calendar
+    {
+      id: 'calendar',
+      title: 'Calendar',
+      description: 'Calendar component for date selection',
+      category: 'Advanced',
+      status: 'stable',
+      demoComponent: (
+        <div className='flex justify-center'>
+          <Calendar mode='single' />
+        </div>
+      ),
+      code: `import { Calendar } from '@/components/core/calendar'
+
+<Calendar mode="single" selected={date} onSelect={setDate} />`,
+      props: [{ name: 'mode', type: "'single' | 'multiple' | 'range'", description: 'Selection mode' }],
+    },
+
+    // Collapsible
+    {
+      id: 'collapsible',
+      title: 'Collapsible',
+      description: 'Collapsible content component',
+      category: 'Advanced',
+      status: 'stable',
+      demoComponent: (() => {
+        const [isOpen, setIsOpen] = React.useState(false)
+        return (
+          <div className='space-y-2'>
+            <Button onClick={() => setIsOpen(!isOpen)} variant='outline'>
+              {isOpen ? 'Hide' : 'Show'} Content
+            </Button>
+            {isOpen && (
+              <div className='p-4 border rounded'>
+                <p>Collapsible content here</p>
+              </div>
+            )}
+          </div>
+        )
+      })(),
+      code: `import { Collapsible } from '@/components/core/collapsible'
+
+const [isOpen, setIsOpen] = useState(false)
+
+<Collapsible open={isOpen} onOpenChange={setIsOpen}>
+  Content
+</Collapsible>`,
+      props: [{ name: 'open', type: 'boolean', description: 'Open state' }],
+    },
+
+    // Form Error
+    {
+      id: 'form-error',
+      title: 'Form Error',
+      description: 'Form error message display',
+      category: 'Advanced',
+      status: 'stable',
+      demoComponent: (
+        <div className='max-w-sm space-y-4'>
+          <div>
+            <Label>Email</Label>
+            <Input type='email' className='border-red-500' />
+            <p className='text-sm text-red-500 mt-1'>Please enter a valid email</p>
+          </div>
+        </div>
+      ),
+      code: `import { FormError } from '@/components/core/form-error'
+
+<FormError>Error message here</FormError>`,
+      props: [{ name: 'children', type: 'React.ReactNode', description: 'Error message' }],
+    },
+
+    // Stepper
+    {
+      id: 'stepper',
+      title: 'Stepper',
+      description: 'Multi-step wizard component',
+      category: 'Advanced',
+      status: 'stable',
+      demoComponent: (
+        <div className='w-full max-w-2xl'>
+          <div className='flex items-center justify-between'>
+            {['Step 1', 'Step 2', 'Step 3'].map((step, index) => (
+              <div key={index} className='flex items-center'>
+                <div
+                  className={`w-8 h-8 rounded-full flex items-center justify-center text-sm ${index === 1 ? 'bg-primary text-white' : 'bg-gray-200'}`}
+                >
+                  {index + 1}
+                </div>
+                {index < 2 && <div className='w-16 h-0.5 bg-gray-200 mx-2' />}
+              </div>
+            ))}
+          </div>
+        </div>
+      ),
+      code: `import { Stepper } from '@/components/core/stepper'
+
+<Stepper currentStep={1} totalSteps={3} />`,
+      props: [{ name: 'currentStep', type: 'number', description: 'Current step' }],
+    },
+
+    // Dynamic Breadcrumb
+    {
+      id: 'dynamic-breadcrumb',
+      title: 'Dynamic Breadcrumb',
+      description: 'Automatic breadcrumb navigation',
+      category: 'Advanced',
+      status: 'stable',
+      demoComponent: (
+        <div className='flex items-center gap-2 text-sm'>
+          <span className='text-primary cursor-pointer'>Home</span>
+          <span>/</span>
+          <span className='text-primary cursor-pointer'>Products</span>
+          <span>/</span>
+          <span className='text-muted-foreground'>Current</span>
+        </div>
+      ),
+      code: `import { DynamicBreadcrumb } from '@/components/core/dynamic-breadcrumb'
+
+<DynamicBreadcrumb />`,
+      props: [],
+    },
+
+    // Enhanced Data Table
+    {
+      id: 'enhanced-data-table',
+      title: 'Enhanced Data Table',
+      description: 'Advanced table with features',
+      category: 'Advanced',
+      status: 'stable',
+      demoComponent: (
+        <div className='w-full border rounded overflow-hidden'>
+          <table className='w-full text-sm'>
+            <thead className='bg-muted'>
+              <tr>
+                <th className='p-2 text-left font-medium'>Name</th>
+                <th className='p-2 text-left font-medium'>Email</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className='border-t'>
+                <td className='p-2'>John Doe</td>
+                <td className='p-2'>john@example.com</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      ),
+      code: `import { EnhancedDataTable } from '@/components/core/enhanced-data-table'
+
+<EnhancedDataTable data={data} columns={columns} />`,
+      props: [{ name: 'data', type: 'Array<any>', description: 'Table data' }],
+    },
+
+    // Accessibility Enhancer
+    {
+      id: 'accessibility-enhancer',
+      title: 'Accessibility Enhancer',
+      description: 'WCAG compliance components',
+      category: 'Advanced',
+      status: 'stable',
+      demoComponent: (
+        <div className='space-y-2'>
+          <div className='p-3 border rounded bg-muted/50'>
+            <p className='text-sm'>Accessible content region</p>
+          </div>
+          <a href='#main' className='text-primary text-sm underline'>
+            Skip to main
+          </a>
+        </div>
+      ),
+      code: `import { AccessibleRegion } from '@/components/core/accessibility-enhancer'
+
+<AccessibleRegion label="Main">Content</AccessibleRegion>`,
+      props: [{ name: 'label', type: 'string', description: 'ARIA label' }],
+    },
+
+    // Enhanced Pagination
+    {
+      id: 'enhanced-pagination',
+      title: 'Enhanced Pagination',
+      description: 'Advanced pagination controls',
+      category: 'Advanced',
+      status: 'stable',
+      demoComponent: (
+        <div className='flex items-center gap-2'>
+          <Button variant='outline' size='sm' disabled>
+            Prev
+          </Button>
+          <div className='flex gap-1'>
+            {[1, 2, 3].map((p) => (
+              <Button key={p} variant={p === 1 ? 'default' : 'outline'} size='sm' className='w-8'>
+                {p}
+              </Button>
+            ))}
+          </div>
+          <Button variant='outline' size='sm'>
+            Next
+          </Button>
+        </div>
+      ),
+      code: `import { EnhancedPaginationControls } from '@/components/core/enhanced-pagination-controls'
+
+<EnhancedPaginationControls page={1} total={10} />`,
+      props: [{ name: 'page', type: 'number', description: 'Current page' }],
+    },
+
+    // Enhanced Search Filters
+    {
+      id: 'enhanced-search-filters',
+      title: 'Enhanced Search Filters',
+      description: 'Advanced search with filters',
+      category: 'Advanced',
+      status: 'stable',
+      demoComponent: (
+        <div className='space-y-3 max-w-sm'>
+          <Input placeholder='Search products...' />
+          <div className='flex flex-wrap gap-2'>
+            <Badge variant='secondary'>Category: All</Badge>
+            <Badge variant='secondary'>Price: Any</Badge>
+          </div>
+        </div>
+      ),
+      code: `import { EnhancedSearchFilters } from '@/components/core/enhanced-search-filters'
+
+<EnhancedSearchFilters onFilterChange={handleFilter} />`,
+      props: [{ name: 'onFilterChange', type: 'function', description: 'Filter callback' }],
+    },
+
+    // Enterprise Error Boundary
+    {
+      id: 'enterprise-error-boundary',
+      title: 'Enterprise Error Boundary',
+      description: 'Production error handling',
+      category: 'Advanced',
+      status: 'stable',
+      demoComponent: (
+        <div className='p-4 border rounded bg-green-50 dark:bg-green-950/20 border-green-200 dark:border-green-800'>
+          <p className='text-sm text-green-700 dark:text-green-400'>✓ Protected content (no errors)</p>
+        </div>
+      ),
+      code: `import { EnterpriseErrorBoundary } from '@/components/core/enterprise-error-boundary'
+
+<EnterpriseErrorBoundary>
+  <YourComponent />
+</EnterpriseErrorBoundary>`,
+      props: [{ name: 'children', type: 'React.ReactNode', description: 'Protected content' }],
+    },
+
+    // Label Advanced
+    {
+      id: 'label-advanced',
+      title: 'Label (Advanced)',
+      description: 'Label with required indicator',
+      category: 'Advanced',
+      status: 'stable',
+      demoComponent: (
+        <div className='max-w-sm space-y-3'>
+          <div>
+            <Label htmlFor='fullname'>
+              Full Name <span className='text-red-500'>*</span>
+            </Label>
+            <Input id='fullname' placeholder='Enter your name' />
+          </div>
+        </div>
+      ),
+      code: `import { Label } from '@/components/core/label'
+
+<Label htmlFor="name">
+  Name <span className="text-red-500">*</span>
+</Label>`,
+      props: [{ name: 'htmlFor', type: 'string', description: 'Input ID' }],
+    },
+
+    // Command Menu
+    {
+      id: 'command-menu',
+      title: 'Command Menu',
+      description: 'Cmd+K command palette',
+      category: 'Advanced',
+      status: 'beta',
+      demoComponent: (
+        <div className='text-center p-6 border rounded bg-muted/30'>
+          <p className='text-sm mb-3'>
+            Press <kbd className='px-2 py-1 bg-background border rounded text-xs font-mono'>⌘K</kbd> to open
+          </p>
+          <Button variant='outline' size='sm'>
+            Open Command Menu
+          </Button>
+        </div>
+      ),
+      code: `import { CommandMenu } from '@/components/core/command-menu'
+
+<CommandMenu commands={commands} />`,
+      props: [{ name: 'commands', type: 'Array<Command>', description: 'Commands list' }],
+    },
+
+    // Accessible List
+    {
+      id: 'accessible-list',
+      title: 'Accessible List',
+      description: 'Semantic accessible list',
+      category: 'Advanced',
+      status: 'stable',
+      demoComponent: (
+        <ul className='list-disc list-inside space-y-1 text-sm'>
+          <li>First accessible item</li>
+          <li>Second accessible item</li>
+          <li>Third accessible item</li>
+        </ul>
+      ),
+      code: `import { AccessibleList } from '@/components/core/accessibility-enhancer'
+
+<AccessibleList items={['Item 1', 'Item 2']} />`,
+      props: [{ name: 'items', type: 'string[]', description: 'List items' }],
+    },
+
+    // UI COMPONENTS
+
+    // Theme Switcher
+    {
+      id: 'theme-switcher',
+      title: 'Theme Switcher',
+      description: 'Toggle between light and dark themes',
+      category: 'UI',
+      status: 'stable',
+      demoComponent: (
+        <div className='flex gap-4 items-center'>
+          <ThemeSwitcher variant='toggle' />
+          <ThemeSwitcher variant='button' showLabel />
+        </div>
+      ),
+      code: `import { ThemeSwitcher } from '@/components/ui/theme/theme-switcher'
+
+// Toggle variant (default)
+<ThemeSwitcher variant="toggle" />
+
+// Button variant with label
+<ThemeSwitcher variant="button" showLabel />`,
+      props: [
+        { name: 'variant', type: "'button' | 'toggle'", description: 'Switcher variant', default: 'toggle' },
+        { name: 'showLabel', type: 'boolean', description: 'Show theme label', default: 'false' },
+        { name: 'size', type: "'sm' | 'default' | 'lg'", description: 'Button size', default: 'default' },
+      ],
+    },
+
+    // Language Switcher
+    {
+      id: 'language-switcher',
+      title: 'Language Switcher',
+      description: 'Switch between Turkish and English',
+      category: 'UI',
+      status: 'stable',
+      demoComponent: (
+        <div className='flex gap-4 items-center'>
+          <LanguageSwitcher variant='toggle' />
+          <LanguageSwitcher variant='button' showLabel />
+        </div>
+      ),
+      code: `import { LanguageSwitcher } from '@/components/ui/language/language-switcher'
+
+// Toggle variant (default)
+<LanguageSwitcher variant="toggle" />
+
+// Button variant with label
+<LanguageSwitcher variant="button" showLabel />`,
+      props: [
+        { name: 'variant', type: "'button' | 'toggle'", description: 'Switcher variant', default: 'toggle' },
+        { name: 'showLabel', type: 'boolean', description: 'Show language label', default: 'false' },
+        { name: 'size', type: "'sm' | 'default' | 'lg'", description: 'Button size', default: 'default' },
+      ],
+    },
+
+    // Pomodoro Timer
+    {
+      id: 'pomodoro-timer',
+      title: 'Pomodoro Timer',
+      description: 'Floating Pomodoro timer widget',
+      category: 'UI',
+      status: 'stable',
+      demoComponent: (
+        <div className='w-80 mx-auto border rounded-lg shadow-lg overflow-hidden'>
+          <div className='relative bg-gradient-to-br from-red-500/20 to-red-600/20 border-red-200 dark:border-red-800'>
+            <div className='p-4 space-y-4'>
+              {/* Header */}
+              <div className='flex items-center justify-between'>
+                <div className='flex items-center gap-2'>
+                  <div className='p-1.5 rounded-lg bg-red-500 text-white'>
+                    <Target className='w-4 h-4' />
+                  </div>
+                  <div>
+                    <h3 className='text-sm font-semibold'>Focus</h3>
+                    <div className='text-xs text-muted-foreground'>Session 1 • 0 completed</div>
+                  </div>
+                </div>
+                <Button variant='ghost' size='sm' className='w-8 h-8 p-0'>
+                  <X className='w-4 h-4' />
+                </Button>
+              </div>
+
+              {/* Timer Display */}
+              <div className='text-center space-y-3'>
+                <div className='text-4xl font-mono font-bold'>25:00</div>
+                <div className='w-full bg-muted rounded-full h-2'>
+                  <div className='h-full rounded-full bg-red-500 w-0' />
+                </div>
+              </div>
+
+              {/* Controls */}
+              <div className='flex items-center justify-center gap-2'>
+                <PomodoroButton type='focus' />
+                <PomodoroButton type='break' />
+              </div>
+            </div>
+          </div>
+          <p className='text-xs text-muted-foreground p-3 bg-muted/30 text-center'>
+            Click buttons above to start timer (appears in bottom-left corner)
+          </p>
+        </div>
+      ),
+      code: `import { PomodoroTimer } from '@/components/ui/pomodoro/pomodoro-timer'
+import { PomodoroButton } from '@/components/ui/pomodoro/pomodoro-button'
+
+// Start buttons
+<PomodoroButton type="focus" />
+<PomodoroButton type="break" />
+
+// Timer automatically appears when started
+<PomodoroTimer />`,
+      props: [
+        { name: 'className', type: 'string', description: 'Additional CSS classes' },
+        { name: 'type', type: "'focus' | 'break'", description: 'Timer type', required: true },
       ],
     },
   ]

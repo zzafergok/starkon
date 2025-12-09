@@ -1,0 +1,163 @@
+{
+  "demo": {
+    "forms": {
+      "header": {
+        "description": "Powerful, type-safe form system with React Hook Form and Zod validation. Zero prop drilling, automatic error handling, and comprehensive examples."
+      },
+      "info": {
+        "title": "About Forms System",
+        "description": "This section contains comprehensive form components built with React Hook Form and Zod validation. All components are type-safe, accessible, and production-ready."
+      },
+      "search": {
+        "placeholder": "Search form components..."
+      },
+      "categories": {
+        "base": "Base",
+        "inputs": "Inputs",
+        "actions": "Actions",
+        "helpers": "Helpers",
+        "examples": "Examples"
+      },
+      "roles": {
+        "admin": "Admin",
+        "editor": "Editor",
+        "user": "User"
+      },
+      "countries": {
+        "turkey": "Turkey",
+        "usa": "United States",
+        "uk": "United Kingdom",
+        "germany": "Germany"
+      },
+      "plans": {
+        "free": "Free",
+        "pro": "Pro",
+        "enterprise": "Enterprise"
+      },
+      "themes": {
+        "light": "Light",
+        "dark": "Dark",
+        "system": "System"
+      },
+      "labels": {
+        "name": "Name",
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "email": "Email",
+        "password": "Password",
+        "description": "Description",
+        "bio": "Bio",
+        "role": "Role",
+        "country": "Country",
+        "birthDate": "Birth Date",
+        "startDate": "Start Date",
+        "acceptTerms": "I accept the terms and conditions",
+        "subscribeNewsletter": "Subscribe to newsletter",
+        "enableNotifications": "Enable notifications",
+        "selectPlan": "Select Plan",
+        "selectTheme": "Select Theme",
+        "emailNotifications": "Email Notifications",
+        "pushNotifications": "Push Notifications",
+        "marketingEmails": "Marketing Emails",
+        "text": "Text",
+        "number": "Number",
+        "url": "URL",
+        "phone": "Phone",
+        "empty": "Empty"
+      },
+      "placeholders": {
+        "enterText": "Enter text",
+        "enterDescription": "Enter description",
+        "enterBio": "Tell us about yourself",
+        "selectCountry": "Select a country"
+      },
+      "validation": {
+        "nameMin": "Name must be at least 2 characters",
+        "firstNameMin": "First name must be at least 2 characters",
+        "lastNameMin": "Last name must be at least 2 characters",
+        "emailInvalid": "Invalid email address",
+        "passwordMin": "Password must be at least 8 characters",
+        "descriptionMin": "Description must be at least 10 characters",
+        "bioMax": "Bio must be less than 500 characters",
+        "roleRequired": "Please select a role",
+        "countryRequired": "Please select a country",
+        "termsRequired": "You must accept the terms and conditions",
+        "planRequired": "Please select a plan",
+        "themeRequired": "Please select a theme",
+        "birthDateRequired": "Birth date is required"
+      },
+      "actions": {
+        "submit": "Submit",
+        "register": "Register",
+        "saveAsDraft": "Save as Draft",
+        "delete": "Delete"
+      },
+      "examples": {
+        "basicForm": "Basic Form",
+        "complexForm": "Complex Form",
+        "textInputs": "Text Inputs",
+        "selectInputs": "Select Inputs",
+        "textareaInput": "Textarea Input",
+        "checkboxInputs": "Checkbox Inputs",
+        "radioInputs": "Radio Inputs",
+        "switchInputs": "Switch Inputs",
+        "dateInputs": "Date Inputs",
+        "submitButtons": "Submit Buttons",
+        "passwordStrength": "Password Strength",
+        "passwordRules": "Password Rules",
+        "passwordWithRules": "Password with Rules",
+        "completeForm": "Complete Form Example",
+        "userRegistration": "User Registration Form"
+      },
+      "descriptions": {
+        "form": "Powerful form management with React Hook Form and Zod validation",
+        "complexForm": "Advanced form with nested fields and complex validation",
+        "textField": "Versatile text field for various input types",
+        "selectField": "Dropdown selection field",
+        "textareaField": "Multi-line text input",
+        "checkboxField": "Checkbox selection field",
+        "radioField": "Radio button group selection",
+        "switchField": "Toggle switch field",
+        "dateField": "Modern date picker field",
+        "submitButton": "Submit button with automatic loading state",
+        "passwordStrengthBar": "Password strength indicator bar",
+        "passwordRules": "Customizable password rules indicator",
+        "passwordRulesDemo": "Rule checking with different password examples",
+        "completeFormExample": "Comprehensive example with all form components"
+      },
+      "props": {
+        "schema": "Zod validation schema",
+        "defaultValues": "Default values for the form",
+        "onSubmit": "Function called when form is submitted",
+        "className": "CSS classes for form container",
+        "name": "Form field name (supports dot notation)",
+        "label": "Field label",
+        "inputType": "Input type",
+        "placeholder": "Placeholder text",
+        "required": "Is field required",
+        "disabled": "Is field disabled",
+        "isPassword": "Is password field",
+        "showPasswordToggle": "Show password show/hide toggle",
+        "showPasswordStrength": "Show password strength indicator",
+        "showNumberButtons": "Show number +/- buttons",
+        "min": "Minimum value (for number input)",
+        "max": "Maximum value (for number input)",
+        "options": "Array of selection options",
+        "radioOptions": "Radio button options",
+        "rows": "Number of textarea rows",
+        "maxLength": "Maximum character count",
+        "buttonText": "Button text",
+        "buttonVariant": "Button appearance variant",
+        "passwordValue": "Password value",
+        "passwordRules": "Array of password rules"
+      },
+      "rules": {
+        "minLength": "At least 8 characters",
+        "uppercase": "One uppercase letter",
+        "lowercase": "One lowercase letter",
+        "number": "One number",
+        "special": "One special character"
+      }
+    }
+  }
+}
