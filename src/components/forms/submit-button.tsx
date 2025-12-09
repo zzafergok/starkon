@@ -41,13 +41,7 @@ export function SubmitButton({
   const isDisabled = disabled || isSubmitting || (disableIfNoChanges && !isDirty)
 
   return (
-    <Button
-      type='submit'
-      variant={variant}
-      size={size}
-      disabled={isDisabled}
-      className={cn('w-full sm:w-auto', className)}
-    >
+    <Button type='submit' variant={variant} size={size} disabled={isDisabled} className={cn('w-full', className)}>
       {isSubmitting ? (
         <>
           <LoadingSpinner size='sm' className='mr-2' />

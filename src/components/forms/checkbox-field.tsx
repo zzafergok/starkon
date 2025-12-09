@@ -10,7 +10,7 @@ import { cn } from '@/lib/utils'
 
 interface CheckboxFieldProps {
   name: string
-  label: string
+  label: React.ReactNode
   description?: string
   className?: string
   disabled?: boolean
@@ -30,7 +30,7 @@ export function CheckboxField({ name, label, description, className, disabled, r
 
   return (
     <div className={cn('space-y-1.5 sm:space-y-2', className)}>
-      <div className='flex items-start space-x-2 sm:space-x-3'>
+      <div className='flex items-center space-x-2 sm:space-x-3'>
         <Controller
           name={name}
           control={control}
