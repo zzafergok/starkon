@@ -51,837 +51,18 @@
     "info": "Info"
   },
   "demo": {
-    "forms": {
-      "header": {
-        "description": "Powerful, type-safe form system with React Hook Form and Zod validation. Zero prop drilling, automatic error handling, and comprehensive examples."
-      },
-      "info": {
-        "title": "About Forms System",
-        "description": "This section contains comprehensive form components built with React Hook Form and Zod validation. All components are type-safe, accessible, and production-ready."
-      },
-      "search": {
-        "placeholder": "Search form components..."
-      },
-      "categories": {
-        "0": "C",
-        "1": "a",
-        "2": "t",
-        "3": "e",
-        "4": "g",
-        "5": "o",
-        "6": "r",
-        "7": "i",
-        "8": "e",
-        "9": "s",
-        "base": "Base",
-        "inputs": "Inputs",
-        "actions": "Actions",
-        "helpers": "Helpers",
-        "examples": "Examples"
-      },
-      "roles": {
-        "admin": "Admin",
-        "editor": "Editor",
-        "user": "User"
-      },
-      "countries": {
-        "turkey": "Turkey",
-        "usa": "United States",
-        "uk": "United Kingdom",
-        "germany": "Germany",
-        "france": "France"
-      },
-      "plans": {
-        "free": "Free",
-        "pro": "Pro",
-        "enterprise": "Enterprise"
-      },
-      "themes": {
-        "light": "Light",
-        "dark": "Dark",
-        "system": "System"
-      },
-      "labels": {
-        "name": "Name",
-        "firstName": "First Name",
-        "lastName": "Last Name",
-        "email": "Email",
-        "password": "Password",
-        "description": "Description",
-        "bio": "Bio",
-        "role": "Role",
-        "country": "Country",
-        "birthDate": "Birth Date",
-        "startDate": "Start Date",
-        "acceptTerms": "I accept the terms and conditions",
-        "subscribeNewsletter": "Subscribe to newsletter",
-        "enableNotifications": "Enable notifications",
-        "selectPlan": "Select Plan",
-        "selectTheme": "Select Theme",
-        "emailNotifications": "Email Notifications",
-        "pushNotifications": "Push Notifications",
-        "marketingEmails": "Marketing Emails",
-        "text": "Text",
-        "number": "Number",
-        "url": "URL",
-        "phone": "Phone",
-        "empty": "Empty",
-        "personalInfo": "Personal Information",
-        "personalInfoDesc": "You can update your personal information here",
-        "securitySettings": "Security Settings",
-        "securitySettingsDesc": "You can manage your security settings here",
-        "section1": "Section 1",
-        "section2": "Section 2",
-        "content1": "First section content",
-        "content2": "Second section content",
-        "openSection": "Open Section",
-        "otherSection": "Other Section",
-        "defaultOpenSection": "This section is open by default",
-        "canAlsoOpenThisSection": "You can also open this section",
-        "informationMessage": "This is an information message",
-        "warning": "Warning",
-        "operationFailed": "Operation failed",
-        "deleteAccount": "Delete Account",
-        "confirmDeleteAccount": "Confirm Account Deletion",
-        "deleteWarningMessage": "This action cannot be undone",
-        "cancel": "Cancel",
-        "avatarFallback": "AV",
-        "basicInput": "Basic input...",
-        "emailAddress": "Email address...",
-        "disabledInput": "Disabled input...",
-        "small": "Small",
-        "large": "Large",
-        "iconButtons": "Icon Buttons",
-        "edit": "Edit",
-        "characterCounter": "With character counter...",
-        "sampleName": "John Doe",
-        "searchByName": "Search by name...",
-        "selectCountry": "Select country",
-        "selectDate": "Select date...",
-        "selectMonthYear": "Select month/year...",
-        "selectDateRange": "Select date range...",
-        "start": "Start",
-        "end": "End",
-        "richTextExample": "<p>This is a <strong>rich text</strong> example.</p>",
-        "richTextPlaceholder": "Write rich text content...",
-        "userOnline": "User online",
-        "notificationPreferences": "You can manage your notification preference settings here"
-      },
-      "placeholders": {
-        "enterText": "Enter text",
-        "enterDescription": "Enter description",
-        "enterBio": "Tell us about yourself",
-        "selectCountry": "Select a country"
-      },
-      "validation": {
-        "nameMin": "Name must be at least 2 characters",
-        "firstNameMin": "First name must be at least 2 characters",
-        "lastNameMin": "Last name must be at least 2 characters",
-        "emailInvalid": "Invalid email address",
-        "passwordMin": "Password must be at least 8 characters",
-        "descriptionMin": "Description must be at least 10 characters",
-        "bioMax": "Bio must be less than 500 characters",
-        "roleRequired": "Please select a role",
-        "countryRequired": "Please select a country",
-        "termsRequired": "You must accept the terms and conditions",
-        "planRequired": "Please select a plan",
-        "themeRequired": "Please select a theme",
-        "birthDateRequired": "Birth date is required"
-      },
-      "actions": {
-        "submit": "Submit",
-        "register": "Register",
-        "saveAsDraft": "Save as Draft",
-        "delete": "Delete"
-      },
-      "examples": {
-        "basicForm": "Basic Form",
-        "complexForm": "Complex Form",
-        "textInputs": "Text Inputs",
-        "selectInputs": "Select Inputs",
-        "textareaInput": "Textarea Input",
-        "checkboxInputs": "Checkbox Inputs",
-        "radioInputs": "Radio Inputs",
-        "switchInputs": "Switch Inputs",
-        "dateInputs": "Date Inputs",
-        "submitButtons": "Submit Buttons",
-        "passwordStrength": "Password Strength",
-        "passwordRules": "Password Rules",
-        "passwordWithRules": "Password with Rules",
-        "completeForm": "Complete Form Example",
-        "userRegistration": "User Registration Form"
-      },
-      "descriptions": {
-        "form": "Powerful form management with React Hook Form and Zod validation",
-        "complexForm": "Advanced form with nested fields and complex validation",
-        "textField": "Versatile text field for various input types",
-        "selectField": "Dropdown selection field",
-        "textareaField": "Multi-line text input",
-        "checkboxField": "Checkbox selection field",
-        "radioField": "Radio button group selection",
-        "switchField": "Toggle switch field",
-        "dateField": "Modern date picker field",
-        "submitButton": "Submit button with automatic loading state",
-        "passwordStrengthBar": "Password strength indicator bar",
-        "passwordRules": "Customizable password rules indicator",
-        "passwordRulesDemo": "Rule checking with different password examples",
-        "completeFormExample": "Comprehensive example with all form components",
-        "multipleAccordion": "Accordion where multiple sections can be opened simultaneously",
-        "lastItemClosable": "Whether the last remaining item can also be closed",
-        "criticalOperations": "Modal dialog component for confirming critical operations",
-        "avatarComponent": "Avatar component for user profile pictures",
-        "avatarGroup": "Avatar group representing multiple users",
-        "avatarImageUrl": "Avatar image URL (for AvatarImage)",
-        "badgeComponent": "Badge component used for status and labeling",
-        "badgeExamples": "Badge examples representing different states",
-        "badgeVariant": "Badge appearance variant",
-        "buttonComponent": "Interactive button component with different variants and sizes",
-        "iconButtonExamples": "Button examples used with icons",
-        "buttonVariant": "Button appearance variant",
-        "additionalCssClasses": "Additional CSS classes (full width with w-full)",
-        "disableButton": "Disables the button",
-        "featureCard": "Card example used for feature introduction",
-        "cardComponent": "Card component used for content grouping",
-        "cardVariant": "Card appearance variant",
-        "hoverEffectType": "Hover effect type",
-        "checkboxComponent": "Checkbox component used for selection operations",
-        "checkboxFormGroup": "Checkbox group usage within forms",
-        "checkboxChecked": "Is checkbox selected (controlled)",
-        "defaultCheckedState": "Default selected state (uncontrolled)",
-        "checkboxDisabled": "Is checkbox disabled",
-        "statusChangeCallback": "Function called when selection state changes",
-        "dataTableComponent": "Advanced table component with sorting, filtering and pagination",
-        "tableColumnDefinitions": "Table column definitions",
-        "enablePagination": "Enable pagination feature",
-        "enableRowSelection": "Enable row selection feature",
-        "enableGlobalSearch": "Enable global search feature",
-        "enableExport": "Enable export feature",
-        "rowClickEvent": "Row click event",
-        "dataGridComponent": "Simple and fast table component with basic sorting and filtering",
-        "searchColumnKey": "Column key to search in",
-        "switchComponent": "Toggle switch component used for on/off operations",
-        "switchChecked": "Is switch open (controlled)",
-        "defaultOpenState": "Default open state (uncontrolled)",
-        "switchDisabled": "Is switch disabled",
-        "selectComponent": "Dropdown component used for selecting from options",
-        "selectedValue": "Selected value (controlled)",
-        "defaultSelectedValue": "Default selected value (uncontrolled)",
-        "selectionChangeCallback": "Function called when selection changes",
-        "disabledState": "Disabled state",
-        "textareaComponent": "Textarea component used for long text input",
-        "autoResize": "Automatic resize",
-        "maxCharacterCount": "Maximum character count",
-        "showCharacterCounter": "Show character counter",
-        "dialogComponent": "Modal dialog component used for various content",
-        "dialogOpenState": "Dialog open/closed state",
-        "dialogStateChangeCallback": "Function that runs when dialog state changes",
-        "editUserProfile": "Edit user profile",
-        "confirmationDialogs": "Confirmation dialogs",
-        "modalForms": "Modal forms",
-        "dropdownComponent": "Dropdown menu component with various menu items",
-        "menuOpenState": "Menu open/closed state",
-        "menuStateChangeCallback": "Function that runs when menu state changes",
-        "userMenus": "User menus",
-        "navigationDropdowns": "Navigation dropdowns",
-        "contextMenus": "Context menus",
-        "actionMenus": "Action menus",
-        "inputComponent": "Input component used for text input",
-        "inputValue": "Input value",
-        "inputDisabledState": "Input disabled state",
-        "loadingComponent": "Loading components used for loading states",
-        "pageLoadingStatus": "Page loading status",
-        "duringApiCalls": "During API calls",
-        "showWhileDataLoading": "Show while data is loading",
-        "progressComponent": "Progress bar component showing task progress",
-        "progressValue": "Progress value (0-100)",
-        "fileUploadProgress": "File upload progress",
-        "taskProgress": "Task progress",
-        "formCompletionStatus": "Form completion status",
-        "skeletonComponent": "Loading skeleton components",
-        "skeletonWidth": "Skeleton width",
-        "skeletonHeight": "Skeleton height",
-        "showPlaceholderWhileDataLoads": "Show placeholder while data loads",
-        "visualConsistencyWhileWaitingApi": "Visual consistency while waiting for API",
-        "pageTransitions": "Page transitions",
-        "tabsComponent": "Tab navigation component",
-        "defaultActiveTab": "Default active tab",
-        "controlledActiveTab": "Controlled active tab",
-        "tabChangeCallback": "Function that runs when tab changes",
-        "organizeFormFields": "Organize form fields",
-        "categorizedContent": "Categorized content",
-        "navigationMenus": "Navigation menus",
-        "settingsPages": "Settings pages",
-        "sliderComponent": "Value selector slider component",
-        "defaultValues": "Default value(s)",
-        "controlledValues": "Controlled value(s)",
-        "minimumValue": "Minimum value",
-        "incrementAmount": "Increment amount",
-        "volumeBrightnessControls": "Volume/brightness controls",
-        "priceRangeSelection": "Price range selection",
-        "valueRangeDetermination": "Value range determination",
-        "separatorComponent": "Separator line component",
-        "separatorDirection": "Separator direction",
-        "separateContentSections": "Separate content sections",
-        "separateDashboardSections": "Separate dashboard sections",
-        "cardSectionSeparations": "Card section separations",
-        "popoverComponent": "Popover content box component",
-        "popoverOpenState": "Popover open/closed state",
-        "popoverStateChangeCallback": "Function that runs when popover state changes",
-        "detailPopups": "Detail popups",
-        "quickSettingsMenus": "Quick settings menus",
-        "formHelperContent": "Form helper content",
-        "tooltipComponent": "Tooltip component used for showing additional information",
-        "tooltipContent": "Tooltip content",
-        "tooltipAlignment": "Tooltip alignment",
-        "tooltipDisplayDelay": "Tooltip display delay",
-        "tooltipDisabledState": "Tooltip disabled state",
-        "formFieldHelpTexts": "Form field help texts",
-        "buttonExplanations": "Button explanations",
-        "abbreviatedTextExplanations": "Abbreviated text explanations",
-        "explainIconMeanings": "Explain icon meanings",
-        "improveUserExperience": "Improve user experience",
-        "scrollAreaComponent": "Scroll area component for limited height content",
-        "limitedHeightContent": "Limited height content",
-        "longListDisplays": "Long list displays",
-        "chatMessageHistory": "Chat message history",
-        "productDescriptions": "Product descriptions",
-        "richTextComponent": "Rich text editor component",
-        "contentChangeCallback": "Function called when content changes",
-        "blogPosts": "Blog posts",
-        "emailEditors": "Email editors",
-        "richContentInComments": "Rich content in comments",
-        "datePickerComponent": "Date picker component used for single date selection",
-        "selectedDate": "Selected date",
-        "dateChangeCallback": "Function called when date changes",
-        "appointmentDateSelection": "Appointment date selection",
-        "deadlineDetermination": "Deadline determination",
-        "eventDateSelection": "Event date selection",
-        "birthdateInput": "Birthdate input",
-        "monthYearPickerComponent": "Month/Year picker component",
-        "selectedMonthYear": "Selected month/year",
-        "graduationDate": "Graduation date",
-        "workExperienceDates": "Work experience dates",
-        "creditCardExpirationDate": "Credit card expiration date",
-        "birthdateSelection": "Birthdate selection",
-        "dateRangePickerComponent": "Date range picker component",
-        "selectedDateRange": "Selected date range",
-        "dateRangeChangeCallback": "Function called when date range changes",
-        "vacationDateRangeSelection": "Vacation date range selection",
-        "reservationDateSelection": "Reservation date selection",
-        "reportDateRange": "Report date range",
-        "projectTimelinePlanning": "Project timeline planning",
-        "reportPeriodSelection": "Report period selection",
-        "reservationDateRange": "Reservation date range",
-        "eventDateDetermination": "Event date determination",
-        "reportPeriodDetermination": "Report period determination",
-        "modernDatePickerComponent": "Modern date picker component",
-        "formFields": "Form fields",
-        "searchBoxes": "Search boxes",
-        "loginRegisterForms": "Login/register forms",
-        "profileEditingForms": "Profile editing forms",
-        "filteringOptions": "Filtering options",
-        "optionLists": "Option lists",
-        "getUserData": "Get user data",
-        "valueChangeCallback": "Value change callback function",
-        "maximumValue": "Maximum value",
-        "buttonLoadingStates": "Button loading states",
-        "groupMenuItems": "Group menu items",
-        "showAdditionalInfo": "Show additional info",
-        "controlledContentValue": "Controlled content value"
-      },
-      "props": {
-        "schema": "Zod validation schema",
-        "defaultValues": "Default values for the form",
-        "onSubmit": "Function called when form is submitted",
-        "className": "CSS classes for form container",
-        "name": "Form field name (supports dot notation)",
-        "label": "Field label",
-        "inputType": "Input type",
-        "placeholder": "Placeholder text",
-        "required": "Is field required",
-        "disabled": "Is field disabled",
-        "isPassword": "Is password field",
-        "showPasswordToggle": "Show password show/hide toggle",
-        "showPasswordStrength": "Show password strength indicator",
-        "showNumberButtons": "Show number +/- buttons",
-        "min": "Minimum value (for number input)",
-        "max": "Maximum value (for number input)",
-        "options": "Array of selection options",
-        "radioOptions": "Radio button options",
-        "rows": "Number of textarea rows",
-        "maxLength": "Maximum character count",
-        "buttonText": "Button text",
-        "buttonVariant": "Button appearance variant",
-        "passwordValue": "Password value",
-        "passwordRules": "Array of password rules"
-      },
-      "rules": {
-        "minLength": "At least 8 characters",
-        "uppercase": "One uppercase letter",
-        "lowercase": "One lowercase letter",
-        "number": "One number",
-        "special": "One special character"
-      },
-      "name": "Name",
-      "email": "Email",
-      "password": "Password...",
-      "selectCountry": "Select country",
-      "basicTextarea": "Basic textarea...",
-      "characterCounter": "With character counter...",
-      "searchByName": "Search by name...",
-      "selectDate": "Select date...",
-      "selectMonthYear": "Select month/year...",
-      "selectDateRange": "Select date range...",
-      "start": "Start",
-      "end": "End",
-      "richTextContent": "Write rich text content...",
-      "allStatuses": "All Statuses",
-      "filters": "Filters",
-      "category": "Category",
-      "status": "Status",
-      "clearFilters": "Clear Filters",
-      "clearAll": "Clear all",
-      "activeFilters": "Active filters:",
-      "componentsShowing": "components showing",
-      "totalComponents": "total",
-      "popularSearches": "Popular searches: Button, Input, Modal, Form",
-      "backToTop": "Back to top",
-      "badgeVariants": {
-        "default": "Default",
-        "secondary": "Secondary",
-        "destructive": "Destructive",
-        "outline": "Outline"
-      },
-      "buttonVariants": {
-        "primary": "Primary",
-        "secondary": "Secondary",
-        "outline": "Outline",
-        "ghost": "Ghost",
-        "delete": "Delete",
-        "disabled": "Disabled"
-      },
-      "buttonActions": {
-        "addNew": "Add New",
-        "search": "Search",
-        "settings": "Settings"
-      },
-      "development": {
-        "frontend": "Frontend Development",
-        "backend": "Backend Development",
-        "mobile": "Mobile Development"
-      },
-      "formGroup": "Form Group",
-      "buttonSize": "Button size",
-      "cardPaddingSize": "Card padding size",
-      "alertDialog": {
-        "deleteWarningMessage": "This action cannot be undone. Your account and all data will be permanently deleted.",
-        "cancel": "Cancel",
-        "confirmDelete": "Yes, Delete"
-      },
-      "avatar": {
-        "altText": "Avatar image alternative text"
-      },
-      "badge": {
-        "sizeDescription": "Badge size"
-      },
-      "cardActions": {
-        "details": "Details",
-        "getReport": "Get Report"
-      },
-      "tableHeaders": {
-        "fullName": "Full Name",
-        "email": "Email"
-      },
-      "dataTable": {
-        "dataDescription": "Table data",
-        "searchPlaceholder": "Search input placeholder text",
-        "searchDefault": "Search..."
-      },
-      "notifications": "Notifications",
-      "textarea": {
-        "basicPlaceholder": "Basic textarea..."
-      },
-      "dialogLabels": {
-        "name": "Name",
-        "save": "Save"
-      },
-      "buttonClick": {
-        "alert": "Button clicked!",
-        "clickMe": "Click"
-      },
-      "profile": "Profile",
-      "listItem": "List item",
-      "placeholderText": "Placeholder text",
-      "loadingTypes": {
-        "spinner": "Spinner",
-        "dots": "Dots",
-        "pulse": "Pulse"
-      },
-      "loadingSize": "Loading size",
-      "progress": "Progress",
-      "account": "Account",
-      "volumeLevel": "Volume Level",
-      "quality": "Quality",
-      "left": "Left",
-      "tooltipPosition": "Tooltip position",
-      "dates": {
-        "graduationDate": "Graduation Date",
-        "holidayDates": "Holiday Dates",
-        "appointmentDate": "Appointment Date"
-      },
-      "missing": {
-        "accordion": {
-          "notificationPreferences": "Notification Preferences"
-        },
-        "alertDialog": {
-          "confirmDelete": "Confirm Delete"
-        },
-        "badge": {
-          "active": "Active",
-          "error": "Error",
-          "pending": "Pending",
-          "userOnline": "Online",
-          "connectionError": "Connection Error",
-          "awaitingApproval": "Awaiting Approval"
-        },
-        "buttons": {
-          "small": "Small",
-          "large": "Large",
-          "fullWidth": "Full Width",
-          "menu": "Menu",
-          "openDialog": "Open Dialog",
-          "startNow": "Start Now"
-        },
-        "cards": {
-          "totalVisitors": "Total Visitors",
-          "newUsers": "New Users",
-          "conversionRate": "Conversion Rate",
-          "premiumFeature": "Premium Feature",
-          "premiumDesc": "Do more with these premium features",
-          "detailedAnalytics": "Detailed Analytics",
-          "customReports": "Custom Reports",
-          "apiAccess": "API Access",
-          "projectReport": "Project Report",
-          "projectReportDesc": "Project progress and details from last month"
-        },
-        "checkbox": {
-          "selected": "Selected",
-          "notSelected": "Not Selected",
-          "disabled": "Disabled",
-          "yourInterests": "Your Interests"
-        },
-        "datePicker": {
-          "birthDate": "Birth Date"
-        },
-        "dialog": {
-          "editProfile": "Edit Profile",
-          "editProfileDesc": "You can update your profile information here"
-        },
-        "dropdown": {
-          "emailUpdates": "Email Updates",
-          "myAccount": "My Account"
-        },
-        "loading": {
-          "loading": "Loading",
-          "completed": "Completed"
-        },
-        "popover": {
-          "openPopover": "Open Popover",
-          "adjustDimensions": "Adjust Dimensions",
-          "width": "Width",
-          "height": "Height"
-        },
-        "select": {
-          "turkey": "Turkey"
-        },
-        "separator": {
-          "section1": "Section 1",
-          "section2": "Section 2",
-          "exampleContent1": "First example content",
-          "exampleContent2": "Second example content",
-          "right": "Right"
-        },
-        "slider": {
-          "priceRange": "Price Range",
-          "priceRangeLabel": "Price Range: $200 - $800"
-        },
-        "switch": {
-          "emailUpdates": "Email Updates",
-          "disabled": "Disabled"
-        },
-        "tabs": {
-          "password": "Password",
-          "username": "Username",
-          "currentPassword": "Current Password",
-          "newPassword": "New Password"
-        }
-      },
-      "tooltips": {
-        "example": "This is a tooltip example",
-        "rightSide": "This tooltip appears on the right",
-        "bottomSide": "This tooltip appears on the bottom",
-        "disabled": "This button is disabled"
-      },
-      "extraDescriptions": {
-        "inputType": "Input type (text, email, password, etc.)"
-      }
-    },
-    "button": {
-      "description": "Interactive button component with various variants and sizes",
-      "variantDescription": "Button appearance variant",
-      "sizeDescription": "Button size",
-      "fullWidthDescription": "Makes button full width",
-      "disabledDescription": "Disables the button"
-    },
-    "checkbox": {
-      "description": "Checkbox component used for selection operations",
-      "selectedLabel": "Selected Checkbox",
-      "unselectedLabel": "Not Selected",
-      "disabledLabel": "Disabled",
-      "checkedDescription": "Is checkbox checked (controlled)",
-      "defaultCheckedDescription": "Default checked state (uncontrolled)",
-      "disabledDescription": "Is checkbox disabled",
-      "onCheckedChangeDescription": "Function called when selection state changes"
-    },
-    "switch": {
-      "description": "Toggle switch component used for on/off operations",
-      "notificationsLabel": "Notifications",
-      "emailUpdatesLabel": "Email Updates",
-      "disabledLabel": "Disabled",
-      "checkedDescription": "Is switch on (controlled)",
-      "defaultCheckedDescription": "Default on state (uncontrolled)",
-      "disabledDescription": "Is switch disabled",
-      "onCheckedChangeDescription": "Function called when state changes"
-    },
-    "select": {
-      "description": "Dropdown component used for selecting from options",
-      "countryPlaceholder": "Select country",
-      "turkey": "Turkey",
-      "usa": "United States",
-      "germany": "Germany",
-      "france": "France",
-      "valueDescription": "Selected value (controlled)",
-      "defaultValueDescription": "Default selected value (uncontrolled)",
-      "onValueChangeDescription": "Function called when value changes"
-    },
-    "loading": {
-      "description": "Loading animations in various styles",
-      "spinnerLabel": "Spinner",
-      "dotsLabel": "Dots",
-      "pulseLabel": "Pulse",
-      "sizeDescription": "Spinner size",
-      "variantDescription": "Spinner color variant",
-      "textDescription": "Text to show with spinner"
-    },
-    "skeleton": {
-      "description": "Placeholder components for content loading state",
-      "widthDescription": "Skeleton width",
-      "heightDescription": "Skeleton height",
-      "variantDescription": "Skeleton shape",
-      "linesDescription": "Number of lines for text skeleton"
-    },
-    "textarea": {
-      "description": "Multi-line text input component",
-      "basicPlaceholder": "Basic textarea...",
-      "counterPlaceholder": "With character counter...",
-      "maxLengthDescription": "Maximum character count",
-      "showCountDescription": "Show character counter",
-      "autoResizeDescription": "Auto-resize based on content size",
-      "errorDescription": "Error state"
-    },
-    "accordion": {
-      "description": "Component used for expandable and collapsible content sections",
-      "featuresTitle": "Features",
-      "featuresContent": "This component is easily customizable and developed according to accessible design principles.",
-      "usageTitle": "Usage",
-      "usageContent": "Can be used in various scenarios such as form fields, settings menu, and FAQ sections.",
-      "typeDescription": "Allows one or multiple items to be open at once",
-      "defaultValueDescription": "Values of items that are open by default",
-      "collapsibleDescription": "Allows closing of open item (for type=\"single\")"
-    },
-    "alertDialog": {
-      "description": "Alert dialog component used to get user confirmation or convey important information",
-      "deleteAccountButton": "Delete Account",
-      "confirmationMessage": "Are you sure you want to perform this operation?",
-      "operationConfirmed": "Operation confirmed!",
-      "clickToSeeExample": "Click to see example dialog",
-      "openDescription": "Is dialog open (controlled)",
-      "onOpenChangeDescription": "Function called when dialog state changes"
-    },
-    "avatar": {
-      "description": "Component used for displaying user profile pictures with fallback support",
-      "defaultLabel": "Default",
-      "colorfulLabel": "Colorful",
-      "iconLabel": "Icon",
-      "srcDescription": "Avatar image URL",
-      "altDescription": "Image alt text",
-      "fallbackDescription": "Content to show when image fails to load"
-    },
-    "card": {
-      "description": "Card component used for grouping and organizing content",
-      "cardTitle": "Card Title",
-      "cardDescription": "This is an example card description.",
-      "cardContent": "Card content goes here. Text, images, buttons and other components can be added.",
-      "cancelButton": "Cancel",
-      "saveButton": "Save",
-      "variantDescription": "Card appearance variant",
-      "sizeDescription": "Card padding size",
-      "hoverDescription": "Hover effect type"
-    },
-    "commandMenu": {
-      "description": "Command menu with keyboard shortcuts for quick search and command execution",
-      "searchPlaceholder": "Search commands...",
-      "createNewFile": "Create New File",
-      "openSettings": "Open Settings",
-      "openDescription": "Is command menu open (for dialog mode)",
-      "onOpenChangeDescription": "Function called when open state changes",
-      "valueDescription": "Value of selected item"
-    },
-    "dataTable": {
-      "description": "Advanced data table with sorting, filtering and pagination features",
-      "searchPlaceholder": "Search...",
-      "nameColumn": "Name",
-      "emailColumn": "Email",
-      "roleColumn": "Role",
-      "adminUser": "John Doe",
-      "adminEmail": "john@example.com",
-      "adminRole": "Admin",
-      "regularUser": "Jane Smith",
-      "regularEmail": "jane@example.com",
-      "regularRole": "User",
-      "columnsDescription": "Table column definitions",
-      "dataDescription": "Table data",
-      "searchKeyDescription": "Column key to search in",
-      "searchPlaceholderDescription": "Search input placeholder text"
-    },
-    "dialog": {
-      "description": "Dialog component used for opening modal windows",
-      "openButton": "Open Dialog",
-      "editProfileTitle": "Edit Profile",
-      "editProfileDescription": "You can update your profile information here. Click save button to save changes.",
-      "nameLabel": "Name",
-      "clickToSeeModal": "Click to see modal dialog",
-      "openDescription": "Is dialog open (controlled)",
-      "onOpenChangeDescription": "Function called when dialog state changes",
-      "modalDescription": "Modal behavior (closes when backdrop is clicked)"
-    },
-    "dragDropList": {
-      "description": "List component where you can reorder items with drag and drop functionality",
-      "item1": "Item 1",
-      "item2": "Item 2",
-      "item3": "Item 3",
-      "customizedItem": "Customized Item",
-      "customizedLabel": "Customized"
-    },
-    "dropdown": {
-      "description": "Radix UI based accessible dropdown menu component",
-      "optionsButton": "Options",
-      "accountOperations": "Account Operations",
-      "profile": "Profile",
-      "settings": "Settings",
-      "billing": "Billing",
-      "logout": "Logout",
-      "openDescription": "Dropdown open state (controlled)",
-      "onOpenChangeDescription": "Function called when open state changes",
-      "modalDescription": "Enable modal behavior"
-    },
-    "fileUpload": {
-      "description": "Advanced file upload component with drag and drop support",
-      "dropzoneText": "Drag files here or",
-      "browseText": "Browse Files",
-      "filesSelected": "{{count}} files selected",
-      "onChangeDescription": "Function called when file selection changes",
-      "valueDescription": "Selected files",
-      "multipleDescription": "Allow multiple file selection",
-      "acceptDescription": "Accepted file types",
-      "maxSizeDescription": "Maximum file size (MB)",
-      "maxFilesDescription": "Maximum number of files"
-    },
-    "input": {
-      "description": "Advanced input component with various variants and icon support",
-      "basicPlaceholder": "Basic input",
-      "searchPlaceholder": "Search...",
-      "emailPlaceholder": "Your email address",
-      "errorPlaceholder": "Invalid input",
-      "errorMessage": "This field is required",
-      "variantDescription": "Input appearance variant",
-      "inputSizeDescription": "Input size",
-      "startIconDescription": "Icon to show at the beginning of input",
-      "endIconDescription": "Icon to show at the end of input",
-      "errorDescription": "Error message"
-    },
-    "label": {
-      "description": "Accessible label component for form fields",
-      "basicLabel": "Basic Label",
-      "relatedInput": "Related input",
-      "requiredField": "Required Field",
-      "requiredPlaceholder": "This field is required",
-      "disabledLabel": "Disabled",
-      "disabledPlaceholder": "Disabled input",
-      "htmlForDescription": "ID value of the related input element",
-      "requiredDescription": "Shows required field mark (*)",
-      "classNameDescription": "Additional CSS classes"
-    },
-    "pageHeader": {
-      "description": "Comprehensive page header component including page title, breadcrumb, actions and tab navigation",
-      "projectManagement": "Project Management",
-      "projectDescription": "Manage and track all your projects",
-      "homepage": "Home",
-      "projects": "Projects",
-      "projectDetail": "Project Detail",
-      "help": "Help",
-      "newProject": "New Project",
-      "overview": "Overview",
-      "tasks": "Tasks",
-      "documents": "Documents",
-      "titleDescription": "Page title",
-      "subtitleDescription": "Page description",
-      "breadcrumbsDescription": "Breadcrumb navigation items",
-      "actionsDescription": "Page action buttons",
-      "tabsDescription": "Tab navigation items",
-      "activeTabDescription": "Active tab value",
-      "onTabChangeDescription": "Tab change function",
-      "stickyDescription": "Stay fixed at top when scrolling the page",
-      "backButtonDescription": "Show back button"
-    },
-    "form": {
-      "description": "Comprehensive form management system with React Hook Form integration",
-      "emailPlaceholder": "example@email.com",
-      "nameLabel": "Full Name",
-      "namePlaceholder": "Enter your first and last name",
-      "messageLabel": "Message",
-      "messagePlaceholder": "Write your message...",
-      "submitButton": "Submit",
-      "formDescription": "React Hook Form instance",
-      "onSubmitDescription": "Form submission function",
-      "classNameDescription": "CSS classes for form container"
-    },
-    "clickToSeeExample": "Click to see example dialog",
-    "clickToSeeModal": "Click to see modal dialog",
-    "dialogWillOpen": "Dialog will open!",
-    "formSubmittedSuccessfully": "Form Submitted Successfully",
-    "dataProcessedSuccessfully": "Your data has been processed successfully.",
     "sampleData": {
       "users": {
-        "ahmet": "John Smith",
-        "ayse": "Jane Doe",
-        "mehmet": "Mike Johnson",
-        "fatma": "Sarah Wilson",
-        "ali": "David Brown"
-      },
-      "roles": {
-        "admin": "Admin",
-        "user": "User",
-        "editor": "Editor"
+        "ahmet": "John Doe",
+        "ayse": "Jane Smith",
+        "mehmet": "Michael Brown",
+        "fatma": "Emily Davis",
+        "ali": "Chris Wilson"
       },
       "status": {
         "active": "Active",
         "inactive": "Inactive",
-        "pending": "Pending",
-        "error": "Error",
-        "online": "User online",
-        "connectionError": "Connection error",
-        "awaitingApproval": "Awaiting approval"
+        "pending": "Pending"
       }
     },
     "tableHeaders": {
@@ -889,551 +70,844 @@
       "email": "Email",
       "role": "Role",
       "status": "Status",
-      "name": "Name",
       "edit": "Edit",
       "delete": "Delete"
     },
-    "buttons": {
-      "small": "Small",
-      "large": "Large",
-      "addNew": "Add New",
-      "search": "Search",
-      "settings": "Settings",
-      "fullWidth": "Full Width",
-      "deleteAccount": "Delete Account",
-      "cancel": "Cancel",
-      "yesDelete": "Yes, Delete",
-      "save": "Save",
-      "openDialog": "Open Dialog",
-      "menu": "Menu",
-      "details": "Details",
-      "getReport": "Get Report",
-      "startNow": "Start Now"
+    "accordion": {
+      "title": "Accordion",
+      "usage": {
+        "multiple": "Multiple Accordion",
+        "multipleDesc": "Accordion where multiple sections can be open simultaneously."
+      },
+      "section1": "Section 1",
+      "content1": "First section content",
+      "section2": "Section 2",
+      "content2": "Second section content",
+      "openSection": "Open Section",
+      "defaultOpenSection": "This section is open by default.",
+      "otherSection": "Other Section",
+      "canAlsoOpenThisSection": "You can also open this section.",
+      "props": {
+        "collapsible": "Determines if the last item can be collapsed"
+      }
+    },
+    "descriptions": {
+      "accordion": "Expandable and collapsible content sections.",
+      "alert": "Displays a callout for user attention.",
+      "alertDialog": "A modal dialog that interrupts the user with important content and expects a response.",
+      "avatar": "An image element with a fallback for representing the user.",
+      "badge": "Displays a badge or a component that looks like a badge.",
+      "button": "Displays a button or a component that looks like a button.",
+      "card": "Displays a card with header, content, and footer.",
+      "checkbox": "A control that allows the user to toggle between checked and not checked.",
+      "dataGrid": "Powerful data grid component with sorting, filtering, and pagination.",
+      "dataTable": "A flexible data table component.",
+      "switch": "A control that allows the user to toggle between checked and not checked.",
+      "select": "Displays a list of options for the user to pick from—triggered by a button.",
+      "textarea": "Displays a form textarea or a component that looks like a textarea.",
+      "dialog": "A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.",
+      "dropdownMenu": "Displays a menu to the user—such as a set of actions or functions—triggered by a button.",
+      "input": "Displays a form input field or a component that looks like an input field.",
+      "loading": "Indicates that an action is being processed or data is being loaded.",
+      "progress": "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+      "tabs": "Displays a set of sections of content—known as tab panels—that are displayed one at a time.",
+      "slider": "An input where the user selects a value from within a given range.",
+      "separator": "Visually or semantically separates content.",
+      "popover": "Displays rich content in a portal, triggered by a button.",
+      "tooltip": "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+      "scrollArea": "Augments native scroll functionality for custom, cross-browser styling.",
+      "richTextEditor": "A rich text editor component for editing HTML content.",
+      "monthYearPicker": "A date picker for selecting a month and year.",
+      "dateRangePicker": "A date picker for selecting a range of dates.",
+      "singleDatePicker": "A date picker for selecting a single date.",
+      "modernDrawer": "A modern, accessible drawer component with multiple placement options.",
+      "passwordInput": "A password input component with a show/hide toggle.",
+      "numberInput": "A number input component with increment/decrement controls.",
+      "calendar": "A calendar component for displaying dates.",
+      "collapsible": "An interactive component which expands/collapses a panel.",
+      "formError": "Displays an error message for a form field.",
+      "stepper": "Displays progress through a sequence of steps.",
+      "dynamicBreadcrumb": "Displays the path to the current resource.",
+      "enhancedDataTable": "An enhanced data table with sorting and filtering.",
+      "accessibilityEnhancer": "A utility for improving accessibility.",
+      "enhancedPagination": "A pagination component for navigating pages.",
+      "enhancedSearchFilters": "A component for advanced search filtering.",
+      "enterpriseErrorBoundary": "A boundary for catching and displaying errors.",
+      "labelAdvanced": "An advanced label component with required indicator support.",
+      "commandMenu": "A command menu for quick navigation and actions."
     },
     "content": {
-      "accordion": {
-        "personalInfo": "Personal Information",
-        "securitySettings": "Security Settings",
-        "notificationPreferences": "Notification Preferences",
-        "personalInfoDesc": "You can update your name, surname, email and phone information in this section. Changes are saved instantly.",
-        "securitySettingsDesc": "Your password change, two-factor authentication and security questions settings.",
-        "notificationDesc": "Set your preferences for email, SMS and app notifications."
-      },
       "alerts": {
         "information": "Information",
-        "informationMsg": "This is an informational message. It contains important details.",
+        "informationMsg": "You can add components to your app using the cli.",
         "warning": "Warning",
-        "warningMsg": "There is a situation that requires attention.",
+        "warningMsg": "Your session is about to expire.",
         "error": "Error",
-        "errorMsg": "The operation could not be completed. Please try again."
+        "errorMsg": "Your session has expired. Please log in again."
       },
-      "dialogs": {
-        "confirmDelete": "Are you sure you want to delete your account?",
-        "deleteWarning": "This action cannot be undone. Your account and all your data will be permanently deleted.",
-        "editProfile": "Edit Profile",
-        "editProfileDesc": "You can update your profile information here."
+      "categories": {
+        "layout": "Layout",
+        "feedback": "Feedback",
+        "overlay": "Overlay",
+        "dataDisplay": "Data Display",
+        "formInput": "Form Input",
+        "advanced": "Advanced",
+        "ui": "UI Components"
       },
-      "preferences": {
-        "notifications": "Notifications",
-        "emailUpdates": "Email Updates",
-        "disabled": "Disabled",
-        "selectedCheckbox": "Selected Checkbox",
-        "notSelected": "Not Selected",
-        "yourInterests": "Your Interests:"
+      "common": {
+        "personalInfo": "Personal Info",
+        "personalInfoDesc": "Manage your personal info here.",
+        "securitySettings": "Security Settings",
+        "securitySettingsDesc": "Update password and security preferences.",
+        "notificationPreferences": "Notification Preferences",
+        "notificationDesc": "Manage email and app notifications."
       },
-      "cards": {
+      "accordion": {
+        "personalInfo": "Personal Info",
+        "personalInfoDesc": "Manage your personal info here.",
+        "securitySettings": "Security Settings",
+        "securitySettingsDesc": "Update password and security preferences.",
+        "notificationPreferences": "Notification Preferences",
+        "notificationDesc": "Manage email and app notifications."
+      }
+    },
+    "alert": {
+      "title": "Alert"
+    },
+    "alertDialog": {
+      "title": "Alert Dialog",
+      "deleteAccount": "Delete Account",
+      "confirmDelete": "Are you absolutely sure?",
+      "deleteWarning": "This action cannot be undone. This will permanently delete your account and remove your data from our servers.",
+      "cancel": "Cancel",
+      "confirmAction": "Continue"
+    },
+    "avatar": {
+      "title": "Avatar",
+      "fallback": "+3",
+      "usage": {
+        "group": "Avatar Group",
+        "groupDesc": "Avatars can be grouped to show multiple users."
+      },
+      "props": {
+        "src": "The source URL of the avatar image",
+        "alt": "Alternative text for the avatar image"
+      }
+    },
+    "badge": {
+      "title": "Badge",
+      "variants": {
+        "default": "Default",
+        "secondary": "Secondary",
+        "destructive": "Destructive",
+        "outline": "Outline"
+      },
+      "sizes": {
+        "small": "Small",
+        "large": "Large"
+      },
+      "usage": {
+        "status": "Status Indicators",
+        "statusDesc": "Badges can be used to indicate status or state."
+      },
+      "status": {
+        "active": "Active",
+        "userOnline": "User is online",
+        "error": "Error",
+        "connectionError": "Connection failed",
+        "pending": "Pending",
+        "awaitingApproval": "Awaiting approval"
+      },
+      "props": {
+        "variant": "The visual style of the badge",
+        "size": "The size of the badge"
+      }
+    },
+    "button": {
+      "title": "Button",
+      "variants": {
+        "primary": "Primary",
+        "secondary": "Secondary",
+        "outline": "Outline",
+        "ghost": "Ghost",
+        "delete": "Delete",
+        "disabled": "Disabled"
+      },
+      "sizes": {
+        "small": "Small",
+        "large": "Large",
+        "fullWidth": "Full Width"
+      },
+      "usage": {
+        "iconButtons": "Icon Buttons",
+        "iconButtonExamples": "Buttons can contain icons."
+      },
+      "actions": {
+        "addNew": "Add New",
+        "search": "Search",
+        "settings": "Settings",
+        "startNow": "Start Now"
+      },
+      "props": {
+        "variant": "The visual style of the button",
+        "size": "The size of the button",
+        "className": "Additional class names",
+        "disabled": "Disables the button"
+      }
+    },
+    "card": {
+      "title": "Card",
+      "content": {
         "projectReport": "Project Report",
-        "projectReportDesc": "Last week's performance summary and analytics data.",
+        "projectReportDesc": "Monthly visitor and conversion statistics.",
         "totalVisitors": "Total Visitors",
         "newUsers": "New Users",
         "conversionRate": "Conversion Rate",
         "premiumFeature": "Premium Feature",
-        "premiumFeatureDesc": "Advanced analytics and reporting tools",
-        "detailedAnalytics": "• Detailed analytics",
-        "customReports": "• Custom reports",
-        "apiAccess": "• API access"
+        "premiumDesc": "Upgrade to access advanced features.",
+        "detailedAnalytics": "Detailed Analytics",
+        "customReports": "Custom Reports",
+        "apiAccess": "API Access"
       },
-      "categories": {
-        "dataDisplay": "Data Display",
-        "formInput": "Form & Input",
-        "feedback": "Feedback",
-        "overlay": "Overlay",
-        "navigation": "Navigation",
-        "layout": "Layout"
+      "actions": {
+        "details": "Details",
+        "getReport": "Get Report"
+      },
+      "usage": {
+        "feature": "Feature Card",
+        "featureDesc": "Cards can be used to highlight features."
+      },
+      "props": {
+        "variant": "The visual style of the card",
+        "size": "The size of the card",
+        "hover": "Hover effect of the card"
       }
     },
-    "descriptions": {
-      "accordion": "Accordion component used for expandable content sections. Provides enhanced user experience with Framer Motion animations.",
-      "alert": "Alert component used to communicate important messages to users. Can display different types of warnings.",
-      "alertDialog": "Modal dialog component that requires confirmation for critical operations. Requires user interaction.",
-      "avatar": "Component used for user profile pictures and avatars. Offers fallback and different size options.",
-      "badge": "Badge component used for status and labeling. Offers different variant and size options.",
-      "button": "Interactive button component with different variants and sizes. Offers loading state and icon support.",
-      "card": "Card component used to group and organize content. Supports header, content and footer sections.",
-      "checkbox": "Checkbox component used for selection operations. Supports controlled and uncontrolled modes.",
-      "dataTable": "Advanced table component. Has sorting, filtering, pagination, row selection and export features."
-    },
-    "properties": {
-      "singleMultipleMode": "Single or multiple expandable mode",
-      "defaultOpenValues": "Default open item values",
-      "controlledOpenValues": "Open item values for controlled mode",
-      "valueChangeCallback": "Value change callback function",
-      "alertVariant": "Alert appearance variant",
-      "dialogOpen": "Is dialog open (controlled)",
-      "dialogOpenChangeCallback": "Function called when dialog open state changes",
-      "badgeVariant": "Badge appearance variant",
-      "buttonVariant": "Button appearance variant",
-      "additionalCssClasses": "Additional CSS classes (full width with w-full)",
-      "disableButton": "Disables the button"
-    },
-    "remaining": {
-      "descriptions": {
-        "multipleAccordion": "Accordion where multiple sections can be open simultaneously",
-        "lastItemClosable": "Whether the last remaining item can also be closed",
-        "criticalOperations": "Modal dialog component that requires confirmation for critical operations. Requires user interaction.",
-        "avatarGroup": "Avatar group representing multiple users",
-        "avatarImageUrl": "Avatar image URL (for AvatarImage)",
-        "badgeComponent": "Badge component used for status and labeling. Offers different variant and size options.",
-        "badgeExamples": "Badge examples representing different states",
-        "badgeVariantDesc": "Badge appearance variant",
-        "buttonComponent": "Interactive button component with different variants and sizes. Offers loading state and icon support.",
-        "iconButtons": "Button examples used with icons",
-        "buttonVariantProp": "Button appearance variant",
-        "fullWidthClasses": "Additional CSS classes (full width with w-full)",
-        "disableButtonProp": "Disables the button",
-        "featureCard": "Card example used for feature introduction",
-        "cardVariant": "Card appearance variant",
-        "hoverEffect": "Hover effect type",
-        "checkboxGroup": "Checkbox group usage in form",
-        "checkboxControlled": "Is checkbox checked (controlled)",
-        "checkboxDefault": "Default checked state (uncontrolled)",
-        "checkboxDisabled": "Is checkbox disabled",
-        "checkboxChange": "Function called when selection state changes",
-        "tableColumns": "Table column definitions",
-        "enablePagination": "Enable pagination feature",
-        "enableRowSelection": "Enable row selection feature",
-        "enableGlobalFilter": "Enable global search feature",
-        "enableExport": "Enable export feature",
-        "rowClickEvent": "Row click event",
-        "simpleTable": "Simple and fast table component. Has basic sorting and filtering features.",
-        "searchColumn": "Column key to search in",
-        "switchComponent": "Toggle switch component used for on/off operations",
-        "switchControlled": "Is switch on (controlled)",
-        "switchDefault": "Default on state (uncontrolled)",
-        "switchDisabled": "Is switch disabled",
-        "switchChange": "Function called when state changes",
-        "selectComponent": "Dropdown component used for selecting from options",
-        "selectValue": "Selected value (controlled)",
-        "selectDefaultValue": "Default selected value (uncontrolled)",
-        "selectChange": "Function called when value changes",
-        "textareaComponent": "Multi-line text input component",
-        "maxLength": "Maximum character count",
-        "showCounter": "Show character counter",
-        "autoResize": "Auto-resize based on content size",
-        "dialogComponent": "Modal dialog window component",
-        "dialogOpenProp": "Dialog open/close state",
-        "dialogChange": "Function to run when dialog state changes",
-        "dropdownComponent": "Dropdown menu component",
-        "navigationDropdowns": "For navigation dropdowns",
-        "dropdownOpen": "Menu open/close state",
-        "dropdownChange": "Function to run when menu state changes",
-        "inputComponent": "Text input component",
-        "inputType": "Input type (text, email, password, etc.)",
-        "inputDisabled": "Input disabled state",
-        "inputValue": "Input value",
-        "loadingComponent": "Loading animation components",
-        "additionalClasses": "Additional CSS classes",
-        "progressComponent": "Progress bar component",
-        "progressValue": "Progress value (0-100)",
-        "progressMax": "Maximum value",
-        "skeletonComponent": "Loading skeleton components",
-        "skeletonWidth": "Skeleton width",
-        "skeletonHeight": "Skeleton height",
-        "tabsComponent": "Tab navigation component",
-        "tabsDefaultValue": "Default active tab",
-        "tabsValue": "Controlled active tab",
-        "tabsChange": "Function to run when tab changes",
-        "sliderComponent": "Value selector slider component",
-        "sliderDefaultValue": "Default value(s)",
-        "sliderValue": "Controlled value(s)",
-        "sliderMax": "Maximum value",
-        "sliderMin": "Minimum value",
-        "sliderStep": "Step amount",
-        "separatorComponent": "Separator line component",
-        "separatorOrientation": "Separator direction",
-        "popoverComponent": "Pop-up content box component",
-        "popoverOpen": "Popover open/close state",
-        "popoverChange": "Function to run when popover state changes",
-        "tooltipComponent": "Tooltip component",
-        "tooltipContent": "Tooltip content",
-        "tooltipSide": "Tooltip alignment",
-        "tooltipDelay": "Tooltip display delay (ms)",
-        "tooltipDisabled": "Tooltip disabled state",
-        "scrollAreaComponent": "Custom scrollbar component",
-        "richTextComponent": "Rich text editor component",
-        "richTextValue": "Controlled content value",
-        "richTextChange": "Function to run when content changes",
-        "modernDatePickerComponent": "Modern date picker component",
-        "datePickerValue": "Selected date",
-        "datePickerChange": "Function to run when date changes",
-        "datePickerDisabled": "Disabled state",
-        "monthYearPickerComponent": "Month-year picker component",
-        "monthYearValue": "Selected month/year",
-        "monthYearChange": "Function to run when date changes",
-        "monthYearDisabled": "Disabled state",
-        "dateRangePickerComponent": "Date range picker component",
-        "dateRangeValue": "Selected date range",
-        "dateRangeChange": "Function to run when date range changes",
-        "dateRangeDisabled": "Disabled state",
-        "singleDatePickerComponent": "Single date picker component",
-        "singleDateValue": "Selected date",
-        "singleDateChange": "Function to run when date changes",
-        "singleDateDisabled": "Disabled state",
-        "avatarComponent": "Avatar component for displaying user profile pictures with fallback support",
-        "badgeVariant": "Badge appearance variant for different visual styles",
-        "iconButtonExamples": "Button examples used with icons for enhanced user interaction",
-        "buttonVariant": "Button appearance variant for different visual styles",
-        "additionalCssClasses": "Additional CSS classes for custom styling and layout modifications",
-        "disableButton": "Disables the button to prevent user interaction",
-        "cardComponent": "Card component used for grouping and organizing content sections",
-        "hoverEffectType": "Type of hover effect applied to interactive elements",
-        "checkboxComponent": "Checkbox component used for selection operations in forms",
-        "checkboxFormGroup": "Checkbox group usage in forms for multiple selections",
-        "checkboxChecked": "Is checkbox checked state for controlled components",
-        "defaultCheckedState": "Default checked state for uncontrolled checkbox components",
-        "selectionChangeCallback": "Function called when checkbox selection state changes",
-        "dataGridComponent": "Advanced data grid component with sorting and filtering features",
-        "tableColumnDefinitions": "Table column definitions for data structure and display",
-        "enableGlobalSearch": "Enable global search functionality across all table data",
-        "dataTableComponent": "Simple data table component for displaying structured data",
-        "searchColumnKey": "Column key used for search operations within the table",
-        "switchChecked": "Is switch in the on position for controlled components",
-        "defaultOpenState": "Default open state for uncontrolled switch components",
-        "statusChangeCallback": "Function called when switch status changes",
-        "selectedValue": "Currently selected value in controlled components",
-        "defaultSelectedValue": "Default selected value for uncontrolled components",
-        "valueChangeCallback": "Function called when component value changes",
-        "maxCharacterCount": "Maximum number of characters allowed in text input",
-        "showCharacterCounter": "Display character counter to show remaining characters",
-        "editUserProfile": "Edit user profile information and settings",
-        "confirmationDialogs": "Confirmation dialogs for critical user actions",
-        "modalForms": "Modal forms for data entry and editing operations",
-        "detailPopups": "Detail popups for showing additional information",
-        "dialogOpenState": "Dialog open/close state for controlled dialog components",
-        "dialogStateChangeCallback": "Function called when dialog state changes",
-        "userMenus": "User-specific menus for account and profile operations",
-        "actionMenus": "Action menus for performing operations on data items",
-        "optionLists": "Lists of selectable options in dropdown components",
-        "menuOpenState": "Menu open/close state for controlled menu components",
-        "menuStateChangeCallback": "Function called when menu state changes",
-        "formFields": "Form fields for data input and validation",
-        "getUserData": "Retrieve user data from the system or API",
-        "searchBoxes": "Search input boxes for finding and filtering content",
-        "loginRegisterForms": "Login and registration forms for user authentication",
-        "inputDisabledState": "Input disabled state to prevent user interaction",
-        "showWhileDataLoading": "Show loading indicator while data is being fetched",
-        "duringApiCalls": "Display loading state during API call operations",
-        "buttonLoadingStates": "Button loading states for async operations",
-        "pageTransitions": "Loading states during page navigation transitions",
-        "fileUploadProgress": "Progress indicator for file upload operations",
-        "formCompletionStatus": "Status indicator for form completion progress",
-        "taskProgress": "Progress indicator for task completion status",
-        "pageLoadingStatus": "Loading status indicator for page content",
-        "maximumValue": "Maximum value allowed in numeric inputs or sliders",
-        "showPlaceholderWhileDataLoads": "Show placeholder content while data is loading",
-        "improveUserExperience": "Improve user experience with loading indicators",
-        "visualConsistencyWhileWaitingApi": "Maintain visual consistency while waiting for API responses",
-        "settingsPages": "Settings pages for configuring application preferences",
-        "profileEditingForms": "Forms for editing user profile information",
-        "separateDashboardSections": "Separate different sections within dashboard layouts",
-        "categorizedContent": "Content organized by categories or groups",
-        "defaultActiveTab": "Default active tab in tab navigation components",
-        "controlledActiveTab": "Controlled active tab state in tab navigation",
-        "tabChangeCallback": "Function called when active tab changes",
-        "volumeBrightnessControls": "Controls for adjusting volume and brightness levels",
-        "priceRangeSelection": "Selection controls for price range filtering",
-        "filteringOptions": "Options for filtering and sorting data",
-        "valueRangeDetermination": "Determine value ranges for slider components",
-        "defaultValues": "Default values for uncontrolled components",
-        "controlledValues": "Controlled values managed by parent components",
-        "minimumValue": "Minimum value allowed in numeric inputs or sliders",
-        "incrementAmount": "Amount to increment when using step controls",
-        "separateContentSections": "Separate different content sections visually",
-        "groupMenuItems": "Group related menu items together",
-        "cardSectionSeparations": "Visual separations between card sections",
-        "organizeFormFields": "Organize form fields into logical groups",
-        "separatorDirection": "Direction of separator lines (horizontal or vertical)",
-        "quickSettingsMenus": "Quick access menus for common settings",
-        "showAdditionalInfo": "Show additional information when needed",
-        "formHelperContent": "Helper content and instructions for forms",
-        "contextMenus": "Context-sensitive menus for actions",
-        "popoverOpenState": "Popover open/close state for controlled components",
-        "popoverStateChangeCallback": "Function called when popover state changes",
-        "buttonExplanations": "Explanatory tooltips for button functions",
-        "formFieldHelpTexts": "Help text for form field assistance",
-        "abbreviatedTextExplanations": "Explanations for abbreviated text content",
-        "explainIconMeanings": "Explain the meanings of icons to users",
-        "tooltipAlignment": "Alignment position of tooltip relative to trigger",
-        "tooltipDisplayDelay": "Delay before showing tooltip in milliseconds",
-        "tooltipDisabledState": "Disabled state for tooltip components",
-        "longListDisplays": "Display long lists with custom scrolling",
-        "limitedHeightContent": "Content areas with limited height constraints",
-        "chatMessageHistory": "Scrollable chat message history displays",
-        "navigationMenus": "Navigation menus with scroll functionality",
-        "blogPosts": "Rich text content for blog posts and articles",
-        "productDescriptions": "Rich product descriptions with formatting",
-        "emailEditors": "Email composition editors with rich formatting",
-        "richContentInComments": "Rich content formatting in user comments",
-        "controlledContentValue": "Controlled content value for rich text editors",
-        "contentChangeCallback": "Function called when rich content changes",
-        "birthdateSelection": "Date selection for birthdate input fields",
-        "eventDateDetermination": "Determine dates for events and appointments",
-        "reportDateRange": "Date range selection for reports and analytics",
-        "reservationDateSelection": "Date selection for reservation systems",
-        "selectedDate": "Currently selected date in date picker components",
-        "dateChangeCallback": "Function called when selected date changes",
-        "disabledState": "Disabled state for date picker components",
-        "graduationDate": "Date selection for graduation and milestone dates",
-        "workExperienceDates": "Date selection for work experience entries",
-        "creditCardExpirationDate": "Month/year selection for credit card expiration",
-        "reportPeriodSelection": "Period selection for reports and analytics",
-        "selectedMonthYear": "Currently selected month and year combination",
-        "vacationDateRangeSelection": "Date range selection for vacation planning",
-        "reportPeriodDetermination": "Determine periods for report generation",
-        "reservationDateRange": "Date range selection for reservation systems",
-        "projectTimelinePlanning": "Date range planning for project timelines",
-        "selectedDateRange": "Currently selected date range in range pickers",
-        "dateRangeChangeCallback": "Function called when date range changes",
-        "datePickerComponent": "Date picker component for single date selection",
-        "appointmentDateSelection": "Date selection for scheduling appointments",
-        "deadlineDetermination": "Date selection for setting deadlines",
-        "eventDateSelection": "Date selection for event planning",
-        "birthdateInput": "Input field for birthdate information"
+    "checkbox": {
+      "title": "Checkbox",
+      "status": {
+        "selected": "Selected",
+        "notSelected": "Not Selected",
+        "disabled": "Disabled"
       },
-      "tooltips": {
-        "example": "This is a tooltip example",
-        "rightSide": "This tooltip appears on the right",
-        "bottomSide": "This tooltip appears on the bottom",
-        "disabled": "Disabled tooltip"
-      },
-      "missing": {
-        "alertDialog": {
-          "confirmDelete": "Are you sure you want to delete your account?"
-        },
-        "badge": {
-          "active": "Active",
-          "error": "Error",
-          "pending": "Pending",
-          "connectionError": "Connection error",
-          "userOnline": "User online",
-          "awaitingApproval": "Awaiting approval"
-        },
-        "buttons": {
-          "small": "Small",
-          "large": "Large",
-          "fullWidth": "Full Width",
-          "openDialog": "Open Dialog",
-          "menu": "Menu",
-          "startNow": "Start Now"
-        },
-        "cards": {
-          "projectReport": "Project Report",
-          "projectReportDesc": "Last week's performance summary and analytics data.",
-          "totalVisitors": "Total Visitors",
-          "newUsers": "New Users",
-          "conversionRate": "Conversion Rate",
-          "premiumFeature": "Premium Feature",
-          "premiumDesc": "Advanced analytics and reporting tools",
-          "detailedAnalytics": "• Detailed analytics",
-          "customReports": "• Custom reports",
-          "apiAccess": "• API access"
-        },
-        "checkbox": {
-          "selected": "Selected Checkbox",
-          "notSelected": "Not Selected",
-          "disabled": "Disabled",
-          "yourInterests": "Your Interests:"
-        },
-        "switch": {
-          "emailUpdates": "Email Updates",
-          "disabled": "Disabled"
-        },
-        "select": {
-          "turkey": "Turkey"
-        },
-        "dialog": {
-          "editProfile": "Edit Profile",
-          "editProfileDesc": "You can update your profile information here."
-        },
-        "dropdown": {
-          "myAccount": "My Account",
-          "emailUpdates": "Email updates"
-        },
-        "loading": {
-          "loading": "Loading",
-          "completed": "Completed"
-        },
-        "tabs": {
-          "password": "Password",
-          "username": "Username",
-          "currentPassword": "Current Password",
-          "newPassword": "New Password"
-        },
-        "slider": {
-          "priceRange": "Price Range: $200 - $800",
-          "priceRangeLabel": "Price Range"
-        },
-        "separator": {
-          "section1": "Section 1",
-          "section2": "Section 2",
-          "exampleContent1": "This is example content.",
-          "exampleContent2": "This is another example content.",
-          "right": "Right"
-        },
-        "popover": {
-          "openPopover": "Open Popover",
-          "adjustDimensions": "Adjust component dimensions.",
-          "width": "Width",
-          "height": "Height"
-        },
-        "datePicker": {
-          "birthDate": "Birth Date"
-        },
-        "accordion": {
-          "notificationPreferences": "Notification Preferences"
-        }
+      "usage": {
+        "formGroup": "Form Group",
+        "formGroupDesc": "Checkboxes can be used in a form group."
       },
       "labels": {
-        "personalInfo": "Personal Information",
-        "personalInfoDesc": "You can update your name, surname, email and phone information in this section.",
-        "securitySettings": "Security Settings",
-        "securitySettingsDesc": "Password change, two-factor authentication settings.",
-        "notificationPreferences": "Notification Preferences",
-        "section1": "Section 1",
-        "section2": "Section 2",
-        "content1": "This is the content of the first section.",
-        "content2": "This is the content of the second section.",
-        "openSection": "Open Section",
-        "defaultOpenSection": "This section is open by default",
-        "otherSection": "Other Section",
-        "canAlsoOpenThisSection": "You can also open this section",
-        "informationMessage": "This is an information message.",
-        "warning": "Warning",
-        "operationFailed": "Operation could not be completed.",
-        "deleteAccount": "Delete Account",
-        "confirmDeleteAccount": "Are you sure you want to delete your account?",
-        "deleteWarningMessage": "This action cannot be undone. Your account will be permanently deleted.",
-        "cancel": "Cancel",
-        "avatarFallback": "JD",
-        "small": "Small",
-        "large": "Large",
-        "userOnline": "User online",
-        "iconButtons": "Icon Buttons",
-        "edit": "Edit",
+        "yourInterests": "Your Interests"
+      },
+      "options": {
+        "frontend": "Frontend Development",
+        "backend": "Backend Development",
+        "mobile": "Mobile Development"
+      },
+      "props": {
+        "checked": "The controlled checked state",
+        "defaultChecked": "The default checked state",
+        "disabled": "Disables the checkbox",
+        "onCheckedChange": "Event handler called when the checked state changes"
+      }
+    },
+    "dataGrid": {
+      "title": "Data Grid",
+      "headers": {
+        "fullName": "Full Name",
+        "email": "Email"
+      },
+      "actions": {
+        "edit": "Edit"
+      },
+      "props": {
+        "data": "The data to be displayed in the grid",
+        "columns": "The columns configuration",
+        "enablePagination": "Enables pagination",
+        "enableRowSelection": "Enables row selection",
+        "enableGlobalFilter": "Enables global search filter",
+        "enableExport": "Enables data export",
+        "onRowClick": "Event handler called when a row is clicked"
+      }
+    },
+    "dataTable": {
+      "title": "Data Table",
+      "headers": {
         "name": "Name",
-        "searchByName": "Search by name...",
-        "selectCountry": "Select country",
-        "characterCounter": "With character counter...",
-        "password": "Password...",
-        "disabledInput": "Disabled input",
-        "sampleName": "John Doe",
-        "basicInput": "Basic input...",
-        "emailAddress": "Email address...",
-        "richTextPlaceholder": "Write rich text content...",
-        "richTextExample": "<p>This is a <strong>rich text</strong> example.</p>",
-        "selectDate": "Select date...",
-        "selectMonthYear": "Select month/year...",
-        "selectDateRange": "Select date range...",
+        "email": "Email"
+      },
+      "searchPlaceholder": "Filter names...",
+      "defaults": {
+        "search": "Search..."
+      },
+      "props": {
+        "columns": "The columns configuration",
+        "data": "The data to display",
+        "searchKey": "The key to use for searching",
+        "searchPlaceholder": "Placeholder text for the search input"
+      }
+    },
+    "switch": {
+      "title": "Switch",
+      "labels": {
+        "notifications": "Notifications",
+        "emailUpdates": "Email Updates",
+        "disabled": "Disabled Switch"
+      },
+      "props": {
+        "checked": "The controlled checked state",
+        "defaultChecked": "The default checked state",
+        "disabled": "Disables the switch",
+        "onCheckedChange": "Event handler called when the checked state changes"
+      }
+    },
+    "select": {
+      "title": "Select",
+      "placeholder": "Select a country",
+      "options": {
+        "turkey": "Turkey",
+        "usa": "United States",
+        "germany": "Germany",
+        "france": "France"
+      },
+      "props": {
+        "selectedValue": "The selected value",
+        "defaultSelectedValue": "The default selected value",
+        "onValueChange": "Event handler called when the value changes"
+      }
+    },
+    "textarea": {
+      "title": "Textarea",
+      "placeholders": {
+        "basic": "Type your message here.",
+        "counter": "Type your message here (max 100 characters)."
+      },
+      "props": {
+        "maxLength": "The maximum number of characters allowed",
+        "showCount": "Whether to show the character count",
+        "autoResize": "Whether the textarea should auto-resize based on content"
+      }
+    },
+    "dialog": {
+      "title": "Dialog",
+      "trigger": "Open Dialog",
+      "editProfile": {
+        "title": "Edit profile",
+        "description": "Make changes to your profile here. Click save when you're done."
+      },
+      "form": {
+        "name": "Name",
+        "sampleName": "Pedro Duarte",
+        "email": "Email"
+      },
+      "actions": {
+        "save": "Save changes"
+      },
+      "usage": {
+        "userProfile": "Edit user profile",
+        "confirmation": "Confirmation dialogs",
+        "forms": "Modal forms",
+        "details": "Detail popups"
+      },
+      "props": {
+        "open": "The controlled open state of the dialog",
+        "onOpenChange": "Event handler called when the open state of the dialog changes"
+      }
+    },
+    "dropdownMenu": {
+      "title": "Dropdown Menu",
+      "trigger": "Open",
+      "labels": {
+        "myAccount": "My Account"
+      },
+      "items": {
+        "profile": "Profile",
+        "settings": "Settings",
+        "notifications": "Notifications",
+        "emailUpdates": "Email Updates"
+      },
+      "usage": {
+        "userMenus": "User menus",
+        "actions": "Action menus",
+        "navigation": "Navigation dropdowns",
+        "options": "Option lists"
+      },
+      "props": {
+        "open": "The controlled open state of the dropdown menu",
+        "onOpenChange": "Event handler called when the open state changes"
+      }
+    },
+    "input": {
+      "title": "Input",
+      "placeholders": {
+        "basic": "Basic Input",
+        "email": "Email",
+        "password": "Password",
+        "disabled": "Disabled"
+      },
+      "usage": {
+        "forms": "Form fields",
+        "userForData": "Getting user data",
+        "search": "Search boxes",
+        "auth": "Login/Register forms"
+      },
+      "props": {
+        "type": "HTML input type (text, email, password, etc.)",
+        "placeholder": "Placeholder text",
+        "disabled": "Whether the input is disabled",
+        "value": "The value of the input"
+      }
+    },
+    "loading": {
+      "title": "Loading",
+      "types": {
+        "spinner": "Spinner",
+        "dots": "Dots",
+        "pulse": "Pulse"
+      },
+      "usage": {
+        "dataLoading": "Show while data is loading",
+        "apiCalls": "During API calls",
+        "buttonStates": "Button loading states",
+        "transitions": "Page transitions"
+      },
+      "props": {
+        "size": "The size of the loading indicator"
+      }
+    },
+    "progress": {
+      "title": "Progress",
+      "labels": {
+        "default": "Progress",
+        "loading": "Loading",
+        "completed": "Completed"
+      },
+      "usage": {
+        "upload": "File upload progress",
+        "form": "Form completion status",
+        "task": "Task progress",
+        "page": "Page loading status"
+      },
+      "props": {
+        "value": "The current progress value",
+        "max": "The maximum progress value"
+      }
+    },
+    "skeleton": {
+      "title": "Skeleton",
+      "usage": {
+        "placeholder": "Show placeholder while data loads",
+        "ux": "Improve user experience",
+        "transitions": "Page transitions",
+        "api": "Visual consistency while waiting for API"
+      },
+      "props": {
+        "width": "Width of the skeleton",
+        "height": "Height of the skeleton"
+      }
+    },
+    "tabs": {
+      "title": "Tabs",
+      "labels": {
+        "account": "Account",
+        "password": "Password",
+        "name": "Name",
+        "sampleName": "Pedro Duarte",
+        "username": "Username",
+        "currentPassword": "Current Password",
+        "newPassword": "New Password"
+      },
+      "usage": {
+        "settings": "Settings pages",
+        "profile": "Profile editing forms",
+        "dashboard": "Separate dashboard sections",
+        "content": "Categorized content"
+      },
+      "props": {
+        "defaultValue": "The value of the tab that should be active when initially rendered",
+        "value": "The controlled value of the tab to activate",
+        "onValueChange": "Event handler called when the value changes"
+      }
+    },
+    "slider": {
+      "title": "Slider",
+      "labels": {
+        "volume": "Volume Level",
+        "priceRange": "Price Range",
+        "quality": "Quality"
+      },
+      "usage": {
+        "volume": "Volume/brightness controls",
+        "price": "Price range selection",
+        "filter": "Filtering options",
+        "range": "Value range determination"
+      },
+      "props": {
+        "defaultValue": "The default value of the slider",
+        "value": "The controlled value of the slider",
+        "max": "The maximum value for the range",
+        "min": "The minimum value for the range",
+        "step": "The stepping interval"
+      }
+    },
+    "separator": {
+      "title": "Separator",
+      "example": {
+        "section1": "Section 1",
+        "content1": "Content for the first section.",
+        "section2": "Section 2",
+        "content2": "Content for the second section.",
+        "left": "Left",
+        "right": "Right"
+      },
+      "usage": {
+        "content": "Separate content sections",
+        "menu": "Group menu items",
+        "card": "Card section separations",
+        "form": "Organize form fields"
+      },
+      "props": {
+        "orientation": "The orientation of the separator",
+        "className": "Additional CSS classes"
+      }
+    },
+    "popover": {
+      "title": "Popover",
+      "trigger": "Open Popover",
+      "example": {
+        "dimensions": "Dimensions",
+        "description": "Set the dimensions for the layer.",
+        "width": "Width",
+        "height": "Height"
+      },
+      "usage": {
+        "settings": "Quick settings menus",
+        "info": "Show additional info",
+        "help": "Form helper content",
+        "menu": "Context menus"
+      },
+      "props": {
+        "open": "The controlled open state of the popover",
+        "onOpenChange": "Event handler called when the open state changes"
+      }
+    },
+    "tooltip": {
+      "title": "Tooltip",
+      "example": {
+        "standard": "Tooltip Content",
+        "hover": "Hover Me",
+        "right": "Right Side Tooltip",
+        "rightBtn": "Right Tooltip",
+        "bottom": "Bottom Side Tooltip",
+        "bottomBtn": "Bottom Tooltip",
+        "disabled": "Disabled Tooltip",
+        "disabledBtn": "Disabled Button"
+      },
+      "usage": {
+        "buttons": "Button explanations",
+        "forms": "Form field help texts",
+        "abbreviations": "Abbreviated text explanations",
+        "icons": "Explain icon meanings"
+      },
+      "props": {
+        "content": "The content to display in the tooltip",
+        "side": "The preferred side of the trigger to render against",
+        "align": "The preferred alignment against the trigger",
+        "delay": "Example delay duration",
+        "disabled": "Whether the tooltip is disabled"
+      }
+    },
+    "scrollArea": {
+      "title": "Scroll Area",
+      "listItem": "List Item",
+      "usage": {
+        "lists": "Long list displays",
+        "content": "Limited height content",
+        "chat": "Chat message history",
+        "menu": "Navigation menus"
+      }
+    },
+    "richTextEditor": {
+      "title": "Rich Text Editor",
+      "placeholder": "Type something...",
+      "exampleValue": "<p>Hello World! 🌎</p>",
+      "usage": {
+        "blog": "Blog posts",
+        "product": "Product descriptions",
+        "email": "Email editors",
+        "comments": "Rich content in comments"
+      },
+      "props": {
+        "value": "The HTML content value",
+        "onChange": "Callback when content changes",
+        "placeholder": "Placeholder text when empty"
+      }
+    },
+    "modernDatePicker": {
+      "title": "Modern Date Picker",
+      "labels": {
+        "birthDate": "Date of Birth"
+      },
+      "placeholder": "Pick a date",
+      "usage": {
+        "birthDate": "Birthdate selection",
+        "event": "Event date determination",
+        "report": "Report date range",
+        "reservation": "Reservation date selection"
+      },
+      "props": {
+        "value": "The selected date value",
+        "onChange": "Callback when date changes",
+        "placeholder": "Placeholder text",
+        "disabled": "Whether the picker is disabled"
+      }
+    },
+    "monthYearPicker": {
+      "title": "Month Year Picker",
+      "labels": {
+        "graduationDate": "Graduation Date"
+      },
+      "placeholder": "Select Month/Year",
+      "usage": {
+        "graduation": "Graduation date",
+        "work": "Work experience dates",
+        "creditCard": "Credit card expiration date",
+        "report": "Report period selection"
+      },
+      "props": {
+        "value": "The selected date value",
+        "onChange": "Callback when date changes",
+        "placeholder": "Placeholder text",
+        "disabled": "Whether the picker is disabled"
+      }
+    },
+    "dateRangePicker": {
+      "title": "Date Range Picker",
+      "labels": {
+        "holidayDates": "Holiday Dates",
         "start": "Start",
         "end": "End"
       },
-      "extraDescriptions": {
-        "inputType": "Input type (text, email, password, etc.)",
-        "groupMenuItems": "Group menu items",
-        "showAdditionalInfo": "Show additional info",
-        "explainIconMeanings": "Explain icon meanings",
-        "richContentInComments": "Rich content in comments",
-        "birthdateInput": "Birthdate input",
-        "iconButtonExamples": "Button examples used with icons",
-        "buttonVariant": "Button appearance variant",
-        "additionalCssClasses": "Additional CSS classes",
-        "disableButton": "Disables the button",
-        "cardComponent": "Card component - for grouping content",
-        "featureCard": "Feature card example",
-        "cardVariant": "Card appearance variant",
-        "hoverEffectType": "Hover effect type",
-        "checkboxFormGroup": "Checkbox group in form",
-        "checkboxChecked": "Is checkbox checked",
-        "defaultCheckedState": "Default checked state",
-        "checkboxDisabled": "Is checkbox disabled",
-        "selectionChangeCallback": "Selection change callback",
-        "dataGridComponent": "Advanced data grid",
-        "tableColumnDefinitions": "Table column definitions",
-        "enablePagination": "Enable pagination",
-        "enableRowSelection": "Enable row selection",
-        "enableGlobalSearch": "Enable global search",
-        "enableExport": "Enable export",
-        "rowClickEvent": "Row click event",
-        "dataTableComponent": "Simple data table",
-        "searchColumnKey": "Search column key",
-        "switchChecked": "Is switch on",
-        "defaultOpenState": "Default open state",
-        "switchDisabled": "Is switch disabled",
-        "statusChangeCallback": "Status change callback",
-        "selectedValue": "Selected value",
-        "defaultSelectedValue": "Default selected value",
-        "valueChangeCallback": "Value change callback",
-        "maxCharacterCount": "Maximum character count",
-        "showCharacterCounter": "Show character counter",
-        "autoResize": "Auto resize",
-        "dialogOpenState": "Dialog open state",
-        "dialogStateChangeCallback": "Dialog state change callback",
-        "editUserProfile": "Edit user profile",
-        "confirmationDialogs": "Confirmation dialogs",
-        "modalForms": "Modal forms",
-        "detailPopups": "Detail popups",
-        "menuOpenState": "Menu open state",
-        "menuStateChangeCallback": "Menu state change callback",
-        "userMenus": "User menus",
-        "actionMenus": "Action menus",
-        "navigationDropdowns": "Navigation dropdowns",
-        "optionLists": "Option lists",
-        "formFields": "Form fields",
-        "getUserData": "Get user data",
-        "searchBoxes": "Search boxes",
-        "loginRegisterForms": "Login/register forms",
-        "inputDisabledState": "Input disabled state",
-        "inputValue": "Input value",
-        "showWhileDataLoading": "Show while data loading",
-        "duringApiCalls": "During API calls",
-        "buttonLoadingStates": "Button loading states",
-        "pageTransitions": "Page transitions",
-        "fileUploadProgress": "File upload progress",
-        "formCompletionStatus": "Form completion status",
-        "taskProgress": "Task progress",
-        "pageLoadingStatus": "Page loading status",
-        "progressValue": "Progress value",
-        "maximumValue": "Maximum value",
-        "showPlaceholderWhileDataLoads": "Show placeholder while data loads",
-        "improveUserExperience": "Improve user experience",
-        "visualConsistencyWhileWaitingApi": "Visual consistency while waiting API",
-        "skeletonWidth": "Skeleton width",
-        "skeletonHeight": "Skeleton height",
-        "defaultActiveTab": "Default active tab",
-        "controlledActiveTab": "Controlled active tab",
-        "tabChangeCallback": "Tab change callback",
-        "settingsPages": "Settings pages",
-        "profileEditingForms": "Profile editing forms",
-        "separateDashboardSections": "Separate dashboard sections",
-        "categorizedContent": "Categorized content",
-        "defaultValues": "Default values",
-        "controlledValues": "Controlled values",
-        "minimumValue": "Minimum value",
-        "incrementAmount": "Increment amount",
-        "volumeBrightnessControls": "Volume/brightness controls",
-        "priceRangeSelection": "Price range selection",
-        "filteringOptions": "Filtering options",
-        "valueRangeDetermination": "Value range determination"
+      "placeholder": "Select date range",
+      "usage": {
+        "vacation": "Vacation date range selection",
+        "report": "Report period determination",
+        "reservation": "Reservation date range",
+        "project": "Project timeline planning"
+      },
+      "props": {
+        "value": "The selected date range value",
+        "onChange": "Callback when range changes",
+        "disabled": "Whether the picker is disabled"
+      }
+    },
+    "singleDatePicker": {
+      "title": "Single Date Picker",
+      "labels": {
+        "appointmentDate": "Appointment Date"
+      },
+      "placeholder": "Select date",
+      "usage": {
+        "appointment": "Appointment date selection",
+        "deadline": "Deadline determination",
+        "event": "Event date selection",
+        "birthdate": "Birthdate input"
+      },
+      "props": {
+        "value": "The selected date value",
+        "onChange": "Callback when date changes",
+        "placeholder": "Placeholder text",
+        "disabled": "Whether the picker is disabled"
+      }
+    },
+    "modernDrawer": {
+      "title": "Modern Drawer",
+      "description": "A modern, accessible drawer component with multiple placement options.",
+      "openButton": "Open Drawer",
+      "drawerTitle": "Drawer Title",
+      "content": "This is the content inside the drawer. You can put anything here.",
+      "props": {
+        "open": "The controlled open state of the drawer",
+        "onOpenChange": "Event handler called when the open state changes",
+        "placement": "The placement of the drawer (right, left, top, bottom)"
+      }
+    },
+    "passwordInput": {
+      "title": "Password Input",
+      "description": "A password input component with a show/hide toggle.",
+      "label": "Password",
+      "placeholder": "Enter your password",
+      "props": {
+        "showToggle": "Whether to show the visibility toggle"
+      }
+    },
+    "numberInput": {
+      "title": "Number Input",
+      "description": "A number input component with increment/decrement controls.",
+      "label": "Quantity",
+      "props": {
+        "value": "The controlled value of the input",
+        "onChange": "Event handler called when the value changes",
+        "min": "The minimum value",
+        "max": "The maximum value"
+      }
+    },
+    "calendar": {
+      "title": "Calendar",
+      "description": "A calendar component for displaying dates.",
+      "props": {
+        "mode": "The selection mode of the calendar"
+      }
+    },
+    "collapsible": {
+      "title": "Collapsible",
+      "description": "An interactive component which expands/collapses a panel.",
+      "hideContent": "Hide Content",
+      "showContent": "Show Content",
+      "content": "This content can be collapsed or expanded.",
+      "props": {
+        "open": "The controlled open state of the collapsible"
+      }
+    },
+    "formError": {
+      "title": "Form Error",
+      "description": "Displays an error message for a form field.",
+      "label": "Email",
+      "message": "Invalid email address",
+      "props": {
+        "children": "The error message content"
+      }
+    },
+    "stepper": {
+      "title": "Stepper",
+      "description": "Displays progress through a sequence of steps.",
+      "step1": "Step 1",
+      "step2": "Step 2",
+      "step3": "Step 3",
+      "props": {
+        "currentStep": "The current step index (1-based)"
+      }
+    },
+    "dynamicBreadcrumb": {
+      "title": "Dynamic Breadcrumb",
+      "description": "Displays the path to the current resource.",
+      "home": "Home",
+      "products": "Products",
+      "current": "Current Page"
+    },
+    "enhancedDataTable": {
+      "title": "Enhanced Data Table",
+      "description": "An enhanced data table with sorting and filtering.",
+      "headers": {
+        "name": "Name",
+        "email": "Email"
+      },
+      "props": {
+        "data": "The data to display in the table"
+      }
+    },
+    "accessibilityEnhancer": {
+      "title": "Accessibility Enhancer",
+      "description": "A utility for improving accessibility.",
+      "content": "This content is wrapped with an accessible region.",
+      "skipLink": "Skip to main content",
+      "props": {
+        "label": "The label for the accessible region"
+      }
+    },
+    "enhancedPagination": {
+      "title": "Enhanced Pagination",
+      "description": "A pagination component for navigating pages.",
+      "prev": "Previous",
+      "next": "Next",
+      "props": {
+        "page": "The current page number"
+      }
+    },
+    "enhancedSearchFilters": {
+      "title": "Enhanced Search Filters",
+      "description": "A component for advanced search filtering.",
+      "placeholder": "Search...",
+      "filters": {
+        "category": "Category",
+        "price": "Price"
+      },
+      "props": {
+        "onFilterChange": "Callback when filters change"
+      }
+    },
+    "enterpriseErrorBoundary": {
+      "title": "Enterprise Error Boundary",
+      "description": "A boundary for catching and displaying errors.",
+      "content": "This area is protected by an error boundary.",
+      "props": {
+        "children": "The content to protect"
+      }
+    },
+    "labelAdvanced": {
+      "title": "Label Advanced",
+      "description": "An advanced label component with required indicator support.",
+      "label": "Full Name",
+      "placeholder": "John Doe",
+      "props": {
+        "htmlFor": "The ID of the element this label is for"
+      }
+    },
+    "commandMenu": {
+      "title": "Command Menu",
+      "description": "A command menu for quick navigation and actions.",
+      "pressToOpen": "Press ⌘K to open commands",
+      "openButton": "Open Command Menu",
+      "props": {
+        "commands": "The list of commands to display"
+      }
+    },
+    "properties": {
+      "singleMultipleMode": "Single or multiple mode",
+      "defaultOpenValues": "Default open values",
+      "controlledOpenValues": "Controlled open values",
+      "valueChangeCallback": "Value change callback",
+      "alertVariant": "The visual style of the alert",
+      "dialogOpen": "The open state of the dialog",
+      "dialogOpenChangeCallback": "Event handler called when the open state changes"
+    },
+    "accessibleList": {
+      "title": "Accessible List",
+      "description": "Semantic accessible list",
+      "items": {
+        "1": "First accessible item",
+        "2": "Second accessible item",
+        "3": "Third accessible item"
+      },
+      "props": {
+        "items": "List items"
+      }
+    },
+    "themeSwitcher": {
+      "title": "Theme Switcher",
+      "description": "Toggle between light and dark themes",
+      "props": {
+        "variant": "Switcher variant",
+        "showLabel": "Show theme label",
+        "size": "Button size"
+      }
+    },
+    "languageSwitcher": {
+      "title": "Language Switcher",
+      "description": "Switch between Turkish and English",
+      "props": {
+        "variant": "Switcher variant",
+        "showLabel": "Show language label",
+        "size": "Button size"
+      }
+    },
+    "pomodoroTimer": {
+      "title": "Pomodoro Timer",
+      "description": "Floating Pomodoro timer widget",
+      "session": "Session 1 • 0 completed",
+      "focus": "Focus",
+      "helperText": "Click buttons above to start timer (appears in bottom-left corner)",
+      "props": {
+        "className": "Additional CSS classes",
+        "type": "Timer type"
       }
     }
   },
@@ -2511,16 +1985,16 @@
       }
     },
     "testimonials": {
-      "sectionTitle": "What Developers Are Saying",
+      "sectionTitle": "What Developers Say",
       "sectionDescription": "Join thousands of developers who trust Starkon for their projects",
       "testimonial1": {
-        "content": "This boilerplate saved us months of development time. The authentication system and components are production-ready.",
+        "content": "This template saved us months of development time. Authentication system and components are production ready.",
         "author": "Sarah Chen",
         "role": "CTO",
         "company": "TechStart Inc."
       },
       "testimonial2": {
-        "content": "Amazing developer experience. TypeScript setup and component library make building features incredibly fast.",
+        "content": "Great developer experience. TypeScript setup and component library speeds up feature development incredibly.",
         "author": "Michael Rodriguez",
         "role": "Full Stack Developer",
         "company": "Digital Solutions"

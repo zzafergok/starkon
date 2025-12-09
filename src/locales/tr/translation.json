@@ -51,838 +51,18 @@
     "info": "Bilgi"
   },
   "demo": {
-    "forms": {
-      "header": {
-        "description": "React Hook Form ve Zod validation ile güçlü, tip-güvenli form sistemi. Sıfır prop drilling, otomatik hata yönetimi ve kapsamlı örnekler."
-      },
-      "info": {
-        "title": "Forms Sistemi Hakkında",
-        "description": "Bu bölüm React Hook Form ve Zod validation kullanarak oluşturulmuş kapsamlı form bileşenlerini içerir. Tüm bileşenler tip-güvenli, erişilebilir ve production-ready'dir."
-      },
-      "search": {
-        "placeholder": "Form bileşenlerinde ara..."
-      },
-      "categories": {
-        "0": "K",
-        "1": "a",
-        "2": "t",
-        "3": "e",
-        "4": "g",
-        "5": "o",
-        "6": "r",
-        "7": "i",
-        "8": "l",
-        "9": "e",
-        "10": "r",
-        "base": "Temel",
-        "inputs": "Giriş Alanları",
-        "actions": "Aksiyonlar",
-        "helpers": "Yardımcılar",
-        "examples": "Örnekler"
-      },
-      "roles": {
-        "admin": "Yönetici",
-        "editor": "Editör",
-        "user": "Kullanıcı"
-      },
-      "countries": {
-        "turkey": "Türkiye",
-        "usa": "Amerika Birleşik Devletleri",
-        "uk": "Birleşik Krallık",
-        "germany": "Almanya",
-        "france": "Fransa"
-      },
-      "plans": {
-        "free": "Ücretsiz",
-        "pro": "Pro",
-        "enterprise": "Kurumsal"
-      },
-      "themes": {
-        "light": "Açık",
-        "dark": "Koyu",
-        "system": "Sistem"
-      },
-      "labels": {
-        "name": "İsim",
-        "firstName": "Ad",
-        "lastName": "Soyad",
-        "email": "E-posta",
-        "password": "Şifre",
-        "description": "Açıklama",
-        "bio": "Biyografi",
-        "role": "Rol",
-        "country": "Ülke",
-        "birthDate": "Doğum Tarihi",
-        "startDate": "Başlangıç Tarihi",
-        "acceptTerms": "Kullanım şartlarını kabul ediyorum",
-        "subscribeNewsletter": "Bültene abone ol",
-        "enableNotifications": "Bildirimleri etkinleştir",
-        "selectPlan": "Plan Seçin",
-        "selectTheme": "Tema Seçin",
-        "emailNotifications": "E-posta Bildirimleri",
-        "pushNotifications": "Push Bildirimleri",
-        "marketingEmails": "Pazarlama E-postaları",
-        "text": "Metin",
-        "number": "Sayı",
-        "url": "URL",
-        "phone": "Telefon",
-        "empty": "Boş",
-        "personalInfo": "Kişisel Bilgiler",
-        "personalInfoDesc": "Kişisel bilgilerinizi buradan güncelleyebilirsiniz",
-        "securitySettings": "Güvenlik Ayarları",
-        "securitySettingsDesc": "Güvenlik ayarlarınızı buradan yönetebilirsiniz",
-        "section1": "Bölüm 1",
-        "section2": "Bölüm 2",
-        "content1": "İlk bölüm içeriği",
-        "content2": "İkinci bölüm içeriği",
-        "openSection": "Açık Bölüm",
-        "otherSection": "Diğer Bölüm",
-        "defaultOpenSection": "Bu bölüm varsayılan olarak açıktır",
-        "canAlsoOpenThisSection": "Bu bölümü de açabilirsiniz",
-        "informationMessage": "Bu bir bilgi mesajıdır",
-        "warning": "Uyarı",
-        "operationFailed": "İşlem başarısız oldu",
-        "deleteAccount": "Hesabı Sil",
-        "confirmDeleteAccount": "Hesap Silmeyi Onayla",
-        "deleteWarningMessage": "Bu işlem geri alınamaz",
-        "cancel": "İptal",
-        "avatarFallback": "AV",
-        "basicInput": "Temel input...",
-        "emailAddress": "E-posta adresi...",
-        "disabledInput": "Devre dışı input...",
-        "small": "Küçük",
-        "large": "Büyük",
-        "iconButtons": "Icon Butonları",
-        "edit": "Düzenle",
-        "characterCounter": "Karakter sayacı ile...",
-        "sampleName": "Ahmet Yılmaz",
-        "searchByName": "İsme göre ara...",
-        "selectCountry": "Ülke seçin",
-        "selectDate": "Tarih seçin...",
-        "selectMonthYear": "Ay/Yıl seçin...",
-        "selectDateRange": "Tarih aralığı seçin...",
-        "start": "Başlangıç",
-        "end": "Bitiş",
-        "richTextExample": "<p>Bu bir <strong>zengin metin</strong> örneğidir.</p>",
-        "richTextPlaceholder": "Zengin metin içeriği yazın...",
-        "userOnline": "Kullanıcı çevrimiçi",
-        "notificationPreferences": "Bildirim tercihleri ayarlarınızı buradan yönetebilirsiniz"
-      },
-      "placeholders": {
-        "enterText": "Metin girin",
-        "enterDescription": "Açıklama girin",
-        "enterBio": "Kendiniz hakkında bilgi verin",
-        "selectCountry": "Ülke seçin"
-      },
-      "validation": {
-        "nameMin": "İsim en az 2 karakter olmalıdır",
-        "firstNameMin": "Ad en az 2 karakter olmalıdır",
-        "lastNameMin": "Soyad en az 2 karakter olmalıdır",
-        "emailInvalid": "Geçersiz e-posta adresi",
-        "passwordMin": "Şifre en az 8 karakter olmalıdır",
-        "descriptionMin": "Açıklama en az 10 karakter olmalıdır",
-        "bioMax": "Biyografi en fazla 500 karakter olabilir",
-        "roleRequired": "Lütfen bir rol seçin",
-        "countryRequired": "Lütfen bir ülke seçin",
-        "termsRequired": "Kullanım şartlarını kabul etmelisiniz",
-        "planRequired": "Lütfen bir plan seçin",
-        "themeRequired": "Lütfen bir tema seçin",
-        "birthDateRequired": "Doğum tarihi gereklidir"
-      },
-      "actions": {
-        "submit": "Gönder",
-        "register": "Kayıt Ol",
-        "saveAsDraft": "Taslak Olarak Kaydet",
-        "delete": "Sil"
-      },
-      "examples": {
-        "basicForm": "Temel Form",
-        "complexForm": "Karmaşık Form",
-        "textInputs": "Metin Girişleri",
-        "selectInputs": "Seçim Girişleri",
-        "textareaInput": "Textarea Girişi",
-        "checkboxInputs": "Checkbox Girişleri",
-        "radioInputs": "Radio Girişleri",
-        "switchInputs": "Switch Girişleri",
-        "dateInputs": "Tarih Girişleri",
-        "submitButtons": "Gönder Butonları",
-        "passwordStrength": "Şifre Gücü",
-        "passwordRules": "Şifre Kuralları",
-        "passwordWithRules": "Kurallarla Şifre",
-        "completeForm": "Kapsamlı Form Örneği",
-        "userRegistration": "Kullanıcı Kayıt Formu"
-      },
-      "descriptions": {
-        "form": "React Hook Form ve Zod validation ile güçlü form yönetimi",
-        "complexForm": "İç içe alanlar ve karmaşık validation ile gelişmiş form",
-        "textField": "Çeşitli input tipleri için çok yönlü metin alanı",
-        "selectField": "Dropdown seçim alanı",
-        "textareaField": "Çok satırlı metin girişi",
-        "checkboxField": "Checkbox seçim alanı",
-        "radioField": "Radio button grup seçimi",
-        "switchField": "Toggle switch alanı",
-        "dateField": "Modern tarih seçici alanı",
-        "submitButton": "Otomatik loading state ile gönder butonu",
-        "passwordStrengthBar": "Şifre gücü gösterge çubuğu",
-        "passwordRules": "Özelleştirilebilir şifre kuralları göstergesi",
-        "passwordRulesDemo": "Farklı şifre örnekleriyle kural kontrolü",
-        "completeFormExample": "Tüm form bileşenlerini içeren kapsamlı örnek",
-        "multipleAccordion": "Aynı anda birden fazla bölümün açılabildiği accordion",
-        "lastItemClosable": "Son kalan item'ın da kapatılabilir olup olmadığı",
-        "criticalOperations": "Kritik işlemler için onay alınan modal dialog bileşeni",
-        "avatarComponent": "Kullanıcı profil resimleri için avatar bileşeni",
-        "avatarGroup": "Birden fazla kullanıcıyı temsil eden avatar grubu",
-        "avatarImageUrl": "Avatar resmi URL'i (AvatarImage için)",
-        "badgeComponent": "Durum ve etiketleme için kullanılan badge bileşeni",
-        "badgeExamples": "Farklı durumları temsil eden badge örnekleri",
-        "badgeVariant": "Badge görünüm varyantı",
-        "buttonComponent": "Farklı varyant ve boyutlarda etkileşimli buton bileşeni",
-        "iconButtonExamples": "Icon ile birlikte kullanılan buton örnekleri",
-        "buttonVariant": "Buton görünüm varyantı",
-        "additionalCssClasses": "Ek CSS sınıfları (w-full ile tam genişlik)",
-        "disableButton": "Butonu devre dışı bırakır",
-        "featureCard": "Özellik tanıtımı için kullanılan kart örneği",
-        "cardComponent": "İçerik gruplandırma için kullanılan kart bileşeni",
-        "cardVariant": "Kart görünüm varyantı",
-        "hoverEffectType": "Hover efekti türü",
-        "checkboxComponent": "Seçim işlemleri için kullanılan checkbox bileşeni",
-        "checkboxFormGroup": "Form içinde checkbox grubu kullanımı",
-        "checkboxChecked": "Checkbox seçili mi (controlled)",
-        "defaultCheckedState": "Varsayılan seçili durumu (uncontrolled)",
-        "checkboxDisabled": "Checkbox devre dışı mı",
-        "statusChangeCallback": "Seçim durumu değiştiğinde çağırılan fonksiyon",
-        "dataTableComponent": "Gelişmiş tablo bileşeni. Sıralama, filtreleme ve sayfalama özellikleri",
-        "tableColumnDefinitions": "Tablo sütun tanımları",
-        "enablePagination": "Sayfalama özelliğini etkinleştir",
-        "enableRowSelection": "Satır seçimi özelliğini etkinleştir",
-        "enableGlobalSearch": "Global arama özelliğini etkinleştir",
-        "enableExport": "Dışa aktarma özelliğini etkinleştir",
-        "rowClickEvent": "Satır tıklama olayı",
-        "dataGridComponent": "Basit ve hızlı tablo bileşeni. Temel sıralama ve filtreleme",
-        "searchColumnKey": "Arama yapılacak sütun anahtarı",
-        "switchComponent": "Açma/kapama işlemleri için kullanılan toggle switch bileşeni",
-        "switchChecked": "Switch açık mı (controlled)",
-        "defaultOpenState": "Varsayılan açık durumu (uncontrolled)",
-        "switchDisabled": "Switch devre dışı mı",
-        "selectComponent": "Seçenekler arasından seçim yapmak için kullanılan dropdown bileşeni",
-        "selectedValue": "Seçili değer (controlled)",
-        "defaultSelectedValue": "Varsayılan seçili değer (uncontrolled)",
-        "selectionChangeCallback": "Seçim değiştiğinde çağırılan fonksiyon",
-        "disabledState": "Devre dışı durumu",
-        "textareaComponent": "Uzun metin girişi için kullanılan textarea bileşeni",
-        "autoResize": "Otomatik boyut ayarlama",
-        "maxCharacterCount": "Maksimum karakter sayısı",
-        "showCharacterCounter": "Karakter sayacını göster",
-        "dialogComponent": "Modal dialog bileşeni. Çeşitli içerikler için kullanılır",
-        "dialogOpenState": "Dialog açık/kapalı durumu",
-        "dialogStateChangeCallback": "Dialog durumu değiştiğinde çalışacak fonksiyon",
-        "editUserProfile": "Kullanıcı profil düzenleme",
-        "confirmationDialogs": "Onay dialog'ları",
-        "modalForms": "Modal formlar",
-        "dropdownComponent": "Açılır menü bileşeni. Çeşitli menü öğeleri içerir",
-        "menuOpenState": "Menü açık/kapalı durumu",
-        "menuStateChangeCallback": "Menü durumu değiştiğinde çalışacak fonksiyon",
-        "userMenus": "Kullanıcı menüleri",
-        "navigationDropdowns": "Navigasyon dropdown'ları",
-        "contextMenus": "Bağlam menüleri",
-        "actionMenus": "Aksiyon menüleri",
-        "inputComponent": "Metin girişi için kullanılan input bileşeni",
-        "inputValue": "Input değeri",
-        "inputDisabledState": "Input devre dışı durumu",
-        "loadingComponent": "Yüklenme durumları için kullanılan loading bileşenleri",
-        "pageLoadingStatus": "Sayfa yüklenme durumu",
-        "duringApiCalls": "API çağrıları sırasında",
-        "showWhileDataLoading": "Veri yüklenirken göster",
-        "progressComponent": "İlerleme çubuğu bileşeni. Görev ilerlemesini gösterir",
-        "progressValue": "İlerleme değeri (0-100)",
-        "fileUploadProgress": "Dosya yükleme ilerlemesi",
-        "taskProgress": "Görev ilerlemesi",
-        "formCompletionStatus": "Form tamamlanma durumu",
-        "skeletonComponent": "Yüklenme iskelet bileşenleri",
-        "skeletonWidth": "Skeleton genişliği",
-        "skeletonHeight": "Skeleton yüksekliği",
-        "showPlaceholderWhileDataLoads": "Veri yüklenirken placeholder göster",
-        "visualConsistencyWhileWaitingApi": "API beklerken görsel tutarlılık",
-        "pageTransitions": "Sayfa geçişleri",
-        "tabsComponent": "Sekme navigasyon bileşeni",
-        "defaultActiveTab": "Varsayılan aktif sekme",
-        "controlledActiveTab": "Kontrollü aktif sekme",
-        "tabChangeCallback": "Sekme değiştiğinde çalışacak fonksiyon",
-        "organizeFormFields": "Form alanlarını organize et",
-        "categorizedContent": "Kategorilendirilmiş içerik",
-        "navigationMenus": "Navigasyon menüleri",
-        "settingsPages": "Ayarlar sayfaları",
-        "sliderComponent": "Değer seçici kaydırıcı bileşeni",
-        "defaultValues": "Varsayılan değer(ler)",
-        "controlledValues": "Kontrollü değer(ler)",
-        "minimumValue": "Minimum değer",
-        "incrementAmount": "Artış miktarı",
-        "volumeBrightnessControls": "Ses/parlaklık kontrolleri",
-        "priceRangeSelection": "Fiyat aralığı seçimi",
-        "valueRangeDetermination": "Değer aralığı belirleme",
-        "separatorComponent": "Ayırıcı çizgi bileşeni",
-        "separatorDirection": "Ayırıcı yönü",
-        "separateContentSections": "İçerik bölümlerini ayır",
-        "separateDashboardSections": "Dashboard bölümlerini ayır",
-        "cardSectionSeparations": "Kart bölüm ayırımları",
-        "popoverComponent": "Açılır içerik kutusu bileşeni",
-        "popoverOpenState": "Popover açık/kapalı durumu",
-        "popoverStateChangeCallback": "Popover durumu değiştiğinde çalışacak fonksiyon",
-        "detailPopups": "Detay popup'ları",
-        "quickSettingsMenus": "Hızlı ayarlar menüleri",
-        "formHelperContent": "Form yardımcı içeriği",
-        "tooltipComponent": "Tooltip bileşeni. Ek bilgi gösterimi için kullanılır",
-        "tooltipContent": "Tooltip içeriği",
-        "tooltipAlignment": "Tooltip hizalaması",
-        "tooltipDisplayDelay": "Tooltip gösterim gecikmesi",
-        "tooltipDisabledState": "Tooltip devre dışı durumu",
-        "formFieldHelpTexts": "Form alanı yardım metinleri",
-        "buttonExplanations": "Buton açıklamaları",
-        "abbreviatedTextExplanations": "Kısaltılmış metin açıklamaları",
-        "explainIconMeanings": "İcon anlamlarını açıkla",
-        "improveUserExperience": "Kullanıcı deneyimini iyileştir",
-        "scrollAreaComponent": "Sınırlı yükseklikli içerik için kaydırma alanı bileşeni",
-        "limitedHeightContent": "Sınırlı yükseklikli içerik",
-        "longListDisplays": "Uzun liste gösterimleri",
-        "chatMessageHistory": "Sohbet mesaj geçmişi",
-        "productDescriptions": "Ürün açıklamaları",
-        "richTextComponent": "Zengin metin editörü bileşeni",
-        "contentChangeCallback": "İçerik değiştiğinde çağırılan fonksiyon",
-        "blogPosts": "Blog yazıları",
-        "emailEditors": "E-posta editörleri",
-        "richContentInComments": "Yorumlarda zengin içerik",
-        "datePickerComponent": "Tarih seçici bileşeni. Tek tarih seçimi için kullanılır",
-        "selectedDate": "Seçili tarih",
-        "dateChangeCallback": "Tarih değiştiğinde çağırılan fonksiyon",
-        "appointmentDateSelection": "Randevu tarihi seçimi",
-        "deadlineDetermination": "Son tarih belirleme",
-        "eventDateSelection": "Etkinlik tarihi seçimi",
-        "birthdateInput": "Doğum tarihi girişi",
-        "monthYearPickerComponent": "Ay/Yıl seçici bileşeni",
-        "selectedMonthYear": "Seçili ay/yıl",
-        "graduationDate": "Mezuniyet tarihi",
-        "workExperienceDates": "İş deneyimi tarihleri",
-        "creditCardExpirationDate": "Kredi kartı son kullanma tarihi",
-        "birthdateSelection": "Doğum tarihi seçimi",
-        "dateRangePickerComponent": "Tarih aralığı seçici bileşeni",
-        "selectedDateRange": "Seçili tarih aralığı",
-        "dateRangeChangeCallback": "Tarih aralığı değiştiğinde çağırılan fonksiyon",
-        "vacationDateRangeSelection": "Tatil tarihi aralığı seçimi",
-        "reservationDateSelection": "Rezervasyon tarihi seçimi",
-        "reportDateRange": "Rapor tarih aralığı",
-        "projectTimelinePlanning": "Proje zaman çizelgesi planlama",
-        "reportPeriodSelection": "Rapor dönemi seçimi",
-        "reservationDateRange": "Rezervasyon tarih aralığı",
-        "eventDateDetermination": "Etkinlik tarihi belirleme",
-        "reportPeriodDetermination": "Rapor dönemi belirleme",
-        "modernDatePickerComponent": "Modern tarih seçici bileşeni",
-        "formFields": "Form alanları",
-        "searchBoxes": "Arama kutuları",
-        "loginRegisterForms": "Giriş/kayıt formları",
-        "profileEditingForms": "Profil düzenleme formları",
-        "filteringOptions": "Filtreleme seçenekleri",
-        "optionLists": "Seçenek listeleri",
-        "getUserData": "Kullanıcı verisi al",
-        "valueChangeCallback": "Değer değişikliği callback fonksiyonu",
-        "maximumValue": "Maksimum değer",
-        "buttonLoadingStates": "Buton yüklenme durumları",
-        "groupMenuItems": "Grup menü öğeleri",
-        "showAdditionalInfo": "Ek bilgi göster",
-        "controlledContentValue": "Kontrollü içerik değeri"
-      },
-      "props": {
-        "schema": "Zod validation şeması",
-        "defaultValues": "Form için varsayılan değerler",
-        "onSubmit": "Form gönderildiğinde çağrılan fonksiyon",
-        "className": "Form container için CSS sınıfları",
-        "name": "Form field adı (dot notation destekler)",
-        "label": "Field etiketi",
-        "inputType": "Input tipi",
-        "placeholder": "Placeholder metni",
-        "required": "Zorunlu alan mı",
-        "disabled": "Devre dışı mı",
-        "isPassword": "Şifre alanı mı",
-        "showPasswordToggle": "Şifre göster/gizle toggle'ı göster",
-        "showPasswordStrength": "Şifre gücü göstergesini göster",
-        "showNumberButtons": "Sayı +/- butonlarını göster",
-        "min": "Minimum değer (number input için)",
-        "max": "Maksimum değer (number input için)",
-        "options": "Seçim seçenekleri dizisi",
-        "radioOptions": "Radio button seçenekleri",
-        "rows": "Textarea satır sayısı",
-        "maxLength": "Maksimum karakter sayısı",
-        "buttonText": "Buton metni",
-        "buttonVariant": "Buton görünüm varyantı",
-        "passwordValue": "Şifre değeri",
-        "passwordRules": "Şifre kuralları dizisi"
-      },
-      "rules": {
-        "minLength": "En az 8 karakter",
-        "uppercase": "Bir büyük harf",
-        "lowercase": "Bir küçük harf",
-        "number": "Bir rakam",
-        "special": "Bir özel karakter"
-      },
-      "name": "İsim",
-      "email": "E-posta",
-      "password": "Şifre...",
-      "selectCountry": "Ülke seçin",
-      "basicTextarea": "Temel textarea...",
-      "characterCounter": "Karakter sayacı ile...",
-      "searchByName": "İsme göre ara...",
-      "selectDate": "Tarih seçin...",
-      "selectMonthYear": "Ay/Yıl seçin...",
-      "selectDateRange": "Tarih aralığı seçin...",
-      "start": "Başlangıç",
-      "end": "Bitiş",
-      "richTextContent": "Zengin metin içeriği yazın...",
-      "allStatuses": "Tüm Durumlar",
-      "filters": "Filtreler",
-      "category": "Kategori",
-      "status": "Durum",
-      "clearFilters": "Filtreleri Temizle",
-      "clearAll": "Tümünü temizle",
-      "activeFilters": "Aktif filtreler:",
-      "componentsShowing": "bileşen gösteriliyor",
-      "totalComponents": "toplam",
-      "popularSearches": "Popüler aramalar: Button, Input, Modal, Form",
-      "backToTop": "Sayfa başına dön",
-      "badgeVariants": {
-        "default": "Default",
-        "secondary": "Secondary",
-        "destructive": "Destructive",
-        "outline": "Outline"
-      },
-      "buttonVariants": {
-        "primary": "Primary",
-        "secondary": "Secondary",
-        "outline": "Outline",
-        "ghost": "Ghost",
-        "delete": "Delete",
-        "disabled": "Disabled"
-      },
-      "buttonActions": {
-        "addNew": "Yeni Ekle",
-        "search": "Ara",
-        "settings": "Ayarlar"
-      },
-      "development": {
-        "frontend": "Frontend Development",
-        "backend": "Backend Development",
-        "mobile": "Mobile Development"
-      },
-      "formGroup": "Form Group",
-      "buttonSize": "Buton boyutu",
-      "cardPaddingSize": "Kart padding boyutu",
-      "alertDialog": {
-        "deleteWarningMessage": "Bu işlem geri alınamaz. Hesabınız ve tüm verileriniz kalıcı olarak silinecektir.",
-        "cancel": "İptal",
-        "confirmDelete": "Evet, Sil"
-      },
-      "avatar": {
-        "altText": "Avatar resmi alternatif metni"
-      },
-      "badge": {
-        "sizeDescription": "Badge boyutu"
-      },
-      "cardActions": {
-        "details": "Detaylar",
-        "getReport": "Rapor Al"
-      },
-      "tableHeaders": {
-        "fullName": "Ad Soyad",
-        "email": "E-posta"
-      },
-      "dataTable": {
-        "dataDescription": "Tablo verisi",
-        "searchPlaceholder": "Arama input placeholder metni",
-        "searchDefault": "Ara..."
-      },
-      "notifications": "Bildirimler",
-      "textarea": {
-        "basicPlaceholder": "Temel textarea..."
-      },
-      "dialogLabels": {
-        "name": "İsim",
-        "save": "Kaydet"
-      },
-      "buttonClick": {
-        "alert": "Düğmeye tıklandı!",
-        "clickMe": "Tıkla"
-      },
-      "profile": "Profil",
-      "listItem": "Liste öğesi",
-      "placeholderText": "Placeholder metni",
-      "loadingTypes": {
-        "spinner": "Spinner",
-        "dots": "Dots",
-        "pulse": "Pulse"
-      },
-      "loadingSize": "Loading boyutu",
-      "progress": "İlerleme",
-      "account": "Hesap",
-      "volumeLevel": "Ses Seviyesi",
-      "quality": "Kalite",
-      "left": "Sol",
-      "tooltipPosition": "Tooltip konumu",
-      "dates": {
-        "graduationDate": "Mezuniyet Tarihi",
-        "holidayDates": "Tatil Tarihleri",
-        "appointmentDate": "Randevu Tarihi"
-      },
-      "missing": {
-        "accordion": {
-          "notificationPreferences": "Bildirim Tercihleri"
-        },
-        "alertDialog": {
-          "confirmDelete": "Silmeyi Onayla"
-        },
-        "badge": {
-          "active": "Aktif",
-          "error": "Hata",
-          "pending": "Beklemede",
-          "userOnline": "Çevrimiçi",
-          "connectionError": "Bağlantı Hatası",
-          "awaitingApproval": "Onay Bekliyor"
-        },
-        "buttons": {
-          "small": "Küçük",
-          "large": "Büyük",
-          "fullWidth": "Tam Genişlik",
-          "menu": "Menü",
-          "openDialog": "Dialog Aç",
-          "startNow": "Şimdi Başla"
-        },
-        "cards": {
-          "totalVisitors": "Toplam Ziyaretçi",
-          "newUsers": "Yeni Kullanıcılar",
-          "conversionRate": "Dönüşüm Oranı",
-          "premiumFeature": "Premium Özellik",
-          "premiumDesc": "Bu premium özellikler ile daha fazlasını yapın",
-          "detailedAnalytics": "Detaylı Analitik",
-          "customReports": "Özel Raporlar",
-          "apiAccess": "API Erişimi",
-          "projectReport": "Proje Raporu",
-          "projectReportDesc": "Son ay içerisindeki proje ilerlemesi ve detayları"
-        },
-        "checkbox": {
-          "selected": "Seçili",
-          "notSelected": "Seçili Değil",
-          "disabled": "Devre Dışı",
-          "yourInterests": "İlgi Alanlarınız"
-        },
-        "datePicker": {
-          "birthDate": "Doğum Tarihi"
-        },
-        "dialog": {
-          "editProfile": "Profil Düzenle",
-          "editProfileDesc": "Profil bilgilerinizi buradan güncelleyebilirsiniz"
-        },
-        "dropdown": {
-          "emailUpdates": "E-posta Güncellemeleri",
-          "myAccount": "Hesabım"
-        },
-        "loading": {
-          "loading": "Yükleniyor",
-          "completed": "Tamamlandı"
-        },
-        "popover": {
-          "openPopover": "Popover Aç",
-          "adjustDimensions": "Boyutları Ayarla",
-          "width": "Genişlik",
-          "height": "Yükseklik"
-        },
-        "select": {
-          "turkey": "Türkiye"
-        },
-        "separator": {
-          "section1": "Bölüm 1",
-          "section2": "Bölüm 2",
-          "exampleContent1": "İlk örnek içerik",
-          "exampleContent2": "İkinci örnek içerik",
-          "right": "Sağ"
-        },
-        "slider": {
-          "priceRange": "Fiyat Aralığı",
-          "priceRangeLabel": "Fiyat Aralığı: $200 - $800"
-        },
-        "switch": {
-          "emailUpdates": "E-posta Güncellemeleri",
-          "disabled": "Devre Dışı"
-        },
-        "tabs": {
-          "password": "Şifre",
-          "username": "Kullanıcı Adı",
-          "currentPassword": "Mevcut Şifre",
-          "newPassword": "Yeni Şifre"
-        }
-      },
-      "tooltips": {
-        "example": "Bu bir tooltip örneğidir",
-        "rightSide": "Bu tooltip sağ tarafta görünür",
-        "bottomSide": "Bu tooltip altta görünür",
-        "disabled": "Bu buton devre dışıdır"
-      },
-      "extraDescriptions": {
-        "inputType": "Input tipi (text, email, password, vb.)"
-      }
-    },
-    "button": {
-      "description": "Farklı varyant ve boyutlarda etkileşimli buton bileşeni",
-      "variantDescription": "Buton görünüm varyantı",
-      "sizeDescription": "Buton boyutu",
-      "fullWidthDescription": "Butonu tam genişlik yapar",
-      "disabledDescription": "Butonu devre dışı bırakır"
-    },
-    "checkbox": {
-      "description": "Seçim yapma işlemleri için kullanılan onay kutusu bileşeni",
-      "selectedLabel": "Seçili Checkbox",
-      "unselectedLabel": "Seçili Değil",
-      "disabledLabel": "Devre Dışı",
-      "checkedDescription": "Checkbox seçili mi (controlled)",
-      "defaultCheckedDescription": "Varsayılan seçili durumu (uncontrolled)",
-      "disabledDescription": "Checkbox devre dışı mı",
-      "onCheckedChangeDescription": "Seçim durumu değiştiğinde çağırılan fonksiyon"
-    },
-    "switch": {
-      "description": "Açma/kapama işlemleri için kullanılan toggle switch bileşeni",
-      "notificationsLabel": "Bildirimler",
-      "emailUpdatesLabel": "Email Güncellemeleri",
-      "disabledLabel": "Devre Dışı",
-      "checkedDescription": "Switch açık mı (controlled)",
-      "defaultCheckedDescription": "Varsayılan açık durumu (uncontrolled)",
-      "disabledDescription": "Switch devre dışı mı",
-      "onCheckedChangeDescription": "Durum değiştiğinde çağırılan fonksiyon"
-    },
-    "select": {
-      "description": "Seçenekler arasından seçim yapmak için kullanılan dropdown bileşeni",
-      "countryPlaceholder": "Ülke seçin",
-      "turkey": "Türkiye",
-      "usa": "Amerika",
-      "germany": "Almanya",
-      "france": "Fransa",
-      "valueDescription": "Seçili değer (controlled)",
-      "defaultValueDescription": "Varsayılan seçili değer (uncontrolled)",
-      "onValueChangeDescription": "Değer değiştiğinde çağırılan fonksiyon"
-    },
-    "loading": {
-      "description": "Çeşitli stillerde yükleme animasyonları",
-      "spinnerLabel": "Spinner",
-      "dotsLabel": "Dots",
-      "pulseLabel": "Pulse",
-      "sizeDescription": "Spinner boyutu",
-      "variantDescription": "Spinner renk varyantı",
-      "textDescription": "Spinner ile birlikte gösterilecek metin"
-    },
-    "skeleton": {
-      "description": "İçerik yükleme durumu için placeholder bileşenleri",
-      "widthDescription": "Skeleton genişliği",
-      "heightDescription": "Skeleton yüksekliği",
-      "variantDescription": "Skeleton şekli",
-      "linesDescription": "Text skeleton için satır sayısı"
-    },
-    "textarea": {
-      "description": "Çok satırlı metin girişi bileşeni",
-      "basicPlaceholder": "Temel textarea...",
-      "counterPlaceholder": "Karakter sayacı ile...",
-      "maxLengthDescription": "Maksimum karakter sayısı",
-      "showCountDescription": "Karakter sayacını göster",
-      "autoResizeDescription": "İçerik boyutuna göre otomatik yeniden boyutlandır",
-      "errorDescription": "Hata durumu"
-    },
-    "accordion": {
-      "description": "Genişletilebilir ve daraltılabilir içerik bölümleri için kullanılan bileşen",
-      "featuresTitle": "Özellikler",
-      "featuresContent": "Bu bileşen kolayca özelleştirilebilir ve erişilebilir tasarım prensiplerine uygun olarak geliştirilmiştir.",
-      "usageTitle": "Kullanım",
-      "usageContent": "Form alanları, ayarlar menüsü ve SSS bölümleri gibi çeşitli senaryolarda kullanılabilir.",
-      "typeDescription": "Tek seferde bir veya birden fazla öğenin açık olmasına izin verir",
-      "defaultValueDescription": "Varsayılan olarak açık olan öğelerin değerleri",
-      "collapsibleDescription": "Açık öğenin kapatılmasına izin verir (type=\"single\" için)"
-    },
-    "alertDialog": {
-      "description": "Kullanıcıdan onay almak veya önemli bilgileri iletmek için kullanılan uyarı dialog bileşeni",
-      "deleteAccountButton": "Hesabı Sil",
-      "confirmationMessage": "Bu işlemi gerçekleştirmek istediğinizden emin misiniz?",
-      "operationConfirmed": "İşlem onaylandı!",
-      "clickToSeeExample": "Tıklayarak örnek dialog'u görün",
-      "openDescription": "Dialog açık mı (controlled)",
-      "onOpenChangeDescription": "Dialog durumu değiştiğinde çağırılan fonksiyon"
-    },
-    "avatar": {
-      "description": "Kullanıcı profil resmi gösterimi için kullanılan bileşen, fallback desteği ile",
-      "defaultLabel": "Varsayılan",
-      "colorfulLabel": "Renkli",
-      "iconLabel": "Icon",
-      "srcDescription": "Avatar resim URL'si",
-      "altDescription": "Resim alternatif metni",
-      "fallbackDescription": "Resim yüklenemediğinde gösterilecek içerik"
-    },
-    "card": {
-      "description": "İçerik gruplamak ve organize etmek için kullanılan kart bileşeni",
-      "cardTitle": "Kart Başlığı",
-      "cardDescription": "Bu bir örnek kart açıklamasıdır.",
-      "cardContent": "Kart içeriği burada yer alır. Metin, resim, buton ve diğer bileşenler eklenebilir.",
-      "cancelButton": "İptal",
-      "saveButton": "Kaydet",
-      "variantDescription": "Kart görünüm varyantı",
-      "sizeDescription": "Kart padding boyutu",
-      "hoverDescription": "Hover efekti türü"
-    },
-    "commandMenu": {
-      "description": "Klavye kısayolları ile hızlı arama ve komut çalıştırma menüsü",
-      "searchPlaceholder": "Komut ara...",
-      "createNewFile": "Yeni Dosya Oluştur",
-      "openSettings": "Ayarları Aç",
-      "openDescription": "Command menu açık mı (dialog modu için)",
-      "onOpenChangeDescription": "Açık durumu değiştiğinde çağırılan fonksiyon",
-      "valueDescription": "Seçili öğenin değeri"
-    },
-    "dataTable": {
-      "description": "Sıralama, filtreleme ve sayfalama özellikleri ile gelişmiş veri tablosu",
-      "searchPlaceholder": "Ara...",
-      "nameColumn": "İsim",
-      "emailColumn": "Email",
-      "roleColumn": "Rol",
-      "adminUser": "Ahmet Yılmaz",
-      "adminEmail": "ahmet@example.com",
-      "adminRole": "Admin",
-      "regularUser": "Zeynep Kaya",
-      "regularEmail": "zeynep@example.com",
-      "regularRole": "Kullanıcı",
-      "columnsDescription": "Tablo sütun tanımları",
-      "dataDescription": "Tablo verisi",
-      "searchKeyDescription": "Arama yapılacak sütun anahtarı",
-      "searchPlaceholderDescription": "Arama input placeholder metni"
-    },
-    "dialog": {
-      "description": "Modal pencere açmak için kullanılan dialog bileşeni",
-      "openButton": "Dialog Aç",
-      "editProfileTitle": "Profili Düzenle",
-      "editProfileDescription": "Profil bilgilerinizi buradan güncelleyebilirsiniz. Değişiklikleri kaydetmek için kaydet butonuna tıklayın.",
-      "nameLabel": "İsim",
-      "clickToSeeModal": "Tıklayarak modal dialog görebilirsiniz",
-      "openDescription": "Dialog açık mı (controlled)",
-      "onOpenChangeDescription": "Dialog durumu değiştiğinde çağırılan fonksiyon",
-      "modalDescription": "Modal davranışı (backdrop tıklanınca kapanır)"
-    },
-    "dragDropList": {
-      "description": "Sürükle-bırak özelliği ile öğeleri yeniden sıralayabileceğiniz liste bileşeni",
-      "item1": "Öğe 1",
-      "item2": "Öğe 2",
-      "item3": "Öğe 3",
-      "customizedItem": "Özelleştirilebilir Öğe",
-      "customizedLabel": "Özelleştirilmiş"
-    },
-    "dropdown": {
-      "description": "Radix UI tabanlı erişilebilir dropdown menü bileşeni",
-      "optionsButton": "Seçenekler",
-      "accountOperations": "Hesap İşlemleri",
-      "profile": "Profil",
-      "settings": "Ayarlar",
-      "billing": "Faturalandırma",
-      "logout": "Çıkış Yap",
-      "openDescription": "Dropdown açık durumu (controlled)",
-      "onOpenChangeDescription": "Açık durumu değiştiğinde çağırılan fonksiyon",
-      "modalDescription": "Modal davranışı etkinleştir"
-    },
-    "fileUpload": {
-      "description": "Sürükle-bırak desteği ile gelişmiş dosya yükleme bileşeni",
-      "dropzoneText": "Dosyaları buraya sürükleyin veya",
-      "browseText": "Dosya Seçin",
-      "filesSelected": "{{count}} dosya seçildi",
-      "onChangeDescription": "Dosya seçimi değiştiğinde çağırılan fonksiyon",
-      "valueDescription": "Seçili dosyalar",
-      "multipleDescription": "Birden fazla dosya seçimine izin ver",
-      "acceptDescription": "Kabul edilen dosya türleri",
-      "maxSizeDescription": "Maksimum dosya boyutu (MB)",
-      "maxFilesDescription": "Maksimum dosya sayısı"
-    },
-    "input": {
-      "description": "Çeşitli varyant ve ikon desteği ile gelişmiş input bileşeni",
-      "basicPlaceholder": "Temel input",
-      "searchPlaceholder": "Arama yapın...",
-      "emailPlaceholder": "E-posta adresiniz",
-      "errorPlaceholder": "Hatalı input",
-      "errorMessage": "Bu alan zorunludur",
-      "variantDescription": "Input görünüm varyantı",
-      "inputSizeDescription": "Input boyutu",
-      "startIconDescription": "Input başında gösterilecek ikon",
-      "endIconDescription": "Input sonunda gösterilecek ikon",
-      "errorDescription": "Hata mesajı"
-    },
-    "label": {
-      "description": "Form alanları için erişilebilir etiket bileşeni",
-      "basicLabel": "Temel Label",
-      "relatedInput": "İlgili input",
-      "requiredField": "Zorunlu Alan",
-      "requiredPlaceholder": "Bu alan zorunludur",
-      "disabledLabel": "Devre Dışı",
-      "disabledPlaceholder": "Devre dışı input",
-      "htmlForDescription": "İlgili input elementinin ID değeri",
-      "requiredDescription": "Zorunlu alan işareti (*) gösterir",
-      "classNameDescription": "Ek CSS sınıfları"
-    },
-    "pageHeader": {
-      "description": "Sayfa başlığı, breadcrumb, eylemler ve tab navigation içeren kapsamlı sayfa üst bileşeni",
-      "projectManagement": "Proje Yönetimi",
-      "projectDescription": "Tüm projelerinizi yönetin ve izleyin",
-      "homepage": "Ana Sayfa",
-      "projects": "Projeler",
-      "projectDetail": "Proje Detayı",
-      "help": "Yardım",
-      "newProject": "Yeni Proje",
-      "overview": "Genel Bakış",
-      "tasks": "Görevler",
-      "documents": "Belgeler",
-      "titleDescription": "Sayfa başlığı",
-      "subtitleDescription": "Sayfa açıklaması",
-      "breadcrumbsDescription": "Breadcrumb navigation öğeleri",
-      "actionsDescription": "Sayfa eylem butonları",
-      "tabsDescription": "Tab navigation öğeleri",
-      "activeTabDescription": "Aktif tab değeri",
-      "onTabChangeDescription": "Tab değişim fonksiyonu",
-      "stickyDescription": "Sayfada scroll ederken üstte sabit kalması",
-      "backButtonDescription": "Geri buton göster"
-    },
-    "form": {
-      "description": "React Hook Form entegrasyonlu kapsamlı form yönetim sistemi",
-      "emailPlaceholder": "ornek@email.com",
-      "nameLabel": "Ad Soyad",
-      "namePlaceholder": "Adınızı ve soyadınızı girin",
-      "messageLabel": "Mesaj",
-      "messagePlaceholder": "Mesajınızı yazın...",
-      "submitButton": "Gönder",
-      "formDescription": "React Hook Form instance",
-      "onSubmitDescription": "Form gönderme fonksiyonu",
-      "classNameDescription": "Form container için CSS sınıfları"
-    },
-    "clickToSeeExample": "Tıklayarak örnek dialog'u görün",
-    "clickToSeeModal": "Tıklayarak modal dialog görebilirsiniz",
-    "dialogWillOpen": "Dialog açılacak!",
-    "formSubmittedSuccessfully": "Form Başarıyla Gönderildi",
-    "dataProcessedSuccessfully": "Verileriniz başarıyla işleme alınmıştır.",
     "sampleData": {
       "users": {
         "ahmet": "Ahmet Yılmaz",
         "ayse": "Ayşe Kaya",
         "mehmet": "Mehmet Demir",
-        "fatma": "Fatma Özkan",
-        "ali": "Ali Şen"
-      },
-      "roles": {
-        "admin": "Admin",
-        "user": "Kullanıcı",
-        "editor": "Editör"
+        "fatma": "Fatma Şahin",
+        "ali": "Ali Öztürk"
       },
       "status": {
         "active": "Aktif",
         "inactive": "Pasif",
-        "pending": "Beklemede",
-        "error": "Hata",
-        "online": "Kullanıcı çevrimiçi",
-        "connectionError": "Bağlantı hatası",
-        "awaitingApproval": "Onay bekleniyor"
+        "pending": "Beklemede"
       }
     },
     "tableHeaders": {
@@ -890,551 +70,838 @@
       "email": "E-posta",
       "role": "Rol",
       "status": "Durum",
-      "name": "İsim",
       "edit": "Düzenle",
       "delete": "Sil"
     },
-    "buttons": {
-      "small": "Küçük",
-      "large": "Büyük",
-      "addNew": "Yeni Ekle",
-      "search": "Ara",
-      "settings": "Ayarlar",
-      "fullWidth": "Tam Genişlik",
-      "deleteAccount": "Hesabı Sil",
-      "cancel": "İptal",
-      "yesDelete": "Evet, Sil",
-      "save": "Kaydet",
-      "openDialog": "Dialog Aç",
-      "menu": "Menü",
-      "details": "Detaylar",
-      "getReport": "Rapor Al",
-      "startNow": "Şimdi Başla"
-    },
-    "content": {
-      "accordion": {
-        "personalInfo": "Kişisel Bilgiler",
-        "securitySettings": "Güvenlik Ayarları",
-        "notificationPreferences": "Bildirim Tercihleri",
-        "personalInfoDesc": "Ad, soyad, e-posta ve telefon bilgilerinizi bu bölümde güncelleyebilirsiniz. Değişiklikler anında kaydedilir.",
-        "securitySettingsDesc": "Şifre değiştirme, iki faktörlü kimlik doğrulama ve güvenlik soruları ayarlarınız.",
-        "notificationDesc": "E-posta, SMS ve uygulama bildirimleri için tercihlerinizi belirleyin."
+    "accordion": {
+      "title": "Accordion",
+      "usage": {
+        "multiple": "Multiple Accordion",
+        "multipleDesc": "Aynı anda birden fazla bölümün açılabildiği akordiyon."
       },
-      "alerts": {
-        "information": "Bilgilendirme",
-        "informationMsg": "Bu bir bilgilendirme mesajıdır. Önemli detayları içerir.",
-        "warning": "Uyarı",
-        "warningMsg": "Dikkat edilmesi gereken bir durum var.",
-        "error": "Hata",
-        "errorMsg": "İşlem gerçekleştirilemedi. Lütfen tekrar deneyin."
-      },
-      "dialogs": {
-        "confirmDelete": "Hesabınızı silmek istediğinizden emin misiniz?",
-        "deleteWarning": "Bu işlem geri alınamaz. Hesabınız ve tüm verileriniz kalıcı olarak silinecektir.",
-        "editProfile": "Profil Düzenle",
-        "editProfileDesc": "Profil bilgilerinizi buradan güncelleyebilirsiniz."
-      },
-      "preferences": {
-        "notifications": "Bildirimler",
-        "emailUpdates": "Email Güncellemeleri",
-        "disabled": "Devre Dışı",
-        "selectedCheckbox": "Seçili Checkbox",
-        "notSelected": "Seçili Değil",
-        "yourInterests": "İlgi Alanlarınız:"
-      },
-      "cards": {
-        "projectReport": "Proje Raporu",
-        "projectReportDesc": "Son hafta performans özeti ve analytics verileri.",
-        "totalVisitors": "Toplam Ziyaretçi",
-        "newUsers": "Yeni Kullanıcı",
-        "conversionRate": "Dönüşüm Oranı",
-        "premiumFeature": "Premium Özellik",
-        "premiumFeatureDesc": "Gelişmiş analytics ve raporlama araçları",
-        "detailedAnalytics": "• Detaylı analytics",
-        "customReports": "• Özel raporlar",
-        "apiAccess": "• API erişimi"
-      },
-      "categories": {
-        "dataDisplay": "Veri Gösterimi",
-        "formInput": "Form & Input",
-        "feedback": "Geri Bildirim",
-        "overlay": "Overlay",
-        "navigation": "Navigation",
-        "layout": "Layout"
+      "section1": "Bölüm 1",
+      "content1": "İlk bölüm içeriği",
+      "section2": "Bölüm 2",
+      "content2": "İkinci bölüm içeriği",
+      "openSection": "Açık Bölüm",
+      "defaultOpenSection": "Bu bölüm varsayılan olarak açıktır.",
+      "otherSection": "Diğer Bölüm",
+      "canAlsoOpenThisSection": "Bu bölümü de açabilirsiniz.",
+      "props": {
+        "collapsible": "Son öğenin kapatılıp kapatılamayacağını belirler"
       }
     },
     "descriptions": {
-      "accordion": "Genişletilebilir içerik bölümleri için kullanılan accordion bileşeni. Framer Motion animasyonları ile gelişmiş kullanıcı deneyimi sunar.",
-      "alert": "Kullanıcılara önemli mesajları iletmek için kullanılan alert bileşeni. Farklı türlerde uyarılar gösterebilir.",
-      "alertDialog": "Kritik işlemler için onay alınan modal dialog bileşeni. Kullanıcı etkileşimi gerektirir.",
-      "avatar": "Kullanıcı profil resimleri ve avatarları için kullanılan bileşen. Fallback ve farklı boyut seçenekleri sunar.",
-      "badge": "Durum ve etiketleme için kullanılan badge bileşeni. Farklı varyant ve boyut seçenekleri sunar.",
-      "button": "Farklı varyant ve boyutlarda etkileşimli buton bileşeni. Loading durumu ve icon desteği sunar.",
-      "card": "İçerik gruplamak ve organize etmek için kullanılan kart bileşeni. Header, content ve footer bölümleri destekler.",
-      "checkbox": "Seçim yapma işlemleri için kullanılan onay kutusu bileşeni. Controlled ve uncontrolled modları destekler.",
-      "dataTable": "Gelişmiş tablo bileşeni. Sıralama, filtreleme, sayfalama, satır seçimi ve dışa aktarma özelliklerine sahiptir."
+      "accordion": "Genişletilebilir ve daraltılabilir içerik bölümleri.",
+      "alert": "Kullanıcının dikkatini çekmek için bir çağrı görüntüler.",
+      "alertDialog": "Kullanıcıyı önemli içerikle bölen ve bir yanıt bekleyen modsal bir iletişim kutusu.",
+      "avatar": "Kullanıcıyı temsil etmek için bir yedek içeren resim öğesi.",
+      "badge": "Bir rozet veya rozet gibi görünen bir bileşen görüntüler.",
+      "button": "Bir düğme veya düğme gibi görünen bir bileşen görüntüler.",
+      "card": "Başlık, içerik ve altbilgi içeren bir kart görüntüler.",
+      "checkbox": "Kullanıcının seçili ve seçili olmayan durumlar arasında geçiş yapmasını sağlayan bir kontrol.",
+      "dataGrid": "Sıralama, filtreleme ve sayfalama özelliklerine sahip güçlü veri ızgarası bileşeni.",
+      "dataTable": "Esnek bir veri tablosu bileşeni.",
+      "switch": "Kullanıcının seçili ve seçili olmayan durumlar arasında geçiş yapmasını sağlayan bir kontrol.",
+      "select": "Kullanıcının bir listeden seçim yapmasını sağlayan, bir butonla tetiklenen bileşen.",
+      "textarea": "Bir form metin alanı veya metin alanı gibi görünen bir bileşen görüntüler.",
+      "dialog": "Ana pencerenin veya başka bir diyalog penceresinin üzerine bindirilen ve altındaki içeriği etkisiz hale getiren bir pencere.",
+      "dropdownMenu": "Kullanıcıya, bir butonla tetiklenen bir dizi eylem veya işlev gibi bir menü görüntüler.",
+      "input": "Bir form giriş alanı veya giriş alanı gibi görünen bir bileşen görüntüler.",
+      "loading": "Bir işlemin işlendiğini veya verilerin yüklendiğini belirtir.",
+      "progress": "Genellikle bir ilerleme çubuğu olarak görüntülenen, bir görevin tamamlanma ilerlemesini gösteren bir gösterge görüntüler.",
+      "tabs": "İçeriğin bölümlerini -sekme panelleri olarak bilinir- birer birer görüntüleyen bir küme görüntüler.",
+      "slider": "Kullanıcının belirli bir aralıktan bir değer seçtiği bir girdi.",
+      "separator": "İçeriği görsel veya anlamsal olarak ayırır.",
+      "popover": "Zengin içeriği bir portalda, bir düğme ile tetiklenen bir şekilde görüntüler.",
+      "tooltip": "Bir eleman klavye odağı aldığında veya fare üzerine geldiğinde o elemanla ilgili bilgileri görüntüleyen bir açılır pencere.",
+      "scrollArea": "Özel, tarayıcılar arası stil için yerel kaydırma işlevini artırır.",
+      "richTextEditor": "HTML içeriğini düzenlemek için zengin bir metin düzenleyici bileşeni.",
+      "monthYearPicker": "Ay ve yıl seçimi için bir tarih seçici.",
+      "dateRangePicker": "Tarih aralığı seçimi için bir tarih seçici.",
+      "singleDatePicker": "Tek bir tarih seçimi için bir tarih seçici.",
+      "modernDrawer": "Birden fazla yerleşim seçeneğine sahip modern, erişilebilir bir çekmece bileşeni.",
+      "passwordInput": "Göster/gizle geçişine sahip bir şifre giriş bileşeni.",
+      "numberInput": "Artırma/azaltma kontrollerine sahip bir sayı giriş bileşeni.",
+      "calendar": "Tarihleri görüntülemek için bir takvim bileşeni.",
+      "collapsible": "Bir paneli genişletip daraltan etkileşimli bir bileşen.",
+      "formError": "Bir form alanı için hata mesajı görüntüler.",
+      "stepper": "Bir adım dizisindeki ilerlemeyi görüntüler.",
+      "dynamicBreadcrumb": "Mevcut kaynağa giden yolu görüntüler.",
+      "enhancedDataTable": "Sıralama ve filtreleme özellikli gelişmiş bir veri tablosu.",
+      "accessibilityEnhancer": "Erişilebilirliği artırmak için bir yardımcı araç.",
+      "enhancedPagination": "Sayfalarda gezinmek için bir sayfalandırma bileşeni.",
+      "enhancedSearchFilters": "Gelişmiş arama filtrelemesi için bir bileşen.",
+      "enterpriseErrorBoundary": "Hataları yakalamak ve görüntülemek için bir sınır.",
+      "labelAdvanced": "Zorunlu gösterge desteğine sahip gelişmiş bir etiket bileşeni.",
+      "commandMenu": "Hızlı gezinme ve eylemler için bir komut menüsü."
     },
-    "properties": {
-      "singleMultipleMode": "Tek veya çoklu açılabilir mod",
-      "defaultOpenValues": "Varsayılan açık olan item değerleri",
-      "controlledOpenValues": "Controlled mod için açık olan item değerleri",
-      "valueChangeCallback": "Değer değişikliği callback fonksiyonu",
-      "alertVariant": "Alert görünüm varyantı",
-      "dialogOpen": "Dialog açık mı (controlled)",
-      "dialogOpenChangeCallback": "Dialog açık durumu değiştiğinde çağırılan fonksiyon",
-      "badgeVariant": "Badge görünüm varyantı",
-      "buttonVariant": "Buton görünüm varyantı",
-      "additionalCssClasses": "Ek CSS sınıfları (w-full ile tam genişlik)",
-      "disableButton": "Butonu devre dışı bırakır"
-    },
-    "remaining": {
-      "descriptions": {
-        "multipleAccordion": "Aynı anda birden fazla bölümün açılabildiği accordion",
-        "lastItemClosable": "Son kalan item'ın da kapatılabilir olup olmadığı",
-        "criticalOperations": "Kritik işlemler için onay alınan modal dialog bileşeni. Kullanıcı etkileşimi gerektirir.",
-        "avatarGroup": "Birden fazla kullanıcıyı temsil eden avatar grubu",
-        "avatarImageUrl": "Avatar resmi URL'i (AvatarImage için)",
-        "badgeComponent": "Durum ve etiketleme için kullanılan badge bileşeni. Farklı varyant ve boyut seçenekleri sunar.",
-        "badgeExamples": "Farklı durumları temsil eden badge örnekleri",
-        "badgeVariantDesc": "Badge görünüm varyantı",
-        "buttonComponent": "Farklı varyant ve boyutlarda etkileşimli buton bileşeni. Loading durumu ve icon desteği sunar.",
-        "iconButtons": "Icon ile birlikte kullanılan buton örnekleri",
-        "buttonVariantProp": "Buton görünüm varyantı",
-        "fullWidthClasses": "Ek CSS sınıfları (w-full ile tam genişlik)",
-        "disableButtonProp": "Butonu devre dışı bırakır",
-        "featureCard": "Özellik tanıtımı için kullanılan kart örneği",
-        "cardVariant": "Kart görünüm varyantı",
-        "hoverEffect": "Hover efekti türü",
-        "checkboxGroup": "Form içinde checkbox grubu kullanımı",
-        "checkboxControlled": "Checkbox seçili mi (controlled)",
-        "checkboxDefault": "Varsayılan seçili durumu (uncontrolled)",
-        "checkboxDisabled": "Checkbox devre dışı mı",
-        "checkboxChange": "Seçim durumu değiştiğinde çağırılan fonksiyon",
-        "tableColumns": "Tablo sütun tanımları",
-        "enablePagination": "Sayfalama özelliğini etkinleştir",
-        "enableRowSelection": "Satır seçimi özelliğini etkinleştir",
-        "enableGlobalFilter": "Global arama özelliğini etkinleştir",
-        "enableExport": "Dışa aktarma özelliğini etkinleştir",
-        "rowClickEvent": "Satır tıklama olayı",
-        "simpleTable": "Basit ve hızlı tablo bileşeni. Temel sıralama ve filtreleme özelliklerine sahiptir.",
-        "searchColumn": "Arama yapılacak sütun anahtarı",
-        "switchComponent": "Açma/kapama işlemleri için kullanılan toggle switch bileşeni",
-        "switchControlled": "Switch açık mı (controlled)",
-        "switchDefault": "Varsayılan açık durumu (uncontrolled)",
-        "switchDisabled": "Switch devre dışı mı",
-        "switchChange": "Durum değiştiğinde çağırılan fonksiyon",
-        "selectComponent": "Seçenekler arasından seçim yapmak için kullanılan dropdown bileşeni",
-        "selectValue": "Seçili değer (controlled)",
-        "selectDefaultValue": "Varsayılan seçili değer (uncontrolled)",
-        "selectChange": "Değer değiştiğinde çağırılan fonksiyon",
-        "textareaComponent": "Çok satırlı metin girişi bileşeni",
-        "maxLength": "Maksimum karakter sayısı",
-        "showCounter": "Karakter sayacını göster",
-        "autoResize": "İçerik boyutuna göre otomatik yeniden boyutlandır",
-        "dialogComponent": "Modal diyalog penceresi bileşeni",
-        "dialogOpenProp": "Dialog açık/kapalı durumu",
-        "dialogChange": "Dialog durumu değiştiğinde çalışacak fonksiyon",
-        "dropdownComponent": "Açılır menü bileşeni",
-        "navigationDropdowns": "Navigasyon dropdown'ları için",
-        "dropdownOpen": "Menü açık/kapalı durumu",
-        "dropdownChange": "Menü durumu değiştiğinde çalışacak fonksiyon",
-        "inputComponent": "Metin girişi bileşeni",
-        "inputType": "Input tipi (text, email, password, vb.)",
-        "inputDisabled": "Input devre dışı durumu",
-        "inputValue": "Input değeri",
-        "loadingComponent": "Yükleme animasyon bileşenleri",
-        "additionalClasses": "Ek CSS sınıfları",
-        "progressComponent": "İlerleme çubuğu bileşeni",
-        "progressValue": "İlerleme değeri (0-100)",
-        "progressMax": "Maksimum değer",
-        "skeletonComponent": "Yükleme iskelet bileşenleri",
-        "skeletonWidth": "Skeleton genişliği",
-        "skeletonHeight": "Skeleton yüksekliği",
-        "tabsComponent": "Sekme navigasyon bileşeni",
-        "tabsDefaultValue": "Varsayılan aktif sekme",
-        "tabsValue": "Kontrollü aktif sekme",
-        "tabsChange": "Sekme değiştiğinde çalışacak fonksiyon",
-        "sliderComponent": "Değer seçici kaydırıcı bileşeni",
-        "sliderDefaultValue": "Varsayılan değer(ler)",
-        "sliderValue": "Kontrollü değer(ler)",
-        "sliderMax": "Maksimum değer",
-        "sliderMin": "Minimum değer",
-        "sliderStep": "Artış miktarı",
-        "separatorComponent": "Ayırıcı çizgi bileşeni",
-        "separatorOrientation": "Ayırıcı yönü",
-        "popoverComponent": "Açılır içerik kutusu bileşeni",
-        "popoverOpen": "Popover açık/kapalı durumu",
-        "popoverChange": "Popover durumu değiştiğinde çalışacak fonksiyon",
-        "tooltipComponent": "Bilgi ipucu bileşeni",
-        "tooltipContent": "Tooltip içeriği",
-        "tooltipSide": "Tooltip hizalaması",
-        "tooltipDelay": "Tooltip gösterim gecikmesi (ms)",
-        "tooltipDisabled": "Tooltip devre dışı durumu",
-        "scrollAreaComponent": "Özel kaydırma çubuğu bileşeni",
-        "richTextComponent": "Zengin metin düzenleyici bileşeni",
-        "richTextValue": "Kontrollü içerik değeri",
-        "richTextChange": "İçerik değiştiğinde çalışacak fonksiyon",
-        "modernDatePickerComponent": "Modern tarih seçici bileşeni",
-        "datePickerValue": "Seçili tarih",
-        "datePickerChange": "Tarih değiştiğinde çalışacak fonksiyon",
-        "datePickerDisabled": "Devre dışı durumu",
-        "monthYearPickerComponent": "Ay-yıl seçici bileşeni",
-        "monthYearValue": "Seçili ay/yıl",
-        "monthYearChange": "Tarih değiştiğinde çalışacak fonksiyon",
-        "monthYearDisabled": "Devre dışı durumu",
-        "dateRangePickerComponent": "Tarih aralığı seçici bileşeni",
-        "dateRangeValue": "Seçili tarih aralığı",
-        "dateRangeChange": "Tarih aralığı değiştiğinde çalışacak fonksiyon",
-        "dateRangeDisabled": "Devre dışı durumu",
-        "singleDatePickerComponent": "Tekil tarih seçici bileşeni",
-        "singleDateValue": "Seçili tarih",
-        "singleDateChange": "Tarih değiştiğinde çalışacak fonksiyon",
-        "singleDateDisabled": "Devre dışı durumu",
-        "avatarComponent": "Kullanıcı profil resimleri için fallback desteği ile avatar bileşeni",
-        "badgeVariant": "Farklı görsel stiller için badge görünüm varyantı",
-        "iconButtonExamples": "Gelişmiş kullanıcı etkileşimi için ikonlar ile kullanılan buton örnekleri",
-        "buttonVariant": "Farklı görsel stiller için buton görünüm varyantı",
-        "additionalCssClasses": "Özel stil ve düzen değişiklikleri için ek CSS sınıfları",
-        "disableButton": "Kullanıcı etkileşimini önlemek için butonu devre dışı bırakır",
-        "cardComponent": "İçerik bölümlerini gruplamak ve organize etmek için kullanılan kart bileşeni",
-        "hoverEffectType": "Etkileşimli öğelere uygulanan hover efekti türü",
-        "checkboxComponent": "Formlarda seçim işlemleri için kullanılan checkbox bileşeni",
-        "checkboxFormGroup": "Çoklu seçimler için formlarda checkbox grup kullanımı",
-        "checkboxChecked": "Kontrollü bileşenler için checkbox seçili durumu",
-        "defaultCheckedState": "Kontrolsüz checkbox bileşenleri için varsayılan seçili durumu",
-        "selectionChangeCallback": "Checkbox seçim durumu değiştiğinde çağırılan fonksiyon",
-        "dataGridComponent": "Sıralama ve filtreleme özellikleri ile gelişmiş veri tablosu bileşeni",
-        "tableColumnDefinitions": "Veri yapısı ve görüntüleme için tablo sütun tanımları",
-        "enableGlobalSearch": "Tüm tablo verisinde global arama işlevselliğini etkinleştir",
-        "dataTableComponent": "Yapılandırılmış veri görüntüleme için basit veri tablosu bileşeni",
-        "searchColumnKey": "Tablo içinde arama işlemleri için kullanılan sütun anahtarı",
-        "switchChecked": "Kontrollü bileşenler için switch açık konumu",
-        "defaultOpenState": "Kontrolsüz switch bileşenleri için varsayılan açık durumu",
-        "statusChangeCallback": "Switch durumu değiştiğinde çağırılan fonksiyon",
-        "selectedValue": "Kontrollü bileşenlerde şu anda seçili olan değer",
-        "defaultSelectedValue": "Kontrolsüz bileşenler için varsayılan seçili değer",
-        "valueChangeCallback": "Bileşen değeri değiştiğinde çağırılan fonksiyon",
-        "maxCharacterCount": "Metin girişinde izin verilen maksimum karakter sayısı",
-        "showCharacterCounter": "Kalan karakterleri gösteren karakter sayacını görüntüle",
-        "editUserProfile": "Kullanıcı profil bilgilerini ve ayarlarını düzenle",
-        "confirmationDialogs": "Kritik kullanıcı eylemleri için onay diyalogları",
-        "modalForms": "Veri girişi ve düzenleme işlemleri için modal formlar",
-        "detailPopups": "Ek bilgi göstermek için detay popup'ları",
-        "dialogOpenState": "Kontrollü dialog bileşenleri için dialog açık/kapalı durumu",
-        "dialogStateChangeCallback": "Dialog durumu değiştiğinde çağırılan fonksiyon",
-        "userMenus": "Hesap ve profil işlemleri için kullanıcıya özel menüler",
-        "actionMenus": "Veri öğeleri üzerinde işlem gerçekleştirmek için eylem menüleri",
-        "optionLists": "Açılır menü bileşenlerinde seçilebilir seçenekler listesi",
-        "menuOpenState": "Kontrollü menü bileşenleri için menü açık/kapalı durumu",
-        "menuStateChangeCallback": "Menü durumu değiştiğinde çağırılan fonksiyon",
-        "formFields": "Veri girişi ve doğrulama için form alanları",
-        "getUserData": "Sistem veya API'den kullanıcı verilerini alın",
-        "searchBoxes": "İçerik bulma ve filtreleme için arama giriş kutuları",
-        "loginRegisterForms": "Kullanıcı kimlik doğrulaması için giriş ve kayıt formları",
-        "inputDisabledState": "Kullanıcı etkileşimini önlemek için input devre dışı durumu",
-        "showWhileDataLoading": "Veri alınırken yükleme göstergesini göster",
-        "duringApiCalls": "API çağrı işlemleri sırasında yükleme durumu görüntüle",
-        "buttonLoadingStates": "Asenkron işlemler için buton yükleme durumları",
-        "pageTransitions": "Sayfa navigasyonu geçişleri sırasında yükleme durumları",
-        "fileUploadProgress": "Dosya yükleme işlemleri için ilerleme göstergesi",
-        "formCompletionStatus": "Form tamamlama ilerlemesi için durum göstergesi",
-        "taskProgress": "Görev tamamlama durumu için ilerleme göstergesi",
-        "pageLoadingStatus": "Sayfa içeriği için yükleme durumu göstergesi",
-        "maximumValue": "Sayısal giriş veya kaydırıcılarda izin verilen maksimum değer",
-        "showPlaceholderWhileDataLoads": "Veri yüklenirken yer tutucu içerik göster",
-        "improveUserExperience": "Yükleme göstergeleri ile kullanıcı deneyimini iyileştir",
-        "visualConsistencyWhileWaitingApi": "API yanıtları beklenirken görsel tutarlılığı koruyun",
-        "settingsPages": "Uygulama tercihlerini yapılandırmak için ayarlar sayfaları",
-        "profileEditingForms": "Kullanıcı profil bilgilerini düzenlemek için formlar",
-        "separateDashboardSections": "Dashboard düzenleri içinde farklı bölümleri ayırın",
-        "categorizedContent": "Kategoriler veya gruplara göre organize edilmiş içerik",
-        "defaultActiveTab": "Sekme navigasyon bileşenlerinde varsayılan aktif sekme",
-        "controlledActiveTab": "Sekme navigasyonunda kontrollü aktif sekme durumu",
-        "tabChangeCallback": "Aktif sekme değiştiğinde çağırılan fonksiyon",
-        "volumeBrightnessControls": "Ses ve parlaklık seviyelerini ayarlama kontrolleri",
-        "priceRangeSelection": "Fiyat aralığı filtrelemesi için seçim kontrolleri",
-        "filteringOptions": "Veri filtreleme ve sıralama seçenekleri",
-        "valueRangeDetermination": "Kaydırıcı bileşenleri için değer aralıklarını belirleme",
-        "defaultValues": "Kontrolsüz bileşenler için varsayılan değerler",
-        "controlledValues": "Üst bileşenler tarafından yönetilen kontrollü değerler",
-        "minimumValue": "Sayısal giriş veya kaydırıcılarda izin verilen minimum değer",
-        "incrementAmount": "Adım kontrolleri kullanırken artırılacak miktar",
-        "separateContentSections": "Farklı içerik bölümlerini görsel olarak ayırın",
-        "groupMenuItems": "İlgili menü öğelerini birlikte gruplandırın",
-        "cardSectionSeparations": "Kart bölümleri arasında görsel ayırımlar",
-        "organizeFormFields": "Form alanlarını mantıklı gruplara organize edin",
-        "separatorDirection": "Ayırıcı çizgilerin yönü (yatay veya dikey)",
-        "quickSettingsMenus": "Ortak ayarlar için hızlı erişim menüleri",
-        "showAdditionalInfo": "Gerektiğinde ek bilgileri göster",
-        "formHelperContent": "Formlar için yardımcı içerik ve talimatlar",
-        "contextMenus": "Eylemler için bağlama duyarlı menüler",
-        "popoverOpenState": "Kontrollü bileşenler için popover açık/kapalı durumu",
-        "popoverStateChangeCallback": "Popover durumu değiştiğinde çağırılan fonksiyon",
-        "buttonExplanations": "Buton işlevleri için açıklayıcı tooltip'ler",
-        "formFieldHelpTexts": "Form alanı yardımı için yardım metni",
-        "abbreviatedTextExplanations": "Kısaltılmış metin içeriği için açıklamalar",
-        "explainIconMeanings": "İkonların anlamlarını kullanıcılara açıklayın",
-        "tooltipAlignment": "Tooltip'in tetikleyiciye göre hizalama pozisyonu",
-        "tooltipDisplayDelay": "Tooltip gösterilmeden önceki gecikme milisaniye olarak",
-        "tooltipDisabledState": "Tooltip bileşenleri için devre dışı durumu",
-        "longListDisplays": "Özel kaydırma ile uzun listeleri görüntüle",
-        "limitedHeightContent": "Sınırlı yükseklik kısıtlamaları olan içerik alanları",
-        "chatMessageHistory": "Kaydırılabilir sohbet mesajı geçmişi görünümleri",
-        "navigationMenus": "Kaydırma işlevi olan navigasyon menüleri",
-        "blogPosts": "Blog yazıları ve makaleler için zengin metin içeriği",
-        "productDescriptions": "Biçimlendirme ile zengin ürün açıklamaları",
-        "emailEditors": "Zengin biçimlendirme ile e-posta kompozisyon editörleri",
-        "richContentInComments": "Kullanıcı yorumlarında zengin içerik biçimlendirmesi",
-        "controlledContentValue": "Zengin metin editörleri için kontrollü içerik değeri",
-        "contentChangeCallback": "Zengin içerik değiştiğinde çağırılan fonksiyon",
-        "birthdateSelection": "Doğum tarihi giriş alanları için tarih seçimi",
-        "eventDateDetermination": "Etkinlik ve randevular için tarihleri belirleme",
-        "reportDateRange": "Raporlar ve analitik için tarih aralığı seçimi",
-        "reservationDateSelection": "Rezervasyon sistemleri için tarih seçimi",
-        "selectedDate": "Tarih seçici bileşenlerinde şu anda seçili olan tarih",
-        "dateChangeCallback": "Seçili tarih değiştiğinde çağırılan fonksiyon",
-        "disabledState": "Tarih seçici bileşenleri için devre dışı durumu",
-        "graduationDate": "Mezuniyet ve kilometre taşı tarihleri için tarih seçimi",
-        "workExperienceDates": "İş deneyimi giriş verileri için tarih seçimi",
-        "creditCardExpirationDate": "Kredi kartı son kullanma tarihi için ay/yıl seçimi",
-        "reportPeriodSelection": "Raporlar ve analitik için dönem seçimi",
-        "selectedMonthYear": "Şu anda seçili olan ay ve yıl kombinasyonu",
-        "vacationDateRangeSelection": "Tatil planlaması için tarih aralığı seçimi",
-        "reportPeriodDetermination": "Rapor oluşturma için dönemleri belirleme",
-        "reservationDateRange": "Rezervasyon sistemleri için tarih aralığı seçimi",
-        "projectTimelinePlanning": "Proje zaman çizelgeleri için tarih aralığı planlaması",
-        "selectedDateRange": "Aralık seçicilerde şu anda seçili olan tarih aralığı",
-        "dateRangeChangeCallback": "Tarih aralığı değiştiğinde çağırılan fonksiyon",
-        "datePickerComponent": "Tek tarih seçimi için tarih seçici bileşeni",
-        "appointmentDateSelection": "Randevu planlaması için tarih seçimi",
-        "deadlineDetermination": "Son tarih belirleme için tarih seçimi",
-        "eventDateSelection": "Etkinlik planlaması için tarih seçimi",
-        "birthdateInput": "Doğum tarihi bilgisi için giriş alanı"
-      },
-      "tooltips": {
-        "example": "Bu bir tooltip örneğidir",
-        "rightSide": "Bu tooltip sağda görünür",
-        "bottomSide": "Bu tooltip altta görünür",
-        "disabled": "Devre dışı tooltip"
-      },
-      "missing": {
-        "alertDialog": {
-          "confirmDelete": "Hesabınızı silmek istediğinizden emin misiniz?"
-        },
-        "badge": {
-          "active": "Aktif",
-          "error": "Hata",
-          "pending": "Beklemede",
-          "connectionError": "Bağlantı hatası",
-          "userOnline": "Kullanıcı çevrimiçi",
-          "awaitingApproval": "Onay bekleniyor"
-        },
-        "buttons": {
-          "small": "Küçük",
-          "large": "Büyük",
-          "fullWidth": "Tam Genişlik",
-          "openDialog": "Dialog Aç",
-          "menu": "Menü",
-          "startNow": "Şimdi Başla"
-        },
-        "cards": {
-          "projectReport": "Proje Raporu",
-          "projectReportDesc": "Son hafta performans özeti ve analytics verileri.",
-          "totalVisitors": "Toplam Ziyaretçi",
-          "newUsers": "Yeni Kullanıcı",
-          "conversionRate": "Dönüşüm Oranı",
-          "premiumFeature": "Premium Özellik",
-          "premiumDesc": "Gelişmiş analytics ve raporlama araçları",
-          "detailedAnalytics": "• Detaylı analytics",
-          "customReports": "• Özel raporlar",
-          "apiAccess": "• API erişimi"
-        },
-        "checkbox": {
-          "selected": "Seçili Checkbox",
-          "notSelected": "Seçili Değil",
-          "disabled": "Devre Dışı",
-          "yourInterests": "İlgi Alanlarınız:"
-        },
-        "switch": {
-          "emailUpdates": "Email Güncellemeleri",
-          "disabled": "Devre Dışı"
-        },
-        "select": {
-          "turkey": "Türkiye"
-        },
-        "dialog": {
-          "editProfile": "Profil Düzenle",
-          "editProfileDesc": "Profil bilgilerinizi buradan güncelleyebilirsiniz."
-        },
-        "dropdown": {
-          "myAccount": "Hesabım",
-          "emailUpdates": "E-posta güncellemeleri"
-        },
-        "loading": {
-          "loading": "Yükleme",
-          "completed": "Tamamlandı"
-        },
-        "tabs": {
-          "password": "Şifre",
-          "username": "Kullanıcı Adı",
-          "currentPassword": "Mevcut Şifre",
-          "newPassword": "Yeni Şifre"
-        },
-        "slider": {
-          "priceRange": "Fiyat Aralığı: 200₺ - 800₺",
-          "priceRangeLabel": "Fiyat Aralığı"
-        },
-        "separator": {
-          "section1": "Bölüm 1",
-          "section2": "Bölüm 2",
-          "exampleContent1": "Bu bir örnek içeriktir.",
-          "exampleContent2": "Bu başka bir örnek içeriktir.",
-          "right": "Sağ"
-        },
-        "popover": {
-          "openPopover": "Popover Aç",
-          "adjustDimensions": "Bileşen boyutlarını ayarlayın.",
-          "width": "Genişlik",
-          "height": "Yükseklik"
-        },
-        "datePicker": {
-          "birthDate": "Doğum Tarihi"
-        },
-        "accordion": {
-          "notificationPreferences": "Bildirim Tercihleri"
-        }
-      },
-      "labels": {
-        "personalInfo": "Kişisel Bilgiler",
-        "personalInfoDesc": "Ad, soyad, e-posta ve telefon bilgilerinizi bu bölümde güncelleyebilirsiniz.",
-        "securitySettings": "Güvenlik Ayarları",
-        "securitySettingsDesc": "Şifre değiştirme, iki faktörlü kimlik doğrulama ayarları.",
-        "notificationPreferences": "Bildirim Tercihleri",
-        "section1": "Bölüm 1",
-        "section2": "Bölüm 2",
-        "content1": "Bu birinci bölümün içeriğidir.",
-        "content2": "Bu ikinci bölümün içeriğidir.",
-        "openSection": "Açık Bölüm",
-        "defaultOpenSection": "Bu bölüm varsayılan olarak açık",
-        "otherSection": "Diğer Bölüm",
-        "canAlsoOpenThisSection": "Bu bölümü de açabilirsiniz",
-        "informationMessage": "Bu bir bilgilendirme mesajıdır.",
+    "content": {
+      "alerts": {
+        "information": "Bilgi",
+        "informationMsg": "CLI kullanarak uygulamanıza bileşenler ekleyebilirsiniz.",
         "warning": "Uyarı",
-        "operationFailed": "İşlem gerçekleştirilemedi.",
-        "deleteAccount": "Hesabı Sil",
-        "confirmDeleteAccount": "Hesabınızı silmek istediğinizden emin misiniz?",
-        "deleteWarningMessage": "Bu işlem geri alınamaz. Hesabınız kalıcı olarak silinecektir.",
-        "cancel": "İptal",
-        "avatarFallback": "AY",
+        "warningMsg": "Oturumunuz sona ermek üzere.",
+        "error": "Hata",
+        "errorMsg": "Oturumunuz sona erdi. Lütfen tekrar giriş yapın."
+      },
+      "categories": {
+        "layout": "Düzen",
+        "feedback": "Geri Bildirim",
+        "overlay": "Kaplama",
+        "dataDisplay": "Veri Gösterimi",
+        "formInput": "Form Girişi",
+        "advanced": "Gelişmiş",
+        "ui": "UI Bileşenleri"
+      },
+      "common": {
+        "personalInfo": "Kişisel Bilgiler",
+        "personalInfoDesc": "Kişisel bilgilerinizi buradan yönetebilirsiniz.",
+        "securitySettings": "Güvenlik Ayarları",
+        "securitySettingsDesc": "Şifre ve güvenlik tercihlerinizi güncelleyin.",
+        "notificationPreferences": "Bildirim Tercihleri"
+      },
+      "accordion": {
+        "notificationDesc": "E-posta ve uygulama bildirimlerinizi yönetin."
+      }
+    },
+    "alert": {
+      "title": "Alert"
+    },
+    "alertDialog": {
+      "title": "Alert Dialog",
+      "deleteAccount": "Hesabı Sil",
+      "confirmDelete": "Kesinlikle emin misiniz?",
+      "deleteWarning": "Bu işlem geri alınamaz. Bu işlem hesabınızı kalıcı olarak silecek ve verilerinizi sunucularımızdan kaldıracaktır.",
+      "cancel": "İptal",
+      "confirmAction": "Devam Et"
+    },
+    "avatar": {
+      "title": "Avatar",
+      "fallback": "+3",
+      "usage": {
+        "group": "Avatar Grubu",
+        "groupDesc": "Avatarlar, birden fazla kullanıcıyı göstermek için gruplandırılabilir."
+      },
+      "props": {
+        "src": "Avatar resminin kaynak URL'si",
+        "alt": "Avatar resmi için alternatif metin"
+      }
+    },
+    "badge": {
+      "title": "Badge",
+      "variants": {
+        "default": "Varsayılan",
+        "secondary": "İkincil",
+        "destructive": "Yıkıcı",
+        "outline": "Çerçeve"
+      },
+      "sizes": {
+        "small": "Küçük",
+        "large": "Büyük"
+      },
+      "usage": {
+        "status": "Durum Göstergeleri",
+        "statusDesc": "Rozetler durumu veya hali belirtmek için kullanılabilir."
+      },
+      "status": {
+        "active": "Aktif",
+        "userOnline": "Kullanıcı çevrimiçi",
+        "error": "Hata",
+        "connectionError": "Bağlantı başarısız",
+        "pending": "Beklemede",
+        "awaitingApproval": "Onay bekleniyor"
+      },
+      "props": {
+        "variant": "Rozetin görsel stili",
+        "size": "Rozetin boyutu"
+      }
+    },
+    "button": {
+      "title": "Button",
+      "variants": {
+        "primary": "Birincil",
+        "secondary": "İkincil",
+        "outline": "Çerçeve",
+        "ghost": "Hayalet",
+        "delete": "Sil",
+        "disabled": "Devre Dışı"
+      },
+      "sizes": {
         "small": "Küçük",
         "large": "Büyük",
-        "userOnline": "Kullanıcı çevrimiçi",
-        "iconButtons": "Icon'lu Butonlar",
-        "edit": "Düzenle",
+        "fullWidth": "Tam Genişlik"
+      },
+      "usage": {
+        "iconButtons": "İkonlu Butonlar",
+        "iconButtonExamples": "Butonlar ikon içerebilir."
+      },
+      "actions": {
+        "addNew": "Yeni Ekle",
+        "search": "Ara",
+        "settings": "Ayarlar",
+        "startNow": "Şimdi Başla"
+      },
+      "props": {
+        "variant": "Butonun görsel stili",
+        "size": "Butonun boyutu",
+        "className": "Ek sınıf isimleri",
+        "disabled": "Butonu devre dışı bırakır"
+      }
+    },
+    "card": {
+      "title": "Card",
+      "content": {
+        "projectReport": "Proje Raporu",
+        "projectReportDesc": "Aylık ziyaretçi ve dönüşüm istatistikleri.",
+        "totalVisitors": "Toplam Ziyaretçi",
+        "newUsers": "Yeni Kullanıcılar",
+        "conversionRate": "Dönüşüm Oranı",
+        "premiumFeature": "Premium Özellik",
+        "premiumDesc": "Gelişmiş özelliklere erişmek için yükseltin.",
+        "detailedAnalytics": "Detaylı Analitik",
+        "customReports": "Özel Raporlar",
+        "apiAccess": "API Erişimi"
+      },
+      "actions": {
+        "details": "Detaylar",
+        "getReport": "Rapor Al"
+      },
+      "usage": {
+        "feature": "Özellik Kartı",
+        "featureDesc": "Kartlar özellikleri vurgulamak için kullanılabilir."
+      },
+      "props": {
+        "variant": "Kartın görsel stili",
+        "size": "Kartın boyutu",
+        "hover": "Kartın üzerine gelme efekti"
+      }
+    },
+    "checkbox": {
+      "title": "Checkbox",
+      "status": {
+        "selected": "Seçili",
+        "notSelected": "Seçili Değil",
+        "disabled": "Devre Dışı"
+      },
+      "usage": {
+        "formGroup": "Form Grubu",
+        "formGroupDesc": "Onay kutuları bir form grubu içinde kullanılabilir."
+      },
+      "labels": {
+        "yourInterests": "İlgi Alanlarınız"
+      },
+      "options": {
+        "frontend": "Frontend Geliştirme",
+        "backend": "Backend Geliştirme",
+        "mobile": "Mobil Geliştirme"
+      },
+      "props": {
+        "checked": "Kontrollü seçili durumu",
+        "defaultChecked": "Varsayılan seçili durumu",
+        "disabled": "Onay kutusunu devre dışı bırakır",
+        "onCheckedChange": "Seçili durumu değiştiğinde çağrılan olay işleyici"
+      }
+    },
+    "dataGrid": {
+      "title": "Data Grid",
+      "headers": {
+        "fullName": "Ad Soyad",
+        "email": "E-posta"
+      },
+      "actions": {
+        "edit": "Düzenle"
+      },
+      "props": {
+        "data": "Izgarada görüntülenecek veriler",
+        "columns": "Sütun konfigürasyonu",
+        "enablePagination": "Sayfalamayı etkinleştirir",
+        "enableRowSelection": "Satır seçimini etkinleştirir",
+        "enableGlobalFilter": "Global arama filtresini etkinleştirir",
+        "enableExport": "Veri dışa aktarmayı etkinleştirir",
+        "onRowClick": "Satıra tıklandığında çağrılan olay işleyici"
+      }
+    },
+    "dataTable": {
+      "title": "Data Table",
+      "headers": {
         "name": "İsim",
-        "searchByName": "İsme göre ara...",
-        "selectCountry": "Ülke seçin",
-        "characterCounter": "Karakter sayacı ile...",
-        "password": "Şifre...",
-        "disabledInput": "Devre dışı input",
-        "sampleName": "Ahmet Yılmaz",
-        "basicInput": "Temel input...",
-        "emailAddress": "E-posta adresi...",
-        "richTextPlaceholder": "Zengin metin içeriği yazın...",
-        "richTextExample": "<p>Bu bir <strong>zengin metin</strong> örneğidir.</p>",
-        "selectDate": "Tarih seçin...",
-        "selectMonthYear": "Ay/Yıl seçin...",
-        "selectDateRange": "Tarih aralığı seçin...",
+        "email": "E-posta"
+      },
+      "searchPlaceholder": "İsimleri filtrele...",
+      "defaults": {
+        "search": "Ara..."
+      },
+      "props": {
+        "columns": "Sütun konfigürasyonu",
+        "data": "Görüntülenecek veriler",
+        "searchKey": "Arama için kullanılacak anahtar",
+        "searchPlaceholder": "Arama girişi için yer tutucu metin"
+      }
+    },
+    "switch": {
+      "title": "Switch",
+      "labels": {
+        "notifications": "Bildirimler",
+        "emailUpdates": "E-posta Güncellemeleri",
+        "disabled": "Devre Dışı Anahtar"
+      },
+      "props": {
+        "checked": "Kontrollü seçili durumu",
+        "defaultChecked": "Varsayılan seçili durumu",
+        "disabled": "Anahtarı devre dışı bırakır",
+        "onCheckedChange": "Seçili durumu değiştiğinde çağrılan olay işleyici"
+      }
+    },
+    "select": {
+      "title": "Select",
+      "placeholder": "Bir ülke seçin",
+      "options": {
+        "turkey": "Türkiye",
+        "usa": "Amerika Birleşik Devletleri",
+        "germany": "Almanya",
+        "france": "Fransa"
+      },
+      "props": {
+        "selectedValue": "Seçilen değer",
+        "defaultSelectedValue": "Varsayılan seçilen değer",
+        "onValueChange": "Değer değiştiğinde çağrılan olay işleyicisi"
+      }
+    },
+    "textarea": {
+      "title": "Textarea",
+      "placeholders": {
+        "basic": "Mesajınızı buraya yazın.",
+        "counter": "Mesajınızı buraya yazın (maksimum 100 karakter)."
+      },
+      "props": {
+        "maxLength": "İzin verilen maksimum karakter sayısı",
+        "showCount": "Karakter sayısının gösterilip gösterilmeyeceği",
+        "autoResize": "İçeriğe göre otomatik yeniden boyutlandırma yapılıp yapılmayacağı"
+      }
+    },
+    "dialog": {
+      "title": "Dialog",
+      "trigger": "Diyalog Aç",
+      "editProfile": {
+        "title": "Profili Düzenle",
+        "description": "Profilinizde buradan değişiklik yapabilirsiniz. İşiniz bittiğinde kaydet'e tıklayın."
+      },
+      "form": {
+        "name": "İsim",
+        "sampleName": "Zafer Gök",
+        "email": "E-posta"
+      },
+      "actions": {
+        "save": "Değişiklikleri kaydet"
+      },
+      "usage": {
+        "userProfile": "Kullanıcı profili düzenleme",
+        "confirmation": "Onay diyalogları",
+        "forms": "Modal formlar",
+        "details": "Detay açılır pencereleri"
+      },
+      "props": {
+        "open": "Diyaloğun kontrollü açık durumu",
+        "onOpenChange": "Açık durumu değiştiğinde çağrılan olay işleyicisi"
+      }
+    },
+    "dropdownMenu": {
+      "title": "Dropdown Menu",
+      "trigger": "Aç",
+      "labels": {
+        "myAccount": "Hesabım"
+      },
+      "items": {
+        "profile": "Profil",
+        "settings": "Ayarlar",
+        "notifications": "Bildirimler",
+        "emailUpdates": "E-posta Güncellemeleri"
+      },
+      "usage": {
+        "userMenus": "Kullanıcı menüleri",
+        "actions": "İşlem menüleri",
+        "navigation": "Navigasyon açılır menüleri",
+        "options": "Seçenek listeleri"
+      },
+      "props": {
+        "open": "Açılır menünün kontrollü açık durumu",
+        "onOpenChange": "Açık durumu değiştiğinde çağrılan olay işleyicisi"
+      }
+    },
+    "input": {
+      "title": "Input",
+      "placeholders": {
+        "basic": "Temel Giriş",
+        "email": "E-posta",
+        "password": "Şifre",
+        "disabled": "Devre Dışı"
+      },
+      "usage": {
+        "forms": "Form alanları",
+        "userForData": "Kullanıcı verisi alma",
+        "search": "Arama kutuları",
+        "auth": "Giriş/Kayıt formları"
+      },
+      "props": {
+        "type": "HTML giriş tipi (text, email, password, vb.)",
+        "placeholder": "Yer tutucu metni",
+        "disabled": "Girişin devre dışı olup olmadığı",
+        "value": "Girişin değeri"
+      }
+    },
+    "loading": {
+      "title": "Loading",
+      "types": {
+        "spinner": "Döndürücü",
+        "dots": "Noktalar",
+        "pulse": "Nabız"
+      },
+      "usage": {
+        "dataLoading": "Veri yüklenirken göster",
+        "apiCalls": "API çağrıları sırasında",
+        "buttonStates": "Buton yükleme durumları",
+        "transitions": "Sayfa geçişleri"
+      },
+      "props": {
+        "size": "Yükleme göstergesinin boyutu"
+      }
+    },
+    "progress": {
+      "title": "Progress",
+      "labels": {
+        "default": "İlerleme",
+        "loading": "Yükleniyor",
+        "completed": "Tamamlandı"
+      },
+      "usage": {
+        "upload": "Dosya yükleme ilerlemesi",
+        "form": "Form tamamlama durumu",
+        "task": "Görev ilerlemesi",
+        "page": "Sayfa yükleme durumu"
+      },
+      "props": {
+        "value": "Mevcut ilerleme değeri",
+        "max": "Maksimum ilerleme değeri"
+      }
+    },
+    "skeleton": {
+      "title": "Skeleton",
+      "usage": {
+        "placeholder": "Veri yüklenirken yer tutucu göster",
+        "ux": "Kullanıcı deneyimini iyileştirme",
+        "transitions": "Sayfa geçişleri",
+        "api": "API beklenirken görsel tutarlılık"
+      },
+      "props": {
+        "width": "İskeletin genişliği",
+        "height": "İskeletin yüksekliği"
+      }
+    },
+    "tabs": {
+      "title": "Tabs",
+      "labels": {
+        "account": "Hesap",
+        "password": "Şifre",
+        "name": "İsim",
+        "sampleName": "Zafer Gök",
+        "username": "Kullanıcı Adı",
+        "currentPassword": "Mevcut Şifre",
+        "newPassword": "Yeni Şifre"
+      },
+      "usage": {
+        "settings": "Ayarlar sayfaları",
+        "profile": "Profil düzenleme formları",
+        "dashboard": "Ayrı gösterge paneli bölümleri",
+        "content": "Kategorize edilmiş içerik"
+      },
+      "props": {
+        "defaultValue": "Başlangıçta oluşturulduğunda aktif olması gereken sekmenin değeri",
+        "value": "Aktifleştirilecek sekmenin kontrollü değeri",
+        "onValueChange": "Değer değiştiğinde çağrılan olay işleyicisi"
+      }
+    },
+    "slider": {
+      "title": "Slider",
+      "labels": {
+        "volume": "Ses Seviyesi",
+        "priceRange": "Fiyat Aralığı",
+        "quality": "Kalite"
+      },
+      "usage": {
+        "volume": "Ses/parlaklık kontrolleri",
+        "price": "Fiyat aralığı seçimi",
+        "filter": "Filtreleme seçenekleri",
+        "range": "Değer aralığı belirleme"
+      },
+      "props": {
+        "defaultValue": "Kaydırıcının varsayılan değeri",
+        "value": "Kaydırıcının kontrollü değeri",
+        "max": "Aralık için maksimum değer",
+        "min": "Aralık için minimum değer",
+        "step": "Adım aralığı"
+      }
+    },
+    "separator": {
+      "title": "Separator",
+      "example": {
+        "section1": "Bölüm 1",
+        "content1": "İlk bölüm için içerik.",
+        "section2": "Bölüm 2",
+        "content2": "İkinci bölüm için içerik.",
+        "left": "Sol",
+        "right": "Sağ"
+      },
+      "usage": {
+        "content": "İçerik bölümlerini ayırma",
+        "menu": "Menü öğelerini gruplama",
+        "card": "Kart bölümü ayırmaları",
+        "form": "Form alanlarını organize etme"
+      },
+      "props": {
+        "orientation": "Ayırıcının yönü",
+        "className": "Ek CSS sınıfları"
+      }
+    },
+    "popover": {
+      "title": "Popover",
+      "trigger": "Popover Aç",
+      "example": {
+        "dimensions": "Boyutlar",
+        "description": "Katman için boyutları ayarlayın.",
+        "width": "Genişlik",
+        "height": "Yükseklik"
+      },
+      "usage": {
+        "settings": "Hızlı ayar menüleri",
+        "info": "Ek bilgi gösterme",
+        "help": "Form yardımcı içeriği",
+        "menu": "Bağlam menüleri"
+      },
+      "props": {
+        "open": "Açılır pencerenin kontrollü açık durumu",
+        "onOpenChange": "Açık durumu değiştiğinde çağrılan olay işleyicisi"
+      }
+    },
+    "tooltip": {
+      "title": "Tooltip",
+      "example": {
+        "standard": "Tooltip İçeriği",
+        "hover": "Üzerine Gel",
+        "right": "Sağ Taraf Tooltip",
+        "rightBtn": "Sağ Tooltip",
+        "bottom": "Alt Taraf Tooltip",
+        "bottomBtn": "Alt Tooltip",
+        "disabled": "Devre Dışı Tooltip",
+        "disabledBtn": "Devre Dışı Buton"
+      },
+      "usage": {
+        "buttons": "Buton açıklamaları",
+        "forms": "Form alanı yardım metinleri",
+        "abbreviations": "Kısaltılmış metin açıklamaları",
+        "icons": "İkon anlamlarını açıklama"
+      },
+      "props": {
+        "content": "İpucunda görüntülenecek içerik",
+        "side": "Tetikleyiciye göre tercih edilen görüntüleme tarafı",
+        "align": "Tetikleyiciye göre tercih edilen hizalama",
+        "delay": "Örnek gecikme süresi",
+        "disabled": "İpucunun devre dışı olup olmadığı"
+      }
+    },
+    "scrollArea": {
+      "title": "Scroll Area",
+      "listItem": "Liste Öğesi",
+      "usage": {
+        "lists": "Uzun liste görünümleri",
+        "content": "Sınırlı yükseklikteki içerik",
+        "chat": "Sohbet mesaj geçmişi",
+        "menu": "Navigasyon menüleri"
+      }
+    },
+    "richTextEditor": {
+      "title": "Rich Text Editor",
+      "placeholder": "Bir şeyler yazın...",
+      "exampleValue": "<p>Merhaba Dünya! 🌎</p>",
+      "usage": {
+        "blog": "Blog yazıları",
+        "product": "Ürün açıklamaları",
+        "email": "E-posta düzenleyicileri",
+        "comments": "Yorumlarda zengin içerik"
+      },
+      "props": {
+        "value": "HTML içerik değeri",
+        "onChange": "İçerik değiştiğinde geri çağırım",
+        "placeholder": "Boş olduğunda yer tutucu metin"
+      }
+    },
+    "modernDatePicker": {
+      "title": "Modern Date Picker",
+      "labels": {
+        "birthDate": "Doğum Tarihi"
+      },
+      "placeholder": "Bir tarih seçin",
+      "usage": {
+        "birthDate": "Doğum tarihi seçimi",
+        "event": "Etkinlik tarihi belirleme",
+        "report": "Rapor tarih aralığı",
+        "reservation": "Rezervasyon tarihi seçimi"
+      },
+      "props": {
+        "value": "Seçilen tarih değeri",
+        "onChange": "Tarih değiştiğinde geri çağırım",
+        "placeholder": "Yer tutucu metni",
+        "disabled": "Seçicinin devre dışı olup olmadığı"
+      }
+    },
+    "monthYearPicker": {
+      "title": "Month Year Picker",
+      "labels": {
+        "graduationDate": "Mezuniyet Tarihi"
+      },
+      "placeholder": "Ay/Yıl Seçin",
+      "usage": {
+        "graduation": "Mezuniyet tarihi",
+        "work": "İş deneyimi tarihleri",
+        "creditCard": "Kredi kartı son kullanma tarihi",
+        "report": "Rapor dönemi seçimi"
+      },
+      "props": {
+        "value": "Seçilen tarih değeri",
+        "onChange": "Tarih değiştiğinde geri çağırım",
+        "placeholder": "Yer tutucu metni",
+        "disabled": "Seçicinin devre dışı olup olmadığı"
+      }
+    },
+    "dateRangePicker": {
+      "title": "Date Range Picker",
+      "labels": {
+        "holidayDates": "Tatil Tarihleri",
         "start": "Başlangıç",
         "end": "Bitiş"
       },
-      "extraDescriptions": {
-        "inputType": "Input tipi (text, email, password, vb.)",
-        "groupMenuItems": "Menü öğelerini grupla",
-        "showAdditionalInfo": "Ek bilgileri göster",
-        "explainIconMeanings": "İkon anlamlarını açıkla",
-        "richContentInComments": "Yorumlarda zengin içerik",
-        "birthdateInput": "Doğum tarihi girişi",
-        "iconButtonExamples": "Icon ile birlikte kullanılan buton örnekleri",
-        "buttonVariant": "Buton görünüm varyantı",
-        "additionalCssClasses": "Ek CSS sınıfları",
-        "disableButton": "Butonu devre dışı bırakır",
-        "cardComponent": "Kart bileşeni - içerik gruplamak için",
-        "featureCard": "Özellik kartı örneği",
-        "cardVariant": "Kart görünüm varyantı",
-        "hoverEffectType": "Hover efekt türü",
-        "checkboxFormGroup": "Form içinde checkbox grubu",
-        "checkboxChecked": "Checkbox seçili mi",
-        "defaultCheckedState": "Varsayılan seçili durumu",
-        "checkboxDisabled": "Checkbox devre dışı mı",
-        "selectionChangeCallback": "Seçim değişiklik callback",
-        "dataGridComponent": "Gelişmiş veri tablosu",
-        "tableColumnDefinitions": "Tablo sütun tanımları",
-        "enablePagination": "Sayfalama etkinleştir",
-        "enableRowSelection": "Satır seçimi etkinleştir",
-        "enableGlobalSearch": "Global arama etkinleştir",
-        "enableExport": "Dışa aktarma etkinleştir",
-        "rowClickEvent": "Satır tıklama olayı",
-        "dataTableComponent": "Basit veri tablosu",
-        "searchColumnKey": "Arama sütun anahtarı",
-        "switchChecked": "Switch açık mı",
-        "defaultOpenState": "Varsayılan açık durumu",
-        "switchDisabled": "Switch devre dışı mı",
-        "statusChangeCallback": "Durum değişiklik callback",
-        "selectedValue": "Seçili değer",
-        "defaultSelectedValue": "Varsayılan seçili değer",
-        "valueChangeCallback": "Değer değişiklik callback",
-        "maxCharacterCount": "Maksimum karakter sayısı",
-        "showCharacterCounter": "Karakter sayacı göster",
-        "autoResize": "Otomatik boyutlandır",
-        "dialogOpenState": "Dialog açık durumu",
-        "dialogStateChangeCallback": "Dialog durum değişiklik callback",
-        "editUserProfile": "Kullanıcı profili düzenle",
-        "confirmationDialogs": "Onay diyalogları",
-        "modalForms": "Modal formları",
-        "detailPopups": "Detay popup'ları",
-        "menuOpenState": "Menü açık durumu",
-        "menuStateChangeCallback": "Menü durum değişiklik callback",
-        "userMenus": "Kullanıcı menüleri",
-        "actionMenus": "İşlem menüleri",
-        "navigationDropdowns": "Navigasyon dropdown'ları",
-        "optionLists": "Seçenek listeleri",
-        "formFields": "Form alanları",
-        "getUserData": "Kullanıcı verisi al",
-        "searchBoxes": "Arama kutuları",
-        "loginRegisterForms": "Giriş/kayıt formları",
-        "inputDisabledState": "Input devre dışı durumu",
-        "inputValue": "Input değeri",
-        "showWhileDataLoading": "Veri yüklenirken göster",
-        "duringApiCalls": "API çağrıları sırasında",
-        "buttonLoadingStates": "Buton yükleme durumları",
-        "pageTransitions": "Sayfa geçişleri",
-        "fileUploadProgress": "Dosya yükleme ilerlemesi",
-        "formCompletionStatus": "Form tamamlama durumu",
-        "taskProgress": "Görev ilerlemesi",
-        "pageLoadingStatus": "Sayfa yükleme durumu",
-        "progressValue": "İlerleme değeri",
-        "maximumValue": "Maksimum değer",
-        "showPlaceholderWhileDataLoads": "Veri yüklenirken yer tutucu göster",
-        "improveUserExperience": "Kullanıcı deneyimini iyileştir",
-        "visualConsistencyWhileWaitingApi": "API beklerken görsel tutarlılık",
-        "skeletonWidth": "İskelet genişliği",
-        "skeletonHeight": "İskelet yüksekliği",
-        "defaultActiveTab": "Varsayılan aktif sekme",
-        "controlledActiveTab": "Kontrollü aktif sekme",
-        "tabChangeCallback": "Sekme değişiklik callback",
-        "settingsPages": "Ayarlar sayfaları",
-        "profileEditingForms": "Profil düzenleme formları",
-        "separateDashboardSections": "Ayrı dashboard bölümleri",
-        "categorizedContent": "Kategorize edilmiş içerik",
-        "defaultValues": "Varsayılan değerler",
-        "controlledValues": "Kontrollü değerler",
-        "minimumValue": "Minimum değer",
-        "incrementAmount": "Artış miktarı",
-        "volumeBrightnessControls": "Ses/parlaklık kontrolleri",
-        "priceRangeSelection": "Fiyat aralığı seçimi",
-        "filteringOptions": "Filtreleme seçenekleri",
-        "valueRangeDetermination": "Değer aralığı belirleme"
+      "placeholder": "Tarih aralığı seçin",
+      "usage": {
+        "vacation": "Tatil tarihi aralığı seçimi",
+        "report": "Rapor dönemi belirleme",
+        "reservation": "Rezervasyon tarih aralığı",
+        "project": "Proje zaman çizelgesi planlama"
+      },
+      "props": {
+        "value": "Seçilen tarih aralığı değeri",
+        "onChange": "Aralık değiştiğinde geri çağırım",
+        "disabled": "Seçicinin devre dışı olup olmadığı"
+      }
+    },
+    "singleDatePicker": {
+      "title": "Single Date Picker",
+      "labels": {
+        "appointmentDate": "Randevu Tarihi"
+      },
+      "placeholder": "Tarih seçin",
+      "usage": {
+        "appointment": "Randevu tarihi seçimi",
+        "deadline": "Son tarih belirleme",
+        "event": "Etkinlik tarihi seçimi",
+        "birthdate": "Doğum tarihi girişi"
+      },
+      "props": {
+        "value": "Seçilen tarih değeri",
+        "onChange": "Tarih değiştiğinde geri çağırım",
+        "placeholder": "Yer tutucu metni",
+        "disabled": "Seçicinin devre dışı olup olmadığı"
+      }
+    },
+    "modernDrawer": {
+      "title": "Modern Drawer",
+      "description": "Birden fazla yerleşim seçeneğine sahip modern, erişilebilir bir çekmece bileşeni.",
+      "openButton": "Çekmeceyi Aç",
+      "drawerTitle": "Çekmece Başlığı",
+      "content": "Bu çekmece içindeki içeriktir. Buraya herhangi bir şey koyabilirsiniz.",
+      "props": {
+        "open": "Çekmecenin kontrollü açık durumu",
+        "onOpenChange": "Açık durumu değiştiğinde çağrılan olay işleyicisi",
+        "placement": "Çekmecenin konumu (sağ, sol, üst, alt)"
+      }
+    },
+    "passwordInput": {
+      "title": "Password Input",
+      "description": "Göster/gizle geçişine sahip bir şifre giriş bileşeni.",
+      "label": "Şifre",
+      "placeholder": "Şifrenizi girin",
+      "props": {
+        "showToggle": "Görünürlük geçişinin gösterilip gösterilmeyeceği"
+      }
+    },
+    "numberInput": {
+      "title": "Number Input",
+      "description": "Artırma/azaltma kontrollerine sahip bir sayı giriş bileşeni.",
+      "label": "Miktar",
+      "props": {
+        "value": "Girişin kontrollü değeri",
+        "onChange": "Değer değiştiğinde çağrılan olay işleyicisi",
+        "min": "Minimum değer",
+        "max": "Maksimum değer"
+      }
+    },
+    "calendar": {
+      "title": "Calendar",
+      "description": "Tarihleri görüntülemek için bir takvim bileşeni.",
+      "props": {
+        "mode": "Takzimin seçim modu"
+      }
+    },
+    "collapsible": {
+      "title": "Collapsible",
+      "description": "Bir paneli genişletip daraltan etkileşimli bir bileşen.",
+      "hideContent": "İçeriği Gizle",
+      "showContent": "İçeriği Göster",
+      "content": "Bu içerik daraltılabilir veya genişletilebilir.",
+      "props": {
+        "open": "Bileşenin kontrollü açık durumu"
+      }
+    },
+    "formError": {
+      "title": "Form Error",
+      "description": "Bir form alanı için hata mesajı görüntüler.",
+      "label": "E-posta",
+      "message": "Geçersiz e-posta adresi",
+      "props": {
+        "children": "Hata mesajı içeriği"
+      }
+    },
+    "stepper": {
+      "title": "Stepper",
+      "description": "Bir adım dizisindeki ilerlemeyi görüntüler.",
+      "step1": "Adım 1",
+      "step2": "Adım 2",
+      "step3": "Adım 3",
+      "props": {
+        "currentStep": "Mevcut adım indeksi (1 tabanlı)"
+      }
+    },
+    "dynamicBreadcrumb": {
+      "title": "Dynamic Breadcrumb",
+      "description": "Mevcut kaynağa giden yolu görüntüler.",
+      "home": "Anasayfa",
+      "products": "Ürünler",
+      "current": "Mevcut Sayfa"
+    },
+    "enhancedDataTable": {
+      "title": "Enhanced Data Table",
+      "description": "Sıralama ve filtreleme özellikli gelişmiş bir veri tablosu.",
+      "headers": {
+        "name": "İsim",
+        "email": "E-posta"
+      },
+      "props": {
+        "data": "Tabloda görüntülenecek veri"
+      }
+    },
+    "accessibilityEnhancer": {
+      "title": "Accessibility Enhancer",
+      "description": "Erişilebilirliği artırmak için bir yardımcı araç.",
+      "content": "Bu içerik erişilebilir bir bölge ile sarılmıştır.",
+      "skipLink": "Ana içeriğe atla",
+      "props": {
+        "label": "Erişilebilir bölge için etiket"
+      }
+    },
+    "enhancedPagination": {
+      "title": "Enhanced Pagination",
+      "description": "Sayfalarda gezinmek için bir sayfalandırma bileşeni.",
+      "prev": "Önceki",
+      "next": "Sonraki",
+      "props": {
+        "page": "Mevcut sayfa numarası"
+      }
+    },
+    "enhancedSearchFilters": {
+      "title": "Enhanced Search Filters",
+      "description": "Gelişmiş arama filtrelemesi için bir bileşen.",
+      "placeholder": "Ara...",
+      "filters": {
+        "category": "Kategori",
+        "price": "Fiyat"
+      },
+      "props": {
+        "onFilterChange": "Filtreler değiştiğinde geri çağırım"
+      }
+    },
+    "enterpriseErrorBoundary": {
+      "title": "Enterprise Error Boundary",
+      "description": "Hataları yakalamak ve görüntülemek için bir sınır.",
+      "content": "Bu alan bir hata sınırı ile korunmaktadır.",
+      "props": {
+        "children": "Korunacak içerik"
+      }
+    },
+    "labelAdvanced": {
+      "title": "Label Advanced",
+      "description": "Zorunlu gösterge desteğine sahip gelişmiş bir etiket bileşeni.",
+      "label": "Ad Soyad",
+      "placeholder": "Ahmet Yılmaz",
+      "props": {
+        "htmlFor": "Bu etiketin ait olduğu elemanın ID'si"
+      }
+    },
+    "commandMenu": {
+      "title": "Command Menu",
+      "description": "Hızlı gezinme ve eylemler için bir komut menüsü.",
+      "pressToOpen": "Komutları açmak için ⌘K tuşuna basın",
+      "openButton": "Komut Menüsünü Aç",
+      "props": {
+        "commands": "Görüntülenecek komutların listesi"
+      }
+    },
+    "properties": {
+      "singleMultipleMode": "Tekli veya çoklu mod",
+      "defaultOpenValues": "Varsayılan açık değerler",
+      "controlledOpenValues": "Kontrollü açık değerler",
+      "valueChangeCallback": "Değer değişikliği geri çağırımı",
+      "alertVariant": "Uyarının görsel stili",
+      "dialogOpen": "Diyalog açık durumu",
+      "dialogOpenChangeCallback": "Açık durumu değiştiğinde çağrılan olay işleyici"
+    },
+    "accessibleList": {
+      "title": "Accessible List",
+      "description": "Semantik erişilebilir liste",
+      "items": {
+        "1": "Birinci erişilebilir öğe",
+        "2": "İkinci erişilebilir öğe",
+        "3": "Üçüncü erişilebilir öğe"
+      },
+      "props": {
+        "items": "Liste öğeleri"
+      }
+    },
+    "themeSwitcher": {
+      "title": "Theme Switcher",
+      "description": "Açık ve koyu tema arasında geçiş yap",
+      "props": {
+        "variant": "Değiştirici varyantı",
+        "showLabel": "Tema etiketini göster",
+        "size": "Buton boyutu"
+      }
+    },
+    "languageSwitcher": {
+      "title": "Language Switcher",
+      "description": "Türkçe ve İngilizce arasında geçiş yap",
+      "props": {
+        "variant": "Değiştirici varyantı",
+        "showLabel": "Dil etiketini göster",
+        "size": "Buton boyutu"
+      }
+    },
+    "pomodoroTimer": {
+      "title": "Pomodoro Timer",
+      "description": "Yüzen Pomodoro sayacı widget'ı",
+      "session": "Oturum 1 • 0 tamamlandı",
+      "focus": "Odaklan",
+      "helperText": "Sayacı başlatmak için yukarıdaki butonlara tıklayın (sol alt köşede görünür)",
+      "props": {
+        "className": "Ek CSS sınıfları",
+        "type": "Sayaç tipi"
       }
     }
   },
@@ -2510,115 +1977,115 @@
       "description": "Starkon ile zaten ürün çıkarmış binlerce geliştiriciye katılın. Bir sonraki projenizi bugün geliştirmeye başlayın.",
       "startBuilding": "Şimdi Geliştirmeye Başlayın",
       "viewSource": "Kaynak Kodunu Görüntüle"
-    }
-  },
-  "corporate": {
-    "about": {
-      "title": "Hakkımızda",
-      "description": "Modern teknolojilerle müşterilerimize en iyi dijital çözümleri sunmaya odaklanmış bir ekibiz.",
-      "stats": {
-        "founded": "Kuruluş",
-        "employees": "Çalışan",
-        "location": "Lokasyon",
-        "projects": "Projeler"
-      },
-      "mission": {
-        "title": "Misyonumuz",
-        "description": "İşletmelerin dijital dönüşüm yolculuklarında onlara rehberlik etmek ve teknoloji gücüyle büyümelerine destek olmak."
-      },
-      "vision": {
-        "title": "Vizyonumuz",
-        "description": "Teknoloji ve yaratıcılığı birleştirerek, müşterilerimizin hayallerini gerçeğe dönüştüren lider dijital ajans olmak."
-      },
-      "team": {
-        "title": "Ekibimiz",
-        "description": "Deneyimli ve tutkulu ekibimizle en iyi çözümleri sunuyoruz."
-      }
     },
-    "blog": {
-      "title": "Blog",
-      "description": "Teknoloji, yazılım geliştirme ve dijital dönüşüm hakkında güncel içerikler ve uzman görüşleri.",
-      "featured": {
-        "badge": "Öne Çıkanlar",
-        "title": "Öne Çıkan Yazılar"
-      },
-      "search": {
-        "placeholder": "Blog yazılarında ara..."
-      },
-      "filter": {
-        "all": "Tümü"
-      },
-      "allPosts": {
-        "title": "Tüm Yazılar",
-        "results": "{{count}} yazı bulundu"
-      },
-      "noResults": "Aradığınız kriterlere uygun yazı bulunamadı.",
-      "newsletter": {
-        "title": "Güncel Kalın",
-        "description": "Yeni blog yazılarımız ve teknoloji güncellemeleri hakkında bilgi almak için e-bültenimize abone olun.",
-        "placeholder": "E-posta adresiniz",
-        "button": "Abone Ol"
-      }
-    },
-    "contact": {
-      "hero": {
-        "title": "İletişime Geçin",
-        "description": "Projeleriniz hakkında konuşmak için bizimle iletişime geçin. Size nasıl yardımcı olabileceğimizi öğrenmek isteriz."
-      },
-      "info": {
-        "email": {
-          "title": "E-posta"
+    "corporate": {
+      "about": {
+        "title": "Hakkımızda",
+        "description": "Modern teknolojilerle müşterilerimize en iyi dijital çözümleri sunmaya odaklanmış bir ekibiz.",
+        "stats": {
+          "founded": "Kuruluş",
+          "employees": "Çalışan",
+          "location": "Lokasyon",
+          "projects": "Projeler"
         },
-        "phone": {
-          "title": "Telefon"
+        "mission": {
+          "title": "Misyonumuz",
+          "description": "İşletmelerin dijital dönüşüm yolculuklarında onlara rehberlik etmek ve teknoloji gücüyle büyümelerine destek olmak."
         },
-        "address": {
-          "title": "Adres",
-          "value": "Maslak Mahallesi, Büyükdere Cd. No:123, 34485 Sarıyer/İstanbul"
+        "vision": {
+          "title": "Vizyonumuz",
+          "description": "Teknoloji ve yaratıcılığı birleştirerek, müşterilerimizin hayallerini gerçeğe dönüştüren lider dijital ajans olmak."
         },
-        "hours": {
-          "title": "Çalışma Saatleri",
-          "value": "Pazartesi - Cuma: 09:00 - 18:00"
+        "team": {
+          "title": "Ekibimiz",
+          "description": "Deneyimli ve tutkulu ekibimizle en iyi çözümleri sunuyoruz."
         }
       },
-      "form": {
-        "title": "Mesaj Gönder",
-        "name": {
-          "label": "Ad Soyad",
-          "placeholder": "Adınızı girin"
+      "blog": {
+        "title": "Blog",
+        "description": "Teknoloji, yazılım geliştirme ve dijital dönüşüm hakkında güncel içerikler ve uzman görüşleri.",
+        "featured": {
+          "badge": "Öne Çıkanlar",
+          "title": "Öne Çıkan Yazılar"
         },
-        "email": {
-          "label": "E-posta",
-          "placeholder": "E-posta adresinizi girin"
+        "search": {
+          "placeholder": "Blog yazılarında ara..."
         },
-        "subject": {
-          "label": "Konu",
-          "placeholder": "Mesaj konusunu girin"
+        "filter": {
+          "all": "Tümü"
         },
-        "message": {
-          "label": "Mesaj",
-          "placeholder": "Mesajınızı yazın..."
+        "allPosts": {
+          "title": "Tüm Yazılar",
+          "results": "{{count}} yazı bulundu"
         },
-        "submitting": "Gönderiliyor...",
-        "submit": "Mesaj Gönder"
+        "noResults": "Aradığınız kriterlere uygun yazı bulunamadı.",
+        "newsletter": {
+          "title": "Güncel Kalın",
+          "description": "Yeni blog yazılarımız ve teknoloji güncellemeleri hakkında bilgi almak için e-bültenimize abone olun.",
+          "placeholder": "E-posta adresiniz",
+          "button": "Abone Ol"
+        }
       },
-      "office": {
-        "title": "Ofisimiz",
-        "main": {
-          "title": "Ana Ofis",
-          "address": "Maslak Mahallesi, Büyükdere Cd. No:123, 34485 Sarıyer/İstanbul"
+      "contact": {
+        "hero": {
+          "title": "İletişime Geçin",
+          "description": "Projeleriniz hakkında konuşmak için bizimle iletişime geçin. Size nasıl yardımcı olabileceğimizi öğrenmek isteriz."
         },
-        "hours": {
-          "title": "Çalışma Saatleri",
-          "weekdays": "Pazartesi - Cuma: 09:00 - 18:00",
-          "saturday": "Cumartesi: 10:00 - 15:00",
-          "sunday": "Pazar: Kapalı"
+        "info": {
+          "email": {
+            "title": "E-posta"
+          },
+          "phone": {
+            "title": "Telefon"
+          },
+          "address": {
+            "title": "Adres",
+            "value": "Maslak Mahallesi, Büyükdere Cd. No:123, 34485 Sarıyer/İstanbul"
+          },
+          "hours": {
+            "title": "Çalışma Saatleri",
+            "value": "Pazartesi - Cuma: 09:00 - 18:00"
+          }
         },
-        "social": {
-          "title": "Sosyal Medya"
+        "form": {
+          "title": "Mesaj Gönder",
+          "name": {
+            "label": "Ad Soyad",
+            "placeholder": "Adınızı girin"
+          },
+          "email": {
+            "label": "E-posta",
+            "placeholder": "E-posta adresinizi girin"
+          },
+          "subject": {
+            "label": "Konu",
+            "placeholder": "Mesaj konusunu girin"
+          },
+          "message": {
+            "label": "Mesaj",
+            "placeholder": "Mesajınızı yazın..."
+          },
+          "submitting": "Gönderiliyor...",
+          "submit": "Mesaj Gönder"
         },
-        "map": {
-          "placeholder": "Harita entegrasyonu burada olacak"
+        "office": {
+          "title": "Ofisimiz",
+          "main": {
+            "title": "Ana Ofis",
+            "address": "Maslak Mahallesi, Büyükdere Cd. No:123, 34485 Sarıyer/İstanbul"
+          },
+          "hours": {
+            "title": "Çalışma Saatleri",
+            "weekdays": "Pazartesi - Cuma: 09:00 - 18:00",
+            "saturday": "Cumartesi: 10:00 - 15:00",
+            "sunday": "Pazar: Kapalı"
+          },
+          "social": {
+            "title": "Sosyal Medya"
+          },
+          "map": {
+            "placeholder": "Harita entegrasyonu burada olacak"
+          }
         }
       }
     }
