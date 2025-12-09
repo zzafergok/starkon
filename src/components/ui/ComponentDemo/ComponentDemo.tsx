@@ -166,7 +166,7 @@ export function ComponentDemo({
 
           {/* Modern Tab İçerikleri */}
           <Tabs defaultValue='code' className='w-full'>
-            <TabsList className='w-full justify-start bg-neutral-100/70 dark:bg-neutral-800/70 backdrop-blur-sm border border-neutral-200/50 dark:border-neutral-700/50 p-1.5 rounded-xl'>
+            <TabsList className='w-full h-auto justify-start bg-neutral-100/70 dark:bg-neutral-800/70 backdrop-blur-sm border border-neutral-200/50 dark:border-neutral-700/50 p-1.5 rounded-xl'>
               <TabsTrigger
                 value='code'
                 className='data-[state=active]:bg-white dark:data-[state=active]:bg-neutral-700 data-[state=active]:text-neutral-900 dark:data-[state=active]:text-neutral-50 data-[state=active]:shadow-sm font-medium px-4 py-2.5 rounded-md flex items-center gap-2'
@@ -457,7 +457,7 @@ export function ComponentDemo({
 
             {/* Gelişmiş Tab Sistemi */}
             <Tabs defaultValue='code' className='w-full'>
-              <TabsList className='w-full justify-start bg-neutral-100/70 dark:bg-neutral-800/70 backdrop-blur-sm border border-neutral-200/50 dark:border-neutral-700/50 p-1.5 rounded-xl'>
+              <TabsList className='w-full h-auto justify-start bg-neutral-100/70 dark:bg-neutral-800/70 backdrop-blur-sm border border-neutral-200/50 dark:border-neutral-700/50 p-1.5 rounded-xl'>
                 <TabsTrigger
                   value='code'
                   className='data-[state=active]:bg-white dark:data-[state=active]:bg-neutral-700 data-[state=active]:text-neutral-900 dark:data-[state=active]:text-neutral-50 data-[state=active]:shadow-sm font-medium px-6 py-3 rounded-lg flex items-center gap-2'
