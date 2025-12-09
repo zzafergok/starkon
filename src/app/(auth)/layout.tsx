@@ -7,9 +7,9 @@ import { ProtectedRoute } from '@/components/auth/ProtectedRoute'
 export default function AuthLayout({ children }: { children: React.ReactNode }) {
   return (
     <ProtectedRoute requireAuth={true}>
-      <div className='min-h-screen flex flex-col lg:h-screen lg:overflow-hidden'>
+      <div className='min-h-screen flex flex-col'>
         <AuthHeader />
-        <main className='flex-1 relative lg:overflow-hidden'>{children}</main>
+        <main className='flex-1 relative'>{children}</main>
       </div>
     </ProtectedRoute>
   )
