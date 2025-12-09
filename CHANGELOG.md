@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.0](///compare/v0.2.0...v0.3.0) (2025-12-09)
+
+### Features
+
+* Implement forgot and reset password features with dedicated components, hooks, and schemas. 3b15112
+
 ## [0.2.0](///compare/v0.1.0...v0.2.0) (2025-12-08)
 
 ### Features
