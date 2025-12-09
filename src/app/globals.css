@@ -241,7 +241,7 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-  scrollbar-gutter: stable;
+  scrollbar-gutter: unset !important;
   margin: 0;
 }
 
@@ -700,12 +700,7 @@ nav {
 }
 
 /* Fix Radix UI Dropdown Scroll Lock Issue */
-/* Prevent body from being locked when dropdown opens */
-body[style*='overflow: hidden'] {
-  overflow: visible !important;
-  padding-right: 0 !important;
-  pointer-events: auto !important;
-}
+/* Reverted to default behavior - Radix handles padding automatically */
 
 .code-preview {
   font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
