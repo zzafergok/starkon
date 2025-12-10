@@ -42,7 +42,7 @@ let isRefreshing = false
 let requestQueue: QueueItem[] = []
 
 const createAxiosInstance = (): AxiosInstance => {
-  const baseURL = process.env.NEXT_PUBLIC_API_URL || 'https://api.starkon-kanban.com'
+  const baseURL = process.env.NEXT_PUBLIC_API_URL
 
   return axios.create({
     baseURL,
