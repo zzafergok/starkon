@@ -68,6 +68,7 @@ export function SettingsThemeSection() {
       noteText={t('theme.note')}
       preferenceTitle={t('theme.preference')}
       preferenceDescription={t('theme.description')}
+      className='h-full flex-1'
     />
   )
 }

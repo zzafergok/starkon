@@ -81,7 +81,7 @@ export function SettingsSelector({
   const currentOption = options.find((opt) => opt.value === value)
 
   return (
-    <Card className={className}>
+    <Card className={cn('flex flex-col', className)}>
       <CardHeader>
         <CardTitle className='flex items-center space-x-2'>
           <TitleIcon className='h-5 w-5' />
@@ -89,7 +89,7 @@ export function SettingsSelector({
         </CardTitle>
         <CardDescription>{description}</CardDescription>
       </CardHeader>
-      <CardContent className='space-y-6'>
+      <CardContent className='space-y-6 flex-1'>
         <div className='flex items-center justify-between'>
           <div>
             <h4 className='text-sm font-medium'>{preferenceTitle}</h4>

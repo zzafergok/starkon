@@ -78,6 +78,7 @@ export function SettingsLanguageSection() {
       noteText={t('language.note')}
       preferenceTitle={t('language.preference')}
       preferenceDescription={t('language.description')}
+      className='h-full flex-1'
     />
   )
 }

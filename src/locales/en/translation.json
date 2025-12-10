@@ -1425,6 +1425,12 @@
     "applying": "Applying theme...",
     "note": "Theme changes are applied instantly and saved in your browser"
   },
+  "settings": {
+    "themeAndAppearance": "Theme & Appearance",
+    "customizeInterface": "Customize interface",
+    "languageAndRegion": "Language & Region",
+    "languagePreferences": "Language preferences"
+  },
   "validation": {
     "required": "This field is required",
     "email": "Please enter a valid email address",
@@ -1898,14 +1904,39 @@
         "twoFactorConfigured": "Configured with Google Authenticator"
       },
       "appearance": {
-        "title": "Appearance & Theme",
-        "description": "Customize interface theme and language preferences",
-        "displaySettings": "Display Settings",
-        "compactMode": "Compact mode",
-        "compactModeDesc": "Compressed view to see more content",
-        "reduceAnimations": "Reduce animations",
-        "reduceAnimationsDesc": "Limit animations for performance"
+        "title": "Appearance Settings",
+        "description": "Customize the look and feel of the application."
       }
+    },
+    "theme": {
+      "light": {
+        "title": "Light Theme",
+        "description": "Light colored interface"
+      },
+      "dark": {
+        "title": "Dark Theme",
+        "description": "Dark colored interface"
+      },
+      "active": "Active: {{theme}}",
+      "note": "Theme changes apply immediately and are saved in your browser",
+      "preference": "Theme Preference",
+      "description": "Select application appearance"
+    },
+    "language": {
+      "turkish": {
+        "title": "Turkish",
+        "description": "Turkish interface",
+        "native": "Türkçe"
+      },
+      "english": {
+        "title": "English",
+        "description": "English interface",
+        "native": "English"
+      },
+      "active": "Active: {{language}}",
+      "note": "Language changes apply immediately and are saved in your browser",
+      "preference": "Language Preference",
+      "description": "Select application language"
     },
     "users": {
       "title": "Users",

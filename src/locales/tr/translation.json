@@ -1420,6 +1420,12 @@
     "applying": "Tema uygulanıyor...",
     "note": "Tema değişiklikleri anında uygulanır ve tarayıcınızda saklanır"
   },
+  "settings": {
+    "themeAndAppearance": "Görünüm Ayarları",
+    "customizeInterface": "Arayüzü özelleştirin",
+    "languageAndRegion": "Dil ve Bölge",
+    "languagePreferences": "Dil tercihleri"
+  },
   "validation": {
     "required": "Bu alan zorunludur",
     "email": "Lütfen geçerli bir e-posta adresi girin",

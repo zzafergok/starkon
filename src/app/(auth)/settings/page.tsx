@@ -1,6 +1,7 @@
 'use client'
 
-import React, { useState } from 'react'
+import { useState } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 import { useTranslation } from 'react-i18next'
 import {
@@ -57,36 +58,43 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { useAuth } from '@/hooks/useAuth'
 
 interface NotificationSettings {
-  emailNotifications: boolean
-  pushNotifications: boolean
-  smsNotifications: boolean
-  marketingEmails: boolean
-  securityAlerts: boolean
-  productUpdates: boolean
   weeklyDigest: boolean
+  securityAlerts: boolean
+  marketingEmails: boolean
+  productUpdates: boolean
+  smsNotifications: boolean
+  pushNotifications: boolean
+  emailNotifications: boolean
 }
 
 interface PrivacySettings {
-  profileVisibility: 'public' | 'private' | 'friends'
   showEmail: boolean
   showPhone: boolean
   allowIndexing: boolean
   dataProcessing: boolean
+  profileVisibility: 'public' | 'private' | 'friends'
 }
 
 interface SecuritySettings {
+  loginAlerts: boolean
   twoFactorAuth: boolean
   sessionTimeout: number
-  loginAlerts: boolean
   deviceTracking: boolean
 }
 
 export default function SettingsPage() {
+  const router = useRouter()
   const { t } = useTranslation()
   const { user, logout } = useAuth()
+  const searchParams = useSearchParams()
+
+  // Get initial tab from URL or default to 'profile'
+  const tabFromUrl = searchParams.get('tab') || 'profile'
+  const validTabs = ['profile', 'notifications', 'privacy', 'appearance', 'security']
+  const initialTab = validTabs.includes(tabFromUrl) ? tabFromUrl : 'profile'
 
   // State management
-  const [activeTab, setActiveTab] = useState('profile')
+  const [activeTab, setActiveTab] = useState(initialTab)
   const [showPassword, setShowPassword] = useState(false)
   const [showDeleteDialog, setShowDeleteDialog] = useState(false)
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false)
@@ -192,6 +200,12 @@ export default function SettingsPage() {
     console.log('Exporting user data...')
   }
 
+  // Handle tab change and update URL
+  const handleTabChange = (newTab: string) => {
+    setActiveTab(newTab)
+    router.push(`/settings?tab=${newTab}`, { scroll: false })
+  }
+
   return (
     <div className=''>
       <div className='container mx-auto px-4 py-6 lg:p-0'>
@@ -233,7 +247,7 @@ export default function SettingsPage() {
           </div>
 
           {/* Settings Tabs */}
-          <Tabs value={activeTab} onValueChange={setActiveTab} className='space-y-8'>
+          <Tabs value={activeTab} onValueChange={handleTabChange} className='space-y-8'>
             <TabsList className='w-full h-auto p-2 bg-white/80 dark:bg-neutral-800/80 backdrop-blur-sm border-0 shadow-xl rounded-2xl grid grid-cols-2 sm:grid-cols-5 gap-2'>
               <TabsTrigger
                 value='profile'
@@ -689,48 +703,12 @@ export default function SettingsPage() {
                     </CardTitle>
                     <CardDescription>{t('pages.settings.appearance.description')}</CardDescription>
                   </CardHeader>
-                  <CardContent className='space-y-6'>
+                  <CardContent className='flex flex-col gap-6 lg:flex-row w-full'>
                     {/* Theme Selection */}
                     <SettingsThemeSection />
 
-                    <Separator />
-
                     {/* Language Selection */}
                     <SettingsLanguageSection />
-
-                    <Separator />
-
-                    {/* Display Settings */}
-                    <div className='space-y-4'>
-                      <h3 className='font-medium text-neutral-900 dark:text-neutral-50'>
-                        {t('pages.settings.appearance.displaySettings')}
-                      </h3>
-                      <div className='space-y-3'>
-                        <div className='flex items-center justify-between py-2'>
-                          <div className='space-y-1'>
-                            <div className='text-sm font-medium text-neutral-900 dark:text-neutral-50'>
-                              {t('pages.settings.appearance.compactMode')}
-                            </div>
-                            <div className='text-xs text-neutral-600 dark:text-neutral-400'>
-                              {t('pages.settings.appearance.compactModeDesc')}
-                            </div>
-                          </div>
-                          <Switch defaultChecked={false} />
-                        </div>
-
-                        <div className='flex items-center justify-between py-2'>
-                          <div className='space-y-1'>
-                            <div className='text-sm font-medium text-neutral-900 dark:text-neutral-50'>
-                              {t('pages.settings.appearance.reduceAnimations')}
-                            </div>
-                            <div className='text-xs text-neutral-600 dark:text-neutral-400'>
-                              {t('pages.settings.appearance.reduceAnimationsDesc')}
-                            </div>
-                          </div>
-                          <Switch defaultChecked={false} />
-                        </div>
-                      </div>
-                    </div>
                   </CardContent>
                 </div>
               </Card>
