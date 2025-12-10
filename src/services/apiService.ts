@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { BaseQueryFn } from '@reduxjs/toolkit/query'
 import axios, { AxiosInstance, AxiosError, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
 
 import { tokenManagerService } from './authService'
@@ -37,8 +38,8 @@ const setupAxiosInterceptors = (axiosInstance: AxiosInstance): void => {
         config.headers = config.headers || {}
         config.headers['X-Request-ID'] = requestId
 
-        if (apiConfig.enableLogging) {
-          console.log(`🚀 API Request: ${config.method?.toUpperCase()} ${config.url}`)
+        if (apiConfig.enableLogging && process.env.NODE_ENV === 'development') {
+          console.info(`API Request: ${config.method?.toUpperCase()} ${config.url}`)
         }
 
         if (config.skipAuth) {
@@ -75,8 +76,8 @@ const setupAxiosInterceptors = (axiosInstance: AxiosInstance): void => {
   // Response Interceptor
   axiosInstance.interceptors.response.use(
     (response: AxiosResponse) => {
-      if (apiConfig.enableLogging) {
-        console.log(`✅ API Response: ${response.config.method?.toUpperCase()} ${response.config.url}`)
+      if (apiConfig.enableLogging && process.env.NODE_ENV === 'development') {
+        console.info(`API Response: ${response.config.method?.toUpperCase()} ${response.config.url}`)
       }
       return response
     },
@@ -166,6 +167,47 @@ class ApiService {
   }
 }
 
+// RTK Query base query
+export const axiosBaseQuery = ({ baseUrl }: { baseUrl?: string } = {}): BaseQueryFn<
+  {
+    url: string
+    method?: any
+    data?: any
+    params?: any
+    headers?: any
+  } & RequestConfig,
+  unknown,
+  ApiError
+> => {
+  return async ({ url, method = 'GET', data, params, headers, ...config }) => {
+    try {
+      const result = await apiInstance({
+        url: baseUrl ? `${baseUrl}${url}` : url,
+        method,
+        data,
+        params,
+        headers,
+        ...config,
+      })
+      return { data: result.data }
+    } catch (axiosError) {
+      const error = axiosError as ApiError
+      return {
+        error: {
+          status: error.status,
+          data: error.message,
+          message: error.message,
+          code: error.code,
+        },
+      }
+    }
+  }
+}
+
 // Exports
 export const apiInstance = createApiInstance()
 export const apiService = new ApiService(apiInstance)
+
+export function getProjects(): any {
+  throw new Error('Function not implemented.')
+}

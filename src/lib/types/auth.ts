@@ -22,49 +22,49 @@ export interface RegisterCredentials {
 }
 
 export interface AuthData {
+  user: User
+  expiresIn: number
   accessToken: string
   refreshToken: string
-  expiresIn: number
-  user: User
 }
 
 export interface LoginResponse {
-  success: boolean
   data: AuthData
+  success: boolean
   message?: string
 }
 
 export interface RegisterResponse {
   success: boolean
+  message?: string
   data: {
-    message: string
     email: string
+    message: string
     emailSent: boolean
   }
-  message?: string
 }
 
 export interface AuthError extends Error {
+  code?: string
   success: false
   message: string
-  code?: string
   status?: number
 }
 
 export interface BasicResponse {
-  success: boolean
   message: string
+  success: boolean
 }
 
 export interface TokenInfo {
+  isValid: boolean
   hasTokens: boolean
-  isAccessTokenExpired: boolean
-  isRefreshTokenExpired: boolean
+  expiresAt: number | null
   accessToken: string | null
   refreshToken: string | null
-  expiresAt: number | null
+  isAccessTokenExpired: boolean
   timeUntilExpiry: number | null
-  isValid: boolean
+  isRefreshTokenExpired: boolean
 }
 
 export interface AuthResponse {
@@ -78,8 +78,8 @@ export interface AuthResponse {
 
 export interface AuthState {
   user: User | null
-  isAuthenticated: boolean
   isLoading: boolean
+  isAuthenticated: boolean
 }
 
 export interface ForgotPasswordRequest {

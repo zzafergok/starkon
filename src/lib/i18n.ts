@@ -1,4 +1,3 @@
-// src/lib/i18n.ts
 'use client'
 
 import i18n from 'i18next'
@@ -205,26 +204,19 @@ if (isBrowser()) {
   initializeI18n().catch((error) => {
     console.error('i18n otomatik başlatma hatası:', error)
   })
-} else {
-  // Server tarafında (SSR) senkron/hızlı başlatma
-  // Bu sayede hydration mismatch önlenir
-  if (!i18n.isInitialized) {
-    i18n.use(initReactI18next).init({
-      resources,
-      lng: 'tr', // SSR için varsayılan dil
-      fallbackLng: 'en',
-      debug: false,
-      ns: ['translation'],
-      defaultNS: 'translation',
-      interpolation: {
-        escapeValue: false,
-      },
-      react: {
-        useSuspense: false,
-      },
-    })
+}
+
+// Export edilen helper fonksiyonlar
+export const getTranslation = (key: string, lng?: string): string => {
+  if (!i18n.isInitialized) return key
+  try {
+    return i18n.getFixedT(lng || i18n.language)(key) as string
+  } catch (error) {
+    console.warn('Çeviri alınamadı:', key, error)
+    return key
   }
 }
+
 export const changeLanguage = async (lng: string): Promise<void> => {
   try {
     // i18n dil değişikliği

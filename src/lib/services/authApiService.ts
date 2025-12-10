@@ -15,31 +15,6 @@ import { apiClient } from '../api/axios'
 // TODO: Mock data - template projesi için, production'da silinebilir
 import { MockAuthService } from './mockAuthService'
 
-// Basit mock kullanıcı bilgileri - kolayca değiştirilebilir
-const _MOCK_USERS = [
-  {
-    id: '1',
-    email: 'admin@example.com',
-    name: 'Admin User',
-    role: 'admin',
-    password: 'admin123', // Basit şifre
-  },
-  {
-    id: '2',
-    email: 'user@example.com',
-    name: 'Regular User',
-    role: 'user',
-    password: 'user123',
-  },
-  {
-    id: '3',
-    email: 'demo@example.com',
-    name: 'Demo User',
-    role: 'demo',
-    password: 'demo123',
-  },
-]
-
 const USE_MOCK_DATA = process.env.NODE_ENV === 'development' || !process.env.NEXT_PUBLIC_API_URL
 
 // ========== TYPE DEFINITIONS ==========

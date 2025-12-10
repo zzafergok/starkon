@@ -2,18 +2,18 @@
 'use client'
 
 export interface TokenData {
+  expiresAt: number
   accessToken: string
   refreshToken: string
-  expiresAt: number
 }
 
 export interface TokenInfo {
   hasTokens: boolean
-  isAccessTokenExpired: boolean
-  isRefreshTokenExpired: boolean
+  expiresAt: number | null
   accessToken: string | null
   refreshToken: string | null
-  expiresAt: number | null
+  isAccessTokenExpired: boolean
+  isRefreshTokenExpired: boolean
   timeUntilExpiry: number | null
 }
 
@@ -44,9 +44,11 @@ export const setRememberedEmail = (email: string): void => {
     localStorage.setItem(REMEMBERED_EMAIL_KEY, email)
     localStorage.setItem(REMEMBER_ME_KEY, 'true')
     localStorage.setItem(REMEMBER_ME_EXPIRY_KEY, expiryTime.toString())
-    console.log('✅ Email remembered for 3 days:', email, 'expires:', new Date(expiryTime).toLocaleDateString())
+    if (process.env.NODE_ENV === 'development') {
+      console.info('Email remembered for 3 days')
+    }
   } catch (error) {
-    console.warn('❌ Error saving remembered email:', error)
+    console.warn('Error saving remembered email:', error instanceof Error ? error.message : 'Unknown error')
   }
 }
 
@@ -63,13 +65,15 @@ export const getRememberedEmail = (): string | null => {
 
     const email = localStorage.getItem(REMEMBERED_EMAIL_KEY)
     if (email) {
-      console.log('💾 Remembered email loaded:', email)
+      if (process.env.NODE_ENV === 'development') {
+        console.info('Remembered email loaded successfully')
+      }
       return email
     }
 
     return null
   } catch (error) {
-    console.warn('❌ Error loading remembered email:', error)
+    console.warn('Error loading remembered email:', error instanceof Error ? error.message : 'Unknown error')
     return null
   }
 }
@@ -80,9 +84,11 @@ export const getRememberedEmail = (): string | null => {
 export const clearRememberedEmail = (): void => {
   try {
     localStorage.removeItem(REMEMBERED_EMAIL_KEY)
-    console.log('✅ Remembered email cleared')
+    if (process.env.NODE_ENV === 'development') {
+      console.info('Remembered email cleared')
+    }
   } catch (error) {
-    console.warn('❌ Error clearing remembered email:', error)
+    console.warn('Error clearing remembered email:', error instanceof Error ? error.message : 'Unknown error')
   }
 }
 
@@ -95,12 +101,14 @@ export const setRememberMe = (remember: boolean, email?: string): void => {
   try {
     if (remember && email) {
       setRememberedEmail(email)
-      console.log('✅ Remember me enabled with email for 3 days')
+      if (process.env.NODE_ENV === 'development') {
+        console.info('Remember me enabled for 3 days')
+      }
     } else {
       clearRememberMe()
     }
   } catch (error) {
-    console.warn('❌ Error setting remember me:', error)
+    console.warn('Error setting remember me:', error instanceof Error ? error.message : 'Unknown error')
   }
 }
 
@@ -112,9 +120,11 @@ export const clearRememberMe = (): void => {
     localStorage.removeItem(REMEMBER_ME_KEY)
     localStorage.removeItem(REMEMBER_ME_EXPIRY_KEY)
     clearRememberedEmail()
-    console.log('✅ Remember me and email cleared')
+    if (process.env.NODE_ENV === 'development') {
+      console.info('Remember me and email cleared')
+    }
   } catch (error) {
-    console.warn('❌ Error clearing remember me:', error)
+    console.warn('Error clearing remember me:', error instanceof Error ? error.message : 'Unknown error')
   }
 }
 
@@ -134,13 +144,15 @@ export const isRememberMeValid = (): boolean => {
 
     if (now > expiry) {
       clearRememberMe()
-      console.log('⏰ Remember me expired after 3 days, clearing data')
+      if (process.env.NODE_ENV === 'development') {
+        console.info('Remember me expired after 3 days, clearing data')
+      }
       return false
     }
 
     return true
   } catch (error) {
-    console.warn('❌ Error checking remember me:', error)
+    console.warn('Error checking remember me:', error instanceof Error ? error.message : 'Unknown error')
     return false
   }
 }
@@ -168,7 +180,7 @@ export const getRememberMeTimeLeft = (): number => {
 
     return timeLeft > 0 ? Math.ceil(timeLeft / (60 * 60 * 1000)) : 0
   } catch (error) {
-    console.warn('❌ Error calculating time left:', error)
+    console.warn('Error calculating time left:', error instanceof Error ? error.message : 'Unknown error')
     return 0
   }
 }
@@ -194,9 +206,11 @@ export const setTokens = (accessToken: string, refreshToken: string, expiresIn: 
     sessionStorage.setItem(TOKEN_KEYS.REFRESH_TOKEN, refreshToken)
     sessionStorage.setItem(TOKEN_KEYS.EXPIRES_AT, expiresAt.toString())
 
-    console.log('✅ Tokens saved to sessionStorage')
+    if (process.env.NODE_ENV === 'development') {
+      console.info('Tokens saved to sessionStorage')
+    }
   } catch (error) {
-    console.error('❌ Error saving tokens:', error)
+    console.error('Error saving tokens:', error instanceof Error ? error.message : 'Unknown error')
   }
 }
 
@@ -206,7 +220,7 @@ export const getAccessToken = (): string | null => {
   try {
     return sessionStorage.getItem(TOKEN_KEYS.ACCESS_TOKEN)
   } catch (error) {
-    console.error('❌ Error getting access token:', error)
+    console.error('Error getting access token:', error instanceof Error ? error.message : 'Unknown error')
     return null
   }
 }
@@ -217,7 +231,7 @@ export const getRefreshToken = (): string | null => {
   try {
     return sessionStorage.getItem(TOKEN_KEYS.REFRESH_TOKEN)
   } catch (error) {
-    console.error('❌ Error getting refresh token:', error)
+    console.error('Error getting refresh token:', error instanceof Error ? error.message : 'Unknown error')
     return null
   }
 }
@@ -235,7 +249,7 @@ export const isAccessTokenExpired = (): boolean => {
     const now = Date.now()
     return now >= expiresAt - REFRESH_BUFFER_MS
   } catch (error) {
-    console.error('❌ Error checking token expiry:', error)
+    console.error('Error checking token expiry:', error instanceof Error ? error.message : 'Unknown error')
     return true
   }
 }
@@ -313,9 +327,11 @@ export const clearTokens = (): void => {
     sessionStorage.removeItem(TOKEN_KEYS.REFRESH_TOKEN)
     sessionStorage.removeItem(TOKEN_KEYS.EXPIRES_AT)
 
-    console.log('✅ Tokens cleared from sessionStorage')
+    if (process.env.NODE_ENV === 'development') {
+      console.info('Tokens cleared from sessionStorage')
+    }
   } catch (error) {
-    console.error('❌ Error clearing tokens:', error)
+    console.error('Error clearing tokens:', error instanceof Error ? error.message : 'Unknown error')
   }
 }
 
@@ -367,8 +383,12 @@ export const getTokenInfo = (): TokenInfo => {
 }
 
 export const debugTokenInfo = (): void => {
+  if (process.env.NODE_ENV !== 'development') {
+    return
+  }
+
   if (!isClientEnvironment()) {
-    console.log('🔍 Debug: Not in client environment')
+    console.info('Debug: Not in client environment')
     return
   }
 
@@ -376,13 +396,15 @@ export const debugTokenInfo = (): void => {
     const info = getTokenInfo()
     const timeUntilExpiryMinutes = info.timeUntilExpiry ? Math.round(info.timeUntilExpiry / (1000 * 60)) : null
 
-    console.log('🔍 Token Debug Info:', {
-      ...info,
+    console.info('Token Debug Info:', {
+      hasTokens: info.hasTokens,
+      isAccessTokenExpired: info.isAccessTokenExpired,
+      isRefreshTokenExpired: info.isRefreshTokenExpired,
       timeUntilExpiryMinutes,
     })
   } catch (error) {
-    console.log('🔍 Debug Info Error (non-critical):', error)
-    console.log('🔍 Basic Token Status:', {
+    console.warn('Debug Info Error (non-critical):', error instanceof Error ? error.message : 'Unknown error')
+    console.info('Basic Token Status:', {
       hasAccessToken: Boolean(getAccessToken()),
       hasRefreshToken: Boolean(getRefreshToken()),
       accessTokenLength: getAccessToken()?.length || 0,

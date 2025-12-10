@@ -2,67 +2,67 @@
 
 export interface Service {
   id: string
-  title: string
-  description: string
-  features: string[]
-  image?: string
-  icon?: string
   slug: string
-  category: string
+  title: string
+  icon?: string
+  image?: string
   price?: string
+  category: string
+  features: string[]
+  description: string
 }
 
 export interface TeamMember {
   id: string
+  bio: string
   name: string
   role: string
-  bio: string
   image?: string
   email?: string
+  skills: string[]
   social: {
-    linkedin?: string
     github?: string
     twitter?: string
+    linkedin?: string
   }
-  skills: string[]
 }
 
 export interface BlogPost {
   id: string
-  title: string
   slug: string
+  title: string
+  tags: string[]
   excerpt: string
   content: string
+  image?: string
+  category: string
+  featured: boolean
   publishedAt: string
+  readingTime: string
   author: {
     name: string
     avatar?: string
   }
-  category: string
-  tags: string[]
-  readingTime: string
-  featured: boolean
-  image?: string
 }
 
 export interface GalleryItem {
   id: string
   title: string
-  description?: string
   image: string
+  tags: string[]
   category: string
   projectUrl?: string
-  tags: string[]
+  description?: string
 }
 
 export interface CompanyInfo {
   name: string
-  description: string
-  mission: string
   vision: string
   founded: string
-  employees: string
+  mission: string
   location: string
+  employees: string
+  description: string
   contact: {
     email: string
     phone: string
