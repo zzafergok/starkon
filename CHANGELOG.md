@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.5.0](///compare/v0.4.0...v0.5.0) (2025-12-10)
+
+### ✨ Features | Yeni Özellikler
+
+* add profile update and password change validation schemas and types, and remove old authentication validation exports and `useForm` hook. bd2086d
+
+### ♻️ Code Refactoring | Kod Düzenlemeleri
+
+* remove hardcoded API URL fallback from axios instance 79d047a
+* Remove token refresh logic, simplify 401 handling to direct redirect, add explicit 403 error handling, and adjust axios timeout. ed20d39
+* Reorganize API services, remove validation files, and integrate Redux Toolkit. 775fd06
+* replace `useForm` with `useFormChanged` and enhance logging in `sessionTokenManager`. 3536025
+
+### 🔧 Chore | Bakım ve Yapılandırma
+
+* Remove tsconfig.cjs.json, CLI_USAGE_GUIDE.md, and MOCK_USERS.md files. db07e39
+
 ## [0.4.0](///compare/v0.3.0...v0.4.0) (2025-12-10)
 
 ### ✨ Features | Yeni Özellikler
