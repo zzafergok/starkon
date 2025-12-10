@@ -1,5 +1,38 @@
 # Changelog
 
+## [0.4.0](///compare/v0.3.0...v0.4.0) (2025-12-10)
+
+### ✨ Features | Yeni Özellikler
+
+* Add component layout toggle for single and double column views with item animations. c4abe94
+* Implement URL-based settings tab navigation and refactor appearance section layout and translations. b6543f8
+* Improve `ComponentDemo` styling with conditional rounding for collapsible headers, rounded code block bottoms, and transparent active tab content. fe1e995
+* introduce a comprehensive forms system with React Hook Form and Zod, and add new advanced core and UI components. be4e200
+* Introduce interactive CLI template selection, add a new `Link` component, update translations, and refine documentation. 865a512
+* introduce new max-width utilities and apply them to the main layout, removing specific component background styles. 95d00a4
+* Remove users page and revamp dashboard content with new CLI section and updated translations. 2508e69
+
+### 🐛 Bug Fixes | Hata Düzeltmeleri
+
+* unset body scrollbar-gutter and remove custom Radix UI dropdown scroll lock override 489945e
+
+### ♻️ Code Refactoring | Kod Düzenlemeleri
+
+* Reorganize demo page i18n keys into more specific namespaces and update translation files. a688d3a
+* Replace dedicated forms demo page with dynamic category-based component pages and update related demo data and translations. 5cf6044
+* restructure profile page editing UI into sectioned cards, adding bio and location fields and updating translations. e37ee29
+* Standardize prop and state declaration order across UI components 9301b63
+
+### 🔧 Chore | Bakım ve Yapılandırma
+
+* Migrate release-it configuration from JSON to CJS module and update release script. fdc8071
+* remove form demo data and associated English and Turkish translations. fa2cc2d
+
+### 💎 Styles | Kod Biçimlendirme
+
+* Add `h-auto` class to `TabsList` components. ed2c9f2
+* Remove large screen height and overflow styles from auth layout container and main content. 4f25a23
+
 ## [0.3.0](///compare/v0.2.0...v0.3.0) (2025-12-09)
 
 ### Features
