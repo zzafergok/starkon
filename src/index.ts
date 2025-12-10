@@ -111,33 +111,12 @@ export { PageHeader } from './components/ui/PageHeader/PageHeader'
 // Custom Hooks
 export { useAuth } from './hooks/useAuth'
 
-export { useForm } from './hooks/useForm'
-
 export { useTheme } from './hooks/useTheme'
 
 export { useLocale } from './hooks/useLocale'
 
 // Utilities
 export { cn, debounce, isDarkMode, get, storage, formatDate, sanitizeHtml } from './lib/utils'
-
-// Validation Schemas
-export {
-  loginSchema,
-  registerSchema,
-  PasswordStrength,
-  validateLoginData,
-  resetPasswordSchema,
-  forgotPasswordSchema,
-  checkPasswordStrength,
-} from './lib/validations/auth'
-
-// Types
-export type {
-  LoginFormValues,
-  RegisterFormValues,
-  ForgotPasswordFormValues,
-  ResetPasswordFormValues,
-} from './lib/validations/auth'
 
 export type {
   User,

@@ -996,7 +996,6 @@ const TEMPLATES = {
       'src/providers/AuthProvider.tsx',
       'src/providers/I18nProvider.tsx',
       'src/services/authService.ts',
-      'src/lib/validations/auth.ts',
       'src/lib/types/auth.ts',
       'src/utils/authDebug.ts',
       'src/middleware.ts',
